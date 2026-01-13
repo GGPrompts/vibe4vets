@@ -113,19 +113,14 @@ export default function AdminPage() {
   };
 
   return (
-    <main className="min-h-screen p-8">
+    <div className="p-6 lg:p-8">
       <div className="mx-auto max-w-6xl">
         {/* Header */}
-        <div className="mb-8 flex items-center justify-between">
-          <div>
-            <h1 className="text-3xl font-bold">Admin Dashboard</h1>
-            <p className="text-muted-foreground">
-              Review and manage resources
-            </p>
-          </div>
-          <Link href="/">
-            <Button variant="outline">Back to Site</Button>
-          </Link>
+        <div className="mb-8">
+          <h1 className="text-3xl font-bold">Review Queue</h1>
+          <p className="text-muted-foreground">
+            Resources pending human verification
+          </p>
         </div>
 
         {/* Stats Cards */}
@@ -341,6 +336,6 @@ export default function AdminPage() {
           </DialogContent>
         </Dialog>
       </div>
-    </main>
+    </div>
   );
 }
