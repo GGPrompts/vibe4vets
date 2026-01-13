@@ -213,8 +213,8 @@ docker-compose up -d
 - [x] Next.js UI (search + results)
 - [x] Admin review queue (`frontend/src/app/admin/page.tsx`)
 
-### Phase 2: Automation ← NEXT
-- [ ] VA.gov connector
+### Phase 2: Automation ← IN PROGRESS
+- [x] VA.gov connector (`backend/connectors/va_gov.py`)
 - [ ] DOL/CareerOneStop connector
 - [ ] ETL pipeline
 - [ ] Scheduled refresh
@@ -235,7 +235,7 @@ docker-compose up -d
 
 ---
 
-## Key Files (Phase 0-1)
+## Key Files
 
 ### Backend
 | File | Purpose |
@@ -250,6 +250,7 @@ docker-compose up -d
 | `backend/app/core/taxonomy.py` | Categories and subcategories |
 | `backend/alembic/versions/` | Database migrations |
 | `backend/connectors/base.py` | Connector protocol interface |
+| `backend/connectors/va_gov.py` | VA.gov Lighthouse API connector |
 
 ### Frontend
 | File | Purpose |

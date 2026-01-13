@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+- VA.gov Lighthouse Facilities API connector (`backend/connectors/va_gov.py`)
+  - Fetches health, benefits, and vet center facilities
+  - Implements Connector protocol with pagination and error handling
+  - 17 unit tests with mocked API responses
+
+### Fixed
+- Removed duplicate `test_health.py` that failed with SQLite ARRAY types
+- Removed machine-specific PRIME.md symlink from git tracking
+
 ## [0.1.0] - 2026-01-13
 
 ### Added
