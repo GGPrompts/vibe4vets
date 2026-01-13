@@ -154,7 +154,10 @@ export function SearchBar({
           >
             <SelectValue placeholder="Category" />
           </SelectTrigger>
-          <SelectContent>
+          <SelectContent
+            position="popper"
+            className="bg-white text-[hsl(var(--v4v-navy))] border border-[hsl(var(--border))]"
+          >
             {CATEGORIES.map((cat) => (
               <SelectItem key={cat.value} value={cat.value}>
                 {cat.label}
@@ -173,7 +176,10 @@ export function SearchBar({
           >
             <SelectValue placeholder="State" />
           </SelectTrigger>
-          <SelectContent>
+          <SelectContent
+            position="popper"
+            className="bg-white text-[hsl(var(--v4v-navy))] border border-[hsl(var(--border))] max-h-[300px]"
+          >
             {STATES.map((st) => (
               <SelectItem key={st.value} value={st.value}>
                 {st.label}
