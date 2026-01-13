@@ -7,7 +7,8 @@ from datetime import datetime
 from enum import Enum
 from typing import TYPE_CHECKING
 
-from sqlalchemy import ARRAY, String
+from sqlalchemy import Column, Text
+from sqlalchemy.dialects.postgresql import ARRAY
 from sqlmodel import Field, Relationship, SQLModel
 
 if TYPE_CHECKING:
@@ -49,20 +50,31 @@ class Resource(SQLModel, table=True):
     eligibility: str | None = None
     how_to_apply: str | None = None
 
-    # Classification
-    categories: list[str] = Field(default_factory=list, sa_type=ARRAY(String))
-    subcategories: list[str] = Field(default_factory=list, sa_type=ARRAY(String))
-    tags: list[str] = Field(default_factory=list, sa_type=ARRAY(String))
+    # Classification - PostgreSQL text arrays
+    categories: list[str] = Field(
+        default_factory=list, sa_column=Column(ARRAY(Text), nullable=False, default=[])
+    )  # employment, training, housing, legal
+    subcategories: list[str] = Field(
+        default_factory=list, sa_column=Column(ARRAY(Text), nullable=False, default=[])
+    )
+    tags: list[str] = Field(
+        default_factory=list, sa_column=Column(ARRAY(Text), nullable=False, default=[])
+    )
 
     # Scope
     scope: ResourceScope = Field(default=ResourceScope.NATIONAL)
-    states: list[str] = Field(default_factory=list, sa_type=ARRAY(String))
+    states: list[str] = Field(
+        default_factory=list, sa_column=Column(ARRAY(Text), nullable=False, default=[])
+    )  # ['*'] for national
 
     # Contact
     website: str | None = Field(default=None, max_length=500)
     phone: str | None = Field(default=None, max_length=50)
     hours: str | None = Field(default=None, max_length=255)
-    languages: list[str] = Field(default_factory=lambda: ["en"], sa_type=ARRAY(String))
+    languages: list[str] = Field(
+        default_factory=lambda: ["en"],
+        sa_column=Column(ARRAY(Text), nullable=False, default=["en"]),
+    )
     cost: str | None = Field(default=None, max_length=100)  # free, sliding scale, etc.
 
     # Trust signals
@@ -81,8 +93,8 @@ class Resource(SQLModel, table=True):
     # Note: embedding column will be added via migration with pgvector
 
     # Relationships
-    organization: "Organization" = Relationship(back_populates="resources")
-    location: "Location | None" = Relationship(back_populates="resources")
-    source: "Source | None" = Relationship(back_populates="resources")
-    reviews: list["ReviewState"] = Relationship(back_populates="resource")
-    changes: list["ChangeLog"] = Relationship(back_populates="resource")
+    organization: Organization = Relationship(back_populates="resources")
+    location: Location | None = Relationship(back_populates="resources")
+    source: Source | None = Relationship(back_populates="resources")
+    reviews: list[ReviewState] = Relationship(back_populates="resource")
+    changes: list[ChangeLog] = Relationship(back_populates="resource")

@@ -1,1 +1,1 @@
-"""Test package."""
+"""Tests for Vibe4Vets backend."""

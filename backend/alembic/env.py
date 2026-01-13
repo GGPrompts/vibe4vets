@@ -1,30 +1,29 @@
-"""Alembic environment configuration."""
+"""Alembic migration environment for Vibe4Vets."""
 
+import os
 from logging.config import fileConfig
 
-from alembic import context
 from sqlalchemy import engine_from_config, pool
 from sqlmodel import SQLModel
 
-from app.config import settings
-from app.models import (
-    Organization,
-    Location,
-    Resource,
-    Source,
-    SourceRecord,
-    ReviewState,
-    ChangeLog,
-)
+from alembic import context
 
+# Import all models so SQLModel.metadata is populated
+from app.models import Location, Organization, Resource, Source, SourceRecord  # noqa: F401
+from app.models.review import ChangeLog, ReviewState  # noqa: F401
+
+# Alembic Config object
 config = context.config
 
+# Override sqlalchemy.url from environment if DATABASE_URL is set
+database_url = os.getenv("DATABASE_URL", "postgresql://localhost:5432/vibe4vets")
+config.set_main_option("sqlalchemy.url", database_url)
+
+# Setup loggers
 if config.config_file_name is not None:
     fileConfig(config.config_file_name)
 
-# Set SQLAlchemy URL from settings
-config.set_main_option("sqlalchemy.url", settings.database_url)
-
+# Use SQLModel metadata for autogenerate
 target_metadata = SQLModel.metadata
 
 
@@ -51,10 +50,7 @@ def run_migrations_online() -> None:
     )
 
     with connectable.connect() as connection:
-        context.configure(
-            connection=connection,
-            target_metadata=target_metadata,
-        )
+        context.configure(connection=connection, target_metadata=target_metadata)
 
         with context.begin_transaction():
             context.run_migrations()

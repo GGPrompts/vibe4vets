@@ -5,8 +5,10 @@ from __future__ import annotations
 import uuid
 from datetime import datetime
 from enum import Enum
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Any
 
+from sqlalchemy import Column
+from sqlalchemy.dialects.postgresql import JSONB
 from sqlmodel import Field, Relationship, SQLModel
 
 if TYPE_CHECKING:
@@ -44,7 +46,9 @@ class Source(SQLModel, table=True):
 
     # Scrape configuration
     frequency: str = Field(default="weekly", max_length=20)  # daily/weekly/monthly
-    selectors: dict | None = None  # CSS selectors for scraping
+    selectors: dict[str, Any] | None = Field(
+        default=None, sa_column=Column(JSONB, nullable=True)
+    )  # CSS selectors for scraping
 
     # Health tracking
     last_run: datetime | None = None
@@ -55,8 +59,8 @@ class Source(SQLModel, table=True):
     created_at: datetime = Field(default_factory=datetime.utcnow)
 
     # Relationships
-    resources: list["Resource"] = Relationship(back_populates="source")
-    records: list["SourceRecord"] = Relationship(back_populates="source")
+    resources: list[Resource] = Relationship(back_populates="source")
+    records: list[SourceRecord] = Relationship(back_populates="source")
 
 
 class SourceRecord(SQLModel, table=True):

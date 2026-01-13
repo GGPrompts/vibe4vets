@@ -46,7 +46,7 @@ class ReviewState(SQLModel, table=True):
     created_at: datetime = Field(default_factory=datetime.utcnow)
 
     # Relationships
-    resource: "Resource" = Relationship(back_populates="reviews")
+    resource: Resource = Relationship(back_populates="reviews")
 
 
 class ChangeLog(SQLModel, table=True):
@@ -65,4 +65,4 @@ class ChangeLog(SQLModel, table=True):
     timestamp: datetime = Field(default_factory=datetime.utcnow)
 
     # Relationships
-    resource: "Resource" = Relationship(back_populates="changes")
+    resource: Resource = Relationship(back_populates="changes")
