@@ -1,5 +1,6 @@
 """Application configuration."""
 
+from pydantic import field_validator
 from pydantic_settings import BaseSettings
 
 
@@ -9,8 +10,17 @@ class Settings(BaseSettings):
     # Database - use psycopg (v3) driver
     database_url: str = "postgresql+psycopg://localhost:5432/vibe4vets"
 
-    # CORS
+    # CORS - accepts comma-separated string or JSON array
     cors_origins: list[str] = ["http://localhost:3000"]
+
+    @field_validator("cors_origins", mode="before")
+    @classmethod
+    def parse_cors_origins(cls, v: str | list[str]) -> list[str]:
+        """Parse CORS origins from comma-separated string or list."""
+        if isinstance(v, str):
+            # Handle comma-separated format: "http://localhost:3000,http://example.com"
+            return [origin.strip() for origin in v.split(",") if origin.strip()]
+        return v
 
     # AI
     anthropic_api_key: str = ""
