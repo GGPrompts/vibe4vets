@@ -118,6 +118,14 @@ export interface ReviewQueueResponse {
   offset: number;
 }
 
+export interface DashboardStats {
+  total_resources: number;
+  pending_reviews: number;
+  approved_today: number;
+  sources_count: number;
+  healthy_sources: number;
+}
+
 async function fetchAPI<T>(
   endpoint: string,
   options: RequestInit = {}
@@ -226,6 +234,10 @@ export const api = {
         method: 'POST',
         body: JSON.stringify({ action, reviewer, notes }),
       });
+    },
+
+    getDashboardStats: (): Promise<DashboardStats> => {
+      return fetchAPI('/api/v1/admin/dashboard/stats');
     },
   },
 };

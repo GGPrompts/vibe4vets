@@ -30,7 +30,7 @@ import {
 import { Input } from '@/components/ui/input';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import api, { type ReviewQueueItem } from '@/lib/api';
+import api, { type ReviewQueueItem, type DashboardStats } from '@/lib/api';
 
 export default function AdminPage() {
   const [items, setItems] = useState<ReviewQueueItem[]>([]);
@@ -43,6 +43,8 @@ export default function AdminPage() {
   const [notes, setNotes] = useState('');
   const [submitting, setSubmitting] = useState(false);
   const [activeTab, setActiveTab] = useState('pending');
+  const [stats, setStats] = useState<DashboardStats | null>(null);
+  const [statsLoading, setStatsLoading] = useState(true);
 
   const fetchQueue = async (status: string) => {
     setLoading(true);
@@ -61,6 +63,20 @@ export default function AdminPage() {
   useEffect(() => {
     fetchQueue(activeTab);
   }, [activeTab]);
+
+  useEffect(() => {
+    const fetchStats = async () => {
+      try {
+        const data = await api.admin.getDashboardStats();
+        setStats(data);
+      } catch {
+        // Stats fetch failure is non-critical, just leave as null
+      } finally {
+        setStatsLoading(false);
+      }
+    };
+    fetchStats();
+  }, []);
 
   const handleAction = async () => {
     if (!selectedItem || !action || !reviewer.trim()) return;
@@ -118,20 +134,36 @@ export default function AdminPage() {
             <CardHeader className="pb-2">
               <CardDescription>Pending Reviews</CardDescription>
               <CardTitle className="text-3xl">
-                {loading ? <Skeleton className="h-9 w-16" /> : items.length}
+                {statsLoading ? (
+                  <Skeleton className="h-9 w-16" />
+                ) : (
+                  stats?.pending_reviews ?? '-'
+                )}
               </CardTitle>
             </CardHeader>
           </Card>
           <Card>
             <CardHeader className="pb-2">
               <CardDescription>Approved Today</CardDescription>
-              <CardTitle className="text-3xl">-</CardTitle>
+              <CardTitle className="text-3xl">
+                {statsLoading ? (
+                  <Skeleton className="h-9 w-16" />
+                ) : (
+                  stats?.approved_today ?? '-'
+                )}
+              </CardTitle>
             </CardHeader>
           </Card>
           <Card>
             <CardHeader className="pb-2">
               <CardDescription>Total Resources</CardDescription>
-              <CardTitle className="text-3xl">-</CardTitle>
+              <CardTitle className="text-3xl">
+                {statsLoading ? (
+                  <Skeleton className="h-9 w-16" />
+                ) : (
+                  stats?.total_resources ?? '-'
+                )}
+              </CardTitle>
             </CardHeader>
           </Card>
         </div>
