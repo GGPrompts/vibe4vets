@@ -92,7 +92,7 @@ class Resource(SQLModel, table=True):
 
     # Relationships
     organization: "Organization" = Relationship(back_populates="resources")
-    location: "Location | None" = Relationship(back_populates="resources")
-    source: "Source | None" = Relationship(back_populates="resources")
+    location: "Location" = Relationship(back_populates="resources")
+    source: "Source" = Relationship(back_populates="resources")
     reviews: list["ReviewState"] = Relationship(back_populates="resource")
     changes: list["ChangeLog"] = Relationship(back_populates="resource")

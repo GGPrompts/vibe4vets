@@ -13,6 +13,18 @@ if TYPE_CHECKING:
     from app.models.resource import Resource
 
 
+class SourceErrorType(str, Enum):
+    """Type of source error."""
+
+    CONNECTION = "connection"  # Network/API errors
+    PARSE = "parse"  # Data parsing failures
+    VALIDATION = "validation"  # Data validation errors
+    TIMEOUT = "timeout"  # Request timeouts
+    AUTH = "auth"  # Authentication failures
+    RATE_LIMIT = "rate_limit"  # Rate limiting
+    UNKNOWN = "unknown"  # Unknown errors
+
+
 class SourceType(str, Enum):
     """Type of data source."""
 
@@ -59,6 +71,7 @@ class Source(SQLModel, table=True):
     # Relationships
     resources: list["Resource"] = Relationship(back_populates="source")
     records: list["SourceRecord"] = Relationship(back_populates="source")
+    errors: list["SourceError"] = Relationship(back_populates="source")
 
 
 class SourceRecord(SQLModel, table=True):
@@ -78,3 +91,24 @@ class SourceRecord(SQLModel, table=True):
 
     # Relationships
     source: "Source" = Relationship(back_populates="records")
+
+
+class SourceError(SQLModel, table=True):
+    """Error records for source health tracking."""
+
+    __tablename__ = "source_errors"
+
+    id: uuid.UUID = Field(default_factory=uuid.uuid4, primary_key=True)
+    source_id: uuid.UUID = Field(foreign_key="sources.id", index=True)
+
+    error_type: SourceErrorType = Field(default=SourceErrorType.UNKNOWN)
+    message: str
+    details: dict[str, Any] | None = Field(
+        default=None, sa_column=Column(JSONB, nullable=True)
+    )  # Stack trace, request info, etc.
+
+    job_run_id: str | None = Field(default=None, max_length=50)  # Links to scheduler history
+    occurred_at: datetime = Field(default_factory=datetime.utcnow, index=True)
+
+    # Relationships
+    source: "Source" = Relationship(back_populates="errors")

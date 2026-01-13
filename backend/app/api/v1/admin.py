@@ -9,7 +9,14 @@ from sqlmodel import select
 
 from app.database import SessionDep
 from app.models import Source
+from app.schemas.health import (
+    DashboardStats,
+    ErrorListResponse,
+    SourceHealthDetail,
+    SourceHealthListResponse,
+)
 from app.schemas.review import ReviewAction, ReviewQueueResponse
+from app.services.health import HealthService
 from app.services.review import ReviewService
 from jobs import get_available_connectors, get_scheduler
 
@@ -130,6 +137,75 @@ def get_source_health(source_id: UUID, session: SessionDep) -> dict:
         "error_count": source.error_count,
         "resource_count": resource_count,
     }
+
+
+# ============================================================================
+# Dashboard Endpoints
+# ============================================================================
+
+
+@router.get("/dashboard/stats", response_model=DashboardStats)
+def get_dashboard_stats(session: SessionDep) -> DashboardStats:
+    """Get aggregated statistics for the admin dashboard.
+
+    Returns:
+    - Total source and resource counts
+    - Sources grouped by health status (healthy, degraded, failing)
+    - Resources grouped by category and status
+    - Stale resource count (not verified in 30 days)
+    - Recent job execution summaries
+    """
+    service = HealthService(session)
+    return service.get_dashboard_stats()
+
+
+@router.get("/dashboard/sources", response_model=SourceHealthListResponse)
+def get_sources_health_detailed(session: SessionDep) -> SourceHealthListResponse:
+    """Get all sources with detailed health information.
+
+    Returns comprehensive health metrics for each source including:
+    - Resource counts and status distribution
+    - Average freshness score
+    - Success rate over recent runs
+    - Recent error history
+    """
+    service = HealthService(session)
+    sources = service.get_all_sources_health()
+    return SourceHealthListResponse(sources=sources, total=len(sources))
+
+
+@router.get("/dashboard/sources/{source_id}", response_model=SourceHealthDetail)
+def get_source_health_detailed(
+    source_id: UUID, session: SessionDep
+) -> SourceHealthDetail:
+    """Get detailed health information for a single source.
+
+    Returns comprehensive health metrics including:
+    - Resource counts and status distribution
+    - Average freshness score
+    - Success rate calculation
+    - Recent error history
+    """
+    service = HealthService(session)
+    health = service.get_source_health(source_id)
+    if not health:
+        raise HTTPException(status_code=404, detail="Source not found")
+    return health
+
+
+@router.get("/dashboard/errors", response_model=ErrorListResponse)
+def get_recent_errors(
+    session: SessionDep,
+    limit: int = Query(default=20, ge=1, le=100, description="Maximum errors to return"),
+) -> ErrorListResponse:
+    """Get recent errors across all sources.
+
+    Returns the most recent errors from all data sources,
+    useful for monitoring overall system health.
+    """
+    service = HealthService(session)
+    errors = service.get_all_errors(limit=limit)
+    return ErrorListResponse(errors=errors, total=len(errors))
 
 
 # ============================================================================

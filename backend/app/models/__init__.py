@@ -4,7 +4,14 @@ from app.models.location import Location
 from app.models.organization import Organization
 from app.models.resource import Resource, ResourceScope, ResourceStatus
 from app.models.review import ChangeLog, ChangeType, ReviewState, ReviewStatus
-from app.models.source import HealthStatus, Source, SourceRecord, SourceType
+from app.models.source import (
+    HealthStatus,
+    Source,
+    SourceError,
+    SourceErrorType,
+    SourceRecord,
+    SourceType,
+)
 
 __all__ = [
     "Organization",
@@ -13,6 +20,8 @@ __all__ = [
     "ResourceStatus",
     "ResourceScope",
     "Source",
+    "SourceError",
+    "SourceErrorType",
     "SourceRecord",
     "SourceType",
     "HealthStatus",

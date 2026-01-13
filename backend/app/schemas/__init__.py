@@ -1,5 +1,13 @@
 """Pydantic schemas for API request/response validation."""
 
+from app.schemas.health import (
+    DashboardStats,
+    ErrorListResponse,
+    ErrorRecord,
+    JobRunSummary,
+    SourceHealthDetail,
+    SourceHealthListResponse,
+)
 from app.schemas.organization import OrganizationCreate, OrganizationRead
 from app.schemas.resource import (
     ResourceCreate,
@@ -11,13 +19,23 @@ from app.schemas.resource import (
 from app.schemas.review import ReviewAction, ReviewQueueItem
 
 __all__ = [
+    # Health schemas
+    "DashboardStats",
+    "ErrorListResponse",
+    "ErrorRecord",
+    "JobRunSummary",
+    "SourceHealthDetail",
+    "SourceHealthListResponse",
+    # Resource schemas
     "ResourceCreate",
     "ResourceRead",
     "ResourceUpdate",
     "ResourceList",
     "ResourceSearchResult",
+    # Organization schemas
     "OrganizationCreate",
     "OrganizationRead",
+    # Review schemas
     "ReviewAction",
     "ReviewQueueItem",
 ]
