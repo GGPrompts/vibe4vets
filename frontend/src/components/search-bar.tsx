@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import {
@@ -11,6 +11,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
+import { Search } from 'lucide-react';
 
 const CATEGORIES = [
   { value: 'all', label: 'All Categories' },
@@ -79,6 +80,7 @@ interface SearchBarProps {
   initialCategory?: string;
   initialState?: string;
   onSearch?: (query: string, category: string, state: string) => void;
+  variant?: 'default' | 'hero';
 }
 
 export function SearchBar({
@@ -86,6 +88,7 @@ export function SearchBar({
   initialCategory = 'all',
   initialState = 'all',
   onSearch,
+  variant = 'hero',
 }: SearchBarProps) {
   const router = useRouter();
   const [query, setQuery] = useState(initialQuery);
@@ -98,7 +101,6 @@ export function SearchBar({
     if (onSearch) {
       onSearch(query, category, state);
     } else {
-      // Navigate to search results
       const params = new URLSearchParams();
       if (query) params.set('q', query);
       if (category && category !== 'all') params.set('category', category);
@@ -108,27 +110,48 @@ export function SearchBar({
     }
   };
 
+  const isHero = variant === 'hero';
+
   return (
-    <form onSubmit={handleSubmit} className="w-full space-y-4">
+    <form onSubmit={handleSubmit} className="w-full space-y-3">
+      {/* Main search input */}
       <div className="relative">
+        <div className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2">
+          <Search className={`h-5 w-5 ${isHero ? 'text-white/40' : 'text-muted-foreground'}`} />
+        </div>
         <Input
           type="text"
           placeholder="Search for resources..."
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          className="w-full rounded-full border-input bg-background px-6 py-6 text-lg shadow-sm"
+          className={`w-full rounded-lg py-6 pl-12 pr-28 text-base shadow-sm transition-all ${
+            isHero
+              ? 'border-white/20 bg-white/10 text-white placeholder:text-white/50 focus:border-[hsl(var(--v4v-gold))] focus:bg-white/15'
+              : 'border-input bg-background'
+          }`}
         />
         <Button
           type="submit"
-          className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full px-6"
+          className={`absolute right-2 top-1/2 -translate-y-1/2 rounded-md px-5 font-semibold transition-all ${
+            isHero
+              ? 'bg-[hsl(var(--v4v-gold))] text-[hsl(var(--v4v-navy))] hover:bg-[hsl(var(--v4v-gold-light))]'
+              : ''
+          }`}
         >
           Search
         </Button>
       </div>
 
-      <div className="flex flex-wrap justify-center gap-4">
+      {/* Filters row */}
+      <div className="flex flex-wrap gap-3">
         <Select value={category} onValueChange={setCategory}>
-          <SelectTrigger className="w-[180px]">
+          <SelectTrigger
+            className={`w-[160px] transition-all ${
+              isHero
+                ? 'border-white/20 bg-white/10 text-white hover:bg-white/15 [&>svg]:text-white/60'
+                : ''
+            }`}
+          >
             <SelectValue placeholder="Category" />
           </SelectTrigger>
           <SelectContent>
@@ -141,7 +164,13 @@ export function SearchBar({
         </Select>
 
         <Select value={state} onValueChange={setState}>
-          <SelectTrigger className="w-[180px]">
+          <SelectTrigger
+            className={`w-[160px] transition-all ${
+              isHero
+                ? 'border-white/20 bg-white/10 text-white hover:bg-white/15 [&>svg]:text-white/60'
+                : ''
+            }`}
+          >
             <SelectValue placeholder="State" />
           </SelectTrigger>
           <SelectContent>
