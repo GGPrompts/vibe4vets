@@ -1,0 +1,287 @@
+# CLAUDE.md - Vibe4Vets
+
+## Overview
+
+Vibe4Vets is an AI-powered veteran resource database focusing on **Employment & Training** and **Housing & Legal** resources nationwide. Transparent about using web scraping and AI to aggregate resources that go beyond VA.gov.
+
+| | |
+|--|--|
+| **Type** | Veteran Resource Directory |
+| **Backend** | Python 3.12 + FastAPI |
+| **Frontend** | Next.js 15 + TypeScript + Tailwind + shadcn/ui |
+| **Database** | PostgreSQL (Supabase/Railway) |
+| **Search** | Postgres FTS → OpenSearch (Phase 3) |
+| **AI** | Claude API (extraction, search, chat) |
+
+---
+
+## Architecture
+
+### Two-Service Pattern
+
+```
+┌─────────────────┐      ┌─────────────────┐
+│   Next.js UI    │ ──── │   FastAPI API   │
+│   (Vercel)      │      │   (Railway)     │
+└─────────────────┘      └────────┬────────┘
+                                  │
+                         ┌────────┴────────┐
+                         │   PostgreSQL    │
+                         │   (+ pgvector)  │
+                         └─────────────────┘
+```
+
+### Directory Layout
+
+```
+vibe4vets/
+├── frontend/                # Next.js app (Vercel)
+│   └── src/
+│       ├── app/             # App Router pages
+│       ├── components/      # React components
+│       └── lib/             # API client, utilities
+│
+├── backend/                 # FastAPI app (Railway)
+│   ├── app/
+│   │   ├── api/v1/          # API routes
+│   │   ├── models/          # SQLAlchemy models
+│   │   ├── schemas/         # Pydantic schemas
+│   │   ├── services/        # Business logic
+│   │   └── core/            # Taxonomy, geo, utils
+│   ├── connectors/          # Data source connectors
+│   ├── etl/                 # Normalize, dedupe, enrich
+│   ├── jobs/                # Background tasks
+│   └── llm/                 # AI abstraction layer
+│
+├── prompts/                 # Saved AI prompts
+├── docs/                    # Architecture docs
+└── .beads/                  # Issue tracking
+```
+
+---
+
+## Core Data Model
+
+### Entities
+
+| Entity | Purpose |
+|--------|---------|
+| **Organization** | Parent entity (nonprofits, agencies) |
+| **Location** | Physical locations with geocoding |
+| **Resource** | Programs/services veterans can access |
+| **Source** | Data sources with reliability tiers |
+| **SourceRecord** | Raw data audit trail |
+| **ReviewState** | Human review workflow |
+| **ChangeLog** | Field-level change history |
+
+### Resource Categories
+
+```python
+CATEGORIES = [
+    "employment",    # Job placement, career services
+    "training",      # Vocational rehab, certifications
+    "housing",       # HUD-VASH, SSVF, shelters
+    "legal",         # Legal aid, VA appeals
+]
+```
+
+### Source Tiers (Trust Scoring)
+
+| Tier | Score | Examples |
+|------|-------|----------|
+| 1 | 1.0 | VA.gov, DOL, HUD |
+| 2 | 0.8 | DAV, VFW, American Legion |
+| 3 | 0.6 | State veteran agencies |
+| 4 | 0.4 | Community directories |
+
+---
+
+## Key Design Decisions
+
+### 1. Trust Pipeline
+
+Every resource has a trust score = reliability × freshness:
+- **Reliability**: Based on source tier
+- **Freshness**: Decays over time since last verification
+- **Risky changes** (phone, address, eligibility) trigger human review
+
+### 2. Connector Interface
+
+All data sources implement:
+```python
+class Connector(Protocol):
+    def run(self) -> list[ResourceCandidate]: ...
+    def metadata(self) -> SourceMetadata: ...
+```
+
+### 3. "Why This Matched"
+
+Search results always explain the match:
+- "Matches your location (Texas)"
+- "Covers employment resources"
+- "Last verified: 3 days ago"
+
+### 4. No PII Storage
+
+Never store veteran-specific personal data. Search works without accounts.
+
+### 5. Audit Trail
+
+Keep raw scraped content with hashes for traceability.
+
+---
+
+## Commands
+
+### Backend Development
+
+```bash
+cd backend
+
+# Setup
+uv venv && source .venv/bin/activate
+uv pip install -e ".[dev]"
+
+# Run locally
+uvicorn app.main:app --reload
+
+# Database
+alembic upgrade head
+alembic revision --autogenerate -m "description"
+
+# Tests
+pytest
+```
+
+### Frontend Development
+
+```bash
+cd frontend
+
+# Setup
+npm install
+
+# Run locally (connects to backend at localhost:8000)
+npm run dev
+
+# Build
+npm run build
+```
+
+### Docker (Full Stack)
+
+```bash
+docker-compose up -d
+```
+
+---
+
+## API Structure
+
+### Public Endpoints
+
+| Method | Path | Description |
+|--------|------|-------------|
+| GET | `/api/v1/resources` | List/search resources |
+| GET | `/api/v1/resources/{id}` | Resource detail |
+| GET | `/api/v1/search` | Advanced search with filters |
+| POST | `/api/v1/chat` | AI chat endpoint |
+
+### Admin Endpoints
+
+| Method | Path | Description |
+|--------|------|-------------|
+| GET | `/api/v1/admin/review-queue` | Pending reviews |
+| POST | `/api/v1/admin/review/{id}` | Approve/reject |
+| GET | `/api/v1/admin/sources` | Source health |
+
+---
+
+## Phases
+
+### Phase 0: Scaffolding ← CURRENT
+- [x] Directory structure
+- [ ] Docker Compose
+- [ ] Database schema
+- [ ] Connector interface
+- [ ] CI/CD
+
+### Phase 1: MVP
+- [ ] Manual resource entry
+- [ ] Basic CRUD API
+- [ ] Postgres full-text search
+- [ ] Next.js UI (search + results)
+- [ ] Admin review queue
+
+### Phase 2: Automation
+- [ ] VA.gov connector
+- [ ] DOL/CareerOneStop connector
+- [ ] ETL pipeline
+- [ ] Scheduled refresh
+- [ ] Source health dashboard
+
+### Phase 3: AI + Scale
+- [ ] Claude extraction
+- [ ] pgvector semantic search
+- [ ] AI chatbot
+- [ ] Guided questionnaire
+- [ ] OpenSearch (if needed)
+
+### Phase 4: Production
+- [ ] Public API docs
+- [ ] Feedback loop
+- [ ] Analytics
+- [ ] Partner contributions
+
+---
+
+## Explicit Non-Goals
+
+1. **No medical advice** - We don't diagnose or recommend treatments
+2. **No eligibility determinations** - We explain, not decide
+3. **No PII storage** - No veteran accounts or personal data
+4. **No benefits decision engine** - We're a directory, not a processor
+
+---
+
+## Data Sources
+
+### Tier 1: Official APIs
+- [VA Developer API](https://developer.va.gov/) - Facilities, services
+- [CareerOneStop API](https://www.careeronestop.org/Developers/WebAPI/web-api.aspx) - Job resources
+- [USAJobs API](https://developer.usajobs.gov/) - Federal jobs
+
+### Tier 2: Structured Scraping
+- VA.gov Employment pages
+- DOL VETS Resources
+- HUD-VASH program info
+- SSVF provider listings
+
+### Tier 3: Nonprofit/Community
+- State veteran agencies
+- VSO websites (DAV, VFW, Legion)
+- Legal aid directories
+
+---
+
+## Beads Workflow
+
+Track work with beads (not markdown):
+
+```bash
+bd ready           # Find available work
+bd show <id>       # Review issue details
+bd update <id> --status=in_progress  # Claim it
+
+# After completing work
+/conductor:bdw-verify-build
+/conductor:bdw-commit-changes
+/conductor:bdw-close-issue <id>
+bd sync && git push
+```
+
+---
+
+## Contact
+
+Built to help veterans find resources beyond VA.gov.
