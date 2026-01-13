@@ -15,6 +15,7 @@ dependencies = [
     "anthropic>=0.40.0",
     "pgvector>=0.3.0",
     "python-multipart>=0.0.18",
+    "apscheduler>=3.10.0",
 ]
 
 [project.optional-dependencies]

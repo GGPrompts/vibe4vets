@@ -1,5 +1,6 @@
-"""Admin endpoints for review queue and source management."""
+"""Admin endpoints for review queue, source management, and job scheduling."""
 
+from typing import Any
 from uuid import UUID
 
 from fastapi import APIRouter, HTTPException, Query
@@ -10,6 +11,7 @@ from app.database import SessionDep
 from app.models import Source
 from app.schemas.review import ReviewAction, ReviewQueueResponse
 from app.services.review import ReviewService
+from jobs import get_available_connectors, get_scheduler
 
 router = APIRouter()
 
@@ -127,4 +129,166 @@ def get_source_health(source_id: UUID, session: SessionDep) -> dict:
         "last_success": source.last_success.isoformat() if source.last_success else None,
         "error_count": source.error_count,
         "resource_count": resource_count,
+    }
+
+
+# ============================================================================
+# Job Management Endpoints
+# ============================================================================
+
+
+class JobInfo(BaseModel):
+    """Information about a scheduled job."""
+
+    name: str
+    description: str
+    scheduled: bool
+    next_run: str | None
+
+
+class JobsResponse(BaseModel):
+    """Response for jobs list endpoint."""
+
+    jobs: list[JobInfo]
+    scheduler_running: bool
+
+
+class JobRunRequest(BaseModel):
+    """Request to run a job manually."""
+
+    connector_name: str | None = None
+    dry_run: bool = False
+
+
+class JobHistoryEntry(BaseModel):
+    """Entry in job history."""
+
+    run_id: str
+    job_name: str
+    status: str
+    started_at: str
+    completed_at: str | None
+    message: str
+    stats: dict[str, Any]
+    error: str | None
+
+
+class JobHistoryResponse(BaseModel):
+    """Response for job history endpoint."""
+
+    history: list[JobHistoryEntry]
+    total: int
+
+
+@router.get("/jobs", response_model=JobsResponse)
+def list_jobs() -> JobsResponse:
+    """List all scheduled jobs with their next run times.
+
+    Returns information about each registered job including:
+    - Whether it's scheduled
+    - When it will run next
+    - Job description
+    """
+    scheduler = get_scheduler()
+    jobs = scheduler.get_scheduled_jobs()
+
+    return JobsResponse(
+        jobs=[
+            JobInfo(
+                name=j["name"],
+                description=j["description"],
+                scheduled=j["scheduled"],
+                next_run=j["next_run"],
+            )
+            for j in jobs
+        ],
+        scheduler_running=scheduler.is_running,
+    )
+
+
+@router.post("/jobs/{job_name}/run")
+async def run_job(
+    job_name: str,
+    request: JobRunRequest | None = None,
+) -> dict[str, Any]:
+    """Trigger a job to run immediately.
+
+    Args:
+        job_name: Name of the job to run (e.g., "refresh" or "freshness").
+        request: Optional request body with job parameters.
+
+    Returns:
+        Job result with statistics and any errors.
+    """
+    scheduler = get_scheduler()
+
+    if job_name not in scheduler.jobs:
+        available = list(scheduler.jobs.keys())
+        raise HTTPException(
+            status_code=404,
+            detail=f"Job '{job_name}' not found. Available: {available}",
+        )
+
+    # Build kwargs from request
+    kwargs: dict[str, Any] = {}
+    if request:
+        if request.connector_name:
+            kwargs["connector_name"] = request.connector_name
+        if request.dry_run:
+            kwargs["dry_run"] = request.dry_run
+
+    try:
+        result = await scheduler.run_job(job_name, **kwargs)
+        return result.to_dict()
+    except Exception as e:
+        raise HTTPException(
+            status_code=500,
+            detail=f"Job execution failed: {str(e)}",
+        )
+
+
+@router.get("/jobs/history", response_model=JobHistoryResponse)
+def get_job_history(
+    limit: int = Query(default=20, ge=1, le=100),
+) -> JobHistoryResponse:
+    """Get recent job execution history.
+
+    Args:
+        limit: Maximum number of entries to return (default 20).
+
+    Returns:
+        List of recent job runs with results.
+    """
+    scheduler = get_scheduler()
+    history = scheduler.get_history(limit=limit)
+
+    return JobHistoryResponse(
+        history=[
+            JobHistoryEntry(
+                run_id=h["run_id"],
+                job_name=h["job_name"],
+                status=h["status"],
+                started_at=h["started_at"],
+                completed_at=h["completed_at"],
+                message=h["message"],
+                stats=h["stats"],
+                error=h["error"],
+            )
+            for h in history
+        ],
+        total=len(history),
+    )
+
+
+@router.get("/jobs/connectors")
+def list_connectors() -> dict[str, Any]:
+    """List available data source connectors.
+
+    Returns metadata about each connector that can be used
+    with the refresh job.
+    """
+    connectors = get_available_connectors()
+    return {
+        "connectors": connectors,
+        "total": len(connectors),
     }

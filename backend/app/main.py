@@ -9,6 +9,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.api.v1 import admin, chat, resources, search
 from app.config import settings
 from app.database import create_db_and_tables
+from jobs import get_scheduler, setup_jobs
 
 
 @asynccontextmanager
@@ -16,8 +17,20 @@ async def lifespan(app: FastAPI) -> AsyncGenerator[None, None]:
     """Application lifespan handler."""
     # Startup - create tables if they don't exist
     create_db_and_tables()
+
+    # Initialize and start the job scheduler
+    scheduler = get_scheduler()
+    scheduler_config = settings.get_scheduler_config()
+    setup_jobs(scheduler, scheduler_config)
+
+    if settings.scheduler_enabled:
+        scheduler.start()
+
     yield
-    # Shutdown
+
+    # Shutdown - stop scheduler gracefully
+    if scheduler.is_running:
+        scheduler.shutdown(wait=True)
 
 
 app = FastAPI(
