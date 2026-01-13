@@ -194,6 +194,13 @@ docker-compose up -d
 | GET | `/api/v1/admin/review-queue` | Pending reviews |
 | POST | `/api/v1/admin/review/{id}` | Approve/reject |
 | GET | `/api/v1/admin/sources` | Source health |
+| GET | `/api/v1/admin/dashboard/stats` | Aggregated dashboard stats |
+| GET | `/api/v1/admin/dashboard/sources` | All sources with health |
+| GET | `/api/v1/admin/dashboard/errors` | Recent errors |
+| GET | `/api/v1/admin/jobs` | List scheduled jobs |
+| POST | `/api/v1/admin/jobs/{name}/run` | Trigger job manually |
+| GET | `/api/v1/admin/jobs/history` | Job run history |
+| GET | `/api/v1/admin/jobs/connectors` | Available connectors |
 
 ---
 
@@ -213,12 +220,12 @@ docker-compose up -d
 - [x] Next.js UI (search + results)
 - [x] Admin review queue (`frontend/src/app/admin/page.tsx`)
 
-### Phase 2: Automation ← IN PROGRESS
+### Phase 2: Automation (COMPLETE)
 - [x] VA.gov connector (`backend/connectors/va_gov.py`)
-- [ ] DOL/CareerOneStop connector
-- [ ] ETL pipeline
-- [ ] Scheduled refresh
-- [ ] Source health dashboard
+- [x] DOL/CareerOneStop connector (`backend/connectors/careeronestop.py`)
+- [x] ETL pipeline (`backend/etl/`)
+- [x] Scheduled refresh (`backend/jobs/`)
+- [x] Source health dashboard (`backend/app/services/health.py`)
 
 ### Phase 3: AI + Scale
 - [ ] Claude extraction
@@ -243,14 +250,23 @@ docker-compose up -d
 | `backend/app/main.py` | FastAPI app entry point |
 | `backend/app/api/v1/resources.py` | Resource CRUD endpoints |
 | `backend/app/api/v1/search.py` | Full-text search endpoint |
-| `backend/app/api/v1/admin.py` | Admin review queue |
+| `backend/app/api/v1/admin.py` | Admin endpoints (review, jobs, dashboard) |
 | `backend/app/models/resource.py` | Resource SQLModel |
 | `backend/app/services/trust.py` | Trust scoring logic |
 | `backend/app/services/search.py` | PostgreSQL FTS service |
+| `backend/app/services/health.py` | Source health monitoring |
 | `backend/app/core/taxonomy.py` | Categories and subcategories |
 | `backend/alembic/versions/` | Database migrations |
 | `backend/connectors/base.py` | Connector protocol interface |
 | `backend/connectors/va_gov.py` | VA.gov Lighthouse API connector |
+| `backend/connectors/careeronestop.py` | DOL CareerOneStop API connector |
+| `backend/etl/pipeline.py` | ETL orchestrator |
+| `backend/etl/normalize.py` | Data normalization |
+| `backend/etl/dedupe.py` | Duplicate detection |
+| `backend/etl/loader.py` | Database loader |
+| `backend/jobs/scheduler.py` | APScheduler integration |
+| `backend/jobs/refresh.py` | Full refresh job |
+| `backend/jobs/freshness.py` | Freshness update job |
 
 ### Frontend
 | File | Purpose |
