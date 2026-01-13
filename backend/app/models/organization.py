@@ -1,7 +1,5 @@
 """Organization model using SQLModel."""
 
-from __future__ import annotations
-
 import uuid
 from datetime import datetime
 from typing import TYPE_CHECKING
@@ -35,5 +33,5 @@ class Organization(SQLModel, table=True):
     updated_at: datetime = Field(default_factory=datetime.utcnow)
 
     # Relationships
-    locations: list[Location] = Relationship(back_populates="organization")
-    resources: list[Resource] = Relationship(back_populates="organization")
+    locations: list["Location"] = Relationship(back_populates="organization")
+    resources: list["Resource"] = Relationship(back_populates="organization")

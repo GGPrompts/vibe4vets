@@ -9,6 +9,24 @@ from app.database import get_session
 from app.main import app
 
 
+# SQLite doesn't support PostgreSQL ARRAY and JSONB types
+# Register custom compilers to convert them to TEXT for testing
+from sqlalchemy.dialects.postgresql import ARRAY, JSONB
+from sqlalchemy.ext.compiler import compiles
+
+
+@compiles(ARRAY, "sqlite")
+def compile_array_sqlite(element, compiler, **kw):
+    """Compile PostgreSQL ARRAY as TEXT for SQLite compatibility."""
+    return "TEXT"
+
+
+@compiles(JSONB, "sqlite")
+def compile_jsonb_sqlite(element, compiler, **kw):
+    """Compile PostgreSQL JSONB as TEXT for SQLite compatibility."""
+    return "TEXT"
+
+
 @pytest.fixture(name="session")
 def session_fixture():
     """Create an in-memory SQLite session for testing."""

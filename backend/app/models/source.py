@@ -1,7 +1,5 @@
 """Source and SourceRecord models using SQLModel."""
 
-from __future__ import annotations
-
 import uuid
 from datetime import datetime
 from enum import Enum
@@ -59,8 +57,8 @@ class Source(SQLModel, table=True):
     created_at: datetime = Field(default_factory=datetime.utcnow)
 
     # Relationships
-    resources: list[Resource] = Relationship(back_populates="source")
-    records: list[SourceRecord] = Relationship(back_populates="source")
+    resources: list["Resource"] = Relationship(back_populates="source")
+    records: list["SourceRecord"] = Relationship(back_populates="source")
 
 
 class SourceRecord(SQLModel, table=True):
@@ -79,4 +77,4 @@ class SourceRecord(SQLModel, table=True):
     extracted_text: str | None = None
 
     # Relationships
-    source: Source = Relationship(back_populates="records")
+    source: "Source" = Relationship(back_populates="records")

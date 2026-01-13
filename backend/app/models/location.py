@@ -1,7 +1,5 @@
 """Location model using SQLModel."""
 
-from __future__ import annotations
-
 import uuid
 from datetime import datetime
 from typing import TYPE_CHECKING
@@ -38,5 +36,5 @@ class Location(SQLModel, table=True):
     created_at: datetime = Field(default_factory=datetime.utcnow)
 
     # Relationships
-    organization: Organization = Relationship(back_populates="locations")
-    resources: list[Resource] = Relationship(back_populates="location")
+    organization: "Organization" = Relationship(back_populates="locations")
+    resources: list["Resource"] = Relationship(back_populates="location")

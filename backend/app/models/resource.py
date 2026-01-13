@@ -1,7 +1,5 @@
 """Resource model using SQLModel - the core entity."""
 
-from __future__ import annotations
-
 import uuid
 from datetime import datetime
 from enum import Enum
@@ -93,8 +91,8 @@ class Resource(SQLModel, table=True):
     # Note: embedding column will be added via migration with pgvector
 
     # Relationships
-    organization: Organization = Relationship(back_populates="resources")
-    location: Location | None = Relationship(back_populates="resources")
-    source: Source | None = Relationship(back_populates="resources")
-    reviews: list[ReviewState] = Relationship(back_populates="resource")
-    changes: list[ChangeLog] = Relationship(back_populates="resource")
+    organization: "Organization" = Relationship(back_populates="resources")
+    location: "Location | None" = Relationship(back_populates="resources")
+    source: "Source | None" = Relationship(back_populates="resources")
+    reviews: list["ReviewState"] = Relationship(back_populates="resource")
+    changes: list["ChangeLog"] = Relationship(back_populates="resource")
