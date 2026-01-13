@@ -6,6 +6,18 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 
+#### Frontend Improvements (2026-01-13)
+- **Admin Dashboard Stats** - Wire up real API data for Approved Today and Total Resources stats (V4V-2d8)
+- **Admin Navigation Menu** - Sidebar navigation with links to Review Queue, Sources, and Jobs pages (V4V-ndx)
+- **Admin Source Health page** (`frontend/src/app/admin/sources/page.tsx`) - Monitor connector health
+- **Admin Job Management page** (`frontend/src/app/admin/jobs/page.tsx`) - View and trigger background jobs
+- **Landing Page Redesign** - Editorial aesthetic with custom typography, hero section, category highlights (V4V-nbt)
+- **Frontend README** (`frontend/README.md`) - Setup, API client, and component documentation (V4V-4ae)
+
+### Fixed
+- **Dropdown styling** - Added solid backgrounds and proper text colors to category/state selects (V4V-8xa)
+- **Dropdown positioning** - Changed to popper positioning to prevent page layout shift (V4V-dmr)
+
 #### Phase 2: Automation (COMPLETE)
 - **DOL CareerOneStop connector** (`backend/connectors/careeronestop.py`)
   - Fetches American Job Centers from DOL API
