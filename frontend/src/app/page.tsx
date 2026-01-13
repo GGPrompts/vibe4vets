@@ -1,7 +1,10 @@
+import { SearchBar } from '@/components/search-bar';
+import { CategoryButtons } from '@/components/category-buttons';
+
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-center p-8">
-      <div className="max-w-2xl text-center">
+      <div className="w-full max-w-2xl text-center">
         <h1 className="text-4xl font-bold tracking-tight sm:text-6xl">
           Vibe4Vets
         </h1>
@@ -11,23 +14,11 @@ export default function Home() {
         </p>
 
         <div className="mt-8">
-          <div className="relative">
-            <input
-              type="text"
-              placeholder="Search for resources..."
-              className="w-full rounded-full border border-input bg-background px-6 py-4 text-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-ring"
-            />
-            <button className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full bg-primary px-6 py-2 text-primary-foreground">
-              Search
-            </button>
-          </div>
+          <SearchBar />
         </div>
 
-        <div className="mt-8 flex flex-wrap justify-center gap-4">
-          <CategoryButton label="Employment" emoji="💼" />
-          <CategoryButton label="Training" emoji="📚" />
-          <CategoryButton label="Housing" emoji="🏠" />
-          <CategoryButton label="Legal" emoji="⚖️" />
+        <div className="mt-8">
+          <CategoryButtons />
         </div>
 
         <p className="mt-12 text-sm text-muted-foreground">
@@ -36,14 +27,5 @@ export default function Home() {
         </p>
       </div>
     </main>
-  );
-}
-
-function CategoryButton({ label, emoji }: { label: string; emoji: string }) {
-  return (
-    <button className="flex items-center gap-2 rounded-lg border border-input bg-background px-4 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground">
-      <span>{emoji}</span>
-      <span>{label}</span>
-    </button>
   );
 }

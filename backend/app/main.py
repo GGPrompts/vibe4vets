@@ -1,12 +1,12 @@
 """Vibe4Vets API - Veteran Resource Directory."""
 
+from collections.abc import AsyncGenerator
 from contextlib import asynccontextmanager
-from typing import AsyncGenerator
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.api.v1 import resources, search, chat, admin
+from app.api.v1 import admin, chat, resources, search
 from app.config import settings
 from app.database import create_db_and_tables
 

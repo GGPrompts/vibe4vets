@@ -6,8 +6,8 @@ from pydantic_settings import BaseSettings
 class Settings(BaseSettings):
     """Application settings from environment variables."""
 
-    # Database
-    database_url: str = "postgresql://localhost:5432/vibe4vets"
+    # Database - use psycopg (v3) driver
+    database_url: str = "postgresql+psycopg://localhost:5432/vibe4vets"
 
     # CORS
     cors_origins: list[str] = ["http://localhost:3000"]

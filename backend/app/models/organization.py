@@ -1,9 +1,18 @@
 """Organization model using SQLModel."""
 
+from __future__ import annotations
+
 import uuid
 from datetime import datetime
+from typing import TYPE_CHECKING
 
+from sqlalchemy import Column, Text
+from sqlalchemy.dialects.postgresql import ARRAY
 from sqlmodel import Field, Relationship, SQLModel
+
+if TYPE_CHECKING:
+    from app.models.location import Location
+    from app.models.resource import Resource
 
 
 class Organization(SQLModel, table=True):
@@ -15,12 +24,16 @@ class Organization(SQLModel, table=True):
     name: str = Field(max_length=255)
     ein: str | None = Field(default=None, max_length=20)  # Tax ID if known
     website: str | None = Field(default=None, max_length=500)
-    phones: list[str] = Field(default_factory=list, sa_type_kwargs={"as_uuid": True})
-    emails: list[str] = Field(default_factory=list)
+    phones: list[str] = Field(
+        default_factory=list, sa_column=Column(ARRAY(Text), nullable=False, default=[])
+    )
+    emails: list[str] = Field(
+        default_factory=list, sa_column=Column(ARRAY(Text), nullable=False, default=[])
+    )
 
     created_at: datetime = Field(default_factory=datetime.utcnow)
     updated_at: datetime = Field(default_factory=datetime.utcnow)
 
     # Relationships
-    locations: list["Location"] = Relationship(back_populates="organization")
-    resources: list["Resource"] = Relationship(back_populates="organization")
+    locations: list[Location] = Relationship(back_populates="organization")
+    resources: list[Resource] = Relationship(back_populates="organization")
