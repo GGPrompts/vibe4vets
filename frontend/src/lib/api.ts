@@ -126,6 +126,57 @@ export interface DashboardStats {
   healthy_sources: number;
 }
 
+export interface JobInfo {
+  name: string;
+  description: string;
+  scheduled: boolean;
+  next_run: string | null;
+}
+
+export interface JobsResponse {
+  jobs: JobInfo[];
+  scheduler_running: boolean;
+}
+
+export interface JobHistoryEntry {
+  run_id: string;
+  job_name: string;
+  status: string;
+  started_at: string;
+  completed_at: string | null;
+  message: string;
+  stats: Record<string, unknown>;
+  error: string | null;
+}
+
+export interface JobHistoryResponse {
+  history: JobHistoryEntry[];
+  total: number;
+}
+
+export interface ConnectorInfo {
+  name: string;
+  source_name: string;
+  tier: number;
+  description: string;
+}
+
+export interface ConnectorsResponse {
+  connectors: ConnectorInfo[];
+  total: number;
+}
+
+export interface JobRunResult {
+  run_id: string;
+  job_name: string;
+  status: string;
+  started_at: string;
+  completed_at: string | null;
+  message: string;
+  stats: Record<string, unknown>;
+  error: string | null;
+}
+
 async function fetchAPI<T>(
   endpoint: string,
   options: RequestInit = {}
@@ -238,6 +289,28 @@ export const api = {
 
     getDashboardStats: (): Promise<DashboardStats> => {
       return fetchAPI('/api/v1/admin/dashboard/stats');
+    },
+
+    getJobs: (): Promise<JobsResponse> => {
+      return fetchAPI('/api/v1/admin/jobs');
+    },
+
+    runJob: (
+      jobName: string,
+      options?: { connector_name?: string; dry_run?: boolean }
+    ): Promise<JobRunResult> => {
+      return fetchAPI(`/api/v1/admin/jobs/${jobName}/run`, {
+        method: 'POST',
+        body: JSON.stringify(options || {}),
+      });
+    },
+
+    getJobHistory: (limit: number = 20): Promise<JobHistoryResponse> => {
+      return fetchAPI(`/api/v1/admin/jobs/history?limit=${limit}`);
+    },
+
+    getConnectors: (): Promise<ConnectorsResponse> => {
+      return fetchAPI('/api/v1/admin/jobs/connectors');
     },
   },
 };

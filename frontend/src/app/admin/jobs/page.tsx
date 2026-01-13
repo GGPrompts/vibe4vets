@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { Button } from '@/components/ui/button';
 import {
   Card,
@@ -18,7 +18,6 @@ import {
   TableRow,
 } from '@/components/ui/table';
 import { Badge } from '@/components/ui/badge';
-import { Skeleton } from '@/components/ui/skeleton';
 import {
   Dialog,
   DialogContent,
@@ -27,307 +26,508 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@/components/ui/dialog';
-import { Play, Clock, CheckCircle, XCircle, Loader2 } from 'lucide-react';
-
-interface ScheduledJob {
-  name: string;
-  description: string;
-  schedule: string;
-  enabled: boolean;
-  last_run: string | null;
-  next_run: string | null;
-  last_status: 'success' | 'failed' | 'running' | null;
-}
-
-interface JobHistory {
-  id: string;
-  job_name: string;
-  started_at: string;
-  completed_at: string | null;
-  status: 'success' | 'failed' | 'running';
-  error_message: string | null;
-  records_processed: number;
-}
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
+import { Checkbox } from '@/components/ui/checkbox';
+import { Skeleton } from '@/components/ui/skeleton';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import {
+  Play,
+  Clock,
+  CheckCircle,
+  XCircle,
+  Loader2,
+  RefreshCw,
+} from 'lucide-react';
+import api, {
+  type JobInfo,
+  type JobHistoryEntry,
+  type ConnectorInfo,
+} from '@/lib/api';
 
 export default function JobsPage() {
-  const [jobs, setJobs] = useState<ScheduledJob[]>([]);
-  const [history, setHistory] = useState<JobHistory[]>([]);
+  const [jobs, setJobs] = useState<JobInfo[]>([]);
+  const [schedulerRunning, setSchedulerRunning] = useState(false);
+  const [history, setHistory] = useState<JobHistoryEntry[]>([]);
+  const [connectors, setConnectors] = useState<ConnectorInfo[]>([]);
   const [loading, setLoading] = useState(true);
+  const [historyLoading, setHistoryLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [runningJob, setRunningJob] = useState<string | null>(null);
-  const [confirmDialogOpen, setConfirmDialogOpen] = useState(false);
-  const [selectedJob, setSelectedJob] = useState<ScheduledJob | null>(null);
+  const [activeTab, setActiveTab] = useState('jobs');
 
-  const fetchData = async () => {
+  // Run job dialog state
+  const [runDialogOpen, setRunDialogOpen] = useState(false);
+  const [selectedJob, setSelectedJob] = useState<JobInfo | null>(null);
+  const [selectedConnector, setSelectedConnector] = useState<string>('');
+  const [dryRun, setDryRun] = useState(false);
+  const [running, setRunning] = useState(false);
+  const [runResult, setRunResult] = useState<{
+    success: boolean;
+    message: string;
+  } | null>(null);
+
+  const fetchJobs = useCallback(async () => {
+    setLoading(true);
     try {
-      const [jobsRes, historyRes] = await Promise.all([
-        fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}/api/v1/admin/jobs`),
-        fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}/api/v1/admin/jobs/history?limit=10`),
-      ]);
-
-      if (!jobsRes.ok || !historyRes.ok) {
-        throw new Error('Failed to fetch data');
-      }
-
-      const jobsData = await jobsRes.json();
-      const historyData = await historyRes.json();
-
-      setJobs(jobsData.jobs || []);
-      setHistory(historyData.history || []);
+      const response = await api.admin.getJobs();
+      setJobs(response.jobs);
+      setSchedulerRunning(response.scheduler_running);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to load jobs');
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
+
+  const fetchHistory = useCallback(async () => {
+    setHistoryLoading(true);
+    try {
+      const response = await api.admin.getJobHistory(50);
+      setHistory(response.history);
+    } catch (err) {
+      // Non-critical, just log
+      console.error('Failed to load job history:', err);
+    } finally {
+      setHistoryLoading(false);
+    }
+  }, []);
+
+  const fetchConnectors = useCallback(async () => {
+    try {
+      const response = await api.admin.getConnectors();
+      setConnectors(response.connectors);
+    } catch (err) {
+      console.error('Failed to load connectors:', err);
+    }
+  }, []);
 
   useEffect(() => {
-    fetchData();
-  }, []);
+    fetchJobs();
+    fetchConnectors();
+  }, [fetchJobs, fetchConnectors]);
+
+  useEffect(() => {
+    if (activeTab === 'history') {
+      fetchHistory();
+    }
+  }, [activeTab, fetchHistory]);
+
+  const openRunDialog = (job: JobInfo) => {
+    setSelectedJob(job);
+    setSelectedConnector('');
+    setDryRun(false);
+    setRunResult(null);
+    setRunDialogOpen(true);
+  };
 
   const handleRunJob = async () => {
     if (!selectedJob) return;
 
-    setRunningJob(selectedJob.name);
-    setConfirmDialogOpen(false);
+    setRunning(true);
+    setRunResult(null);
 
     try {
-      const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}/api/v1/admin/jobs/${selectedJob.name}/run`,
-        { method: 'POST' }
-      );
-
-      if (!res.ok) {
-        throw new Error('Failed to trigger job');
+      const options: { connector_name?: string; dry_run?: boolean } = {};
+      if (selectedConnector && selectedConnector !== 'all') {
+        options.connector_name = selectedConnector;
+      }
+      if (dryRun) {
+        options.dry_run = true;
       }
 
-      // Refresh data after a short delay
-      setTimeout(() => {
-        fetchData();
-        setRunningJob(null);
-      }, 2000);
+      const result = await api.admin.runJob(selectedJob.name, options);
+
+      setRunResult({
+        success: result.status === 'success',
+        message: result.message,
+      });
+
+      // Refresh data after running
+      fetchJobs();
+      if (activeTab === 'history') {
+        fetchHistory();
+      }
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Failed to run job');
-      setRunningJob(null);
+      setRunResult({
+        success: false,
+        message: err instanceof Error ? err.message : 'Failed to run job',
+      });
+    } finally {
+      setRunning(false);
     }
   };
 
-  const openConfirmDialog = (job: ScheduledJob) => {
-    setSelectedJob(job);
-    setConfirmDialogOpen(true);
+  const formatDateTime = (dateStr: string | null) => {
+    if (!dateStr) return '-';
+    return new Date(dateStr).toLocaleString();
   };
 
-  const getStatusIcon = (status: string | null) => {
+  const formatRelativeTime = (dateStr: string | null) => {
+    if (!dateStr) return 'Not scheduled';
+    const date = new Date(dateStr);
+    const now = new Date();
+    const diffMs = date.getTime() - now.getTime();
+
+    if (diffMs < 0) return 'Overdue';
+
+    const diffMins = Math.floor(diffMs / 60000);
+    if (diffMins < 60) return `in ${diffMins}m`;
+
+    const diffHours = Math.floor(diffMins / 60);
+    if (diffHours < 24) return `in ${diffHours}h ${diffMins % 60}m`;
+
+    const diffDays = Math.floor(diffHours / 24);
+    return `in ${diffDays}d ${diffHours % 24}h`;
+  };
+
+  const getStatusBadge = (status: string) => {
     switch (status) {
       case 'success':
-        return <CheckCircle className="h-4 w-4 text-green-500" />;
+        return (
+          <Badge variant="default" className="gap-1">
+            <CheckCircle className="h-3 w-3" />
+            Success
+          </Badge>
+        );
       case 'failed':
-        return <XCircle className="h-4 w-4 text-red-500" />;
+        return (
+          <Badge variant="destructive" className="gap-1">
+            <XCircle className="h-3 w-3" />
+            Failed
+          </Badge>
+        );
       case 'running':
-        return <Loader2 className="h-4 w-4 animate-spin text-blue-500" />;
+        return (
+          <Badge variant="secondary" className="gap-1">
+            <Loader2 className="h-3 w-3 animate-spin" />
+            Running
+          </Badge>
+        );
       default:
-        return <Clock className="h-4 w-4 text-muted-foreground" />;
+        return <Badge variant="outline">{status}</Badge>;
     }
-  };
-
-  const getStatusBadge = (status: string | null) => {
-    switch (status) {
-      case 'success':
-        return <Badge className="bg-green-100 text-green-800">Success</Badge>;
-      case 'failed':
-        return <Badge variant="destructive">Failed</Badge>;
-      case 'running':
-        return <Badge className="bg-blue-100 text-blue-800">Running</Badge>;
-      default:
-        return <Badge variant="secondary">Never Run</Badge>;
-    }
-  };
-
-  const formatDuration = (start: string, end: string | null) => {
-    if (!end) return 'In progress';
-    const ms = new Date(end).getTime() - new Date(start).getTime();
-    if (ms < 1000) return `${ms}ms`;
-    if (ms < 60000) return `${(ms / 1000).toFixed(1)}s`;
-    return `${(ms / 60000).toFixed(1)}m`;
   };
 
   return (
     <div className="p-6 lg:p-8">
       <div className="mx-auto max-w-6xl">
         {/* Header */}
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold">Scheduled Jobs</h1>
-          <p className="text-muted-foreground">
-            Manage data refresh and maintenance tasks
-          </p>
+        <div className="mb-8 flex items-center justify-between">
+          <div>
+            <h1 className="text-3xl font-bold">Scheduled Jobs</h1>
+            <p className="text-muted-foreground">
+              Manage and monitor background jobs
+            </p>
+          </div>
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => {
+              fetchJobs();
+              if (activeTab === 'history') fetchHistory();
+            }}
+            className="gap-2"
+          >
+            <RefreshCw className="h-4 w-4" />
+            Refresh
+          </Button>
         </div>
 
-        {/* Jobs Table */}
-        <Card className="mb-8">
+        {/* Stats Cards */}
+        <div className="mb-8 grid gap-4 md:grid-cols-3">
+          <Card>
+            <CardHeader className="pb-2">
+              <CardDescription>Scheduler Status</CardDescription>
+              <CardTitle className="text-xl">
+                {loading ? (
+                  <Skeleton className="h-7 w-20" />
+                ) : schedulerRunning ? (
+                  <span className="flex items-center gap-2 text-green-600">
+                    <CheckCircle className="h-5 w-5" />
+                    Running
+                  </span>
+                ) : (
+                  <span className="flex items-center gap-2 text-red-600">
+                    <XCircle className="h-5 w-5" />
+                    Stopped
+                  </span>
+                )}
+              </CardTitle>
+            </CardHeader>
+          </Card>
+          <Card>
+            <CardHeader className="pb-2">
+              <CardDescription>Scheduled Jobs</CardDescription>
+              <CardTitle className="text-3xl">
+                {loading ? (
+                  <Skeleton className="h-9 w-16" />
+                ) : (
+                  jobs.filter((j) => j.scheduled).length
+                )}
+              </CardTitle>
+            </CardHeader>
+          </Card>
+          <Card>
+            <CardHeader className="pb-2">
+              <CardDescription>Available Connectors</CardDescription>
+              <CardTitle className="text-3xl">
+                {loading ? (
+                  <Skeleton className="h-9 w-16" />
+                ) : (
+                  connectors.length
+                )}
+              </CardTitle>
+            </CardHeader>
+          </Card>
+        </div>
+
+        {/* Main Content */}
+        <Card>
           <CardHeader>
-            <CardTitle>Active Jobs</CardTitle>
+            <CardTitle>Job Management</CardTitle>
             <CardDescription>
-              Scheduled tasks for data collection and maintenance
+              View scheduled jobs and execution history
             </CardDescription>
           </CardHeader>
           <CardContent>
-            {loading ? (
-              <div className="space-y-4">
-                {[...Array(3)].map((_, i) => (
-                  <Skeleton key={i} className="h-16 w-full" />
-                ))}
-              </div>
-            ) : error ? (
-              <p className="py-8 text-center text-destructive">{error}</p>
-            ) : jobs.length === 0 ? (
-              <p className="py-8 text-center text-muted-foreground">
-                No jobs configured
-              </p>
-            ) : (
-              <Table>
-                <TableHeader>
-                  <TableRow>
-                    <TableHead>Job</TableHead>
-                    <TableHead>Schedule</TableHead>
-                    <TableHead>Last Status</TableHead>
-                    <TableHead>Last Run</TableHead>
-                    <TableHead>Next Run</TableHead>
-                    <TableHead className="text-right">Actions</TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  {jobs.map((job) => (
-                    <TableRow key={job.name}>
-                      <TableCell>
-                        <div className="flex items-center gap-2">
-                          {getStatusIcon(job.last_status)}
-                          <div>
-                            <span className="font-medium">{job.name}</span>
-                            <p className="text-xs text-muted-foreground">
-                              {job.description}
-                            </p>
-                          </div>
-                        </div>
-                      </TableCell>
-                      <TableCell>
-                        <code className="rounded bg-muted px-1.5 py-0.5 text-xs">
-                          {job.schedule}
-                        </code>
-                      </TableCell>
-                      <TableCell>{getStatusBadge(job.last_status)}</TableCell>
-                      <TableCell>
-                        {job.last_run
-                          ? new Date(job.last_run).toLocaleString()
-                          : 'Never'}
-                      </TableCell>
-                      <TableCell>
-                        {job.next_run
-                          ? new Date(job.next_run).toLocaleString()
-                          : 'Not scheduled'}
-                      </TableCell>
-                      <TableCell className="text-right">
-                        <Button
-                          size="sm"
-                          variant="outline"
-                          onClick={() => openConfirmDialog(job)}
-                          disabled={runningJob === job.name || !job.enabled}
-                        >
-                          {runningJob === job.name ? (
-                            <Loader2 className="mr-1 h-3 w-3 animate-spin" />
-                          ) : (
-                            <Play className="mr-1 h-3 w-3" />
-                          )}
-                          Run Now
-                        </Button>
-                      </TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            )}
+            <Tabs value={activeTab} onValueChange={setActiveTab}>
+              <TabsList>
+                <TabsTrigger value="jobs">Scheduled Jobs</TabsTrigger>
+                <TabsTrigger value="history">Run History</TabsTrigger>
+              </TabsList>
+
+              {/* Jobs Tab */}
+              <TabsContent value="jobs" className="mt-4">
+                {loading ? (
+                  <div className="space-y-4">
+                    {[...Array(3)].map((_, i) => (
+                      <Skeleton key={i} className="h-16 w-full" />
+                    ))}
+                  </div>
+                ) : error ? (
+                  <p className="py-8 text-center text-destructive">{error}</p>
+                ) : jobs.length === 0 ? (
+                  <p className="py-8 text-center text-muted-foreground">
+                    No scheduled jobs configured
+                  </p>
+                ) : (
+                  <Table>
+                    <TableHeader>
+                      <TableRow>
+                        <TableHead>Job Name</TableHead>
+                        <TableHead>Description</TableHead>
+                        <TableHead>Status</TableHead>
+                        <TableHead>Next Run</TableHead>
+                        <TableHead className="text-right">Actions</TableHead>
+                      </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                      {jobs.map((job) => (
+                        <TableRow key={job.name}>
+                          <TableCell className="font-medium">
+                            {job.name}
+                          </TableCell>
+                          <TableCell className="max-w-xs text-muted-foreground">
+                            {job.description}
+                          </TableCell>
+                          <TableCell>
+                            {job.scheduled ? (
+                              <Badge variant="default" className="gap-1">
+                                <Clock className="h-3 w-3" />
+                                Scheduled
+                              </Badge>
+                            ) : (
+                              <Badge variant="outline">Manual</Badge>
+                            )}
+                          </TableCell>
+                          <TableCell>
+                            <span className="text-sm">
+                              {formatRelativeTime(job.next_run)}
+                            </span>
+                            {job.next_run && (
+                              <span className="block text-xs text-muted-foreground">
+                                {formatDateTime(job.next_run)}
+                              </span>
+                            )}
+                          </TableCell>
+                          <TableCell className="text-right">
+                            <Button
+                              size="sm"
+                              onClick={() => openRunDialog(job)}
+                              className="gap-2"
+                            >
+                              <Play className="h-3 w-3" />
+                              Run Now
+                            </Button>
+                          </TableCell>
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                  </Table>
+                )}
+              </TabsContent>
+
+              {/* History Tab */}
+              <TabsContent value="history" className="mt-4">
+                {historyLoading ? (
+                  <div className="space-y-4">
+                    {[...Array(5)].map((_, i) => (
+                      <Skeleton key={i} className="h-16 w-full" />
+                    ))}
+                  </div>
+                ) : history.length === 0 ? (
+                  <p className="py-8 text-center text-muted-foreground">
+                    No job history yet
+                  </p>
+                ) : (
+                  <Table>
+                    <TableHeader>
+                      <TableRow>
+                        <TableHead>Job</TableHead>
+                        <TableHead>Status</TableHead>
+                        <TableHead>Started</TableHead>
+                        <TableHead>Duration</TableHead>
+                        <TableHead>Message</TableHead>
+                      </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                      {history.map((entry) => {
+                        const started = new Date(entry.started_at);
+                        const completed = entry.completed_at
+                          ? new Date(entry.completed_at)
+                          : null;
+                        const durationMs = completed
+                          ? completed.getTime() - started.getTime()
+                          : null;
+                        const durationStr = durationMs
+                          ? durationMs < 1000
+                            ? `${durationMs}ms`
+                            : durationMs < 60000
+                            ? `${(durationMs / 1000).toFixed(1)}s`
+                            : `${Math.floor(durationMs / 60000)}m ${Math.floor(
+                                (durationMs % 60000) / 1000
+                              )}s`
+                          : '-';
+
+                        return (
+                          <TableRow key={entry.run_id}>
+                            <TableCell className="font-medium">
+                              {entry.job_name}
+                            </TableCell>
+                            <TableCell>{getStatusBadge(entry.status)}</TableCell>
+                            <TableCell>
+                              <span className="text-sm">
+                                {formatDateTime(entry.started_at)}
+                              </span>
+                            </TableCell>
+                            <TableCell>{durationStr}</TableCell>
+                            <TableCell className="max-w-xs">
+                              <span className="line-clamp-2 text-sm">
+                                {entry.error || entry.message}
+                              </span>
+                            </TableCell>
+                          </TableRow>
+                        );
+                      })}
+                    </TableBody>
+                  </Table>
+                )}
+              </TabsContent>
+            </Tabs>
           </CardContent>
         </Card>
 
-        {/* History Table */}
-        <Card>
-          <CardHeader>
-            <CardTitle>Recent History</CardTitle>
-            <CardDescription>Last 10 job executions</CardDescription>
-          </CardHeader>
-          <CardContent>
-            {loading ? (
-              <div className="space-y-4">
-                {[...Array(5)].map((_, i) => (
-                  <Skeleton key={i} className="h-12 w-full" />
-                ))}
-              </div>
-            ) : history.length === 0 ? (
-              <p className="py-8 text-center text-muted-foreground">
-                No job history yet
-              </p>
-            ) : (
-              <Table>
-                <TableHeader>
-                  <TableRow>
-                    <TableHead>Job</TableHead>
-                    <TableHead>Started</TableHead>
-                    <TableHead>Duration</TableHead>
-                    <TableHead>Status</TableHead>
-                    <TableHead>Records</TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  {history.map((entry) => (
-                    <TableRow key={entry.id}>
-                      <TableCell className="font-medium">
-                        {entry.job_name}
-                      </TableCell>
-                      <TableCell>
-                        {new Date(entry.started_at).toLocaleString()}
-                      </TableCell>
-                      <TableCell>
-                        {formatDuration(entry.started_at, entry.completed_at)}
-                      </TableCell>
-                      <TableCell>
-                        {getStatusBadge(entry.status)}
-                        {entry.error_message && (
-                          <p className="mt-1 text-xs text-destructive">
-                            {entry.error_message}
-                          </p>
-                        )}
-                      </TableCell>
-                      <TableCell>
-                        {entry.records_processed.toLocaleString()}
-                      </TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            )}
-          </CardContent>
-        </Card>
-
-        {/* Confirm Dialog */}
-        <Dialog open={confirmDialogOpen} onOpenChange={setConfirmDialogOpen}>
+        {/* Run Job Dialog */}
+        <Dialog open={runDialogOpen} onOpenChange={setRunDialogOpen}>
           <DialogContent>
             <DialogHeader>
-              <DialogTitle>Run Job Manually</DialogTitle>
-              <DialogDescription>
-                Are you sure you want to run "{selectedJob?.name}"? This will
-                execute the job immediately outside of its normal schedule.
-              </DialogDescription>
+              <DialogTitle>Run Job: {selectedJob?.name}</DialogTitle>
+              <DialogDescription>{selectedJob?.description}</DialogDescription>
             </DialogHeader>
+
+            <div className="space-y-4 py-4">
+              {selectedJob?.name === 'refresh' && connectors.length > 0 && (
+                <div>
+                  <label className="text-sm font-medium">
+                    Connector (optional)
+                  </label>
+                  <Select
+                    value={selectedConnector}
+                    onValueChange={setSelectedConnector}
+                  >
+                    <SelectTrigger className="mt-1">
+                      <SelectValue placeholder="All connectors" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="all">All connectors</SelectItem>
+                      {connectors.map((c) => (
+                        <SelectItem key={c.name} value={c.name}>
+                          {c.source_name} (Tier {c.tier})
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                  <p className="mt-1 text-xs text-muted-foreground">
+                    Run a specific connector or all of them
+                  </p>
+                </div>
+              )}
+
+              <div className="flex items-center space-x-2">
+                <Checkbox
+                  id="dry-run"
+                  checked={dryRun}
+                  onCheckedChange={(checked) => setDryRun(checked === true)}
+                />
+                <label
+                  htmlFor="dry-run"
+                  className="text-sm font-medium leading-none"
+                >
+                  Dry run (don&apos;t persist changes)
+                </label>
+              </div>
+
+              {runResult && (
+                <div
+                  className={`rounded-md p-3 text-sm ${
+                    runResult.success
+                      ? 'bg-green-50 text-green-800 dark:bg-green-950 dark:text-green-200'
+                      : 'bg-red-50 text-red-800 dark:bg-red-950 dark:text-red-200'
+                  }`}
+                >
+                  {runResult.message}
+                </div>
+              )}
+            </div>
+
             <DialogFooter>
               <Button
                 variant="outline"
-                onClick={() => setConfirmDialogOpen(false)}
+                onClick={() => setRunDialogOpen(false)}
+                disabled={running}
               >
-                Cancel
+                {runResult ? 'Close' : 'Cancel'}
               </Button>
-              <Button onClick={handleRunJob}>
-                <Play className="mr-1 h-4 w-4" />
-                Run Job
-              </Button>
+              {!runResult && (
+                <Button onClick={handleRunJob} disabled={running}>
+                  {running ? (
+                    <>
+                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                      Running...
+                    </>
+                  ) : (
+                    <>
+                      <Play className="mr-2 h-4 w-4" />
+                      Run Job
+                    </>
+                  )}
+                </Button>
+              )}
             </DialogFooter>
           </DialogContent>
         </Dialog>
