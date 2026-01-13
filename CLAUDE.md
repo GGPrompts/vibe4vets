@@ -7,9 +7,10 @@ Vibe4Vets is an AI-powered veteran resource database focusing on **Employment & 
 | | |
 |--|--|
 | **Type** | Veteran Resource Directory |
-| **Backend** | Python 3.12 + FastAPI |
+| **Backend** | Python 3.12 + FastAPI + SQLModel |
 | **Frontend** | Next.js 15 + TypeScript + Tailwind + shadcn/ui |
 | **Database** | PostgreSQL (Supabase/Railway) |
+| **ORM** | SQLModel (unified SQLAlchemy + Pydantic) |
 | **Search** | Postgres FTS → OpenSearch (Phase 3) |
 | **AI** | Claude API (extraction, search, chat) |
 
@@ -44,8 +45,7 @@ vibe4vets/
 ├── backend/                 # FastAPI app (Railway)
 │   ├── app/
 │   │   ├── api/v1/          # API routes
-│   │   ├── models/          # SQLAlchemy models
-│   │   ├── schemas/         # Pydantic schemas
+│   │   ├── models/          # SQLModel models (unified ORM + validation)
 │   │   ├── services/        # Business logic
 │   │   └── core/            # Taxonomy, geo, utils
 │   ├── connectors/          # Data source connectors

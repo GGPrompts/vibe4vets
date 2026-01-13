@@ -1,34 +1,26 @@
-"""Organization model."""
+"""Organization model using SQLModel."""
 
 import uuid
 from datetime import datetime
 
-from sqlalchemy import String, DateTime
-from sqlalchemy.dialects.postgresql import UUID, ARRAY
-from sqlalchemy.orm import Mapped, mapped_column, relationship
-
-from app.database import Base
+from sqlmodel import Field, Relationship, SQLModel
 
 
-class Organization(Base):
+class Organization(SQLModel, table=True):
     """Parent entity for resources - nonprofits, agencies, etc."""
 
     __tablename__ = "organizations"
 
-    id: Mapped[uuid.UUID] = mapped_column(
-        UUID(as_uuid=True), primary_key=True, default=uuid.uuid4
-    )
-    name: Mapped[str] = mapped_column(String(255), nullable=False)
-    ein: Mapped[str | None] = mapped_column(String(20))  # Tax ID if known
-    website: Mapped[str | None] = mapped_column(String(500))
-    phones: Mapped[list[str]] = mapped_column(ARRAY(String), default=list)
-    emails: Mapped[list[str]] = mapped_column(ARRAY(String), default=list)
+    id: uuid.UUID = Field(default_factory=uuid.uuid4, primary_key=True)
+    name: str = Field(max_length=255)
+    ein: str | None = Field(default=None, max_length=20)  # Tax ID if known
+    website: str | None = Field(default=None, max_length=500)
+    phones: list[str] = Field(default_factory=list, sa_type_kwargs={"as_uuid": True})
+    emails: list[str] = Field(default_factory=list)
 
-    created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
-    updated_at: Mapped[datetime] = mapped_column(
-        DateTime, default=datetime.utcnow, onupdate=datetime.utcnow
-    )
+    created_at: datetime = Field(default_factory=datetime.utcnow)
+    updated_at: datetime = Field(default_factory=datetime.utcnow)
 
     # Relationships
-    locations = relationship("Location", back_populates="organization")
-    resources = relationship("Resource", back_populates="organization")
+    locations: list["Location"] = Relationship(back_populates="organization")
+    resources: list["Resource"] = Relationship(back_populates="organization")

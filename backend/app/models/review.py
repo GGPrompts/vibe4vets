@@ -1,14 +1,16 @@
-"""Review and ChangeLog models."""
+"""Review and ChangeLog models using SQLModel."""
+
+from __future__ import annotations
 
 import uuid
 from datetime import datetime
 from enum import Enum
+from typing import TYPE_CHECKING
 
-from sqlalchemy import String, DateTime, ForeignKey, Text
-from sqlalchemy.dialects.postgresql import UUID
-from sqlalchemy.orm import Mapped, mapped_column, relationship
+from sqlmodel import Field, Relationship, SQLModel
 
-from app.database import Base
+if TYPE_CHECKING:
+    from app.models.resource import Resource
 
 
 class ReviewStatus(str, Enum):
@@ -27,48 +29,40 @@ class ChangeType(str, Enum):
     MANUAL_EDIT = "manual_edit"
 
 
-class ReviewState(Base):
+class ReviewState(SQLModel, table=True):
     """Human review workflow."""
 
     __tablename__ = "review_states"
 
-    id: Mapped[uuid.UUID] = mapped_column(
-        UUID(as_uuid=True), primary_key=True, default=uuid.uuid4
-    )
-    resource_id: Mapped[uuid.UUID] = mapped_column(
-        UUID(as_uuid=True), ForeignKey("resources.id"), nullable=False
-    )
+    id: uuid.UUID = Field(default_factory=uuid.uuid4, primary_key=True)
+    resource_id: uuid.UUID = Field(foreign_key="resources.id")
 
-    status: Mapped[str] = mapped_column(String(20), default=ReviewStatus.PENDING.value)
-    reason: Mapped[str | None] = mapped_column(Text)  # Why flagged for review
-    reviewer: Mapped[str | None] = mapped_column(String(100))
-    reviewed_at: Mapped[datetime | None] = mapped_column(DateTime)
-    notes: Mapped[str | None] = mapped_column(Text)
+    status: ReviewStatus = Field(default=ReviewStatus.PENDING)
+    reason: str | None = None  # Why flagged for review
+    reviewer: str | None = Field(default=None, max_length=100)
+    reviewed_at: datetime | None = None
+    notes: str | None = None
 
-    created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
+    created_at: datetime = Field(default_factory=datetime.utcnow)
 
     # Relationships
-    resource = relationship("Resource", back_populates="reviews")
+    resource: "Resource" = Relationship(back_populates="reviews")
 
 
-class ChangeLog(Base):
+class ChangeLog(SQLModel, table=True):
     """Field-level change history."""
 
     __tablename__ = "change_logs"
 
-    id: Mapped[uuid.UUID] = mapped_column(
-        UUID(as_uuid=True), primary_key=True, default=uuid.uuid4
-    )
-    resource_id: Mapped[uuid.UUID] = mapped_column(
-        UUID(as_uuid=True), ForeignKey("resources.id"), nullable=False
-    )
+    id: uuid.UUID = Field(default_factory=uuid.uuid4, primary_key=True)
+    resource_id: uuid.UUID = Field(foreign_key="resources.id")
 
-    field: Mapped[str] = mapped_column(String(100), nullable=False)
-    old_value: Mapped[str | None] = mapped_column(Text)
-    new_value: Mapped[str | None] = mapped_column(Text)
-    change_type: Mapped[str] = mapped_column(String(20), default=ChangeType.UPDATE.value)
+    field: str = Field(max_length=100)
+    old_value: str | None = None
+    new_value: str | None = None
+    change_type: ChangeType = Field(default=ChangeType.UPDATE)
 
-    timestamp: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
+    timestamp: datetime = Field(default_factory=datetime.utcnow)
 
     # Relationships
-    resource = relationship("Resource", back_populates="changes")
+    resource: "Resource" = Relationship(back_populates="changes")

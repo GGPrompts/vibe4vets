@@ -1,18 +1,17 @@
 """Admin endpoints for review queue and source management."""
 
-from fastapi import APIRouter, Depends
-from sqlalchemy.orm import Session
+from fastapi import APIRouter
 
-from app.database import get_db
+from app.database import SessionDep
 
 router = APIRouter()
 
 
 @router.get("/review-queue")
-async def get_review_queue(
+def get_review_queue(
+    session: SessionDep,
     status: str = "pending",
     limit: int = 20,
-    db: Session = Depends(get_db),
 ) -> dict:
     """Get resources pending review."""
     # TODO: Implement after models
@@ -20,11 +19,11 @@ async def get_review_queue(
 
 
 @router.post("/review/{resource_id}")
-async def review_resource(
+def review_resource(
+    session: SessionDep,
     resource_id: str,
     action: str,  # approve, reject
     notes: str | None = None,
-    db: Session = Depends(get_db),
 ) -> dict:
     """Approve or reject a resource."""
     # TODO: Implement with auth
@@ -32,14 +31,14 @@ async def review_resource(
 
 
 @router.get("/sources")
-async def get_sources(db: Session = Depends(get_db)) -> dict:
+def get_sources(session: SessionDep) -> dict:
     """Get all data sources with health status."""
     # TODO: Implement after models
     return {"sources": []}
 
 
 @router.get("/sources/{source_id}/health")
-async def get_source_health(source_id: str, db: Session = Depends(get_db)) -> dict:
+def get_source_health(source_id: str, session: SessionDep) -> dict:
     """Get detailed health info for a source."""
     return {
         "source_id": source_id,

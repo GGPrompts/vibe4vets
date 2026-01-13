@@ -1,24 +1,25 @@
-"""Database connection and session management."""
+"""Database connection and session management using SQLModel."""
 
-from sqlalchemy import create_engine
-from sqlalchemy.orm import DeclarativeBase, sessionmaker
+from typing import Annotated, Generator
+
+from fastapi import Depends
+from sqlmodel import Session, SQLModel, create_engine
 
 from app.config import settings
 
-engine = create_engine(settings.database_url)
-SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+engine = create_engine(settings.database_url, echo=settings.debug)
 
 
-class Base(DeclarativeBase):
-    """Base class for all models."""
+def create_db_and_tables() -> None:
+    """Create all database tables."""
+    SQLModel.metadata.create_all(engine)
 
-    pass
 
-
-def get_db():
+def get_session() -> Generator[Session, None, None]:
     """Dependency for database sessions."""
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
+    with Session(engine) as session:
+        yield session
+
+
+# Reusable dependency type
+SessionDep = Annotated[Session, Depends(get_session)]

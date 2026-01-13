@@ -1,41 +1,38 @@
-"""Location model."""
+"""Location model using SQLModel."""
+
+from __future__ import annotations
 
 import uuid
 from datetime import datetime
+from typing import TYPE_CHECKING
 
-from sqlalchemy import String, Float, DateTime, ForeignKey
-from sqlalchemy.dialects.postgresql import UUID, ARRAY
-from sqlalchemy.orm import Mapped, mapped_column, relationship
+from sqlmodel import Field, Relationship, SQLModel
 
-from app.database import Base
+if TYPE_CHECKING:
+    from app.models.organization import Organization
+    from app.models.resource import Resource
 
 
-class Location(Base):
+class Location(SQLModel, table=True):
     """Physical location with geocoding."""
 
     __tablename__ = "locations"
 
-    id: Mapped[uuid.UUID] = mapped_column(
-        UUID(as_uuid=True), primary_key=True, default=uuid.uuid4
-    )
-    organization_id: Mapped[uuid.UUID] = mapped_column(
-        UUID(as_uuid=True), ForeignKey("organizations.id"), nullable=False
-    )
+    id: uuid.UUID = Field(default_factory=uuid.uuid4, primary_key=True)
+    organization_id: uuid.UUID = Field(foreign_key="organizations.id")
 
-    address: Mapped[str] = mapped_column(String(500), nullable=False)
-    city: Mapped[str] = mapped_column(String(100), nullable=False)
-    state: Mapped[str] = mapped_column(String(2), nullable=False)  # Two-letter code
-    zip_code: Mapped[str] = mapped_column(String(10), nullable=False)
+    address: str = Field(max_length=500)
+    city: str = Field(max_length=100)
+    state: str = Field(max_length=2)  # Two-letter code
+    zip_code: str = Field(max_length=10)
 
-    latitude: Mapped[float | None] = mapped_column(Float)
-    longitude: Mapped[float | None] = mapped_column(Float)
+    latitude: float | None = None
+    longitude: float | None = None
 
-    service_area: Mapped[list[str]] = mapped_column(
-        ARRAY(String), default=list
-    )  # Counties/regions served
+    service_area: list[str] = Field(default_factory=list)  # Counties/regions served
 
-    created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
+    created_at: datetime = Field(default_factory=datetime.utcnow)
 
     # Relationships
-    organization = relationship("Organization", back_populates="locations")
-    resources = relationship("Resource", back_populates="location")
+    organization: "Organization" = Relationship(back_populates="locations")
+    resources: list["Resource"] = Relationship(back_populates="location")

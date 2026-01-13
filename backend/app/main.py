@@ -8,12 +8,14 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app.api.v1 import resources, search, chat, admin
 from app.config import settings
+from app.database import create_db_and_tables
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI) -> AsyncGenerator[None, None]:
     """Application lifespan handler."""
-    # Startup
+    # Startup - create tables if they don't exist
+    create_db_and_tables()
     yield
     # Shutdown
 

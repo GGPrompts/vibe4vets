@@ -1,14 +1,19 @@
-"""Resource model - the core entity."""
+"""Resource model using SQLModel - the core entity."""
+
+from __future__ import annotations
 
 import uuid
 from datetime import datetime
 from enum import Enum
+from typing import TYPE_CHECKING
 
-from sqlalchemy import String, Float, DateTime, ForeignKey, Text
-from sqlalchemy.dialects.postgresql import UUID, ARRAY
-from sqlalchemy.orm import Mapped, mapped_column, relationship
+from sqlmodel import Field, Relationship, SQLModel
 
-from app.database import Base
+if TYPE_CHECKING:
+    from app.models.location import Location
+    from app.models.organization import Organization
+    from app.models.review import ChangeLog, ReviewState
+    from app.models.source import Source
 
 
 class ResourceStatus(str, Enum):
@@ -27,70 +32,56 @@ class ResourceScope(str, Enum):
     LOCAL = "local"
 
 
-class Resource(Base):
+class Resource(SQLModel, table=True):
     """Veteran resource - a program or service."""
 
     __tablename__ = "resources"
 
-    id: Mapped[uuid.UUID] = mapped_column(
-        UUID(as_uuid=True), primary_key=True, default=uuid.uuid4
-    )
-    organization_id: Mapped[uuid.UUID] = mapped_column(
-        UUID(as_uuid=True), ForeignKey("organizations.id"), nullable=False
-    )
-    location_id: Mapped[uuid.UUID | None] = mapped_column(
-        UUID(as_uuid=True), ForeignKey("locations.id")
-    )
+    id: uuid.UUID = Field(default_factory=uuid.uuid4, primary_key=True)
+    organization_id: uuid.UUID = Field(foreign_key="organizations.id")
+    location_id: uuid.UUID | None = Field(default=None, foreign_key="locations.id")
 
     # Content
-    title: Mapped[str] = mapped_column(String(255), nullable=False)
-    description: Mapped[str] = mapped_column(Text, nullable=False)
-    summary: Mapped[str | None] = mapped_column(Text)  # AI-generated
-    eligibility: Mapped[str | None] = mapped_column(Text)
-    how_to_apply: Mapped[str | None] = mapped_column(Text)
+    title: str = Field(max_length=255)
+    description: str
+    summary: str | None = None  # AI-generated
+    eligibility: str | None = None
+    how_to_apply: str | None = None
 
     # Classification
-    categories: Mapped[list[str]] = mapped_column(
-        ARRAY(String), default=list
-    )  # employment, training, housing, legal
-    subcategories: Mapped[list[str]] = mapped_column(ARRAY(String), default=list)
-    tags: Mapped[list[str]] = mapped_column(ARRAY(String), default=list)
+    categories: list[str] = Field(default_factory=list)  # employment, training, housing, legal
+    subcategories: list[str] = Field(default_factory=list)
+    tags: list[str] = Field(default_factory=list)
 
     # Scope
-    scope: Mapped[str] = mapped_column(String(20), default=ResourceScope.NATIONAL.value)
-    states: Mapped[list[str]] = mapped_column(
-        ARRAY(String), default=list
-    )  # ['*'] for national
+    scope: ResourceScope = Field(default=ResourceScope.NATIONAL)
+    states: list[str] = Field(default_factory=list)  # ['*'] for national
 
     # Contact
-    website: Mapped[str | None] = mapped_column(String(500))
-    phone: Mapped[str | None] = mapped_column(String(50))
-    hours: Mapped[str | None] = mapped_column(String(255))
-    languages: Mapped[list[str]] = mapped_column(ARRAY(String), default=["en"])
-    cost: Mapped[str | None] = mapped_column(String(100))  # free, sliding scale, etc.
+    website: str | None = Field(default=None, max_length=500)
+    phone: str | None = Field(default=None, max_length=50)
+    hours: str | None = Field(default=None, max_length=255)
+    languages: list[str] = Field(default_factory=lambda: ["en"])
+    cost: str | None = Field(default=None, max_length=100)  # free, sliding scale, etc.
 
     # Trust signals
-    source_id: Mapped[uuid.UUID | None] = mapped_column(
-        UUID(as_uuid=True), ForeignKey("sources.id")
-    )
-    source_url: Mapped[str | None] = mapped_column(String(500))
-    last_scraped: Mapped[datetime | None] = mapped_column(DateTime)
-    last_verified: Mapped[datetime | None] = mapped_column(DateTime)
-    freshness_score: Mapped[float] = mapped_column(Float, default=1.0)  # 0-1
-    reliability_score: Mapped[float] = mapped_column(Float, default=0.5)  # 0-1
+    source_id: uuid.UUID | None = Field(default=None, foreign_key="sources.id")
+    source_url: str | None = Field(default=None, max_length=500)
+    last_scraped: datetime | None = None
+    last_verified: datetime | None = None
+    freshness_score: float = Field(default=1.0)  # 0-1
+    reliability_score: float = Field(default=0.5)  # 0-1
 
     # State
-    status: Mapped[str] = mapped_column(String(20), default=ResourceStatus.ACTIVE.value)
-    created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
-    updated_at: Mapped[datetime] = mapped_column(
-        DateTime, default=datetime.utcnow, onupdate=datetime.utcnow
-    )
+    status: ResourceStatus = Field(default=ResourceStatus.ACTIVE)
+    created_at: datetime = Field(default_factory=datetime.utcnow)
+    updated_at: datetime = Field(default_factory=datetime.utcnow)
 
     # Note: embedding column will be added via migration with pgvector
 
     # Relationships
-    organization = relationship("Organization", back_populates="resources")
-    location = relationship("Location", back_populates="resources")
-    source = relationship("Source", back_populates="resources")
-    reviews = relationship("ReviewState", back_populates="resource")
-    changes = relationship("ChangeLog", back_populates="resource")
+    organization: "Organization" = Relationship(back_populates="resources")
+    location: "Location | None" = Relationship(back_populates="resources")
+    source: "Source | None" = Relationship(back_populates="resources")
+    reviews: list["ReviewState"] = Relationship(back_populates="resource")
+    changes: list["ChangeLog"] = Relationship(back_populates="resource")

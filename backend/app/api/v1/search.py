@@ -1,20 +1,19 @@
 """Search endpoints."""
 
-from fastapi import APIRouter, Depends
-from sqlalchemy.orm import Session
+from fastapi import APIRouter
 
-from app.database import get_db
+from app.database import SessionDep
 
 router = APIRouter()
 
 
 @router.get("")
-async def search_resources(
+def search_resources(
+    session: SessionDep,
     q: str,
     category: str | None = None,
     state: str | None = None,
     limit: int = 20,
-    db: Session = Depends(get_db),
 ) -> dict:
     """Search resources with full-text search."""
     # TODO: Implement full-text search
@@ -27,10 +26,10 @@ async def search_resources(
 
 
 @router.post("/semantic")
-async def semantic_search(
+def semantic_search(
+    session: SessionDep,
     query: str,
     limit: int = 10,
-    db: Session = Depends(get_db),
 ) -> dict:
     """Semantic search using embeddings (Phase 3)."""
     # TODO: Implement with pgvector

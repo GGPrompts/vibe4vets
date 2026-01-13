@@ -1,14 +1,16 @@
-"""Source and SourceRecord models."""
+"""Source and SourceRecord models using SQLModel."""
+
+from __future__ import annotations
 
 import uuid
 from datetime import datetime
 from enum import Enum
+from typing import TYPE_CHECKING
 
-from sqlalchemy import String, Integer, DateTime, ForeignKey, Text
-from sqlalchemy.dialects.postgresql import UUID, JSONB
-from sqlalchemy.orm import Mapped, mapped_column, relationship
+from sqlmodel import Field, Relationship, SQLModel
 
-from app.database import Base
+if TYPE_CHECKING:
+    from app.models.resource import Resource
 
 
 class SourceType(str, Enum):
@@ -27,58 +29,50 @@ class HealthStatus(str, Enum):
     FAILING = "failing"
 
 
-class Source(Base):
+class Source(SQLModel, table=True):
     """Data source with reliability tiers."""
 
     __tablename__ = "sources"
 
-    id: Mapped[uuid.UUID] = mapped_column(
-        UUID(as_uuid=True), primary_key=True, default=uuid.uuid4
-    )
-    name: Mapped[str] = mapped_column(String(255), nullable=False)
-    url: Mapped[str] = mapped_column(String(500), nullable=False)
-    source_type: Mapped[str] = mapped_column(String(20), default=SourceType.SCRAPE.value)
+    id: uuid.UUID = Field(default_factory=uuid.uuid4, primary_key=True)
+    name: str = Field(max_length=255)
+    url: str = Field(max_length=500)
+    source_type: SourceType = Field(default=SourceType.SCRAPE)
 
     # Trust tier: 1=official (VA/DOL), 2=established, 3=state, 4=community
-    tier: Mapped[int] = mapped_column(Integer, default=3)
+    tier: int = Field(default=3)
 
     # Scrape configuration
-    frequency: Mapped[str] = mapped_column(String(20), default="weekly")  # daily/weekly/monthly
-    selectors: Mapped[dict | None] = mapped_column(JSONB)  # CSS selectors for scraping
+    frequency: str = Field(default="weekly", max_length=20)  # daily/weekly/monthly
+    selectors: dict | None = None  # CSS selectors for scraping
 
     # Health tracking
-    last_run: Mapped[datetime | None] = mapped_column(DateTime)
-    last_success: Mapped[datetime | None] = mapped_column(DateTime)
-    health_status: Mapped[str] = mapped_column(String(20), default=HealthStatus.HEALTHY.value)
-    error_count: Mapped[int] = mapped_column(Integer, default=0)
+    last_run: datetime | None = None
+    last_success: datetime | None = None
+    health_status: HealthStatus = Field(default=HealthStatus.HEALTHY)
+    error_count: int = Field(default=0)
 
-    created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
+    created_at: datetime = Field(default_factory=datetime.utcnow)
 
     # Relationships
-    resources = relationship("Resource", back_populates="source")
-    records = relationship("SourceRecord", back_populates="source")
+    resources: list["Resource"] = Relationship(back_populates="source")
+    records: list["SourceRecord"] = Relationship(back_populates="source")
 
 
-class SourceRecord(Base):
+class SourceRecord(SQLModel, table=True):
     """Raw data audit trail."""
 
     __tablename__ = "source_records"
 
-    id: Mapped[uuid.UUID] = mapped_column(
-        UUID(as_uuid=True), primary_key=True, default=uuid.uuid4
-    )
-    resource_id: Mapped[uuid.UUID] = mapped_column(
-        UUID(as_uuid=True), ForeignKey("resources.id"), nullable=False
-    )
-    source_id: Mapped[uuid.UUID] = mapped_column(
-        UUID(as_uuid=True), ForeignKey("sources.id"), nullable=False
-    )
+    id: uuid.UUID = Field(default_factory=uuid.uuid4, primary_key=True)
+    resource_id: uuid.UUID = Field(foreign_key="resources.id")
+    source_id: uuid.UUID = Field(foreign_key="sources.id")
 
-    url: Mapped[str] = mapped_column(String(500), nullable=False)
-    fetched_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
-    raw_hash: Mapped[str] = mapped_column(String(64))  # SHA-256 for change detection
-    raw_path: Mapped[str | None] = mapped_column(String(500))  # S3/local path
-    extracted_text: Mapped[str | None] = mapped_column(Text)
+    url: str = Field(max_length=500)
+    fetched_at: datetime = Field(default_factory=datetime.utcnow)
+    raw_hash: str = Field(max_length=64)  # SHA-256 for change detection
+    raw_path: str | None = Field(default=None, max_length=500)  # S3/local path
+    extracted_text: str | None = None
 
     # Relationships
-    source = relationship("Source", back_populates="records")
+    source: Source = Relationship(back_populates="records")
