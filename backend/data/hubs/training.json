@@ -1,0 +1,101 @@
+{
+  "category": "training",
+  "description": "Education, training, and skills development programs for veterans",
+  "resources": [
+    {
+      "title": "Vocational Rehabilitation and Employment (VR&E / Chapter 31)",
+      "description": "VR&E helps veterans with service-connected disabilities prepare for, find, and maintain suitable employment. Services include vocational counseling, training, education, resume development, and job placement assistance.",
+      "summary": "Comprehensive job training and career support for veterans with disabilities.",
+      "website": "https://www.va.gov/careers-employment/vocational-rehabilitation/",
+      "org_name": "U.S. Department of Veterans Affairs",
+      "tier": 1,
+      "scope": "national",
+      "eligibility": "Veterans with a service-connected disability rating of at least 10%, or a memorandum rating of 20%+ for active duty service members.",
+      "how_to_apply": "Apply online through VA.gov or contact your local VA Regional Office.",
+      "phone": "1-800-827-1000",
+      "cost": "Free for eligible veterans",
+      "subcategories": ["vocational_rehab", "job_training", "career_counseling"]
+    },
+    {
+      "title": "GI Bill Benefits (Post-9/11 and Montgomery)",
+      "description": "The GI Bill provides education benefits to veterans and service members for college, graduate school, technical training, licensing, certifications, and apprenticeships. Benefits include tuition, housing allowance, and books stipend.",
+      "summary": "Tuition, housing, and stipends for college and vocational training.",
+      "website": "https://www.va.gov/education/about-gi-bill-benefits/",
+      "org_name": "U.S. Department of Veterans Affairs",
+      "tier": 1,
+      "scope": "national",
+      "eligibility": "Veterans with qualifying active duty service. Post-9/11 requires 90+ days after September 10, 2001.",
+      "how_to_apply": "Apply online through VA.gov using VA Form 22-1990.",
+      "phone": "1-888-442-4551",
+      "cost": "Benefits earned through service",
+      "subcategories": ["education", "tuition_assistance", "vocational_training"]
+    },
+    {
+      "title": "ApprenticeshipUSA - Veterans",
+      "description": "ApprenticeshipUSA connects veterans with registered apprenticeship programs that combine on-the-job training with classroom instruction. Many programs accept GI Bill benefits, and veterans earn while they learn.",
+      "summary": "Registered apprenticeships combining paid work with GI Bill-eligible training.",
+      "website": "https://www.apprenticeship.gov/apprenticeship-job-finder",
+      "org_name": "U.S. Department of Labor",
+      "tier": 1,
+      "scope": "national",
+      "eligibility": "All veterans, with priority for those using GI Bill or VR&E benefits.",
+      "how_to_apply": "Search the Apprenticeship Job Finder for opportunities and apply directly to employers.",
+      "cost": "Free to apply; earn wages during training",
+      "subcategories": ["apprenticeship", "on_the_job_training", "skilled_trades"]
+    },
+    {
+      "title": "VetTech Program",
+      "description": "VetTech provides tuition funding for veterans to attend coding bootcamps and high-tech training programs. The program covers the full cost of approved bootcamps with no GI Bill usage required.",
+      "summary": "Free coding bootcamps and tech training for veterans (no GI Bill required).",
+      "website": "https://www.va.gov/education/about-gi-bill-benefits/how-to-use-benefits/vettec-high-tech-program/",
+      "org_name": "U.S. Department of Veterans Affairs",
+      "tier": 1,
+      "scope": "national",
+      "eligibility": "Veterans with at least one day of unexpired GI Bill entitlement (but does not use your GI Bill benefits).",
+      "how_to_apply": "Apply through VA.gov and choose from approved training providers.",
+      "phone": "1-888-442-4551",
+      "cost": "Free (includes housing allowance during training)",
+      "subcategories": ["coding_bootcamp", "technology_training", "high_demand_skills"]
+    },
+    {
+      "title": "SkillBridge Program",
+      "description": "DoD SkillBridge provides transitioning service members with opportunities to gain civilian work experience through internships, apprenticeships, and training with industry partners during their last 180 days of service.",
+      "summary": "Civilian internships for transitioning military during last 6 months of service.",
+      "website": "https://skillbridge.osd.mil",
+      "org_name": "U.S. Department of Defense",
+      "tier": 1,
+      "scope": "national",
+      "eligibility": "Active duty service members within 180 days of separation with command approval.",
+      "how_to_apply": "Work with your command and transition office to find and apply to SkillBridge programs.",
+      "cost": "Free (continue to receive military pay)",
+      "subcategories": ["internship", "transition_training", "civilian_experience"]
+    },
+    {
+      "title": "Onward to Opportunity (O2O)",
+      "description": "O2O provides free career training, certifications, and job placement for transitioning service members, veterans, and military spouses in high-demand fields including IT, business, and customer service.",
+      "summary": "Free industry certifications and career training in high-demand fields.",
+      "website": "https://onward2opportunity.org",
+      "org_name": "Syracuse University - Institute for Veterans and Military Families",
+      "tier": 2,
+      "scope": "national",
+      "eligibility": "Transitioning service members, veterans of all eras, and military spouses.",
+      "how_to_apply": "Apply online at the O2O website to access free training tracks.",
+      "phone": "1-315-443-0141",
+      "cost": "Free",
+      "subcategories": ["certifications", "career_training", "it_training"]
+    },
+    {
+      "title": "Helmets to Hardhats",
+      "description": "Helmets to Hardhats connects veterans with careers in the building and construction trades through apprenticeships. The program works with building trade unions to place veterans in well-paying skilled trade careers.",
+      "summary": "Construction trade apprenticeships connecting veterans with union careers.",
+      "website": "https://helmetstohardhats.org",
+      "org_name": "Helmets to Hardhats",
+      "tier": 2,
+      "scope": "national",
+      "eligibility": "Veterans interested in careers in the building and construction trades.",
+      "how_to_apply": "Register online and complete a profile to be matched with opportunities.",
+      "cost": "Free",
+      "subcategories": ["construction_trades", "apprenticeship", "union_careers"]
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "category": "housing",
+  "description": "Housing assistance and homeless prevention programs for veterans",
+  "resources": [
+    {
+      "title": "HUD-VASH (Veterans Affairs Supportive Housing)",
+      "description": "HUD-VASH combines Housing Choice Voucher (Section 8) rental assistance from HUD with case management and clinical services from VA to help homeless veterans and their families find and sustain permanent housing in the community.",
+      "summary": "Section 8 housing vouchers combined with VA case management for homeless veterans.",
+      "website": "https://www.va.gov/homeless/hud-vash.asp",
+      "org_name": "U.S. Department of Veterans Affairs",
+      "tier": 1,
+      "scope": "national",
+      "eligibility": "Homeless veterans eligible for VA health care. Priority for chronically homeless and those with mental health or substance use challenges.",
+      "how_to_apply": "Contact your local VA Medical Center's HUD-VASH program or call the National Call Center for Homeless Veterans.",
+      "phone": "1-877-424-3838",
+      "cost": "Free (provides rental assistance based on income)",
+      "subcategories": ["rental_assistance", "supportive_housing", "case_management"]
+    },
+    {
+      "title": "Supportive Services for Veteran Families (SSVF)",
+      "description": "SSVF provides case management and supportive services to prevent homelessness and promote housing stability among very low-income veteran families. Services include temporary financial assistance for rent, utilities, moving costs, and other housing-related expenses.",
+      "summary": "Rapid re-housing and homelessness prevention for low-income veteran families.",
+      "website": "https://www.va.gov/homeless/ssvf/",
+      "org_name": "U.S. Department of Veterans Affairs",
+      "tier": 1,
+      "scope": "national",
+      "eligibility": "Very low-income veteran families (below 50% Area Median Income) who are homeless or at imminent risk of homelessness.",
+      "how_to_apply": "Contact your local VA Medical Center, call the Homeless Veterans hotline, or find a local SSVF provider.",
+      "phone": "1-877-424-3838",
+      "cost": "Free",
+      "subcategories": ["homeless_prevention", "rapid_rehousing", "case_management"]
+    },
+    {
+      "title": "National Coalition for Homeless Veterans (NCHV)",
+      "description": "NCHV is a resource and technical assistance center for community-based organizations serving homeless veterans. Their website provides a nationwide directory of homeless veteran service providers and resources.",
+      "summary": "Directory of homeless veteran service providers and advocacy organization.",
+      "website": "https://nchv.org",
+      "org_name": "National Coalition for Homeless Veterans",
+      "tier": 2,
+      "scope": "national",
+      "eligibility": "Homeless veterans and service providers seeking resources.",
+      "how_to_apply": "Use the online directory to find local homeless veteran service providers in your area.",
+      "phone": "1-800-VET-HELP",
+      "cost": "Free",
+      "subcategories": ["homeless_services", "provider_directory", "advocacy"]
+    },
+    {
+      "title": "VA Grant and Per Diem Program",
+      "description": "The Grant and Per Diem (GPD) program provides grants to community organizations to create transitional housing and supportive services for homeless veterans. Veterans can access these funded programs for housing assistance.",
+      "summary": "Transitional housing programs funded by VA for homeless veterans.",
+      "website": "https://www.va.gov/homeless/gpd.asp",
+      "org_name": "U.S. Department of Veterans Affairs",
+      "tier": 1,
+      "scope": "national",
+      "eligibility": "Homeless veterans who need transitional housing and supportive services.",
+      "how_to_apply": "Contact your local VA Medical Center's Homeless Veterans programs or call the Homeless Veterans hotline.",
+      "phone": "1-877-424-3838",
+      "cost": "Free",
+      "subcategories": ["transitional_housing", "supportive_services", "homeless_services"]
+    },
+    {
+      "title": "VA Home Loan Guaranty Program",
+      "description": "VA Home Loans offer eligible veterans the ability to purchase homes with no down payment, competitive interest rates, and no private mortgage insurance. The VA guarantees a portion of the loan, making it easier for veterans to qualify.",
+      "summary": "No down payment home loans with VA guaranty for eligible veterans.",
+      "website": "https://www.va.gov/housing-assistance/home-loans/",
+      "org_name": "U.S. Department of Veterans Affairs",
+      "tier": 1,
+      "scope": "national",
+      "eligibility": "Veterans with qualifying service, active duty service members, National Guard/Reserve members, and surviving spouses.",
+      "how_to_apply": "Obtain a Certificate of Eligibility (COE) through VA.gov and work with a VA-approved lender.",
+      "phone": "1-877-827-3702",
+      "cost": "VA funding fee applies (may be waived for disabled veterans)",
+      "subcategories": ["home_purchase", "mortgage_assistance", "homeownership"]
+    },
+    {
+      "title": "HUD Veterans Resource Center",
+      "description": "HUD's Veterans Resource Center provides information on housing counseling, fair housing rights, and connects veterans with HUD-approved housing counseling agencies for assistance with buying, renting, or preventing foreclosure.",
+      "summary": "HUD housing counseling and fair housing resources for veterans.",
+      "website": "https://www.hud.gov/program_offices/public_indian_housing/programs/hcv/vash",
+      "org_name": "U.S. Department of Housing and Urban Development",
+      "tier": 1,
+      "scope": "national",
+      "eligibility": "All veterans seeking housing assistance or counseling.",
+      "how_to_apply": "Find a HUD-approved housing counseling agency online or call the HUD hotline.",
+      "phone": "1-800-569-4287",
+      "cost": "Free",
+      "subcategories": ["housing_counseling", "fair_housing", "foreclosure_prevention"]
+    }
+  ]
+}

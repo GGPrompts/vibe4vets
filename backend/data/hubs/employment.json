@@ -1,0 +1,87 @@
+{
+  "category": "employment",
+  "description": "Employment and career services for veterans",
+  "resources": [
+    {
+      "title": "Hire Heroes USA",
+      "description": "Hire Heroes USA provides free career coaching, resume writing, mentoring, and job placement assistance to transitioning military, veterans, and military spouses. Their personalized approach has helped over 60,000 veterans find meaningful employment.",
+      "summary": "Free personalized career coaching and job placement for veterans and military spouses.",
+      "website": "https://www.hireheroesusa.org",
+      "org_name": "Hire Heroes USA",
+      "tier": 2,
+      "scope": "national",
+      "eligibility": "Transitioning military members, veterans of all eras, and military spouses.",
+      "how_to_apply": "Register online at hireheroesusa.org to be matched with a Transition Specialist.",
+      "phone": "1-844-634-1520",
+      "cost": "Free",
+      "subcategories": ["career_counseling", "resume_assistance", "job_placement"]
+    },
+    {
+      "title": "American Corporate Partners (ACP)",
+      "description": "ACP connects veterans with corporate professionals for year-long mentorships focused on career development, networking, and navigating corporate culture. Mentors come from Fortune 500 companies and leading organizations.",
+      "summary": "One-year mentorship program connecting veterans with Fortune 500 professionals.",
+      "website": "https://www.acp-usa.org",
+      "org_name": "American Corporate Partners",
+      "tier": 2,
+      "scope": "national",
+      "eligibility": "Veterans who have served on active duty for 180+ days since September 11, 2001, and military spouses.",
+      "how_to_apply": "Apply online at acp-usa.org. Mentorships are matched based on career goals and industry interests.",
+      "cost": "Free",
+      "subcategories": ["mentorship", "networking", "career_development"]
+    },
+    {
+      "title": "VA Veterans Employment Center",
+      "description": "The Veterans Employment Center (VEC) is VA's official job board connecting veterans with employers committed to hiring veterans. Features include resume building, job matching, and access to veteran-ready employers.",
+      "summary": "Official VA job board with veteran-friendly employers and career tools.",
+      "website": "https://www.va.gov/careers-employment/",
+      "org_name": "U.S. Department of Veterans Affairs",
+      "tier": 1,
+      "scope": "national",
+      "eligibility": "Veterans, transitioning service members, and military spouses.",
+      "how_to_apply": "Create a VA.gov account and access the Veterans Employment Center.",
+      "cost": "Free",
+      "subcategories": ["job_search", "resume_assistance", "employer_matching"]
+    },
+    {
+      "title": "CareerOneStop Veterans Resources",
+      "description": "CareerOneStop, sponsored by the U.S. Department of Labor, provides comprehensive career tools including a military skills translator, veteran-friendly employer database, training finder, and connections to local American Job Centers.",
+      "summary": "DOL career portal with military skills translator and job search tools.",
+      "website": "https://www.careeronestop.org/Veterans/",
+      "org_name": "U.S. Department of Labor",
+      "tier": 1,
+      "scope": "national",
+      "eligibility": "All veterans and transitioning service members.",
+      "how_to_apply": "Access resources online or visit a local American Job Center for in-person assistance.",
+      "phone": "1-877-348-0502",
+      "cost": "Free",
+      "subcategories": ["skills_assessment", "job_search", "training_finder"]
+    },
+    {
+      "title": "USAJobs Veterans Portal",
+      "description": "USAJobs is the official federal employment portal with dedicated veteran hiring programs including Veterans' Preference, VRA (Veterans Recruitment Appointment), and 30% Disabled Veteran authority for expedited federal hiring.",
+      "summary": "Federal jobs portal with special veteran hiring authorities and preferences.",
+      "website": "https://www.usajobs.gov/Help/working-in-government/unique-hiring-paths/veterans/",
+      "org_name": "U.S. Office of Personnel Management",
+      "tier": 1,
+      "scope": "national",
+      "eligibility": "Veterans, with enhanced benefits for disabled veterans and those with campaign medals.",
+      "how_to_apply": "Create a USAJOBS account, upload DD-214, and apply for positions using veteran hiring paths.",
+      "cost": "Free",
+      "subcategories": ["federal_employment", "job_search", "veterans_preference"]
+    },
+    {
+      "title": "RecruitMilitary",
+      "description": "RecruitMilitary hosts job fairs nationwide and operates a job board specifically for veterans. Their events connect job-seeking veterans directly with hiring managers from veteran-friendly companies.",
+      "summary": "Job fairs and employment platform connecting veterans with hiring companies.",
+      "website": "https://recruitmilitary.com",
+      "org_name": "RecruitMilitary",
+      "tier": 2,
+      "scope": "national",
+      "eligibility": "All veterans, transitioning military, National Guard, Reserves, and military spouses.",
+      "how_to_apply": "Register for job fairs at recruitmilitary.com or search the job board.",
+      "phone": "1-513-683-5020",
+      "cost": "Free for job seekers",
+      "subcategories": ["job_fairs", "job_search", "networking"]
+    }
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "category": "legal",
+  "description": "Legal assistance and VA claims support for veterans",
+  "resources": [
+    {
+      "title": "VA Accredited Attorneys and Claims Agents",
+      "description": "The VA maintains a database of accredited attorneys, claims agents, and representatives authorized to assist veterans with VA benefits claims and appeals. Accredited representatives must meet VA standards and can charge fees only after a successful claim.",
+      "summary": "Official directory of VA-accredited representatives for benefits claims.",
+      "website": "https://www.va.gov/vso/",
+      "org_name": "U.S. Department of Veterans Affairs",
+      "tier": 1,
+      "scope": "national",
+      "eligibility": "Veterans seeking representation for VA benefits claims or appeals.",
+      "how_to_apply": "Search the VA's accredited representative database online or contact your local VA Regional Office.",
+      "phone": "1-800-827-1000",
+      "cost": "Fees vary; many VSOs offer free representation",
+      "subcategories": ["claims_assistance", "representation", "appeals"]
+    },
+    {
+      "title": "National Veterans Legal Services Program (NVLSP)",
+      "description": "NVLSP provides free legal services to veterans and their families on VA benefits issues. They represent veterans in disability claims, appeals, and systemic litigation that benefits all veterans.",
+      "summary": "Free legal representation for veterans on VA disability claims and appeals.",
+      "website": "https://www.nvlsp.org",
+      "org_name": "National Veterans Legal Services Program",
+      "tier": 2,
+      "scope": "national",
+      "eligibility": "Veterans and their families with VA benefits claims, particularly complex cases.",
+      "how_to_apply": "Contact NVLSP through their website or call for assistance with your claim.",
+      "phone": "1-202-265-8305",
+      "cost": "Free",
+      "subcategories": ["legal_representation", "appeals", "disability_claims"]
+    },
+    {
+      "title": "VA Board of Veterans' Appeals",
+      "description": "The Board of Veterans' Appeals (BVA) reviews benefit claim appeals. Veterans can track their appeal status, understand the appeals process, and access resources for filing or responding to appeals.",
+      "summary": "Information and status tracking for VA benefits appeals.",
+      "website": "https://www.bva.va.gov",
+      "org_name": "U.S. Department of Veterans Affairs",
+      "tier": 1,
+      "scope": "national",
+      "eligibility": "Veterans with denied VA benefits claims seeking to appeal.",
+      "how_to_apply": "File a Notice of Disagreement (NOD) or Decision Review Request through VA.gov.",
+      "phone": "1-800-827-1000",
+      "cost": "Free",
+      "subcategories": ["appeals", "claims_status", "decision_review"]
+    },
+    {
+      "title": "Veterans Consortium Pro Bono Program",
+      "description": "The Veterans Consortium provides free legal representation to veterans appealing claims to the U.S. Court of Appeals for Veterans Claims. Volunteer attorneys are trained and matched with veterans needing representation.",
+      "summary": "Free legal representation for appeals to the Court of Appeals for Veterans Claims.",
+      "website": "https://www.vetsprobono.org",
+      "org_name": "The Veterans Consortium",
+      "tier": 2,
+      "scope": "national",
+      "eligibility": "Veterans with appeals pending at the U.S. Court of Appeals for Veterans Claims.",
+      "how_to_apply": "Contact the Veterans Consortium when you receive a decision from the Board of Veterans' Appeals that you wish to appeal.",
+      "phone": "1-888-838-7727",
+      "cost": "Free",
+      "subcategories": ["appeals", "legal_representation", "court_representation"]
+    },
+    {
+      "title": "Stateside Legal",
+      "description": "Stateside Legal is a comprehensive legal information resource for military members, veterans, and their families. It provides state-by-state guides to legal issues and connects users with free legal aid in their area.",
+      "summary": "Legal information and free legal aid finder for veterans and military families.",
+      "website": "https://statesidelegal.org",
+      "org_name": "American Bar Association",
+      "tier": 2,
+      "scope": "national",
+      "eligibility": "Military members, veterans, and their families seeking legal information or assistance.",
+      "how_to_apply": "Use the online resources or legal aid locator to find assistance in your state.",
+      "cost": "Free",
+      "subcategories": ["legal_information", "legal_aid_finder", "family_law"]
+    },
+    {
+      "title": "Legal Services Corporation - Veterans Resources",
+      "description": "Legal Services Corporation (LSC) funds civil legal aid programs nationwide. Many LSC-funded programs have dedicated veterans units providing free legal help on civil matters like housing, family law, consumer issues, and benefits.",
+      "summary": "Network of legal aid organizations providing free civil legal services to veterans.",
+      "website": "https://www.lsc.gov/about-lsc/what-legal-aid/get-legal-help",
+      "org_name": "Legal Services Corporation",
+      "tier": 2,
+      "scope": "national",
+      "eligibility": "Low-income veterans needing civil legal assistance.",
+      "how_to_apply": "Use the legal aid locator to find your local LSC-funded program.",
+      "phone": "1-202-295-1500",
+      "cost": "Free for eligible individuals",
+      "subcategories": ["civil_legal_aid", "housing_law", "family_law"]
+    }
+  ]
+}
