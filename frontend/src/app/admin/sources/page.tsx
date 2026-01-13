@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import {
   Card,
   CardContent,
@@ -17,149 +17,370 @@ import {
   TableRow,
 } from '@/components/ui/table';
 import { Badge } from '@/components/ui/badge';
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from '@/components/ui/dialog';
 import { Skeleton } from '@/components/ui/skeleton';
-import { CheckCircle, AlertCircle, XCircle, Clock } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import {
+  RefreshCw,
+  AlertCircle,
+  CheckCircle2,
+  AlertTriangle,
+  ExternalLink,
+} from 'lucide-react';
+import api, { type SourceHealthDetail, type ErrorRecord } from '@/lib/api';
 
-interface SourceHealth {
-  id: string;
-  name: string;
-  tier: number;
-  status: 'healthy' | 'degraded' | 'failing';
-  last_run: string | null;
-  success_rate: number;
-  resources_count: number;
-  error_message: string | null;
+const STATUS_CONFIG = {
+  healthy: {
+    textColor: 'text-green-700 dark:text-green-400',
+    bgColor: 'bg-green-50 dark:bg-green-950',
+    borderColor: 'border-green-200 dark:border-green-800',
+    dotColor: 'bg-green-500',
+    icon: CheckCircle2,
+    label: 'Healthy',
+  },
+  degraded: {
+    textColor: 'text-yellow-700 dark:text-yellow-400',
+    bgColor: 'bg-yellow-50 dark:bg-yellow-950',
+    borderColor: 'border-yellow-200 dark:border-yellow-800',
+    dotColor: 'bg-yellow-500',
+    icon: AlertTriangle,
+    label: 'Degraded',
+  },
+  failing: {
+    textColor: 'text-red-700 dark:text-red-400',
+    bgColor: 'bg-red-50 dark:bg-red-950',
+    borderColor: 'border-red-200 dark:border-red-800',
+    dotColor: 'bg-red-500',
+    icon: AlertCircle,
+    label: 'Failing',
+  },
+} as const;
+
+const TIER_LABELS: Record<number, string> = {
+  1: 'Tier 1 (Official)',
+  2: 'Tier 2 (Verified)',
+  3: 'Tier 3 (State)',
+  4: 'Tier 4 (Community)',
+};
+
+function formatRelativeTime(dateString: string | null): string {
+  if (!dateString) return 'Never';
+
+  const date = new Date(dateString);
+  const now = new Date();
+  const diffMs = now.getTime() - date.getTime();
+  const diffMins = Math.floor(diffMs / 60000);
+  const diffHours = Math.floor(diffMins / 60);
+  const diffDays = Math.floor(diffHours / 24);
+
+  if (diffMins < 1) return 'Just now';
+  if (diffMins < 60) return `${diffMins}m ago`;
+  if (diffHours < 24) return `${diffHours}h ago`;
+  if (diffDays < 7) return `${diffDays}d ago`;
+
+  return date.toLocaleDateString();
 }
 
-interface DashboardStats {
-  total_sources: number;
-  healthy_sources: number;
-  degraded_sources: number;
-  failing_sources: number;
-  total_resources: number;
-  pending_reviews: number;
+function StatusBadge({ status }: { status: SourceHealthDetail['status'] }) {
+  const config = STATUS_CONFIG[status];
+  const Icon = config.icon;
+
+  return (
+    <div
+      className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium ${config.bgColor} ${config.textColor} border ${config.borderColor}`}
+    >
+      <Icon className="h-3 w-3" />
+      {config.label}
+    </div>
+  );
+}
+
+function TierBadge({ tier }: { tier: number }) {
+  const variants: Record<number, string> = {
+    1: 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200',
+    2: 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200',
+    3: 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200',
+    4: 'bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-200',
+  };
+
+  return (
+    <Badge variant="secondary" className={variants[tier] || variants[4]}>
+      Tier {tier}
+    </Badge>
+  );
+}
+
+function SourceDetailDialog({
+  source,
+  open,
+  onOpenChange,
+}: {
+  source: SourceHealthDetail | null;
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
+}) {
+  if (!source) return null;
+
+  return (
+    <Dialog open={open} onOpenChange={onOpenChange}>
+      <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
+        <DialogHeader>
+          <DialogTitle className="flex items-center gap-2">
+            {source.name}
+            <StatusBadge status={source.status} />
+          </DialogTitle>
+          <DialogDescription className="flex items-center gap-2">
+            {source.url}
+            <a
+              href={source.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary hover:text-primary/80"
+            >
+              <ExternalLink className="h-3 w-3" />
+            </a>
+          </DialogDescription>
+        </DialogHeader>
+
+        <div className="space-y-6">
+          {/* Overview Stats */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="rounded-lg bg-muted p-3">
+              <p className="text-xs text-muted-foreground">Resources</p>
+              <p className="text-2xl font-bold">{source.resource_count}</p>
+            </div>
+            <div className="rounded-lg bg-muted p-3">
+              <p className="text-xs text-muted-foreground">Success Rate</p>
+              <p className="text-2xl font-bold">
+                {Math.round(source.success_rate * 100)}%
+              </p>
+            </div>
+            <div className="rounded-lg bg-muted p-3">
+              <p className="text-xs text-muted-foreground">Freshness</p>
+              <p className="text-2xl font-bold">
+                {Math.round(source.average_freshness * 100)}%
+              </p>
+            </div>
+            <div className="rounded-lg bg-muted p-3">
+              <p className="text-xs text-muted-foreground">Errors</p>
+              <p
+                className={`text-2xl font-bold ${source.error_count > 0 ? 'text-red-600' : ''}`}
+              >
+                {source.error_count}
+              </p>
+            </div>
+          </div>
+
+          {/* Source Info */}
+          <div className="space-y-2">
+            <h4 className="text-sm font-medium">Source Information</h4>
+            <div className="rounded-lg border p-3 space-y-2 text-sm">
+              <div className="flex justify-between">
+                <span className="text-muted-foreground">Tier</span>
+                <span>{TIER_LABELS[source.tier] || `Tier ${source.tier}`}</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-muted-foreground">Type</span>
+                <span className="capitalize">{source.source_type}</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-muted-foreground">Frequency</span>
+                <span className="capitalize">{source.frequency}</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-muted-foreground">Last Run</span>
+                <span>{formatRelativeTime(source.last_run)}</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-muted-foreground">Last Success</span>
+                <span>{formatRelativeTime(source.last_success)}</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Resources by Status */}
+          {Object.keys(source.resources_by_status).length > 0 && (
+            <div className="space-y-2">
+              <h4 className="text-sm font-medium">Resources by Status</h4>
+              <div className="flex flex-wrap gap-2">
+                {Object.entries(source.resources_by_status).map(
+                  ([status, count]) => (
+                    <Badge key={status} variant="outline">
+                      {status}: {count}
+                    </Badge>
+                  )
+                )}
+              </div>
+            </div>
+          )}
+
+          {/* Recent Errors */}
+          {source.errors.length > 0 && (
+            <div className="space-y-2">
+              <h4 className="text-sm font-medium text-red-600">Recent Errors</h4>
+              <div className="space-y-2 max-h-48 overflow-y-auto">
+                {source.errors.map((error: ErrorRecord) => (
+                  <div
+                    key={error.id}
+                    className="rounded-lg border border-red-200 dark:border-red-800 bg-red-50 dark:bg-red-950 p-3 text-sm"
+                  >
+                    <div className="flex items-start justify-between gap-2">
+                      <div>
+                        <p className="font-medium text-red-800 dark:text-red-200">
+                          {error.error_type}
+                        </p>
+                        <p className="text-red-700 dark:text-red-300 mt-1">
+                          {error.message}
+                        </p>
+                      </div>
+                      <span className="text-xs text-red-600 dark:text-red-400 whitespace-nowrap">
+                        {formatRelativeTime(error.occurred_at)}
+                      </span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      </DialogContent>
+    </Dialog>
+  );
 }
 
 export default function SourcesPage() {
-  const [sources, setSources] = useState<SourceHealth[]>([]);
-  const [stats, setStats] = useState<DashboardStats | null>(null);
+  const [sources, setSources] = useState<SourceHealthDetail[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [selectedSource, setSelectedSource] = useState<SourceHealthDetail | null>(
+    null
+  );
+  const [detailOpen, setDetailOpen] = useState(false);
+  const [refreshing, setRefreshing] = useState(false);
+  const [lastUpdated, setLastUpdated] = useState<Date | null>(null);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const [sourcesRes, statsRes] = await Promise.all([
-          fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}/api/v1/admin/dashboard/sources`),
-          fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}/api/v1/admin/dashboard/stats`),
-        ]);
+  const fetchSources = useCallback(async (showRefreshing = false) => {
+    if (showRefreshing) setRefreshing(true);
 
-        if (!sourcesRes.ok || !statsRes.ok) {
-          throw new Error('Failed to fetch data');
-        }
-
-        const sourcesData = await sourcesRes.json();
-        const statsData = await statsRes.json();
-
-        setSources(sourcesData.sources || []);
-        setStats(statsData);
-      } catch (err) {
-        setError(err instanceof Error ? err.message : 'Failed to load sources');
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchData();
+    try {
+      const response = await api.admin.getSourcesHealth();
+      setSources(response.sources);
+      setLastUpdated(new Date());
+      setError(null);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Failed to load sources');
+    } finally {
+      setLoading(false);
+      setRefreshing(false);
+    }
   }, []);
 
-  const getStatusIcon = (status: string) => {
-    switch (status) {
-      case 'healthy':
-        return <CheckCircle className="h-4 w-4 text-green-500" />;
-      case 'degraded':
-        return <AlertCircle className="h-4 w-4 text-yellow-500" />;
-      case 'failing':
-        return <XCircle className="h-4 w-4 text-red-500" />;
-      default:
-        return <Clock className="h-4 w-4 text-muted-foreground" />;
-    }
+  // Initial load
+  useEffect(() => {
+    fetchSources();
+  }, [fetchSources]);
+
+  // Auto-refresh every 30 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      fetchSources();
+    }, 30000);
+
+    return () => clearInterval(interval);
+  }, [fetchSources]);
+
+  const handleSourceClick = (source: SourceHealthDetail) => {
+    setSelectedSource(source);
+    setDetailOpen(true);
   };
 
-  const getStatusBadge = (status: string) => {
-    switch (status) {
-      case 'healthy':
-        return <Badge className="bg-green-100 text-green-800">Healthy</Badge>;
-      case 'degraded':
-        return <Badge className="bg-yellow-100 text-yellow-800">Degraded</Badge>;
-      case 'failing':
-        return <Badge variant="destructive">Failing</Badge>;
-      default:
-        return <Badge variant="secondary">Unknown</Badge>;
-    }
+  const handleManualRefresh = () => {
+    fetchSources(true);
   };
 
-  const getTierLabel = (tier: number) => {
-    const labels: Record<number, string> = {
-      1: 'Official',
-      2: 'VSO',
-      3: 'State',
-      4: 'Community',
-    };
-    return labels[tier] || `Tier ${tier}`;
-  };
+  // Calculate summary stats
+  const healthySources = sources.filter((s) => s.status === 'healthy').length;
+  const degradedSources = sources.filter((s) => s.status === 'degraded').length;
+  const failingSources = sources.filter((s) => s.status === 'failing').length;
+  const totalResources = sources.reduce((sum, s) => sum + s.resource_count, 0);
 
   return (
     <div className="p-6 lg:p-8">
       <div className="mx-auto max-w-6xl">
         {/* Header */}
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold">Data Sources</h1>
-          <p className="text-muted-foreground">
-            Monitor connector health and data freshness
-          </p>
+        <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <h1 className="text-3xl font-bold">Data Sources</h1>
+            <p className="text-muted-foreground">
+              Monitor source health and data freshness
+            </p>
+          </div>
+          <div className="flex items-center gap-4">
+            {lastUpdated && (
+              <span className="text-sm text-muted-foreground">
+                Updated {formatRelativeTime(lastUpdated.toISOString())}
+              </span>
+            )}
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={handleManualRefresh}
+              disabled={refreshing}
+            >
+              <RefreshCw
+                className={`h-4 w-4 mr-2 ${refreshing ? 'animate-spin' : ''}`}
+              />
+              Refresh
+            </Button>
+          </div>
         </div>
 
-        {/* Stats Cards */}
+        {/* Summary Cards */}
         <div className="mb-8 grid gap-4 md:grid-cols-4">
           <Card>
             <CardHeader className="pb-2">
               <CardDescription>Total Sources</CardDescription>
               <CardTitle className="text-3xl">
-                {loading ? <Skeleton className="h-9 w-12" /> : stats?.total_sources ?? 0}
+                {loading ? <Skeleton className="h-9 w-12" /> : sources.length}
               </CardTitle>
             </CardHeader>
           </Card>
-          <Card>
+          <Card className="border-green-200 dark:border-green-800">
             <CardHeader className="pb-2">
-              <CardDescription className="flex items-center gap-1">
-                <CheckCircle className="h-3 w-3 text-green-500" />
+              <CardDescription className="flex items-center gap-1.5">
+                <span className="h-2 w-2 rounded-full bg-green-500" />
                 Healthy
               </CardDescription>
-              <CardTitle className="text-3xl text-green-600">
-                {loading ? <Skeleton className="h-9 w-12" /> : stats?.healthy_sources ?? 0}
+              <CardTitle className="text-3xl text-green-700 dark:text-green-400">
+                {loading ? <Skeleton className="h-9 w-12" /> : healthySources}
               </CardTitle>
             </CardHeader>
           </Card>
-          <Card>
+          <Card className="border-yellow-200 dark:border-yellow-800">
             <CardHeader className="pb-2">
-              <CardDescription className="flex items-center gap-1">
-                <AlertCircle className="h-3 w-3 text-yellow-500" />
+              <CardDescription className="flex items-center gap-1.5">
+                <span className="h-2 w-2 rounded-full bg-yellow-500" />
                 Degraded
               </CardDescription>
-              <CardTitle className="text-3xl text-yellow-600">
-                {loading ? <Skeleton className="h-9 w-12" /> : stats?.degraded_sources ?? 0}
+              <CardTitle className="text-3xl text-yellow-700 dark:text-yellow-400">
+                {loading ? <Skeleton className="h-9 w-12" /> : degradedSources}
               </CardTitle>
             </CardHeader>
           </Card>
-          <Card>
+          <Card className="border-red-200 dark:border-red-800">
             <CardHeader className="pb-2">
-              <CardDescription className="flex items-center gap-1">
-                <XCircle className="h-3 w-3 text-red-500" />
+              <CardDescription className="flex items-center gap-1.5">
+                <span className="h-2 w-2 rounded-full bg-red-500" />
                 Failing
               </CardDescription>
-              <CardTitle className="text-3xl text-red-600">
-                {loading ? <Skeleton className="h-9 w-12" /> : stats?.failing_sources ?? 0}
+              <CardTitle className="text-3xl text-red-700 dark:text-red-400">
+                {loading ? <Skeleton className="h-9 w-12" /> : failingSources}
               </CardTitle>
             </CardHeader>
           </Card>
@@ -168,23 +389,38 @@ export default function SourcesPage() {
         {/* Sources Table */}
         <Card>
           <CardHeader>
-            <CardTitle>Source Health</CardTitle>
+            <CardTitle>All Sources</CardTitle>
             <CardDescription>
-              Status of all configured data connectors
+              {loading ? (
+                <Skeleton className="h-4 w-48" />
+              ) : (
+                `${sources.length} sources providing ${totalResources} resources`
+              )}
             </CardDescription>
           </CardHeader>
           <CardContent>
             {loading ? (
               <div className="space-y-4">
-                {[...Array(4)].map((_, i) => (
+                {[...Array(5)].map((_, i) => (
                   <Skeleton key={i} className="h-16 w-full" />
                 ))}
               </div>
             ) : error ? (
-              <p className="py-8 text-center text-destructive">{error}</p>
+              <div className="py-8 text-center">
+                <AlertCircle className="h-8 w-8 text-destructive mx-auto mb-2" />
+                <p className="text-destructive">{error}</p>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={handleManualRefresh}
+                  className="mt-4"
+                >
+                  Try Again
+                </Button>
+              </div>
             ) : sources.length === 0 ? (
               <p className="py-8 text-center text-muted-foreground">
-                No sources configured
+                No data sources configured
               </p>
             ) : (
               <Table>
@@ -193,47 +429,46 @@ export default function SourcesPage() {
                     <TableHead>Source</TableHead>
                     <TableHead>Tier</TableHead>
                     <TableHead>Status</TableHead>
-                    <TableHead>Success Rate</TableHead>
-                    <TableHead>Resources</TableHead>
-                    <TableHead>Last Run</TableHead>
+                    <TableHead className="text-right">Resources</TableHead>
+                    <TableHead className="text-right">Errors</TableHead>
+                    <TableHead>Last Refresh</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
                   {sources.map((source) => (
-                    <TableRow key={source.id}>
+                    <TableRow
+                      key={source.source_id}
+                      className="cursor-pointer hover:bg-muted/50"
+                      onClick={() => handleSourceClick(source)}
+                    >
                       <TableCell>
-                        <div className="flex items-center gap-2">
-                          {getStatusIcon(source.status)}
-                          <span className="font-medium">{source.name}</span>
-                        </div>
-                        {source.error_message && (
-                          <p className="mt-1 text-xs text-destructive">
-                            {source.error_message}
+                        <div>
+                          <p className="font-medium">{source.name}</p>
+                          <p className="text-xs text-muted-foreground truncate max-w-xs">
+                            {source.url}
                           </p>
-                        )}
+                        </div>
                       </TableCell>
                       <TableCell>
-                        <Badge variant="outline">{getTierLabel(source.tier)}</Badge>
+                        <TierBadge tier={source.tier} />
                       </TableCell>
-                      <TableCell>{getStatusBadge(source.status)}</TableCell>
                       <TableCell>
+                        <StatusBadge status={source.status} />
+                      </TableCell>
+                      <TableCell className="text-right font-medium">
+                        {source.resource_count}
+                      </TableCell>
+                      <TableCell className="text-right">
                         <span
                           className={
-                            source.success_rate >= 90
-                              ? 'text-green-600'
-                              : source.success_rate >= 70
-                              ? 'text-yellow-600'
-                              : 'text-red-600'
+                            source.error_count > 0 ? 'text-red-600 font-medium' : ''
                           }
                         >
-                          {source.success_rate.toFixed(0)}%
+                          {source.error_count}
                         </span>
                       </TableCell>
-                      <TableCell>{source.resources_count.toLocaleString()}</TableCell>
-                      <TableCell>
-                        {source.last_run
-                          ? new Date(source.last_run).toLocaleString()
-                          : 'Never'}
+                      <TableCell className="text-muted-foreground">
+                        {formatRelativeTime(source.last_run)}
                       </TableCell>
                     </TableRow>
                   ))}
@@ -242,6 +477,13 @@ export default function SourcesPage() {
             )}
           </CardContent>
         </Card>
+
+        {/* Source Detail Dialog */}
+        <SourceDetailDialog
+          source={selectedSource}
+          open={detailOpen}
+          onOpenChange={setDetailOpen}
+        />
       </div>
     </div>
   );

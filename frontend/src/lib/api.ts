@@ -126,6 +126,44 @@ export interface DashboardStats {
   healthy_sources: number;
 }
 
+export interface ErrorRecord {
+  id: string;
+  source_id: string;
+  source_name: string;
+  error_type: string;
+  message: string;
+  occurred_at: string;
+  job_run_id: string | null;
+}
+
+export interface SourceHealthDetail {
+  source_id: string;
+  name: string;
+  url: string;
+  tier: number;
+  source_type: string;
+  frequency: string;
+  status: 'healthy' | 'degraded' | 'failing';
+  resource_count: number;
+  resources_by_status: Record<string, number>;
+  average_freshness: number;
+  last_run: string | null;
+  last_success: string | null;
+  error_count: number;
+  success_rate: number;
+  errors: ErrorRecord[];
+}
+
+export interface SourceHealthListResponse {
+  sources: SourceHealthDetail[];
+  total: number;
+}
+
+export interface ErrorListResponse {
+  errors: ErrorRecord[];
+  total: number;
+}
+
 async function fetchAPI<T>(
   endpoint: string,
   options: RequestInit = {}
@@ -238,6 +276,18 @@ export const api = {
 
     getDashboardStats: (): Promise<DashboardStats> => {
       return fetchAPI('/api/v1/admin/dashboard/stats');
+    },
+
+    getSourcesHealth: (): Promise<SourceHealthListResponse> => {
+      return fetchAPI('/api/v1/admin/dashboard/sources');
+    },
+
+    getSourceHealth: (sourceId: string): Promise<SourceHealthDetail> => {
+      return fetchAPI(`/api/v1/admin/dashboard/sources/${sourceId}`);
+    },
+
+    getRecentErrors: (limit: number = 20): Promise<ErrorListResponse> => {
+      return fetchAPI(`/api/v1/admin/dashboard/errors?limit=${limit}`);
     },
   },
 };
