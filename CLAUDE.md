@@ -199,21 +199,21 @@ docker-compose up -d
 
 ## Phases
 
-### Phase 0: Scaffolding ← CURRENT
+### Phase 0: Scaffolding (COMPLETE)
 - [x] Directory structure
-- [ ] Docker Compose
-- [ ] Database schema
-- [ ] Connector interface
-- [ ] CI/CD
+- [x] Docker Compose (pgvector, backend, frontend)
+- [x] Database schema (Alembic migrations)
+- [x] Connector interface
+- [x] CI/CD (GitHub Actions)
 
-### Phase 1: MVP
-- [ ] Manual resource entry
-- [ ] Basic CRUD API
-- [ ] Postgres full-text search
-- [ ] Next.js UI (search + results)
-- [ ] Admin review queue
+### Phase 1: MVP (COMPLETE)
+- [x] Manual resource entry
+- [x] Basic CRUD API (`backend/app/api/v1/resources.py`)
+- [x] Postgres full-text search (`backend/app/services/search.py`)
+- [x] Next.js UI (search + results)
+- [x] Admin review queue (`frontend/src/app/admin/page.tsx`)
 
-### Phase 2: Automation
+### Phase 2: Automation ← NEXT
 - [ ] VA.gov connector
 - [ ] DOL/CareerOneStop connector
 - [ ] ETL pipeline
@@ -232,6 +232,41 @@ docker-compose up -d
 - [ ] Feedback loop
 - [ ] Analytics
 - [ ] Partner contributions
+
+---
+
+## Key Files (Phase 0-1)
+
+### Backend
+| File | Purpose |
+|------|---------|
+| `backend/app/main.py` | FastAPI app entry point |
+| `backend/app/api/v1/resources.py` | Resource CRUD endpoints |
+| `backend/app/api/v1/search.py` | Full-text search endpoint |
+| `backend/app/api/v1/admin.py` | Admin review queue |
+| `backend/app/models/resource.py` | Resource SQLModel |
+| `backend/app/services/trust.py` | Trust scoring logic |
+| `backend/app/services/search.py` | PostgreSQL FTS service |
+| `backend/app/core/taxonomy.py` | Categories and subcategories |
+| `backend/alembic/versions/` | Database migrations |
+| `backend/connectors/base.py` | Connector protocol interface |
+
+### Frontend
+| File | Purpose |
+|------|---------|
+| `frontend/src/app/page.tsx` | Landing page |
+| `frontend/src/app/search/page.tsx` | Search UI with filters |
+| `frontend/src/app/resources/[id]/page.tsx` | Resource detail page |
+| `frontend/src/app/admin/page.tsx` | Admin review queue |
+| `frontend/src/lib/api.ts` | API client with TypeScript types |
+| `frontend/src/components/ui/` | shadcn/ui components |
+
+### Infrastructure
+| File | Purpose |
+|------|---------|
+| `docker-compose.yml` | Local dev environment |
+| `.github/workflows/ci.yml` | CI pipeline |
+| `.env.example` | Environment template |
 
 ---
 
