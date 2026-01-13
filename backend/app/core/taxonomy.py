@@ -1,0 +1,211 @@
+"""Core taxonomy definitions for veteran resources.
+
+Categories and subcategories for classifying resources.
+"""
+
+from dataclasses import dataclass
+
+
+@dataclass(frozen=True)
+class Category:
+    """Resource category definition."""
+
+    id: str
+    name: str
+    description: str
+
+
+@dataclass(frozen=True)
+class Subcategory:
+    """Resource subcategory definition."""
+
+    id: str
+    name: str
+    category_id: str
+    description: str
+
+
+# Main resource categories
+CATEGORIES: dict[str, Category] = {
+    "employment": Category(
+        id="employment",
+        name="Employment",
+        description="Job placement, career services, and hiring programs for veterans",
+    ),
+    "training": Category(
+        id="training",
+        name="Training & Education",
+        description="Vocational rehabilitation, certifications, and educational benefits",
+    ),
+    "housing": Category(
+        id="housing",
+        name="Housing",
+        description="HUD-VASH, SSVF, emergency shelters, and housing assistance",
+    ),
+    "legal": Category(
+        id="legal",
+        name="Legal",
+        description="Legal aid, VA appeals, discharge upgrades, and benefits claims",
+    ),
+}
+
+# Subcategories organized by parent category
+SUBCATEGORIES: dict[str, Subcategory] = {
+    # Employment subcategories
+    "job-placement": Subcategory(
+        id="job-placement",
+        name="Job Placement",
+        category_id="employment",
+        description="Direct job placement services and hiring programs",
+    ),
+    "career-counseling": Subcategory(
+        id="career-counseling",
+        name="Career Counseling",
+        category_id="employment",
+        description="Career guidance, resume help, and interview prep",
+    ),
+    "veteran-preference": Subcategory(
+        id="veteran-preference",
+        name="Veteran Hiring Preference",
+        category_id="employment",
+        description="Employers with veteran hiring programs",
+    ),
+    "self-employment": Subcategory(
+        id="self-employment",
+        name="Self-Employment & Entrepreneurship",
+        category_id="employment",
+        description="Small business support and veteran-owned business resources",
+    ),
+    # Training subcategories
+    "voc-rehab": Subcategory(
+        id="voc-rehab",
+        name="Vocational Rehabilitation",
+        category_id="training",
+        description="VA VR&E and state vocational programs",
+    ),
+    "certifications": Subcategory(
+        id="certifications",
+        name="Certifications & Licenses",
+        category_id="training",
+        description="Professional certifications and license programs",
+    ),
+    "apprenticeships": Subcategory(
+        id="apprenticeships",
+        name="Apprenticeships",
+        category_id="training",
+        description="On-the-job training and apprenticeship programs",
+    ),
+    "gi-bill": Subcategory(
+        id="gi-bill",
+        name="GI Bill Programs",
+        category_id="training",
+        description="GI Bill benefits and approved institutions",
+    ),
+    # Housing subcategories
+    "hud-vash": Subcategory(
+        id="hud-vash",
+        name="HUD-VASH",
+        category_id="housing",
+        description="HUD-VASH voucher program",
+    ),
+    "ssvf": Subcategory(
+        id="ssvf",
+        name="SSVF",
+        category_id="housing",
+        description="Supportive Services for Veteran Families",
+    ),
+    "emergency-shelter": Subcategory(
+        id="emergency-shelter",
+        name="Emergency Shelter",
+        category_id="housing",
+        description="Emergency and transitional housing",
+    ),
+    "home-repair": Subcategory(
+        id="home-repair",
+        name="Home Repair & Modification",
+        category_id="housing",
+        description="Adaptive housing and home repair assistance",
+    ),
+    # Legal subcategories
+    "va-appeals": Subcategory(
+        id="va-appeals",
+        name="VA Appeals",
+        category_id="legal",
+        description="VA claims and appeals assistance",
+    ),
+    "discharge-upgrade": Subcategory(
+        id="discharge-upgrade",
+        name="Discharge Upgrade",
+        category_id="legal",
+        description="Military discharge characterization upgrades",
+    ),
+    "legal-aid": Subcategory(
+        id="legal-aid",
+        name="General Legal Aid",
+        category_id="legal",
+        description="Free or low-cost legal services",
+    ),
+    "veterans-court": Subcategory(
+        id="veterans-court",
+        name="Veterans Treatment Court",
+        category_id="legal",
+        description="Veterans treatment courts and diversion programs",
+    ),
+}
+
+# Source tier definitions
+SOURCE_TIERS: dict[int, dict[str, str | float]] = {
+    1: {
+        "name": "Official",
+        "description": "Federal agencies (VA, DOL, HUD)",
+        "reliability": 1.0,
+    },
+    2: {
+        "name": "Established",
+        "description": "Major VSOs (DAV, VFW, American Legion)",
+        "reliability": 0.8,
+    },
+    3: {
+        "name": "State",
+        "description": "State veteran agencies and departments",
+        "reliability": 0.6,
+    },
+    4: {
+        "name": "Community",
+        "description": "Community directories and local organizations",
+        "reliability": 0.4,
+    },
+}
+
+
+def get_category(category_id: str) -> Category | None:
+    """Get category by ID."""
+    return CATEGORIES.get(category_id)
+
+
+def get_subcategories(category_id: str) -> list[Subcategory]:
+    """Get all subcategories for a category."""
+    return [s for s in SUBCATEGORIES.values() if s.category_id == category_id]
+
+
+def is_valid_category(category_id: str) -> bool:
+    """Check if category ID is valid."""
+    return category_id in CATEGORIES
+
+
+def is_valid_subcategory(subcategory_id: str, category_id: str | None = None) -> bool:
+    """Check if subcategory ID is valid, optionally checking parent category."""
+    if subcategory_id not in SUBCATEGORIES:
+        return False
+    if category_id is not None:
+        return SUBCATEGORIES[subcategory_id].category_id == category_id
+    return True
+
+
+def get_reliability_score(tier: int) -> float:
+    """Get reliability score for a source tier."""
+    tier_info = SOURCE_TIERS.get(tier)
+    if tier_info is None:
+        return 0.0
+    reliability = tier_info.get("reliability", 0.0)
+    return float(reliability)

@@ -3,6 +3,7 @@
 import uuid
 from datetime import datetime
 
+from sqlalchemy import ARRAY, String
 from sqlmodel import Field, Relationship, SQLModel
 
 
@@ -15,8 +16,8 @@ class Organization(SQLModel, table=True):
     name: str = Field(max_length=255)
     ein: str | None = Field(default=None, max_length=20)  # Tax ID if known
     website: str | None = Field(default=None, max_length=500)
-    phones: list[str] = Field(default_factory=list, sa_type_kwargs={"as_uuid": True})
-    emails: list[str] = Field(default_factory=list)
+    phones: list[str] = Field(default_factory=list, sa_type=ARRAY(String))
+    emails: list[str] = Field(default_factory=list, sa_type=ARRAY(String))
 
     created_at: datetime = Field(default_factory=datetime.utcnow)
     updated_at: datetime = Field(default_factory=datetime.utcnow)

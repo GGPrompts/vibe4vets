@@ -6,6 +6,7 @@ import uuid
 from datetime import datetime
 from typing import TYPE_CHECKING
 
+from sqlalchemy import ARRAY, String
 from sqlmodel import Field, Relationship, SQLModel
 
 if TYPE_CHECKING:
@@ -29,7 +30,7 @@ class Location(SQLModel, table=True):
     latitude: float | None = None
     longitude: float | None = None
 
-    service_area: list[str] = Field(default_factory=list)  # Counties/regions served
+    service_area: list[str] = Field(default_factory=list, sa_type=ARRAY(String))  # Counties/regions served
 
     created_at: datetime = Field(default_factory=datetime.utcnow)
 

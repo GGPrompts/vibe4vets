@@ -7,8 +7,11 @@ RUN pip install uv
 
 # Copy project files
 COPY pyproject.toml .
+COPY alembic.ini .
+COPY alembic alembic/
 COPY app app/
 COPY connectors connectors/
+COPY tests tests/
 
 # Install dependencies
 RUN uv pip install --system -e ".[dev]"

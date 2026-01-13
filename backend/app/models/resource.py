@@ -7,6 +7,7 @@ from datetime import datetime
 from enum import Enum
 from typing import TYPE_CHECKING
 
+from sqlalchemy import ARRAY, String
 from sqlmodel import Field, Relationship, SQLModel
 
 if TYPE_CHECKING:
@@ -49,19 +50,19 @@ class Resource(SQLModel, table=True):
     how_to_apply: str | None = None
 
     # Classification
-    categories: list[str] = Field(default_factory=list)  # employment, training, housing, legal
-    subcategories: list[str] = Field(default_factory=list)
-    tags: list[str] = Field(default_factory=list)
+    categories: list[str] = Field(default_factory=list, sa_type=ARRAY(String))
+    subcategories: list[str] = Field(default_factory=list, sa_type=ARRAY(String))
+    tags: list[str] = Field(default_factory=list, sa_type=ARRAY(String))
 
     # Scope
     scope: ResourceScope = Field(default=ResourceScope.NATIONAL)
-    states: list[str] = Field(default_factory=list)  # ['*'] for national
+    states: list[str] = Field(default_factory=list, sa_type=ARRAY(String))
 
     # Contact
     website: str | None = Field(default=None, max_length=500)
     phone: str | None = Field(default=None, max_length=50)
     hours: str | None = Field(default=None, max_length=255)
-    languages: list[str] = Field(default_factory=lambda: ["en"])
+    languages: list[str] = Field(default_factory=lambda: ["en"], sa_type=ARRAY(String))
     cost: str | None = Field(default=None, max_length=100)  # free, sliding scale, etc.
 
     # Trust signals
