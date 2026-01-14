@@ -273,9 +273,11 @@ docker-compose up -d
 |------|---------|
 | `frontend/src/app/page.tsx` | Landing page |
 | `frontend/src/app/search/page.tsx` | Search UI with filters |
+| `frontend/src/app/discover/page.tsx` | Discovery feed with date-grouped resources |
 | `frontend/src/app/resources/[id]/page.tsx` | Resource detail page |
 | `frontend/src/app/admin/page.tsx` | Admin review queue |
 | `frontend/src/lib/api.ts` | API client with TypeScript types |
+| `frontend/src/components/DiscoveryFeed.tsx` | Date-grouped resource feed component |
 | `frontend/src/components/ui/` | shadcn/ui components |
 
 ### Infrastructure
