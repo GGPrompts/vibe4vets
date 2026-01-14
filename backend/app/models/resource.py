@@ -83,6 +83,12 @@ class Resource(SQLModel, table=True):
     freshness_score: float = Field(default=1.0)  # 0-1
     reliability_score: float = Field(default=0.5)  # 0-1
 
+    # Link health tracking (populated by link_checker job)
+    link_checked_at: datetime | None = None
+    link_http_status: int | None = None
+    link_health_score: float | None = None  # 0-1, AI-determined
+    link_flagged_reason: str | None = Field(default=None, max_length=500)
+
     # State
     status: ResourceStatus = Field(default=ResourceStatus.ACTIVE)
     created_at: datetime = Field(default_factory=datetime.utcnow)
