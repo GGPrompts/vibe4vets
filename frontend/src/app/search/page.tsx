@@ -29,7 +29,7 @@ import api, {
   type Resource,
   type MatchExplanation,
 } from '@/lib/api';
-import { Search, Filter, X } from 'lucide-react';
+import { Search, SearchX, Filter, X, Briefcase, Home, Scale, GraduationCap, Lightbulb } from 'lucide-react';
 
 interface SelectedResource {
   resource: Resource;
@@ -330,24 +330,94 @@ function SearchResults() {
               ))}
             </div>
           ) : (
-            <div className="py-12 text-center">
-              <p className="text-lg text-muted-foreground">
-                No resources found matching your criteria.
-              </p>
-              <Button
-                variant="outline"
-                className="mt-4"
-                onClick={() =>
-                  handleFiltersChange({
-                    categories: [],
-                    states: [],
-                    scope: 'all',
-                    minTrust: 0,
-                  })
-                }
-              >
-                Clear Filters
-              </Button>
+            <div className="rounded-xl border border-[hsl(var(--border))] bg-white p-8 sm:p-12">
+              {/* Icon and Heading */}
+              <div className="text-center">
+                <SearchX className="mx-auto mb-4 h-12 w-12 text-[hsl(var(--muted-foreground))]" />
+                <h3 className="font-display text-xl text-[hsl(var(--v4v-navy))]">
+                  No resources found
+                </h3>
+                <p className="mx-auto mt-2 max-w-md text-[hsl(var(--muted-foreground))]">
+                  {query
+                    ? `We couldn't find any resources matching "${query}" with your current filters.`
+                    : "We couldn't find any resources matching your current filters."}
+                </p>
+              </div>
+
+              {/* Suggestions */}
+              <div className="mx-auto mt-6 max-w-md">
+                <div className="flex items-start gap-2 rounded-lg bg-[hsl(var(--v4v-gold)/0.1)] p-4">
+                  <Lightbulb className="mt-0.5 h-5 w-5 flex-shrink-0 text-[hsl(var(--v4v-gold-dark))]" />
+                  <div className="text-sm text-[hsl(var(--v4v-navy))]">
+                    <p className="font-medium">Try these suggestions:</p>
+                    <ul className="mt-1 list-inside list-disc space-y-1 text-[hsl(var(--muted-foreground))]">
+                      {query && <li>Check your spelling or try different keywords</li>}
+                      <li>Remove some filters to broaden your search</li>
+                      <li>Browse resources by category below</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              {/* Quick Links to Hubs */}
+              <div className="mt-8">
+                <p className="mb-4 text-center text-sm font-medium text-[hsl(var(--muted-foreground))]">
+                  Browse by category
+                </p>
+                <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+                  <Link
+                    href="/hubs/employment"
+                    className="flex flex-col items-center gap-2 rounded-lg border border-[hsl(var(--border))] p-4 transition-colors hover:border-[hsl(var(--v4v-navy))] hover:bg-[hsl(var(--v4v-navy)/0.05)]"
+                  >
+                    <Briefcase className="h-6 w-6 text-[hsl(var(--v4v-navy))]" />
+                    <span className="text-sm font-medium text-[hsl(var(--v4v-navy))]">Employment</span>
+                  </Link>
+                  <Link
+                    href="/hubs/housing"
+                    className="flex flex-col items-center gap-2 rounded-lg border border-[hsl(var(--border))] p-4 transition-colors hover:border-[hsl(var(--v4v-navy))] hover:bg-[hsl(var(--v4v-navy)/0.05)]"
+                  >
+                    <Home className="h-6 w-6 text-[hsl(var(--v4v-navy))]" />
+                    <span className="text-sm font-medium text-[hsl(var(--v4v-navy))]">Housing</span>
+                  </Link>
+                  <Link
+                    href="/hubs/legal"
+                    className="flex flex-col items-center gap-2 rounded-lg border border-[hsl(var(--border))] p-4 transition-colors hover:border-[hsl(var(--v4v-navy))] hover:bg-[hsl(var(--v4v-navy)/0.05)]"
+                  >
+                    <Scale className="h-6 w-6 text-[hsl(var(--v4v-navy))]" />
+                    <span className="text-sm font-medium text-[hsl(var(--v4v-navy))]">Legal</span>
+                  </Link>
+                  <Link
+                    href="/hubs/training"
+                    className="flex flex-col items-center gap-2 rounded-lg border border-[hsl(var(--border))] p-4 transition-colors hover:border-[hsl(var(--v4v-navy))] hover:bg-[hsl(var(--v4v-navy)/0.05)]"
+                  >
+                    <GraduationCap className="h-6 w-6 text-[hsl(var(--v4v-navy))]" />
+                    <span className="text-sm font-medium text-[hsl(var(--v4v-navy))]">Training</span>
+                  </Link>
+                </div>
+              </div>
+
+              {/* Clear Filters Button */}
+              {(filters.categories.length > 0 ||
+                filters.states.length > 0 ||
+                filters.scope !== 'all' ||
+                filters.minTrust > 0) && (
+                <div className="mt-6 text-center">
+                  <Button
+                    variant="outline"
+                    onClick={() =>
+                      handleFiltersChange({
+                        categories: [],
+                        states: [],
+                        scope: 'all',
+                        minTrust: 0,
+                      })
+                    }
+                  >
+                    <X className="mr-2 h-4 w-4" />
+                    Clear All Filters
+                  </Button>
+                </div>
+              )}
             </div>
           )}
         </ScrollArea>
