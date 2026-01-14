@@ -17,6 +17,7 @@ import {
   SheetTrigger,
 } from '@/components/ui/sheet';
 import { ResourceCard } from '@/components/resource-card';
+import { ResourceCardSkeleton } from '@/components/resource-card-skeleton';
 import {
   FiltersSidebar,
   type FilterState,
@@ -312,7 +313,7 @@ function SearchResults() {
           {loading ? (
             <div className="grid gap-4 pr-4 sm:grid-cols-2">
               {[...Array(6)].map((_, i) => (
-                <Skeleton key={i} className="h-48 w-full rounded-lg" />
+                <ResourceCardSkeleton key={i} />
               ))}
             </div>
           ) : hasResults ? (
@@ -396,7 +397,7 @@ function SearchFallback() {
         <Skeleton className="h-6 w-48" />
         <div className="grid gap-4 sm:grid-cols-2">
           {[...Array(6)].map((_, i) => (
-            <Skeleton key={i} className="h-48 w-full rounded-lg" />
+            <ResourceCardSkeleton key={i} />
           ))}
         </div>
       </div>
