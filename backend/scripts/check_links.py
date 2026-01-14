@@ -18,7 +18,6 @@ from pathlib import Path
 
 import httpx
 
-
 URL_RE = re.compile(r"https?://[^\s\"'<>)}\\]]+")
 TRAILING_PUNCTUATION_RE = re.compile(r"[),.;:!?]+$")
 

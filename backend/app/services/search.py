@@ -1,7 +1,6 @@
 """Search service for full-text and filtered search."""
 
-from sqlalchemy import or_
-from sqlalchemy import func, text
+from sqlalchemy import func, or_, text
 from sqlmodel import Session, col, select
 
 from app.models import Location, Organization, Resource, Source
