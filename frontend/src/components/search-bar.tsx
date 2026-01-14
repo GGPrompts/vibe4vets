@@ -143,10 +143,10 @@ export function SearchBar({
       </div>
 
       {/* Filters row */}
-      <div className="flex flex-wrap gap-3">
+      <div className="flex flex-col gap-3 sm:flex-row">
         <Select value={category} onValueChange={setCategory}>
           <SelectTrigger
-            className={`w-[160px] transition-all ${
+            className={`w-full sm:w-[160px] min-h-[44px] transition-all ${
               isHero
                 ? 'border-white/20 bg-white/10 text-white hover:bg-white/15 [&>svg]:text-white/60'
                 : ''
@@ -168,7 +168,7 @@ export function SearchBar({
 
         <Select value={state} onValueChange={setState}>
           <SelectTrigger
-            className={`w-[160px] transition-all ${
+            className={`w-full sm:w-[160px] min-h-[44px] transition-all ${
               isHero
                 ? 'border-white/20 bg-white/10 text-white hover:bg-white/15 [&>svg]:text-white/60'
                 : ''

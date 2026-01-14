@@ -147,36 +147,38 @@ export default function DiscoverPage() {
 
       {/* Filters Section */}
       <section className="border-b border-[hsl(var(--border))] bg-white py-4">
-        <div className="mx-auto max-w-6xl px-6">
-          <div className="flex flex-wrap items-center gap-4">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
             <span className="text-sm font-medium text-[hsl(var(--muted-foreground))]">
               Filter by:
             </span>
-            <Select value={category} onValueChange={handleCategoryChange}>
-              <SelectTrigger className="w-[160px]">
-                <SelectValue placeholder="Category" />
-              </SelectTrigger>
-              <SelectContent>
-                {CATEGORIES.map((cat) => (
-                  <SelectItem key={cat.value} value={cat.value}>
-                    {cat.label}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
+            <div className="flex flex-col gap-3 sm:flex-row sm:gap-4">
+              <Select value={category} onValueChange={handleCategoryChange}>
+                <SelectTrigger className="w-full sm:w-[160px] min-h-[44px]">
+                  <SelectValue placeholder="Category" />
+                </SelectTrigger>
+                <SelectContent>
+                  {CATEGORIES.map((cat) => (
+                    <SelectItem key={cat.value} value={cat.value}>
+                      {cat.label}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
 
-            <Select value={state} onValueChange={handleStateChange}>
-              <SelectTrigger className="w-[160px]">
-                <SelectValue placeholder="State" />
-              </SelectTrigger>
-              <SelectContent className="max-h-[300px]">
-                {STATES.map((st) => (
-                  <SelectItem key={st.value} value={st.value}>
-                    {st.label}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
+              <Select value={state} onValueChange={handleStateChange}>
+                <SelectTrigger className="w-full sm:w-[160px] min-h-[44px]">
+                  <SelectValue placeholder="State" />
+                </SelectTrigger>
+                <SelectContent className="max-h-[300px]">
+                  {STATES.map((st) => (
+                    <SelectItem key={st.value} value={st.value}>
+                      {st.label}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
           </div>
         </div>
       </section>
