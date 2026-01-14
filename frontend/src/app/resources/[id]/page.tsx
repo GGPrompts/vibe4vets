@@ -115,7 +115,7 @@ export default function ResourceDetailPage() {
 
   if (loading) {
     return (
-      <main className="min-h-screen p-8">
+      <main className="min-h-screen p-4 sm:p-6 lg:p-8">
         <div className="mx-auto max-w-4xl">
           <Skeleton className="mb-4 h-10 w-48" />
           <Skeleton className="mb-8 h-6 w-full" />
@@ -133,7 +133,7 @@ export default function ResourceDetailPage() {
 
   if (error || !resource) {
     return (
-      <main className="min-h-screen p-8">
+      <main className="min-h-screen p-4 sm:p-6 lg:p-8">
         <div className="mx-auto max-w-4xl text-center">
           <h1 className="mb-4 text-2xl font-bold">Resource Not Found</h1>
           <p className="mb-4 text-muted-foreground">{error}</p>
@@ -146,20 +146,20 @@ export default function ResourceDetailPage() {
   }
 
   return (
-    <main className="min-h-screen p-8">
+    <main className="min-h-screen p-4 sm:p-6 lg:p-8">
       <div className="mx-auto max-w-4xl">
         {/* Navigation */}
-        <div className="mb-6">
+        <div className="mb-4 sm:mb-6">
           <Link
             href="/search"
-            className="text-sm text-muted-foreground hover:text-foreground"
+            className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground min-h-[44px] py-2"
           >
             ← Back to Search
           </Link>
         </div>
 
         {/* Header */}
-        <div className="mb-6">
+        <div className="mb-4 sm:mb-6">
           <div className="mb-2 flex flex-wrap gap-2">
             {resource.categories.map((cat) => (
               <Badge
@@ -170,7 +170,7 @@ export default function ResourceDetailPage() {
               </Badge>
             ))}
           </div>
-          <h1 className="mb-2 text-3xl font-bold">{resource.title}</h1>
+          <h1 className="mb-2 text-2xl font-bold sm:text-3xl">{resource.title}</h1>
           <p className="text-lg text-muted-foreground">
             {resource.organization.name}
           </p>

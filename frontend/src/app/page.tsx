@@ -171,7 +171,7 @@ export default function Home() {
           </div>
 
           {/* Category cards grid */}
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 sm:gap-6">
             {categories.map((category, index) => {
               const Icon = category.icon;
               return (
@@ -310,7 +310,7 @@ export default function Home() {
             </p>
 
             {/* Links */}
-            <div className="mt-6 flex gap-6 text-sm">
+            <div className="mt-6 flex flex-wrap justify-center gap-4 text-sm sm:gap-6">
               <Link href="/search" className="text-white/60 transition-colors hover:text-[hsl(var(--v4v-gold))]">
                 Search Resources
               </Link>
