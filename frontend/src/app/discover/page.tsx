@@ -1,9 +1,10 @@
 'use client';
 
-import { Suspense, useState, useCallback } from 'react';
-import Link from 'next/link';
-import { useRouter } from 'next/navigation';
-import { Sparkles, ArrowLeft } from 'lucide-react';
+	import { Suspense, useState, useCallback } from 'react';
+	import Image from 'next/image';
+	import Link from 'next/link';
+	import { useRouter } from 'next/navigation';
+	import { ArrowLeft } from 'lucide-react';
 import {
   Select,
   SelectContent,
@@ -150,14 +151,21 @@ export default function DiscoverPage() {
             Back to Home
           </Link>
 
-          <div className="flex items-center gap-4">
-            <div className="rounded-xl bg-[hsl(var(--v4v-gold)/0.2)] p-4">
-              <Sparkles className="h-10 w-10 text-[hsl(var(--v4v-gold))]" />
-            </div>
-            <div>
-              <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl">
-                Fresh Finds
-              </h1>
+	          <div className="flex items-center gap-4">
+	            <div className="rounded-xl bg-[hsl(var(--v4v-gold)/0.2)] p-4">
+	              <Image
+	                src="/icons/fresh-finds-badge-256.png"
+	                alt="Fresh Finds"
+	                width={256}
+	                height={256}
+	                className="h-10 w-10"
+	                sizes="40px"
+	              />
+	            </div>
+	            <div>
+	              <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl">
+	                Fresh Finds
+	              </h1>
               <p className="mt-2 text-lg text-white/80">
                 Recently discovered resources from across the web
               </p>
