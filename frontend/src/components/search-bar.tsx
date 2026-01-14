@@ -157,7 +157,6 @@ export function SearchBar({
           <SelectContent
             position="popper"
             className="bg-white text-[hsl(var(--v4v-navy))] border border-[hsl(var(--border))]"
-            onCloseAutoFocus={(e) => e.preventDefault()}
           >
             {CATEGORIES.map((cat) => (
               <SelectItem key={cat.value} value={cat.value}>
