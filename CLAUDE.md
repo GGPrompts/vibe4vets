@@ -267,6 +267,9 @@ docker-compose up -d
 | `backend/jobs/scheduler.py` | APScheduler integration |
 | `backend/jobs/refresh.py` | Full refresh job |
 | `backend/jobs/freshness.py` | Freshness update job |
+| `backend/app/services/discovery.py` | AI-powered resource discovery service |
+| `backend/scripts/seed_hubs.py` | Hub data seeding script |
+| `backend/.claude/commands/scan-resources.md` | Discovery slash command |
 
 ### Frontend
 | File | Purpose |
@@ -278,6 +281,8 @@ docker-compose up -d
 | `frontend/src/app/admin/page.tsx` | Admin review queue |
 | `frontend/src/lib/api.ts` | API client with TypeScript types |
 | `frontend/src/components/DiscoveryFeed.tsx` | Date-grouped resource feed component |
+| `frontend/src/app/hubs/*/page.tsx` | Static resource hub pages (employment, housing, legal, training) |
+| `frontend/src/components/HubCard.tsx` | Hub resource card component |
 | `frontend/src/components/ui/` | shadcn/ui components |
 
 ### Infrastructure
