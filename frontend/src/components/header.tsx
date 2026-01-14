@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname, useSearchParams, useRouter } from 'next/navigation';
 import { useScrollDirection } from '@/hooks/use-scroll-direction';
@@ -67,8 +68,16 @@ export function Header({ variant = 'default' }: HeaderProps) {
     >
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-6">
         {/* Logo */}
-        <Link href="/" className="flex shrink-0 items-center gap-2">
-          <span className="font-display text-xl text-white">Vibe4Vets</span>
+        <Link href="/" className="flex shrink-0 items-center gap-3" aria-label="Vibe4Vets Home">
+          <Image
+            src="/brand/vibe4vets-logo.png"
+            alt="Vibe4Vets"
+            width={851}
+            height={273}
+            priority
+            className="h-8 w-auto"
+            sizes="128px"
+          />
         </Link>
 
         {/* Search Bar - Only on /search and /discover */}
