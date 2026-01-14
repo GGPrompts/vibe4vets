@@ -290,7 +290,14 @@ docker-compose up -d
 |------|---------|
 | `docker-compose.yml` | Local dev environment |
 | `.github/workflows/ci.yml` | CI pipeline |
+| `.github/workflows/link-check.yml` | Scheduled external link checker |
 | `.env.example` | Environment template |
+
+### Maintenance
+```bash
+# Check curated external links (requires network access)
+python backend/scripts/check_links.py
+```
 
 ---
 

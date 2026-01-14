@@ -1,0 +1,36 @@
+name: Link Check
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 9 * * *" # daily
+  pull_request:
+    paths:
+      - "backend/data/hubs/**"
+      - "backend/scripts/seed_resources.py"
+      - "backend/scripts/check_links.py"
+      - "frontend/src/app/hubs/**"
+      - ".github/workflows/link-check.yml"
+
+env:
+  PYTHON_VERSION: "3.12"
+
+jobs:
+  link-check:
+    name: External Link Check
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Install dependencies
+        run: python -m pip install --upgrade pip httpx
+
+      - name: Run link check
+        run: python backend/scripts/check_links.py
+

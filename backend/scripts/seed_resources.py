@@ -102,7 +102,7 @@ SEED_DATA = [
                 "categories": ["employment"],
                 "subcategories": ["job_placement", "career_counseling"],
                 "scope": ResourceScope.NATIONAL,
-                "website": "https://www.dol.gov/agencies/vets/programs/jvsg",
+                "website": "https://www.dol.gov/agencies/vets/programs/grants/state/jvsg",
                 "cost": "Free",
             },
             {
