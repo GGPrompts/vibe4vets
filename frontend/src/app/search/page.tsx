@@ -1,6 +1,7 @@
 'use client';
 
 import { Suspense, useCallback, useEffect, useState } from 'react';
+import { useIsMobile } from '@/hooks/use-media-query';
 import { useSearchParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { Input } from '@/components/ui/input';
@@ -46,6 +47,7 @@ function SearchResults() {
   const [selectedResource, setSelectedResource] = useState<SelectedResource | null>(null);
   const [searchInput, setSearchInput] = useState(query);
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
+  const isMobile = useIsMobile();
 
   // Initialize filters from URL params
   const [filters, setFilters] = useState<FilterState>(() => {
@@ -226,7 +228,7 @@ function SearchResults() {
 
         {/* Mobile Filter Button */}
         <div className="flex items-center justify-between lg:hidden">
-          <p className="text-sm text-muted-foreground">
+          <span className="text-sm text-muted-foreground">
             {loading ? (
               <Skeleton className="inline-block h-4 w-24" />
             ) : (
@@ -234,7 +236,7 @@ function SearchResults() {
                 <strong>{totalResults}</strong> results
               </>
             )}
-          </p>
+          </span>
           <Sheet open={mobileFiltersOpen} onOpenChange={setMobileFiltersOpen}>
             <SheetTrigger asChild>
               <Button variant="outline" size="sm">
@@ -273,7 +275,7 @@ function SearchResults() {
 
         {/* Results Header - Desktop */}
         <div className="hidden items-center justify-between lg:flex">
-          <p className="text-muted-foreground">
+          <span className="text-muted-foreground">
             {loading ? (
               <Skeleton className="inline-block h-4 w-48" />
             ) : error ? (
@@ -291,7 +293,7 @@ function SearchResults() {
                 )}
               </>
             )}
-          </p>
+          </span>
           {selectedResource && (
             <Button
               variant="ghost"
@@ -358,13 +360,16 @@ function SearchResults() {
         />
       </Card>
 
-      {/* Detail Panel - Mobile (Sheet) */}
-      {selectedResource && (
+      {/* Detail Panel - Mobile (Sheet) - Only render on mobile */}
+      {isMobile && selectedResource && (
         <Sheet
           open={!!selectedResource}
           onOpenChange={(open) => !open && setSelectedResource(null)}
         >
-          <SheetContent side="bottom" className="h-[80vh] lg:hidden">
+          <SheetContent side="bottom" className="h-[80vh]">
+            <SheetHeader className="sr-only">
+              <SheetTitle>Resource Details</SheetTitle>
+            </SheetHeader>
             <ResourceDetailPanel
               resource={selectedResource.resource}
               explanations={selectedResource.explanations}
