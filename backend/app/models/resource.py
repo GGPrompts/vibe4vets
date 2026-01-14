@@ -6,7 +6,7 @@ from enum import Enum
 from typing import TYPE_CHECKING
 
 from sqlalchemy import Column, Text
-from sqlalchemy.dialects.postgresql import ARRAY
+from sqlalchemy.dialects.postgresql import ARRAY, TSVECTOR
 from sqlmodel import Field, Relationship, SQLModel
 
 if TYPE_CHECKING:
@@ -93,6 +93,9 @@ class Resource(SQLModel, table=True):
     status: ResourceStatus = Field(default=ResourceStatus.ACTIVE)
     created_at: datetime = Field(default_factory=datetime.utcnow)
     updated_at: datetime = Field(default_factory=datetime.utcnow)
+
+    # Full-text search vector (auto-populated by trigger or manually)
+    search_vector: str | None = Field(default=None, sa_column=Column(TSVECTOR))
 
     # Note: embedding column will be added via migration with pgvector
 
