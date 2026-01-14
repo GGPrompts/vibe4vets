@@ -2,6 +2,7 @@
 
 import { Suspense, useCallback, useEffect, useState } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
@@ -211,7 +212,7 @@ function SearchResults() {
 
       {/* Filter Sidebar - Desktop */}
       <div
-        className={`sticky top-6 hidden h-fit max-h-[calc(100vh-160px)] overflow-hidden transition-all duration-300 ease-in-out lg:block ${
+        className={`sticky top-[88px] hidden h-fit max-h-[calc(100vh-112px)] overflow-hidden transition-all duration-300 ease-in-out lg:block ${
           leftCollapsed ? 'w-0 opacity-0' : 'w-[280px] opacity-100'
         }`}
       >
@@ -240,7 +241,7 @@ function SearchResults() {
       </div>
 
       {/* Main Content */}
-      <div className="flex flex-col space-y-4">
+      <div className="flex min-h-0 flex-col space-y-4">
         {/* Search Bar */}
         <form onSubmit={handleSearch} className="relative">
           <div className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2">
@@ -341,17 +342,27 @@ function SearchResults() {
               ))}
             </div>
           ) : hasResults ? (
-            <div className="grid gap-4 pr-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-              {resources.map((resource) => (
-                <ResourceCard
-                  key={resource.id}
-                  resource={resource}
-                  explanations={explanationsMap.get(resource.id)}
-                  variant="link"
-                  searchParams={searchParams.toString()}
-                />
-              ))}
-            </div>
+            <AnimatePresence mode="popLayout">
+              <div className="grid gap-4 pr-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                {resources.map((resource, index) => (
+                  <motion.div
+                    key={resource.id}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, scale: 0.95 }}
+                    transition={{ delay: index * 0.03 }}
+                    layout
+                  >
+                    <ResourceCard
+                      resource={resource}
+                      explanations={explanationsMap.get(resource.id)}
+                      variant="link"
+                      searchParams={searchParams.toString()}
+                    />
+                  </motion.div>
+                ))}
+              </div>
+            </AnimatePresence>
           ) : (
             <div className="py-12 text-center">
               <p className="text-lg text-muted-foreground">
