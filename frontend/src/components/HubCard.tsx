@@ -14,10 +14,10 @@ interface HubCardProps {
 }
 
 const categoryColors: Record<string, string> = {
-  employment: 'bg-[hsl(210,70%,45%)]',
-  training: 'bg-[hsl(160,50%,40%)]',
-  housing: 'bg-[hsl(25,70%,50%)]',
-  legal: 'bg-[hsl(280,40%,45%)]',
+  employment: 'bg-v4v-employment',
+  training: 'bg-v4v-training',
+  housing: 'bg-v4v-housing',
+  legal: 'bg-v4v-legal',
 };
 
 export function HubCard({ resource, category }: HubCardProps) {
