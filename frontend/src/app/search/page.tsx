@@ -34,10 +34,11 @@ function SearchResults() {
   const router = useRouter();
   const query = searchParams.get('q') || '';
 
-  const [loading, setLoading] = useState(true);
+  const [initialLoading, setInitialLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [searchResults, setSearchResults] = useState<SearchResponse | null>(null);
   const [browseResults, setBrowseResults] = useState<ResourceList | null>(null);
+  const [lastQuery, setLastQuery] = useState<string | null>(null);
   const [searchInput, setSearchInput] = useState(query);
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
 
@@ -107,43 +108,43 @@ function SearchResults() {
     updateURL(filters, searchInput);
   };
 
+  // Only refetch when query changes, not on filter changes
+  // Filters are applied client-side to already-fetched data
   useEffect(() => {
     async function fetchData() {
-      setLoading(true);
+      // Only show loading skeleton on initial load or query change
+      const isQueryChange = query !== lastQuery;
+      if (isQueryChange || initialLoading) {
+        setInitialLoading(true);
+      }
       setError(null);
 
       try {
-        // Build API params from filters
-        const category = filters.categories.length === 1 ? filters.categories[0] : undefined;
-        const state = filters.states.length === 1 ? filters.states[0] : undefined;
-
         if (query) {
           const results = await api.search.query({
             q: query,
-            category,
-            state,
             limit: 50,
           });
           setSearchResults(results);
           setBrowseResults(null);
         } else {
           const results = await api.resources.list({
-            category,
-            state,
             limit: 50,
           });
           setBrowseResults(results);
           setSearchResults(null);
         }
+        setLastQuery(query);
       } catch (err) {
         setError(err instanceof Error ? err.message : 'Failed to load resources');
       } finally {
-        setLoading(false);
+        setInitialLoading(false);
       }
     }
 
     fetchData();
-  }, [query, filters.categories, filters.states]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [query]); // Only refetch on query change, filters applied client-side
 
   // Filter results client-side for multi-select and trust
   const filterResults = <T extends Resource>(resources: T[]) => {
@@ -265,7 +266,7 @@ function SearchResults() {
         {/* Mobile Filter Button */}
         <div className="flex items-center justify-between lg:hidden">
           <span className="text-sm text-muted-foreground">
-            {loading ? (
+            {initialLoading ? (
               <Skeleton className="inline-block h-4 w-24" />
             ) : (
               <>
@@ -313,7 +314,7 @@ function SearchResults() {
         {/* Results Header - Desktop */}
         <div className="hidden items-center lg:flex">
           <span className="text-muted-foreground">
-            {loading ? (
+            {initialLoading ? (
               <Skeleton className="inline-block h-4 w-48" />
             ) : error ? (
               <span className="text-destructive">{error}</span>
@@ -335,7 +336,7 @@ function SearchResults() {
 
         {/* Results Grid */}
         <div>
-          {loading ? (
+          {initialLoading ? (
             <div className="grid gap-4 pr-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
               {[...Array(8)].map((_, i) => (
                 <Card key={i} className="h-48 w-full animate-pulse overflow-hidden">

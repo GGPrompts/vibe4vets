@@ -121,15 +121,67 @@ export default function ResourceDetailPage() {
   if (loading) {
     return (
       <main className="min-h-screen p-8 pt-24">
-        <div className="mx-auto max-w-4xl">
-          <Skeleton className="mb-4 h-10 w-48" />
-          <Skeleton className="mb-8 h-6 w-full" />
-          <div className="grid gap-6 md:grid-cols-3">
-            <div className="space-y-4 md:col-span-2">
-              <Skeleton className="h-32 w-full" />
-              <Skeleton className="h-32 w-full" />
+        <div className="mx-auto max-w-4xl animate-pulse">
+          {/* Back link skeleton */}
+          <Skeleton className="mb-6 h-4 w-24" />
+
+          {/* Header skeleton */}
+          <div className="mb-6">
+            <div className="mb-2 flex gap-2">
+              <Skeleton className="h-6 w-20 rounded-full" />
+              <Skeleton className="h-6 w-16 rounded-full" />
             </div>
-            <Skeleton className="h-64 w-full" />
+            <Skeleton className="mb-2 h-9 w-3/4" />
+            <Skeleton className="h-5 w-48" />
+          </div>
+
+          <div className="grid gap-6 md:grid-cols-3">
+            {/* Main content cards */}
+            <div className="space-y-6 md:col-span-2">
+              <Card className="overflow-hidden">
+                <CardHeader>
+                  <Skeleton className="h-6 w-40" />
+                </CardHeader>
+                <CardContent className="space-y-2">
+                  <Skeleton className="h-4 w-full" />
+                  <Skeleton className="h-4 w-full" />
+                  <Skeleton className="h-4 w-3/4" />
+                </CardContent>
+              </Card>
+              <Card className="overflow-hidden">
+                <CardHeader>
+                  <Skeleton className="h-6 w-32" />
+                </CardHeader>
+                <CardContent className="space-y-2">
+                  <Skeleton className="h-4 w-full" />
+                  <Skeleton className="h-4 w-2/3" />
+                </CardContent>
+              </Card>
+            </div>
+
+            {/* Sidebar card */}
+            <Card className="h-fit overflow-hidden">
+              <CardHeader>
+                <Skeleton className="h-6 w-28" />
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div>
+                  <div className="mb-2 flex justify-between">
+                    <Skeleton className="h-4 w-20" />
+                    <Skeleton className="h-4 w-10" />
+                  </div>
+                  <Skeleton className="h-3 w-full rounded-full" />
+                </div>
+                <div className="flex justify-between">
+                  <Skeleton className="h-4 w-24" />
+                  <Skeleton className="h-4 w-32" />
+                </div>
+                <div className="flex justify-between">
+                  <Skeleton className="h-4 w-16" />
+                  <Skeleton className="h-4 w-24" />
+                </div>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </main>
