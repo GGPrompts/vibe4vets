@@ -1,9 +1,12 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useSearchParams, useRouter } from 'next/navigation';
 import { useScrollDirection } from '@/hooks/use-scroll-direction';
 import { cn } from '@/lib/utils';
+import { Input } from '@/components/ui/input';
+import { Search } from 'lucide-react';
 
 interface HeaderProps {
   variant?: 'default' | 'transparent';
@@ -11,7 +14,30 @@ interface HeaderProps {
 
 export function Header({ variant = 'default' }: HeaderProps) {
   const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const router = useRouter();
   const { scrollDirection, isAtTop } = useScrollDirection();
+
+  const isSearchPage = pathname === '/search';
+  const [searchQuery, setSearchQuery] = useState('');
+
+  // Sync search query from URL params when on search page
+  useEffect(() => {
+    if (isSearchPage) {
+      setSearchQuery(searchParams.get('q') || '');
+    }
+  }, [isSearchPage, searchParams]);
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    const params = new URLSearchParams(searchParams.toString());
+    if (searchQuery) {
+      params.set('q', searchQuery);
+    } else {
+      params.delete('q');
+    }
+    router.push(`/search?${params.toString()}`);
+  };
 
   // Don't render on admin pages (they have their own layout)
   if (pathname.startsWith('/admin')) {
@@ -32,14 +58,28 @@ export function Header({ variant = 'default' }: HeaderProps) {
         showShadow && 'shadow-lg'
       )}
     >
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
+      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-6">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2">
+        <Link href="/" className="flex shrink-0 items-center gap-2">
           <span className="font-display text-xl text-white">Vibe4Vets</span>
         </Link>
 
+        {/* Search Bar - Only on /search */}
+        {isSearchPage && (
+          <form onSubmit={handleSearch} className="relative mx-4 hidden max-w-md flex-1 md:block">
+            <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+            <Input
+              type="text"
+              placeholder="Search resources..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="h-9 w-full rounded-full bg-white/10 pl-9 pr-4 text-sm text-white placeholder:text-white/50 focus:bg-white/20"
+            />
+          </form>
+        )}
+
         {/* Navigation */}
-        <nav className="flex items-center gap-6">
+        <nav className="flex shrink-0 items-center gap-6">
           <Link
             href="/search"
             className="text-sm font-medium text-white/80 transition-colors hover:text-[hsl(var(--v4v-gold))]"

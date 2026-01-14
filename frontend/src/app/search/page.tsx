@@ -1,9 +1,7 @@
 'use client';
 
 import { Suspense, useCallback, useEffect, useState } from 'react';
-import { useIsMobile } from '@/hooks/use-media-query';
 import { useSearchParams, useRouter } from 'next/navigation';
-import Link from 'next/link';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
@@ -21,27 +19,14 @@ import {
   FiltersSidebar,
   type FilterState,
 } from '@/components/filters-sidebar';
-import { ResourceDetailPanel } from '@/components/resource-detail-panel';
-import api, {
-  type SearchResponse,
-  type ResourceList,
-  type Resource,
-  type MatchExplanation,
-} from '@/lib/api';
+import api, { type SearchResponse, type ResourceList, type Resource } from '@/lib/api';
 import {
   Search,
   Filter,
-  X,
-  ChevronLeft,
   ChevronRight,
   PanelLeftClose,
-  PanelRightClose,
 } from 'lucide-react';
 
-interface SelectedResource {
-  resource: Resource;
-  explanations?: MatchExplanation[];
-}
 
 function SearchResults() {
   const searchParams = useSearchParams();
@@ -52,21 +37,16 @@ function SearchResults() {
   const [error, setError] = useState<string | null>(null);
   const [searchResults, setSearchResults] = useState<SearchResponse | null>(null);
   const [browseResults, setBrowseResults] = useState<ResourceList | null>(null);
-  const [selectedResource, setSelectedResource] = useState<SelectedResource | null>(null);
   const [searchInput, setSearchInput] = useState(query);
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
-  const isMobile = useIsMobile();
 
   // Sidebar collapse state with localStorage persistence
   const [leftCollapsed, setLeftCollapsed] = useState(false);
-  const [rightCollapsed, setRightCollapsed] = useState(false);
 
   // Load collapsed state from localStorage on mount
   useEffect(() => {
     const savedLeft = localStorage.getItem('v4v-left-collapsed');
-    const savedRight = localStorage.getItem('v4v-right-collapsed');
     if (savedLeft !== null) setLeftCollapsed(savedLeft === 'true');
-    if (savedRight !== null) setRightCollapsed(savedRight === 'true');
   }, []);
 
   // Persist collapsed state to localStorage
@@ -74,12 +54,6 @@ function SearchResults() {
     const newValue = !leftCollapsed;
     setLeftCollapsed(newValue);
     localStorage.setItem('v4v-left-collapsed', String(newValue));
-  };
-
-  const toggleRightCollapsed = () => {
-    const newValue = !rightCollapsed;
-    setRightCollapsed(newValue);
-    localStorage.setItem('v4v-right-collapsed', String(newValue));
   };
 
   // Initialize filters from URL params
@@ -214,21 +188,14 @@ function SearchResults() {
     ? new Map(searchResults.results.map((r) => [r.resource.id, r.explanations]))
     : new Map();
 
-  const handleResourceClick = (resource: Resource) => {
-    setSelectedResource({
-      resource,
-      explanations: explanationsMap.get(resource.id),
-    });
-  };
-
   const totalResults = resources.length;
   const hasResults = totalResults > 0;
 
   return (
     <div
-      className="relative grid h-[calc(100vh-140px)] gap-6 transition-all duration-300 ease-in-out lg:grid-cols-[280px_1fr_400px]"
+      className="relative grid h-[calc(100vh-140px)] gap-6 transition-all duration-300 ease-in-out lg:grid-cols-[280px_1fr]"
       style={{
-        gridTemplateColumns: `${leftCollapsed ? '0px' : '280px'} 1fr ${rightCollapsed ? '0px' : '400px'}`,
+        gridTemplateColumns: `${leftCollapsed ? '0px' : '280px'} 1fr`,
       }}
     >
       {/* Collapsed Left Edge Button */}
@@ -343,7 +310,7 @@ function SearchResults() {
         </div>
 
         {/* Results Header - Desktop */}
-        <div className="hidden items-center justify-between lg:flex">
+        <div className="hidden items-center lg:flex">
           <span className="text-muted-foreground">
             {loading ? (
               <Skeleton className="inline-block h-4 w-48" />
@@ -363,37 +330,25 @@ function SearchResults() {
               </>
             )}
           </span>
-          {selectedResource && (
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => setSelectedResource(null)}
-              className="lg:hidden xl:flex"
-            >
-              <X className="mr-2 h-4 w-4" />
-              Close Preview
-            </Button>
-          )}
         </div>
 
         {/* Results Grid */}
         <ScrollArea className="flex-1">
           {loading ? (
-            <div className="grid gap-4 pr-4 sm:grid-cols-2">
-              {[...Array(6)].map((_, i) => (
+            <div className="grid gap-4 pr-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+              {[...Array(8)].map((_, i) => (
                 <Skeleton key={i} className="h-48 w-full rounded-lg" />
               ))}
             </div>
           ) : hasResults ? (
-            <div className="grid gap-4 pr-4 sm:grid-cols-2">
+            <div className="grid gap-4 pr-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
               {resources.map((resource) => (
                 <ResourceCard
                   key={resource.id}
                   resource={resource}
                   explanations={explanationsMap.get(resource.id)}
-                  variant="selectable"
-                  selected={selectedResource?.resource.id === resource.id}
-                  onClick={() => handleResourceClick(resource)}
+                  variant="link"
+                  searchParams={searchParams.toString()}
                 />
               ))}
             </div>
@@ -420,70 +375,13 @@ function SearchResults() {
           )}
         </ScrollArea>
       </div>
-
-      {/* Collapsed Right Edge Button */}
-      {rightCollapsed && (
-        <button
-          onClick={toggleRightCollapsed}
-          className="fixed right-2 top-1/2 z-30 hidden -translate-y-1/2 rounded-l-lg border border-r-0 bg-background p-2 shadow-md transition-colors hover:bg-muted lg:block"
-          aria-label="Show details"
-        >
-          <ChevronLeft className="h-4 w-4" />
-        </button>
-      )}
-
-      {/* Detail Panel - Desktop */}
-      <div
-        className={`sticky top-6 hidden h-fit max-h-[calc(100vh-160px)] overflow-hidden transition-all duration-300 ease-in-out lg:block ${
-          rightCollapsed ? 'w-0 opacity-0' : 'w-[400px] opacity-100'
-        }`}
-      >
-        <Card className="h-full overflow-hidden">
-          {/* Clickable Header */}
-          <button
-            onClick={toggleRightCollapsed}
-            className="flex w-full items-center justify-between border-b px-5 py-3 text-left transition-colors hover:bg-muted/50"
-            aria-label="Collapse details"
-          >
-            <span className="text-sm font-semibold">
-              {selectedResource ? 'Resource Details' : 'Details'}
-            </span>
-            <PanelRightClose className="h-4 w-4 text-muted-foreground" />
-          </button>
-          <div className="h-[calc(100%-52px)]">
-            <ResourceDetailPanel
-              resource={selectedResource?.resource || null}
-              explanations={selectedResource?.explanations}
-            />
-          </div>
-        </Card>
-      </div>
-
-      {/* Detail Panel - Mobile (Sheet) - Only render on mobile */}
-      {isMobile && selectedResource && (
-        <Sheet
-          open={!!selectedResource}
-          onOpenChange={(open) => !open && setSelectedResource(null)}
-        >
-          <SheetContent side="bottom" className="h-[80vh]">
-            <SheetHeader className="sr-only">
-              <SheetTitle>Resource Details</SheetTitle>
-            </SheetHeader>
-            <ResourceDetailPanel
-              resource={selectedResource.resource}
-              explanations={selectedResource.explanations}
-              onClose={() => setSelectedResource(null)}
-            />
-          </SheetContent>
-        </Sheet>
-      )}
     </div>
   );
 }
 
 function SearchFallback() {
   return (
-    <div className="grid h-[calc(100vh-140px)] gap-6 lg:grid-cols-[280px_1fr_400px]">
+    <div className="grid h-[calc(100vh-140px)] gap-6 lg:grid-cols-[280px_1fr]">
       {/* Filter Sidebar Skeleton */}
       <div className="hidden lg:block">
         <Skeleton className="h-[500px] w-full rounded-lg" />
@@ -493,16 +391,11 @@ function SearchFallback() {
       <div className="space-y-4">
         <Skeleton className="h-14 w-full rounded-lg" />
         <Skeleton className="h-6 w-48" />
-        <div className="grid gap-4 sm:grid-cols-2">
-          {[...Array(6)].map((_, i) => (
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {[...Array(8)].map((_, i) => (
             <Skeleton key={i} className="h-48 w-full rounded-lg" />
           ))}
         </div>
-      </div>
-
-      {/* Detail Panel Skeleton */}
-      <div className="hidden lg:block">
-        <Skeleton className="h-[400px] w-full rounded-lg" />
       </div>
     </div>
   );
@@ -510,15 +403,8 @@ function SearchFallback() {
 
 export default function SearchPage() {
   return (
-    <main className="min-h-screen p-6 lg:p-8">
+    <main className="min-h-screen p-6 pt-24 lg:p-8 lg:pt-24">
       <div className="mx-auto max-w-[1600px]">
-        {/* Header */}
-        <div className="mb-6 flex items-center justify-between">
-          <Link href="/">
-            <h1 className="text-2xl font-bold">Vibe4Vets</h1>
-          </Link>
-        </div>
-
         <Suspense fallback={<SearchFallback />}>
           <SearchResults />
         </Suspense>

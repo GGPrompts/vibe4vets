@@ -12,6 +12,8 @@ interface ResourceCardProps {
   variant?: 'link' | 'selectable';
   selected?: boolean;
   onClick?: () => void;
+  /** Search params to preserve for "back to search" navigation */
+  searchParams?: string;
 }
 
 // Design system colors for accent bars
@@ -185,6 +187,7 @@ export function ResourceCard({
   variant = 'link',
   selected = false,
   onClick,
+  searchParams,
 }: ResourceCardProps) {
   if (variant === 'selectable') {
     return (
@@ -199,8 +202,13 @@ export function ResourceCard({
     );
   }
 
+  // Build href with optional search params for back navigation
+  const href = searchParams
+    ? `/resources/${resource.id}?from=${encodeURIComponent(searchParams)}`
+    : `/resources/${resource.id}`;
+
   return (
-    <Link href={`/resources/${resource.id}`} className="block h-full">
+    <Link href={href} className="block h-full">
       <Card className="category-card group relative h-full overflow-hidden bg-white dark:bg-card">
         <CardInner resource={resource} explanations={explanations} />
       </Card>

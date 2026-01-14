@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Label } from '@/components/ui/label';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
@@ -8,7 +9,8 @@ import { Slider } from '@/components/ui/slider';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { Badge } from '@/components/ui/badge';
-import { Filter, X, Briefcase, GraduationCap, Home, Scale } from 'lucide-react';
+import { Filter, X, Briefcase, GraduationCap, Home, Scale, ChevronDown } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 export const CATEGORIES = [
   { value: 'employment', label: 'Employment', icon: Briefcase },
@@ -97,12 +99,63 @@ const categoryColors: Record<string, string> = {
   legal: 'text-amber-600 dark:text-amber-400',
 };
 
+interface CollapsibleSectionProps {
+  title: string;
+  badge?: React.ReactNode;
+  isOpen: boolean;
+  onToggle: () => void;
+  children: React.ReactNode;
+}
+
+function CollapsibleSection({
+  title,
+  badge,
+  isOpen,
+  onToggle,
+  children,
+}: CollapsibleSectionProps) {
+  return (
+    <div>
+      <button
+        onClick={onToggle}
+        className="flex w-full items-center justify-between py-1 text-left"
+        aria-expanded={isOpen}
+      >
+        <div className="flex items-center gap-2">
+          <h4 className="text-sm font-medium">{title}</h4>
+          {badge}
+        </div>
+        <ChevronDown
+          className={cn(
+            'h-4 w-4 text-muted-foreground transition-transform duration-200',
+            isOpen && 'rotate-180'
+          )}
+        />
+      </button>
+      <div
+        className={cn(
+          'grid transition-all duration-200 ease-in-out',
+          isOpen ? 'mt-3 grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
+        )}
+      >
+        <div className="overflow-hidden">{children}</div>
+      </div>
+    </div>
+  );
+}
+
 export function FiltersSidebar({
   filters,
   onFiltersChange,
   resultCount,
   hideHeader = false,
 }: FiltersSidebarProps) {
+  // Collapsible section state - categories and scope open by default
+  const [categoriesOpen, setCategoriesOpen] = useState(true);
+  const [scopeOpen, setScopeOpen] = useState(true);
+  const [statesOpen, setStatesOpen] = useState(false);
+  const [trustOpen, setTrustOpen] = useState(false);
+
   const activeFilterCount =
     filters.categories.length +
     filters.states.length +
@@ -172,8 +225,18 @@ export function FiltersSidebar({
       <Separator />
 
       {/* Categories */}
-      <div className="space-y-3">
-        <h4 className="text-sm font-medium">Categories</h4>
+      <CollapsibleSection
+        title="Categories"
+        badge={
+          filters.categories.length > 0 && (
+            <Badge variant="outline" className="text-xs">
+              {filters.categories.length}
+            </Badge>
+          )
+        }
+        isOpen={categoriesOpen}
+        onToggle={() => setCategoriesOpen(!categoriesOpen)}
+      >
         <div className="space-y-2">
           {CATEGORIES.map((category) => {
             const Icon = category.icon;
@@ -198,13 +261,23 @@ export function FiltersSidebar({
             );
           })}
         </div>
-      </div>
+      </CollapsibleSection>
 
       <Separator />
 
       {/* Scope */}
-      <div className="space-y-3">
-        <h4 className="text-sm font-medium">Coverage</h4>
+      <CollapsibleSection
+        title="Coverage"
+        badge={
+          filters.scope !== 'all' && (
+            <Badge variant="outline" className="text-xs">
+              1
+            </Badge>
+          )
+        }
+        isOpen={scopeOpen}
+        onToggle={() => setScopeOpen(!scopeOpen)}
+      >
         <RadioGroup value={filters.scope} onValueChange={handleScopeChange}>
           {SCOPES.map((scope) => (
             <div key={scope.value} className="flex items-center space-x-2">
@@ -218,20 +291,23 @@ export function FiltersSidebar({
             </div>
           ))}
         </RadioGroup>
-      </div>
+      </CollapsibleSection>
 
       <Separator />
 
       {/* States */}
-      <div className="space-y-3">
-        <div className="flex items-center justify-between">
-          <h4 className="text-sm font-medium">States</h4>
-          {filters.states.length > 0 && (
+      <CollapsibleSection
+        title="States"
+        badge={
+          filters.states.length > 0 && (
             <Badge variant="outline" className="text-xs">
-              {filters.states.length} selected
+              {filters.states.length}
             </Badge>
-          )}
-        </div>
+          )
+        }
+        isOpen={statesOpen}
+        onToggle={() => setStatesOpen(!statesOpen)}
+      >
         <ScrollArea className="h-48 rounded-md border p-2">
           <div className="space-y-2">
             {STATES.map((state) => {
@@ -254,30 +330,37 @@ export function FiltersSidebar({
             })}
           </div>
         </ScrollArea>
-      </div>
+      </CollapsibleSection>
 
       <Separator />
 
       {/* Trust Level */}
-      <div className="space-y-3">
-        <div className="flex items-center justify-between">
-          <h4 className="text-sm font-medium">Minimum Trust</h4>
-          <span className="text-sm text-muted-foreground">
-            {filters.minTrust}%
-          </span>
+      <CollapsibleSection
+        title="Minimum Trust"
+        badge={
+          filters.minTrust > 0 && (
+            <Badge variant="outline" className="text-xs">
+              {filters.minTrust}%
+            </Badge>
+          )
+        }
+        isOpen={trustOpen}
+        onToggle={() => setTrustOpen(!trustOpen)}
+      >
+        <div className="space-y-3">
+          <Slider
+            value={[filters.minTrust]}
+            onValueChange={handleTrustChange}
+            max={100}
+            step={10}
+            className="py-2"
+          />
+          <div className="flex justify-between text-xs text-muted-foreground">
+            <span>Any</span>
+            <span>Highly Trusted</span>
+          </div>
         </div>
-        <Slider
-          value={[filters.minTrust]}
-          onValueChange={handleTrustChange}
-          max={100}
-          step={10}
-          className="py-2"
-        />
-        <div className="flex justify-between text-xs text-muted-foreground">
-          <span>Any</span>
-          <span>Highly Trusted</span>
-        </div>
-      </div>
+      </CollapsibleSection>
     </div>
   );
 }

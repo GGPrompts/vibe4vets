@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useParams } from 'next/navigation';
+import { useParams, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -92,7 +92,12 @@ function TrustSignalCard({ resource }: { resource: Resource }) {
 
 export default function ResourceDetailPage() {
   const params = useParams();
+  const searchParams = useSearchParams();
   const id = params.id as string;
+
+  // Build back link with preserved search params
+  const fromParams = searchParams.get('from');
+  const backLink = fromParams ? `/search?${fromParams}` : '/search';
 
   const [resource, setResource] = useState<Resource | null>(null);
   const [loading, setLoading] = useState(true);
@@ -138,7 +143,7 @@ export default function ResourceDetailPage() {
           <h1 className="mb-4 text-2xl font-bold">Resource Not Found</h1>
           <p className="mb-4 text-muted-foreground">{error}</p>
           <Button asChild>
-            <Link href="/search">Back to Search</Link>
+            <Link href={backLink}>Back to Search</Link>
           </Button>
         </div>
       </main>
@@ -151,7 +156,7 @@ export default function ResourceDetailPage() {
         {/* Navigation */}
         <div className="mb-6">
           <Link
-            href="/search"
+            href={backLink}
             className="text-sm text-muted-foreground hover:text-foreground"
           >
             ← Back to Search
