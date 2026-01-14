@@ -119,10 +119,12 @@ class LinkCheckerJob(BaseJob):
 
                 except Exception as e:
                     stats["skipped"] += 1
-                    stats["errors"].append({
-                        "resource_id": str(resource.id),
-                        "error": str(e),
-                    })
+                    stats["errors"].append(
+                        {
+                            "resource_id": str(resource.id),
+                            "error": str(e),
+                        }
+                    )
                     self._log(
                         f"Error checking resource {resource.id}: {e}",
                         level="warning",
