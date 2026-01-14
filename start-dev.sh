@@ -19,6 +19,7 @@ NC='\033[0m' # No Color
 BACKEND_PID_FILE="/tmp/vibe4vets-backend.pid"
 FRONTEND_PID_FILE="/tmp/vibe4vets-frontend.pid"
 LOG_DIR="/tmp/vibe4vets-logs"
+FRESH_BUILD=false
 
 log_info() {
     echo -e "${BLUE}[INFO]${NC} $1"
@@ -120,6 +121,14 @@ start_services() {
     # Start Frontend
     log_info "Starting Frontend (Next.js)..."
     cd "$FRONTEND_DIR"
+
+    # Clear .next cache if --fresh flag was passed
+    if [ "$FRESH_BUILD" = true ] && [ -d ".next" ]; then
+        log_info "Clearing .next cache..."
+        rm -rf .next
+        log_success ".next cache cleared"
+    fi
+
     nohup npm run dev > "$LOG_DIR/frontend.log" 2>&1 &
     echo $! > "$FRONTEND_PID_FILE"
     log_info "Frontend PID: $(cat $FRONTEND_PID_FILE)"
@@ -167,8 +176,21 @@ start_services() {
     tail -f "$LOG_DIR/backend.log" "$LOG_DIR/frontend.log"
 }
 
+# Parse arguments
+COMMAND=""
+for arg in "$@"; do
+    case "$arg" in
+        --fresh)
+            FRESH_BUILD=true
+            ;;
+        *)
+            COMMAND="$arg"
+            ;;
+    esac
+done
+
 # Handle command line arguments
-case "${1:-start}" in
+case "${COMMAND:-start}" in
     start)
         start_services
         ;;
@@ -201,7 +223,10 @@ case "${1:-start}" in
         fi
         ;;
     *)
-        echo "Usage: $0 {start|stop|restart|status|logs}"
+        echo "Usage: $0 {start|stop|restart|status|logs} [--fresh]"
+        echo ""
+        echo "Options:"
+        echo "  --fresh    Clear .next cache before starting frontend"
         exit 1
         ;;
 esac

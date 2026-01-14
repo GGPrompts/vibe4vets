@@ -85,8 +85,8 @@
   --primary-foreground: 60 20% 98%;
   --secondary: 220 20% 96%;
   --secondary-foreground: var(--v4v-navy);
-  --muted: 220 15% 94%;
-  --muted-foreground: 220 15% 40%;
+  --muted: 222 25% 91%;
+  --muted-foreground: 222 20% 45%;
   --accent: var(--v4v-gold);
   --accent-foreground: var(--v4v-navy);
   --destructive: 0 72% 51%;

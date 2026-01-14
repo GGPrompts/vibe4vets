@@ -102,7 +102,7 @@ function CardInner({
             <CategoryIcon className="h-5 w-5" />
           </div>
           <div className="min-w-0 flex-1">
-            <CardTitle className="font-display line-clamp-2 text-lg text-[hsl(var(--v4v-navy))] transition-colors duration-300 group-hover:text-[hsl(var(--v4v-gold))] dark:text-foreground dark:group-hover:text-[hsl(var(--v4v-gold))]">
+            <CardTitle className="font-display line-clamp-2 text-lg text-[hsl(var(--v4v-navy))] dark:text-foreground">
               {resource.title}
             </CardTitle>
             <p className="mt-1 text-sm text-muted-foreground">
