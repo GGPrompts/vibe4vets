@@ -3,7 +3,6 @@
 import { Suspense, useCallback, useEffect, useState } from 'react';
 import { useIsMobile } from '@/hooks/use-media-query';
 import { useSearchParams, useRouter } from 'next/navigation';
-import Link from 'next/link';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
@@ -411,15 +410,8 @@ function SearchFallback() {
 
 export default function SearchPage() {
   return (
-    <main className="min-h-screen p-6 lg:p-8">
+    <main className="min-h-screen p-6 pt-24 lg:p-8 lg:pt-24">
       <div className="mx-auto max-w-[1600px]">
-        {/* Header */}
-        <div className="mb-6 flex items-center justify-between">
-          <Link href="/">
-            <h1 className="text-2xl font-bold">Vibe4Vets</h1>
-          </Link>
-        </div>
-
         <Suspense fallback={<SearchFallback />}>
           <SearchResults />
         </Suspense>

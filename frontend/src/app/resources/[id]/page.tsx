@@ -115,7 +115,7 @@ export default function ResourceDetailPage() {
 
   if (loading) {
     return (
-      <main className="min-h-screen p-8">
+      <main className="min-h-screen p-8 pt-24">
         <div className="mx-auto max-w-4xl">
           <Skeleton className="mb-4 h-10 w-48" />
           <Skeleton className="mb-8 h-6 w-full" />
@@ -133,7 +133,7 @@ export default function ResourceDetailPage() {
 
   if (error || !resource) {
     return (
-      <main className="min-h-screen p-8">
+      <main className="min-h-screen p-8 pt-24">
         <div className="mx-auto max-w-4xl text-center">
           <h1 className="mb-4 text-2xl font-bold">Resource Not Found</h1>
           <p className="mb-4 text-muted-foreground">{error}</p>
@@ -146,7 +146,7 @@ export default function ResourceDetailPage() {
   }
 
   return (
-    <main className="min-h-screen p-8">
+    <main className="min-h-screen p-8 pt-24">
       <div className="mx-auto max-w-4xl">
         {/* Navigation */}
         <div className="mb-6">
