@@ -491,3 +491,237 @@ body {
   background: linear-gradient(135deg, hsl(var(--v4v-gold) / 0.05) 0%, transparent 50%);
   clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
 }
+
+/* =============================================================================
+   PATRIOTIC BACKGROUND PATTERNS
+   Subtle, dignified patriotic elements for hero and sections
+   ============================================================================= */
+
+/* Enhanced flag-inspired star field pattern
+   Creates a subtle 5-star row pattern reminiscent of the US flag canton */
+.patriotic-stars {
+  --star-color: hsl(var(--v4v-gold) / 0.12);
+  --star-color-dim: hsl(var(--v4v-gold) / 0.06);
+  background-image:
+    /* Row 1 - 6 stars */
+    radial-gradient(1.5px 1.5px at 15px 15px, var(--star-color), transparent),
+    radial-gradient(1.5px 1.5px at 45px 15px, var(--star-color-dim), transparent),
+    radial-gradient(1.5px 1.5px at 75px 15px, var(--star-color), transparent),
+    radial-gradient(1.5px 1.5px at 105px 15px, var(--star-color-dim), transparent),
+    radial-gradient(1.5px 1.5px at 135px 15px, var(--star-color), transparent),
+    radial-gradient(1.5px 1.5px at 165px 15px, var(--star-color-dim), transparent),
+    /* Row 2 - 5 stars (offset) */
+    radial-gradient(1.5px 1.5px at 30px 35px, var(--star-color-dim), transparent),
+    radial-gradient(1.5px 1.5px at 60px 35px, var(--star-color), transparent),
+    radial-gradient(1.5px 1.5px at 90px 35px, var(--star-color-dim), transparent),
+    radial-gradient(1.5px 1.5px at 120px 35px, var(--star-color), transparent),
+    radial-gradient(1.5px 1.5px at 150px 35px, var(--star-color-dim), transparent),
+    /* Row 3 - 6 stars */
+    radial-gradient(1.5px 1.5px at 15px 55px, var(--star-color), transparent),
+    radial-gradient(1.5px 1.5px at 45px 55px, var(--star-color-dim), transparent),
+    radial-gradient(1.5px 1.5px at 75px 55px, var(--star-color), transparent),
+    radial-gradient(1.5px 1.5px at 105px 55px, var(--star-color-dim), transparent),
+    radial-gradient(1.5px 1.5px at 135px 55px, var(--star-color), transparent),
+    radial-gradient(1.5px 1.5px at 165px 55px, var(--star-color-dim), transparent),
+    /* Row 4 - 5 stars (offset) */
+    radial-gradient(1.5px 1.5px at 30px 75px, var(--star-color-dim), transparent),
+    radial-gradient(1.5px 1.5px at 60px 75px, var(--star-color), transparent),
+    radial-gradient(1.5px 1.5px at 90px 75px, var(--star-color-dim), transparent),
+    radial-gradient(1.5px 1.5px at 120px 75px, var(--star-color), transparent),
+    radial-gradient(1.5px 1.5px at 150px 75px, var(--star-color-dim), transparent),
+    /* Row 5 - 6 stars */
+    radial-gradient(1.5px 1.5px at 15px 95px, var(--star-color), transparent),
+    radial-gradient(1.5px 1.5px at 45px 95px, var(--star-color-dim), transparent),
+    radial-gradient(1.5px 1.5px at 75px 95px, var(--star-color), transparent),
+    radial-gradient(1.5px 1.5px at 105px 95px, var(--star-color-dim), transparent),
+    radial-gradient(1.5px 1.5px at 135px 95px, var(--star-color), transparent),
+    radial-gradient(1.5px 1.5px at 165px 95px, var(--star-color-dim), transparent);
+  background-size: 180px 110px;
+  background-position: 0 0;
+}
+
+/* Subtle horizontal stripe pattern
+   Creates gentle, almost imperceptible stripe effect */
+.patriotic-stripes {
+  --stripe-light: hsl(0 0% 100% / 0.02);
+  --stripe-dark: transparent;
+  background-image: repeating-linear-gradient(
+    180deg,
+    var(--stripe-light) 0px,
+    var(--stripe-light) 12px,
+    var(--stripe-dark) 12px,
+    var(--stripe-dark) 24px
+  );
+}
+
+/* Subtle wave pattern for sections
+   Creates flowing, dignified wave effect */
+.patriotic-wave {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 60'%3E%3Cpath fill='%23C9A227' fill-opacity='0.03' d='M0,30 C360,60 720,0 1080,30 C1260,45 1350,45 1440,30 L1440,60 L0,60 Z'/%3E%3C/svg%3E");
+  background-size: 100% 60px;
+  background-position: bottom;
+  background-repeat: repeat-x;
+}
+
+/* Diagonal accent stripes (very subtle) */
+.patriotic-diagonal {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    transparent 0px,
+    transparent 40px,
+    hsl(var(--v4v-gold) / 0.015) 40px,
+    hsl(var(--v4v-gold) / 0.015) 42px
+  );
+}
+
+/* Combined patriotic hero background
+   Layers multiple patterns for depth */
+.patriotic-hero-bg {
+  position: relative;
+}
+
+.patriotic-hero-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    /* Star field in top-left corner (canton area) */
+    radial-gradient(ellipse 40% 60% at 0% 0%, hsl(220 60% 15% / 0.8) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* Section wave divider - top */
+.wave-divider-top {
+  position: relative;
+}
+
+.wave-divider-top::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 40px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 40' preserveAspectRatio='none'%3E%3Cpath fill='%230A1628' d='M0,0 L0,20 Q360,40 720,20 T1440,20 L1440,0 Z'/%3E%3C/svg%3E");
+  background-size: 100% 100%;
+  pointer-events: none;
+}
+
+/* Section wave divider - bottom */
+.wave-divider-bottom {
+  position: relative;
+}
+
+.wave-divider-bottom::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 40' preserveAspectRatio='none'%3E%3Cpath fill='%23FAFAF8' d='M0,40 L0,20 Q360,0 720,20 T1440,20 L1440,40 Z'/%3E%3C/svg%3E");
+  background-size: 100% 100%;
+  pointer-events: none;
+}
+
+/* Gold accent line with stars */
+.patriotic-accent-line {
+  position: relative;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    hsl(var(--v4v-gold) / 0.2) 10%,
+    hsl(var(--v4v-gold) / 0.5) 50%,
+    hsl(var(--v4v-gold) / 0.2) 90%,
+    transparent 100%
+  );
+}
+
+.patriotic-accent-line::before,
+.patriotic-accent-line::after {
+  content: '\2605'; /* Star character */
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 10px;
+  color: hsl(var(--v4v-gold) / 0.6);
+}
+
+.patriotic-accent-line::before {
+  left: 20%;
+}
+
+.patriotic-accent-line::after {
+  right: 20%;
+}
+
+/* Subtle ribbon/banner pattern for section backgrounds */
+.patriotic-ribbon {
+  background:
+    linear-gradient(135deg, hsl(var(--v4v-gold) / 0.03) 0%, transparent 30%),
+    linear-gradient(-135deg, hsl(var(--v4v-gold) / 0.02) 0%, transparent 30%);
+}
+
+/* Dark mode adjustments for patriotic elements */
+.dark .patriotic-stars {
+  --star-color: hsl(var(--v4v-gold) / 0.15);
+  --star-color-dim: hsl(var(--v4v-gold) / 0.08);
+}
+
+.dark .patriotic-stripes {
+  --stripe-light: hsl(0 0% 100% / 0.015);
+}
+
+.dark .patriotic-diagonal {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    transparent 0px,
+    transparent 40px,
+    hsl(var(--v4v-gold) / 0.02) 40px,
+    hsl(var(--v4v-gold) / 0.02) 42px
+  );
+}
+
+.dark .wave-divider-top::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 40' preserveAspectRatio='none'%3E%3Cpath fill='%23141D2B' d='M0,0 L0,20 Q360,40 720,20 T1440,20 L1440,0 Z'/%3E%3C/svg%3E");
+}
+
+.dark .wave-divider-bottom::after {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 40' preserveAspectRatio='none'%3E%3Cpath fill='%230A1628' d='M0,40 L0,20 Q360,0 720,20 T1440,20 L1440,40 Z'/%3E%3C/svg%3E");
+}
+
+/* Subtle corner eagle silhouette (purely decorative) */
+.patriotic-eagle {
+  position: relative;
+}
+
+.patriotic-eagle::after {
+  content: '';
+  position: absolute;
+  right: 5%;
+  top: 10%;
+  width: 200px;
+  height: 180px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 90' fill='%23C9A227' fill-opacity='0.04'%3E%3Cpath d='M50 5 L55 20 L70 20 L58 30 L63 45 L50 35 L37 45 L42 30 L30 20 L45 20 Z M50 50 L30 70 L20 65 L35 80 L50 75 L65 80 L80 65 L70 70 Z M50 55 L50 85'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* Animated subtle glow for hero accent */
+@keyframes patriotic-glow {
+  0%, 100% {
+    opacity: 0.3;
+    filter: blur(20px);
+  }
+  50% {
+    opacity: 0.5;
+    filter: blur(30px);
+  }
+}
+
+.patriotic-glow {
+  animation: patriotic-glow 8s ease-in-out infinite;
+}

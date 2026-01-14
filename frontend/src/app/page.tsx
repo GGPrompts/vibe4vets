@@ -77,15 +77,21 @@ export default function Home() {
   return (
     <main className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-[hsl(var(--v4v-navy))] text-white">
+      <section className="relative overflow-hidden bg-[hsl(var(--v4v-navy))] text-white wave-divider-bottom">
         {/* Layered background gradients */}
         <div className="hero-gradient-layer absolute inset-0" />
 
-        {/* Subtle star pattern overlay */}
-        <div className="hero-stars absolute inset-0 opacity-60" />
+        {/* Flag-inspired star pattern (canton style) */}
+        <div className="patriotic-stars absolute inset-0 opacity-70" />
+
+        {/* Subtle horizontal stripes overlay */}
+        <div className="patriotic-stripes absolute inset-0" />
 
         {/* Shield silhouette decoration (right side) */}
         <div className="hero-shield absolute -right-20 top-1/2 h-[500px] w-[400px] -translate-y-1/2 opacity-30 lg:opacity-50" />
+
+        {/* Animated gold glow accent */}
+        <div className="patriotic-glow absolute right-1/4 top-1/3 h-64 w-64 rounded-full bg-[hsl(var(--v4v-gold))]" />
 
         {/* Gold accent gradient (enhanced) */}
         <div className="absolute right-0 top-0 h-full w-1/2 opacity-10">
@@ -157,7 +163,7 @@ export default function Home() {
       </section>
 
       {/* Categories Section */}
-      <section className="relative bg-[hsl(var(--v4v-cream))] py-20 lg:py-28">
+      <section className="relative bg-[hsl(var(--v4v-cream))] py-20 lg:py-28 patriotic-ribbon">
         <div className="mx-auto max-w-6xl px-6">
           {/* Section header */}
           <div className="mb-12 max-w-2xl">
@@ -240,7 +246,7 @@ export default function Home() {
       </section>
 
       {/* How It Works Section */}
-      <section className="bg-[hsl(var(--v4v-cream))] py-20 lg:py-28">
+      <section className="bg-[hsl(var(--v4v-cream))] py-20 lg:py-28 patriotic-diagonal">
         <div className="mx-auto max-w-6xl px-6">
           {/* Section header */}
           <div className="mb-12 text-center">
@@ -296,8 +302,9 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-[hsl(var(--v4v-navy))] py-12 text-white">
-        <div className="mx-auto max-w-6xl px-6">
+      <footer className="bg-[hsl(var(--v4v-navy))] py-12 text-white relative">
+        <div className="patriotic-stars absolute inset-0 opacity-30" />
+        <div className="relative mx-auto max-w-6xl px-6">
           <div className="flex flex-col items-center text-center">
             {/* Logo */}
             <h2 className="font-display text-2xl text-white">Vibe4Vets</h2>
