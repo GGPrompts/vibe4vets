@@ -75,7 +75,7 @@ const steps = [
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen pt-16">
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-[hsl(var(--v4v-navy))] text-white wave-divider-bottom">
         {/* Layered background gradients */}

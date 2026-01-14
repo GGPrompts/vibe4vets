@@ -43,7 +43,7 @@ const housingResources: HubResource[] = [
 
 export default function HousingHubPage() {
   return (
-    <main className="min-h-screen bg-[hsl(var(--v4v-cream))]">
+    <main className="min-h-screen bg-[hsl(var(--v4v-cream))] pt-16">
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-[hsl(25,70%,50%)] text-white">
         <div className="absolute right-0 top-0 h-full w-1/3 opacity-10">

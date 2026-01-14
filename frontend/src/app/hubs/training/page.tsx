@@ -43,7 +43,7 @@ const trainingResources: HubResource[] = [
 
 export default function TrainingHubPage() {
   return (
-    <main className="min-h-screen bg-[hsl(var(--v4v-cream))]">
+    <main className="min-h-screen bg-[hsl(var(--v4v-cream))] pt-16">
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-[hsl(160,50%,40%)] text-white">
         <div className="absolute right-0 top-0 h-full w-1/3 opacity-10">
