@@ -41,7 +41,7 @@ const trustIndicators = [
   {
     icon: Shield,
     title: 'Verified Sources',
-    description: 'Data from VA.gov, DOL, and trusted nonprofits',
+    description: 'Aggregating resources from VA.gov, DOL, and community sources',
   },
   {
     icon: RefreshCw,
@@ -105,7 +105,7 @@ export default function Home() {
             {/* Main headline - larger with gold underline accent */}
             <h1 className="animate-fade-in-up delay-100 font-display text-4xl font-normal leading-[1.1] sm:text-5xl lg:text-6xl xl:text-7xl" style={{ opacity: 0 }}>
               Resources for Veterans,{' '}
-              <span className="gold-underline text-[hsl(var(--v4v-gold))]">Beyond VA.gov</span>
+              <span className="gold-underline text-[hsl(var(--v4v-gold))]">All in One Place</span>
             </h1>
 
             {/* Subheadline - refined */}
@@ -304,9 +304,9 @@ export default function Home() {
 
             {/* Transparency statement */}
             <p className="mt-4 max-w-lg text-sm leading-relaxed text-white/60">
-              Built with transparency. We use AI and web scraping to aggregate
-              veteran resources from official sources, nonprofits, and community
-              organizations—going beyond what VA.gov offers alone.
+              Built with transparency. We aggregate veteran resources from VA.gov,
+              DOL, nonprofits, and community organizations—all in one searchable
+              directory powered by AI.
             </p>
 
             {/* Links */}
@@ -324,7 +324,7 @@ export default function Home() {
 
             {/* Copyright */}
             <div className="mt-8 border-t border-white/10 pt-8 text-xs text-white/40">
-              <p>Built to help veterans find resources beyond VA.gov</p>
+              <p>All veteran resources in one place</p>
             </div>
           </div>
         </div>

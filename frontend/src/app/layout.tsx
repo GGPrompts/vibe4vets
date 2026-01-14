@@ -18,7 +18,7 @@ const sourceSans = Source_Sans_3({
 export const metadata: Metadata = {
   title: "Vibe4Vets - Veteran Resource Directory",
   description:
-    "Find employment, training, housing, and legal resources for veterans nationwide. Aggregating resources beyond VA.gov with transparency.",
+    "Find employment, training, housing, and legal resources for veterans nationwide. Aggregating resources from VA.gov, DOL, and community sources.",
   keywords: ["veterans", "resources", "employment", "housing", "legal", "training", "VA"],
   openGraph: {
     title: "Vibe4Vets - Veteran Resource Directory",
