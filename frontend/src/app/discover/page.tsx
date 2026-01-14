@@ -158,8 +158,8 @@ export default function DiscoverPage() {
 	                alt="Fresh Finds"
 	                width={256}
 	                height={256}
-	                className="h-10 w-10"
-	                sizes="40px"
+	                className="h-12 w-12"
+	                sizes="48px"
 	              />
 	            </div>
 	            <div>
