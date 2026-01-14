@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { SearchBar } from '@/components/search-bar';
-import { Briefcase, GraduationCap, Home as HomeIcon, Scale, Shield, RefreshCw, Search, CheckCircle2 } from 'lucide-react';
+import { Briefcase, GraduationCap, Home as HomeIcon, Scale, Shield, RefreshCw, Search, CheckCircle2, Layers, MapPin, Calendar } from 'lucide-react';
 
 const categories = [
   {
@@ -78,57 +78,82 @@ export default function Home() {
     <main className="min-h-screen">
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-[hsl(var(--v4v-navy))] text-white">
-        {/* Subtle geometric accent */}
-        <div className="absolute right-0 top-0 h-full w-1/3 opacity-5">
-          <div className="h-full w-full bg-gradient-to-l from-[hsl(var(--v4v-gold))] to-transparent" />
+        {/* Layered background gradients */}
+        <div className="hero-gradient-layer absolute inset-0" />
+
+        {/* Subtle star pattern overlay */}
+        <div className="hero-stars absolute inset-0 opacity-60" />
+
+        {/* Shield silhouette decoration (right side) */}
+        <div className="hero-shield absolute -right-20 top-1/2 h-[500px] w-[400px] -translate-y-1/2 opacity-30 lg:opacity-50" />
+
+        {/* Gold accent gradient (enhanced) */}
+        <div className="absolute right-0 top-0 h-full w-1/2 opacity-10">
+          <div className="h-full w-full bg-gradient-to-l from-[hsl(var(--v4v-gold))] via-[hsl(var(--v4v-gold)/0.5)] to-transparent" />
         </div>
 
-        <div className="relative mx-auto max-w-6xl px-6 py-20 lg:py-28">
+        <div className="relative mx-auto max-w-6xl px-6 py-24 lg:py-32">
           <div className="max-w-3xl">
-            {/* Eyebrow text */}
-            <p className="animate-fade-in-up mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-[hsl(var(--v4v-gold))]">
-              Veteran Resource Directory
-            </p>
+            {/* Eyebrow text with decorative line */}
+            <div className="animate-fade-in-up mb-6 flex items-center gap-4">
+              <div className="h-px w-8 bg-[hsl(var(--v4v-gold))]" />
+              <p className="text-sm font-semibold uppercase tracking-[0.25em] text-[hsl(var(--v4v-gold))]">
+                Veteran Resource Directory
+              </p>
+            </div>
 
-            {/* Main headline */}
-            <h1 className="animate-fade-in-up delay-100 font-display text-4xl leading-tight sm:text-5xl lg:text-6xl" style={{ opacity: 0 }}>
+            {/* Main headline - larger with gold underline accent */}
+            <h1 className="animate-fade-in-up delay-100 font-display text-4xl font-normal leading-[1.1] sm:text-5xl lg:text-6xl xl:text-7xl" style={{ opacity: 0 }}>
               Resources for Veterans,{' '}
-              <span className="text-[hsl(var(--v4v-gold))]">Beyond VA.gov</span>
+              <span className="gold-underline text-[hsl(var(--v4v-gold))]">Beyond VA.gov</span>
             </h1>
 
-            {/* Subheadline */}
-            <p className="animate-fade-in-up delay-200 mt-6 text-lg leading-relaxed text-white/80 sm:text-xl" style={{ opacity: 0 }}>
+            {/* Subheadline - refined */}
+            <p className="animate-fade-in-up delay-200 mt-8 max-w-2xl text-lg leading-relaxed text-white/75 sm:text-xl lg:text-2xl" style={{ opacity: 0 }}>
               We aggregate employment, training, housing, and legal resources from
               across the country—all in one searchable directory.
             </p>
 
-            {/* Search Bar */}
-            <div className="animate-fade-in-up delay-300 mt-10" style={{ opacity: 0 }}>
-              <div className="search-glow rounded-xl bg-white/10 p-2 backdrop-blur-sm transition-all duration-300">
+            {/* Search Bar - enhanced container */}
+            <div className="animate-fade-in-up delay-300 mt-12" style={{ opacity: 0 }}>
+              <div className="hero-search-container rounded-xl bg-white/10 p-3 backdrop-blur-sm transition-all duration-300">
                 <SearchBar />
               </div>
+              {/* Helper text below search */}
+              <p className="mt-3 text-center text-sm text-white/50">
+                Try: "job training Texas" or "housing assistance California"
+              </p>
             </div>
 
-            {/* Quick stats */}
-            <div className="animate-fade-in-up delay-400 mt-8 flex flex-wrap gap-8 text-sm" style={{ opacity: 0 }}>
-              <div>
-                <span className="font-display text-2xl text-[hsl(var(--v4v-gold))]">4</span>
-                <span className="ml-2 text-white/60">Categories</span>
+            {/* Quick stats - enhanced with icons and cards */}
+            <div className="animate-fade-in-up delay-400 mt-10 flex flex-wrap gap-4" style={{ opacity: 0 }}>
+              <div className="hero-stat stat-shimmer flex items-center gap-3 rounded-lg px-5 py-3">
+                <Layers className="h-5 w-5 text-[hsl(var(--v4v-gold))]" />
+                <div>
+                  <span className="font-display text-2xl text-[hsl(var(--v4v-gold))]">4</span>
+                  <span className="ml-2 text-sm text-white/70">Categories</span>
+                </div>
               </div>
-              <div>
-                <span className="font-display text-2xl text-[hsl(var(--v4v-gold))]">50</span>
-                <span className="ml-2 text-white/60">States Covered</span>
+              <div className="hero-stat stat-shimmer flex items-center gap-3 rounded-lg px-5 py-3">
+                <MapPin className="h-5 w-5 text-[hsl(var(--v4v-gold))]" />
+                <div>
+                  <span className="font-display text-2xl text-[hsl(var(--v4v-gold))]">50</span>
+                  <span className="ml-2 text-sm text-white/70">States Covered</span>
+                </div>
               </div>
-              <div>
-                <span className="font-display text-2xl text-[hsl(var(--v4v-gold))]">Daily</span>
-                <span className="ml-2 text-white/60">Updates</span>
+              <div className="hero-stat stat-shimmer flex items-center gap-3 rounded-lg px-5 py-3">
+                <Calendar className="h-5 w-5 text-[hsl(var(--v4v-gold))]" />
+                <div>
+                  <span className="font-display text-2xl text-[hsl(var(--v4v-gold))]">Daily</span>
+                  <span className="ml-2 text-sm text-white/70">Updates</span>
+                </div>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Bottom edge accent */}
-        <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[hsl(var(--v4v-gold))] to-transparent opacity-50" />
+        {/* Enhanced bottom divider */}
+        <div className="hero-divider absolute bottom-0 left-0 right-0" />
       </section>
 
       {/* Categories Section */}
