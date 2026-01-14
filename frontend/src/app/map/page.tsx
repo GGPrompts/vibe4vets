@@ -1,0 +1,126 @@
+import Link from 'next/link';
+import { MapPin, ArrowLeft } from 'lucide-react';
+import { USMap } from '@/components/us-map';
+
+export const metadata = {
+  title: 'Find Resources by State | Vibe4Vets',
+  description:
+    'Explore veteran resources across the United States. Click on a state to discover employment, training, housing, and legal resources available in your area.',
+};
+
+export default function MapPage() {
+  return (
+    <main className="min-h-screen bg-[hsl(var(--v4v-cream))]">
+      {/* Header */}
+      <header className="border-b border-[hsl(var(--border))] bg-white">
+        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+          <Link
+            href="/"
+            className="font-display text-xl text-[hsl(var(--v4v-navy))] transition-colors hover:text-[hsl(var(--v4v-gold))]"
+          >
+            Vibe4Vets
+          </Link>
+          <nav className="flex items-center gap-6">
+            <Link
+              href="/search"
+              className="text-sm text-[hsl(var(--muted-foreground))] transition-colors hover:text-[hsl(var(--v4v-navy))]"
+            >
+              Search
+            </Link>
+            <Link
+              href="/discover"
+              className="text-sm text-[hsl(var(--muted-foreground))] transition-colors hover:text-[hsl(var(--v4v-navy))]"
+            >
+              Discover
+            </Link>
+          </nav>
+        </div>
+      </header>
+
+      {/* Main Content */}
+      <section className="py-12 lg:py-16">
+        <div className="mx-auto max-w-6xl px-6">
+          {/* Back link */}
+          <Link
+            href="/"
+            className="mb-6 inline-flex items-center gap-2 text-sm text-[hsl(var(--muted-foreground))] transition-colors hover:text-[hsl(var(--v4v-navy))]"
+          >
+            <ArrowLeft className="h-4 w-4" />
+            Back to Home
+          </Link>
+
+          {/* Page header */}
+          <div className="mb-10">
+            <div className="editorial-divider mb-4" />
+            <div className="flex items-center gap-3">
+              <div className="rounded-lg bg-[hsl(var(--v4v-navy))] p-2.5 text-white">
+                <MapPin className="h-5 w-5" />
+              </div>
+              <h1 className="font-display text-3xl text-[hsl(var(--v4v-navy))] sm:text-4xl">
+                Find Resources by State
+              </h1>
+            </div>
+            <p className="mt-4 max-w-2xl text-lg text-[hsl(var(--muted-foreground))]">
+              Click on any state to discover veteran resources available in that
+              area. We aggregate employment, training, housing, and legal
+              resources from trusted sources nationwide.
+            </p>
+          </div>
+
+          {/* Map Card */}
+          <div className="rounded-xl border border-[hsl(var(--border))] bg-white p-6 shadow-sm lg:p-8">
+            <USMap className="w-full" />
+          </div>
+
+          {/* Info cards */}
+          <div className="mt-10 grid gap-6 sm:grid-cols-3">
+            <div className="rounded-lg border border-[hsl(var(--border))] bg-white p-5">
+              <div className="mb-3 inline-flex rounded-lg bg-[hsl(var(--v4v-employment))] p-2 text-white">
+                <MapPin className="h-4 w-4" />
+              </div>
+              <h3 className="font-semibold text-[hsl(var(--v4v-navy))]">
+                Location-Based Search
+              </h3>
+              <p className="mt-1 text-sm text-[hsl(var(--muted-foreground))]">
+                Find resources tailored to your specific state and locality.
+              </p>
+            </div>
+            <div className="rounded-lg border border-[hsl(var(--border))] bg-white p-5">
+              <div className="mb-3 inline-flex rounded-lg bg-[hsl(var(--v4v-training))] p-2 text-white">
+                <MapPin className="h-4 w-4" />
+              </div>
+              <h3 className="font-semibold text-[hsl(var(--v4v-navy))]">
+                50 States Coverage
+              </h3>
+              <p className="mt-1 text-sm text-[hsl(var(--muted-foreground))]">
+                Resources available across all 50 states plus territories.
+              </p>
+            </div>
+            <div className="rounded-lg border border-[hsl(var(--border))] bg-white p-5">
+              <div className="mb-3 inline-flex rounded-lg bg-[hsl(var(--v4v-housing))] p-2 text-white">
+                <MapPin className="h-4 w-4" />
+              </div>
+              <h3 className="font-semibold text-[hsl(var(--v4v-navy))]">
+                Regular Updates
+              </h3>
+              <p className="mt-1 text-sm text-[hsl(var(--muted-foreground))]">
+                Data refreshed daily from official and trusted sources.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="border-t border-[hsl(var(--border))] bg-white py-8">
+        <div className="mx-auto max-w-6xl px-6">
+          <div className="flex flex-col items-center text-center">
+            <p className="text-sm text-[hsl(var(--muted-foreground))]">
+              Built to help veterans find resources beyond VA.gov
+            </p>
+          </div>
+        </div>
+      </footer>
+    </main>
+  );
+}

@@ -317,9 +317,12 @@ export default function Home() {
             </p>
 
             {/* Links */}
-            <div className="mt-6 flex gap-6 text-sm">
+            <div className="mt-6 flex flex-wrap justify-center gap-6 text-sm">
               <Link href="/search" className="text-white/60 transition-colors hover:text-[hsl(var(--v4v-gold))]">
                 Search Resources
+              </Link>
+              <Link href="/map" className="text-white/60 transition-colors hover:text-[hsl(var(--v4v-gold))]">
+                Browse by State
               </Link>
               <Link href="/discover" className="text-white/60 transition-colors hover:text-[hsl(var(--v4v-gold))]">
                 Fresh Finds
