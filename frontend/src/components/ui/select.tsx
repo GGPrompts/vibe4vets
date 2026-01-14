@@ -58,7 +58,7 @@ function SelectContent({
   ...props
 }: React.ComponentProps<typeof SelectPrimitive.Content>) {
   return (
-    <SelectPrimitive.Portal>
+    <SelectPrimitive.Portal container={typeof document !== 'undefined' ? document.body : undefined}>
       <SelectPrimitive.Content
         data-slot="select-content"
         className={cn(
