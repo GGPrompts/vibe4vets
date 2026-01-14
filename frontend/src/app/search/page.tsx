@@ -194,7 +194,7 @@ function SearchResults() {
 
   return (
     <div
-      className="relative grid h-[calc(100vh-140px)] gap-6 transition-all duration-300 ease-in-out lg:grid-cols-[280px_1fr]"
+      className="relative grid gap-6 transition-all duration-300 ease-in-out lg:grid-cols-[280px_1fr]"
       style={{
         gridTemplateColumns: `${leftCollapsed ? '0px' : '280px'} 1fr`,
       }}
@@ -212,7 +212,7 @@ function SearchResults() {
 
       {/* Filter Sidebar - Desktop */}
       <div
-        className={`sticky top-[88px] hidden h-fit max-h-[calc(100vh-112px)] overflow-hidden transition-all duration-300 ease-in-out lg:block ${
+        className={`sticky top-24 hidden h-fit max-h-[calc(100vh-120px)] self-start overflow-hidden transition-all duration-300 ease-in-out lg:block ${
           leftCollapsed ? 'w-0 opacity-0' : 'w-[280px] opacity-100'
         }`}
       >
@@ -241,7 +241,7 @@ function SearchResults() {
       </div>
 
       {/* Main Content */}
-      <div className="flex min-h-0 flex-col space-y-4">
+      <div className="flex flex-col space-y-4">
         {/* Search Bar */}
         <form onSubmit={handleSearch} className="relative">
           <div className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2">
@@ -334,11 +334,25 @@ function SearchResults() {
         </div>
 
         {/* Results Grid */}
-        <ScrollArea className="flex-1">
+        <div>
           {loading ? (
             <div className="grid gap-4 pr-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
               {[...Array(8)].map((_, i) => (
-                <Skeleton key={i} className="h-48 w-full rounded-lg" />
+                <Card key={i} className="h-48 w-full animate-pulse overflow-hidden">
+                  <div className="flex h-full flex-col p-4">
+                    <div className="mb-2 flex items-center justify-between">
+                      <Skeleton className="h-4 w-16 rounded" />
+                      <Skeleton className="h-5 w-5 rounded-full" />
+                    </div>
+                    <Skeleton className="mb-2 h-5 w-3/4 rounded" />
+                    <Skeleton className="mb-4 h-4 w-full rounded" />
+                    <Skeleton className="h-4 w-2/3 rounded" />
+                    <div className="mt-auto flex gap-2">
+                      <Skeleton className="h-6 w-20 rounded-full" />
+                      <Skeleton className="h-6 w-16 rounded-full" />
+                    </div>
+                  </div>
+                </Card>
               ))}
             </div>
           ) : hasResults ? (
@@ -384,7 +398,7 @@ function SearchResults() {
               </Button>
             </div>
           )}
-        </ScrollArea>
+        </div>
       </div>
     </div>
   );
@@ -392,10 +406,28 @@ function SearchResults() {
 
 function SearchFallback() {
   return (
-    <div className="grid h-[calc(100vh-140px)] gap-6 lg:grid-cols-[280px_1fr]">
+    <div className="grid gap-6 lg:grid-cols-[280px_1fr]">
       {/* Filter Sidebar Skeleton */}
-      <div className="hidden lg:block">
-        <Skeleton className="h-[500px] w-full rounded-lg" />
+      <div className="sticky top-24 hidden h-fit self-start lg:block">
+        <Card className="h-[500px] w-full animate-pulse overflow-hidden">
+          <div className="border-b px-5 py-3">
+            <Skeleton className="h-5 w-20" />
+          </div>
+          <div className="space-y-4 p-5">
+            <Skeleton className="h-4 w-24" />
+            <div className="space-y-2">
+              {[...Array(4)].map((_, i) => (
+                <Skeleton key={i} className="h-6 w-full" />
+              ))}
+            </div>
+            <Skeleton className="mt-4 h-4 w-20" />
+            <div className="space-y-2">
+              {[...Array(3)].map((_, i) => (
+                <Skeleton key={i} className="h-6 w-full" />
+              ))}
+            </div>
+          </div>
+        </Card>
       </div>
 
       {/* Main Content Skeleton */}
@@ -404,7 +436,21 @@ function SearchFallback() {
         <Skeleton className="h-6 w-48" />
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {[...Array(8)].map((_, i) => (
-            <Skeleton key={i} className="h-48 w-full rounded-lg" />
+            <Card key={i} className="h-48 w-full animate-pulse overflow-hidden">
+              <div className="flex h-full flex-col p-4">
+                <div className="mb-2 flex items-center justify-between">
+                  <Skeleton className="h-4 w-16 rounded" />
+                  <Skeleton className="h-5 w-5 rounded-full" />
+                </div>
+                <Skeleton className="mb-2 h-5 w-3/4 rounded" />
+                <Skeleton className="mb-4 h-4 w-full rounded" />
+                <Skeleton className="h-4 w-2/3 rounded" />
+                <div className="mt-auto flex gap-2">
+                  <Skeleton className="h-6 w-20 rounded-full" />
+                  <Skeleton className="h-6 w-16 rounded-full" />
+                </div>
+              </div>
+            </Card>
           ))}
         </div>
       </div>
