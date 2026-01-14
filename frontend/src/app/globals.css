@@ -146,14 +146,16 @@
   border-color: hsl(var(--border));
 }
 
-html {
-  /* Prevent layout shift when dropdowns/modals hide the scrollbar */
-  scrollbar-gutter: stable;
-}
-
 body {
   background-color: hsl(var(--background));
   color: hsl(var(--foreground));
+}
+
+/* Prevent Radix UI from locking body scroll and causing layout shift */
+body[data-scroll-locked] {
+  overflow: auto !important;
+  margin-right: 0 !important;
+  padding-right: 0 !important;
 }
 
 /* ==========================================================================
