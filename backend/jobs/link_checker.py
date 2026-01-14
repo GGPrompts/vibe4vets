@@ -8,11 +8,11 @@ Uses HTTP validation and Claude Haiku AI analysis to detect:
 - "Not found" or "page removed" content
 """
 
-import httpx
 from datetime import UTC, datetime
 from typing import Any
 from uuid import UUID
 
+import httpx
 from sqlmodel import Session, select
 
 from app.config import settings
@@ -301,7 +301,8 @@ class LinkCheckerJob(BaseJob):
 
             client = anthropic.Anthropic(api_key=settings.anthropic_api_key)
 
-            prompt = f"""Analyze this web page content to determine if it represents an active veteran resource.
+            prompt = f"""
+Analyze this web page content to determine if it represents an active veteran resource.
 
 Resource Title: {resource_title}
 URL: {url}
@@ -323,7 +324,8 @@ Examples:
 - Active resource page with current info: SCORE: 0.95
 - Page exists but outdated/unmaintained: SCORE: 0.6
 - 404 or error page: SCORE: 0.1
-- Parked domain or unrelated content: SCORE: 0.2"""
+- Parked domain or unrelated content: SCORE: 0.2
+""".strip()
 
             message = client.messages.create(
                 model="claude-3-haiku-20240307",

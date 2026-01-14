@@ -5,7 +5,7 @@ from fastapi.testclient import TestClient
 
 # SQLite doesn't support PostgreSQL ARRAY and JSONB types
 # Register custom compilers to convert them to TEXT for testing
-from sqlalchemy.dialects.postgresql import ARRAY, JSONB
+from sqlalchemy.dialects.postgresql import ARRAY, JSONB, TSVECTOR
 from sqlalchemy.ext.compiler import compiles
 from sqlmodel import Session, SQLModel, create_engine
 from sqlmodel.pool import StaticPool
@@ -23,6 +23,12 @@ def compile_array_sqlite(element, compiler, **kw):
 @compiles(JSONB, "sqlite")
 def compile_jsonb_sqlite(element, compiler, **kw):
     """Compile PostgreSQL JSONB as TEXT for SQLite compatibility."""
+    return "TEXT"
+
+
+@compiles(TSVECTOR, "sqlite")
+def compile_tsvector_sqlite(element, compiler, **kw):
+    """Compile PostgreSQL TSVECTOR as TEXT for SQLite compatibility."""
     return "TEXT"
 
 
