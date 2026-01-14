@@ -311,3 +311,87 @@ body {
 .search-glow:focus-within {
   box-shadow: 0 0 0 3px hsl(var(--v4v-gold) / 0.2), 0 4px 20px -4px hsl(var(--v4v-navy) / 0.1);
 }
+
+/* Hero enhanced search container */
+.hero-search-container {
+  position: relative;
+  border: 1px solid hsl(var(--v4v-gold) / 0.3);
+  box-shadow:
+    0 0 30px -5px hsl(var(--v4v-gold) / 0.15),
+    inset 0 1px 0 0 hsl(255 255 255 / 0.1);
+}
+
+.hero-search-container:focus-within {
+  border-color: hsl(var(--v4v-gold) / 0.5);
+  box-shadow:
+    0 0 40px -5px hsl(var(--v4v-gold) / 0.25),
+    0 0 0 3px hsl(var(--v4v-gold) / 0.1),
+    inset 0 1px 0 0 hsl(255 255 255 / 0.15);
+}
+
+/* Subtle star pattern for hero background */
+.hero-stars {
+  background-image:
+    radial-gradient(2px 2px at 20px 30px, hsl(var(--v4v-gold) / 0.15), transparent),
+    radial-gradient(2px 2px at 40px 70px, hsl(var(--v4v-gold) / 0.1), transparent),
+    radial-gradient(1px 1px at 90px 40px, hsl(var(--v4v-gold) / 0.12), transparent),
+    radial-gradient(2px 2px at 130px 80px, hsl(var(--v4v-gold) / 0.08), transparent),
+    radial-gradient(1px 1px at 160px 30px, hsl(var(--v4v-gold) / 0.1), transparent);
+  background-size: 200px 100px;
+  background-position: 0 0;
+}
+
+/* Hero gradient layers */
+.hero-gradient-layer {
+  background:
+    radial-gradient(ellipse 80% 50% at 80% 20%, hsl(var(--v4v-gold) / 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse 60% 80% at 20% 80%, hsl(var(--v4v-navy-light) / 0.5) 0%, transparent 50%),
+    linear-gradient(180deg, hsl(var(--v4v-navy)) 0%, hsl(222 60% 8%) 100%);
+}
+
+/* Animated shimmer for stats */
+@keyframes shimmer {
+  0% { opacity: 0.6; }
+  50% { opacity: 1; }
+  100% { opacity: 0.6; }
+}
+
+.stat-shimmer {
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+.stat-shimmer:nth-child(2) { animation-delay: 0.5s; }
+.stat-shimmer:nth-child(3) { animation-delay: 1s; }
+
+/* Hero stat card styling */
+.hero-stat {
+  background: hsl(var(--v4v-navy-light) / 0.5);
+  border: 1px solid hsl(var(--v4v-gold) / 0.2);
+  backdrop-filter: blur(4px);
+  transition: all 0.3s ease;
+}
+
+.hero-stat:hover {
+  background: hsl(var(--v4v-navy-light) / 0.7);
+  border-color: hsl(var(--v4v-gold) / 0.4);
+  transform: translateY(-2px);
+}
+
+/* Hero section divider */
+.hero-divider {
+  height: 4px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    hsl(var(--v4v-gold) / 0.3) 20%,
+    hsl(var(--v4v-gold)) 50%,
+    hsl(var(--v4v-gold) / 0.3) 80%,
+    transparent 100%
+  );
+}
+
+/* Shield silhouette decoration */
+.hero-shield {
+  background: linear-gradient(135deg, hsl(var(--v4v-gold) / 0.05) 0%, transparent 50%);
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
