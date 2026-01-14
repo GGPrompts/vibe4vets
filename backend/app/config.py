@@ -33,6 +33,7 @@ class Settings(BaseSettings):
     # Cron format: minute hour day month day_of_week
     refresh_schedule: str = "0 2 * * *"  # Daily at 2am
     freshness_schedule: str = "0 * * * *"  # Hourly
+    link_checker_schedule: str = "0 3 * * *"  # Daily at 3am
     scheduler_enabled: bool = True  # Can disable in dev
 
     model_config = {"env_file": ".env", "env_file_encoding": "utf-8"}
@@ -46,6 +47,7 @@ class Settings(BaseSettings):
         return {
             "REFRESH_SCHEDULE": self.refresh_schedule,
             "FRESHNESS_SCHEDULE": self.freshness_schedule,
+            "LINK_CHECKER_SCHEDULE": self.link_checker_schedule,
             "SCHEDULER_ENABLED": self.scheduler_enabled,
         }
 

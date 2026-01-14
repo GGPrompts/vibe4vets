@@ -4,11 +4,13 @@ This module provides:
 - Job scheduler using APScheduler
 - Refresh job for connector data sync
 - Freshness job for trust score updates
+- Link checker job for URL health validation
 - Job registry and configuration
 """
 
 from jobs.base import BaseJob, JobResult, JobStatus
 from jobs.freshness import FreshnessJob
+from jobs.link_checker import LinkCheckerJob
 from jobs.refresh import RefreshJob, get_available_connectors
 from jobs.scheduler import JobScheduler, get_scheduler, reset_scheduler
 
@@ -51,6 +53,14 @@ def setup_jobs(scheduler: JobScheduler, config: dict[str, str | bool]) -> None:
         enabled=bool(enabled) and bool(freshness_schedule),
     )
 
+    # Register link checker job
+    link_checker_schedule = config.get("LINK_CHECKER_SCHEDULE")
+    scheduler.register_job(
+        LinkCheckerJob(),
+        schedule=link_checker_schedule if isinstance(link_checker_schedule, str) else None,
+        enabled=bool(enabled) and bool(link_checker_schedule),
+    )
+
 
 __all__ = [
     # Base
@@ -59,6 +69,7 @@ __all__ = [
     "JobStatus",
     # Jobs
     "FreshnessJob",
+    "LinkCheckerJob",
     "RefreshJob",
     "get_available_connectors",
     # Scheduler
