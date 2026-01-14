@@ -194,7 +194,7 @@ function SearchResults() {
   return (
     <div className="grid h-[calc(100vh-140px)] gap-6 lg:grid-cols-[280px_1fr_400px]">
       {/* Filter Sidebar - Desktop */}
-      <Card className="sticky top-6 hidden h-fit max-h-[calc(100vh-160px)] overflow-hidden p-5 lg:block">
+      <Card className="hidden h-fit max-h-[calc(100vh-160px)] self-start overflow-hidden p-5 lg:block">
         <ScrollArea className="h-full pr-4">
           <FiltersSidebar
             filters={filters}
@@ -205,7 +205,7 @@ function SearchResults() {
       </Card>
 
       {/* Main Content */}
-      <div className="flex flex-col space-y-4">
+      <div className="flex min-h-0 flex-col space-y-4 overflow-hidden">
         {/* Search Bar */}
         <form onSubmit={handleSearch} className="relative">
           <div className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2">
@@ -353,7 +353,7 @@ function SearchResults() {
       </div>
 
       {/* Detail Panel - Desktop */}
-      <Card className="sticky top-6 hidden h-fit max-h-[calc(100vh-160px)] overflow-hidden lg:block">
+      <Card className="hidden h-fit max-h-[calc(100vh-160px)] self-start overflow-hidden lg:block">
         <ResourceDetailPanel
           resource={selectedResource?.resource || null}
           explanations={selectedResource?.explanations}
