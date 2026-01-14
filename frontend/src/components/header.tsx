@@ -75,8 +75,8 @@ export function Header({ variant = 'default' }: HeaderProps) {
             width={851}
             height={273}
             priority
-            className="h-8 w-auto"
-            sizes="128px"
+            className="h-9 w-auto sm:h-10"
+            sizes="(max-width: 768px) 160px, 200px"
           />
         </Link>
 
