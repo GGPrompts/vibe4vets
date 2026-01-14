@@ -3,6 +3,7 @@
 import { Suspense, useCallback, useEffect, useState } from 'react';
 import { useIsMobile } from '@/hooks/use-media-query';
 import { useSearchParams, useRouter } from 'next/navigation';
+import Link from 'next/link';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
@@ -16,7 +17,6 @@ import {
   SheetTrigger,
 } from '@/components/ui/sheet';
 import { ResourceCard } from '@/components/resource-card';
-import { ResourceCardSkeleton } from '@/components/resource-card-skeleton';
 import {
   FiltersSidebar,
   type FilterState,
@@ -28,7 +28,15 @@ import api, {
   type Resource,
   type MatchExplanation,
 } from '@/lib/api';
-import { Search, SearchX, Filter, X, Briefcase, Home, Scale, GraduationCap, Lightbulb } from 'lucide-react';
+import {
+  Search,
+  Filter,
+  X,
+  ChevronLeft,
+  ChevronRight,
+  PanelLeftClose,
+  PanelRightClose,
+} from 'lucide-react';
 
 interface SelectedResource {
   resource: Resource;
@@ -48,6 +56,31 @@ function SearchResults() {
   const [searchInput, setSearchInput] = useState(query);
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   const isMobile = useIsMobile();
+
+  // Sidebar collapse state with localStorage persistence
+  const [leftCollapsed, setLeftCollapsed] = useState(false);
+  const [rightCollapsed, setRightCollapsed] = useState(false);
+
+  // Load collapsed state from localStorage on mount
+  useEffect(() => {
+    const savedLeft = localStorage.getItem('v4v-left-collapsed');
+    const savedRight = localStorage.getItem('v4v-right-collapsed');
+    if (savedLeft !== null) setLeftCollapsed(savedLeft === 'true');
+    if (savedRight !== null) setRightCollapsed(savedRight === 'true');
+  }, []);
+
+  // Persist collapsed state to localStorage
+  const toggleLeftCollapsed = () => {
+    const newValue = !leftCollapsed;
+    setLeftCollapsed(newValue);
+    localStorage.setItem('v4v-left-collapsed', String(newValue));
+  };
+
+  const toggleRightCollapsed = () => {
+    const newValue = !rightCollapsed;
+    setRightCollapsed(newValue);
+    localStorage.setItem('v4v-right-collapsed', String(newValue));
+  };
 
   // Initialize filters from URL params
   const [filters, setFilters] = useState<FilterState>(() => {
@@ -192,20 +225,55 @@ function SearchResults() {
   const hasResults = totalResults > 0;
 
   return (
-    <div className="grid h-[calc(100vh-140px)] gap-6 lg:grid-cols-[280px_1fr_400px]">
+    <div
+      className="relative grid h-[calc(100vh-140px)] gap-6 transition-all duration-300 ease-in-out lg:grid-cols-[280px_1fr_400px]"
+      style={{
+        gridTemplateColumns: `${leftCollapsed ? '0px' : '280px'} 1fr ${rightCollapsed ? '0px' : '400px'}`,
+      }}
+    >
+      {/* Collapsed Left Edge Button */}
+      {leftCollapsed && (
+        <button
+          onClick={toggleLeftCollapsed}
+          className="fixed left-2 top-1/2 z-30 hidden -translate-y-1/2 rounded-r-lg border border-l-0 bg-background p-2 shadow-md transition-colors hover:bg-muted lg:block"
+          aria-label="Show filters"
+        >
+          <ChevronRight className="h-4 w-4" />
+        </button>
+      )}
+
       {/* Filter Sidebar - Desktop */}
-      <Card className="hidden h-fit max-h-[calc(100vh-160px)] self-start overflow-hidden p-5 lg:block">
-        <ScrollArea className="h-full pr-4">
-          <FiltersSidebar
-            filters={filters}
-            onFiltersChange={handleFiltersChange}
-            resultCount={totalResults}
-          />
-        </ScrollArea>
-      </Card>
+      <div
+        className={`sticky top-6 hidden h-fit max-h-[calc(100vh-160px)] overflow-hidden transition-all duration-300 ease-in-out lg:block ${
+          leftCollapsed ? 'w-0 opacity-0' : 'w-[280px] opacity-100'
+        }`}
+      >
+        <Card className="h-full overflow-hidden">
+          {/* Clickable Header */}
+          <button
+            onClick={toggleLeftCollapsed}
+            className="flex w-full items-center justify-between border-b px-5 py-3 text-left transition-colors hover:bg-muted/50"
+            aria-label="Collapse filters"
+          >
+            <span className="flex items-center gap-2 text-sm font-semibold">
+              <Filter className="h-4 w-4 text-[hsl(var(--v4v-gold))]" />
+              Filters
+            </span>
+            <PanelLeftClose className="h-4 w-4 text-muted-foreground" />
+          </button>
+          <ScrollArea className="h-[calc(100%-52px)] p-5 pr-4">
+            <FiltersSidebar
+              filters={filters}
+              onFiltersChange={handleFiltersChange}
+              resultCount={totalResults}
+              hideHeader
+            />
+          </ScrollArea>
+        </Card>
+      </div>
 
       {/* Main Content */}
-      <div className="flex min-h-0 flex-col space-y-4 overflow-hidden">
+      <div className="flex flex-col space-y-4">
         {/* Search Bar */}
         <form onSubmit={handleSearch} className="relative">
           <div className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2">
@@ -267,6 +335,7 @@ function SearchResults() {
                     setMobileFiltersOpen(false);
                   }}
                   resultCount={totalResults}
+                  hideHeader
                 />
               </ScrollArea>
             </SheetContent>
@@ -312,7 +381,7 @@ function SearchResults() {
           {loading ? (
             <div className="grid gap-4 pr-4 sm:grid-cols-2">
               {[...Array(6)].map((_, i) => (
-                <ResourceCardSkeleton key={i} />
+                <Skeleton key={i} className="h-48 w-full rounded-lg" />
               ))}
             </div>
           ) : hasResults ? (
@@ -329,106 +398,66 @@ function SearchResults() {
               ))}
             </div>
           ) : (
-            <div className="rounded-xl border border-[hsl(var(--border))] bg-white p-8 sm:p-12">
-              {/* Icon and Heading */}
-              <div className="text-center">
-                <SearchX className="mx-auto mb-4 h-12 w-12 text-[hsl(var(--muted-foreground))]" />
-                <h3 className="font-display text-xl text-[hsl(var(--v4v-navy))]">
-                  No resources found
-                </h3>
-                <p className="mx-auto mt-2 max-w-md text-[hsl(var(--muted-foreground))]">
-                  {query
-                    ? `We couldn't find any resources matching "${query}" with your current filters.`
-                    : "We couldn't find any resources matching your current filters."}
-                </p>
-              </div>
-
-              {/* Suggestions */}
-              <div className="mx-auto mt-6 max-w-md">
-                <div className="flex items-start gap-2 rounded-lg bg-[hsl(var(--v4v-gold)/0.1)] p-4">
-                  <Lightbulb className="mt-0.5 h-5 w-5 flex-shrink-0 text-[hsl(var(--v4v-gold-dark))]" />
-                  <div className="text-sm text-[hsl(var(--v4v-navy))]">
-                    <p className="font-medium">Try these suggestions:</p>
-                    <ul className="mt-1 list-inside list-disc space-y-1 text-[hsl(var(--muted-foreground))]">
-                      {query && <li>Check your spelling or try different keywords</li>}
-                      <li>Remove some filters to broaden your search</li>
-                      <li>Browse resources by category below</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-
-              {/* Quick Links to Hubs */}
-              <div className="mt-8">
-                <p className="mb-4 text-center text-sm font-medium text-[hsl(var(--muted-foreground))]">
-                  Browse by category
-                </p>
-                <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-                  <Link
-                    href="/hubs/employment"
-                    className="flex flex-col items-center gap-2 rounded-lg border border-[hsl(var(--border))] p-4 transition-colors hover:border-[hsl(var(--v4v-navy))] hover:bg-[hsl(var(--v4v-navy)/0.05)]"
-                  >
-                    <Briefcase className="h-6 w-6 text-[hsl(var(--v4v-navy))]" />
-                    <span className="text-sm font-medium text-[hsl(var(--v4v-navy))]">Employment</span>
-                  </Link>
-                  <Link
-                    href="/hubs/housing"
-                    className="flex flex-col items-center gap-2 rounded-lg border border-[hsl(var(--border))] p-4 transition-colors hover:border-[hsl(var(--v4v-navy))] hover:bg-[hsl(var(--v4v-navy)/0.05)]"
-                  >
-                    <Home className="h-6 w-6 text-[hsl(var(--v4v-navy))]" />
-                    <span className="text-sm font-medium text-[hsl(var(--v4v-navy))]">Housing</span>
-                  </Link>
-                  <Link
-                    href="/hubs/legal"
-                    className="flex flex-col items-center gap-2 rounded-lg border border-[hsl(var(--border))] p-4 transition-colors hover:border-[hsl(var(--v4v-navy))] hover:bg-[hsl(var(--v4v-navy)/0.05)]"
-                  >
-                    <Scale className="h-6 w-6 text-[hsl(var(--v4v-navy))]" />
-                    <span className="text-sm font-medium text-[hsl(var(--v4v-navy))]">Legal</span>
-                  </Link>
-                  <Link
-                    href="/hubs/training"
-                    className="flex flex-col items-center gap-2 rounded-lg border border-[hsl(var(--border))] p-4 transition-colors hover:border-[hsl(var(--v4v-navy))] hover:bg-[hsl(var(--v4v-navy)/0.05)]"
-                  >
-                    <GraduationCap className="h-6 w-6 text-[hsl(var(--v4v-navy))]" />
-                    <span className="text-sm font-medium text-[hsl(var(--v4v-navy))]">Training</span>
-                  </Link>
-                </div>
-              </div>
-
-              {/* Clear Filters Button */}
-              {(filters.categories.length > 0 ||
-                filters.states.length > 0 ||
-                filters.scope !== 'all' ||
-                filters.minTrust > 0) && (
-                <div className="mt-6 text-center">
-                  <Button
-                    variant="outline"
-                    onClick={() =>
-                      handleFiltersChange({
-                        categories: [],
-                        states: [],
-                        scope: 'all',
-                        minTrust: 0,
-                      })
-                    }
-                  >
-                    <X className="mr-2 h-4 w-4" />
-                    Clear All Filters
-                  </Button>
-                </div>
-              )}
+            <div className="py-12 text-center">
+              <p className="text-lg text-muted-foreground">
+                No resources found matching your criteria.
+              </p>
+              <Button
+                variant="outline"
+                className="mt-4"
+                onClick={() =>
+                  handleFiltersChange({
+                    categories: [],
+                    states: [],
+                    scope: 'all',
+                    minTrust: 0,
+                  })
+                }
+              >
+                Clear Filters
+              </Button>
             </div>
           )}
         </ScrollArea>
       </div>
 
+      {/* Collapsed Right Edge Button */}
+      {rightCollapsed && (
+        <button
+          onClick={toggleRightCollapsed}
+          className="fixed right-2 top-1/2 z-30 hidden -translate-y-1/2 rounded-l-lg border border-r-0 bg-background p-2 shadow-md transition-colors hover:bg-muted lg:block"
+          aria-label="Show details"
+        >
+          <ChevronLeft className="h-4 w-4" />
+        </button>
+      )}
+
       {/* Detail Panel - Desktop */}
-      <Card className="hidden h-fit max-h-[calc(100vh-160px)] self-start overflow-hidden lg:block">
-        <ResourceDetailPanel
-          resource={selectedResource?.resource || null}
-          explanations={selectedResource?.explanations}
-        />
-      </Card>
+      <div
+        className={`sticky top-6 hidden h-fit max-h-[calc(100vh-160px)] overflow-hidden transition-all duration-300 ease-in-out lg:block ${
+          rightCollapsed ? 'w-0 opacity-0' : 'w-[400px] opacity-100'
+        }`}
+      >
+        <Card className="h-full overflow-hidden">
+          {/* Clickable Header */}
+          <button
+            onClick={toggleRightCollapsed}
+            className="flex w-full items-center justify-between border-b px-5 py-3 text-left transition-colors hover:bg-muted/50"
+            aria-label="Collapse details"
+          >
+            <span className="text-sm font-semibold">
+              {selectedResource ? 'Resource Details' : 'Details'}
+            </span>
+            <PanelRightClose className="h-4 w-4 text-muted-foreground" />
+          </button>
+          <div className="h-[calc(100%-52px)]">
+            <ResourceDetailPanel
+              resource={selectedResource?.resource || null}
+              explanations={selectedResource?.explanations}
+            />
+          </div>
+        </Card>
+      </div>
 
       {/* Detail Panel - Mobile (Sheet) - Only render on mobile */}
       {isMobile && selectedResource && (
@@ -466,7 +495,7 @@ function SearchFallback() {
         <Skeleton className="h-6 w-48" />
         <div className="grid gap-4 sm:grid-cols-2">
           {[...Array(6)].map((_, i) => (
-            <ResourceCardSkeleton key={i} />
+            <Skeleton key={i} className="h-48 w-full rounded-lg" />
           ))}
         </div>
       </div>
@@ -481,8 +510,15 @@ function SearchFallback() {
 
 export default function SearchPage() {
   return (
-    <main className="min-h-screen p-6 pt-24 lg:p-8 lg:pt-24">
+    <main className="min-h-screen p-6 lg:p-8">
       <div className="mx-auto max-w-[1600px]">
+        {/* Header */}
+        <div className="mb-6 flex items-center justify-between">
+          <Link href="/">
+            <h1 className="text-2xl font-bold">Vibe4Vets</h1>
+          </Link>
+        </div>
+
         <Suspense fallback={<SearchFallback />}>
           <SearchResults />
         </Suspense>
