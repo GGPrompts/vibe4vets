@@ -2,6 +2,7 @@
 
 import { Suspense, useState, useCallback } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { Sparkles, ArrowLeft } from 'lucide-react';
 import {
   Select,
@@ -12,6 +13,8 @@ import {
 } from '@/components/ui/select';
 import { DiscoveryFeed } from '@/components/DiscoveryFeed';
 import { Skeleton } from '@/components/ui/skeleton';
+import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
 
 const CATEGORIES = [
   { value: 'all', label: 'All Categories' },
@@ -25,14 +28,17 @@ const STATES = [
   { value: 'all', label: 'All States' },
   { value: 'AL', label: 'Alabama' },
   { value: 'AK', label: 'Alaska' },
+  { value: 'AS', label: 'American Samoa' },
   { value: 'AZ', label: 'Arizona' },
   { value: 'AR', label: 'Arkansas' },
   { value: 'CA', label: 'California' },
   { value: 'CO', label: 'Colorado' },
   { value: 'CT', label: 'Connecticut' },
+  { value: 'DC', label: 'District of Columbia' },
   { value: 'DE', label: 'Delaware' },
   { value: 'FL', label: 'Florida' },
   { value: 'GA', label: 'Georgia' },
+  { value: 'GU', label: 'Guam' },
   { value: 'HI', label: 'Hawaii' },
   { value: 'ID', label: 'Idaho' },
   { value: 'IL', label: 'Illinois' },
@@ -45,6 +51,7 @@ const STATES = [
   { value: 'MD', label: 'Maryland' },
   { value: 'MA', label: 'Massachusetts' },
   { value: 'MI', label: 'Michigan' },
+  { value: 'MP', label: 'Northern Mariana Islands' },
   { value: 'MN', label: 'Minnesota' },
   { value: 'MS', label: 'Mississippi' },
   { value: 'MO', label: 'Missouri' },
@@ -61,12 +68,14 @@ const STATES = [
   { value: 'OK', label: 'Oklahoma' },
   { value: 'OR', label: 'Oregon' },
   { value: 'PA', label: 'Pennsylvania' },
+  { value: 'PR', label: 'Puerto Rico' },
   { value: 'RI', label: 'Rhode Island' },
   { value: 'SC', label: 'South Carolina' },
   { value: 'SD', label: 'South Dakota' },
   { value: 'TN', label: 'Tennessee' },
   { value: 'TX', label: 'Texas' },
   { value: 'UT', label: 'Utah' },
+  { value: 'VI', label: 'U.S. Virgin Islands' },
   { value: 'VT', label: 'Vermont' },
   { value: 'VA', label: 'Virginia' },
   { value: 'WA', label: 'Washington' },
@@ -99,6 +108,9 @@ function FeedFallback() {
 }
 
 export default function DiscoverPage() {
+  const router = useRouter();
+
+  const [query, setQuery] = useState('');
   const [category, setCategory] = useState('all');
   const [state, setState] = useState('all');
 
@@ -109,6 +121,17 @@ export default function DiscoverPage() {
   const handleStateChange = useCallback((value: string) => {
     setState(value);
   }, []);
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    const params = new URLSearchParams();
+    if (query) params.set('q', query);
+    if (category && category !== 'all') params.set('category', category);
+    if (state && state !== 'all') params.set('state', state);
+
+    router.push(`/search?${params.toString()}`);
+  };
 
   return (
     <main className="min-h-screen bg-[hsl(var(--v4v-cream))] pt-16">
@@ -148,16 +171,32 @@ export default function DiscoverPage() {
       {/* Filters Section */}
       <section className="border-b border-[hsl(var(--border))] bg-white py-4">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
-            <span className="text-sm font-medium text-[hsl(var(--muted-foreground))]">
-              Filter by:
-            </span>
+          <form
+            onSubmit={handleSearch}
+            className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4"
+          >
+            <div className="relative w-full sm:max-w-md">
+              <Input
+                type="text"
+                placeholder="Search resources..."
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                className="h-11 w-full pr-24"
+              />
+              <Button type="submit" className="absolute right-1.5 top-1/2 -translate-y-1/2">
+                Search
+              </Button>
+            </div>
+
             <div className="flex flex-col gap-3 sm:flex-row sm:gap-4">
               <Select value={category} onValueChange={handleCategoryChange}>
-                <SelectTrigger className="w-full sm:w-[160px] min-h-[44px]">
+                <SelectTrigger className="w-full min-h-[44px] sm:w-[160px]">
                   <SelectValue placeholder="Category" />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent
+                  position="popper"
+                  className="border border-[hsl(var(--border))] bg-white text-[hsl(var(--v4v-navy))]"
+                >
                   {CATEGORIES.map((cat) => (
                     <SelectItem key={cat.value} value={cat.value}>
                       {cat.label}
@@ -167,10 +206,13 @@ export default function DiscoverPage() {
               </Select>
 
               <Select value={state} onValueChange={handleStateChange}>
-                <SelectTrigger className="w-full sm:w-[160px] min-h-[44px]">
+                <SelectTrigger className="w-full min-h-[44px] sm:w-[160px]">
                   <SelectValue placeholder="State" />
                 </SelectTrigger>
-                <SelectContent className="max-h-[300px]">
+                <SelectContent
+                  position="popper"
+                  className="max-h-[300px] border border-[hsl(var(--border))] bg-white text-[hsl(var(--v4v-navy))]"
+                >
                   {STATES.map((st) => (
                     <SelectItem key={st.value} value={st.value}>
                       {st.label}
@@ -179,7 +221,7 @@ export default function DiscoverPage() {
                 </SelectContent>
               </Select>
             </div>
-          </div>
+          </form>
         </div>
       </section>
 

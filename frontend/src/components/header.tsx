@@ -19,14 +19,20 @@ export function Header({ variant = 'default' }: HeaderProps) {
   const { scrollDirection, isAtTop } = useScrollDirection();
 
   const isSearchPage = pathname === '/search';
+  const isDiscoverPage = pathname === '/discover';
+  const showSearchBar = isSearchPage || isDiscoverPage;
   const [searchQuery, setSearchQuery] = useState('');
 
   // Sync search query from URL params when on search page
   useEffect(() => {
     if (isSearchPage) {
       setSearchQuery(searchParams.get('q') || '');
+      return;
     }
-  }, [isSearchPage, searchParams]);
+
+    if (!showSearchBar) return;
+    setSearchQuery('');
+  }, [isSearchPage, searchParams, showSearchBar]);
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -57,6 +63,7 @@ export function Header({ variant = 'default' }: HeaderProps) {
         variant === 'transparent' && showShadow && 'bg-[hsl(var(--v4v-navy))]',
         showShadow && 'shadow-lg'
       )}
+      style={{ paddingRight: 'var(--removed-body-scroll-bar-size, 0px)' }}
     >
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-6">
         {/* Logo */}
@@ -64,8 +71,8 @@ export function Header({ variant = 'default' }: HeaderProps) {
           <span className="font-display text-xl text-white">Vibe4Vets</span>
         </Link>
 
-        {/* Search Bar - Only on /search */}
-        {isSearchPage && (
+        {/* Search Bar - Only on /search and /discover */}
+        {showSearchBar && (
           <form onSubmit={handleSearch} className="relative mx-4 hidden max-w-md flex-1 md:block">
             <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
             <Input

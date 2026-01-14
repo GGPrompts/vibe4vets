@@ -3,7 +3,6 @@ import { Suspense } from "react";
 import { DM_Serif_Display, Source_Sans_3 } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/header";
-import { ScrollLockFix } from "@/components/scroll-lock-fix";
 
 const dmSerifDisplay = DM_Serif_Display({
   weight: "400",
@@ -38,7 +37,6 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${dmSerifDisplay.variable} ${sourceSans.variable}`}>
       <body className="min-h-screen bg-background font-body antialiased">
-        <ScrollLockFix />
         <Suspense>
           <Header />
         </Suspense>

@@ -3,10 +3,11 @@
 from datetime import datetime
 from uuid import UUID
 
+from sqlalchemy import or_
 from sqlmodel import Session, col, select
 
 from app.models import Location, Organization, Resource, Source
-from app.models.resource import ResourceStatus
+from app.models.resource import ResourceScope, ResourceStatus
 from app.schemas.resource import (
     LocationNested,
     OrganizationNested,
@@ -39,7 +40,12 @@ class ResourceService:
         if category:
             query = query.where(Resource.categories.contains([category]))
         if state:
-            query = query.where(Resource.states.contains([state]))
+            query = query.where(
+                or_(
+                    Resource.scope == ResourceScope.NATIONAL,
+                    Resource.states.contains([state]),
+                )
+            )
         if status:
             query = query.where(Resource.status == status)
 
@@ -48,7 +54,12 @@ class ResourceService:
         if category:
             count_query = count_query.where(Resource.categories.contains([category]))
         if state:
-            count_query = count_query.where(Resource.states.contains([state]))
+            count_query = count_query.where(
+                or_(
+                    Resource.scope == ResourceScope.NATIONAL,
+                    Resource.states.contains([state]),
+                )
+            )
         if status:
             count_query = count_query.where(Resource.status == status)
 

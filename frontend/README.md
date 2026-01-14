@@ -1,6 +1,6 @@
 # Vibe4Vets Frontend
 
-Next.js 15 + React 19 + TypeScript + Tailwind + shadcn/ui frontend for the veteran resource directory.
+Next.js 15 + React 18 + TypeScript + Tailwind + shadcn/ui frontend for the veteran resource directory.
 
 ## Setup
 
@@ -101,6 +101,19 @@ Located in `src/components/ui/`. Installed via shadcn CLI:
 | `SearchBar` | Full-text search with category/state filters |
 | `ResourceCard` | Displays resource with trust signals |
 | `CategoryButtons` | Quick category navigation |
+
+## State & Territory Filters
+
+State filters use 2-letter codes. In addition to the 50 states, the UI supports:
+
+- `DC` (District of Columbia)
+- `PR` (Puerto Rico)
+- `GU` (Guam)
+- `VI` (U.S. Virgin Islands)
+- `AS` (American Samoa)
+- `MP` (Northern Mariana Islands)
+
+When a state/territory filter is selected, national resources still appear alongside local matches.
 
 ## Environment Variables
 

@@ -1,11 +1,12 @@
 'use client';
 
-import { useState, useCallback, memo } from 'react';
+import { useEffect, useRef, useState, useCallback, memo } from 'react';
 import { useRouter } from 'next/navigation';
 import {
   ComposableMap,
   Geographies,
   Geography,
+  type GeographyObject,
   ZoomableGroup,
 } from 'react-simple-maps';
 import {
@@ -38,6 +39,7 @@ const STATE_NAMES: Record<string, string> = {
   'AL': 'Alabama', 'AK': 'Alaska', 'AZ': 'Arizona', 'AR': 'Arkansas',
   'CA': 'California', 'CO': 'Colorado', 'CT': 'Connecticut', 'DE': 'Delaware',
   'DC': 'District of Columbia', 'FL': 'Florida', 'GA': 'Georgia', 'HI': 'Hawaii',
+  'AS': 'American Samoa', 'GU': 'Guam',
   'ID': 'Idaho', 'IL': 'Illinois', 'IN': 'Indiana', 'IA': 'Iowa',
   'KS': 'Kansas', 'KY': 'Kentucky', 'LA': 'Louisiana', 'ME': 'Maine',
   'MD': 'Maryland', 'MA': 'Massachusetts', 'MI': 'Michigan', 'MN': 'Minnesota',
@@ -48,11 +50,12 @@ const STATE_NAMES: Record<string, string> = {
   'SC': 'South Carolina', 'SD': 'South Dakota', 'TN': 'Tennessee', 'TX': 'Texas',
   'UT': 'Utah', 'VT': 'Vermont', 'VA': 'Virginia', 'WA': 'Washington',
   'WV': 'West Virginia', 'WI': 'Wisconsin', 'WY': 'Wyoming', 'PR': 'Puerto Rico',
+  'MP': 'Northern Mariana Islands', 'VI': 'U.S. Virgin Islands',
 };
 
 // Sorted list of states for dropdown
 const STATES_LIST = Object.entries(STATE_NAMES)
-  .filter(([abbr]) => abbr !== 'DC' && abbr !== 'PR') // Exclude territories from main list
+  .filter(([abbr]) => abbr !== 'DC') // DC is tiny on the map; keep it in list elsewhere
   .sort((a, b) => a[1].localeCompare(b[1]));
 
 interface TooltipState {
@@ -64,6 +67,76 @@ interface TooltipState {
 interface USMapProps {
   className?: string;
   onStateSelect?: (stateAbbr: string) => void;
+}
+
+function MapGeographies({
+  onLoaded,
+  onMouseEnter,
+  onMouseLeave,
+  onSelectState,
+  geographies,
+}: {
+  onLoaded: () => void;
+  onMouseEnter: (geo: GeographyObject, event: React.MouseEvent) => void;
+  onMouseLeave: () => void;
+  onSelectState: (stateAbbr: string) => void;
+  geographies: GeographyObject[];
+}) {
+  const didNotifyLoaded = useRef(false);
+
+  useEffect(() => {
+    if (didNotifyLoaded.current) return;
+    if (geographies.length === 0) return;
+    didNotifyLoaded.current = true;
+    onLoaded();
+  }, [geographies.length, onLoaded]);
+
+  return geographies.map((geo) => {
+    const stateAbbr = STATE_FIPS_TO_ABBR[geo.id];
+    return (
+      <Geography
+        key={geo.rsmKey}
+        geography={geo}
+        onMouseEnter={(event) => onMouseEnter(geo, event)}
+        onMouseLeave={onMouseLeave}
+        onClick={() => stateAbbr && onSelectState(stateAbbr)}
+        tabIndex={0}
+        onKeyDown={(event) => {
+          if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            if (stateAbbr) {
+              onSelectState(stateAbbr);
+            }
+          }
+        }}
+        aria-label={stateAbbr ? STATE_NAMES[stateAbbr] : 'Unknown state'}
+        role="button"
+        style={{
+          default: {
+            fill: 'hsl(222, 60%, 15%)', // Slightly lighter navy for visibility
+            stroke: 'hsl(220, 15%, 70%)', // Light border
+            strokeWidth: 0.5,
+            outline: 'none',
+            cursor: 'pointer',
+            transition: 'fill 0.2s ease',
+          },
+          hover: {
+            fill: 'hsl(45, 70%, 47%)', // Gold on hover
+            stroke: 'hsl(45, 70%, 35%)', // Darker gold border
+            strokeWidth: 1,
+            outline: 'none',
+            cursor: 'pointer',
+          },
+          pressed: {
+            fill: 'hsl(45, 70%, 40%)', // Darker gold when pressed
+            stroke: 'hsl(45, 70%, 30%)',
+            strokeWidth: 1,
+            outline: 'none',
+          },
+        }}
+      />
+    );
+  });
 }
 
 function USMapComponent({ className = '', onStateSelect }: USMapProps) {
@@ -143,55 +216,15 @@ function USMapComponent({ className = '', onStateSelect }: USMapProps) {
         >
           <ZoomableGroup center={[0, 0]} zoom={1}>
             <Geographies geography={GEO_URL}>
-              {({ geographies }) => {
-                if (isLoading) setIsLoading(false);
-                return geographies.map((geo) => {
-                  const stateAbbr = STATE_FIPS_TO_ABBR[geo.id];
-                  return (
-                    <Geography
-                      key={geo.rsmKey}
-                      geography={geo}
-                      onMouseEnter={(event) => handleMouseEnter(geo, event)}
-                      onMouseLeave={handleMouseLeave}
-                      onClick={() => stateAbbr && handleStateClick(stateAbbr)}
-                      tabIndex={0}
-                      onKeyDown={(event) => {
-                        if (event.key === 'Enter' || event.key === ' ') {
-                          event.preventDefault();
-                          if (stateAbbr) {
-                            handleStateClick(stateAbbr);
-                          }
-                        }
-                      }}
-                      aria-label={stateAbbr ? STATE_NAMES[stateAbbr] : 'Unknown state'}
-                      role="button"
-                      style={{
-                        default: {
-                          fill: 'hsl(222, 60%, 15%)', // Slightly lighter navy for visibility
-                          stroke: 'hsl(220, 15%, 70%)', // Light border
-                          strokeWidth: 0.5,
-                          outline: 'none',
-                          cursor: 'pointer',
-                          transition: 'fill 0.2s ease',
-                        },
-                        hover: {
-                          fill: 'hsl(45, 70%, 47%)', // Gold on hover
-                          stroke: 'hsl(45, 70%, 35%)', // Darker gold border
-                          strokeWidth: 1,
-                          outline: 'none',
-                          cursor: 'pointer',
-                        },
-                        pressed: {
-                          fill: 'hsl(45, 70%, 40%)', // Darker gold when pressed
-                          stroke: 'hsl(45, 70%, 30%)',
-                          strokeWidth: 1,
-                          outline: 'none',
-                        },
-                      }}
-                    />
-                  );
-                });
-              }}
+              {({ geographies }) => (
+                <MapGeographies
+                  geographies={geographies}
+                  onLoaded={() => setIsLoading(false)}
+                  onMouseEnter={handleMouseEnter}
+                  onMouseLeave={handleMouseLeave}
+                  onSelectState={handleStateClick}
+                />
+              )}
             </Geographies>
           </ZoomableGroup>
         </ComposableMap>

@@ -151,6 +151,29 @@ body {
   color: hsl(var(--foreground));
 }
 
+html {
+  background-color: hsl(var(--background));
+}
+
+/* Keep scrollbar track consistent with app background (prevents white gutter flash during scroll lock). */
+html {
+  scrollbar-color: hsl(var(--muted-foreground) / 0.7) hsl(var(--background));
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--background));
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: hsl(var(--muted-foreground) / 0.6);
+  border-radius: 999px;
+  border: 3px solid hsl(var(--background));
+}
+
 /* ==========================================================================
  * Utility Classes for V4V Palette
  * ==========================================================================

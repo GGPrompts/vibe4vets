@@ -32,6 +32,7 @@ class CareerOneStopConnector(BaseConnector):
     US_STATES = [
         "AL",
         "AK",
+        "AS",
         "AZ",
         "AR",
         "CA",
@@ -69,6 +70,7 @@ class CareerOneStopConnector(BaseConnector):
         "OK",
         "OR",
         "PA",
+        "MP",
         "PR",
         "RI",
         "SC",
@@ -76,6 +78,7 @@ class CareerOneStopConnector(BaseConnector):
         "TN",
         "TX",
         "UT",
+        "GU",
         "VT",
         "VA",
         "VI",

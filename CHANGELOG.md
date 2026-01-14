@@ -6,6 +6,10 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 
+#### UX + Coverage Improvements (2026-01-14)
+- **Territory + DC support** - State pickers include DC and territories (PR/GU/VI/AS/MP), and `/map` includes territory links (V4V-07y)
+- **Discover page upgrades** - Added search entrypoint and consistent select styling on `/discover` (V4V-a1i)
+
 #### Frontend Improvements (2026-01-13)
 - **Admin Dashboard Stats** - Wire up real API data for Approved Today and Total Resources stats (V4V-2d8)
 - **Admin Navigation Menu** - Sidebar navigation with links to Review Queue, Sources, and Jobs pages (V4V-ndx)
@@ -17,6 +21,11 @@ All notable changes to this project will be documented in this file.
 ### Fixed
 - **Dropdown styling** - Added solid backgrounds and proper text colors to category/state selects (V4V-8xa)
 - **Dropdown positioning** - Changed to popper positioning to prevent page layout shift (V4V-dmr)
+- **Header shift when selects open** - Fixed layout shift caused by scroll-lock scrollbar compensation (V4V-vbt)
+- **Scrollbar gutter flash** - Styled scrollbar track to match background (cream) during scroll-lock (V4V-21u)
+- **/map runtime errors** - Fixed React setState-in-render and map context errors on Browse by State (V4V-5ts, V4V-9px)
+- **/search filtering edge case** - Filters now apply even when a single category/state is selected (V4V-07y)
+- **Mobile /search layout** - Responsive filter sheet width and reduced excess padding on small screens (V4V-kgf)
 
 #### Phase 2: Automation (COMPLETE)
 - **DOL CareerOneStop connector** (`backend/connectors/careeronestop.py`)

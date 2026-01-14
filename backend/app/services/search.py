@@ -1,10 +1,11 @@
 """Search service for full-text and filtered search."""
 
+from sqlalchemy import or_
 from sqlalchemy import func, text
 from sqlmodel import Session, col, select
 
 from app.models import Location, Organization, Resource, Source
-from app.models.resource import ResourceStatus
+from app.models.resource import ResourceScope, ResourceStatus
 from app.schemas.resource import (
     LocationNested,
     MatchExplanation,
@@ -47,7 +48,12 @@ class SearchService:
         if category:
             stmt = stmt.where(Resource.categories.contains([category]))
         if state:
-            stmt = stmt.where(Resource.states.contains([state]))
+            stmt = stmt.where(
+                or_(
+                    Resource.scope == ResourceScope.NATIONAL,
+                    Resource.states.contains([state]),
+                )
+            )
 
         # Get total count
         count_stmt = (
@@ -58,7 +64,12 @@ class SearchService:
         if category:
             count_stmt = count_stmt.where(Resource.categories.contains([category]))
         if state:
-            count_stmt = count_stmt.where(Resource.states.contains([state]))
+            count_stmt = count_stmt.where(
+                or_(
+                    Resource.scope == ResourceScope.NATIONAL,
+                    Resource.states.contains([state]),
+                )
+            )
 
         total = self.session.exec(count_stmt).one()
 

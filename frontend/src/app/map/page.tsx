@@ -72,6 +72,33 @@ export default function MapPage() {
             <USMap className="w-full" />
           </div>
 
+          {/* Territories */}
+          <div className="mt-6 rounded-xl border border-[hsl(var(--border))] bg-white p-6 shadow-sm">
+            <h2 className="font-display text-xl text-[hsl(var(--v4v-navy))]">
+              U.S. Territories
+            </h2>
+            <p className="mt-1 text-sm text-[hsl(var(--muted-foreground))]">
+              Territories aren&apos;t shown on the map. Use these links to browse resources.
+            </p>
+            <div className="mt-4 flex flex-wrap gap-2">
+              {[
+                { code: 'PR', label: 'Puerto Rico' },
+                { code: 'GU', label: 'Guam' },
+                { code: 'VI', label: 'U.S. Virgin Islands' },
+                { code: 'AS', label: 'American Samoa' },
+                { code: 'MP', label: 'Northern Mariana Islands' },
+              ].map((t) => (
+                <Link
+                  key={t.code}
+                  href={`/search?state=${t.code}`}
+                  className="rounded-full border border-[hsl(var(--border))] bg-[hsl(var(--v4v-cream))] px-3 py-1.5 text-sm text-[hsl(var(--v4v-navy))] transition-colors hover:bg-white"
+                >
+                  {t.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+
           {/* Info cards */}
           <div className="mt-10 grid gap-6 sm:grid-cols-3">
             <div className="rounded-lg border border-[hsl(var(--border))] bg-white p-5">

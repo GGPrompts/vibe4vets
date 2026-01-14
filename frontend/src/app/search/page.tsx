@@ -149,16 +149,16 @@ function SearchResults() {
   // Filter results client-side for multi-select and trust
   const filterResults = <T extends Resource>(resources: T[]) => {
     return resources.filter((resource) => {
-      // Category filter (if multiple selected)
-      if (filters.categories.length > 1) {
+      // Category filter
+      if (filters.categories.length > 0) {
         const hasCategory = resource.categories.some((c) =>
           filters.categories.includes(c)
         );
         if (!hasCategory) return false;
       }
 
-      // State filter (if multiple selected)
-      if (filters.states.length > 1) {
+      // State filter (includes national resources)
+      if (filters.states.length > 0) {
         const matchesState =
           resource.scope === 'national' ||
           resource.states.some((s) => filters.states.includes(s));
@@ -292,7 +292,7 @@ function SearchResults() {
                 )}
               </Button>
             </SheetTrigger>
-            <SheetContent side="left" className="w-80">
+            <SheetContent side="left" className="w-[90vw] max-w-[20rem]">
               <SheetHeader>
                 <SheetTitle>Filters</SheetTitle>
               </SheetHeader>
@@ -337,7 +337,7 @@ function SearchResults() {
         {/* Results Grid */}
         <div>
           {initialLoading ? (
-            <div className="grid gap-4 pr-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            <div className="grid gap-4 pr-0 sm:grid-cols-2 sm:pr-4 lg:grid-cols-3 xl:grid-cols-4">
               {[...Array(8)].map((_, i) => (
                 <Card key={i} className="h-48 w-full animate-pulse overflow-hidden">
                   <div className="flex h-full flex-col p-4">
@@ -358,7 +358,7 @@ function SearchResults() {
             </div>
           ) : hasResults ? (
             <AnimatePresence mode="popLayout">
-              <div className="grid gap-4 pr-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+              <div className="grid gap-4 pr-0 sm:grid-cols-2 sm:pr-4 lg:grid-cols-3 xl:grid-cols-4">
                 {resources.map((resource, index) => (
                   <motion.div
                     key={resource.id}
@@ -461,7 +461,7 @@ function SearchFallback() {
 
 export default function SearchPage() {
   return (
-    <main className="min-h-screen p-6 pt-24 lg:p-8 lg:pt-24">
+    <main className="min-h-screen px-4 pb-6 pt-24 sm:px-6 lg:p-8 lg:pt-24">
       <div className="mx-auto max-w-[1600px]">
         <Suspense fallback={<SearchFallback />}>
           <SearchResults />
