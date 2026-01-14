@@ -175,9 +175,7 @@ def get_sources_health_detailed(session: SessionDep) -> SourceHealthListResponse
 
 
 @router.get("/dashboard/sources/{source_id}", response_model=SourceHealthDetail)
-def get_source_health_detailed(
-    source_id: UUID, session: SessionDep
-) -> SourceHealthDetail:
+def get_source_health_detailed(source_id: UUID, session: SessionDep) -> SourceHealthDetail:
     """Get detailed health information for a single source.
 
     Returns comprehensive health metrics including:
@@ -320,7 +318,7 @@ async def run_job(
         raise HTTPException(
             status_code=500,
             detail=f"Job execution failed: {str(e)}",
-        )
+        ) from e
 
 
 @router.get("/jobs/history", response_model=JobHistoryResponse)

@@ -9,14 +9,12 @@ from sqlmodel import Session
 # Import all models to ensure SQLModel resolves relationships
 # This must happen before any model instantiation
 import app.models  # noqa: F401
-
 from app.models import (
     HealthStatus,
     Organization,
     Resource,
     ResourceStatus,
     Source,
-    SourceError,
     SourceErrorType,
     SourceType,
 )
@@ -26,9 +24,7 @@ from app.services.health import (
 )
 
 # Skip tests that require PostgreSQL ARRAY types
-requires_postgres = pytest.mark.skip(
-    reason="Test requires PostgreSQL for ARRAY column types"
-)
+requires_postgres = pytest.mark.skip(reason="Test requires PostgreSQL for ARRAY column types")
 
 
 # ============================================================================
@@ -198,9 +194,7 @@ class TestGetDashboardStats:
         # Create resources with different categories
         create_resource(session, organization, source, categories=["employment"])
         create_resource(session, organization, source, categories=["training"])
-        create_resource(
-            session, organization, source, categories=["employment", "training"]
-        )
+        create_resource(session, organization, source, categories=["employment", "training"])
         create_resource(session, organization, source, categories=["housing"])
 
         stats = health_service.get_dashboard_stats()
@@ -223,9 +217,7 @@ class TestGetDashboardStats:
         """Test counting resources by status."""
         create_resource(session, organization, source, status=ResourceStatus.ACTIVE)
         create_resource(session, organization, source, status=ResourceStatus.ACTIVE)
-        create_resource(
-            session, organization, source, status=ResourceStatus.NEEDS_REVIEW
-        )
+        create_resource(session, organization, source, status=ResourceStatus.NEEDS_REVIEW)
         create_resource(session, organization, source, status=ResourceStatus.INACTIVE)
 
         stats = health_service.get_dashboard_stats()
@@ -299,9 +291,7 @@ class TestGetSourceHealth:
         """Test source health includes resource counts."""
         create_resource(session, organization, source, status=ResourceStatus.ACTIVE)
         create_resource(session, organization, source, status=ResourceStatus.ACTIVE)
-        create_resource(
-            session, organization, source, status=ResourceStatus.NEEDS_REVIEW
-        )
+        create_resource(session, organization, source, status=ResourceStatus.NEEDS_REVIEW)
 
         health = health_service.get_source_health(source.id)
 

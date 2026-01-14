@@ -1,11 +1,8 @@
 """Tests for the freshness update job."""
 
-import pytest
-from datetime import datetime
 from unittest.mock import MagicMock, patch
 
 from jobs.freshness import FreshnessJob
-from jobs.base import JobStatus
 
 
 class TestFreshnessJob:

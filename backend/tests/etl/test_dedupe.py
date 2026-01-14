@@ -1,7 +1,5 @@
 """Tests for ETL deduplicator."""
 
-import pytest
-
 from etl.dedupe import Deduplicator, find_potential_duplicates
 from etl.models import NormalizedResource
 

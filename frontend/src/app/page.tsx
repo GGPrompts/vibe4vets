@@ -121,7 +121,7 @@ export default function Home() {
               </div>
               {/* Helper text below search */}
               <p className="mt-3 text-center text-sm text-white/50">
-                Try: "job training Texas" or "housing assistance California"
+                Try: &quot;job training Texas&quot; or &quot;housing assistance California&quot;
               </p>
             </div>
 
@@ -217,7 +217,7 @@ export default function Home() {
       <section className="border-y border-[hsl(var(--border))] bg-white py-16">
         <div className="mx-auto max-w-6xl px-6">
           <div className="grid gap-8 sm:grid-cols-3">
-            {trustIndicators.map((indicator, index) => {
+            {trustIndicators.map((indicator) => {
               const Icon = indicator.icon;
               return (
                 <div key={indicator.title} className="flex items-start gap-4">
@@ -259,7 +259,7 @@ export default function Home() {
             <div className="absolute left-0 right-0 top-12 hidden h-0.5 bg-gradient-to-r from-transparent via-[hsl(var(--border))] to-transparent lg:block" />
 
             <div className="grid gap-8 lg:grid-cols-3">
-              {steps.map((step, index) => (
+              {steps.map((step) => (
                 <div key={step.number} className="relative text-center">
                   {/* Step number */}
                   <div className="relative mx-auto mb-6 inline-flex h-24 w-24 items-center justify-center rounded-full bg-white shadow-sm">

@@ -269,11 +269,7 @@ class HealthService:
         Returns:
             List of ErrorRecord from all sources, newest first.
         """
-        stmt = (
-            select(SourceError)
-            .order_by(SourceError.occurred_at.desc())
-            .limit(limit)
-        )
+        stmt = select(SourceError).order_by(SourceError.occurred_at.desc()).limit(limit)
         errors = self.session.exec(stmt).all()
 
         result = []
@@ -332,9 +328,7 @@ class HealthService:
         """Count sources grouped by health status."""
         result = {status.value: 0 for status in HealthStatus}
 
-        stmt = select(Source.health_status, func.count(Source.id)).group_by(
-            Source.health_status
-        )
+        stmt = select(Source.health_status, func.count(Source.id)).group_by(Source.health_status)
         counts = self.session.exec(stmt).all()
 
         for status, count in counts:
@@ -364,9 +358,7 @@ class HealthService:
         """Count resources grouped by status."""
         result = {status.value: 0 for status in ResourceStatus}
 
-        stmt = select(Resource.status, func.count(Resource.id)).group_by(
-            Resource.status
-        )
+        stmt = select(Resource.status, func.count(Resource.id)).group_by(Resource.status)
         counts = self.session.exec(stmt).all()
 
         for status, count in counts:
@@ -409,9 +401,7 @@ class HealthService:
 
     def _calculate_average_freshness(self, source_id: UUID) -> float:
         """Calculate average freshness score for a source's resources."""
-        stmt = select(func.avg(Resource.freshness_score)).where(
-            Resource.source_id == source_id
-        )
+        stmt = select(func.avg(Resource.freshness_score)).where(Resource.source_id == source_id)
         avg = self.session.exec(stmt).one()
         return float(avg) if avg is not None else 1.0
 
@@ -463,9 +453,7 @@ class HealthService:
                     status=h["status"],
                     started_at=datetime.fromisoformat(h["started_at"]),
                     completed_at=(
-                        datetime.fromisoformat(h["completed_at"])
-                        if h.get("completed_at")
-                        else None
+                        datetime.fromisoformat(h["completed_at"]) if h.get("completed_at") else None
                     ),
                     message=h.get("message", ""),
                     resources_processed=h.get("stats", {}).get("processed", 0),

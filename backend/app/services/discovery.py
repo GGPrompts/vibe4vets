@@ -261,10 +261,7 @@ class DiscoveryService:
             True if domain should be excluded.
         """
         url_lower = url.lower()
-        for domain in self.EXCLUDED_DOMAINS:
-            if domain in url_lower:
-                return True
-        return False
+        return any(domain in url_lower for domain in self.EXCLUDED_DOMAINS)
 
     def suggest_tier(self, org_name: str, url: str) -> int:
         """Suggest a source tier based on organization signals.
@@ -470,9 +467,7 @@ class DiscoveryService:
             similarity = SequenceMatcher(None, org_name_lower, existing_name).ratio()
             if similarity >= 0.85:
                 # Check if they have resources in same category
-                resource_stmt = select(Resource).where(
-                    Resource.organization_id == org.id
-                )
+                resource_stmt = select(Resource).where(Resource.organization_id == org.id)
                 org_resources = self.session.exec(resource_stmt).all()
 
                 for existing_resource in org_resources:

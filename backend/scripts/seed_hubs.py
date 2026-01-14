@@ -82,9 +82,7 @@ def get_or_create_organization(
 
 def resource_exists(session: Session, title: str, org_id) -> bool:
     """Check if a resource with this title and org already exists."""
-    statement = select(Resource).where(
-        Resource.title == title, Resource.organization_id == org_id
-    )
+    statement = select(Resource).where(Resource.title == title, Resource.organization_id == org_id)
     return session.exec(statement).first() is not None
 
 
@@ -184,7 +182,5 @@ def seed_all_hubs(database_url: str) -> None:
 
 
 if __name__ == "__main__":
-    database_url = os.getenv(
-        "DATABASE_URL", "postgresql+psycopg://localhost:5432/vibe4vets"
-    )
+    database_url = os.getenv("DATABASE_URL", "postgresql+psycopg://localhost:5432/vibe4vets")
     seed_all_hubs(database_url)

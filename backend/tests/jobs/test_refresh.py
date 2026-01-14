@@ -1,11 +1,9 @@
 """Tests for the refresh job."""
 
-import pytest
-from datetime import datetime, UTC
-from unittest.mock import MagicMock, patch, PropertyMock
+from datetime import UTC, datetime
+from unittest.mock import MagicMock, patch
 
-from jobs.refresh import RefreshJob, CONNECTOR_REGISTRY, get_available_connectors
-from jobs.base import JobStatus
+from jobs.refresh import CONNECTOR_REGISTRY, RefreshJob, get_available_connectors
 
 
 class TestRefreshJob:
@@ -24,10 +22,14 @@ class TestRefreshJob:
 
         # Mock the connector registry to avoid instantiation issues
         # Use clear=True to replace the entire registry
-        with patch.dict(CONNECTOR_REGISTRY, {
-            "test1": MagicMock,
-            "test2": MagicMock,
-        }, clear=True):
+        with patch.dict(
+            CONNECTOR_REGISTRY,
+            {
+                "test1": MagicMock,
+                "test2": MagicMock,
+            },
+            clear=True,
+        ):
             connectors = job._get_connectors()
             assert len(connectors) == 2
 

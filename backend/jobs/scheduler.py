@@ -15,7 +15,7 @@ from typing import TYPE_CHECKING, Any
 from apscheduler.schedulers.background import BackgroundScheduler
 from apscheduler.triggers.cron import CronTrigger
 
-from jobs.base import BaseJob, JobResult, JobStatus
+from jobs.base import BaseJob, JobResult
 
 if TYPE_CHECKING:
     from apscheduler.job import Job as APSchedulerJob

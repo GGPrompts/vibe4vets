@@ -1,9 +1,5 @@
 """Tests for ETL normalizer."""
 
-from datetime import datetime, timezone
-
-import pytest
-
 from connectors.base import ResourceCandidate
 from etl.normalize import Normalizer
 

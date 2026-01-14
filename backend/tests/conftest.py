@@ -2,17 +2,16 @@
 
 import pytest
 from fastapi.testclient import TestClient
-from sqlmodel import Session, SQLModel, create_engine
-from sqlmodel.pool import StaticPool
-
-from app.database import get_session
-from app.main import app
-
 
 # SQLite doesn't support PostgreSQL ARRAY and JSONB types
 # Register custom compilers to convert them to TEXT for testing
 from sqlalchemy.dialects.postgresql import ARRAY, JSONB
 from sqlalchemy.ext.compiler import compiles
+from sqlmodel import Session, SQLModel, create_engine
+from sqlmodel.pool import StaticPool
+
+from app.database import get_session
+from app.main import app
 
 
 @compiles(ARRAY, "sqlite")

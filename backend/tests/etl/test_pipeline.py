@@ -4,15 +4,12 @@ Note: Integration tests that use the database require PostgreSQL.
 Tests that don't need the loader can still run with SQLite.
 """
 
-from datetime import datetime, timezone
-
 import pytest
 
-from connectors.base import ResourceCandidate, SourceMetadata
+from connectors.base import ResourceCandidate
 from etl.models import ETLResult
 from etl.pipeline import ETLPipeline, create_pipeline
-from tests.etl.conftest import FailingConnector, MockConnector
-
+from tests.etl.conftest import MockConnector
 
 # Mark tests that require database as skipped
 requires_postgres = pytest.mark.skip(reason="Requires PostgreSQL (ARRAY column type)")
@@ -183,7 +180,9 @@ class TestETLPipeline:
 
         # But no actual database changes (resources table should be empty)
         from sqlmodel import select
+
         from app.models import Resource
+
         resources = etl_session.exec(select(Resource)).all()
         assert len(resources) == 0
 
@@ -224,7 +223,9 @@ class TestETLPipeline:
 
         # Verify enrichment occurred
         from sqlmodel import select
+
         from app.models import Resource
+
         db_resource = etl_session.exec(select(Resource)).first()
 
         assert db_resource is not None
@@ -267,7 +268,9 @@ class TestETLPipeline:
 
         # Should keep tier 1
         from sqlmodel import select
+
         from app.models import Resource
+
         db_resource = etl_session.exec(select(Resource)).first()
 
         assert db_resource.reliability_score == 1.0  # Tier 1 score
@@ -285,6 +288,7 @@ class TestCreatePipeline:
 
     def test_create_pipeline_with_geocoder(self, etl_session):
         """Test factory function accepts geocoder."""
+
         class TestGeocoder:
             def geocode(self, *args):
                 return None, None

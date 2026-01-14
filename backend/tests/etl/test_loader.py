@@ -21,7 +21,6 @@ from app.models import (
 from etl.loader import Loader
 from etl.models import NormalizedResource
 
-
 # Skip all tests in this module - they require PostgreSQL for ARRAY types
 pytestmark = pytest.mark.skip(reason="Loader tests require PostgreSQL (ARRAY column type)")
 

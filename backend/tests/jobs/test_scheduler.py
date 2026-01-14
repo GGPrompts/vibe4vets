@@ -1,11 +1,9 @@
 """Tests for the job scheduler."""
 
 import pytest
-from datetime import datetime, timedelta, UTC
-from unittest.mock import MagicMock, patch
 
 from jobs import get_scheduler, reset_scheduler, setup_jobs
-from jobs.base import BaseJob, JobResult, JobStatus
+from jobs.base import BaseJob, JobStatus
 from jobs.scheduler import JobScheduler
 
 
@@ -112,6 +110,7 @@ class TestJobScheduler:
 
         # Give background thread a moment to start
         import time
+
         time.sleep(0.1)
 
         scheduler.shutdown(wait=False)
@@ -174,6 +173,7 @@ class TestJobScheduler:
         # Start scheduler to get next_run_time values
         scheduler.start()
         import time
+
         time.sleep(0.1)
 
         jobs = scheduler.get_scheduled_jobs()
@@ -232,6 +232,7 @@ class TestGlobalScheduler:
         scheduler1 = get_scheduler()
         scheduler1.start()
         import time
+
         time.sleep(0.1)
         scheduler1.shutdown(wait=False)
 

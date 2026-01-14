@@ -160,9 +160,7 @@ class VAGovConnector(BaseConnector):
         # Build description from available services
         services = []
         health_services = attrs.get("services", {}).get("health", [])
-        benefits_services = attrs.get("services", {}).get("benefits", {}).get(
-            "standard", []
-        )
+        benefits_services = attrs.get("services", {}).get("benefits", {}).get("standard", [])
         other_services = attrs.get("services", {}).get("other", [])
 
         for svc in health_services:
@@ -199,7 +197,7 @@ class VAGovConnector(BaseConnector):
         return ResourceCandidate(
             title=attrs.get("name", "Unknown VA Facility"),
             description=description,
-            source_url=attrs.get("website") or f"https://www.va.gov/find-locations",
+            source_url=attrs.get("website") or "https://www.va.gov/find-locations",
             org_name="U.S. Department of Veterans Affairs",
             org_website="https://www.va.gov",
             address=self._format_address(address_obj),
@@ -210,7 +208,9 @@ class VAGovConnector(BaseConnector):
             tags=self._extract_tags(services, facility_type),
             phone=self._normalize_phone(attrs.get("phone", {}).get("main")),
             hours=hours,
-            eligibility="Veterans, service members, and their families. Eligibility varies by program.",
+            eligibility=(
+                "Veterans, service members, and their families. Eligibility varies by program."
+            ),
             how_to_apply="Visit the facility, call, or apply online at va.gov",
             scope=scope,
             states=states,

@@ -81,7 +81,7 @@ interface ResourceDetailPanelProps {
 export function ResourceDetailPanel({
   resource,
   explanations,
-  onClose,
+  onClose: _onClose,
 }: ResourceDetailPanelProps) {
   if (!resource) {
     return (

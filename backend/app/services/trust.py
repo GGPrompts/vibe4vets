@@ -8,10 +8,10 @@ from app.models import Resource, Source
 
 # Tier-based reliability scores
 TIER_SCORES = {
-    1: 1.0,   # VA.gov, DOL, HUD
-    2: 0.8,   # DAV, VFW, American Legion
-    3: 0.6,   # State veteran agencies
-    4: 0.4,   # Community directories
+    1: 1.0,  # VA.gov, DOL, HUD
+    2: 0.8,  # DAV, VFW, American Legion
+    3: 0.6,  # State veteran agencies
+    4: 0.4,  # Community directories
 }
 
 # Freshness decay constants (in days)
@@ -100,10 +100,7 @@ class TrustService:
         stmt = (
             select(Resource)
             .where(Resource.status == ResourceStatus.ACTIVE)
-            .where(
-                (Resource.last_verified < cutoff)
-                | (Resource.last_verified.is_(None))
-            )
+            .where((Resource.last_verified < cutoff) | (Resource.last_verified.is_(None)))
             .order_by(Resource.freshness_score.asc())
         )
 

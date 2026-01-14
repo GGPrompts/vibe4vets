@@ -1,11 +1,10 @@
 """Pytest fixtures for ETL tests."""
 
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 
 import pytest
 
 from connectors.base import ResourceCandidate, SourceMetadata
-
 
 # Note: The etl_session fixture uses the main conftest's session fixture
 # which already has PostgreSQL ARRAY/JSONB -> SQLite TEXT compilers registered
@@ -26,7 +25,9 @@ def sample_candidate() -> ResourceCandidate:
     """Create a sample ResourceCandidate for testing."""
     return ResourceCandidate(
         title="VA Employment Services",
-        description="Employment assistance for veterans including job placement and career counseling.",
+        description=(
+            "Employment assistance for veterans including job placement and career counseling."
+        ),
         source_url="https://www.va.gov/employment",
         org_name="U.S. Department of Veterans Affairs",
         org_website="https://www.va.gov",
@@ -44,7 +45,7 @@ def sample_candidate() -> ResourceCandidate:
         scope="national",
         states=["DC"],
         raw_data={"source": "va.gov"},
-        fetched_at=datetime.now(timezone.utc),
+        fetched_at=datetime.now(UTC),
     )
 
 

@@ -1,6 +1,5 @@
 """Tests for CareerOneStop American Job Center API connector."""
 
-import pytest
 from unittest.mock import MagicMock, patch
 
 from connectors.careeronestop import CareerOneStopConnector
@@ -314,9 +313,7 @@ class TestCareerOneStopConnector:
         }
 
         mock_response = MagicMock()
-        mock_response.json.return_value = {
-            "OneStopCenterList": [duplicate_center]
-        }
+        mock_response.json.return_value = {"OneStopCenterList": [duplicate_center]}
         mock_response.raise_for_status = MagicMock()
         mock_client.get.return_value = mock_response
 

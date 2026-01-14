@@ -5,7 +5,6 @@ into a complete pipeline with error handling and statistics.
 """
 
 from datetime import datetime
-from typing import Protocol
 
 from sqlmodel import Session
 

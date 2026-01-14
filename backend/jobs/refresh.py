@@ -7,16 +7,14 @@ Runs all registered connectors through the ETL pipeline to:
 - Track statistics and errors
 """
 
-from datetime import datetime
 from typing import Any
 
 from sqlmodel import Session
 
-from connectors import VAGovConnector, CareerOneStopConnector
+from connectors import CareerOneStopConnector, VAGovConnector
 from connectors.base import BaseConnector
 from etl import ETLPipeline
 from jobs.base import BaseJob
-
 
 # Registry of available connectors
 CONNECTOR_REGISTRY: dict[str, type[BaseConnector]] = {
@@ -66,9 +64,8 @@ class RefreshJob(BaseJob):
 
         if not connectors:
             return {
-                "error": f"No connectors found" + (
-                    f" matching '{connector_name}'" if connector_name else ""
-                ),
+                "error": "No connectors found"
+                + (f" matching '{connector_name}'" if connector_name else ""),
                 "connectors_run": 0,
             }
 
@@ -105,16 +102,11 @@ class RefreshJob(BaseJob):
 
         # Log errors if any
         for error in result.errors:
-            self._log(
-                f"ETL error in {error.stage}: {error.message}",
-                level="warning"
-            )
+            self._log(f"ETL error in {error.stage}: {error.message}", level="warning")
 
         return stats
 
-    def _get_connectors(
-        self, connector_name: str | None = None
-    ) -> list[BaseConnector]:
+    def _get_connectors(self, connector_name: str | None = None) -> list[BaseConnector]:
         """Get connector instances to run.
 
         Args:
@@ -136,10 +128,7 @@ class RefreshJob(BaseJob):
             try:
                 connectors.append(connector_cls())
             except Exception as e:
-                self._log(
-                    f"Failed to initialize connector {name}: {e}",
-                    level="warning"
-                )
+                self._log(f"Failed to initialize connector {name}: {e}", level="warning")
 
         return connectors
 
@@ -167,19 +156,23 @@ def get_available_connectors() -> list[dict[str, Any]]:
         try:
             connector = connector_cls()
             metadata = connector.metadata
-            result.append({
-                "name": name,
-                "display_name": metadata.name,
-                "url": metadata.url,
-                "tier": metadata.tier,
-                "frequency": metadata.frequency,
-                "requires_auth": metadata.requires_auth,
-            })
+            result.append(
+                {
+                    "name": name,
+                    "display_name": metadata.name,
+                    "url": metadata.url,
+                    "tier": metadata.tier,
+                    "frequency": metadata.frequency,
+                    "requires_auth": metadata.requires_auth,
+                }
+            )
         except Exception:
-            result.append({
-                "name": name,
-                "display_name": name,
-                "error": "Failed to load metadata",
-            })
+            result.append(
+                {
+                    "name": name,
+                    "display_name": name,
+                    "error": "Failed to load metadata",
+                }
+            )
 
     return result

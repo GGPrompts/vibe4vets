@@ -133,9 +133,7 @@ class Deduplicator:
 
         return keep, duplicates_removed
 
-    def _are_duplicates(
-        self, resource1: NormalizedResource, resource2: NormalizedResource
-    ) -> bool:
+    def _are_duplicates(self, resource1: NormalizedResource, resource2: NormalizedResource) -> bool:
         """Check if two resources are duplicates.
 
         Two resources are considered duplicates if they have:
@@ -200,9 +198,7 @@ class Deduplicator:
 
         return score
 
-    def _merge_data(
-        self, primary: NormalizedResource, secondary: NormalizedResource
-    ) -> None:
+    def _merge_data(self, primary: NormalizedResource, secondary: NormalizedResource) -> None:
         """Merge data from secondary into primary resource.
 
         Only fills in missing fields from primary, preserving
@@ -228,9 +224,7 @@ class Deduplicator:
             primary.how_to_apply = secondary.how_to_apply
 
         # Merge lists (deduplicate)
-        primary.categories = list(
-            set(primary.categories) | set(secondary.categories)
-        )
+        primary.categories = list(set(primary.categories) | set(secondary.categories))
         primary.tags = list(set(primary.tags) | set(secondary.tags))
         primary.states = list(set(primary.states) | set(secondary.states))
 
@@ -260,10 +254,10 @@ def find_potential_duplicates(
     for existing in existing_resources:
         existing_group_key = deduplicator._create_group_key(existing)
 
-        # Same group (org + location)?
-        if new_group_key == existing_group_key:
-            # Similar title?
-            if deduplicator._are_duplicates(new_resource, existing):
-                duplicates.append(existing)
+        # Same group (org + location) and similar title?
+        if new_group_key == existing_group_key and deduplicator._are_duplicates(
+            new_resource, existing
+        ):
+            duplicates.append(existing)
 
     return duplicates

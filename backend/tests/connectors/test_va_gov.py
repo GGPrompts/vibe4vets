@@ -1,6 +1,5 @@
 """Tests for VA.gov Lighthouse Facilities API connector."""
 
-import pytest
 from unittest.mock import MagicMock, patch
 
 from connectors.va_gov import VAGovConnector
@@ -50,9 +49,7 @@ class TestVAGovConnector:
                         "zip": "02130",
                     }
                 },
-                "phone": {
-                    "main": "617-232-9500"
-                },
+                "phone": {"main": "617-232-9500"},
                 "hours": {
                     "monday": "8:00AM-4:30PM",
                     "tuesday": "8:00AM-4:30PM",
@@ -108,9 +105,7 @@ class TestVAGovConnector:
                         "zip": "02203",
                     }
                 },
-                "phone": {
-                    "main": "800-827-1000"
-                },
+                "phone": {"main": "800-827-1000"},
                 "hours": {
                     "monday": "8:00AM-4:00PM",
                 },
@@ -335,9 +330,12 @@ class TestVAGovConnector:
         page2_response.raise_for_status = MagicMock()
 
         mock_client.get.side_effect = [
-            page1_response, page2_response,  # health
-            page2_response, page2_response,  # benefits
-            page2_response, page2_response,  # vet_center
+            page1_response,
+            page2_response,  # health
+            page2_response,
+            page2_response,  # benefits
+            page2_response,
+            page2_response,  # vet_center
         ]
 
         connector = VAGovConnector(api_key="test")
@@ -356,14 +354,15 @@ class TestVAGovConnector:
         mock_client_class.return_value = mock_client
 
         # First type fails, others succeed with empty data
+        empty_response = {"data": [], "meta": {"pagination": {"totalPages": 1}}}
         mock_client.get.side_effect = [
             httpx.HTTPError("Connection failed"),  # health fails
             MagicMock(
-                json=MagicMock(return_value={"data": [], "meta": {"pagination": {"totalPages": 1}}}),
+                json=MagicMock(return_value=empty_response),
                 raise_for_status=MagicMock(),
             ),  # benefits succeeds
             MagicMock(
-                json=MagicMock(return_value={"data": [], "meta": {"pagination": {"totalPages": 1}}}),
+                json=MagicMock(return_value=empty_response),
                 raise_for_status=MagicMock(),
             ),  # vet_center succeeds
         ]

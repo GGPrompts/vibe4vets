@@ -6,7 +6,7 @@ Create Date: 2026-01-13 02:25:57.618870
 
 """
 
-from typing import Sequence, Union
+from collections.abc import Sequence
 
 import sqlalchemy as sa
 from sqlalchemy.dialects import postgresql
@@ -15,9 +15,9 @@ from alembic import op
 
 # revision identifiers, used by Alembic.
 revision: str = "d71df951e5d9"
-down_revision: Union[str, Sequence[str], None] = None
-branch_labels: Union[str, Sequence[str], None] = None
-depends_on: Union[str, Sequence[str], None] = None
+down_revision: str | Sequence[str] | None = None
+branch_labels: str | Sequence[str] | None = None
+depends_on: str | Sequence[str] | None = None
 
 
 def upgrade() -> None:
@@ -101,12 +101,8 @@ def upgrade() -> None:
         sa.Column("eligibility", sa.Text, nullable=True),
         sa.Column("how_to_apply", sa.Text, nullable=True),
         # Classification
-        sa.Column(
-            "categories", postgresql.ARRAY(sa.Text), nullable=False, server_default="{}"
-        ),
-        sa.Column(
-            "subcategories", postgresql.ARRAY(sa.Text), nullable=False, server_default="{}"
-        ),
+        sa.Column("categories", postgresql.ARRAY(sa.Text), nullable=False, server_default="{}"),
+        sa.Column("subcategories", postgresql.ARRAY(sa.Text), nullable=False, server_default="{}"),
         sa.Column("tags", postgresql.ARRAY(sa.Text), nullable=False, server_default="{}"),
         # Scope
         sa.Column("scope", sa.String(20), nullable=False, server_default="national"),
@@ -115,9 +111,7 @@ def upgrade() -> None:
         sa.Column("website", sa.String(500), nullable=True),
         sa.Column("phone", sa.String(50), nullable=True),
         sa.Column("hours", sa.String(255), nullable=True),
-        sa.Column(
-            "languages", postgresql.ARRAY(sa.Text), nullable=False, server_default='{"en"}'
-        ),
+        sa.Column("languages", postgresql.ARRAY(sa.Text), nullable=False, server_default='{"en"}'),
         sa.Column("cost", sa.String(100), nullable=True),
         # Trust signals
         sa.Column(

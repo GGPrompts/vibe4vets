@@ -4,7 +4,6 @@ Adds geocoding, trust scores, tags, and scope information
 to normalized resources.
 """
 
-import re
 from typing import Protocol
 
 from app.core.taxonomy import CATEGORIES, get_reliability_score
@@ -51,31 +50,79 @@ class Enricher:
     # Keywords that suggest specific categories
     CATEGORY_KEYWORDS = {
         "employment": [
-            "job", "jobs", "career", "careers", "employment", "hiring",
-            "workforce", "work", "employer", "placement", "resume",
+            "job",
+            "jobs",
+            "career",
+            "careers",
+            "employment",
+            "hiring",
+            "workforce",
+            "work",
+            "employer",
+            "placement",
+            "resume",
         ],
         "training": [
-            "training", "education", "certification", "apprentice",
-            "vocational", "gi bill", "school", "college", "degree",
-            "skills", "learning",
+            "training",
+            "education",
+            "certification",
+            "apprentice",
+            "vocational",
+            "gi bill",
+            "school",
+            "college",
+            "degree",
+            "skills",
+            "learning",
         ],
         "housing": [
-            "housing", "shelter", "homeless", "hud", "vash", "ssvf",
-            "transitional", "rent", "apartment", "home",
+            "housing",
+            "shelter",
+            "homeless",
+            "hud",
+            "vash",
+            "ssvf",
+            "transitional",
+            "rent",
+            "apartment",
+            "home",
         ],
         "legal": [
-            "legal", "law", "attorney", "lawyer", "court", "appeal",
-            "discharge", "claims", "benefits",
+            "legal",
+            "law",
+            "attorney",
+            "lawyer",
+            "court",
+            "appeal",
+            "discharge",
+            "claims",
+            "benefits",
         ],
     }
 
     # Keywords for tag extraction
     TAG_KEYWORDS = [
-        "veteran", "veterans", "disabled", "disability", "ptsd",
-        "mental health", "substance abuse", "addiction", "family",
-        "spouse", "transition", "reintegration", "homeless",
-        "emergency", "crisis", "financial", "assistance", "free",
-        "women", "female", "lgbtq",
+        "veteran",
+        "veterans",
+        "disabled",
+        "disability",
+        "ptsd",
+        "mental health",
+        "substance abuse",
+        "addiction",
+        "family",
+        "spouse",
+        "transition",
+        "reintegration",
+        "homeless",
+        "emergency",
+        "crisis",
+        "financial",
+        "assistance",
+        "free",
+        "women",
+        "female",
+        "lgbtq",
     ]
 
     def __init__(self, geocoder: GeocoderProtocol | None = None):
@@ -119,9 +166,7 @@ class Enricher:
 
         return resource
 
-    def enrich_batch(
-        self, resources: list[NormalizedResource]
-    ) -> list[NormalizedResource]:
+    def enrich_batch(self, resources: list[NormalizedResource]) -> list[NormalizedResource]:
         """Enrich a batch of resources.
 
         Args:
@@ -204,9 +249,12 @@ class Enricher:
         # If already has a valid scope, respect it
         if resource.scope in ("national", "state", "local"):
             # But update states list if we have address info
-            if resource.scope in ("local", "state") and resource.state:
-                if resource.state not in resource.states:
-                    resource.states = list(set(resource.states) | {resource.state})
+            if (
+                resource.scope in ("local", "state")
+                and resource.state
+                and resource.state not in resource.states
+            ):
+                resource.states = list(set(resource.states) | {resource.state})
             return
 
         # Infer scope from available data

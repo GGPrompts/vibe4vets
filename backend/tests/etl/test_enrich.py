@@ -1,7 +1,5 @@
 """Tests for ETL enricher."""
 
-import pytest
-
 from etl.enrich import Enricher, StubGeocoder
 from etl.models import NormalizedResource
 

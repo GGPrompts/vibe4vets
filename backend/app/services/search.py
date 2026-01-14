@@ -1,6 +1,5 @@
 """Search service for full-text and filtered search."""
 
-
 from sqlalchemy import func, text
 from sqlmodel import Session, col, select
 

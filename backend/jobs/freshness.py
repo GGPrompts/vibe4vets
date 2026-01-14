@@ -5,7 +5,6 @@ time since last verification. Runs more frequently than the
 full refresh job (e.g., hourly) to keep trust scores accurate.
 """
 
-from datetime import datetime
 from typing import Any
 
 from sqlmodel import Session, func, select
@@ -73,9 +72,7 @@ class FreshnessJob(BaseJob):
 
     def _count_active_resources(self, session: Session) -> int:
         """Count active resources in the database."""
-        stmt = select(func.count(Resource.id)).where(
-            Resource.status == ResourceStatus.ACTIVE
-        )
+        stmt = select(func.count(Resource.id)).where(Resource.status == ResourceStatus.ACTIVE)
         result = session.exec(stmt).one()
         return result or 0
 
@@ -97,6 +94,5 @@ class FreshnessJob(BaseJob):
         avg_str = f"{avg:.1%}" if avg else "N/A"
 
         return (
-            f"Freshness updated: {updated}/{total} resources changed, "
-            f"avg={avg_str}, {stale} stale"
+            f"Freshness updated: {updated}/{total} resources changed, avg={avg_str}, {stale} stale"
         )

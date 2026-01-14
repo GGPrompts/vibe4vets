@@ -55,11 +55,7 @@ class ResourceService:
         total = len(self.session.exec(count_query).all())
 
         # Apply pagination and ordering
-        query = (
-            query.order_by(col(Resource.reliability_score).desc())
-            .offset(offset)
-            .limit(limit)
-        )
+        query = query.order_by(col(Resource.reliability_score).desc()).offset(offset).limit(limit)
 
         resources = self.session.exec(query).all()
         return [self._to_read_schema(r) for r in resources], total
@@ -128,9 +124,7 @@ class ResourceService:
 
         return self._to_read_schema(resource)
 
-    def update_resource(
-        self, resource_id: UUID, data: ResourceUpdate
-    ) -> ResourceRead | None:
+    def update_resource(self, resource_id: UUID, data: ResourceUpdate) -> ResourceRead | None:
         """Update a resource."""
         resource = self.session.get(Resource, resource_id)
         if not resource:

@@ -6,7 +6,6 @@ and SourceRecord entities with conflict resolution.
 
 import hashlib
 import json
-import uuid
 from datetime import datetime
 
 from sqlmodel import Session, select
@@ -127,9 +126,7 @@ class Loader:
 
         return results, errors
 
-    def _get_or_create_organization(
-        self, resource: NormalizedResource
-    ) -> Organization:
+    def _get_or_create_organization(self, resource: NormalizedResource) -> Organization:
         """Find existing organization or create new one."""
         org_key = resource.org_key()
 
@@ -138,9 +135,7 @@ class Loader:
             return self._org_cache[org_key]
 
         # Look up in database (case-insensitive)
-        stmt = select(Organization).where(
-            Organization.name.ilike(resource.org_name)
-        )
+        stmt = select(Organization).where(Organization.name.ilike(resource.org_name))
         org = self.session.exec(stmt).first()
 
         if org:
@@ -163,9 +158,7 @@ class Loader:
         self._org_cache[org_key] = org
         return org
 
-    def _get_or_create_location(
-        self, resource: NormalizedResource, org: Organization
-    ) -> Location:
+    def _get_or_create_location(self, resource: NormalizedResource, org: Organization) -> Location:
         """Find existing location or create new one."""
         # Look up existing location for this org with same address
         stmt = select(Location).where(
@@ -334,7 +327,8 @@ class Loader:
             existing.location_id = location.id
 
         # Update source if better tier
-        if source and (not existing.source_id or source.tier < (existing.source.tier if existing.source else 5)):
+        existing_tier = existing.source.tier if existing.source else 5
+        if source and (not existing.source_id or source.tier < existing_tier):
             existing.source_id = source.id
             existing.reliability_score = normalized.reliability_score
 
@@ -354,9 +348,7 @@ class Loader:
         # Record changes
         for field_name, old_val, new_val in changes:
             change_type = (
-                ChangeType.RISKY_CHANGE
-                if field_name in self.RISKY_FIELDS
-                else ChangeType.UPDATE
+                ChangeType.RISKY_CHANGE if field_name in self.RISKY_FIELDS else ChangeType.UPDATE
             )
             change_log = ChangeLog(
                 resource_id=existing.id,
