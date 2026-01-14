@@ -146,6 +146,11 @@
   border-color: hsl(var(--border));
 }
 
+html {
+  /* Prevent layout shift when dropdowns/modals hide the scrollbar */
+  scrollbar-gutter: stable;
+}
+
 body {
   background-color: hsl(var(--background));
   color: hsl(var(--foreground));
