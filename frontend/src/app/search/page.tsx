@@ -28,7 +28,15 @@ import api, {
   type Resource,
   type MatchExplanation,
 } from '@/lib/api';
-import { Search, Filter, X } from 'lucide-react';
+import {
+  Search,
+  Filter,
+  X,
+  ChevronLeft,
+  ChevronRight,
+  PanelLeftClose,
+  PanelRightClose,
+} from 'lucide-react';
 
 interface SelectedResource {
   resource: Resource;
@@ -48,6 +56,31 @@ function SearchResults() {
   const [searchInput, setSearchInput] = useState(query);
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   const isMobile = useIsMobile();
+
+  // Sidebar collapse state with localStorage persistence
+  const [leftCollapsed, setLeftCollapsed] = useState(false);
+  const [rightCollapsed, setRightCollapsed] = useState(false);
+
+  // Load collapsed state from localStorage on mount
+  useEffect(() => {
+    const savedLeft = localStorage.getItem('v4v-left-collapsed');
+    const savedRight = localStorage.getItem('v4v-right-collapsed');
+    if (savedLeft !== null) setLeftCollapsed(savedLeft === 'true');
+    if (savedRight !== null) setRightCollapsed(savedRight === 'true');
+  }, []);
+
+  // Persist collapsed state to localStorage
+  const toggleLeftCollapsed = () => {
+    const newValue = !leftCollapsed;
+    setLeftCollapsed(newValue);
+    localStorage.setItem('v4v-left-collapsed', String(newValue));
+  };
+
+  const toggleRightCollapsed = () => {
+    const newValue = !rightCollapsed;
+    setRightCollapsed(newValue);
+    localStorage.setItem('v4v-right-collapsed', String(newValue));
+  };
 
   // Initialize filters from URL params
   const [filters, setFilters] = useState<FilterState>(() => {
@@ -192,17 +225,52 @@ function SearchResults() {
   const hasResults = totalResults > 0;
 
   return (
-    <div className="grid h-[calc(100vh-140px)] gap-6 lg:grid-cols-[280px_1fr_400px]">
+    <div
+      className="relative grid h-[calc(100vh-140px)] gap-6 transition-all duration-300 ease-in-out lg:grid-cols-[280px_1fr_400px]"
+      style={{
+        gridTemplateColumns: `${leftCollapsed ? '0px' : '280px'} 1fr ${rightCollapsed ? '0px' : '400px'}`,
+      }}
+    >
+      {/* Collapsed Left Edge Button */}
+      {leftCollapsed && (
+        <button
+          onClick={toggleLeftCollapsed}
+          className="fixed left-2 top-1/2 z-30 hidden -translate-y-1/2 rounded-r-lg border border-l-0 bg-background p-2 shadow-md transition-colors hover:bg-muted lg:block"
+          aria-label="Show filters"
+        >
+          <ChevronRight className="h-4 w-4" />
+        </button>
+      )}
+
       {/* Filter Sidebar - Desktop */}
-      <Card className="sticky top-6 hidden h-fit max-h-[calc(100vh-160px)] overflow-hidden p-5 lg:block">
-        <ScrollArea className="h-full pr-4">
-          <FiltersSidebar
-            filters={filters}
-            onFiltersChange={handleFiltersChange}
-            resultCount={totalResults}
-          />
-        </ScrollArea>
-      </Card>
+      <div
+        className={`sticky top-6 hidden h-fit max-h-[calc(100vh-160px)] overflow-hidden transition-all duration-300 ease-in-out lg:block ${
+          leftCollapsed ? 'w-0 opacity-0' : 'w-[280px] opacity-100'
+        }`}
+      >
+        <Card className="h-full overflow-hidden">
+          {/* Clickable Header */}
+          <button
+            onClick={toggleLeftCollapsed}
+            className="flex w-full items-center justify-between border-b px-5 py-3 text-left transition-colors hover:bg-muted/50"
+            aria-label="Collapse filters"
+          >
+            <span className="flex items-center gap-2 text-sm font-semibold">
+              <Filter className="h-4 w-4 text-[hsl(var(--v4v-gold))]" />
+              Filters
+            </span>
+            <PanelLeftClose className="h-4 w-4 text-muted-foreground" />
+          </button>
+          <ScrollArea className="h-[calc(100%-52px)] p-5 pr-4">
+            <FiltersSidebar
+              filters={filters}
+              onFiltersChange={handleFiltersChange}
+              resultCount={totalResults}
+              hideHeader
+            />
+          </ScrollArea>
+        </Card>
+      </div>
 
       {/* Main Content */}
       <div className="flex flex-col space-y-4">
@@ -267,6 +335,7 @@ function SearchResults() {
                     setMobileFiltersOpen(false);
                   }}
                   resultCount={totalResults}
+                  hideHeader
                 />
               </ScrollArea>
             </SheetContent>
@@ -352,13 +421,43 @@ function SearchResults() {
         </ScrollArea>
       </div>
 
+      {/* Collapsed Right Edge Button */}
+      {rightCollapsed && (
+        <button
+          onClick={toggleRightCollapsed}
+          className="fixed right-2 top-1/2 z-30 hidden -translate-y-1/2 rounded-l-lg border border-r-0 bg-background p-2 shadow-md transition-colors hover:bg-muted lg:block"
+          aria-label="Show details"
+        >
+          <ChevronLeft className="h-4 w-4" />
+        </button>
+      )}
+
       {/* Detail Panel - Desktop */}
-      <Card className="sticky top-6 hidden h-fit max-h-[calc(100vh-160px)] overflow-hidden lg:block">
-        <ResourceDetailPanel
-          resource={selectedResource?.resource || null}
-          explanations={selectedResource?.explanations}
-        />
-      </Card>
+      <div
+        className={`sticky top-6 hidden h-fit max-h-[calc(100vh-160px)] overflow-hidden transition-all duration-300 ease-in-out lg:block ${
+          rightCollapsed ? 'w-0 opacity-0' : 'w-[400px] opacity-100'
+        }`}
+      >
+        <Card className="h-full overflow-hidden">
+          {/* Clickable Header */}
+          <button
+            onClick={toggleRightCollapsed}
+            className="flex w-full items-center justify-between border-b px-5 py-3 text-left transition-colors hover:bg-muted/50"
+            aria-label="Collapse details"
+          >
+            <span className="text-sm font-semibold">
+              {selectedResource ? 'Resource Details' : 'Details'}
+            </span>
+            <PanelRightClose className="h-4 w-4 text-muted-foreground" />
+          </button>
+          <div className="h-[calc(100%-52px)]">
+            <ResourceDetailPanel
+              resource={selectedResource?.resource || null}
+              explanations={selectedResource?.explanations}
+            />
+          </div>
+        </Card>
+      </div>
 
       {/* Detail Panel - Mobile (Sheet) - Only render on mobile */}
       {isMobile && selectedResource && (

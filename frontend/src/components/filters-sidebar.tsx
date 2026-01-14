@@ -87,6 +87,7 @@ interface FiltersSidebarProps {
   filters: FilterState;
   onFiltersChange: (filters: FilterState) => void;
   resultCount?: number;
+  hideHeader?: boolean;
 }
 
 const categoryColors: Record<string, string> = {
@@ -100,6 +101,7 @@ export function FiltersSidebar({
   filters,
   onFiltersChange,
   resultCount,
+  hideHeader = false,
 }: FiltersSidebarProps) {
   const activeFilterCount =
     filters.categories.length +
@@ -140,18 +142,20 @@ export function FiltersSidebar({
 
   return (
     <div className="space-y-6">
-      {/* Header */}
-      <div className="flex items-center justify-between">
-        <h3 className="flex items-center gap-2 text-sm font-semibold">
-          <Filter className="h-4 w-4 text-[hsl(var(--v4v-gold))]" />
-          Filters
-        </h3>
-        {resultCount !== undefined && (
-          <Badge variant="secondary" className="text-xs">
-            {resultCount} results
-          </Badge>
-        )}
-      </div>
+      {/* Header - can be hidden when parent provides its own */}
+      {!hideHeader && (
+        <div className="flex items-center justify-between">
+          <h3 className="flex items-center gap-2 text-sm font-semibold">
+            <Filter className="h-4 w-4 text-[hsl(var(--v4v-gold))]" />
+            Filters
+          </h3>
+          {resultCount !== undefined && (
+            <Badge variant="secondary" className="text-xs">
+              {resultCount} results
+            </Badge>
+          )}
+        </div>
+      )}
 
       {activeFilterCount > 0 && (
         <Button
