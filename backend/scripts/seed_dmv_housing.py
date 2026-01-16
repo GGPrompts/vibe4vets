@@ -44,7 +44,10 @@ DMV_HOUSING_RESOURCES = [
             "state": "VA",
             "zip_code": "22182",
             "service_area": [
-                "Fairfax County", "Arlington County", "Alexandria City", "Loudoun County"
+                "Fairfax County",
+                "Arlington County",
+                "Alexandria City",
+                "Loudoun County",
             ],
             "eligibility": {
                 "income_limit_type": "ami_percent",
@@ -52,8 +55,10 @@ DMV_HOUSING_RESOURCES = [
                 "housing_status_required": ["homeless", "at_risk"],
                 "veteran_status_required": True,
                 "docs_required": [
-                    "DD-214", "Income verification", "Photo ID",
-                    "Proof of homelessness or at-risk status"
+                    "DD-214",
+                    "Income verification",
+                    "Photo ID",
+                    "Proof of homelessness or at-risk status",
                 ],
                 "waitlist_status": "open",
             },
@@ -174,7 +179,10 @@ DMV_HOUSING_RESOURCES = [
                 "housing_status_required": ["homeless"],
                 "veteran_status_required": True,
                 "docs_required": [
-                    "DD-214", "VA eligibility letter", "Photo ID", "Social Security card"
+                    "DD-214",
+                    "VA eligibility letter",
+                    "Photo ID",
+                    "Social Security card",
                 ],
                 "waitlist_status": "open",
             },
@@ -183,8 +191,7 @@ DMV_HOUSING_RESOURCES = [
                 "url": "https://www.dchousing.org/apply",
                 "hours": "Mon-Fri 8:30 AM - 4:30 PM",
                 "notes": (
-                    "Must be referred by DC VA Medical Center. "
-                    "Contact VA social worker first."
+                    "Must be referred by DC VA Medical Center. Contact VA social worker first."
                 ),
             },
             "verification": {
@@ -292,7 +299,9 @@ DMV_HOUSING_RESOURCES = [
                 "age_min": 62,
                 "veteran_status_required": True,
                 "docs_required": [
-                    "DD-214", "Officer service verification", "Financial documentation"
+                    "DD-214",
+                    "Officer service verification",
+                    "Financial documentation",
                 ],
                 "waitlist_status": "open",
             },
@@ -369,7 +378,10 @@ DMV_HOUSING_RESOURCES = [
                 "housing_status_required": ["at_risk", "stably_housed"],
                 "veteran_status_required": False,
                 "docs_required": [
-                    "Lease agreement", "Landlord information", "Income verification", "ID"
+                    "Lease agreement",
+                    "Landlord information",
+                    "Income verification",
+                    "ID",
                 ],
                 "waitlist_status": "open",
             },
@@ -411,8 +423,9 @@ DMV_HOUSING_RESOURCES = [
                 "housing_status_required": ["at_risk"],
                 "veteran_status_required": False,
                 "docs_required": [
-                    "Eviction notice or utility shutoff notice", "Lease",
-                    "Income documentation"
+                    "Eviction notice or utility shutoff notice",
+                    "Lease",
+                    "Income documentation",
                 ],
                 "waitlist_status": "open",
             },
@@ -456,8 +469,7 @@ DMV_HOUSING_RESOURCES = [
                 "phone": "301-423-4700",
                 "hours": "Mon-Fri 9:00 AM - 5:00 PM",
                 "notes": (
-                    "VA referral preferred but not required. "
-                    "Substance abuse recovery supported."
+                    "VA referral preferred but not required. Substance abuse recovery supported."
                 ),
             },
             "verification": {
@@ -489,7 +501,9 @@ DMV_HOUSING_RESOURCES = [
                 "housing_status_required": ["homeless", "at_risk"],
                 "veteran_status_required": True,
                 "docs_required": [
-                    "DD-214", "Photo ID", "Children's birth certificates if applicable"
+                    "DD-214",
+                    "Photo ID",
+                    "Children's birth certificates if applicable",
                 ],
                 "waitlist_status": "open",
             },
@@ -498,8 +512,7 @@ DMV_HOUSING_RESOURCES = [
                 "url": "https://www.finalsaluteinc.org/apply",
                 "hours": "Mon-Fri 9:00 AM - 5:00 PM",
                 "notes": (
-                    "For women veterans and their children only. "
-                    "Pet-friendly options available."
+                    "For women veterans and their children only. Pet-friendly options available."
                 ),
             },
             "verification": {
@@ -552,9 +565,7 @@ def get_or_create_organization(
 
 def resource_exists(session: Session, title: str, org_id) -> bool:
     """Check if a resource with this title and org already exists."""
-    statement = select(Resource).where(
-        Resource.title == title, Resource.organization_id == org_id
-    )
+    statement = select(Resource).where(Resource.title == title, Resource.organization_id == org_id)
     return session.exec(statement).first() is not None
 
 
@@ -575,9 +586,7 @@ def seed_dmv_housing(database_url: str) -> None:
 
         for res_data in DMV_HOUSING_RESOURCES:
             # Get or create organization
-            org = get_or_create_organization(
-                session, res_data["org_name"], res_data.get("website")
-            )
+            org = get_or_create_organization(session, res_data["org_name"], res_data.get("website"))
 
             # Check if resource already exists
             if resource_exists(session, res_data["title"], org.id):
@@ -668,7 +677,5 @@ def seed_dmv_housing(database_url: str) -> None:
 
 
 if __name__ == "__main__":
-    database_url = os.getenv(
-        "DATABASE_URL", "postgresql+psycopg://localhost:5432/vibe4vets"
-    )
+    database_url = os.getenv("DATABASE_URL", "postgresql+psycopg://localhost:5432/vibe4vets")
     seed_dmv_housing(database_url)

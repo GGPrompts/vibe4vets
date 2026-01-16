@@ -264,17 +264,19 @@ class SearchService:
         """Build LocationNested with eligibility, intake, and verification info."""
         # Build eligibility info if any fields are set
         eligibility = None
-        if any([
-            location.age_min,
-            location.age_max,
-            location.household_size_min,
-            location.household_size_max,
-            location.income_limit_type,
-            location.income_limit_ami_percent,
-            location.housing_status_required,
-            location.docs_required,
-            location.waitlist_status,
-        ]):
+        if any(
+            [
+                location.age_min,
+                location.age_max,
+                location.household_size_min,
+                location.household_size_max,
+                location.income_limit_type,
+                location.income_limit_ami_percent,
+                location.housing_status_required,
+                location.docs_required,
+                location.waitlist_status,
+            ]
+        ):
             eligibility = EligibilityInfo(
                 age_min=location.age_min,
                 age_max=location.age_max,
@@ -293,10 +295,14 @@ class SearchService:
 
         # Build intake info if any fields are set
         intake = None
-        has_intake = any([
-            location.intake_phone, location.intake_url,
-            location.intake_hours, location.intake_notes
-        ])
+        has_intake = any(
+            [
+                location.intake_phone,
+                location.intake_url,
+                location.intake_hours,
+                location.intake_notes,
+            ]
+        )
         if has_intake:
             intake = IntakeInfo(
                 phone=location.intake_phone,
@@ -374,12 +380,14 @@ class SearchService:
                 filters_applied.append("state")
 
             # Join with locations for eligibility filtering
-            if any([
-                eligibility_filters.age_bracket,
-                eligibility_filters.household_size,
-                eligibility_filters.income_bracket,
-                eligibility_filters.housing_status,
-            ]):
+            if any(
+                [
+                    eligibility_filters.age_bracket,
+                    eligibility_filters.household_size,
+                    eligibility_filters.income_bracket,
+                    eligibility_filters.housing_status,
+                ]
+            ):
                 stmt = stmt.outerjoin(Location, Resource.location_id == Location.id)
 
                 # Age bracket filter
@@ -456,11 +464,10 @@ class SearchService:
         for resource, rank in results:
             state_filter = (
                 eligibility_filters.states[0]
-                if eligibility_filters and eligibility_filters.states else None
+                if eligibility_filters and eligibility_filters.states
+                else None
             )
-            explanations = self._build_explanations(
-                resource, query or "", category, state_filter
-            )
+            explanations = self._build_explanations(resource, query or "", category, state_filter)
             match_reasons = self._build_match_reasons(resource, eligibility_filters)
             resource_read = self._to_read_schema(resource)
             search_results.append(
@@ -516,9 +523,7 @@ class SearchService:
                     reasons.append(MatchReason(type="location", label=f"Serves {county}"))
             elif location.city and location.state:
                 city_state = f"{location.city}, {location.state}"
-                reasons.append(
-                    MatchReason(type="location", label=f"Available in {city_state}")
-                )
+                reasons.append(MatchReason(type="location", label=f"Available in {city_state}"))
 
             # Age requirements
             if location.age_min:
@@ -529,9 +534,7 @@ class SearchService:
             # Income requirements
             if location.income_limit_ami_percent:
                 ami = location.income_limit_ami_percent
-                reasons.append(
-                    MatchReason(type="income", label=f"Income under {ami}% AMI")
-                )
+                reasons.append(MatchReason(type="income", label=f"Income under {ami}% AMI"))
 
             # Housing status
             if location.housing_status_required:
