@@ -10,11 +10,44 @@ export interface Organization {
   website: string | null;
 }
 
+export interface EligibilityInfo {
+  age_min: number | null;
+  age_max: number | null;
+  household_size_min: number | null;
+  household_size_max: number | null;
+  income_limit_type: string | null;
+  income_limit_value: number | null;
+  income_limit_ami_percent: number | null;
+  housing_status_required: string[];
+  active_duty_required: boolean | null;
+  discharge_required: string | null;
+  veteran_status_required: boolean;
+  docs_required: string[];
+  waitlist_status: string | null;
+}
+
+export interface IntakeInfo {
+  phone: string | null;
+  url: string | null;
+  hours: string | null;
+  notes: string | null;
+}
+
+export interface VerificationInfo {
+  last_verified_at: string | null;
+  verified_by: string | null;
+  notes: string | null;
+}
+
 export interface Location {
   id: string;
   city: string;
   state: string;
   address: string | null;
+  service_area?: string[];
+  eligibility?: EligibilityInfo | null;
+  intake?: IntakeInfo | null;
+  verification?: VerificationInfo | null;
 }
 
 export interface TrustSignals {
@@ -63,10 +96,16 @@ export interface MatchExplanation {
   highlight: string | null;
 }
 
+export interface MatchReason {
+  type: string;
+  label: string;
+}
+
 export interface SearchResult {
   resource: Resource;
   rank: number;
   explanations: MatchExplanation[];
+  match_reasons?: MatchReason[];
 }
 
 export interface SearchResponse {
@@ -75,6 +114,31 @@ export interface SearchResponse {
   total: number;
   limit: number;
   offset: number;
+}
+
+export interface EligibilitySearchParams {
+  q?: string;
+  category?: string;
+  states?: string;
+  counties?: string;
+  age_bracket?: 'under_55' | '55_61' | '62_plus' | '65_plus';
+  household_size?: number;
+  income_bracket?: 'low' | 'moderate' | 'any';
+  housing_status?: 'homeless' | 'at_risk' | 'stably_housed';
+  veteran_status?: boolean;
+  discharge?: 'honorable' | 'other_than_dis' | 'unknown';
+  has_disability?: boolean;
+  limit?: number;
+  offset?: number;
+}
+
+export interface EligibilitySearchResponse {
+  query: string | null;
+  results: SearchResult[];
+  total: number;
+  limit: number;
+  offset: number;
+  filters_applied: string[];
 }
 
 export interface ResourceCreate {
@@ -297,6 +361,25 @@ export const api = {
       if (params.offset) searchParams.set('offset', String(params.offset));
 
       return fetchAPI(`/api/v1/search?${searchParams.toString()}`);
+    },
+
+    eligibility: (params: EligibilitySearchParams): Promise<EligibilitySearchResponse> => {
+      const searchParams = new URLSearchParams();
+      if (params.q) searchParams.set('q', params.q);
+      if (params.category) searchParams.set('category', params.category);
+      if (params.states) searchParams.set('states', params.states);
+      if (params.counties) searchParams.set('counties', params.counties);
+      if (params.age_bracket) searchParams.set('age_bracket', params.age_bracket);
+      if (params.household_size) searchParams.set('household_size', String(params.household_size));
+      if (params.income_bracket) searchParams.set('income_bracket', params.income_bracket);
+      if (params.housing_status) searchParams.set('housing_status', params.housing_status);
+      if (params.veteran_status !== undefined) searchParams.set('veteran_status', String(params.veteran_status));
+      if (params.discharge) searchParams.set('discharge', params.discharge);
+      if (params.has_disability !== undefined) searchParams.set('has_disability', String(params.has_disability));
+      if (params.limit) searchParams.set('limit', String(params.limit));
+      if (params.offset) searchParams.set('offset', String(params.offset));
+
+      return fetchAPI(`/api/v1/search/eligibility?${searchParams.toString()}`);
     },
   },
 

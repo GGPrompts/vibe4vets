@@ -7,6 +7,16 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
+import { Separator } from '@/components/ui/separator';
+import {
+  Phone,
+  Globe,
+  MapPin,
+  Clock,
+  FileText,
+  CheckCircle2,
+  AlertCircle,
+} from 'lucide-react';
 import api, { type Resource } from '@/lib/api';
 
 const categoryColors: Record<string, string> = {
@@ -15,6 +25,164 @@ const categoryColors: Record<string, string> = {
   housing: 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300',
   legal: 'bg-amber-100 text-amber-800 dark:bg-amber-900 dark:text-amber-300',
 };
+
+function IntakeCard({ resource }: { resource: Resource }) {
+  const location = resource.location;
+  const intake = location?.intake;
+  const eligibility = location?.eligibility;
+  const verification = location?.verification;
+
+  // If no intake info available, don't render
+  if (!intake && !eligibility?.docs_required?.length) {
+    return null;
+  }
+
+  return (
+    <Card>
+      <CardHeader>
+        <CardTitle className="flex items-center gap-2 text-lg">
+          <FileText className="h-5 w-5 text-[hsl(var(--v4v-gold))]" />
+          How to Apply
+        </CardTitle>
+      </CardHeader>
+      <CardContent className="space-y-4">
+        {/* Intake Contact Methods */}
+        <div className="space-y-3">
+          {intake?.phone && (
+            <a
+              href={`tel:${intake.phone}`}
+              className="flex items-center gap-3 rounded-lg border p-3 transition-colors hover:bg-muted"
+            >
+              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-green-100 dark:bg-green-900/40">
+                <Phone className="h-5 w-5 text-green-700 dark:text-green-400" />
+              </div>
+              <div>
+                <p className="font-medium">Call to Apply</p>
+                <p className="text-sm text-muted-foreground">{intake.phone}</p>
+              </div>
+            </a>
+          )}
+
+          {intake?.url && (
+            <a
+              href={intake.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 rounded-lg border p-3 transition-colors hover:bg-muted"
+            >
+              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-100 dark:bg-blue-900/40">
+                <Globe className="h-5 w-5 text-blue-700 dark:text-blue-400" />
+              </div>
+              <div>
+                <p className="font-medium">Apply Online</p>
+                <p className="text-sm text-muted-foreground">Visit website</p>
+              </div>
+            </a>
+          )}
+
+          {location?.address && (
+            <a
+              href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+                `${location.address}, ${location.city}, ${location.state}`
+              )}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 rounded-lg border p-3 transition-colors hover:bg-muted"
+            >
+              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-purple-100 dark:bg-purple-900/40">
+                <MapPin className="h-5 w-5 text-purple-700 dark:text-purple-400" />
+              </div>
+              <div>
+                <p className="font-medium">Get Directions</p>
+                <p className="text-sm text-muted-foreground">
+                  {location.city}, {location.state}
+                </p>
+              </div>
+            </a>
+          )}
+        </div>
+
+        {/* Intake Hours */}
+        {intake?.hours && (
+          <>
+            <Separator />
+            <div className="flex items-start gap-3">
+              <Clock className="mt-0.5 h-4 w-4 text-muted-foreground" />
+              <div>
+                <p className="text-sm font-medium">Intake Hours</p>
+                <p className="text-sm text-muted-foreground">{intake.hours}</p>
+              </div>
+            </div>
+          </>
+        )}
+
+        {/* Intake Notes */}
+        {intake?.notes && (
+          <div className="rounded-lg bg-amber-50 p-3 dark:bg-amber-900/20">
+            <div className="flex items-start gap-2">
+              <AlertCircle className="mt-0.5 h-4 w-4 text-amber-600 dark:text-amber-400" />
+              <p className="text-sm text-amber-800 dark:text-amber-200">
+                {intake.notes}
+              </p>
+            </div>
+          </div>
+        )}
+
+        {/* Documents Required */}
+        {eligibility?.docs_required && eligibility.docs_required.length > 0 && (
+          <>
+            <Separator />
+            <div>
+              <p className="mb-2 text-sm font-medium">What to Bring</p>
+              <ul className="space-y-2">
+                {eligibility.docs_required.map((doc, index) => (
+                  <li key={index} className="flex items-center gap-2 text-sm">
+                    <CheckCircle2 className="h-4 w-4 text-green-600 dark:text-green-400" />
+                    {doc}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </>
+        )}
+
+        {/* Verification Badge */}
+        {verification?.last_verified_at && (
+          <>
+            <Separator />
+            <div className="flex items-center justify-between text-sm">
+              <span className="text-muted-foreground">Last verified</span>
+              <Badge variant="outline" className="text-xs">
+                {new Date(verification.last_verified_at).toLocaleDateString()}
+                {verification.verified_by && ` · ${verification.verified_by.replace('_', ' ')}`}
+              </Badge>
+            </div>
+          </>
+        )}
+
+        {/* Waitlist Status */}
+        {eligibility?.waitlist_status && (
+          <div className="flex items-center justify-between text-sm">
+            <span className="text-muted-foreground">Waitlist</span>
+            <Badge
+              variant={eligibility.waitlist_status === 'open' ? 'default' : 'secondary'}
+              className={
+                eligibility.waitlist_status === 'open'
+                  ? 'bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-300'
+                  : eligibility.waitlist_status === 'closed'
+                  ? 'bg-red-100 text-red-800 dark:bg-red-900/40 dark:text-red-300'
+                  : ''
+              }
+            >
+              {eligibility.waitlist_status.charAt(0).toUpperCase() +
+                eligibility.waitlist_status.slice(1)}
+            </Badge>
+          </div>
+        )}
+      </CardContent>
+    </Card>
+  );
+}
 
 function TrustSignalCard({ resource }: { resource: Resource }) {
   const trustScore = resource.trust.freshness_score * resource.trust.reliability_score;
@@ -273,6 +441,9 @@ export default function ResourceDetailPage() {
 
           {/* Sidebar */}
           <div className="space-y-6">
+            {/* Intake Card - How to Apply */}
+            <IntakeCard resource={resource} />
+
             {/* Contact Info */}
             <Card>
               <CardHeader>

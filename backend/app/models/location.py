@@ -2,6 +2,7 @@
 
 import uuid
 from datetime import datetime
+from enum import Enum
 from typing import TYPE_CHECKING
 
 from sqlalchemy import Column, Text
@@ -13,8 +14,42 @@ if TYPE_CHECKING:
     from app.models.resource import Resource
 
 
+class IncomeLimitType(str, Enum):
+    """Types of income limit specifications."""
+
+    AMI_PERCENT = "ami_percent"
+    MONTHLY_ABSOLUTE = "monthly_abs"
+    ANNUAL_ABSOLUTE = "annual_abs"
+    UNKNOWN = "unknown"
+
+
+class HousingStatus(str, Enum):
+    """Housing status for eligibility filtering."""
+
+    HOMELESS = "homeless"
+    AT_RISK = "at_risk"
+    STABLY_HOUSED = "stably_housed"
+
+
+class VerificationSource(str, Enum):
+    """Source of verification for location data."""
+
+    OFFICIAL_DIRECTORY = "official_directory"
+    PROVIDER_CONTACT = "provider_contact"
+    USER_REPORT = "user_report"
+    AUTOMATED = "automated"
+
+
+class WaitlistStatus(str, Enum):
+    """Status of waitlist for a program."""
+
+    OPEN = "open"
+    CLOSED = "closed"
+    UNKNOWN = "unknown"
+
+
 class Location(SQLModel, table=True):
-    """Physical location with geocoding."""
+    """Physical location with geocoding and eligibility criteria."""
 
     __tablename__ = "locations"
 
@@ -34,6 +69,60 @@ class Location(SQLModel, table=True):
     )  # Counties/regions served
 
     created_at: datetime = Field(default_factory=datetime.utcnow)
+
+    # === Eligibility constraints ===
+    age_min: int | None = Field(default=None, description="Minimum age requirement")
+    age_max: int | None = Field(default=None, description="Maximum age limit")
+    household_size_min: int | None = Field(default=None, description="Minimum household size")
+    household_size_max: int | None = Field(default=None, description="Maximum household size")
+    income_limit_type: str | None = Field(
+        default=None, description="Type: ami_percent, monthly_abs, annual_abs"
+    )
+    income_limit_value: int | None = Field(
+        default=None, description="Value for monthly/annual absolute limits"
+    )
+    income_limit_ami_percent: int | None = Field(
+        default=None, description="AMI percentage limit (e.g., 50 for 50% AMI)"
+    )
+    housing_status_required: list[str] = Field(
+        default_factory=list,
+        sa_column=Column(ARRAY(Text), nullable=False, default=[]),
+        description="Required housing status: homeless, at_risk, stably_housed",
+    )
+    active_duty_required: bool | None = Field(
+        default=None, description="Whether active duty status is required"
+    )
+    discharge_required: str | None = Field(
+        default=None, description="Required discharge: honorable, other_than_dishonorable"
+    )
+    veteran_status_required: bool = Field(
+        default=True, description="Whether veteran status is required"
+    )
+    docs_required: list[str] = Field(
+        default_factory=list,
+        sa_column=Column(ARRAY(Text), nullable=False, default=[]),
+        description="Documents required: DD-214, Income verification, etc.",
+    )
+    waitlist_status: str | None = Field(
+        default=None, description="Waitlist status: open, closed, unknown"
+    )
+
+    # === Intake information ===
+    intake_phone: str | None = Field(default=None, max_length=50, description="Intake phone number")
+    intake_url: str | None = Field(default=None, max_length=500, description="Intake/application URL")
+    intake_hours: str | None = Field(
+        default=None, max_length=255, description="Intake hours (e.g., Mon-Fri 9am-5pm)"
+    )
+    intake_notes: str | None = Field(
+        default=None, description="Additional intake notes (e.g., Walk-ins welcome Tues/Thurs)"
+    )
+
+    # === Verification metadata ===
+    last_verified_at: datetime | None = Field(default=None, description="When data was last verified")
+    verified_by: str | None = Field(
+        default=None, description="Verification source: official_directory, provider_contact, etc."
+    )
+    verification_notes: str | None = Field(default=None, description="Notes about verification")
 
     # Relationships
     organization: "Organization" = Relationship(back_populates="locations")

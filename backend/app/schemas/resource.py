@@ -16,6 +16,41 @@ class OrganizationNested(BaseModel):
     website: str | None = None
 
 
+class EligibilityInfo(BaseModel):
+    """Eligibility constraints for a location."""
+
+    age_min: int | None = None
+    age_max: int | None = None
+    household_size_min: int | None = None
+    household_size_max: int | None = None
+    income_limit_type: str | None = None
+    income_limit_value: int | None = None
+    income_limit_ami_percent: int | None = None
+    housing_status_required: list[str] = Field(default_factory=list)
+    active_duty_required: bool | None = None
+    discharge_required: str | None = None
+    veteran_status_required: bool = True
+    docs_required: list[str] = Field(default_factory=list)
+    waitlist_status: str | None = None
+
+
+class IntakeInfo(BaseModel):
+    """Intake information for a location."""
+
+    phone: str | None = None
+    url: str | None = None
+    hours: str | None = None
+    notes: str | None = None
+
+
+class VerificationInfo(BaseModel):
+    """Verification metadata for a location."""
+
+    last_verified_at: datetime | None = None
+    verified_by: str | None = None
+    notes: str | None = None
+
+
 class LocationNested(BaseModel):
     """Nested location info in resource response."""
 
@@ -23,6 +58,10 @@ class LocationNested(BaseModel):
     city: str
     state: str
     address: str | None = None
+    service_area: list[str] = Field(default_factory=list)
+    eligibility: EligibilityInfo | None = None
+    intake: IntakeInfo | None = None
+    verification: VerificationInfo | None = None
 
 
 class ResourceCreate(BaseModel):
@@ -154,9 +193,17 @@ class MatchExplanation(BaseModel):
     highlight: str | None = None
 
 
+class MatchReason(BaseModel):
+    """Structured match reason for eligibility wizard results."""
+
+    type: str  # location, age, income, housing_status, veteran_status, discharge, category
+    label: str  # Human-readable label
+
+
 class ResourceSearchResult(BaseModel):
     """Search result with match explanations."""
 
     resource: ResourceRead
     rank: float = Field(..., ge=0.0)
     explanations: list[MatchExplanation]
+    match_reasons: list[MatchReason] = Field(default_factory=list)
