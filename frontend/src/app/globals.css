@@ -519,7 +519,35 @@ html {
 .text-v4v-legal { color: hsl(var(--v4v-legal)); }
 .border-v4v-legal { border-color: hsl(var(--v4v-legal)); }
 
-/* Search input glow */
+/* Search input styling - matches hero aesthetic */
+.search-glow {
+  background: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+  box-shadow: 0 2px 8px hsl(var(--v4v-navy) / 0.06);
+  transition: all 0.3s ease;
+}
+
 .search-glow:focus-within {
-  box-shadow: 0 0 0 3px hsl(var(--v4v-gold) / 0.15), 0 4px 12px -4px hsl(var(--v4v-navy) / 0.1);
+  border-color: hsl(var(--v4v-gold) / 0.5);
+  box-shadow:
+    0 0 0 3px hsl(var(--v4v-gold) / 0.15),
+    0 8px 20px -4px hsl(var(--v4v-navy) / 0.12);
+}
+
+/* How It Works step circles */
+.step-circle {
+  background: hsl(var(--card));
+  border: 2px solid hsl(var(--v4v-gold) / 0.3);
+  box-shadow:
+    0 4px 12px hsl(var(--v4v-navy) / 0.06),
+    inset 0 1px 2px hsl(0 0% 100% / 0.5);
+  transition: all 0.3s ease;
+}
+
+.step-circle:hover {
+  border-color: hsl(var(--v4v-gold) / 0.5);
+  box-shadow:
+    0 8px 20px hsl(var(--v4v-navy) / 0.1),
+    inset 0 1px 2px hsl(0 0% 100% / 0.5);
+  transform: translateY(-2px);
 }

@@ -123,7 +123,7 @@ export function SearchBar({
       {/* Main search input */}
       <div className="relative">
         <div className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2">
-          <Search className={`h-5 w-5 ${isHero ? 'text-white/40' : 'text-muted-foreground'}`} />
+          <Search className={`h-5 w-5 ${isHero ? 'text-[hsl(var(--v4v-navy)/0.4)]' : 'text-muted-foreground'}`} />
         </div>
         <Input
           type="text"
@@ -132,7 +132,7 @@ export function SearchBar({
           onChange={(e) => setQuery(e.target.value)}
           className={`w-full rounded-lg py-6 pl-12 pr-28 text-base shadow-sm transition-all ${
             isHero
-              ? 'border-white/20 bg-white/10 text-white placeholder:text-white/50 focus:border-[hsl(var(--v4v-gold))] focus:bg-white/15'
+              ? 'border-[hsl(var(--v4v-navy)/0.1)] bg-transparent text-[hsl(var(--v4v-navy))] placeholder:text-[hsl(var(--v4v-navy)/0.5)] focus:border-[hsl(var(--v4v-gold))] focus:bg-[hsl(var(--v4v-navy)/0.02)]'
               : 'border-input bg-background'
           }`}
         />
@@ -154,7 +154,7 @@ export function SearchBar({
           <SelectTrigger
             className={`w-full sm:w-[160px] min-h-[44px] transition-all ${
               isHero
-                ? 'border-white/20 bg-white/10 text-white hover:bg-white/15 [&>svg]:text-white/60'
+                ? 'border-[hsl(var(--v4v-navy)/0.15)] bg-[hsl(var(--v4v-navy)/0.05)] text-[hsl(var(--v4v-navy))] hover:bg-[hsl(var(--v4v-navy)/0.08)] [&>svg]:text-[hsl(var(--v4v-navy)/0.5)]'
                 : ''
             }`}
           >
@@ -176,7 +176,7 @@ export function SearchBar({
           <SelectTrigger
             className={`w-full sm:w-[160px] min-h-[44px] transition-all ${
               isHero
-                ? 'border-white/20 bg-white/10 text-white hover:bg-white/15 [&>svg]:text-white/60'
+                ? 'border-[hsl(var(--v4v-navy)/0.15)] bg-[hsl(var(--v4v-navy)/0.05)] text-[hsl(var(--v4v-navy))] hover:bg-[hsl(var(--v4v-navy)/0.08)] [&>svg]:text-[hsl(var(--v4v-navy)/0.5)]'
                 : ''
             }`}
           >

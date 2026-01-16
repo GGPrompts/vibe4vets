@@ -253,8 +253,8 @@ export default function Home() {
                 <div key={step.number} className="relative text-center">
                   {/* Step number */}
                   <div className="relative mx-auto mb-5 inline-flex h-24 w-24 items-center justify-center">
-                    <div className="soft-card absolute inset-0 rounded-full" />
-                    <span className="font-display text-2xl font-semibold text-[hsl(var(--v4v-gold-dark))]">
+                    <div className="step-circle absolute inset-0 rounded-full" />
+                    <span className="relative font-display text-2xl font-semibold text-[hsl(var(--v4v-gold-dark))]">
                       {step.number}
                     </span>
                   </div>
