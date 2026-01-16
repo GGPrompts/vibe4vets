@@ -1,10 +1,9 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { Sparkles } from 'lucide-react';
+import { FolderOpen } from 'lucide-react';
 import { ResourceCard } from '@/components/resource-card';
 import { Skeleton } from '@/components/ui/skeleton';
-import { Badge } from '@/components/ui/badge';
 import api, { type Resource } from '@/lib/api';
 
 interface DiscoveryFeedProps {
@@ -44,35 +43,18 @@ function groupResourcesByDate(resources: Resource[]): DateGroup[] {
   const groups: DateGroup[] = [];
 
   if (thisWeek.length > 0) {
-    groups.push({ label: 'Discovered this week', resources: thisWeek });
+    groups.push({ label: 'Added this week', resources: thisWeek });
   }
   if (last30Days.length > 0) {
-    groups.push({ label: 'Last 30 days', resources: last30Days });
+    groups.push({ label: 'Added in the last 30 days', resources: last30Days });
   }
   if (older.length > 0) {
-    groups.push({ label: 'Older discoveries', resources: older });
+    groups.push({ label: 'More resources', resources: older });
   }
 
   return groups;
 }
 
-function FreshFindBadge() {
-  return (
-    <Badge className="absolute -top-2 -right-2 z-10 bg-[hsl(var(--v4v-gold))] text-[hsl(var(--v4v-navy))] hover:bg-[hsl(var(--v4v-gold-light))]">
-      <Sparkles className="mr-1 h-3 w-3" />
-      Fresh Find
-    </Badge>
-  );
-}
-
-function ResourceCardWithBadge({ resource, isFresh }: { resource: Resource; isFresh: boolean }) {
-  return (
-    <div className="relative">
-      {isFresh && <FreshFindBadge />}
-      <ResourceCard resource={resource} />
-    </div>
-  );
-}
 
 export function DiscoveryFeed({ category, state }: DiscoveryFeedProps) {
   const [loading, setLoading] = useState(true);
@@ -142,12 +124,12 @@ export function DiscoveryFeed({ category, state }: DiscoveryFeedProps) {
   if (groups.length === 0) {
     return (
       <div className="rounded-xl border border-[hsl(var(--border))] bg-white p-12 text-center">
-        <Sparkles className="mx-auto mb-4 h-12 w-12 text-[hsl(var(--muted-foreground))]" />
+        <FolderOpen className="mx-auto mb-4 h-12 w-12 text-[hsl(var(--muted-foreground))]" />
         <h3 className="font-display text-xl text-[hsl(var(--v4v-navy))]">
           No resources found
         </h3>
         <p className="mt-2 text-[hsl(var(--muted-foreground))]">
-          Try adjusting your filters or check back later for new discoveries.
+          Try adjusting your filters to find resources.
         </p>
       </div>
     );
@@ -169,11 +151,7 @@ export function DiscoveryFeed({ category, state }: DiscoveryFeedProps) {
 
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {group.resources.map((resource) => (
-              <ResourceCardWithBadge
-                key={resource.id}
-                resource={resource}
-                isFresh={isWithinDays(resource.created_at, 3)}
-              />
+              <ResourceCard key={resource.id} resource={resource} />
             ))}
           </div>
         </div>
