@@ -185,6 +185,7 @@ docker-compose up -d
 | GET | `/api/v1/resources` | List/search resources |
 | GET | `/api/v1/resources/{id}` | Resource detail |
 | GET | `/api/v1/search` | Advanced search with filters |
+| GET | `/api/v1/search/eligibility` | Eligibility-filtered search with match reasons |
 | POST | `/api/v1/chat` | AI chat endpoint |
 
 ### Admin Endpoints
@@ -269,6 +270,7 @@ docker-compose up -d
 | `backend/jobs/freshness.py` | Freshness update job |
 | `backend/app/services/discovery.py` | AI-powered resource discovery service |
 | `backend/scripts/seed_hubs.py` | Hub data seeding script |
+| `backend/scripts/seed_dmv_housing.py` | DC/MD/VA housing seed data with eligibility |
 | `backend/.claude/commands/scan-resources.md` | Discovery slash command |
 
 ### Frontend
@@ -281,6 +283,8 @@ docker-compose up -d
 | `frontend/src/app/admin/page.tsx` | Admin review queue |
 | `frontend/src/lib/api.ts` | API client with TypeScript types |
 | `frontend/src/components/DiscoveryFeed.tsx` | Date-grouped resource feed component |
+| `frontend/src/components/EligibilityWizard.tsx` | Eligibility wizard with URL state persistence |
+| `frontend/src/components/MatchReasonChips.tsx` | Match reason chips for search results |
 | `frontend/src/app/hubs/*/page.tsx` | Static resource hub pages (employment, housing, legal, training) |
 | `frontend/src/components/HubCard.tsx` | Hub resource card component |
 | `frontend/src/components/ui/` | shadcn/ui components |
