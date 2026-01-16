@@ -124,7 +124,7 @@ function CollapsibleSection({
     <div>
       <button
         onClick={onToggle}
-        className="flex w-full items-center justify-between py-1 text-left"
+        className="flex w-full min-h-[44px] items-center justify-between py-2 text-left"
         aria-expanded={isOpen}
       >
         <div className="flex items-center gap-2">
@@ -248,7 +248,7 @@ export function FiltersSidebar({
             const Icon = category.icon;
             const isChecked = filters.categories.includes(category.value);
             return (
-              <div key={category.value} className="flex items-center space-x-2">
+              <div key={category.value} className="flex min-h-[44px] items-center space-x-3">
                 <Checkbox
                   id={`category-${category.value}`}
                   checked={isChecked}
@@ -256,7 +256,7 @@ export function FiltersSidebar({
                 />
                 <Label
                   htmlFor={`category-${category.value}`}
-                  className={`flex cursor-pointer items-center gap-2 text-sm ${
+                  className={`flex flex-1 min-h-[44px] cursor-pointer items-center gap-2 text-sm ${
                     isChecked ? categoryColors[category.value] : ''
                   }`}
                 >
@@ -286,11 +286,11 @@ export function FiltersSidebar({
       >
         <RadioGroup value={filters.scope} onValueChange={handleScopeChange}>
           {SCOPES.map((scope) => (
-            <div key={scope.value} className="flex items-center space-x-2">
+            <div key={scope.value} className="flex min-h-[44px] items-center space-x-3">
               <RadioGroupItem value={scope.value} id={`scope-${scope.value}`} />
               <Label
                 htmlFor={`scope-${scope.value}`}
-                className="cursor-pointer text-sm"
+                className="flex flex-1 min-h-[44px] cursor-pointer items-center text-sm"
               >
                 {scope.label}
               </Label>
@@ -319,7 +319,7 @@ export function FiltersSidebar({
             {STATES.map((state) => {
               const isChecked = filters.states.includes(state.value);
               return (
-                <div key={state.value} className="flex items-center space-x-2">
+                <div key={state.value} className="flex min-h-[44px] items-center space-x-3">
                   <Checkbox
                     id={`state-${state.value}`}
                     checked={isChecked}
@@ -327,7 +327,7 @@ export function FiltersSidebar({
                   />
                   <Label
                     htmlFor={`state-${state.value}`}
-                    className="cursor-pointer text-sm"
+                    className="flex flex-1 min-h-[44px] cursor-pointer items-center text-sm"
                   >
                     {state.label}
                   </Label>
