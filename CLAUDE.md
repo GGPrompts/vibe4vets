@@ -344,9 +344,7 @@ bd show <id>       # Review issue details
 bd update <id> --status=in_progress  # Claim it
 
 # After completing work
-/conductor:bdw-verify-build
-/conductor:bdw-commit-changes
-/conductor:bdw-close-issue <id>
+bd close <id> --reason="description of what was done"
 bd sync && git push
 ```
 
