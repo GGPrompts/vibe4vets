@@ -5,96 +5,84 @@
 
 /*
  * ============================================================================
- * VIBE4VETS - Design Token System
+ * VIBE4VETS - Soft Pastel Theme
  * ============================================================================
  *
- * Brand Philosophy:
- * - Trustworthy & Professional (deep navy foundation)
- * - Dignified & Patriotic (warm gold accents)
- * - Approachable & Human (warm cream, not clinical white)
- *
- * WCAG AA Compliance:
- * - All text colors achieve 4.5:1 minimum contrast ratio
- * - Navy (#0A1628) on Cream (#FAFAF8): 18:1 ✓
- * - Gold-dark (#9A7B1C) on Cream: 4.6:1 ✓ (use for text)
- * - White on category colors: 4.5:1+ ✓
+ * Aesthetic: Warm, approachable, trustworthy
+ * - Soft sage/slate backgrounds (not stark white)
+ * - Deep navy for text and accents
+ * - Warm gold highlights
+ * - Pastel category colors
+ * - Inter (compact, readable) + Playfair Display (elegant headers)
  *
  * ============================================================================
  */
 
 :root {
   /* ==========================================================================
-   * CORE BRAND PALETTE
+   * SOFT PASTEL PALETTE
    * ==========================================================================
-   * These are the foundational colors that define the V4V brand identity.
    */
 
-  /* Primary: Deep Navy - Trust, stability, professionalism
-   * Use for: Primary text, headers, dark backgrounds */
-  --v4v-navy: 222 60% 10%;           /* #0A1628 */
-  --v4v-navy-light: 222 40% 20%;     /* #1F3352 - Hover states, cards */
-  --v4v-navy-muted: 222 30% 35%;     /* #4A5B73 - Secondary text on dark */
+  /* Background layers - soft warm grays with slight warmth */
+  --v4v-bg-base: 210 20% 96%;           /* #f3f5f7 - main background */
+  --v4v-bg-elevated: 210 25% 98%;       /* #f8f9fb - cards, elevated */
+  --v4v-bg-surface: 210 15% 93%;        /* #ebecef - interactive surfaces */
+  --v4v-bg-muted: 210 10% 88%;          /* #dde0e4 - muted backgrounds */
 
-  /* Accent: Warm Gold - Dignity, value, subtle patriotism
-   * Gold-dark passes WCAG AA for text on light backgrounds */
-  --v4v-gold: 45 70% 47%;            /* #C9A227 - Decorative, icons */
-  --v4v-gold-dark: 45 70% 36%;       /* #9A7B1C - Text on light bg (4.6:1) */
-  --v4v-gold-light: 45 60% 65%;      /* #D9C46B - Subtle highlights */
+  /* Primary: Deep Navy - Trust, stability */
+  --v4v-navy: 220 50% 20%;              /* #1a2744 - primary text */
+  --v4v-navy-light: 220 40% 30%;        /* #2d3f5c - secondary elements */
+  --v4v-navy-muted: 220 25% 45%;        /* #5c6a80 - muted text */
 
-  /* Backgrounds: Warm Cream - Approachable, not clinical */
-  --v4v-cream: 60 20% 98%;           /* #FAFAF8 */
-  --v4v-warm-white: 40 20% 99%;      /* #FDFDFB - Cards */
+  /* Accent: Warm Gold */
+  --v4v-gold: 42 80% 50%;               /* #e6a812 - primary accent */
+  --v4v-gold-dark: 42 85% 40%;          /* #bc8709 - text-safe gold */
+  --v4v-gold-light: 42 70% 70%;         /* #e8ca73 - subtle highlights */
 
-  /* ==========================================================================
-   * CATEGORY COLORS
-   * ==========================================================================
-   * Each category has a distinct color for quick visual identification.
-   * All colors maintain 4.5:1+ contrast with white text.
-   *
-   * Color logic:
-   * - Employment (Blue): Professional, corporate, opportunity
-   * - Training (Teal): Growth, learning, development
-   * - Housing (Amber): Warmth, shelter, stability
-   * - Legal (Indigo): Authority, justice, formality
-   */
+  /* Category colors - soft pastels */
+  --v4v-employment: 215 60% 55%;        /* Soft blue */
+  --v4v-employment-light: 215 55% 65%;
+  --v4v-employment-muted: 215 40% 92%;
 
-  --v4v-employment: 215 75% 42%;     /* #1A5FB4 - Confident blue */
-  --v4v-employment-light: 215 70% 55%; /* #4B8AD6 - Hover/highlight */
-  --v4v-employment-muted: 215 30% 92%; /* #E8EEF7 - Light background */
+  --v4v-training: 165 45% 45%;          /* Soft teal */
+  --v4v-training-light: 165 40% 55%;
+  --v4v-training-muted: 165 35% 92%;
 
-  --v4v-training: 172 60% 36%;       /* #259A80 - Vibrant teal */
-  --v4v-training-light: 172 55% 48%; /* #3DBDA0 - Hover/highlight */
-  --v4v-training-muted: 172 30% 92%; /* #E6F5F2 - Light background */
+  --v4v-housing: 28 65% 55%;            /* Soft amber/coral */
+  --v4v-housing-light: 28 60% 65%;
+  --v4v-housing-muted: 28 50% 93%;
 
-  --v4v-housing: 32 85% 48%;         /* #E28A1C - Warm amber */
-  --v4v-housing-light: 32 80% 58%;   /* #F0A84D - Hover/highlight */
-  --v4v-housing-muted: 32 40% 93%;   /* #F7F0E6 - Light background */
+  --v4v-legal: 260 40% 55%;             /* Soft purple */
+  --v4v-legal-light: 260 35% 65%;
+  --v4v-legal-muted: 260 30% 93%;
 
-  --v4v-legal: 255 50% 48%;          /* #5B4CC4 - Authoritative indigo */
-  --v4v-legal-light: 255 45% 60%;    /* #8076D1 - Hover/highlight */
-  --v4v-legal-muted: 255 25% 94%;    /* #EEEDF7 - Light background */
+  /* Text colors */
+  --v4v-text-primary: 220 50% 20%;      /* Deep navy */
+  --v4v-text-secondary: 220 20% 45%;    /* Muted navy */
+  --v4v-text-muted: 220 15% 55%;        /* Light text */
 
-  /* Semantic colors */
-  --background: var(--v4v-cream);
-  --foreground: var(--v4v-navy);
-  --card: var(--v4v-warm-white);
-  --card-foreground: var(--v4v-navy);
-  --popover: var(--v4v-warm-white);
-  --popover-foreground: var(--v4v-navy);
+  /* shadcn/ui semantic tokens */
+  --background: var(--v4v-bg-base);
+  --foreground: var(--v4v-text-primary);
+  --card: var(--v4v-bg-elevated);
+  --card-foreground: var(--v4v-text-primary);
+  --popover: var(--v4v-bg-elevated);
+  --popover-foreground: var(--v4v-text-primary);
   --primary: var(--v4v-navy);
-  --primary-foreground: 60 20% 98%;
-  --secondary: 220 20% 96%;
-  --secondary-foreground: var(--v4v-navy);
-  --muted: 222 25% 91%;
-  --muted-foreground: 222 20% 45%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: var(--v4v-bg-surface);
+  --secondary-foreground: var(--v4v-text-primary);
+  --muted: var(--v4v-bg-muted);
+  --muted-foreground: var(--v4v-text-muted);
   --accent: var(--v4v-gold);
   --accent-foreground: var(--v4v-navy);
-  --destructive: 0 72% 51%;
+  --destructive: 0 65% 50%;
   --destructive-foreground: 0 0% 100%;
   --border: 220 15% 88%;
   --input: 220 15% 88%;
   --ring: var(--v4v-gold);
-  --radius: 0.5rem;
+  --radius: 0.625rem;
 
   /* Chart colors */
   --chart-1: var(--v4v-employment);
@@ -104,42 +92,35 @@
   --chart-5: var(--v4v-gold);
 
   /* Sidebar */
-  --sidebar: var(--v4v-warm-white);
-  --sidebar-foreground: var(--v4v-navy);
+  --sidebar: var(--v4v-bg-elevated);
+  --sidebar-foreground: var(--v4v-text-primary);
   --sidebar-primary: var(--v4v-navy);
-  --sidebar-primary-foreground: 60 20% 98%;
-  --sidebar-accent: var(--v4v-gold);
-  --sidebar-accent-foreground: var(--v4v-navy);
+  --sidebar-primary-foreground: 0 0% 100%;
+  --sidebar-accent: var(--v4v-bg-surface);
+  --sidebar-accent-foreground: var(--v4v-text-primary);
   --sidebar-border: 220 15% 88%;
   --sidebar-ring: var(--v4v-gold);
 }
 
+/* Dark mode variant (optional, if needed later) */
 .dark {
-  --background: var(--v4v-navy);
-  --foreground: 60 10% 95%;
-  --card: var(--v4v-navy-light);
-  --card-foreground: 60 10% 95%;
-  --popover: var(--v4v-navy-light);
-  --popover-foreground: 60 10% 95%;
+  --background: 220 30% 12%;
+  --foreground: 210 20% 92%;
+  --card: 220 28% 16%;
+  --card-foreground: 210 20% 92%;
+  --popover: 220 28% 16%;
+  --popover-foreground: 210 20% 92%;
   --primary: var(--v4v-gold);
-  --primary-foreground: var(--v4v-navy);
-  --secondary: 222 30% 18%;
-  --secondary-foreground: 60 10% 95%;
-  --muted: 222 25% 22%;
-  --muted-foreground: 220 15% 65%;
+  --primary-foreground: 220 50% 15%;
+  --secondary: 220 25% 20%;
+  --secondary-foreground: 210 20% 92%;
+  --muted: 220 20% 22%;
+  --muted-foreground: 220 15% 60%;
   --accent: var(--v4v-gold);
-  --accent-foreground: var(--v4v-navy);
-  --border: 222 20% 25%;
-  --input: 222 20% 25%;
+  --accent-foreground: 220 50% 15%;
+  --border: 220 20% 25%;
+  --input: 220 20% 25%;
   --ring: var(--v4v-gold);
-  --sidebar: var(--v4v-navy-light);
-  --sidebar-foreground: 60 10% 95%;
-  --sidebar-primary: var(--v4v-gold);
-  --sidebar-primary-foreground: var(--v4v-navy);
-  --sidebar-accent: 222 25% 28%;
-  --sidebar-accent-foreground: 60 10% 95%;
-  --sidebar-border: 222 20% 25%;
-  --sidebar-ring: var(--v4v-gold);
 }
 
 * {
@@ -149,19 +130,20 @@
 body {
   background-color: hsl(var(--background));
   color: hsl(var(--foreground));
+  min-height: 100vh;
 }
 
 html {
   background-color: hsl(var(--background));
 }
 
-/* Keep scrollbar track consistent with app background (prevents white gutter flash during scroll lock). */
+/* Custom scrollbar */
 html {
-  scrollbar-color: hsl(var(--muted-foreground) / 0.7) hsl(var(--background));
+  scrollbar-color: hsl(var(--v4v-navy-muted) / 0.4) hsl(var(--background));
 }
 
 ::-webkit-scrollbar {
-  width: 12px;
+  width: 10px;
 }
 
 ::-webkit-scrollbar-track {
@@ -169,69 +151,19 @@ html {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: hsl(var(--muted-foreground) / 0.6);
+  background: hsl(var(--v4v-navy-muted) / 0.3);
   border-radius: 999px;
-  border: 3px solid hsl(var(--background));
+  border: 2px solid hsl(var(--background));
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--v4v-navy-muted) / 0.5);
 }
 
 /* ==========================================================================
- * Utility Classes for V4V Palette
+ * TAILWIND THEME INLINE
  * ==========================================================================
- * These provide direct access to V4V colors in addition to Tailwind classes.
  */
-
-/* Core semantic utilities */
-.bg-background { background-color: hsl(var(--background)); }
-.bg-primary { background-color: hsl(var(--primary)); }
-.bg-accent { background-color: hsl(var(--accent)); }
-
-.text-primary-foreground { color: hsl(var(--primary-foreground)); }
-.text-muted-foreground { color: hsl(var(--muted-foreground)); }
-.text-accent-foreground { color: hsl(var(--accent-foreground)); }
-
-.border-input { border-color: hsl(var(--input)); }
-.ring-ring { --tw-ring-color: hsl(var(--ring)); }
-
-/* Brand color utilities */
-.bg-v4v-navy { background-color: hsl(var(--v4v-navy)); }
-.bg-v4v-navy-light { background-color: hsl(var(--v4v-navy-light)); }
-.bg-v4v-gold { background-color: hsl(var(--v4v-gold)); }
-.bg-v4v-cream { background-color: hsl(var(--v4v-cream)); }
-
-.text-v4v-navy { color: hsl(var(--v4v-navy)); }
-.text-v4v-gold { color: hsl(var(--v4v-gold)); }
-.text-v4v-gold-dark { color: hsl(var(--v4v-gold-dark)); } /* WCAG AA safe on light bg */
-
-.border-v4v-gold { border-color: hsl(var(--v4v-gold)); }
-
-/* Category color utilities - Background */
-.bg-v4v-employment { background-color: hsl(var(--v4v-employment)); }
-.bg-v4v-employment-light { background-color: hsl(var(--v4v-employment-light)); }
-.bg-v4v-employment-muted { background-color: hsl(var(--v4v-employment-muted)); }
-
-.bg-v4v-training { background-color: hsl(var(--v4v-training)); }
-.bg-v4v-training-light { background-color: hsl(var(--v4v-training-light)); }
-.bg-v4v-training-muted { background-color: hsl(var(--v4v-training-muted)); }
-
-.bg-v4v-housing { background-color: hsl(var(--v4v-housing)); }
-.bg-v4v-housing-light { background-color: hsl(var(--v4v-housing-light)); }
-.bg-v4v-housing-muted { background-color: hsl(var(--v4v-housing-muted)); }
-
-.bg-v4v-legal { background-color: hsl(var(--v4v-legal)); }
-.bg-v4v-legal-light { background-color: hsl(var(--v4v-legal-light)); }
-.bg-v4v-legal-muted { background-color: hsl(var(--v4v-legal-muted)); }
-
-/* Category color utilities - Text */
-.text-v4v-employment { color: hsl(var(--v4v-employment)); }
-.text-v4v-training { color: hsl(var(--v4v-training)); }
-.text-v4v-housing { color: hsl(var(--v4v-housing)); }
-.text-v4v-legal { color: hsl(var(--v4v-legal)); }
-
-/* Category color utilities - Border */
-.border-v4v-employment { border-color: hsl(var(--v4v-employment)); }
-.border-v4v-training { border-color: hsl(var(--v4v-training)); }
-.border-v4v-housing { border-color: hsl(var(--v4v-housing)); }
-.border-v4v-legal { border-color: hsl(var(--v4v-legal)); }
 
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
@@ -239,8 +171,7 @@ html {
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
   --radius-2xl: calc(var(--radius) + 8px);
-  --radius-3xl: calc(var(--radius) + 12px);
-  --radius-4xl: calc(var(--radius) + 16px);
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -273,22 +204,14 @@ html {
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
 
-  /* ==========================================================================
-   * V4V Custom Colors for Tailwind
-   * ==========================================================================
-   * Use these via Tailwind classes: bg-v4v-navy, text-v4v-gold, etc.
-   */
-
-  /* Core brand colors */
+  /* V4V Custom Colors */
   --color-v4v-navy: var(--v4v-navy);
   --color-v4v-navy-light: var(--v4v-navy-light);
   --color-v4v-navy-muted: var(--v4v-navy-muted);
   --color-v4v-gold: var(--v4v-gold);
   --color-v4v-gold-dark: var(--v4v-gold-dark);
   --color-v4v-gold-light: var(--v4v-gold-light);
-  --color-v4v-cream: var(--v4v-cream);
 
-  /* Category colors with variants */
   --color-v4v-employment: var(--v4v-employment);
   --color-v4v-employment-light: var(--v4v-employment-light);
   --color-v4v-employment-muted: var(--v4v-employment-muted);
@@ -315,14 +238,147 @@ html {
   }
 }
 
-/* Typography - Editorial Style */
+/* ==========================================================================
+ * TYPOGRAPHY
+ * ==========================================================================
+ */
+
 .font-display {
-  font-family: var(--font-display), Georgia, 'Times New Roman', serif;
+  font-family: var(--font-display), 'Playfair Display', Georgia, serif;
 }
 
 .font-body {
-  font-family: var(--font-body), 'Segoe UI', system-ui, sans-serif;
+  font-family: var(--font-body), 'Inter', system-ui, sans-serif;
 }
+
+/* ==========================================================================
+ * HERO SECTION
+ * ==========================================================================
+ */
+
+.hero-gradient {
+  background:
+    radial-gradient(ellipse 80% 60% at 70% 30%, hsl(var(--v4v-gold) / 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse 60% 80% at 20% 80%, hsl(var(--v4v-navy) / 0.05) 0%, transparent 50%),
+    linear-gradient(180deg, hsl(var(--v4v-navy)) 0%, hsl(220 45% 25%) 100%);
+}
+
+.hero-pattern {
+  background-image:
+    radial-gradient(circle at 25% 25%, hsl(var(--v4v-gold) / 0.1) 1px, transparent 1px),
+    radial-gradient(circle at 75% 75%, hsl(var(--v4v-gold) / 0.08) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+.hero-search-container {
+  background: hsl(0 0% 100% / 0.95);
+  border: 1px solid hsl(var(--v4v-gold) / 0.3);
+  border-radius: var(--radius);
+  box-shadow:
+    0 4px 20px -4px hsl(var(--v4v-navy) / 0.15),
+    0 0 0 1px hsl(0 0% 100% / 0.5);
+  transition: all 0.3s ease;
+}
+
+.hero-search-container:focus-within {
+  border-color: hsl(var(--v4v-gold) / 0.5);
+  box-shadow:
+    0 8px 30px -4px hsl(var(--v4v-navy) / 0.2),
+    0 0 0 3px hsl(var(--v4v-gold) / 0.15);
+}
+
+/* Hero stat cards */
+.hero-stat {
+  background: hsl(0 0% 100% / 0.15);
+  border: 1px solid hsl(0 0% 100% / 0.2);
+  backdrop-filter: blur(8px);
+  border-radius: var(--radius);
+  transition: all 0.3s ease;
+}
+
+.hero-stat:hover {
+  background: hsl(0 0% 100% / 0.2);
+  border-color: hsl(var(--v4v-gold) / 0.4);
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+ * CARDS
+ * ==========================================================================
+ */
+
+.soft-card {
+  background: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+  border-radius: var(--radius);
+  box-shadow: 0 1px 3px hsl(var(--v4v-navy) / 0.04);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.soft-card:hover {
+  border-color: hsl(var(--v4v-gold) / 0.4);
+  box-shadow:
+    0 8px 25px -8px hsl(var(--v4v-navy) / 0.12),
+    0 0 0 1px hsl(var(--v4v-gold) / 0.1);
+  transform: translateY(-2px);
+}
+
+.category-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.category-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px -10px hsl(var(--v4v-navy) / 0.15);
+}
+
+/* ==========================================================================
+ * BUTTONS
+ * ==========================================================================
+ */
+
+.btn-primary {
+  background: hsl(var(--v4v-navy));
+  color: white;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+  background: hsl(var(--v4v-navy-light));
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px hsl(var(--v4v-navy) / 0.25);
+}
+
+.btn-gold {
+  background: linear-gradient(135deg, hsl(var(--v4v-gold)), hsl(38 75% 45%));
+  color: hsl(var(--v4v-navy));
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.btn-gold:hover {
+  background: linear-gradient(135deg, hsl(var(--v4v-gold-light)), hsl(var(--v4v-gold)));
+  transform: translateY(-1px);
+  box-shadow: 0 4px 15px hsl(var(--v4v-gold) / 0.35);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: hsl(var(--v4v-navy));
+  border: 1px solid hsl(var(--border));
+  transition: all 0.2s ease;
+}
+
+.btn-ghost:hover {
+  background: hsl(var(--v4v-bg-surface));
+  border-color: hsl(var(--v4v-navy-muted) / 0.3);
+}
+
+/* ==========================================================================
+ * DECORATIVE ELEMENTS
+ * ==========================================================================
+ */
 
 /* Gold accent underline */
 .gold-underline {
@@ -341,17 +397,42 @@ html {
   border-radius: 2px;
 }
 
-/* Subtle grain texture overlay */
+/* Editorial divider */
+.editorial-divider {
+  width: 50px;
+  height: 3px;
+  background: linear-gradient(90deg, hsl(var(--v4v-gold)), hsl(var(--v4v-gold-light)));
+  border-radius: 2px;
+}
+
+/* Hero divider */
+.hero-divider {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    hsl(var(--border)) 20%,
+    hsl(var(--v4v-gold) / 0.4) 50%,
+    hsl(var(--border)) 80%,
+    transparent 100%
+  );
+}
+
+/* Subtle grain texture */
 .grain-overlay::before {
   content: '';
   position: absolute;
   inset: 0;
-  opacity: 0.03;
+  opacity: 0.015;
   pointer-events: none;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
 
-/* Animations */
+/* ==========================================================================
+ * ANIMATIONS
+ * ==========================================================================
+ */
+
 @keyframes fade-in-up {
   from {
     opacity: 0;
@@ -391,7 +472,7 @@ html {
   animation: slide-in-right 0.5s ease-out forwards;
 }
 
-/* Stagger delays for animations */
+/* Stagger delays */
 .delay-100 { animation-delay: 100ms; }
 .delay-200 { animation-delay: 200ms; }
 .delay-300 { animation-delay: 300ms; }
@@ -399,352 +480,46 @@ html {
 .delay-500 { animation-delay: 500ms; }
 .delay-600 { animation-delay: 600ms; }
 
-/* Category card hover effects */
-.category-card {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
+/* ==========================================================================
+ * UTILITY CLASSES
+ * ==========================================================================
+ */
 
-.category-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 20px 40px -12px rgba(10, 22, 40, 0.15);
-}
+/* Background utilities */
+.bg-v4v-navy { background-color: hsl(var(--v4v-navy)); }
+.bg-v4v-navy-light { background-color: hsl(var(--v4v-navy-light)); }
+.bg-v4v-gold { background-color: hsl(var(--v4v-gold)); }
 
-/* Trust indicator pulse */
-@keyframes pulse-subtle {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.7; }
-}
+/* Text utilities */
+.text-v4v-navy { color: hsl(var(--v4v-navy)); }
+.text-v4v-gold { color: hsl(var(--v4v-gold)); }
+.text-v4v-gold-dark { color: hsl(var(--v4v-gold-dark)); }
 
-.pulse-subtle {
-  animation: pulse-subtle 2s ease-in-out infinite;
-}
+/* Border utilities */
+.border-v4v-gold { border-color: hsl(var(--v4v-gold)); }
 
-/* Editorial divider */
-.editorial-divider {
-  width: 60px;
-  height: 3px;
-  background: linear-gradient(90deg, hsl(var(--v4v-gold)), transparent);
-}
+/* Category utilities */
+.bg-v4v-employment { background-color: hsl(var(--v4v-employment)); }
+.bg-v4v-employment-muted { background-color: hsl(var(--v4v-employment-muted)); }
+.text-v4v-employment { color: hsl(var(--v4v-employment)); }
+.border-v4v-employment { border-color: hsl(var(--v4v-employment)); }
 
-/* Search input focus glow */
+.bg-v4v-training { background-color: hsl(var(--v4v-training)); }
+.bg-v4v-training-muted { background-color: hsl(var(--v4v-training-muted)); }
+.text-v4v-training { color: hsl(var(--v4v-training)); }
+.border-v4v-training { border-color: hsl(var(--v4v-training)); }
+
+.bg-v4v-housing { background-color: hsl(var(--v4v-housing)); }
+.bg-v4v-housing-muted { background-color: hsl(var(--v4v-housing-muted)); }
+.text-v4v-housing { color: hsl(var(--v4v-housing)); }
+.border-v4v-housing { border-color: hsl(var(--v4v-housing)); }
+
+.bg-v4v-legal { background-color: hsl(var(--v4v-legal)); }
+.bg-v4v-legal-muted { background-color: hsl(var(--v4v-legal-muted)); }
+.text-v4v-legal { color: hsl(var(--v4v-legal)); }
+.border-v4v-legal { border-color: hsl(var(--v4v-legal)); }
+
+/* Search input glow */
 .search-glow:focus-within {
-  box-shadow: 0 0 0 3px hsl(var(--v4v-gold) / 0.2), 0 4px 20px -4px hsl(var(--v4v-navy) / 0.1);
-}
-
-/* Hero enhanced search container */
-.hero-search-container {
-  position: relative;
-  border: 1px solid hsl(var(--v4v-gold) / 0.3);
-  box-shadow:
-    0 0 30px -5px hsl(var(--v4v-gold) / 0.15),
-    inset 0 1px 0 0 hsl(255 255 255 / 0.1);
-}
-
-.hero-search-container:focus-within {
-  border-color: hsl(var(--v4v-gold) / 0.5);
-  box-shadow:
-    0 0 40px -5px hsl(var(--v4v-gold) / 0.25),
-    0 0 0 3px hsl(var(--v4v-gold) / 0.1),
-    inset 0 1px 0 0 hsl(255 255 255 / 0.15);
-}
-
-/* Subtle star pattern for hero background */
-.hero-stars {
-  background-image:
-    radial-gradient(2px 2px at 20px 30px, hsl(var(--v4v-gold) / 0.15), transparent),
-    radial-gradient(2px 2px at 40px 70px, hsl(var(--v4v-gold) / 0.1), transparent),
-    radial-gradient(1px 1px at 90px 40px, hsl(var(--v4v-gold) / 0.12), transparent),
-    radial-gradient(2px 2px at 130px 80px, hsl(var(--v4v-gold) / 0.08), transparent),
-    radial-gradient(1px 1px at 160px 30px, hsl(var(--v4v-gold) / 0.1), transparent);
-  background-size: 200px 100px;
-  background-position: 0 0;
-}
-
-/* Hero gradient layers */
-.hero-gradient-layer {
-  background:
-    radial-gradient(ellipse 80% 50% at 80% 20%, hsl(var(--v4v-gold) / 0.08) 0%, transparent 50%),
-    radial-gradient(ellipse 60% 80% at 20% 80%, hsl(var(--v4v-navy-light) / 0.5) 0%, transparent 50%),
-    linear-gradient(180deg, hsl(var(--v4v-navy)) 0%, hsl(222 60% 8%) 100%);
-}
-
-/* Animated shimmer for stats */
-@keyframes shimmer {
-  0% { opacity: 0.6; }
-  50% { opacity: 1; }
-  100% { opacity: 0.6; }
-}
-
-.stat-shimmer {
-  animation: shimmer 3s ease-in-out infinite;
-}
-
-.stat-shimmer:nth-child(2) { animation-delay: 0.5s; }
-.stat-shimmer:nth-child(3) { animation-delay: 1s; }
-
-/* Hero stat card styling */
-.hero-stat {
-  background: hsl(var(--v4v-navy-light) / 0.5);
-  border: 1px solid hsl(var(--v4v-gold) / 0.2);
-  backdrop-filter: blur(4px);
-  transition: all 0.3s ease;
-}
-
-.hero-stat:hover {
-  background: hsl(var(--v4v-navy-light) / 0.7);
-  border-color: hsl(var(--v4v-gold) / 0.4);
-  transform: translateY(-2px);
-}
-
-/* Hero section divider */
-.hero-divider {
-  height: 4px;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    hsl(var(--v4v-gold) / 0.3) 20%,
-    hsl(var(--v4v-gold)) 50%,
-    hsl(var(--v4v-gold) / 0.3) 80%,
-    transparent 100%
-  );
-}
-
-/* Shield silhouette decoration */
-.hero-shield {
-  background: linear-gradient(135deg, hsl(var(--v4v-gold) / 0.05) 0%, transparent 50%);
-  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-}
-
-/* =============================================================================
-   PATRIOTIC BACKGROUND PATTERNS
-   Subtle, dignified patriotic elements for hero and sections
-   ============================================================================= */
-
-/* Enhanced flag-inspired star field pattern
-   Creates a subtle 5-star row pattern reminiscent of the US flag canton */
-.patriotic-stars {
-  --star-color: hsl(var(--v4v-gold) / 0.12);
-  --star-color-dim: hsl(var(--v4v-gold) / 0.06);
-  background-image:
-    /* Row 1 - 6 stars */
-    radial-gradient(1.5px 1.5px at 15px 15px, var(--star-color), transparent),
-    radial-gradient(1.5px 1.5px at 45px 15px, var(--star-color-dim), transparent),
-    radial-gradient(1.5px 1.5px at 75px 15px, var(--star-color), transparent),
-    radial-gradient(1.5px 1.5px at 105px 15px, var(--star-color-dim), transparent),
-    radial-gradient(1.5px 1.5px at 135px 15px, var(--star-color), transparent),
-    radial-gradient(1.5px 1.5px at 165px 15px, var(--star-color-dim), transparent),
-    /* Row 2 - 5 stars (offset) */
-    radial-gradient(1.5px 1.5px at 30px 35px, var(--star-color-dim), transparent),
-    radial-gradient(1.5px 1.5px at 60px 35px, var(--star-color), transparent),
-    radial-gradient(1.5px 1.5px at 90px 35px, var(--star-color-dim), transparent),
-    radial-gradient(1.5px 1.5px at 120px 35px, var(--star-color), transparent),
-    radial-gradient(1.5px 1.5px at 150px 35px, var(--star-color-dim), transparent),
-    /* Row 3 - 6 stars */
-    radial-gradient(1.5px 1.5px at 15px 55px, var(--star-color), transparent),
-    radial-gradient(1.5px 1.5px at 45px 55px, var(--star-color-dim), transparent),
-    radial-gradient(1.5px 1.5px at 75px 55px, var(--star-color), transparent),
-    radial-gradient(1.5px 1.5px at 105px 55px, var(--star-color-dim), transparent),
-    radial-gradient(1.5px 1.5px at 135px 55px, var(--star-color), transparent),
-    radial-gradient(1.5px 1.5px at 165px 55px, var(--star-color-dim), transparent),
-    /* Row 4 - 5 stars (offset) */
-    radial-gradient(1.5px 1.5px at 30px 75px, var(--star-color-dim), transparent),
-    radial-gradient(1.5px 1.5px at 60px 75px, var(--star-color), transparent),
-    radial-gradient(1.5px 1.5px at 90px 75px, var(--star-color-dim), transparent),
-    radial-gradient(1.5px 1.5px at 120px 75px, var(--star-color), transparent),
-    radial-gradient(1.5px 1.5px at 150px 75px, var(--star-color-dim), transparent),
-    /* Row 5 - 6 stars */
-    radial-gradient(1.5px 1.5px at 15px 95px, var(--star-color), transparent),
-    radial-gradient(1.5px 1.5px at 45px 95px, var(--star-color-dim), transparent),
-    radial-gradient(1.5px 1.5px at 75px 95px, var(--star-color), transparent),
-    radial-gradient(1.5px 1.5px at 105px 95px, var(--star-color-dim), transparent),
-    radial-gradient(1.5px 1.5px at 135px 95px, var(--star-color), transparent),
-    radial-gradient(1.5px 1.5px at 165px 95px, var(--star-color-dim), transparent);
-  background-size: 180px 110px;
-  background-position: 0 0;
-}
-
-/* Subtle horizontal stripe pattern
-   Creates gentle, almost imperceptible stripe effect */
-.patriotic-stripes {
-  --stripe-light: hsl(0 0% 100% / 0.02);
-  --stripe-dark: transparent;
-  background-image: repeating-linear-gradient(
-    180deg,
-    var(--stripe-light) 0px,
-    var(--stripe-light) 12px,
-    var(--stripe-dark) 12px,
-    var(--stripe-dark) 24px
-  );
-}
-
-/* Subtle wave pattern for sections
-   Creates flowing, dignified wave effect */
-.patriotic-wave {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 60'%3E%3Cpath fill='%23C9A227' fill-opacity='0.03' d='M0,30 C360,60 720,0 1080,30 C1260,45 1350,45 1440,30 L1440,60 L0,60 Z'/%3E%3C/svg%3E");
-  background-size: 100% 60px;
-  background-position: bottom;
-  background-repeat: repeat-x;
-}
-
-/* Diagonal accent stripes (very subtle) */
-.patriotic-diagonal {
-  background-image: repeating-linear-gradient(
-    -45deg,
-    transparent 0px,
-    transparent 40px,
-    hsl(var(--v4v-gold) / 0.015) 40px,
-    hsl(var(--v4v-gold) / 0.015) 42px
-  );
-}
-
-/* Combined patriotic hero background
-   Layers multiple patterns for depth */
-.patriotic-hero-bg {
-  position: relative;
-}
-
-.patriotic-hero-bg::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image:
-    /* Star field in top-left corner (canton area) */
-    radial-gradient(ellipse 40% 60% at 0% 0%, hsl(220 60% 15% / 0.8) 0%, transparent 70%);
-  pointer-events: none;
-}
-
-/* Section wave divider - top */
-.wave-divider-top {
-  position: relative;
-}
-
-.wave-divider-top::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 40px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 40' preserveAspectRatio='none'%3E%3Cpath fill='%230A1628' d='M0,0 L0,20 Q360,40 720,20 T1440,20 L1440,0 Z'/%3E%3C/svg%3E");
-  background-size: 100% 100%;
-  pointer-events: none;
-}
-
-/* Section wave divider - bottom */
-.wave-divider-bottom {
-  position: relative;
-}
-
-.wave-divider-bottom::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 40px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 40' preserveAspectRatio='none'%3E%3Cpath fill='%23FAFAF8' d='M0,40 L0,20 Q360,0 720,20 T1440,20 L1440,40 Z'/%3E%3C/svg%3E");
-  background-size: 100% 100%;
-  pointer-events: none;
-}
-
-/* Gold accent line with stars */
-.patriotic-accent-line {
-  position: relative;
-  height: 2px;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    hsl(var(--v4v-gold) / 0.2) 10%,
-    hsl(var(--v4v-gold) / 0.5) 50%,
-    hsl(var(--v4v-gold) / 0.2) 90%,
-    transparent 100%
-  );
-}
-
-.patriotic-accent-line::before,
-.patriotic-accent-line::after {
-  content: '\2605'; /* Star character */
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 10px;
-  color: hsl(var(--v4v-gold) / 0.6);
-}
-
-.patriotic-accent-line::before {
-  left: 20%;
-}
-
-.patriotic-accent-line::after {
-  right: 20%;
-}
-
-/* Subtle ribbon/banner pattern for section backgrounds */
-.patriotic-ribbon {
-  background:
-    linear-gradient(135deg, hsl(var(--v4v-gold) / 0.03) 0%, transparent 30%),
-    linear-gradient(-135deg, hsl(var(--v4v-gold) / 0.02) 0%, transparent 30%);
-}
-
-/* Dark mode adjustments for patriotic elements */
-.dark .patriotic-stars {
-  --star-color: hsl(var(--v4v-gold) / 0.15);
-  --star-color-dim: hsl(var(--v4v-gold) / 0.08);
-}
-
-.dark .patriotic-stripes {
-  --stripe-light: hsl(0 0% 100% / 0.015);
-}
-
-.dark .patriotic-diagonal {
-  background-image: repeating-linear-gradient(
-    -45deg,
-    transparent 0px,
-    transparent 40px,
-    hsl(var(--v4v-gold) / 0.02) 40px,
-    hsl(var(--v4v-gold) / 0.02) 42px
-  );
-}
-
-.dark .wave-divider-top::before {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 40' preserveAspectRatio='none'%3E%3Cpath fill='%23141D2B' d='M0,0 L0,20 Q360,40 720,20 T1440,20 L1440,0 Z'/%3E%3C/svg%3E");
-}
-
-.dark .wave-divider-bottom::after {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 40' preserveAspectRatio='none'%3E%3Cpath fill='%230A1628' d='M0,40 L0,20 Q360,0 720,20 T1440,20 L1440,40 Z'/%3E%3C/svg%3E");
-}
-
-/* Subtle corner eagle silhouette (purely decorative) */
-.patriotic-eagle {
-  position: relative;
-}
-
-.patriotic-eagle::after {
-  content: '';
-  position: absolute;
-  right: 5%;
-  top: 10%;
-  width: 200px;
-  height: 180px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 90' fill='%23C9A227' fill-opacity='0.04'%3E%3Cpath d='M50 5 L55 20 L70 20 L58 30 L63 45 L50 35 L37 45 L42 30 L30 20 L45 20 Z M50 50 L30 70 L20 65 L35 80 L50 75 L65 80 L80 65 L70 70 Z M50 55 L50 85'/%3E%3C/svg%3E");
-  background-size: contain;
-  background-repeat: no-repeat;
-  opacity: 0.5;
-  pointer-events: none;
-}
-
-/* Animated subtle glow for hero accent */
-@keyframes patriotic-glow {
-  0%, 100% {
-    opacity: 0.3;
-    filter: blur(20px);
-  }
-  50% {
-    opacity: 0.5;
-    filter: blur(30px);
-  }
-}
-
-.patriotic-glow {
-  animation: patriotic-glow 8s ease-in-out infinite;
+  box-shadow: 0 0 0 3px hsl(var(--v4v-gold) / 0.15), 0 4px 12px -4px hsl(var(--v4v-navy) / 0.1);
 }

@@ -1,20 +1,22 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
-import { DM_Serif_Display, Source_Sans_3 } from "next/font/google";
+import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/header";
 
-const dmSerifDisplay = DM_Serif_Display({
-  weight: "400",
-  subsets: ["latin"],
-  variable: "--font-display",
-  display: "swap",
-});
-
-const sourceSans = Source_Sans_3({
+// Compact, highly readable body font
+const inter = Inter({
   subsets: ["latin"],
   variable: "--font-body",
   display: "swap",
+});
+
+// Elegant serif for display headings
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  variable: "--font-display",
+  display: "swap",
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -35,7 +37,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${dmSerifDisplay.variable} ${sourceSans.variable}`}>
+    <html lang="en" className={`${playfair.variable} ${inter.variable}`}>
       <body className="min-h-screen bg-background font-body antialiased">
         <Suspense>
           <Header />
