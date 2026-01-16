@@ -86,14 +86,63 @@ wait_for_port() {
     return 0
 }
 
+# Function to ensure Docker containers are running
+ensure_docker() {
+    log_info "Checking Docker containers..."
+
+    # Check if docker is available
+    if ! command -v docker &> /dev/null; then
+        log_error "Docker is not installed or not in PATH"
+        exit 1
+    fi
+
+    # Check if docker daemon is running
+    if ! docker info &> /dev/null; then
+        log_error "Docker daemon is not running. Please start Docker first."
+        exit 1
+    fi
+
+    # Check if the db container is running
+    if docker compose -f "$PROJECT_ROOT/docker-compose.yml" ps --status running 2>/dev/null | grep -q "db"; then
+        log_success "PostgreSQL container is already running"
+    else
+        log_info "Starting PostgreSQL container..."
+        docker compose -f "$PROJECT_ROOT/docker-compose.yml" up -d db
+
+        # Wait for PostgreSQL to be healthy
+        local max_wait=30
+        local count=0
+        log_info "Waiting for PostgreSQL to be ready..."
+        while ! docker compose -f "$PROJECT_ROOT/docker-compose.yml" ps --status running 2>/dev/null | grep -q "db.*healthy"; do
+            sleep 1
+            count=$((count + 1))
+            if [ $count -ge $max_wait ]; then
+                # Check if it's at least running (healthcheck might not show)
+                if docker compose -f "$PROJECT_ROOT/docker-compose.yml" ps --status running 2>/dev/null | grep -q "db"; then
+                    log_warn "PostgreSQL running but health status unknown, proceeding..."
+                    break
+                fi
+                log_error "PostgreSQL failed to start within ${max_wait}s"
+                docker compose -f "$PROJECT_ROOT/docker-compose.yml" logs db
+                exit 1
+            fi
+        done
+        log_success "PostgreSQL container is ready"
+    fi
+}
+
 # Function to start services
 start_services() {
     log_info "Starting Vibe4Vets Development Environment"
     echo ""
-    
+
+    # Ensure Docker containers are running first
+    ensure_docker
+    echo ""
+
     # Create log directory
     mkdir -p "$LOG_DIR"
-    
+
     # Check if ports are in use
     if nc -z localhost 8000 2>/dev/null; then
         log_warn "Port 8000 already in use. Stopping existing process..."
@@ -204,11 +253,19 @@ case "${COMMAND:-start}" in
         ;;
     status)
         echo "Checking Vibe4Vets services..."
+        # Docker status
+        if docker compose -f "$PROJECT_ROOT/docker-compose.yml" ps --status running 2>/dev/null | grep -q "db"; then
+            log_success "PostgreSQL container is running"
+        else
+            log_warn "PostgreSQL container is not running"
+        fi
+        # Backend status
         if nc -z localhost 8000 2>/dev/null; then
             log_success "Backend is running on port 8000"
         else
             log_warn "Backend is not running"
         fi
+        # Frontend status
         if nc -z localhost 3000 2>/dev/null; then
             log_success "Frontend is running on port 3000"
         else
