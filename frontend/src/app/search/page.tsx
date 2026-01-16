@@ -193,12 +193,12 @@ function SearchResults() {
   const totalResults = resources.length;
   const hasResults = totalResults > 0;
 
+  // Calculate grid columns - only apply sidebar column on lg+ screens
+  const gridColumns = leftCollapsed ? 'lg:grid-cols-[0px_1fr]' : 'lg:grid-cols-[280px_1fr]';
+
   return (
     <div
-      className="relative grid gap-6 transition-all duration-300 ease-in-out lg:grid-cols-[280px_1fr]"
-      style={{
-        gridTemplateColumns: `${leftCollapsed ? '0px' : '280px'} 1fr`,
-      }}
+      className={`relative grid grid-cols-1 gap-6 transition-all duration-300 ease-in-out ${gridColumns}`}
     >
       {/* Collapsed Left Edge Button */}
       {leftCollapsed && (

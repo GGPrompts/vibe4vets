@@ -69,7 +69,9 @@ def upgrade() -> None:
 
     # === Create indexes for common eligibility filters ===
     op.create_index("ix_locations_age_min", "locations", ["age_min"])
-    op.create_index("ix_locations_income_limit_ami_percent", "locations", ["income_limit_ami_percent"])
+    op.create_index(
+        "ix_locations_income_limit_ami_percent", "locations", ["income_limit_ami_percent"]
+    )
     op.create_index("ix_locations_waitlist_status", "locations", ["waitlist_status"])
     op.create_index(
         "ix_locations_housing_status_required_gin",

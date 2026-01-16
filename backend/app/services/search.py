@@ -293,7 +293,11 @@ class SearchService:
 
         # Build intake info if any fields are set
         intake = None
-        if any([location.intake_phone, location.intake_url, location.intake_hours, location.intake_notes]):
+        has_intake = any([
+            location.intake_phone, location.intake_url,
+            location.intake_hours, location.intake_notes
+        ])
+        if has_intake:
             intake = IntakeInfo(
                 phone=location.intake_phone,
                 url=location.intake_url,
@@ -440,7 +444,9 @@ class SearchService:
         if query:
             stmt = stmt.order_by(text("rank DESC"), col(Resource.reliability_score).desc())
         else:
-            stmt = stmt.order_by(col(Resource.reliability_score).desc(), col(Resource.created_at).desc())
+            stmt = stmt.order_by(
+                col(Resource.reliability_score).desc(), col(Resource.created_at).desc()
+            )
 
         stmt = stmt.offset(offset).limit(limit)
         results = self.session.exec(stmt).all()
@@ -448,8 +454,12 @@ class SearchService:
         # Build search results with match reasons
         search_results = []
         for resource, rank in results:
+            state_filter = (
+                eligibility_filters.states[0]
+                if eligibility_filters and eligibility_filters.states else None
+            )
             explanations = self._build_explanations(
-                resource, query or "", category, eligibility_filters.states[0] if eligibility_filters and eligibility_filters.states else None
+                resource, query or "", category, state_filter
             )
             match_reasons = self._build_match_reasons(resource, eligibility_filters)
             resource_read = self._to_read_schema(resource)
@@ -505,7 +515,10 @@ class SearchService:
                 if county:
                     reasons.append(MatchReason(type="location", label=f"Serves {county}"))
             elif location.city and location.state:
-                reasons.append(MatchReason(type="location", label=f"Available in {location.city}, {location.state}"))
+                city_state = f"{location.city}, {location.state}"
+                reasons.append(
+                    MatchReason(type="location", label=f"Available in {city_state}")
+                )
 
             # Age requirements
             if location.age_min:
@@ -515,7 +528,10 @@ class SearchService:
 
             # Income requirements
             if location.income_limit_ami_percent:
-                reasons.append(MatchReason(type="income", label=f"Income under {location.income_limit_ami_percent}% AMI"))
+                ami = location.income_limit_ami_percent
+                reasons.append(
+                    MatchReason(type="income", label=f"Income under {ami}% AMI")
+                )
 
             # Housing status
             if location.housing_status_required:
@@ -526,7 +542,8 @@ class SearchService:
                 }
                 for status in location.housing_status_required:
                     if status in status_labels:
-                        reasons.append(MatchReason(type="housing_status", label=status_labels[status]))
+                        label = status_labels[status]
+                        reasons.append(MatchReason(type="housing_status", label=label))
                         break
 
             # Waitlist status

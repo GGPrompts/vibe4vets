@@ -43,13 +43,18 @@ DMV_HOUSING_RESOURCES = [
             "city": "Vienna",
             "state": "VA",
             "zip_code": "22182",
-            "service_area": ["Fairfax County", "Arlington County", "Alexandria City", "Loudoun County"],
+            "service_area": [
+                "Fairfax County", "Arlington County", "Alexandria City", "Loudoun County"
+            ],
             "eligibility": {
                 "income_limit_type": "ami_percent",
                 "income_limit_ami_percent": 50,
                 "housing_status_required": ["homeless", "at_risk"],
                 "veteran_status_required": True,
-                "docs_required": ["DD-214", "Income verification", "Photo ID", "Proof of homelessness or at-risk status"],
+                "docs_required": [
+                    "DD-214", "Income verification", "Photo ID",
+                    "Proof of homelessness or at-risk status"
+                ],
                 "waitlist_status": "open",
             },
             "intake": {
@@ -67,9 +72,11 @@ DMV_HOUSING_RESOURCES = [
     {
         "org_name": "Pathways to Housing DC",
         "title": "SSVF - Washington DC",
-        "description": "Housing First program providing immediate access to permanent housing for "
-        "chronically homeless veterans in Washington DC, combined with intensive supportive services "
-        "to maintain housing stability.",
+        "description": (
+            "Housing First program providing immediate access to permanent housing for "
+            "chronically homeless veterans in Washington DC, combined with intensive "
+            "supportive services to maintain housing stability."
+        ),
         "summary": "Housing First SSVF program for chronically homeless veterans in DC",
         "categories": ["housing"],
         "subcategories": ["ssvf", "housing_first"],
@@ -166,14 +173,19 @@ DMV_HOUSING_RESOURCES = [
                 "income_limit_ami_percent": 50,
                 "housing_status_required": ["homeless"],
                 "veteran_status_required": True,
-                "docs_required": ["DD-214", "VA eligibility letter", "Photo ID", "Social Security card"],
+                "docs_required": [
+                    "DD-214", "VA eligibility letter", "Photo ID", "Social Security card"
+                ],
                 "waitlist_status": "open",
             },
             "intake": {
                 "phone": "202-535-1000",
                 "url": "https://www.dchousing.org/apply",
                 "hours": "Mon-Fri 8:30 AM - 4:30 PM",
-                "notes": "Must be referred by DC VA Medical Center. Contact VA social worker first.",
+                "notes": (
+                    "Must be referred by DC VA Medical Center. "
+                    "Contact VA social worker first."
+                ),
             },
             "verification": {
                 "last_verified_at": datetime(2026, 1, 14),
@@ -222,8 +234,11 @@ DMV_HOUSING_RESOURCES = [
     {
         "org_name": "Armed Forces Retirement Home",
         "title": "Armed Forces Retirement Home - Washington DC",
-        "description": "Residential retirement community for eligible military veterans, providing "
-        "independent living, assisted living, and long-term care on a historic campus in Washington DC.",
+        "description": (
+            "Residential retirement community for eligible military veterans, providing "
+            "independent living, assisted living, and long-term care on a historic campus "
+            "in Washington DC."
+        ),
         "summary": "Retirement living for veterans 60+ with military service",
         "categories": ["housing"],
         "subcategories": ["senior_housing", "retirement"],
@@ -276,7 +291,9 @@ DMV_HOUSING_RESOURCES = [
             "eligibility": {
                 "age_min": 62,
                 "veteran_status_required": True,
-                "docs_required": ["DD-214", "Officer service verification", "Financial documentation"],
+                "docs_required": [
+                    "DD-214", "Officer service verification", "Financial documentation"
+                ],
                 "waitlist_status": "open",
             },
             "intake": {
@@ -351,7 +368,9 @@ DMV_HOUSING_RESOURCES = [
                 "income_limit_ami_percent": 80,
                 "housing_status_required": ["at_risk", "stably_housed"],
                 "veteran_status_required": False,
-                "docs_required": ["Lease agreement", "Landlord information", "Income verification", "ID"],
+                "docs_required": [
+                    "Lease agreement", "Landlord information", "Income verification", "ID"
+                ],
                 "waitlist_status": "open",
             },
             "intake": {
@@ -369,8 +388,10 @@ DMV_HOUSING_RESOURCES = [
     {
         "org_name": "Montgomery County DHHS",
         "title": "Emergency Assistance Program - Montgomery County",
-        "description": "Emergency financial assistance for rent and utilities for Montgomery County "
-        "residents facing eviction or utility shutoff, with dedicated veteran liaison.",
+        "description": (
+            "Emergency financial assistance for rent and utilities for Montgomery County "
+            "residents facing eviction or utility shutoff, with dedicated veteran liaison."
+        ),
         "summary": "Emergency rent/utility assistance in Montgomery County MD",
         "categories": ["housing"],
         "subcategories": ["rental_assistance", "utility_assistance"],
@@ -389,7 +410,10 @@ DMV_HOUSING_RESOURCES = [
                 "income_limit_ami_percent": 60,
                 "housing_status_required": ["at_risk"],
                 "veteran_status_required": False,
-                "docs_required": ["Eviction notice or utility shutoff notice", "Lease", "Income documentation"],
+                "docs_required": [
+                    "Eviction notice or utility shutoff notice", "Lease",
+                    "Income documentation"
+                ],
                 "waitlist_status": "open",
             },
             "intake": {
@@ -431,7 +455,10 @@ DMV_HOUSING_RESOURCES = [
             "intake": {
                 "phone": "301-423-4700",
                 "hours": "Mon-Fri 9:00 AM - 5:00 PM",
-                "notes": "VA referral preferred but not required. Substance abuse recovery supported.",
+                "notes": (
+                    "VA referral preferred but not required. "
+                    "Substance abuse recovery supported."
+                ),
             },
             "verification": {
                 "last_verified_at": datetime(2026, 1, 4),
@@ -461,14 +488,19 @@ DMV_HOUSING_RESOURCES = [
             "eligibility": {
                 "housing_status_required": ["homeless", "at_risk"],
                 "veteran_status_required": True,
-                "docs_required": ["DD-214", "Photo ID", "Children's birth certificates if applicable"],
+                "docs_required": [
+                    "DD-214", "Photo ID", "Children's birth certificates if applicable"
+                ],
                 "waitlist_status": "open",
             },
             "intake": {
                 "phone": "866-472-5883",
                 "url": "https://www.finalsaluteinc.org/apply",
                 "hours": "Mon-Fri 9:00 AM - 5:00 PM",
-                "notes": "For women veterans and their children only. Pet-friendly options available.",
+                "notes": (
+                    "For women veterans and their children only. "
+                    "Pet-friendly options available."
+                ),
             },
             "verification": {
                 "last_verified_at": datetime(2026, 1, 3),

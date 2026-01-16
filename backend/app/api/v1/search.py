@@ -68,8 +68,12 @@ def search_with_eligibility(
     session: SessionDep,
     q: str | None = Query(None, description="Optional search query"),
     category: str | None = Query(None, description="Filter by category"),
-    states: str | None = Query(None, description="Filter by states (comma-separated, e.g., VA,MD,DC)"),
-    counties: str | None = Query(None, description="Filter by counties (comma-separated, lowercase)"),
+    states: str | None = Query(
+        None, description="Filter by states (comma-separated, e.g., VA,MD,DC)"
+    ),
+    counties: str | None = Query(
+        None, description="Filter by counties (comma-separated, lowercase)"
+    ),
     age_bracket: str | None = Query(
         None,
         description="Age bracket: under_55, 55_61, 62_plus, 65_plus",

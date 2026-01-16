@@ -109,7 +109,9 @@ class Location(SQLModel, table=True):
 
     # === Intake information ===
     intake_phone: str | None = Field(default=None, max_length=50, description="Intake phone number")
-    intake_url: str | None = Field(default=None, max_length=500, description="Intake/application URL")
+    intake_url: str | None = Field(
+        default=None, max_length=500, description="Intake/application URL"
+    )
     intake_hours: str | None = Field(
         default=None, max_length=255, description="Intake hours (e.g., Mon-Fri 9am-5pm)"
     )
@@ -118,7 +120,9 @@ class Location(SQLModel, table=True):
     )
 
     # === Verification metadata ===
-    last_verified_at: datetime | None = Field(default=None, description="When data was last verified")
+    last_verified_at: datetime | None = Field(
+        default=None, description="When data was last verified"
+    )
     verified_by: str | None = Field(
         default=None, description="Verification source: official_directory, provider_contact, etc."
     )
