@@ -20,6 +20,8 @@ import {
   FixedFiltersSidebar,
   type FilterState,
 } from '@/components/filters-sidebar';
+import { FilterChips } from '@/components/filter-chips';
+import type { SortOption } from '@/components/sort-dropdown';
 import api, { type SearchResponse, type ResourceList, type Resource } from '@/lib/api';
 import { Filter } from 'lucide-react';
 
@@ -51,7 +53,13 @@ function SearchResults() {
     };
   });
 
-  // Sync filters to URL (preserves existing query param)
+  // Get sort from URL params (header controls this now)
+  const sortParam = searchParams.get('sort') as SortOption;
+  const sort: SortOption = (sortParam && ['relevance', 'newest', 'alpha'].includes(sortParam))
+    ? sortParam
+    : (query ? 'relevance' : 'newest');
+
+  // Sync filters to URL (preserves existing query and sort params)
   const updateURL = useCallback(
     (newFilters: FilterState) => {
       const params = new URLSearchParams();
@@ -66,15 +74,52 @@ function SearchResults() {
       if (newFilters.scope !== 'all') {
         params.set('scope', newFilters.scope);
       }
+      // Preserve sort from URL (header controls this)
+      const currentSort = searchParams.get('sort');
+      if (currentSort) {
+        params.set('sort', currentSort);
+      }
 
       router.push(`/search?${params.toString()}`, { scroll: false });
     },
-    [router, query]
+    [router, query, searchParams]
   );
 
   const handleFiltersChange = (newFilters: FilterState) => {
     setFilters(newFilters);
     updateURL(newFilters);
+  };
+
+  // Filter chip handlers
+  const handleRemoveCategory = (category: string) => {
+    const newFilters = {
+      ...filters,
+      categories: filters.categories.filter((c) => c !== category),
+    };
+    handleFiltersChange(newFilters);
+  };
+
+  const handleRemoveState = (state: string) => {
+    const newFilters = {
+      ...filters,
+      states: filters.states.filter((s) => s !== state),
+    };
+    handleFiltersChange(newFilters);
+  };
+
+  const handleClearScope = () => {
+    const newFilters = { ...filters, scope: 'all' };
+    handleFiltersChange(newFilters);
+  };
+
+  const handleClearAll = () => {
+    const newFilters = {
+      categories: [],
+      states: [],
+      scope: 'all',
+      minTrust: 0,
+    };
+    handleFiltersChange(newFilters);
   };
 
   // Only refetch when query changes, not on filter changes
@@ -151,9 +196,33 @@ function SearchResults() {
     });
   };
 
-  const resources = searchResults
+  // Sort results
+  const sortResults = <T extends Resource>(resources: T[]) => {
+    const sorted = [...resources];
+    switch (sort) {
+      case 'newest':
+        sorted.sort((a, b) => {
+          const dateA = new Date(a.created_at || 0).getTime();
+          const dateB = new Date(b.created_at || 0).getTime();
+          return dateB - dateA;
+        });
+        break;
+      case 'alpha':
+        sorted.sort((a, b) => a.title.localeCompare(b.title));
+        break;
+      case 'relevance':
+      default:
+        // Keep original order (API returns by relevance for search)
+        break;
+    }
+    return sorted;
+  };
+
+  const filteredResources = searchResults
     ? filterResults(searchResults.results.map((r) => r.resource))
     : filterResults(browseResults?.resources || []);
+
+  const resources = sortResults(filteredResources);
 
   const explanationsMap = searchResults
     ? new Map(searchResults.results.map((r) => [r.resource.id, r.explanations]))
@@ -173,62 +242,77 @@ function SearchResults() {
 
       {/* Main Content */}
       <div className="flex min-w-0 flex-1 flex-col space-y-4">
-        {/* Results Header */}
-        <div className="flex items-center justify-between">
-          <span className="text-muted-foreground">
-            {initialLoading ? (
-              <Skeleton className="inline-block h-4 w-32" />
-            ) : error ? (
-              <span className="text-destructive">{error}</span>
-            ) : (
-              <>
-                {query ? (
-                  <>
-                    Found <strong>{totalResults}</strong> results for &quot;{query}&quot;
-                  </>
-                ) : (
-                  <>
-                    Showing <strong>{totalResults}</strong> resources
-                  </>
-                )}
-              </>
-            )}
-          </span>
+        {/* Results Header with chips and sort */}
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+          {/* Left side: Result count + Filter chips */}
+          <div className="flex flex-1 flex-wrap items-center gap-2">
+            <span className="shrink-0 text-muted-foreground">
+              {initialLoading ? (
+                <Skeleton className="inline-block h-4 w-32" />
+              ) : error ? (
+                <span className="text-destructive">{error}</span>
+              ) : (
+                <>
+                  {query ? (
+                    <>
+                      Found <strong>{totalResults}</strong> results for &quot;{query}&quot;
+                    </>
+                  ) : (
+                    <>
+                      Showing <strong>{totalResults}</strong> resources
+                    </>
+                  )}
+                </>
+              )}
+            </span>
 
-          {/* Mobile Filter Button */}
-          <Sheet open={mobileFiltersOpen} onOpenChange={setMobileFiltersOpen}>
-            <SheetTrigger asChild>
-              <Button variant="outline" size="sm" className="lg:hidden">
-                <Filter className="mr-2 h-4 w-4" />
-                Filters
-                {(filters.categories.length > 0 ||
-                  filters.states.length > 0 ||
-                  filters.scope !== 'all') && (
-                  <span className="ml-2 rounded-full bg-primary px-2 py-0.5 text-xs text-primary-foreground">
-                    {filters.categories.length +
-                      filters.states.length +
-                      (filters.scope !== 'all' ? 1 : 0)}
-                  </span>
-                )}
-              </Button>
-            </SheetTrigger>
-            <SheetContent side="left" className="w-[90vw] max-w-[20rem]">
-              <SheetHeader>
-                <SheetTitle>Filters</SheetTitle>
-              </SheetHeader>
-              <ScrollArea className="mt-6 h-[calc(100vh-100px)]">
-                <FiltersSidebar
-                  filters={filters}
-                  onFiltersChange={(newFilters) => {
-                    handleFiltersChange(newFilters);
-                    setMobileFiltersOpen(false);
-                  }}
-                  resultCount={totalResults}
-                  hideHeader
-                />
-              </ScrollArea>
-            </SheetContent>
-          </Sheet>
+            {/* Filter chips - next to result count */}
+            <FilterChips
+              filters={filters}
+              onRemoveCategory={handleRemoveCategory}
+              onRemoveState={handleRemoveState}
+              onClearScope={handleClearScope}
+              onClearAll={handleClearAll}
+            />
+          </div>
+
+          {/* Right side: Mobile Filter Button */}
+          <div className="flex shrink-0 items-center gap-2">
+            {/* Mobile Filter Button */}
+            <Sheet open={mobileFiltersOpen} onOpenChange={setMobileFiltersOpen}>
+              <SheetTrigger asChild>
+                <Button variant="outline" size="sm" className="lg:hidden">
+                  <Filter className="mr-2 h-4 w-4" />
+                  Filters
+                  {(filters.categories.length > 0 ||
+                    filters.states.length > 0 ||
+                    filters.scope !== 'all') && (
+                    <span className="ml-2 rounded-full bg-primary px-2 py-0.5 text-xs text-primary-foreground">
+                      {filters.categories.length +
+                        filters.states.length +
+                        (filters.scope !== 'all' ? 1 : 0)}
+                    </span>
+                  )}
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="left" className="w-[90vw] max-w-[20rem]">
+                <SheetHeader>
+                  <SheetTitle>Filters</SheetTitle>
+                </SheetHeader>
+                <ScrollArea className="mt-6 h-[calc(100vh-100px)]">
+                  <FiltersSidebar
+                    filters={filters}
+                    onFiltersChange={(newFilters) => {
+                      handleFiltersChange(newFilters);
+                      setMobileFiltersOpen(false);
+                    }}
+                    resultCount={totalResults}
+                    hideHeader
+                  />
+                </ScrollArea>
+              </SheetContent>
+            </Sheet>
+          </div>
         </div>
 
         {/* Results Grid */}
@@ -283,14 +367,7 @@ function SearchResults() {
               <Button
                 variant="outline"
                 className="mt-4"
-                onClick={() =>
-                  handleFiltersChange({
-                    categories: [],
-                    states: [],
-                    scope: 'all',
-                    minTrust: 0,
-                  })
-                }
+                onClick={handleClearAll}
               >
                 Clear Filters
               </Button>

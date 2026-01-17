@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname, useSearchParams, useRouter } from 'next/navigation';
@@ -8,6 +8,7 @@ import { useScrollDirection } from '@/hooks/use-scroll-direction';
 import { cn } from '@/lib/utils';
 import { Input } from '@/components/ui/input';
 import { Search } from 'lucide-react';
+import { SortDropdownHeader, type SortOption } from '@/components/sort-dropdown-header';
 
 export function Header() {
   const pathname = usePathname();
@@ -18,6 +19,10 @@ export function Header() {
   const isSearchPage = pathname === '/search';
   const isHomePage = pathname === '/';
   const [searchQuery, setSearchQuery] = useState('');
+
+  // Get current sort from URL
+  const query = searchParams.get('q') || '';
+  const currentSort = (searchParams.get('sort') as SortOption) || (query ? 'relevance' : 'newest');
 
   // Sync search query from URL params when on search page
   useEffect(() => {
@@ -38,6 +43,19 @@ export function Header() {
     }
     router.push(`/search?${params.toString()}`);
   };
+
+  const handleSortChange = useCallback((newSort: SortOption) => {
+    const params = new URLSearchParams(searchParams.toString());
+    const defaultSort = query ? 'relevance' : 'newest';
+
+    if (newSort !== defaultSort) {
+      params.set('sort', newSort);
+    } else {
+      params.delete('sort');
+    }
+
+    router.push(`/search?${params.toString()}`, { scroll: false });
+  }, [router, searchParams, query]);
 
   // Don't render on admin pages (they have their own layout)
   if (pathname.startsWith('/admin')) {
@@ -71,18 +89,30 @@ export function Header() {
           />
         </Link>
 
-        {/* Search Bar - All pages except home (home has prominent hero search) */}
+        {/* Search Bar + Sort - All pages except home */}
         {!isHomePage && (
-          <form onSubmit={handleSearch} className="relative mx-4 hidden max-w-md flex-1 md:block">
-            <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-white/40" />
-            <Input
-              type="text"
-              placeholder="Search resources..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="h-8 w-full rounded-full border-white/20 bg-white/10 pl-9 pr-4 text-sm text-white placeholder:text-white/50 focus:border-[hsl(var(--v4v-gold)/0.5)] focus:bg-white/15 focus:ring-[hsl(var(--v4v-gold)/0.2)]"
-            />
-          </form>
+          <div className="flex items-center gap-2 mx-4 flex-1 max-w-xl">
+            <form onSubmit={handleSearch} className="relative hidden flex-1 md:block">
+              <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-white/40" />
+              <Input
+                type="text"
+                placeholder="Search resources..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="h-8 w-full rounded-full border-white/20 bg-white/10 pl-9 pr-4 text-sm text-white placeholder:text-white/50 focus:border-[hsl(var(--v4v-gold)/0.5)] focus:bg-white/15 focus:ring-[hsl(var(--v4v-gold)/0.2)]"
+              />
+            </form>
+
+            {/* Sort dropdown - only on search page */}
+            {isSearchPage && (
+              <SortDropdownHeader
+                value={currentSort}
+                onChange={handleSortChange}
+                hasQuery={!!query}
+                className="hidden md:block"
+              />
+            )}
+          </div>
         )}
 
         {/* Navigation */}
@@ -97,17 +127,6 @@ export function Header() {
             )}
           >
             Search
-          </Link>
-          <Link
-            href="/discover"
-            className={cn(
-              "text-sm font-medium transition-all duration-200",
-              pathname === '/discover'
-                ? "text-[hsl(var(--v4v-gold))]"
-                : "text-white/70 hover:text-[hsl(var(--v4v-gold))]"
-            )}
-          >
-            Fresh Finds
           </Link>
           <Link
             href="/admin"
