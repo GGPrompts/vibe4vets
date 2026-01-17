@@ -2,7 +2,7 @@
 
 import { Suspense, useCallback, useEffect, useState } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, LayoutGroup } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Card } from '@/components/ui/card';
@@ -15,6 +15,7 @@ import {
   SheetTrigger,
 } from '@/components/ui/sheet';
 import { ResourceCard } from '@/components/resource-card';
+import { ResourceDetailModal } from '@/components/resource-detail-modal';
 import {
   FiltersSidebar,
   FixedFiltersSidebar,
@@ -22,7 +23,7 @@ import {
 } from '@/components/filters-sidebar';
 import { FilterChips } from '@/components/filter-chips';
 import type { SortOption } from '@/components/sort-dropdown';
-import api, { type SearchResponse, type ResourceList, type Resource } from '@/lib/api';
+import api, { type SearchResponse, type ResourceList, type Resource, type MatchExplanation } from '@/lib/api';
 import { Filter } from 'lucide-react';
 
 
@@ -30,6 +31,7 @@ function SearchResults() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const query = searchParams.get('q') || '';
+  const selectedResourceId = searchParams.get('resource');
 
   const [initialLoading, setInitialLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -37,6 +39,10 @@ function SearchResults() {
   const [browseResults, setBrowseResults] = useState<ResourceList | null>(null);
   const [lastQuery, setLastQuery] = useState<string | null>(null);
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
+
+  // Modal state
+  const [selectedResource, setSelectedResource] = useState<Resource | null>(null);
+  const [selectedExplanations, setSelectedExplanations] = useState<MatchExplanation[] | undefined>(undefined);
 
   // Initialize filters from URL params
   const [filters, setFilters] = useState<FilterState>(() => {
@@ -121,6 +127,49 @@ function SearchResults() {
     };
     handleFiltersChange(newFilters);
   };
+
+  // Modal handlers with shallow routing
+  const openResourceModal = useCallback(
+    (resource: Resource, explanations?: MatchExplanation[]) => {
+      setSelectedResource(resource);
+      setSelectedExplanations(explanations);
+
+      // Update URL with shallow routing (no navigation)
+      const params = new URLSearchParams(searchParams.toString());
+      params.set('resource', resource.id);
+      router.push(`/search?${params.toString()}`, { scroll: false });
+    },
+    [router, searchParams]
+  );
+
+  const closeResourceModal = useCallback(() => {
+    setSelectedResource(null);
+    setSelectedExplanations(undefined);
+
+    // Remove resource param from URL
+    const params = new URLSearchParams(searchParams.toString());
+    params.delete('resource');
+    router.push(`/search?${params.toString()}`, { scroll: false });
+  }, [router, searchParams]);
+
+  // Sync selected resource from URL on mount and when data loads
+  useEffect(() => {
+    if (selectedResourceId && !selectedResource && !initialLoading) {
+      // Find the resource in current results
+      const allResources = searchResults
+        ? searchResults.results.map((r) => r.resource)
+        : browseResults?.resources || [];
+
+      const resource = allResources.find((r) => r.id === selectedResourceId);
+      if (resource) {
+        const explanations = searchResults
+          ? searchResults.results.find((r) => r.resource.id === selectedResourceId)?.explanations
+          : undefined;
+        setSelectedResource(resource);
+        setSelectedExplanations(explanations);
+      }
+    }
+  }, [selectedResourceId, selectedResource, initialLoading, searchResults, browseResults]);
 
   // Only refetch when query changes, not on filter changes
   // Filters are applied client-side to already-fetched data
@@ -338,27 +387,40 @@ function SearchResults() {
               ))}
             </div>
           ) : hasResults ? (
-            <AnimatePresence mode="popLayout">
-              <div className="grid gap-4 pr-0 sm:grid-cols-2 sm:pr-4 lg:grid-cols-3 xl:grid-cols-4">
-                {resources.map((resource, index) => (
-                  <motion.div
-                    key={resource.id}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, scale: 0.95 }}
-                    transition={{ delay: index * 0.03 }}
-                    layout
-                  >
-                    <ResourceCard
-                      resource={resource}
-                      explanations={explanationsMap.get(resource.id)}
-                      variant="link"
-                      searchParams={searchParams.toString()}
-                    />
-                  </motion.div>
-                ))}
-              </div>
-            </AnimatePresence>
+            <LayoutGroup>
+              <AnimatePresence mode="popLayout">
+                <div className="grid gap-4 pr-0 sm:grid-cols-2 sm:pr-4 lg:grid-cols-3 xl:grid-cols-4">
+                  {resources.map((resource, index) => (
+                    <motion.div
+                      key={resource.id}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, scale: 0.95 }}
+                      transition={{ delay: index * 0.03 }}
+                      layout
+                    >
+                      <ResourceCard
+                        resource={resource}
+                        explanations={explanationsMap.get(resource.id)}
+                        variant="modal"
+                        onClick={() =>
+                          openResourceModal(resource, explanationsMap.get(resource.id))
+                        }
+                        enableLayoutId
+                      />
+                    </motion.div>
+                  ))}
+                </div>
+              </AnimatePresence>
+
+              {/* Resource Detail Modal */}
+              <ResourceDetailModal
+                resource={selectedResource}
+                explanations={selectedExplanations}
+                isOpen={!!selectedResource}
+                onClose={closeResourceModal}
+              />
+            </LayoutGroup>
           ) : (
             <div className="py-12 text-center">
               <p className="text-lg text-muted-foreground">

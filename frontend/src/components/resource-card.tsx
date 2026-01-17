@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Briefcase, BookOpen, Home, Scale, MapPin, Globe, CheckCircle2 } from 'lucide-react';
@@ -9,11 +10,13 @@ import type { Resource, MatchExplanation } from '@/lib/api';
 interface ResourceCardProps {
   resource: Resource;
   explanations?: MatchExplanation[];
-  variant?: 'link' | 'selectable';
+  variant?: 'link' | 'selectable' | 'modal';
   selected?: boolean;
   onClick?: () => void;
   /** Search params to preserve for "back to search" navigation */
   searchParams?: string;
+  /** Enable layoutId for shared element transitions */
+  enableLayoutId?: boolean;
 }
 
 // Design system colors for accent bars
@@ -151,30 +154,44 @@ export function ResourceCard({
   selected = false,
   onClick,
   searchParams,
+  enableLayoutId = false,
 }: ResourceCardProps) {
-  if (variant === 'selectable') {
-    return (
-      <Card
-        className={`category-card group relative h-full cursor-pointer overflow-hidden bg-white dark:bg-card ${
-          selected ? 'ring-2 ring-[hsl(var(--v4v-gold))]' : ''
-        }`}
-        onClick={onClick}
-      >
-        <CardInner resource={resource} explanations={explanations} />
-      </Card>
-    );
+  const cardContent = (
+    <Card
+      className={`category-card group relative h-full overflow-hidden bg-white dark:bg-card ${
+        variant === 'selectable' && selected ? 'ring-2 ring-[hsl(var(--v4v-gold))]' : ''
+      } ${variant === 'modal' || variant === 'selectable' ? 'cursor-pointer' : ''}`}
+      onClick={variant === 'modal' || variant === 'selectable' ? onClick : undefined}
+    >
+      <CardInner resource={resource} explanations={explanations} />
+    </Card>
+  );
+
+  // Modal variant: clickable card with layoutId for shared element transition
+  if (variant === 'modal') {
+    if (enableLayoutId) {
+      return (
+        <motion.div layoutId={`resource-card-${resource.id}`} className="h-full">
+          {cardContent}
+        </motion.div>
+      );
+    }
+    return cardContent;
   }
 
-  // Build href with optional search params for back navigation
+  // Selectable variant: clickable card without link
+  if (variant === 'selectable') {
+    return cardContent;
+  }
+
+  // Link variant (default): navigates to detail page
   const href = searchParams
     ? `/resources/${resource.id}?from=${encodeURIComponent(searchParams)}`
     : `/resources/${resource.id}`;
 
   return (
     <Link href={href} className="block h-full">
-      <Card className="category-card group relative h-full overflow-hidden bg-white dark:bg-card">
-        <CardInner resource={resource} explanations={explanations} />
-      </Card>
+      {cardContent}
     </Link>
   );
 }

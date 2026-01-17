@@ -16,14 +16,34 @@ import {
   FileText,
   CheckCircle2,
   AlertCircle,
+  ExternalLink,
+  Briefcase,
+  BookOpen,
+  Home,
+  Scale,
 } from 'lucide-react';
 import api, { type Resource } from '@/lib/api';
+import { cn } from '@/lib/utils';
 
 const categoryColors: Record<string, string> = {
   employment: 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300',
   training: 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-300',
   housing: 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300',
   legal: 'bg-amber-100 text-amber-800 dark:bg-amber-900 dark:text-amber-300',
+};
+
+const categoryGradients: Record<string, string> = {
+  employment: 'from-blue-600 to-blue-800',
+  training: 'from-purple-600 to-purple-800',
+  housing: 'from-green-600 to-green-800',
+  legal: 'from-amber-600 to-amber-800',
+};
+
+const categoryIcons: Record<string, typeof Briefcase> = {
+  employment: Briefcase,
+  training: BookOpen,
+  housing: Home,
+  legal: Scale,
 };
 
 function IntakeCard({ resource }: { resource: Resource }) {
@@ -296,74 +316,138 @@ export default function ResourceDetailPage() {
     );
   }
 
+  const primaryCategory = resource.categories[0] || 'employment';
+  const CategoryIcon = categoryIcons[primaryCategory] || Briefcase;
+  const gradient = categoryGradients[primaryCategory] || categoryGradients.employment;
+
   return (
-    <main className="min-h-screen p-8 pt-24">
-      <div className="mx-auto max-w-4xl">
-        {/* Navigation */}
-        <div className="mb-6">
-          <Link
-            href={backLink}
-            className="text-sm text-muted-foreground hover:text-foreground"
-          >
-            ← Back to Search
-          </Link>
-        </div>
+    <main className="min-h-screen">
+      {/* Gradient Header */}
+      <div className={cn('bg-gradient-to-br px-8 pb-8 pt-24 text-white', gradient)}>
+        <div className="mx-auto max-w-4xl">
+          {/* Navigation */}
+          <div className="mb-6">
+            <Link
+              href={backLink}
+              className="inline-flex items-center gap-1 text-sm text-white/80 transition-colors hover:text-white"
+            >
+              ← Back to Search
+            </Link>
+          </div>
 
-        {/* Header */}
-        <div className="mb-6">
-          <div className="mb-2 flex flex-wrap gap-2">
-            {resource.categories.map((cat) => (
-              <Badge
-                key={cat}
-                className={categoryColors[cat] || ''}
+          {/* Category icon and badges */}
+          <div className="mb-4 flex items-center gap-3">
+            <div className="rounded-xl bg-white/20 p-3">
+              <CategoryIcon className="h-6 w-6" />
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {resource.categories.map((cat) => (
+                <Badge
+                  key={cat}
+                  className={cn('border-0 font-medium capitalize', categoryColors[cat] || '')}
+                >
+                  {cat}
+                </Badge>
+              ))}
+            </div>
+          </div>
+
+          {/* Title */}
+          <h1 className="font-display mb-2 text-3xl font-bold leading-tight sm:text-4xl">
+            {resource.title}
+          </h1>
+
+          {/* Organization */}
+          <p className="text-lg text-white/90">{resource.organization.name}</p>
+
+          {/* Primary CTAs */}
+          <div className="mt-6 flex flex-wrap gap-3">
+            {resource.website && (
+              <Button
+                asChild
+                className="gap-2 bg-white text-gray-900 hover:bg-white/90"
               >
-                {cat}
-              </Badge>
-            ))}
+                <a href={resource.website} target="_blank" rel="noopener noreferrer">
+                  <Globe className="h-4 w-4" />
+                  Visit Website
+                  <ExternalLink className="h-3 w-3" />
+                </a>
+              </Button>
+            )}
+            {resource.phone && (
+              <Button
+                variant="outline"
+                asChild
+                className="gap-2 border-white/30 bg-white/10 text-white hover:bg-white/20"
+              >
+                <a href={`tel:${resource.phone}`}>
+                  <Phone className="h-4 w-4" />
+                  {resource.phone}
+                </a>
+              </Button>
+            )}
+            {resource.location && (
+              <Button
+                variant="outline"
+                asChild
+                className="gap-2 border-white/30 bg-white/10 text-white hover:bg-white/20"
+              >
+                <a
+                  href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+                    `${resource.location.address || ''} ${resource.location.city}, ${resource.location.state}`
+                  )}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <MapPin className="h-4 w-4" />
+                  Get Directions
+                </a>
+              </Button>
+            )}
           </div>
-          <h1 className="mb-2 text-3xl font-bold">{resource.title}</h1>
-          <p className="text-lg text-muted-foreground">
-            {resource.organization.name}
-          </p>
         </div>
+      </div>
 
-        <div className="grid gap-6 md:grid-cols-3">
-          {/* Main Content */}
-          <div className="space-y-6 md:col-span-2">
-            {/* Description */}
-            <Card>
-              <CardHeader>
-                <CardTitle>About This Resource</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="whitespace-pre-wrap">{resource.description}</p>
-              </CardContent>
-            </Card>
-
-            {/* Eligibility */}
-            {resource.eligibility && (
+      {/* Main Content */}
+      <div className="px-8 py-8">
+        <div className="mx-auto max-w-4xl">
+          <div className="grid gap-6 md:grid-cols-3">
+            {/* Main Content */}
+            <div className="space-y-6 md:col-span-2">
+              {/* Description */}
               <Card>
                 <CardHeader>
-                  <CardTitle>Eligibility</CardTitle>
+                  <CardTitle>About This Resource</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="whitespace-pre-wrap">{resource.eligibility}</p>
+                  <p className="whitespace-pre-wrap">{resource.description}</p>
                 </CardContent>
               </Card>
-            )}
 
-            {/* How to Apply */}
-            {resource.how_to_apply && (
-              <Card>
-                <CardHeader>
-                  <CardTitle>How to Apply</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="whitespace-pre-wrap">{resource.how_to_apply}</p>
-                </CardContent>
-              </Card>
-            )}
-          </div>
+              {/* Eligibility */}
+              {resource.eligibility && (
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Eligibility</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="whitespace-pre-wrap">{resource.eligibility}</p>
+                  </CardContent>
+                </Card>
+              )}
+
+              {/* How to Apply */}
+              {resource.how_to_apply && (
+                <Card>
+                  <CardHeader>
+                    <CardTitle>How to Apply</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="whitespace-pre-wrap">{resource.how_to_apply}</p>
+                  </CardContent>
+                </Card>
+              )}
+            </div>
 
           {/* Sidebar */}
           <div className="space-y-6">
@@ -476,6 +560,7 @@ export default function ResourceDetailPage() {
                 )}
               </CardContent>
             </Card>
+            </div>
           </div>
         </div>
       </div>
