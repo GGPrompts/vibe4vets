@@ -2,6 +2,7 @@
 
 from app.models.location import Location
 from app.models.organization import Organization
+from app.models.program import Program, ProgramStatus, ProgramType
 from app.models.resource import Resource, ResourceScope, ResourceStatus
 from app.models.review import ChangeLog, ChangeType, ReviewState, ReviewStatus
 from app.models.source import (
@@ -16,6 +17,9 @@ from app.models.source import (
 __all__ = [
     "Organization",
     "Location",
+    "Program",
+    "ProgramStatus",
+    "ProgramType",
     "Resource",
     "ResourceStatus",
     "ResourceScope",

@@ -12,6 +12,7 @@ from sqlmodel import Field, Relationship, SQLModel
 if TYPE_CHECKING:
     from app.models.location import Location
     from app.models.organization import Organization
+    from app.models.program import Program
     from app.models.review import ChangeLog, ReviewState
     from app.models.source import Source
 
@@ -39,6 +40,7 @@ class Resource(SQLModel, table=True):
 
     id: uuid.UUID = Field(default_factory=uuid.uuid4, primary_key=True)
     organization_id: uuid.UUID = Field(foreign_key="organizations.id")
+    program_id: uuid.UUID | None = Field(default=None, foreign_key="programs.id", index=True)
     location_id: uuid.UUID | None = Field(default=None, foreign_key="locations.id")
 
     # Content
@@ -101,7 +103,8 @@ class Resource(SQLModel, table=True):
 
     # Relationships
     organization: "Organization" = Relationship(back_populates="resources")
-    location: "Location" = Relationship(back_populates="resources")
-    source: "Source" = Relationship(back_populates="resources")
+    program: "Program | None" = Relationship(back_populates="resources")
+    location: "Location | None" = Relationship(back_populates="resources")
+    source: "Source | None" = Relationship(back_populates="resources")
     reviews: list["ReviewState"] = Relationship(back_populates="resource")
     changes: list["ChangeLog"] = Relationship(back_populates="resource")

@@ -10,6 +10,7 @@ from sqlmodel import Field, Relationship, SQLModel
 
 if TYPE_CHECKING:
     from app.models.location import Location
+    from app.models.program import Program
     from app.models.resource import Resource
 
 
@@ -34,4 +35,5 @@ class Organization(SQLModel, table=True):
 
     # Relationships
     locations: list["Location"] = Relationship(back_populates="organization")
+    programs: list["Program"] = Relationship(back_populates="organization")
     resources: list["Resource"] = Relationship(back_populates="organization")
