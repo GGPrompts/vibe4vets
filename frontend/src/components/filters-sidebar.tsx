@@ -6,7 +6,6 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { Label } from '@/components/ui/label';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { Slider } from '@/components/ui/slider';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { Badge } from '@/components/ui/badge';
@@ -16,7 +15,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from '@/components/ui/tooltip';
-import { Filter, X, Briefcase, GraduationCap, Home, Scale, ChevronDown, PanelLeft, PanelLeftClose, Globe, Shield } from 'lucide-react';
+import { Filter, X, Briefcase, GraduationCap, Home, Scale, ChevronDown, PanelLeft, PanelLeftClose, Globe } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 export const CATEGORIES = [
@@ -167,13 +166,11 @@ export function FiltersSidebar({
   const [categoriesOpen, setCategoriesOpen] = useState(true);
   const [scopeOpen, setScopeOpen] = useState(true);
   const [statesOpen, setStatesOpen] = useState(false);
-  const [trustOpen, setTrustOpen] = useState(false);
 
   const activeFilterCount =
     filters.categories.length +
     filters.states.length +
-    (filters.scope !== 'all' ? 1 : 0) +
-    (filters.minTrust > 0 ? 1 : 0);
+    (filters.scope !== 'all' ? 1 : 0);
 
   const handleCategoryToggle = (category: string) => {
     const newCategories = filters.categories.includes(category)
@@ -193,16 +190,12 @@ export function FiltersSidebar({
     onFiltersChange({ ...filters, scope });
   };
 
-  const handleTrustChange = (value: number[]) => {
-    onFiltersChange({ ...filters, minTrust: value[0] });
-  };
-
   const clearAllFilters = () => {
     onFiltersChange({
       categories: [],
       states: [],
       scope: 'all',
-      minTrust: 0,
+      minTrust: 0, // Keep for API compatibility
     });
   };
 
@@ -273,36 +266,6 @@ export function FiltersSidebar({
               </div>
             );
           })}
-        </div>
-      </CollapsibleSection>
-
-      <Separator />
-
-      {/* Trust Level - moved up since it's compact */}
-      <CollapsibleSection
-        title="Minimum Trust"
-        badge={
-          filters.minTrust > 0 && (
-            <Badge variant="outline" className="text-xs">
-              {filters.minTrust}%
-            </Badge>
-          )
-        }
-        isOpen={trustOpen}
-        onToggle={() => setTrustOpen(!trustOpen)}
-      >
-        <div className="space-y-3">
-          <Slider
-            value={[filters.minTrust]}
-            onValueChange={handleTrustChange}
-            max={100}
-            step={10}
-            className="py-2"
-          />
-          <div className="flex justify-between text-xs text-muted-foreground">
-            <span>Any</span>
-            <span>Highly Trusted</span>
-          </div>
         </div>
       </CollapsibleSection>
 
@@ -383,7 +346,6 @@ const FILTER_ICONS = [
   { key: 'filter', icon: Filter, label: 'Filters', color: 'text-[hsl(var(--v4v-gold))]' },
   { key: 'categories', icon: Briefcase, label: 'Categories', color: 'text-blue-500' },
   { key: 'scope', icon: Globe, label: 'Coverage', color: 'text-emerald-500' },
-  { key: 'trust', icon: Shield, label: 'Trust Level', color: 'text-amber-500' },
 ] as const;
 
 interface FixedFiltersSidebarProps {
