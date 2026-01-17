@@ -508,11 +508,6 @@ export function FixedFiltersSidebar({
               <div className="flex items-center gap-2">
                 <Filter className="h-4 w-4 text-[hsl(var(--v4v-gold))]" />
                 <span className="text-sm font-semibold">Filters</span>
-                {resultCount !== undefined && (
-                  <Badge variant="secondary" className="ml-2 text-xs">
-                    {resultCount}
-                  </Badge>
-                )}
               </div>
               <Tooltip>
                 <TooltipTrigger asChild>
