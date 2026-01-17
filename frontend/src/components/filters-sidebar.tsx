@@ -278,6 +278,36 @@ export function FiltersSidebar({
 
       <Separator />
 
+      {/* Trust Level - moved up since it's compact */}
+      <CollapsibleSection
+        title="Minimum Trust"
+        badge={
+          filters.minTrust > 0 && (
+            <Badge variant="outline" className="text-xs">
+              {filters.minTrust}%
+            </Badge>
+          )
+        }
+        isOpen={trustOpen}
+        onToggle={() => setTrustOpen(!trustOpen)}
+      >
+        <div className="space-y-3">
+          <Slider
+            value={[filters.minTrust]}
+            onValueChange={handleTrustChange}
+            max={100}
+            step={10}
+            className="py-2"
+          />
+          <div className="flex justify-between text-xs text-muted-foreground">
+            <span>Any</span>
+            <span>Highly Trusted</span>
+          </div>
+        </div>
+      </CollapsibleSection>
+
+      <Separator />
+
       {/* Scope */}
       <CollapsibleSection
         title="Coverage"
@@ -308,7 +338,7 @@ export function FiltersSidebar({
 
       <Separator />
 
-      {/* States */}
+      {/* States - at bottom since it's the longest list */}
       <CollapsibleSection
         title="States"
         badge={
@@ -343,36 +373,6 @@ export function FiltersSidebar({
             })}
           </div>
         </ScrollArea>
-      </CollapsibleSection>
-
-      <Separator />
-
-      {/* Trust Level */}
-      <CollapsibleSection
-        title="Minimum Trust"
-        badge={
-          filters.minTrust > 0 && (
-            <Badge variant="outline" className="text-xs">
-              {filters.minTrust}%
-            </Badge>
-          )
-        }
-        isOpen={trustOpen}
-        onToggle={() => setTrustOpen(!trustOpen)}
-      >
-        <div className="space-y-3">
-          <Slider
-            value={[filters.minTrust]}
-            onValueChange={handleTrustChange}
-            max={100}
-            step={10}
-            className="py-2"
-          />
-          <div className="flex justify-between text-xs text-muted-foreground">
-            <span>Any</span>
-            <span>Highly Trusted</span>
-          </div>
-        </div>
       </CollapsibleSection>
     </div>
   );
