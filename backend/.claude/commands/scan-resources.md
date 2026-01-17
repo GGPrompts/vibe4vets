@@ -1,5 +1,6 @@
 ---
 description: AI-powered discovery of hard-to-find veteran resources via web search
+model: sonnet
 allowed-tools:
   - WebSearch
   - Read

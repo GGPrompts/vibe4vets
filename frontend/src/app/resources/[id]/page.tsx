@@ -184,80 +184,6 @@ function IntakeCard({ resource }: { resource: Resource }) {
   );
 }
 
-function TrustSignalCard({ resource }: { resource: Resource }) {
-  const trustScore = resource.trust.freshness_score * resource.trust.reliability_score;
-  const percentage = Math.round(trustScore * 100);
-
-  const tierLabels: Record<number, string> = {
-    1: 'Official Government Source',
-    2: 'Established VSO',
-    3: 'State Agency',
-    4: 'Community Directory',
-  };
-
-  return (
-    <Card>
-      <CardHeader>
-        <CardTitle className="text-lg">Trust Signals</CardTitle>
-      </CardHeader>
-      <CardContent className="space-y-4">
-        <div>
-          <div className="mb-2 flex items-center justify-between">
-            <span className="text-sm font-medium">Trust Score</span>
-            <span className="text-sm font-bold">{percentage}%</span>
-          </div>
-          <div className="h-3 w-full rounded-full bg-muted">
-            <div
-              className={`h-3 rounded-full ${
-                percentage >= 80
-                  ? 'bg-green-500'
-                  : percentage >= 60
-                  ? 'bg-yellow-500'
-                  : percentage >= 40
-                  ? 'bg-orange-500'
-                  : 'bg-red-500'
-              }`}
-              style={{ width: `${percentage}%` }}
-            />
-          </div>
-        </div>
-
-        {resource.trust.source_tier && (
-          <div className="flex items-center justify-between">
-            <span className="text-sm text-muted-foreground">Source Type</span>
-            <span className="text-sm">
-              {tierLabels[resource.trust.source_tier] || 'Unknown'}
-            </span>
-          </div>
-        )}
-
-        {resource.trust.source_name && (
-          <div className="flex items-center justify-between">
-            <span className="text-sm text-muted-foreground">Source</span>
-            <span className="text-sm">{resource.trust.source_name}</span>
-          </div>
-        )}
-
-        {resource.trust.last_verified && (
-          <div className="flex items-center justify-between">
-            <span className="text-sm text-muted-foreground">Last Verified</span>
-            <span className="text-sm">
-              {new Date(resource.trust.last_verified).toLocaleDateString()}
-            </span>
-          </div>
-        )}
-
-        <div className="flex items-center justify-between">
-          <span className="text-sm text-muted-foreground">Freshness</span>
-          <span className="text-sm">
-            {Math.round(resource.trust.freshness_score * 100)}%
-          </span>
-        </div>
-      </CardContent>
-    </Card>
-  );
-}
-
 export default function ResourceDetailPage() {
   const params = useParams();
   const searchParams = useSearchParams();
@@ -515,9 +441,6 @@ export default function ResourceDetailPage() {
                 )}
               </CardContent>
             </Card>
-
-            {/* Trust Signals */}
-            <TrustSignalCard resource={resource} />
 
             {/* Coverage */}
             <Card>

@@ -42,6 +42,21 @@ class SearchService:
     def __init__(self, session: Session) -> None:
         self.session = session
 
+    def _build_prefix_tsquery(self, query: str) -> str:
+        """Convert query to prefix-matching tsquery string.
+
+        E.g., "helm hard" becomes "helm:* & hard:*" to match partial words.
+        """
+        import re
+
+        # Remove special characters that could break tsquery syntax
+        clean_query = re.sub(r"[^\w\s]", " ", query)
+        words = clean_query.strip().split()
+        if not words:
+            return ""
+        # Add :* suffix for prefix matching, join with & for AND logic
+        return " & ".join(f"{word}:*" for word in words if word)
+
     def search(
         self,
         query: str,
@@ -51,8 +66,9 @@ class SearchService:
         offset: int = 0,
     ) -> tuple[list[ResourceSearchResult], int]:
         """Search resources using PostgreSQL full-text search."""
-        # Build the search query using ts_rank for ranking
-        search_query = func.plainto_tsquery("english", query)
+        # Build the search query with prefix matching for partial words
+        prefix_query = self._build_prefix_tsquery(query)
+        search_query = func.to_tsquery("english", prefix_query)
 
         # Base query with FTS
         stmt = (
@@ -348,7 +364,8 @@ class SearchService:
 
         # Base query - either FTS or browse all
         if query:
-            search_query = func.plainto_tsquery("english", query)
+            prefix_query = self._build_prefix_tsquery(query)
+            search_query = func.to_tsquery("english", prefix_query)
             stmt = (
                 select(
                     Resource,

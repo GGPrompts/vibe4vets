@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Shield, Briefcase, BookOpen, Home, Scale, MapPin, Globe, CheckCircle2 } from 'lucide-react';
+import { Briefcase, BookOpen, Home, Scale, MapPin, Globe, CheckCircle2 } from 'lucide-react';
 import type { Resource, MatchExplanation } from '@/lib/api';
 
 interface ResourceCardProps {
@@ -43,37 +43,6 @@ const categoryIcons: Record<string, typeof Briefcase> = {
 // Export for use in other components
 export const categoryColors = categoryBadgeStyles;
 
-function TrustIndicator({ score }: { score: number }) {
-  const percentage = Math.round(score * 100);
-  let color = 'bg-red-500';
-  let label = 'Low';
-  if (percentage >= 80) {
-    color = 'bg-green-500';
-    label = 'High';
-  } else if (percentage >= 60) {
-    color = 'bg-yellow-500';
-    label = 'Good';
-  } else if (percentage >= 40) {
-    color = 'bg-orange-500';
-    label = 'Fair';
-  }
-
-  return (
-    <div className="flex items-center gap-2">
-      <Shield className="h-4 w-4 text-[hsl(var(--muted-foreground))]" />
-      <div className="h-2.5 w-20 rounded-full bg-muted overflow-hidden">
-        <div
-          className={`h-full rounded-full ${color} transition-all duration-300`}
-          style={{ width: `${percentage}%` }}
-        />
-      </div>
-      <span className="text-xs font-medium text-muted-foreground">
-        {label}
-      </span>
-    </div>
-  );
-}
-
 function CardInner({
   resource,
   explanations,
@@ -81,7 +50,6 @@ function CardInner({
   resource: Resource;
   explanations?: MatchExplanation[];
 }) {
-  const trustScore = resource.trust.freshness_score * resource.trust.reliability_score;
   const primaryCategory = resource.categories[0] || 'employment';
   const CategoryIcon = categoryIcons[primaryCategory] || Briefcase;
 
@@ -90,12 +58,7 @@ function CardInner({
       {/* Category accent bar */}
       <div className={`absolute left-0 top-0 h-1 w-full ${accentBarColors[primaryCategory] || accentBarColors.employment}`} />
 
-      <CardHeader className="pb-3 pt-5">
-        {/* Trust indicator row */}
-        <div className="mb-2 flex items-center justify-end">
-          <TrustIndicator score={trustScore} />
-        </div>
-
+      <CardHeader className="pb-3 pt-4">
         {/* Title with icon */}
         <div className="flex items-start gap-3">
           <div className={`shrink-0 rounded-lg p-2 ${accentBarColors[primaryCategory] || accentBarColors.employment} text-white transition-transform duration-300 group-hover:scale-110`}>

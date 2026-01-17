@@ -1,10 +1,11 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname, useSearchParams, useRouter } from 'next/navigation';
 import { useScrollDirection } from '@/hooks/use-scroll-direction';
+import { useDebounce } from '@/hooks/use-debounce';
 import { cn } from '@/lib/utils';
 import { Input } from '@/components/ui/input';
 import { Search } from 'lucide-react';
@@ -19,6 +20,8 @@ export function Header() {
   const isSearchPage = pathname === '/search';
   const isHomePage = pathname === '/';
   const [searchQuery, setSearchQuery] = useState('');
+  const debouncedQuery = useDebounce(searchQuery, 300);
+  const skipDebounceRef = useRef(false);
 
   // Get current sort from URL
   const query = searchParams.get('q') || '';
@@ -33,8 +36,29 @@ export function Header() {
     }
   }, [isSearchPage, searchParams]);
 
+  // Live search: update URL when debounced query changes (only on search page)
+  useEffect(() => {
+    if (!isSearchPage) return;
+    if (skipDebounceRef.current) {
+      skipDebounceRef.current = false;
+      return;
+    }
+    // Only update if different from current URL query
+    if (debouncedQuery === query) return;
+
+    const params = new URLSearchParams(searchParams.toString());
+    if (debouncedQuery) {
+      params.set('q', debouncedQuery);
+    } else {
+      params.delete('q');
+    }
+    router.push(`/search?${params.toString()}`, { scroll: false });
+  }, [debouncedQuery, isSearchPage, query, router, searchParams]);
+
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
+    // Skip the debounce effect since we're navigating immediately
+    skipDebounceRef.current = true;
     const params = new URLSearchParams(searchParams.toString());
     if (searchQuery) {
       params.set('q', searchQuery);

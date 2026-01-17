@@ -54,6 +54,7 @@ export function SortDropdownHeader({
   className,
 }: SortDropdownHeaderProps) {
   const [isOpen, setIsOpen] = React.useState(false);
+  const closeTimeoutRef = React.useRef<NodeJS.Timeout | null>(null);
 
   // Filter out relevance when there's no search query
   const items = hasQuery
@@ -62,13 +63,36 @@ export function SortDropdownHeader({
 
   const currentItem = SORT_ITEMS.find((item) => item.value === value) || SORT_ITEMS[1];
 
+  const handleMouseEnter = () => {
+    if (closeTimeoutRef.current) {
+      clearTimeout(closeTimeoutRef.current);
+      closeTimeoutRef.current = null;
+    }
+    setIsOpen(true);
+  };
+
+  const handleMouseLeave = () => {
+    closeTimeoutRef.current = setTimeout(() => {
+      setIsOpen(false);
+    }, 100);
+  };
+
+  // Cleanup on unmount
+  React.useEffect(() => {
+    return () => {
+      if (closeTimeoutRef.current) {
+        clearTimeout(closeTimeoutRef.current);
+      }
+    };
+  }, []);
+
   return (
     <div className={cn("relative", className)}>
       <DropdownMenu onOpenChange={setIsOpen} open={isOpen} modal={false}>
         <div
           className="group relative"
-          onMouseEnter={() => setIsOpen(true)}
-          onMouseLeave={() => setIsOpen(false)}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
         >
           <DropdownMenuTrigger asChild>
             <button
@@ -89,10 +113,10 @@ export function SortDropdownHeader({
 
           <DropdownMenuContent
             align="end"
-            sideOffset={8}
+            sideOffset={4}
             className="w-56 p-2 bg-white/95 dark:bg-zinc-900/95 backdrop-blur-md border border-zinc-200/60 dark:border-zinc-800/60 rounded-xl shadow-xl shadow-zinc-900/10 dark:shadow-zinc-950/30"
-            onMouseEnter={() => setIsOpen(true)}
-            onMouseLeave={() => setIsOpen(false)}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
           >
             <div className="space-y-1">
               {items.map((item) => {
