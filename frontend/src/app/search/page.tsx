@@ -174,8 +174,8 @@ function SearchResults() {
   const hasResults = totalResults > 0;
 
   return (
-    <>
-      {/* Fixed Filter Sidebar - Desktop */}
+    <div className="flex gap-6">
+      {/* Fixed Filter Sidebar - Desktop (renders spacer + fixed sidebar) */}
       <FixedFiltersSidebar
         filters={filters}
         onFiltersChange={handleFiltersChange}
@@ -183,7 +183,7 @@ function SearchResults() {
       />
 
       {/* Main Content */}
-      <div className="flex flex-col space-y-4">
+      <div className="flex min-w-0 flex-1 flex-col space-y-4">
         {/* Sticky Search + Filters Bar (Mobile) */}
         <div className="sticky top-16 z-20 -mx-4 space-y-3 bg-background/95 px-4 pb-3 shadow-sm backdrop-blur supports-[backdrop-filter]:bg-background/80 lg:static lg:z-auto lg:-mx-0 lg:space-y-4 lg:bg-transparent lg:px-0 lg:pb-0 lg:shadow-none lg:backdrop-blur-none">
           {/* Search Bar */}
@@ -345,7 +345,7 @@ function SearchResults() {
           )}
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

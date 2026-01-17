@@ -420,6 +420,15 @@ export function FixedFiltersSidebar({
 
   return (
     <TooltipProvider>
+      {/* Spacer div to reserve space in the layout flow */}
+      <div
+        className={cn(
+          'hidden flex-shrink-0 transition-all duration-200 lg:block',
+          isCollapsed ? 'w-12' : 'w-[280px]'
+        )}
+      />
+
+      {/* Fixed sidebar */}
       <AnimatePresence mode="wait">
         {isCollapsed ? (
           <motion.div
@@ -428,7 +437,7 @@ export function FixedFiltersSidebar({
             animate={{ width: 48, opacity: 1 }}
             exit={{ width: 0, opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed left-0 top-16 z-30 hidden h-[calc(100vh-64px)] flex-shrink-0 flex-col items-center border-r bg-background py-3 lg:flex"
+            className="fixed left-0 top-16 z-30 hidden h-[calc(100vh-64px)] flex-shrink-0 flex-col items-center border-r bg-background/95 py-3 shadow-sm backdrop-blur supports-[backdrop-filter]:bg-background/90 lg:flex"
           >
             <Tooltip>
               <TooltipTrigger asChild>
@@ -492,7 +501,7 @@ export function FixedFiltersSidebar({
             animate={{ width: 280, opacity: 1 }}
             exit={{ width: 0, opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed left-0 top-16 z-30 hidden h-[calc(100vh-64px)] flex-shrink-0 flex-col overflow-hidden border-r bg-background lg:flex"
+            className="fixed left-0 top-16 z-30 hidden h-[calc(100vh-64px)] flex-shrink-0 flex-col overflow-hidden border-r bg-background/95 shadow-sm backdrop-blur supports-[backdrop-filter]:bg-background/90 lg:flex"
           >
             {/* Header with Collapse Button */}
             <div className="flex items-center justify-between border-b px-4 py-3">
