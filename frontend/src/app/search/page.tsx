@@ -3,7 +3,6 @@
 import { Suspense, useCallback, useEffect, useState } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Card } from '@/components/ui/card';
@@ -22,7 +21,7 @@ import {
   type FilterState,
 } from '@/components/filters-sidebar';
 import api, { type SearchResponse, type ResourceList, type Resource } from '@/lib/api';
-import { Search, Filter } from 'lucide-react';
+import { Filter } from 'lucide-react';
 
 
 function SearchResults() {
@@ -35,7 +34,6 @@ function SearchResults() {
   const [searchResults, setSearchResults] = useState<SearchResponse | null>(null);
   const [browseResults, setBrowseResults] = useState<ResourceList | null>(null);
   const [lastQuery, setLastQuery] = useState<string | null>(null);
-  const [searchInput, setSearchInput] = useState(query);
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
 
   // Initialize filters from URL params
@@ -53,13 +51,12 @@ function SearchResults() {
     };
   });
 
-  // Sync filters to URL
+  // Sync filters to URL (preserves existing query param)
   const updateURL = useCallback(
-    (newFilters: FilterState, newQuery?: string) => {
+    (newFilters: FilterState) => {
       const params = new URLSearchParams();
 
-      const q = newQuery ?? searchInput;
-      if (q) params.set('q', q);
+      if (query) params.set('q', query);
       if (newFilters.categories.length > 0) {
         params.set('category', newFilters.categories.join(','));
       }
@@ -69,23 +66,15 @@ function SearchResults() {
       if (newFilters.scope !== 'all') {
         params.set('scope', newFilters.scope);
       }
-      if (newFilters.minTrust > 0) {
-        params.set('minTrust', String(newFilters.minTrust));
-      }
 
       router.push(`/search?${params.toString()}`, { scroll: false });
     },
-    [router, searchInput]
+    [router, query]
   );
 
   const handleFiltersChange = (newFilters: FilterState) => {
     setFilters(newFilters);
     updateURL(newFilters);
-  };
-
-  const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault();
-    updateURL(filters, searchInput);
   };
 
   // Only refetch when query changes, not on filter changes
@@ -184,82 +173,11 @@ function SearchResults() {
 
       {/* Main Content */}
       <div className="flex min-w-0 flex-1 flex-col space-y-4">
-        {/* Sticky Search + Filters Bar (Mobile) */}
-        <div className="sticky top-16 z-20 -mx-4 space-y-3 bg-background/95 px-4 pb-3 shadow-sm backdrop-blur supports-[backdrop-filter]:bg-background/80 lg:static lg:z-auto lg:-mx-0 lg:space-y-4 lg:bg-transparent lg:px-0 lg:pb-0 lg:shadow-none lg:backdrop-blur-none">
-          {/* Search Bar */}
-          <form onSubmit={handleSearch} className="relative">
-            <div className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2">
-              <Search className="h-5 w-5 text-muted-foreground" />
-            </div>
-            <Input
-              type="text"
-              placeholder="Search for resources..."
-              value={searchInput}
-              onChange={(e) => setSearchInput(e.target.value)}
-              className="search-glow w-full rounded-lg py-6 pl-12 pr-28 text-base shadow-sm"
-            />
-            <Button
-              type="submit"
-              className="absolute right-2 top-1/2 -translate-y-1/2 rounded-md px-5 font-semibold"
-            >
-              Search
-            </Button>
-          </form>
-
-          {/* Mobile Filter Button */}
-          <div className="flex items-center justify-between lg:hidden">
-            <span className="text-sm text-muted-foreground">
-              {initialLoading ? (
-                <Skeleton className="inline-block h-4 w-24" />
-              ) : (
-                <>
-                  <strong>{totalResults}</strong> results
-                </>
-              )}
-            </span>
-            <Sheet open={mobileFiltersOpen} onOpenChange={setMobileFiltersOpen}>
-              <SheetTrigger asChild>
-                <Button variant="outline" size="sm">
-                  <Filter className="mr-2 h-4 w-4" />
-                  Filters
-                  {(filters.categories.length > 0 ||
-                    filters.states.length > 0 ||
-                    filters.scope !== 'all' ||
-                    filters.minTrust > 0) && (
-                    <span className="ml-2 rounded-full bg-primary px-2 py-0.5 text-xs text-primary-foreground">
-                      {filters.categories.length +
-                        filters.states.length +
-                        (filters.scope !== 'all' ? 1 : 0) +
-                        (filters.minTrust > 0 ? 1 : 0)}
-                    </span>
-                  )}
-                </Button>
-              </SheetTrigger>
-              <SheetContent side="left" className="w-[90vw] max-w-[20rem]">
-                <SheetHeader>
-                  <SheetTitle>Filters</SheetTitle>
-                </SheetHeader>
-                <ScrollArea className="mt-6 h-[calc(100vh-100px)]">
-                  <FiltersSidebar
-                    filters={filters}
-                    onFiltersChange={(newFilters) => {
-                      handleFiltersChange(newFilters);
-                      setMobileFiltersOpen(false);
-                    }}
-                    resultCount={totalResults}
-                    hideHeader
-                  />
-                </ScrollArea>
-              </SheetContent>
-            </Sheet>
-          </div>
-        </div>
-
-        {/* Results Header - Desktop */}
-        <div className="hidden items-center lg:flex">
+        {/* Results Header */}
+        <div className="flex items-center justify-between">
           <span className="text-muted-foreground">
             {initialLoading ? (
-              <Skeleton className="inline-block h-4 w-48" />
+              <Skeleton className="inline-block h-4 w-32" />
             ) : error ? (
               <span className="text-destructive">{error}</span>
             ) : (
@@ -276,6 +194,41 @@ function SearchResults() {
               </>
             )}
           </span>
+
+          {/* Mobile Filter Button */}
+          <Sheet open={mobileFiltersOpen} onOpenChange={setMobileFiltersOpen}>
+            <SheetTrigger asChild>
+              <Button variant="outline" size="sm" className="lg:hidden">
+                <Filter className="mr-2 h-4 w-4" />
+                Filters
+                {(filters.categories.length > 0 ||
+                  filters.states.length > 0 ||
+                  filters.scope !== 'all') && (
+                  <span className="ml-2 rounded-full bg-primary px-2 py-0.5 text-xs text-primary-foreground">
+                    {filters.categories.length +
+                      filters.states.length +
+                      (filters.scope !== 'all' ? 1 : 0)}
+                  </span>
+                )}
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="left" className="w-[90vw] max-w-[20rem]">
+              <SheetHeader>
+                <SheetTitle>Filters</SheetTitle>
+              </SheetHeader>
+              <ScrollArea className="mt-6 h-[calc(100vh-100px)]">
+                <FiltersSidebar
+                  filters={filters}
+                  onFiltersChange={(newFilters) => {
+                    handleFiltersChange(newFilters);
+                    setMobileFiltersOpen(false);
+                  }}
+                  resultCount={totalResults}
+                  hideHeader
+                />
+              </ScrollArea>
+            </SheetContent>
+          </Sheet>
         </div>
 
         {/* Results Grid */}
