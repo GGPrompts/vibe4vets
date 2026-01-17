@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { MapPin, ArrowLeft } from 'lucide-react';
+import { MapPin } from 'lucide-react';
 import { USMap } from '@/components/us-map';
 
 export const metadata = {
@@ -10,45 +10,10 @@ export const metadata = {
 
 export default function MapPage() {
   return (
-    <main className="min-h-screen bg-[hsl(var(--v4v-cream))]">
-      {/* Header */}
-      <header className="border-b border-[hsl(var(--border))] bg-white">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-          <Link
-            href="/"
-            className="font-display text-xl text-[hsl(var(--v4v-navy))] transition-colors hover:text-[hsl(var(--v4v-gold))]"
-          >
-            Vibe4Vets
-          </Link>
-          <nav className="flex items-center gap-6">
-            <Link
-              href="/search"
-              className="text-sm text-[hsl(var(--muted-foreground))] transition-colors hover:text-[hsl(var(--v4v-navy))]"
-            >
-              Search
-            </Link>
-            <Link
-              href="/discover"
-              className="text-sm text-[hsl(var(--muted-foreground))] transition-colors hover:text-[hsl(var(--v4v-navy))]"
-            >
-              Discover
-            </Link>
-          </nav>
-        </div>
-      </header>
-
+    <main className="min-h-screen bg-[hsl(var(--v4v-cream))] pt-14">
       {/* Main Content */}
       <section className="py-12 lg:py-16">
         <div className="mx-auto max-w-6xl px-6">
-          {/* Back link */}
-          <Link
-            href="/"
-            className="mb-6 inline-flex items-center gap-2 text-sm text-[hsl(var(--muted-foreground))] transition-colors hover:text-[hsl(var(--v4v-navy))]"
-          >
-            <ArrowLeft className="h-4 w-4" />
-            Back to Home
-          </Link>
-
           {/* Page header */}
           <div className="mb-10">
             <div className="editorial-divider mb-4" />
@@ -138,16 +103,6 @@ export default function MapPage() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="border-t border-[hsl(var(--border))] bg-white py-8">
-        <div className="mx-auto max-w-6xl px-6">
-          <div className="flex flex-col items-center text-center">
-            <p className="text-sm text-[hsl(var(--muted-foreground))]">
-              Built to help veterans find resources beyond VA.gov
-            </p>
-          </div>
-        </div>
-      </footer>
     </main>
   );
 }

@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState, useCallback, memo } from 'react';
+import { createPortal } from 'react-dom';
 import { useRouter } from 'next/navigation';
 import {
   ComposableMap,
@@ -176,6 +177,17 @@ function USMapComponent({ className = '', onStateSelect }: USMapProps) {
     []
   );
 
+  const handleMouseMove = useCallback(
+    (event: React.MouseEvent) => {
+      if (hoveredState) {
+        setHoveredState((prev) =>
+          prev ? { ...prev, x: event.clientX, y: event.clientY } : null
+        );
+      }
+    },
+    [hoveredState]
+  );
+
   const handleMouseLeave = useCallback(() => {
     setHoveredState(null);
   }, []);
@@ -199,7 +211,7 @@ function USMapComponent({ className = '', onStateSelect }: USMapProps) {
       </div>
 
       {/* Desktop: Interactive Map */}
-      <div className="hidden md:block">
+      <div className="hidden md:block" onMouseMove={handleMouseMove}>
         {isLoading && (
           <div className="absolute inset-0 flex items-center justify-center bg-[hsl(var(--v4v-cream))]">
             <div className="text-[hsl(var(--muted-foreground))]">Loading map...</div>
@@ -229,19 +241,22 @@ function USMapComponent({ className = '', onStateSelect }: USMapProps) {
           </ZoomableGroup>
         </ComposableMap>
 
-        {/* Tooltip */}
-        {hoveredState && (
-          <div
-            className="pointer-events-none fixed z-50 rounded-md bg-[hsl(var(--v4v-navy))] px-3 py-1.5 text-sm font-medium text-white shadow-lg"
-            style={{
-              left: hoveredState.x + 12,
-              top: hoveredState.y - 30,
-            }}
-          >
-            {hoveredState.name}
-          </div>
-        )}
       </div>
+
+      {/* Tooltip - rendered via portal to bypass any transform issues */}
+      {hoveredState && typeof document !== 'undefined' && createPortal(
+        <div
+          className="pointer-events-none fixed z-[9999] rounded-md bg-[hsl(var(--v4v-navy))] px-3 py-1.5 text-sm font-medium text-white shadow-lg"
+          style={{
+            left: hoveredState.x,
+            top: hoveredState.y - 40,
+            transform: 'translateX(-50%)',
+          }}
+        >
+          {hoveredState.name}
+        </div>,
+        document.body
+      )}
 
       {/* Legend */}
       <div className="mt-4 flex items-center justify-center gap-4 text-xs text-[hsl(var(--muted-foreground))]">

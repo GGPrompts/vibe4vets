@@ -1,6 +1,6 @@
 import Link from 'next/link';
-import { SearchBar } from '@/components/search-bar';
-import { Briefcase, GraduationCap, Home as HomeIcon, Scale, Shield, RefreshCw, Search, CheckCircle2, Layers, MapPin, Calendar, ChevronRight } from 'lucide-react';
+import { USMap } from '@/components/us-map';
+import { Briefcase, GraduationCap, Home as HomeIcon, Scale, Shield, RefreshCw, CheckCircle2, ChevronRight, Search } from 'lucide-react';
 
 const categories = [
   {
@@ -91,61 +91,25 @@ export default function Home() {
           <div className="h-full w-full bg-gradient-to-l from-[hsl(var(--v4v-gold))] via-transparent to-transparent" />
         </div>
 
-        <div className="relative mx-auto max-w-6xl px-6 py-20 lg:py-28">
-          <div className="max-w-3xl">
-            {/* Eyebrow text */}
-            <div className="animate-fade-in-up mb-5 flex items-center gap-3">
-              <div className="h-px w-10 bg-[hsl(var(--v4v-gold))]" />
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[hsl(var(--v4v-gold))]">
-                Veteran Resource Directory
-              </p>
-            </div>
-
-            {/* Main headline */}
+        <div className="relative mx-auto max-w-6xl px-6 py-12 lg:py-16">
+          <div className="text-center">
+            {/* Main headline - single line */}
             <h1
-              className="animate-fade-in-up delay-100 font-display text-4xl font-semibold leading-tight sm:text-5xl lg:text-6xl"
+              className="animate-fade-in-up font-display text-3xl font-semibold sm:text-4xl lg:text-5xl"
               style={{ opacity: 0 }}
             >
-              Resources for Veterans,{' '}
-              <span className="gold-underline text-[hsl(var(--v4v-gold))]">All in One Place</span>
+              Find Veteran Resources{' '}
+              <span className="text-[hsl(var(--v4v-gold))]">by State</span>
             </h1>
 
-            {/* Subheadline */}
-            <p
-              className="animate-fade-in-up delay-200 mt-6 max-w-2xl text-base leading-relaxed text-white/70 sm:text-lg"
-              style={{ opacity: 0 }}
-            >
-              We aggregate employment, training, housing, and legal resources from
-              across the country—all in one searchable directory.
-            </p>
-
-            {/* Search Bar */}
-            <div className="animate-fade-in-up delay-300 mt-10" style={{ opacity: 0 }}>
-              <div className="hero-search-container rounded-xl p-3">
-                <SearchBar />
+            {/* Interactive US Map */}
+            <div className="animate-fade-in-up delay-100 mx-auto mt-8 max-w-4xl" style={{ opacity: 0 }}>
+              <div className="hero-search-container rounded-xl p-4">
+                <USMap className="[&_svg]:max-h-[320px]" />
               </div>
-              <p className="mt-3 text-center text-sm text-white/50">
-                Try: &quot;job training Texas&quot; or &quot;housing assistance California&quot;
+              <p className="mt-3 text-sm text-white/50">
+                Click a state to explore resources in your area
               </p>
-            </div>
-
-            {/* Quick stats */}
-            <div className="animate-fade-in-up delay-400 mt-10 flex flex-wrap gap-3" style={{ opacity: 0 }}>
-              <div className="hero-stat flex items-center gap-2 px-4 py-2.5">
-                <Layers className="h-4 w-4 text-[hsl(var(--v4v-gold))]" />
-                <span className="font-display text-xl text-[hsl(var(--v4v-gold))]">4</span>
-                <span className="text-sm text-white/60">Categories</span>
-              </div>
-              <div className="hero-stat flex items-center gap-2 px-4 py-2.5">
-                <MapPin className="h-4 w-4 text-[hsl(var(--v4v-gold))]" />
-                <span className="font-display text-xl text-[hsl(var(--v4v-gold))]">50</span>
-                <span className="text-sm text-white/60">States</span>
-              </div>
-              <div className="hero-stat flex items-center gap-2 px-4 py-2.5">
-                <Calendar className="h-4 w-4 text-[hsl(var(--v4v-gold))]" />
-                <span className="font-display text-xl text-[hsl(var(--v4v-gold))]">Daily</span>
-                <span className="text-sm text-white/60">Updates</span>
-              </div>
             </div>
           </div>
         </div>

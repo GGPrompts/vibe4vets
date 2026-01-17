@@ -36,7 +36,7 @@ const employmentResources: HubResource[] = [
   {
     name: 'USAJobs',
     description: 'Official federal government job board with veterans\' preference hiring and dedicated veteran job listings.',
-    url: 'https://help.usajobs.gov/working-in-government/unique-hiring-paths/veterans',
+    url: 'https://www.usajobs.gov/Help/working-in-government/unique-hiring-paths/veterans/',
     icon: Building2,
   },
 ];

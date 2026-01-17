@@ -16,20 +16,17 @@ export function Header() {
   const { scrollDirection, isAtTop } = useScrollDirection();
 
   const isSearchPage = pathname === '/search';
-  const isDiscoverPage = pathname === '/discover';
-  const showSearchBar = isSearchPage || isDiscoverPage;
+  const isHomePage = pathname === '/';
   const [searchQuery, setSearchQuery] = useState('');
 
   // Sync search query from URL params when on search page
   useEffect(() => {
     if (isSearchPage) {
       setSearchQuery(searchParams.get('q') || '');
-      return;
+    } else {
+      setSearchQuery('');
     }
-
-    if (!showSearchBar) return;
-    setSearchQuery('');
-  }, [isSearchPage, searchParams, showSearchBar]);
+  }, [isSearchPage, searchParams]);
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -74,8 +71,8 @@ export function Header() {
           />
         </Link>
 
-        {/* Search Bar - Only on /search and /discover */}
-        {showSearchBar && (
+        {/* Search Bar - All pages except home (home has prominent hero search) */}
+        {!isHomePage && (
           <form onSubmit={handleSearch} className="relative mx-4 hidden max-w-md flex-1 md:block">
             <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-white/40" />
             <Input
