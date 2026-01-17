@@ -20,7 +20,8 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 
-const GEO_URL = 'https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json';
+// Use unpkg CDN which allows the Cache-Control header that react19-simple-maps adds
+const GEO_URL = 'https://unpkg.com/us-atlas@3/states-10m.json';
 
 // GeoJSON Feature type alias for this component
 type GeoFeature = Feature<Geometry, GeoJsonProperties>;
