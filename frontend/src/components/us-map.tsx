@@ -7,9 +7,8 @@ import {
   ComposableMap,
   Geographies,
   Geography,
-} from '@vnedyalk0v/react19-simple-maps';
-import type { GeographyEventData } from '@vnedyalk0v/react19-simple-maps';
-import type { Feature, Geometry, GeoJsonProperties } from 'geojson';
+  ZoomableGroup,
+} from 'react-simple-maps';
 import {
   Select,
   SelectContent,
@@ -18,11 +17,7 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 
-// Use unpkg CDN which allows the Cache-Control header that react19-simple-maps adds
-const GEO_URL = 'https://unpkg.com/us-atlas@3/states-10m.json';
-
-// GeoJSON Feature type alias for this component
-type GeoFeature = Feature<Geometry, GeoJsonProperties>;
+const GEO_URL = 'https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json';
 
 // State abbreviations mapped to FIPS codes
 const STATE_FIPS_TO_ABBR: Record<string, string> = {
@@ -74,6 +69,13 @@ interface USMapProps {
   onStateSelect?: (stateAbbr: string) => void;
 }
 
+interface GeoType {
+  rsmKey: string;
+  id: string;
+  properties: { name: string };
+  geometry: object;
+}
+
 function MapGeographies({
   onLoaded,
   onMouseEnter,
@@ -82,10 +84,10 @@ function MapGeographies({
   geographies,
 }: {
   onLoaded: () => void;
-  onMouseEnter: (event: React.MouseEvent<SVGPathElement>, data?: GeographyEventData) => void;
+  onMouseEnter: (geo: GeoType, event: React.MouseEvent) => void;
   onMouseLeave: () => void;
   onSelectState: (stateAbbr: string) => void;
-  geographies: GeoFeature[];
+  geographies: GeoType[];
 }) {
   const didNotifyLoaded = useRef(false);
 
@@ -96,18 +98,17 @@ function MapGeographies({
     onLoaded();
   }, [geographies.length, onLoaded]);
 
-  return geographies.map((geo, index) => {
-    const geoId = String(geo.id ?? '');
-    const stateAbbr = STATE_FIPS_TO_ABBR[geoId];
+  return geographies.map((geo) => {
+    const stateAbbr = STATE_FIPS_TO_ABBR[geo.id];
     return (
       <Geography
-        key={geoId || index}
+        key={geo.rsmKey}
         geography={geo}
-        onMouseEnter={onMouseEnter}
+        onMouseEnter={(event: React.MouseEvent) => onMouseEnter(geo, event)}
         onMouseLeave={onMouseLeave}
         onClick={() => stateAbbr && onSelectState(stateAbbr)}
         tabIndex={0}
-        onKeyDown={(event) => {
+        onKeyDown={(event: React.KeyboardEvent) => {
           if (event.key === 'Enter' || event.key === ' ') {
             event.preventDefault();
             if (stateAbbr) {
@@ -119,22 +120,22 @@ function MapGeographies({
         role="button"
         style={{
           default: {
-            fill: 'hsl(222, 60%, 15%)', // Slightly lighter navy for visibility
-            stroke: 'hsl(220, 15%, 70%)', // Light border
+            fill: 'hsl(222, 60%, 15%)',
+            stroke: 'hsl(220, 15%, 70%)',
             strokeWidth: 0.5,
             outline: 'none',
             cursor: 'pointer',
             transition: 'fill 0.2s ease',
           },
           hover: {
-            fill: 'hsl(45, 70%, 47%)', // Gold on hover
-            stroke: 'hsl(45, 70%, 35%)', // Darker gold border
+            fill: 'hsl(45, 70%, 47%)',
+            stroke: 'hsl(45, 70%, 35%)',
             strokeWidth: 1,
             outline: 'none',
             cursor: 'pointer',
           },
           pressed: {
-            fill: 'hsl(45, 70%, 40%)', // Darker gold when pressed
+            fill: 'hsl(45, 70%, 40%)',
             stroke: 'hsl(45, 70%, 30%)',
             strokeWidth: 1,
             outline: 'none',
@@ -169,12 +170,9 @@ function USMapComponent({ className = '', onStateSelect }: USMapProps) {
   );
 
   const handleMouseEnter = useCallback(
-    (event: React.MouseEvent<SVGPathElement>, data?: GeographyEventData) => {
-      if (!data?.geography) return;
-      const geo = data.geography;
-      const geoId = String(geo.id ?? '');
-      const stateAbbr = STATE_FIPS_TO_ABBR[geoId];
-      const stateName = stateAbbr ? STATE_NAMES[stateAbbr] : (geo.properties?.name as string | undefined);
+    (geo: GeoType, event: React.MouseEvent) => {
+      const stateAbbr = STATE_FIPS_TO_ABBR[geo.id];
+      const stateName = stateAbbr ? STATE_NAMES[stateAbbr] : geo.properties.name;
 
       setHoveredState({
         name: stateName || 'Unknown',
@@ -234,17 +232,19 @@ function USMapComponent({ className = '', onStateSelect }: USMapProps) {
           className="w-full h-auto"
           style={{ maxHeight: '500px' }}
         >
-          <Geographies geography={GEO_URL}>
-            {({ geographies }) => (
-              <MapGeographies
-                geographies={geographies}
-                onLoaded={() => setIsLoading(false)}
-                onMouseEnter={handleMouseEnter}
-                onMouseLeave={handleMouseLeave}
-                onSelectState={handleStateClick}
-              />
-            )}
-          </Geographies>
+          <ZoomableGroup center={[0, 0]} zoom={1}>
+            <Geographies geography={GEO_URL}>
+              {({ geographies }) => (
+                <MapGeographies
+                  geographies={geographies}
+                  onLoaded={() => setIsLoading(false)}
+                  onMouseEnter={handleMouseEnter}
+                  onMouseLeave={handleMouseLeave}
+                  onSelectState={handleStateClick}
+                />
+              )}
+            </Geographies>
+          </ZoomableGroup>
         </ComposableMap>
 
       </div>
