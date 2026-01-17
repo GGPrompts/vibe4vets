@@ -1,6 +1,7 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Label } from '@/components/ui/label';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
@@ -9,7 +10,13 @@ import { Slider } from '@/components/ui/slider';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { Badge } from '@/components/ui/badge';
-import { Filter, X, Briefcase, GraduationCap, Home, Scale, ChevronDown } from 'lucide-react';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '@/components/ui/tooltip';
+import { Filter, X, Briefcase, GraduationCap, Home, Scale, ChevronDown, PanelLeft, PanelLeftClose, Globe, Shield } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 export const CATEGORIES = [
@@ -368,5 +375,165 @@ export function FiltersSidebar({
         </div>
       </CollapsibleSection>
     </div>
+  );
+}
+
+// Icon mapping for collapsed state
+const FILTER_ICONS = [
+  { key: 'filter', icon: Filter, label: 'Filters', color: 'text-[hsl(var(--v4v-gold))]' },
+  { key: 'categories', icon: Briefcase, label: 'Categories', color: 'text-blue-500' },
+  { key: 'scope', icon: Globe, label: 'Coverage', color: 'text-emerald-500' },
+  { key: 'trust', icon: Shield, label: 'Trust Level', color: 'text-amber-500' },
+] as const;
+
+interface FixedFiltersSidebarProps {
+  filters: FilterState;
+  onFiltersChange: (filters: FilterState) => void;
+  resultCount?: number;
+}
+
+export function FixedFiltersSidebar({
+  filters,
+  onFiltersChange,
+  resultCount,
+}: FixedFiltersSidebarProps) {
+  const [isCollapsed, setIsCollapsed] = useState(false);
+
+  // Load collapsed state from localStorage on mount
+  useEffect(() => {
+    const saved = localStorage.getItem('v4v-filters-collapsed');
+    if (saved !== null) setIsCollapsed(saved === 'true');
+  }, []);
+
+  // Persist collapsed state
+  const toggleCollapsed = () => {
+    const newValue = !isCollapsed;
+    setIsCollapsed(newValue);
+    localStorage.setItem('v4v-filters-collapsed', String(newValue));
+  };
+
+  const activeFilterCount =
+    filters.categories.length +
+    filters.states.length +
+    (filters.scope !== 'all' ? 1 : 0) +
+    (filters.minTrust > 0 ? 1 : 0);
+
+  return (
+    <TooltipProvider>
+      <AnimatePresence mode="wait">
+        {isCollapsed ? (
+          <motion.div
+            key="collapsed"
+            initial={{ width: 0, opacity: 0 }}
+            animate={{ width: 48, opacity: 1 }}
+            exit={{ width: 0, opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed left-0 top-16 z-30 hidden h-[calc(100vh-64px)] flex-shrink-0 flex-col items-center border-r bg-background py-3 lg:flex"
+          >
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={toggleCollapsed}
+                  className="h-9 w-9 text-muted-foreground hover:text-foreground"
+                >
+                  <PanelLeft className="h-5 w-5" />
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent side="right">
+                <p className="text-xs">Expand filters</p>
+              </TooltipContent>
+            </Tooltip>
+
+            <div className="my-2 h-px w-6 bg-border" />
+
+            {FILTER_ICONS.map((item, index) => (
+              <motion.div
+                key={item.key}
+                initial={{ opacity: 0, x: -10 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: index * 0.05 }}
+              >
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      onClick={toggleCollapsed}
+                      className={cn('h-9 w-9 text-muted-foreground hover:text-foreground', item.color)}
+                    >
+                      <item.icon className="h-4 w-4" />
+                    </Button>
+                  </TooltipTrigger>
+                  <TooltipContent side="right">
+                    <p className="text-xs">{item.label}</p>
+                  </TooltipContent>
+                </Tooltip>
+              </motion.div>
+            ))}
+
+            {activeFilterCount > 0 && (
+              <motion.div
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                className="mt-2"
+              >
+                <Badge variant="secondary" className="h-6 w-6 rounded-full p-0 text-xs flex items-center justify-center">
+                  {activeFilterCount}
+                </Badge>
+              </motion.div>
+            )}
+          </motion.div>
+        ) : (
+          <motion.aside
+            key="expanded"
+            initial={{ width: 0, opacity: 0 }}
+            animate={{ width: 280, opacity: 1 }}
+            exit={{ width: 0, opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed left-0 top-16 z-30 hidden h-[calc(100vh-64px)] flex-shrink-0 flex-col overflow-hidden border-r bg-background lg:flex"
+          >
+            {/* Header with Collapse Button */}
+            <div className="flex items-center justify-between border-b px-4 py-3">
+              <div className="flex items-center gap-2">
+                <Filter className="h-4 w-4 text-[hsl(var(--v4v-gold))]" />
+                <span className="text-sm font-semibold">Filters</span>
+                {resultCount !== undefined && (
+                  <Badge variant="secondary" className="ml-2 text-xs">
+                    {resultCount}
+                  </Badge>
+                )}
+              </div>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    onClick={toggleCollapsed}
+                    className="h-8 w-8 text-muted-foreground hover:text-foreground"
+                  >
+                    <PanelLeftClose className="h-4 w-4" />
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent side="right">
+                  <p className="text-xs">Collapse filters</p>
+                </TooltipContent>
+              </Tooltip>
+            </div>
+
+            {/* Filter Content */}
+            <ScrollArea className="flex-1 px-4 py-4">
+              <FiltersSidebar
+                filters={filters}
+                onFiltersChange={onFiltersChange}
+                resultCount={resultCount}
+                hideHeader
+              />
+            </ScrollArea>
+          </motion.aside>
+        )}
+      </AnimatePresence>
+    </TooltipProvider>
   );
 }

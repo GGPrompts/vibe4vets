@@ -18,15 +18,11 @@ import {
 import { ResourceCard } from '@/components/resource-card';
 import {
   FiltersSidebar,
+  FixedFiltersSidebar,
   type FilterState,
 } from '@/components/filters-sidebar';
 import api, { type SearchResponse, type ResourceList, type Resource } from '@/lib/api';
-import {
-  Search,
-  Filter,
-  ChevronRight,
-  PanelLeftClose,
-} from 'lucide-react';
+import { Search, Filter } from 'lucide-react';
 
 
 function SearchResults() {
@@ -41,22 +37,6 @@ function SearchResults() {
   const [lastQuery, setLastQuery] = useState<string | null>(null);
   const [searchInput, setSearchInput] = useState(query);
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
-
-  // Sidebar collapse state with localStorage persistence
-  const [leftCollapsed, setLeftCollapsed] = useState(false);
-
-  // Load collapsed state from localStorage on mount
-  useEffect(() => {
-    const savedLeft = localStorage.getItem('v4v-left-collapsed');
-    if (savedLeft !== null) setLeftCollapsed(savedLeft === 'true');
-  }, []);
-
-  // Persist collapsed state to localStorage
-  const toggleLeftCollapsed = () => {
-    const newValue = !leftCollapsed;
-    setLeftCollapsed(newValue);
-    localStorage.setItem('v4v-left-collapsed', String(newValue));
-  };
 
   // Initialize filters from URL params
   const [filters, setFilters] = useState<FilterState>(() => {
@@ -193,53 +173,14 @@ function SearchResults() {
   const totalResults = resources.length;
   const hasResults = totalResults > 0;
 
-  // Calculate grid columns - only apply sidebar column on lg+ screens
-  const gridColumns = leftCollapsed ? 'lg:grid-cols-[0px_1fr]' : 'lg:grid-cols-[280px_1fr]';
-
   return (
-    <div
-      className={`relative grid grid-cols-1 gap-6 transition-all duration-300 ease-in-out ${gridColumns}`}
-    >
-      {/* Collapsed Left Edge Button */}
-      {leftCollapsed && (
-        <button
-          onClick={toggleLeftCollapsed}
-          className="fixed left-2 top-1/2 z-30 hidden -translate-y-1/2 rounded-r-lg border border-l-0 bg-background p-2 shadow-md transition-colors hover:bg-muted lg:block"
-          aria-label="Show filters"
-        >
-          <ChevronRight className="h-4 w-4" />
-        </button>
-      )}
-
-      {/* Filter Sidebar - Desktop */}
-      <div
-        className={`sticky top-24 hidden h-fit max-h-[calc(100vh-120px)] self-start overflow-hidden transition-all duration-300 ease-in-out lg:block ${
-          leftCollapsed ? 'w-0 opacity-0' : 'w-[280px] opacity-100'
-        }`}
-      >
-        <Card className="h-full overflow-hidden">
-          {/* Clickable Header */}
-          <button
-            onClick={toggleLeftCollapsed}
-            className="flex w-full items-center justify-between border-b px-5 py-3 text-left transition-colors hover:bg-muted/50"
-            aria-label="Collapse filters"
-          >
-            <span className="flex items-center gap-2 text-sm font-semibold">
-              <Filter className="h-4 w-4 text-[hsl(var(--v4v-gold))]" />
-              Filters
-            </span>
-            <PanelLeftClose className="h-4 w-4 text-muted-foreground" />
-          </button>
-          <ScrollArea className="h-[calc(100%-52px)] p-5 pr-4">
-            <FiltersSidebar
-              filters={filters}
-              onFiltersChange={handleFiltersChange}
-              resultCount={totalResults}
-              hideHeader
-            />
-          </ScrollArea>
-        </Card>
-      </div>
+    <>
+      {/* Fixed Filter Sidebar - Desktop */}
+      <FixedFiltersSidebar
+        filters={filters}
+        onFiltersChange={handleFiltersChange}
+        resultCount={totalResults}
+      />
 
       {/* Main Content */}
       <div className="flex flex-col space-y-4">
@@ -404,59 +345,36 @@ function SearchResults() {
           )}
         </div>
       </div>
-    </div>
+    </>
   );
 }
 
 function SearchFallback() {
   return (
-    <div className="grid gap-6 lg:grid-cols-[280px_1fr]">
-      {/* Filter Sidebar Skeleton */}
-      <div className="sticky top-24 hidden h-fit self-start lg:block">
-        <Card className="h-[500px] w-full animate-pulse overflow-hidden">
-          <div className="border-b px-5 py-3">
-            <Skeleton className="h-5 w-20" />
-          </div>
-          <div className="space-y-4 p-5">
-            <Skeleton className="h-4 w-24" />
-            <div className="space-y-2">
-              {[...Array(4)].map((_, i) => (
-                <Skeleton key={i} className="h-6 w-full" />
-              ))}
-            </div>
-            <Skeleton className="mt-4 h-4 w-20" />
-            <div className="space-y-2">
-              {[...Array(3)].map((_, i) => (
-                <Skeleton key={i} className="h-6 w-full" />
-              ))}
-            </div>
-          </div>
-        </Card>
-      </div>
+    <div className="flex flex-col space-y-4">
+      {/* Search Bar Skeleton */}
+      <Skeleton className="h-14 w-full rounded-lg" />
+      <Skeleton className="h-6 w-48" />
 
-      {/* Main Content Skeleton */}
-      <div className="space-y-4">
-        <Skeleton className="h-14 w-full rounded-lg" />
-        <Skeleton className="h-6 w-48" />
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {[...Array(8)].map((_, i) => (
-            <Card key={i} className="h-48 w-full animate-pulse overflow-hidden">
-              <div className="flex h-full flex-col p-4">
-                <div className="mb-2 flex items-center justify-between">
-                  <Skeleton className="h-4 w-16 rounded" />
-                  <Skeleton className="h-5 w-5 rounded-full" />
-                </div>
-                <Skeleton className="mb-2 h-5 w-3/4 rounded" />
-                <Skeleton className="mb-4 h-4 w-full rounded" />
-                <Skeleton className="h-4 w-2/3 rounded" />
-                <div className="mt-auto flex gap-2">
-                  <Skeleton className="h-6 w-20 rounded-full" />
-                  <Skeleton className="h-6 w-16 rounded-full" />
-                </div>
+      {/* Results Grid Skeleton */}
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        {[...Array(8)].map((_, i) => (
+          <Card key={i} className="h-48 w-full animate-pulse overflow-hidden">
+            <div className="flex h-full flex-col p-4">
+              <div className="mb-2 flex items-center justify-between">
+                <Skeleton className="h-4 w-16 rounded" />
+                <Skeleton className="h-5 w-5 rounded-full" />
               </div>
-            </Card>
-          ))}
-        </div>
+              <Skeleton className="mb-2 h-5 w-3/4 rounded" />
+              <Skeleton className="mb-4 h-4 w-full rounded" />
+              <Skeleton className="h-4 w-2/3 rounded" />
+              <div className="mt-auto flex gap-2">
+                <Skeleton className="h-6 w-20 rounded-full" />
+                <Skeleton className="h-6 w-16 rounded-full" />
+              </div>
+            </div>
+          </Card>
+        ))}
       </div>
     </div>
   );
