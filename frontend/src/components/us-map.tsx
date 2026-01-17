@@ -7,8 +7,6 @@ import {
   ComposableMap,
   Geographies,
   Geography,
-  ZoomableGroup,
-  createCoordinates,
 } from '@vnedyalk0v/react19-simple-maps';
 import type { GeographyEventData } from '@vnedyalk0v/react19-simple-maps';
 import type { Feature, Geometry, GeoJsonProperties } from 'geojson';
@@ -236,19 +234,17 @@ function USMapComponent({ className = '', onStateSelect }: USMapProps) {
           className="w-full h-auto"
           style={{ maxHeight: '500px' }}
         >
-          <ZoomableGroup center={createCoordinates(0, 0)} zoom={1}>
-            <Geographies geography={GEO_URL}>
-              {({ geographies }) => (
-                <MapGeographies
-                  geographies={geographies}
-                  onLoaded={() => setIsLoading(false)}
-                  onMouseEnter={handleMouseEnter}
-                  onMouseLeave={handleMouseLeave}
-                  onSelectState={handleStateClick}
-                />
-              )}
-            </Geographies>
-          </ZoomableGroup>
+          <Geographies geography={GEO_URL}>
+            {({ geographies }) => (
+              <MapGeographies
+                geographies={geographies}
+                onLoaded={() => setIsLoading(false)}
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+                onSelectState={handleStateClick}
+              />
+            )}
+          </Geographies>
         </ComposableMap>
 
       </div>
