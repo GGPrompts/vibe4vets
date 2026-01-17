@@ -3,7 +3,7 @@
 import uuid
 from datetime import datetime
 from enum import Enum
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Optional
 
 from sqlalchemy import Column, Text
 from sqlalchemy.dialects.postgresql import ARRAY, TSVECTOR
@@ -103,8 +103,8 @@ class Resource(SQLModel, table=True):
 
     # Relationships
     organization: "Organization" = Relationship(back_populates="resources")
-    program: "Program | None" = Relationship(back_populates="resources")
-    location: "Location | None" = Relationship(back_populates="resources")
-    source: "Source | None" = Relationship(back_populates="resources")
+    program: Optional["Program"] = Relationship(back_populates="resources")
+    location: Optional["Location"] = Relationship(back_populates="resources")
+    source: Optional["Source"] = Relationship(back_populates="resources")
     reviews: list["ReviewState"] = Relationship(back_populates="resource")
     changes: list["ChangeLog"] = Relationship(back_populates="resource")
