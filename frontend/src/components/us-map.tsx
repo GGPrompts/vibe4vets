@@ -7,9 +7,11 @@ import {
   ComposableMap,
   Geographies,
   Geography,
-  type GeographyObject,
   ZoomableGroup,
-} from 'react-simple-maps';
+  createCoordinates,
+} from '@vnedyalk0v/react19-simple-maps';
+import type { GeographyEventData } from '@vnedyalk0v/react19-simple-maps';
+import type { Feature, Geometry, GeoJsonProperties } from 'geojson';
 import {
   Select,
   SelectContent,
@@ -19,6 +21,9 @@ import {
 } from '@/components/ui/select';
 
 const GEO_URL = 'https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json';
+
+// GeoJSON Feature type alias for this component
+type GeoFeature = Feature<Geometry, GeoJsonProperties>;
 
 // State abbreviations mapped to FIPS codes
 const STATE_FIPS_TO_ABBR: Record<string, string> = {
@@ -78,10 +83,10 @@ function MapGeographies({
   geographies,
 }: {
   onLoaded: () => void;
-  onMouseEnter: (geo: GeographyObject, event: React.MouseEvent) => void;
+  onMouseEnter: (event: React.MouseEvent<SVGPathElement>, data?: GeographyEventData) => void;
   onMouseLeave: () => void;
   onSelectState: (stateAbbr: string) => void;
-  geographies: GeographyObject[];
+  geographies: GeoFeature[];
 }) {
   const didNotifyLoaded = useRef(false);
 
@@ -92,13 +97,14 @@ function MapGeographies({
     onLoaded();
   }, [geographies.length, onLoaded]);
 
-  return geographies.map((geo) => {
-    const stateAbbr = STATE_FIPS_TO_ABBR[geo.id];
+  return geographies.map((geo, index) => {
+    const geoId = String(geo.id ?? '');
+    const stateAbbr = STATE_FIPS_TO_ABBR[geoId];
     return (
       <Geography
-        key={geo.rsmKey}
+        key={geoId || index}
         geography={geo}
-        onMouseEnter={(event) => onMouseEnter(geo, event)}
+        onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
         onClick={() => stateAbbr && onSelectState(stateAbbr)}
         tabIndex={0}
@@ -164,9 +170,12 @@ function USMapComponent({ className = '', onStateSelect }: USMapProps) {
   );
 
   const handleMouseEnter = useCallback(
-    (geo: { id: string; properties: { name: string } }, event: React.MouseEvent) => {
-      const stateAbbr = STATE_FIPS_TO_ABBR[geo.id];
-      const stateName = stateAbbr ? STATE_NAMES[stateAbbr] : geo.properties.name;
+    (event: React.MouseEvent<SVGPathElement>, data?: GeographyEventData) => {
+      if (!data?.geography) return;
+      const geo = data.geography;
+      const geoId = String(geo.id ?? '');
+      const stateAbbr = STATE_FIPS_TO_ABBR[geoId];
+      const stateName = stateAbbr ? STATE_NAMES[stateAbbr] : (geo.properties?.name as string | undefined);
 
       setHoveredState({
         name: stateName || 'Unknown',
@@ -226,7 +235,7 @@ function USMapComponent({ className = '', onStateSelect }: USMapProps) {
           className="w-full h-auto"
           style={{ maxHeight: '500px' }}
         >
-          <ZoomableGroup center={[0, 0]} zoom={1}>
+          <ZoomableGroup center={createCoordinates(0, 0)} zoom={1}>
             <Geographies geography={GEO_URL}>
               {({ geographies }) => (
                 <MapGeographies
