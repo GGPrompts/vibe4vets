@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Briefcase, BookOpen, Home, Scale, MapPin, Globe, CheckCircle2, Tag } from 'lucide-react';
+import { Briefcase, BookOpen, Home, Scale, MapPin, Globe, CheckCircle2, Tag, Phone, Clock } from 'lucide-react';
 import type { Resource, MatchExplanation } from '@/lib/api';
 
 interface ResourceCardProps {
@@ -206,6 +206,31 @@ function CardInner({
           <p className="mt-3 text-sm text-green-600 dark:text-green-400 line-clamp-2">
             {resource.eligibility.split(/[.!?]/)[0].trim()}.
           </p>
+        )}
+
+        {/* Local provider contact info */}
+        {resource.location && (resource.location.intake?.phone || resource.location.intake?.hours) && (
+          <div className="mt-3 rounded-lg border border-muted bg-muted/30 p-3">
+            <p className="mb-2 text-xs font-semibold text-muted-foreground">Local Provider</p>
+            <div className="space-y-1">
+              {resource.location.intake?.phone && (
+                <a
+                  href={`tel:${resource.location.intake.phone}`}
+                  className="flex items-center gap-2 text-sm text-primary hover:underline"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <Phone className="h-3.5 w-3.5" />
+                  {resource.location.intake.phone}
+                </a>
+              )}
+              {resource.location.intake?.hours && (
+                <p className="flex items-center gap-2 text-xs text-muted-foreground">
+                  <Clock className="h-3 w-3" />
+                  {resource.location.intake.hours}
+                </p>
+              )}
+            </div>
+          </div>
         )}
       </CardContent>
     </>
