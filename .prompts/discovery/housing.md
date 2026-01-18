@@ -13,9 +13,9 @@ You are researching veteran housing resources for a specific geographic area. Fi
 
 Example:
 ```
-Agent 1: "[AREA] veteran homeless shelter", "[AREA] emergency housing veterans"
+Agent 1: "[AREA] veteran emergency shelter", "[AREA] emergency housing veterans"
 Agent 2: "[AREA] SSVF provider", "[AREA] HUD-VASH coordinator"
-Agent 3: "[AREA] transitional housing veterans", "VA medical center [AREA] homeless"
+Agent 3: "[AREA] transitional housing veterans", "VA medical center [AREA] housing services"
 ```
 
 ## Target Area
@@ -28,17 +28,17 @@ Look for these types of resources:
 2. **Transitional housing** - 30-90 day programs
 3. **SSVF providers** - Supportive Services for Veteran Families (rapid rehousing, prevention)
 4. **HUD-VASH contacts** - Local VA medical center housing coordinators
-5. **Stand Down events** - Annual homeless veteran resource events
+5. **Stand Down events** - Annual resource events for veterans experiencing homelessness
 6. **Permanent supportive housing** - Long-term housing with services
 
 ## Search Strategy
 
 Search for:
-- "[AREA] veteran homeless shelter"
+- "[AREA] veteran emergency shelter"
 - "[AREA] SSVF provider"
 - "[AREA] veteran housing assistance"
 - "[AREA] HUD-VASH coordinator"
-- "VA medical center [AREA] homeless program"
+- "VA medical center [AREA] housing services"
 - "[AREA] veteran transitional housing"
 
 ## Required Information
@@ -48,7 +48,7 @@ For each resource, extract:
 - **Phone**: Direct number (not VA main line)
 - **Address**: Physical location if applicable
 - **Website**: Official URL
-- **Eligibility**: Who qualifies (veteran status, income, homeless status, etc.)
+- **Eligibility**: Who qualifies (veteran status, income, housing status, etc.)
 - **Services**: What specifically they provide
 - **Hours**: If available (especially for shelters)
 
@@ -67,7 +67,7 @@ Return a JSON array of resources:
     "phone": "555-123-4567",
     "website": "https://example.org/veterans",
     "address": "123 Main St, City, ST 12345",
-    "eligibility": ["veteran", "homeless", "low_income"],
+    "eligibility": ["veteran", "housing", "low_income"],
     "hours": "24/7" or "Mon-Fri 8am-5pm",
     "coverage_area": "City/County/Region",
     "source_url": "https://... where you found this",

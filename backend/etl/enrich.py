@@ -78,7 +78,7 @@ class Enricher:
         "housing": [
             "housing",
             "shelter",
-            "homeless",
+            "unhoused",
             "hud",
             "vash",
             "ssvf",
@@ -114,7 +114,7 @@ class Enricher:
         "spouse",
         "transition",
         "reintegration",
-        "homeless",
+        "housing",
         "emergency",
         "crisis",
         "financial",

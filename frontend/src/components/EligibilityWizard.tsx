@@ -50,8 +50,8 @@ const INCOME_BRACKETS = [
 ] as const;
 
 const HOUSING_STATUSES = [
-  { value: 'homeless', label: 'Currently homeless' },
-  { value: 'at_risk', label: 'At risk of homelessness' },
+  { value: 'homeless', label: 'Currently experiencing homelessness' },
+  { value: 'at_risk', label: 'At risk of housing instability' },
   { value: 'stably_housed', label: 'Stably housed' },
 ] as const;
 

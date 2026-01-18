@@ -391,11 +391,12 @@ class DiscoveryService:
             if "gi bill" in combined:
                 subcategories.append("gi-bill")
 
-        # Housing signals
+        # Housing signals (includes legacy terms for matching external content)
         housing_signals = [
             "housing",
             "shelter",
-            "homeless",
+            "homeless",  # Keep for matching external content
+            "unhoused",
             "ssvf",
             "hud-vash",
             "transitional",

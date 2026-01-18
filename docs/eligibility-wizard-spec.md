@@ -44,7 +44,7 @@ All inputs are coarse/bucketed to avoid collecting PII:
 | Monthly income | Bucketed ranges or client-side calc | URL param (bracket only) |
 | Age bracket | <55, 55–61, 62+, 65+ | URL param |
 | Disability | Yes / No / Prefer not to say | URL param |
-| Housing status | Homeless / At-risk / Stably housed | URL param |
+| Housing status | Experiencing homelessness / At-risk / Stably housed | URL param |
 | Active duty | Yes / No | URL param |
 | Discharge status | Unknown / Other-than-dishonorable / Dishonorable | URL param |
 
@@ -198,7 +198,7 @@ class WaitlistStatus(str, Enum):
       "match_reasons": [
         {"type": "location", "label": "Serves Fairfax County"},
         {"type": "income", "label": "Income under 50% AMI"},
-        {"type": "housing_status", "label": "Serves homeless veterans"}
+        {"type": "housing_status", "label": "For veterans experiencing homelessness"}
       ],
       "trust_score": 0.85
     }
@@ -215,7 +215,7 @@ class WaitlistStatus(str, Enum):
 | `location` | "Serves Fairfax County", "Available in Virginia" |
 | `age` | "62+", "All ages", "55 and older" |
 | `income` | "Income under 50% AMI", "No income requirements" |
-| `housing_status` | "Serves homeless veterans", "For at-risk housing" |
+| `housing_status` | "For veterans experiencing homelessness", "For veterans at risk of housing instability" |
 | `veteran_status` | "Veterans only", "Veterans and families" |
 | `discharge` | "Any discharge accepted", "Honorable discharge required" |
 | `category` | "Housing assistance", "Employment services" |

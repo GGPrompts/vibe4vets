@@ -556,9 +556,9 @@ class SearchService:
             # Housing status
             if location.housing_status_required:
                 status_labels = {
-                    "homeless": "Serves homeless veterans",
-                    "at_risk": "For at-risk housing",
-                    "stably_housed": "For housed veterans",
+                    "homeless": "For veterans experiencing homelessness",
+                    "at_risk": "For veterans at risk of housing instability",
+                    "stably_housed": "For stably housed veterans",
                 }
                 for status in location.housing_status_required:
                     if status in status_labels:
