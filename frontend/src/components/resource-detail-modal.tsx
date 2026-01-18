@@ -248,11 +248,12 @@ export function ResourceDetailModal({
             role="dialog"
             aria-modal="true"
             aria-labelledby="modal-title"
-            className="fixed inset-x-0 bottom-0 z-50 max-h-[90vh] overflow-hidden rounded-t-2xl bg-white shadow-2xl outline-none sm:inset-x-auto sm:bottom-auto sm:left-1/2 sm:top-1/2 sm:max-h-[85vh] sm:w-full sm:max-w-2xl sm:-translate-x-1/2 sm:-translate-y-1/2 sm:rounded-2xl dark:bg-slate-900"
+            className="fixed inset-x-0 bottom-0 max-h-[90vh] overflow-hidden rounded-t-2xl bg-white shadow-2xl outline-none sm:inset-x-auto sm:bottom-auto sm:left-1/2 sm:top-1/2 sm:max-h-[85vh] sm:w-full sm:max-w-2xl sm:-translate-x-1/2 sm:-translate-y-1/2 sm:rounded-2xl dark:bg-slate-900"
             layoutId={`resource-card-${resource.id}`}
-            initial={{ y: '100%', opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            exit={{ y: '100%', opacity: 0 }}
+            initial={{ y: '100%', opacity: 0, zIndex: 100 }}
+            animate={{ y: 0, opacity: 1, zIndex: 100 }}
+            exit={{ y: '100%', opacity: 0, zIndex: 100 }}
+            style={{ zIndex: 100 }}
             transition={{
               type: 'spring',
               damping: 30,

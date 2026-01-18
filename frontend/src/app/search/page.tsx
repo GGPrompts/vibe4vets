@@ -403,15 +403,17 @@ function SearchResults() {
             <LayoutGroup>
               <AnimatePresence mode="popLayout">
                 <div className="grid gap-4 pr-0 sm:grid-cols-2 sm:pr-4 lg:grid-cols-3 xl:grid-cols-4" style={{ isolation: 'isolate' }}>
-                  {resources.map((resource, index) => (
+                  {resources.map((resource, index) => {
+                    const isSelected = selectedResource?.id === resource.id;
+                    return (
                     <motion.div
                       key={resource.id}
                       initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0, zIndex: 1 }}
+                      animate={{ opacity: 1, y: 0, zIndex: isSelected ? 100 : 1 }}
                       exit={{ opacity: 0, scale: 0.95 }}
                       transition={{ delay: index * 0.03, layout: { duration: 0.3 } }}
                       layout
-                      style={{ position: 'relative', willChange: 'transform' }}
+                      style={{ position: 'relative', willChange: 'transform', zIndex: isSelected ? 100 : undefined }}
                       whileHover={{ zIndex: 50, transition: { duration: 0 } }}
                       whileTap={{ zIndex: 50 }}
                       layoutId={`card-wrapper-${resource.id}`}
@@ -426,7 +428,8 @@ function SearchResults() {
                         enableLayoutId
                       />
                     </motion.div>
-                  ))}
+                    );
+                  })}
                 </div>
               </AnimatePresence>
 
