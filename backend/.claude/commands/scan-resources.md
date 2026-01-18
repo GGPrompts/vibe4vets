@@ -195,8 +195,12 @@ Provide a summary to the user:
 
 Results saved to: backend/data/discoveries/{filename}
 
-To import to review queue, run:
-  python -m backend.scripts.import_discoveries {filename}
+To import to review queue:
+  # Dry run first to preview
+  python -m backend.scripts.import_discoveries --dry-run backend/data/discoveries/{filename}
+
+  # Then import for real
+  python -m backend.scripts.import_discoveries backend/data/discoveries/{filename}
 ```
 
 ## Valid Categories
