@@ -1,6 +1,6 @@
 'use client';
 
-import { Suspense, useCallback, useEffect, useRef, useState } from 'react';
+import { Suspense, useCallback, useEffect, useState } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { motion, AnimatePresence, LayoutGroup } from 'framer-motion';
 import { Button } from '@/components/ui/button';
@@ -43,7 +43,8 @@ function SearchResults() {
   // Modal state
   const [selectedResource, setSelectedResource] = useState<Resource | null>(null);
   const [selectedExplanations, setSelectedExplanations] = useState<MatchExplanation[] | undefined>(undefined);
-  const closingResourceIdRef = useRef<string | null>(null);
+  // Track which resource is animating back to grid (for z-index during exit animation)
+  const [animatingResourceId, setAnimatingResourceId] = useState<string | null>(null);
 
   // Initialize filters from URL params
   const [filters, setFilters] = useState<FilterState>(() => {
@@ -144,9 +145,16 @@ function SearchResults() {
   );
 
   const closeResourceModal = useCallback(() => {
-    closingResourceIdRef.current = selectedResource?.id ?? selectedResourceId;
+    // Set animating ID to maintain z-index during exit animation
+    const closingId = selectedResource?.id ?? selectedResourceId;
+    setAnimatingResourceId(closingId ?? null);
     setSelectedResource(null);
     setSelectedExplanations(undefined);
+
+    // Clear animating state after animation completes (match modal transition duration)
+    setTimeout(() => {
+      setAnimatingResourceId(null);
+    }, 350); // Slightly longer than spring animation
 
     // Remove resource param from URL
     const params = new URLSearchParams(searchParams.toString());
@@ -154,19 +162,14 @@ function SearchResults() {
     router.push(`/search?${params.toString()}`, { scroll: false });
   }, [router, searchParams, selectedResource, selectedResourceId]);
 
-  useEffect(() => {
-    if (!selectedResourceId || closingResourceIdRef.current !== selectedResourceId) {
-      closingResourceIdRef.current = null;
-    }
-  }, [selectedResourceId]);
-
   // Sync selected resource from URL on mount and when data loads
   useEffect(() => {
     if (
       selectedResourceId &&
       !selectedResource &&
       !initialLoading &&
-      closingResourceIdRef.current !== selectedResourceId
+      // Don't re-select a resource that's currently animating closed
+      animatingResourceId !== selectedResourceId
     ) {
       // Find the resource in current results
       const allResources = searchResults
@@ -182,7 +185,7 @@ function SearchResults() {
         setSelectedExplanations(explanations);
       }
     }
-  }, [selectedResourceId, selectedResource, initialLoading, searchResults, browseResults]);
+  }, [selectedResourceId, selectedResource, initialLoading, searchResults, browseResults, animatingResourceId]);
 
   // Only refetch when query changes, not on filter changes
   // Filters are applied client-side to already-fetched data
@@ -404,16 +407,17 @@ function SearchResults() {
               <AnimatePresence mode="popLayout">
                 <div className="grid gap-4 pr-0 sm:grid-cols-2 sm:pr-4 lg:grid-cols-3 xl:grid-cols-4" style={{ isolation: 'isolate' }}>
                   {resources.map((resource, index) => {
-                    const isSelected = selectedResource?.id === resource.id;
+                    // Card needs elevated z-index when selected OR when it's the one being animated back during modal close
+                    const isCardAnimating = selectedResource?.id === resource.id || animatingResourceId === resource.id;
                     return (
                     <motion.div
                       key={resource.id}
                       initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0, zIndex: isSelected ? 100 : 1 }}
+                      animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, scale: 0.95 }}
                       transition={{ delay: index * 0.03, layout: { duration: 0.3 } }}
                       layout
-                      style={{ position: 'relative', willChange: 'transform', zIndex: isSelected ? 100 : undefined }}
+                      style={{ position: 'relative', willChange: 'transform', zIndex: isCardAnimating ? 100 : undefined }}
                       whileHover={{ zIndex: 50, transition: { duration: 0 } }}
                       whileTap={{ zIndex: 50 }}
                       layoutId={`card-wrapper-${resource.id}`}
