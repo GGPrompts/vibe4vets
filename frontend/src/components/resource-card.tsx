@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Briefcase, BookOpen, Home, Scale, MapPin, Globe, CheckCircle2 } from 'lucide-react';
+import { Briefcase, BookOpen, Home, Scale, MapPin, Globe, CheckCircle2, Tag } from 'lucide-react';
 import type { Resource, MatchExplanation } from '@/lib/api';
 
 interface ResourceCardProps {
@@ -104,8 +104,8 @@ function CardInner({
           {resource.summary || resource.description}
         </p>
 
-        {/* Badges */}
-        <div className="mb-3 flex flex-wrap gap-2">
+        {/* Category badges */}
+        <div className="mb-2 flex flex-wrap gap-2">
           {resource.categories.map((cat) => {
             const Icon = categoryIcons[cat] || Briefcase;
             return (
@@ -128,6 +128,19 @@ function CardInner({
               {resource.location.city}, {resource.location.state}
             </Badge>
           )}
+          {/* State badges when no location entity */}
+          {!resource.location && resource.states && resource.states.length > 0 && (
+            resource.states.slice(0, 3).map((state) => (
+              <Badge
+                key={state}
+                variant="outline"
+                className="gap-1 border-[hsl(var(--v4v-gold)/0.4)] bg-[hsl(var(--v4v-gold)/0.08)] text-[hsl(var(--v4v-gold))] font-medium"
+              >
+                <MapPin className="h-3 w-3" />
+                {state}
+              </Badge>
+            ))
+          )}
           {resource.scope === 'national' && (
             <Badge
               variant="outline"
@@ -138,6 +151,30 @@ function CardInner({
             </Badge>
           )}
         </div>
+
+        {/* Tags badges */}
+        {resource.tags && resource.tags.length > 0 && (
+          <div className="mb-3 flex flex-wrap gap-1.5">
+            {resource.tags.slice(0, 4).map((tag) => (
+              <Badge
+                key={tag}
+                variant="outline"
+                className="gap-1 border-muted-foreground/20 bg-muted/50 text-muted-foreground text-xs py-0 h-5 font-normal"
+              >
+                <Tag className="h-2.5 w-2.5" />
+                <span className="capitalize">{tag.replace(/_/g, ' ')}</span>
+              </Badge>
+            ))}
+            {resource.tags.length > 4 && (
+              <Badge
+                variant="outline"
+                className="border-muted-foreground/20 bg-muted/50 text-muted-foreground text-xs py-0 h-5 font-normal"
+              >
+                +{resource.tags.length - 4}
+              </Badge>
+            )}
+          </div>
+        )}
 
         {/* Match explanation */}
         {explanations && explanations.length > 0 && (
@@ -161,6 +198,13 @@ function CardInner({
         {resource.cost && (
           <p className="mt-3 text-sm font-semibold text-green-600 dark:text-green-400">
             {resource.cost}
+          </p>
+        )}
+
+        {/* Eligibility summary */}
+        {resource.eligibility && (
+          <p className="mt-3 text-sm text-green-600 dark:text-green-400 line-clamp-2">
+            {resource.eligibility.split(/[.!?]/)[0].trim()}.
           </p>
         )}
       </CardContent>
