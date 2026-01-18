@@ -1,6 +1,6 @@
 'use client';
 
-import { Suspense, useCallback, useEffect, useState } from 'react';
+import { Suspense, useCallback, useEffect, useRef, useState } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { motion, AnimatePresence, LayoutGroup } from 'framer-motion';
 import { Button } from '@/components/ui/button';
@@ -43,6 +43,7 @@ function SearchResults() {
   // Modal state
   const [selectedResource, setSelectedResource] = useState<Resource | null>(null);
   const [selectedExplanations, setSelectedExplanations] = useState<MatchExplanation[] | undefined>(undefined);
+  const closingResourceIdRef = useRef<string | null>(null);
 
   // Initialize filters from URL params
   const [filters, setFilters] = useState<FilterState>(() => {
@@ -143,6 +144,7 @@ function SearchResults() {
   );
 
   const closeResourceModal = useCallback(() => {
+    closingResourceIdRef.current = selectedResource?.id ?? selectedResourceId;
     setSelectedResource(null);
     setSelectedExplanations(undefined);
 
@@ -150,11 +152,22 @@ function SearchResults() {
     const params = new URLSearchParams(searchParams.toString());
     params.delete('resource');
     router.push(`/search?${params.toString()}`, { scroll: false });
-  }, [router, searchParams]);
+  }, [router, searchParams, selectedResource, selectedResourceId]);
+
+  useEffect(() => {
+    if (!selectedResourceId || closingResourceIdRef.current !== selectedResourceId) {
+      closingResourceIdRef.current = null;
+    }
+  }, [selectedResourceId]);
 
   // Sync selected resource from URL on mount and when data loads
   useEffect(() => {
-    if (selectedResourceId && !selectedResource && !initialLoading) {
+    if (
+      selectedResourceId &&
+      !selectedResource &&
+      !initialLoading &&
+      closingResourceIdRef.current !== selectedResourceId
+    ) {
       // Find the resource in current results
       const allResources = searchResults
         ? searchResults.results.map((r) => r.resource)
@@ -389,15 +402,19 @@ function SearchResults() {
           ) : hasResults ? (
             <LayoutGroup>
               <AnimatePresence mode="popLayout">
-                <div className="grid gap-4 pr-0 sm:grid-cols-2 sm:pr-4 lg:grid-cols-3 xl:grid-cols-4">
+                <div className="grid gap-4 pr-0 sm:grid-cols-2 sm:pr-4 lg:grid-cols-3 xl:grid-cols-4" style={{ isolation: 'isolate' }}>
                   {resources.map((resource, index) => (
                     <motion.div
                       key={resource.id}
                       initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
+                      animate={{ opacity: 1, y: 0, zIndex: 1 }}
                       exit={{ opacity: 0, scale: 0.95 }}
-                      transition={{ delay: index * 0.03 }}
+                      transition={{ delay: index * 0.03, layout: { duration: 0.3 } }}
                       layout
+                      style={{ position: 'relative', willChange: 'transform' }}
+                      whileHover={{ zIndex: 50, transition: { duration: 0 } }}
+                      whileTap={{ zIndex: 50 }}
+                      layoutId={`card-wrapper-${resource.id}`}
                     >
                       <ResourceCard
                         resource={resource}

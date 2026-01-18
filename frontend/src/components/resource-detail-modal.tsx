@@ -2,7 +2,7 @@
 
 import { useEffect, useCallback, useRef } from 'react';
 import { motion, AnimatePresence, useDragControls, PanInfo } from 'framer-motion';
-import * as DialogPrimitive from '@radix-ui/react-dialog';
+// Radix Dialog removed - using plain motion components for simpler state management
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
@@ -33,11 +33,12 @@ interface ResourceDetailModalProps {
 }
 
 // Category styles
+// Use CSS variables to match card colors
 const categoryGradients: Record<string, string> = {
-  employment: 'from-blue-600 to-blue-800',
-  training: 'from-purple-600 to-purple-800',
-  housing: 'from-green-600 to-green-800',
-  legal: 'from-amber-600 to-amber-800',
+  employment: 'bg-gradient-to-br from-[hsl(215,60%,45%)] to-[hsl(215,60%,35%)]', // blue
+  training: 'bg-gradient-to-br from-[hsl(165,45%,40%)] to-[hsl(165,45%,30%)]',   // teal
+  housing: 'bg-gradient-to-br from-[hsl(28,65%,50%)] to-[hsl(28,65%,40%)]',      // amber/orange
+  legal: 'bg-gradient-to-br from-[hsl(260,40%,50%)] to-[hsl(260,40%,40%)]',      // purple
 };
 
 const categoryIcons: Record<string, typeof Briefcase> = {
@@ -47,11 +48,12 @@ const categoryIcons: Record<string, typeof Briefcase> = {
   legal: Scale,
 };
 
+// Match card badge styles using CSS variables
 const categoryBadgeStyles: Record<string, string> = {
-  employment: 'bg-blue-100 text-blue-800 dark:bg-blue-900/60 dark:text-blue-200',
-  training: 'bg-purple-100 text-purple-800 dark:bg-purple-900/60 dark:text-purple-200',
-  housing: 'bg-green-100 text-green-800 dark:bg-green-900/60 dark:text-green-200',
-  legal: 'bg-amber-100 text-amber-800 dark:bg-amber-900/60 dark:text-amber-200',
+  employment: 'bg-[hsl(var(--v4v-employment)/0.15)] text-[hsl(215,60%,95%)]',
+  training: 'bg-[hsl(var(--v4v-training)/0.15)] text-[hsl(165,45%,95%)]',
+  housing: 'bg-[hsl(var(--v4v-housing)/0.15)] text-[hsl(28,65%,95%)]',
+  legal: 'bg-[hsl(var(--v4v-legal)/0.15)] text-[hsl(260,40%,95%)]',
 };
 
 function IntakeSection({ resource }: { resource: Resource }) {
@@ -226,56 +228,53 @@ export function ResourceDetailModal({
   const gradient = categoryGradients[primaryCategory] || categoryGradients.employment;
 
   return (
-    <DialogPrimitive.Root open={isOpen} onOpenChange={(open) => !open && onClose()}>
-      <AnimatePresence>
-        {isOpen && (
-          <DialogPrimitive.Portal forceMount>
-            {/* Overlay */}
-            <DialogPrimitive.Overlay asChild>
-              <motion.div
-                className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.2 }}
-                onClick={onClose}
-              />
-            </DialogPrimitive.Overlay>
+    <AnimatePresence mode="wait">
+      {isOpen && (
+        <>
+          {/* Overlay */}
+          <motion.div
+            className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            onClick={onClose}
+            aria-hidden="true"
+          />
 
-            {/* Content */}
-            <DialogPrimitive.Content
-              asChild
-              onOpenAutoFocus={(e) => e.preventDefault()}
-              aria-describedby={undefined}
-            >
-              <motion.div
-                ref={constraintsRef}
-                className="fixed inset-x-0 bottom-0 z-50 max-h-[90vh] overflow-hidden rounded-t-2xl bg-white shadow-2xl outline-none sm:inset-x-auto sm:bottom-auto sm:left-1/2 sm:top-1/2 sm:max-h-[85vh] sm:w-full sm:max-w-2xl sm:-translate-x-1/2 sm:-translate-y-1/2 sm:rounded-2xl dark:bg-slate-900"
-                layoutId={`resource-card-${resource.id}`}
-                initial={{ y: '100%', opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                exit={{ y: '100%', opacity: 0 }}
-                transition={{
-                  type: 'spring',
-                  damping: 30,
-                  stiffness: 300,
-                }}
-                drag="y"
-                dragControls={dragControls}
-                dragConstraints={{ top: 0, bottom: 0 }}
-                dragElastic={{ top: 0, bottom: 0.5 }}
-                onDragEnd={handleDragEnd}
-              >
+          {/* Content */}
+          <motion.div
+            ref={constraintsRef}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="modal-title"
+            className="fixed inset-x-0 bottom-0 z-50 max-h-[90vh] overflow-hidden rounded-t-2xl bg-white shadow-2xl outline-none sm:inset-x-auto sm:bottom-auto sm:left-1/2 sm:top-1/2 sm:max-h-[85vh] sm:w-full sm:max-w-2xl sm:-translate-x-1/2 sm:-translate-y-1/2 sm:rounded-2xl dark:bg-slate-900"
+            layoutId={`resource-card-${resource.id}`}
+            initial={{ y: '100%', opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: '100%', opacity: 0 }}
+            transition={{
+              type: 'spring',
+              damping: 30,
+              stiffness: 300,
+            }}
+            drag="y"
+            dragControls={dragControls}
+            dragConstraints={{ top: 0, bottom: 0 }}
+            dragElastic={{ top: 0, bottom: 0.5 }}
+            onDragEnd={handleDragEnd}
+          >
                 {/* Mobile drag handle */}
                 <div className="flex justify-center py-3 sm:hidden">
                   <div className="h-1.5 w-12 rounded-full bg-muted-foreground/30" />
                 </div>
 
                 {/* Header with gradient background */}
-                <div className={cn('bg-gradient-to-br p-6 text-white', gradient)}>
+                <div className={cn('p-6 text-white', gradient)}>
                   {/* Close button */}
                   <button
                     onClick={onClose}
+                    type="button"
                     className="absolute right-4 top-4 rounded-full bg-white/20 p-2 transition-colors hover:bg-white/30 focus:outline-none focus:ring-2 focus:ring-white/50"
                     aria-label="Close"
                   >
@@ -308,9 +307,9 @@ export function ResourceDetailModal({
                   </div>
 
                   {/* Title */}
-                  <DialogPrimitive.Title className="font-display mb-2 text-2xl font-bold leading-tight sm:text-3xl">
+                  <h2 id="modal-title" className="font-display mb-2 text-2xl font-bold leading-tight sm:text-3xl">
                     {resource.title}
-                  </DialogPrimitive.Title>
+                  </h2>
 
                   {/* Organization */}
                   <p className="text-white/90">{resource.organization.name}</p>
@@ -446,12 +445,10 @@ export function ResourceDetailModal({
                     )}
                   </div>
                 </div>
-              </motion.div>
-            </DialogPrimitive.Content>
-          </DialogPrimitive.Portal>
-        )}
-      </AnimatePresence>
-    </DialogPrimitive.Root>
+          </motion.div>
+        </>
+      )}
+    </AnimatePresence>
   );
 }
 
