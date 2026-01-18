@@ -664,10 +664,15 @@ html {
 }
 
 /* ==========================================================================
- * TABLE ROW INTERACTIVE STATES
+ * COMPONENT OPAQUE BACKGROUNDS
  * ==========================================================================
- * Fix transparent backgrounds on hover/selected states for Light Tokyo Night
+ * Fix transparent/semi-transparent backgrounds for Light Tokyo Night theme.
+ * Components should have solid, opaque backgrounds for readability.
  */
+
+/* ---------------------------------------------------------------------------
+ * TABLE ROW INTERACTIVE STATES
+ * --------------------------------------------------------------------------- */
 
 /* Table row hover - opaque background instead of transparent */
 [data-slot="table-row"]:hover {
@@ -679,8 +684,73 @@ html {
   background-color: hsl(var(--v4v-bg-muted)) !important;
 }
 
-/* Card interactive states - ensure opaque backgrounds */
+/* Table footer - opaque background */
+[data-slot="table-footer"] {
+  background-color: hsl(var(--v4v-bg-surface)) !important;
+}
+
+/* ---------------------------------------------------------------------------
+ * TABS COMPONENT
+ * --------------------------------------------------------------------------- */
+
+/* TabsList container - solid muted background */
+[data-slot="tabs-list"] {
+  background-color: hsl(var(--v4v-bg-muted)) !important;
+}
+
+/* TabsTrigger active state - solid background */
+[data-slot="tabs-trigger"][data-state="active"] {
+  background-color: hsl(var(--card)) !important;
+}
+
+/* ---------------------------------------------------------------------------
+ * CARD INTERACTIVE STATES
+ * --------------------------------------------------------------------------- */
+
 [data-slot="card"]:focus-within,
 [data-slot="card"]:active {
   background-color: hsl(var(--card));
+}
+
+/* ---------------------------------------------------------------------------
+ * DIALOG/POPOVER COMPONENTS
+ * --------------------------------------------------------------------------- */
+
+/* Ensure dialog content has solid background */
+[data-slot="dialog-content"] {
+  background-color: hsl(var(--card)) !important;
+}
+
+/* Popover content - solid background */
+[data-radix-popper-content-wrapper] [role="dialog"],
+[data-radix-popper-content-wrapper] [role="listbox"],
+[data-radix-popper-content-wrapper] [role="menu"] {
+  background-color: hsl(var(--card)) !important;
+}
+
+/* ---------------------------------------------------------------------------
+ * DROPDOWN/SELECT COMPONENTS
+ * --------------------------------------------------------------------------- */
+
+/* Select/dropdown content */
+[data-slot="select-content"],
+[data-slot="dropdown-menu-content"] {
+  background-color: hsl(var(--card)) !important;
+}
+
+/* Select/dropdown items on hover */
+[data-slot="select-item"]:hover,
+[data-slot="select-item"][data-highlighted],
+[data-slot="dropdown-menu-item"]:hover,
+[data-slot="dropdown-menu-item"][data-highlighted] {
+  background-color: hsl(var(--v4v-bg-surface)) !important;
+}
+
+/* ---------------------------------------------------------------------------
+ * SKELETON LOADING STATES
+ * --------------------------------------------------------------------------- */
+
+/* Ensure skeletons are visible against muted backgrounds */
+[data-slot="skeleton"] {
+  background-color: hsl(var(--v4v-bg-surface)) !important;
 }
