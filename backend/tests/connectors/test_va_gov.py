@@ -257,7 +257,7 @@ class TestVAGovConnector:
         assert "va-health" in tags
         assert "vocational-rehab" in tags
         assert "employment" in tags
-        assert "homeless-services" in tags
+        assert "housing-services" in tags
 
     def test_normalize_phone(self):
         """Test phone normalization inherited from BaseConnector."""

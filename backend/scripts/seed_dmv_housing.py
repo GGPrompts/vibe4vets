@@ -30,8 +30,8 @@ DMV_HOUSING_RESOURCES = [
         "title": "SSVF - Northern Virginia",
         "description": "Supportive Services for Veteran Families (SSVF) program providing housing "
         "assistance, case management, and supportive services to very low-income veteran families "
-        "who are homeless or at risk of homelessness in Northern Virginia.",
-        "summary": "SSVF rapid re-housing and homelessness prevention for veteran families",
+        "who are experiencing homelessness or at risk of housing instability in Northern Virginia.",
+        "summary": "SSVF rapid re-housing and housing stability services for veteran families",
         "categories": ["housing"],
         "subcategories": ["ssvf", "rapid_rehousing"],
         "scope": "state",
@@ -58,7 +58,7 @@ DMV_HOUSING_RESOURCES = [
                     "DD-214",
                     "Income verification",
                     "Photo ID",
-                    "Proof of homelessness or at-risk status",
+                    "Proof of housing status",
                 ],
                 "waitlist_status": "open",
             },
@@ -79,10 +79,10 @@ DMV_HOUSING_RESOURCES = [
         "title": "SSVF - Washington DC",
         "description": (
             "Housing First program providing immediate access to permanent housing for "
-            "chronically homeless veterans in Washington DC, combined with intensive "
+            "veterans experiencing chronic homelessness in Washington DC, combined with intensive "
             "supportive services to maintain housing stability."
         ),
-        "summary": "Housing First SSVF program for chronically homeless veterans in DC",
+        "summary": "Housing First SSVF program for veterans experiencing chronic homelessness in DC",
         "categories": ["housing"],
         "subcategories": ["ssvf", "housing_first"],
         "scope": "local",
@@ -119,7 +119,7 @@ DMV_HOUSING_RESOURCES = [
         "org_name": "Maryland Center for Veterans Education and Training",
         "title": "SSVF - Baltimore Metro",
         "description": "Comprehensive veteran housing program providing transitional housing, "
-        "rapid re-housing assistance, and employment services for homeless veterans in the "
+        "rapid re-housing assistance, and employment services for veterans experiencing homelessness in the"
         "Baltimore metropolitan area.",
         "summary": "SSVF and transitional housing for Baltimore area veterans",
         "categories": ["housing"],
@@ -159,8 +159,8 @@ DMV_HOUSING_RESOURCES = [
         "org_name": "DC Housing Authority",
         "title": "HUD-VASH - Washington DC",
         "description": "HUD-Veterans Affairs Supportive Housing program combining Housing Choice "
-        "Vouchers with VA case management and supportive services for homeless veterans in DC.",
-        "summary": "HUD-VASH permanent supportive housing vouchers for homeless veterans",
+        "Vouchers with VA case management and supportive services for veterans experiencing homelessness in DC.",
+        "summary": "HUD-VASH permanent supportive housing vouchers for veterans experiencing homelessness",
         "categories": ["housing"],
         "subcategories": ["hud_vash", "voucher"],
         "scope": "local",
@@ -203,9 +203,9 @@ DMV_HOUSING_RESOURCES = [
     {
         "org_name": "Fairfax County Housing Authority",
         "title": "HUD-VASH - Fairfax County",
-        "description": "HUD-VASH housing voucher program for homeless veterans in Fairfax County, "
+        "description": "HUD-VASH housing voucher program for veterans experiencing homelessness in Fairfax County, "
         "providing rental assistance and connection to VA healthcare and supportive services.",
-        "summary": "HUD-VASH vouchers for Fairfax County homeless veterans",
+        "summary": "HUD-VASH vouchers for Fairfax County veterans experiencing homelessness",
         "categories": ["housing"],
         "subcategories": ["hud_vash", "voucher"],
         "scope": "local",
@@ -321,7 +321,7 @@ DMV_HOUSING_RESOURCES = [
     {
         "org_name": "US VETS",
         "title": "US VETS - Washington DC",
-        "description": "Comprehensive homeless services including emergency shelter, transitional "
+        "description": "Comprehensive housing services including emergency shelter, transitional "
         "housing, and permanent supportive housing for veterans in the DC metro area.",
         "summary": "Emergency shelter and housing continuum for DC area veterans",
         "categories": ["housing"],
@@ -444,7 +444,7 @@ DMV_HOUSING_RESOURCES = [
     {
         "org_name": "Operation Renewed Hope Foundation",
         "title": "GPD Transitional Housing - Prince George's County",
-        "description": "VA Grant and Per Diem funded transitional housing for homeless veterans "
+        "description": "VA Grant and Per Diem funded transitional housing for veterans experiencing homelessness "
         "in Prince George's County, providing up to 24 months of supportive housing.",
         "summary": "VA GPD transitional housing in Prince George's County MD",
         "categories": ["housing"],
@@ -482,9 +482,9 @@ DMV_HOUSING_RESOURCES = [
     {
         "org_name": "Final Salute Inc.",
         "title": "Women Veterans Housing - National Capital Region",
-        "description": "Transitional housing program specifically for homeless women veterans and "
+        "description": "Transitional housing program specifically for women veterans experiencing homelessness and "
         "their children in the DC metro area, providing safe housing and wraparound services.",
-        "summary": "Housing for homeless women veterans and children in DMV",
+        "summary": "Housing for women veterans experiencing homelessness and children in DMV",
         "categories": ["housing"],
         "subcategories": ["women_veterans", "transitional_housing"],
         "scope": "local",

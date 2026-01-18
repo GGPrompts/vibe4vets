@@ -69,7 +69,7 @@ All discovery prompts output JSON matching `ResourceCandidate`:
   "phone": "555-123-4567",
   "website": "https://...",
   "address": "123 Main St, City, ST 12345",
-  "eligibility": ["veteran", "homeless", "low_income"],
+  "eligibility": ["veteran", "housing", "low_income"],
   "coverage_area": "Virginia",
   "source_url": "https://... (where this info was found)",
   "confidence": 0.85

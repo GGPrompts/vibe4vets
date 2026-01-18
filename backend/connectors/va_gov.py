@@ -324,7 +324,7 @@ class VAGovConnector(BaseConnector):
             "employment": "employment",
             "career": "career-services",
             "housing": "housing",
-            "homeless": "homeless-services",
+            "homeless": "housing-services",
             "legal": "legal-aid",
             "benefits": "benefits",
             "education": "education",

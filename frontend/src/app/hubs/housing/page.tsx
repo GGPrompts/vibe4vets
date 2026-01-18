@@ -5,25 +5,25 @@ import { HubCard, type HubResource } from '@/components/HubCard';
 const housingResources: HubResource[] = [
   {
     name: 'HUD-VASH Program',
-    description: 'HUD-VA Supportive Housing combines rental assistance vouchers with VA case management and clinical services for homeless veterans.',
+    description: 'HUD-VA Supportive Housing combines rental assistance vouchers with VA case management and clinical services for veterans experiencing homelessness.',
     url: 'https://www.va.gov/homeless/hud-vash.asp',
     icon: HomeIcon,
   },
   {
     name: 'SSVF Provider Directory',
-    description: 'Supportive Services for Veteran Families helps prevent homelessness and provides rapid re-housing for veterans and their families.',
+    description: 'Supportive Services for Veteran Families helps prevent housing instability and provides rapid re-housing for veterans and their families.',
     url: 'https://www.va.gov/homeless/ssvf/',
     icon: Users,
   },
   {
     name: 'National Coalition for Homeless Veterans',
-    description: 'Advocacy organization connecting homeless veterans with local service providers and emergency resources nationwide.',
+    description: 'Advocacy organization connecting veterans experiencing homelessness with local service providers and emergency resources nationwide.',
     url: 'https://nchv.org/',
     icon: Shield,
   },
   {
-    name: 'VA Homeless Veterans Programs',
-    description: 'Comprehensive VA programs addressing veteran homelessness including outreach, transitional housing, and permanent housing.',
+    name: 'VA Housing Programs for Veterans',
+    description: 'Comprehensive VA programs addressing housing needs including outreach, transitional housing, and permanent housing.',
     url: 'https://www.va.gov/homeless/',
     icon: Building,
   },
@@ -106,7 +106,7 @@ export default function HousingHubPage() {
               Need Immediate Help?
             </h3>
             <p className="mt-2 text-sm text-[hsl(var(--muted-foreground))]">
-              If you&apos;re a veteran facing homelessness or housing crisis, call the National Call
+              If you&apos;re a veteran experiencing homelessness or a housing crisis, call the National Call
               Center for Homeless Veterans at <strong className="text-[hsl(var(--v4v-navy))]">1-877-4AID-VET (1-877-424-3838)</strong>.
               Available 24/7.
             </p>

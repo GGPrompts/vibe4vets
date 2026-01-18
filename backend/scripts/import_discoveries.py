@@ -252,11 +252,12 @@ def import_discoveries(json_path: str, database_url: str, dry_run: bool = False)
                 # Convert eligibility array to readable string
                 eligibility_raw = disc.get("eligibility")
                 if isinstance(eligibility_raw, list):
-                    # Convert array like ["veteran", "homeless"] to readable string
+                    # Convert array like ["veteran", "housing"] to readable string
                     eligibility_map = {
                         "veteran": "Must be a veteran",
-                        "homeless": "Must be homeless or at-risk",
-                        "at_risk_homeless": "For veterans at risk of homelessness",
+                        "housing": "For veterans experiencing homelessness or housing instability",
+                        "homeless": "For veterans experiencing homelessness",  # Legacy support
+                        "at_risk_homeless": "For veterans at risk of housing instability",
                         "low_income": "Income restrictions apply",
                         "disabled_veteran": "For disabled veterans",
                         "transitioning_military": "For transitioning service members",
