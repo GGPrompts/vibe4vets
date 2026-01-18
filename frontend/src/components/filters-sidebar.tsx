@@ -230,17 +230,18 @@ export function FiltersSidebar({
         </div>
       )}
 
-      {activeFilterCount > 0 && (
-        <Button
-          variant="ghost"
-          size="sm"
-          onClick={clearAllFilters}
-          className="h-auto w-full justify-start px-0 py-1 text-sm text-muted-foreground hover:text-foreground"
-        >
-          <X className="mr-1 h-3 w-3" />
-          Clear all filters ({activeFilterCount})
-        </Button>
-      )}
+      <Button
+        variant="ghost"
+        size="sm"
+        onClick={clearAllFilters}
+        className={cn(
+          'h-auto w-full justify-start px-0 py-1 text-sm text-muted-foreground hover:text-foreground',
+          activeFilterCount === 0 && 'invisible'
+        )}
+      >
+        <X className="mr-1 h-3 w-3" />
+        Clear all filters ({activeFilterCount})
+      </Button>
 
       <Separator />
 
