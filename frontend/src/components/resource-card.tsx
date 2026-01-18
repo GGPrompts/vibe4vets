@@ -27,12 +27,28 @@ const accentBarColors: Record<string, string> = {
   legal: 'bg-[hsl(var(--v4v-legal))]',
 };
 
+// Card background gradients - subtle category tints
+const cardBackgrounds: Record<string, string> = {
+  employment: 'bg-gradient-to-br from-[hsl(var(--v4v-employment)/0.03)] via-white to-[hsl(var(--v4v-employment)/0.06)]',
+  training: 'bg-gradient-to-br from-[hsl(var(--v4v-training)/0.03)] via-white to-[hsl(var(--v4v-training)/0.06)]',
+  housing: 'bg-gradient-to-br from-[hsl(var(--v4v-housing)/0.03)] via-white to-[hsl(var(--v4v-housing)/0.06)]',
+  legal: 'bg-gradient-to-br from-[hsl(var(--v4v-legal)/0.03)] via-white to-[hsl(var(--v4v-legal)/0.06)]',
+};
+
+// Card border colors on hover
+const cardHoverBorders: Record<string, string> = {
+  employment: 'hover:border-[hsl(var(--v4v-employment)/0.3)]',
+  training: 'hover:border-[hsl(var(--v4v-training)/0.3)]',
+  housing: 'hover:border-[hsl(var(--v4v-housing)/0.3)]',
+  legal: 'hover:border-[hsl(var(--v4v-legal)/0.3)]',
+};
+
 // Badge styling using design system
 const categoryBadgeStyles: Record<string, string> = {
-  employment: 'bg-[hsl(var(--v4v-employment)/0.1)] text-[hsl(var(--v4v-employment))] border-[hsl(var(--v4v-employment)/0.3)]',
-  training: 'bg-[hsl(var(--v4v-training)/0.1)] text-[hsl(var(--v4v-training))] border-[hsl(var(--v4v-training)/0.3)]',
-  housing: 'bg-[hsl(var(--v4v-housing)/0.1)] text-[hsl(var(--v4v-housing))] border-[hsl(var(--v4v-housing)/0.3)]',
-  legal: 'bg-[hsl(var(--v4v-legal)/0.1)] text-[hsl(var(--v4v-legal))] border-[hsl(var(--v4v-legal)/0.3)]',
+  employment: 'bg-[hsl(var(--v4v-employment)/0.12)] text-[hsl(var(--v4v-employment))] border-[hsl(var(--v4v-employment)/0.25)]',
+  training: 'bg-[hsl(var(--v4v-training)/0.12)] text-[hsl(var(--v4v-training))] border-[hsl(var(--v4v-training)/0.25)]',
+  housing: 'bg-[hsl(var(--v4v-housing)/0.12)] text-[hsl(var(--v4v-housing))] border-[hsl(var(--v4v-housing)/0.25)]',
+  legal: 'bg-[hsl(var(--v4v-legal)/0.12)] text-[hsl(var(--v4v-legal))] border-[hsl(var(--v4v-legal)/0.25)]',
 };
 
 // Category icons
@@ -58,8 +74,13 @@ function CardInner({
 
   return (
     <>
-      {/* Category accent bar */}
-      <div className={`absolute left-0 top-0 h-1 w-full ${accentBarColors[primaryCategory] || accentBarColors.employment}`} />
+      {/* Category accent bar - thicker */}
+      <div className={`absolute left-0 top-0 h-1.5 w-full ${accentBarColors[primaryCategory] || accentBarColors.employment}`} />
+
+      {/* Decorative corner gradient */}
+      <div
+        className={`absolute -right-8 -top-8 h-24 w-24 rounded-full opacity-[0.07] blur-2xl ${accentBarColors[primaryCategory] || accentBarColors.employment}`}
+      />
 
       <CardHeader className="pb-3 pt-4">
         {/* Title with icon */}
@@ -156,9 +177,13 @@ export function ResourceCard({
   searchParams,
   enableLayoutId = false,
 }: ResourceCardProps) {
+  const primaryCategory = resource.categories[0] || 'employment';
+
   const cardContent = (
     <Card
-      className={`category-card group relative h-full overflow-hidden bg-white dark:bg-card ${
+      className={`category-card group relative h-full overflow-hidden border transition-all duration-300 ${
+        cardBackgrounds[primaryCategory] || cardBackgrounds.employment
+      } ${cardHoverBorders[primaryCategory] || cardHoverBorders.employment} ${
         variant === 'selectable' && selected ? 'ring-2 ring-[hsl(var(--v4v-gold))]' : ''
       } ${variant === 'modal' || variant === 'selectable' ? 'cursor-pointer' : ''}`}
       onClick={variant === 'modal' || variant === 'selectable' ? onClick : undefined}

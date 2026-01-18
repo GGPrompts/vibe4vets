@@ -20,15 +20,17 @@
 
 :root {
   /* ==========================================================================
-   * SOFT PASTEL PALETTE
+   * LIGHT TOKYO NIGHT PALETTE
    * ==========================================================================
+   * Deeper backgrounds with blue-purple undertones
+   * Maintains excellent contrast while feeling more immersive
    */
 
-  /* Background layers - soft warm grays with slight warmth */
-  --v4v-bg-base: 210 20% 96%;           /* #f3f5f7 - main background */
-  --v4v-bg-elevated: 210 25% 98%;       /* #f8f9fb - cards, elevated */
-  --v4v-bg-surface: 210 15% 93%;        /* #ebecef - interactive surfaces */
-  --v4v-bg-muted: 210 10% 88%;          /* #dde0e4 - muted backgrounds */
+  /* Background layers - cool blue-gray with depth */
+  --v4v-bg-base: 220 25% 91%;           /* #e2e6ed - main background, slightly deeper */
+  --v4v-bg-elevated: 220 20% 95%;       /* #eff1f5 - cards, elevated */
+  --v4v-bg-surface: 220 22% 87%;        /* #d6dbe5 - interactive surfaces */
+  --v4v-bg-muted: 220 18% 82%;          /* #c9ced9 - muted backgrounds */
 
   /* Primary: Deep Navy - Trust, stability */
   --v4v-navy: 220 50% 20%;              /* #1a2744 - primary text */
@@ -40,22 +42,22 @@
   --v4v-gold-dark: 42 85% 40%;          /* #bc8709 - text-safe gold */
   --v4v-gold-light: 42 70% 70%;         /* #e8ca73 - subtle highlights */
 
-  /* Category colors - soft pastels */
-  --v4v-employment: 215 60% 55%;        /* Soft blue */
-  --v4v-employment-light: 215 55% 65%;
-  --v4v-employment-muted: 215 40% 92%;
+  /* Category colors - vibrant but balanced */
+  --v4v-employment: 215 70% 50%;        /* Vivid blue */
+  --v4v-employment-light: 215 65% 60%;
+  --v4v-employment-muted: 215 50% 90%;
 
-  --v4v-training: 165 45% 45%;          /* Soft teal */
-  --v4v-training-light: 165 40% 55%;
-  --v4v-training-muted: 165 35% 92%;
+  --v4v-training: 165 55% 42%;          /* Rich teal */
+  --v4v-training-light: 165 50% 52%;
+  --v4v-training-muted: 165 45% 90%;
 
-  --v4v-housing: 28 65% 55%;            /* Soft amber/coral */
-  --v4v-housing-light: 28 60% 65%;
-  --v4v-housing-muted: 28 50% 93%;
+  --v4v-housing: 24 75% 52%;            /* Warm orange */
+  --v4v-housing-light: 24 70% 62%;
+  --v4v-housing-muted: 24 60% 92%;
 
-  --v4v-legal: 260 40% 55%;             /* Soft purple */
-  --v4v-legal-light: 260 35% 65%;
-  --v4v-legal-muted: 260 30% 93%;
+  --v4v-legal: 265 50% 55%;             /* Rich purple */
+  --v4v-legal-light: 265 45% 65%;
+  --v4v-legal-muted: 265 40% 92%;
 
   /* Text colors */
   --v4v-text-primary: 220 50% 20%;      /* Deep navy */
@@ -79,8 +81,8 @@
   --accent-foreground: var(--v4v-navy);
   --destructive: 0 65% 50%;
   --destructive-foreground: 0 0% 100%;
-  --border: 220 15% 88%;
-  --input: 220 15% 88%;
+  --border: 220 20% 82%;              /* Slightly deeper border */
+  --input: 220 20% 85%;
   --ring: var(--v4v-gold);
   --radius: 0.625rem;
 
@@ -311,25 +313,32 @@ html {
   background: hsl(var(--card));
   border: 1px solid hsl(var(--border));
   border-radius: var(--radius);
-  box-shadow: 0 1px 3px hsl(var(--v4v-navy) / 0.04);
+  box-shadow:
+    0 1px 3px hsl(var(--v4v-navy) / 0.06),
+    0 4px 12px -4px hsl(var(--v4v-navy) / 0.08);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .soft-card:hover {
-  border-color: hsl(var(--v4v-gold) / 0.4);
+  border-color: hsl(var(--v4v-gold) / 0.5);
   box-shadow:
-    0 8px 25px -8px hsl(var(--v4v-navy) / 0.12),
-    0 0 0 1px hsl(var(--v4v-gold) / 0.1);
-  transform: translateY(-2px);
+    0 8px 30px -8px hsl(var(--v4v-navy) / 0.18),
+    0 0 0 1px hsl(var(--v4v-gold) / 0.15);
+  transform: translateY(-3px);
 }
 
 .category-card {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow:
+    0 1px 3px hsl(var(--v4v-navy) / 0.05),
+    0 4px 12px -2px hsl(var(--v4v-navy) / 0.08);
 }
 
 .category-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 30px -10px hsl(var(--v4v-navy) / 0.15);
+  transform: translateY(-4px) scale(1.01);
+  box-shadow:
+    0 12px 35px -10px hsl(var(--v4v-navy) / 0.2),
+    0 4px 15px -5px hsl(var(--v4v-navy) / 0.1);
 }
 
 /* ==========================================================================
@@ -550,4 +559,106 @@ html {
     0 8px 20px hsl(var(--v4v-navy) / 0.1),
     inset 0 1px 2px hsl(0 0% 100% / 0.5);
   transform: translateY(-2px);
+}
+
+/* ==========================================================================
+ * SIDEBAR STYLING
+ * ==========================================================================
+ */
+
+/* Sidebar with subtle gradient - Tokyo Night style */
+.sidebar-gradient {
+  background: linear-gradient(
+    180deg,
+    hsl(var(--card)) 0%,
+    hsl(220 22% 93%) 50%,
+    hsl(var(--v4v-bg-base)) 100%
+  );
+}
+
+/* Sidebar section with category color accent */
+.sidebar-section {
+  position: relative;
+  padding-left: 0.75rem;
+  margin-left: -0.75rem;
+  border-left: 2px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.sidebar-section:hover {
+  border-left-color: hsl(var(--v4v-gold) / 0.4);
+}
+
+.sidebar-section[data-category="employment"] {
+  border-left-color: hsl(var(--v4v-employment) / 0.3);
+}
+
+.sidebar-section[data-category="training"] {
+  border-left-color: hsl(var(--v4v-training) / 0.3);
+}
+
+.sidebar-section[data-category="housing"] {
+  border-left-color: hsl(var(--v4v-housing) / 0.3);
+}
+
+.sidebar-section[data-category="legal"] {
+  border-left-color: hsl(var(--v4v-legal) / 0.3);
+}
+
+/* Sidebar header accent */
+.sidebar-header-accent {
+  background: linear-gradient(
+    90deg,
+    hsl(var(--v4v-gold) / 0.08) 0%,
+    transparent 100%
+  );
+  border-bottom: 1px solid hsl(var(--v4v-gold) / 0.15);
+}
+
+/* ==========================================================================
+ * SEARCH GRID STYLING
+ * ==========================================================================
+ */
+
+/* Subtle grid background pattern - Tokyo Night vibes */
+.grid-background {
+  background-color: hsl(var(--background));
+  background-image:
+    radial-gradient(
+      ellipse 120% 80% at 30% 0%,
+      hsl(var(--v4v-employment) / 0.06) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      ellipse 100% 100% at 90% 90%,
+      hsl(var(--v4v-legal) / 0.04) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      ellipse 60% 60% at 70% 30%,
+      hsl(var(--v4v-housing) / 0.03) 0%,
+      transparent 40%
+    );
+}
+
+/* Subtle dot pattern overlay */
+.grid-dots {
+  background-image: radial-gradient(
+    circle at center,
+    hsl(var(--v4v-navy) / 0.03) 1px,
+    transparent 1px
+  );
+  background-size: 24px 24px;
+}
+
+/* Filter section highlight on hover */
+.filter-section-hover {
+  transition: all 0.2s ease;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  margin: -0.5rem;
+}
+
+.filter-section-hover:hover {
+  background: hsl(var(--v4v-gold) / 0.04);
 }

@@ -32,13 +32,28 @@ interface ResourceDetailModalProps {
   onClose: () => void;
 }
 
-// Category styles
-// Use CSS variables to match card colors
+// Category styles - use CSS variables for consistency
 const categoryGradients: Record<string, string> = {
-  employment: 'bg-gradient-to-br from-[hsl(215,60%,45%)] to-[hsl(215,60%,35%)]', // blue
-  training: 'bg-gradient-to-br from-[hsl(165,45%,40%)] to-[hsl(165,45%,30%)]',   // teal
-  housing: 'bg-gradient-to-br from-[hsl(28,65%,50%)] to-[hsl(28,65%,40%)]',      // amber/orange
-  legal: 'bg-gradient-to-br from-[hsl(260,40%,50%)] to-[hsl(260,40%,40%)]',      // purple
+  employment: 'bg-gradient-to-br from-[hsl(var(--v4v-employment))] to-[hsl(215,70%,40%)]',
+  training: 'bg-gradient-to-br from-[hsl(var(--v4v-training))] to-[hsl(165,55%,32%)]',
+  housing: 'bg-gradient-to-br from-[hsl(var(--v4v-housing))] to-[hsl(24,75%,42%)]',
+  legal: 'bg-gradient-to-br from-[hsl(var(--v4v-legal))] to-[hsl(265,50%,45%)]',
+};
+
+// Body background tints - subtle category colors
+const bodyBackgrounds: Record<string, string> = {
+  employment: 'bg-gradient-to-b from-white via-white to-[hsl(var(--v4v-employment)/0.04)]',
+  training: 'bg-gradient-to-b from-white via-white to-[hsl(var(--v4v-training)/0.04)]',
+  housing: 'bg-gradient-to-b from-white via-white to-[hsl(var(--v4v-housing)/0.04)]',
+  legal: 'bg-gradient-to-b from-white via-white to-[hsl(var(--v4v-legal)/0.04)]',
+};
+
+// Decorative orb colors
+const decorativeOrbs: Record<string, string> = {
+  employment: 'bg-[hsl(var(--v4v-employment))]',
+  training: 'bg-[hsl(var(--v4v-training))]',
+  housing: 'bg-[hsl(var(--v4v-housing))]',
+  legal: 'bg-[hsl(var(--v4v-legal))]',
 };
 
 const categoryIcons: Record<string, typeof Briefcase> = {
@@ -50,11 +65,14 @@ const categoryIcons: Record<string, typeof Briefcase> = {
 
 // Match card badge styles using CSS variables
 const categoryBadgeStyles: Record<string, string> = {
-  employment: 'bg-[hsl(var(--v4v-employment)/0.15)] text-[hsl(215,60%,95%)]',
-  training: 'bg-[hsl(var(--v4v-training)/0.15)] text-[hsl(165,45%,95%)]',
-  housing: 'bg-[hsl(var(--v4v-housing)/0.15)] text-[hsl(28,65%,95%)]',
-  legal: 'bg-[hsl(var(--v4v-legal)/0.15)] text-[hsl(260,40%,95%)]',
+  employment: 'bg-[hsl(var(--v4v-employment)/0.2)] text-white',
+  training: 'bg-[hsl(var(--v4v-training)/0.2)] text-white',
+  housing: 'bg-[hsl(var(--v4v-housing)/0.2)] text-white',
+  legal: 'bg-[hsl(var(--v4v-legal)/0.2)] text-white',
 };
+
+// Section card styling
+const sectionCardStyle = 'rounded-xl border bg-white/80 p-4 shadow-sm backdrop-blur-sm';
 
 function IntakeSection({ resource }: { resource: Resource }) {
   const location = resource.location;
@@ -67,9 +85,11 @@ function IntakeSection({ resource }: { resource: Resource }) {
   }
 
   return (
-    <div className="space-y-4">
-      <h3 className="flex items-center gap-2 text-lg font-semibold">
-        <FileText className="h-5 w-5 text-[hsl(var(--v4v-gold))]" />
+    <div className={cn(sectionCardStyle, 'space-y-4')}>
+      <h3 className="flex items-center gap-2 text-lg font-semibold text-[hsl(var(--v4v-navy))]">
+        <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[hsl(var(--v4v-gold)/0.1)]">
+          <FileText className="h-4 w-4 text-[hsl(var(--v4v-gold-dark))]" />
+        </div>
         How to Apply
       </h3>
 
@@ -226,6 +246,8 @@ export function ResourceDetailModal({
   const primaryCategory = resource.categories[0] || 'employment';
   const CategoryIcon = categoryIcons[primaryCategory] || Briefcase;
   const gradient = categoryGradients[primaryCategory] || categoryGradients.employment;
+  const bodyBg = bodyBackgrounds[primaryCategory] || bodyBackgrounds.employment;
+  const orbColor = decorativeOrbs[primaryCategory] || decorativeOrbs.employment;
 
   return (
     <AnimatePresence mode="wait">
@@ -248,7 +270,11 @@ export function ResourceDetailModal({
             role="dialog"
             aria-modal="true"
             aria-labelledby="modal-title"
-            className="fixed inset-x-0 bottom-0 max-h-[90vh] overflow-hidden rounded-t-2xl bg-white shadow-2xl outline-none sm:inset-x-auto sm:bottom-auto sm:left-1/2 sm:top-1/2 sm:max-h-[85vh] sm:w-full sm:max-w-2xl sm:-translate-x-1/2 sm:-translate-y-1/2 sm:rounded-2xl dark:bg-slate-900"
+            className={cn(
+              'fixed inset-x-0 bottom-0 max-h-[90vh] overflow-hidden rounded-t-2xl shadow-2xl outline-none',
+              'sm:inset-x-auto sm:bottom-auto sm:left-1/2 sm:top-1/2 sm:max-h-[85vh] sm:w-full sm:max-w-2xl sm:-translate-x-1/2 sm:-translate-y-1/2 sm:rounded-2xl',
+              bodyBg
+            )}
             layoutId={`resource-card-${resource.id}`}
             initial={{ y: '100%', opacity: 0, zIndex: 100 }}
             animate={{ y: 0, opacity: 1, zIndex: 100 }}
@@ -335,7 +361,20 @@ export function ResourceDetailModal({
                 </div>
 
                 {/* Scrollable content */}
-                <div className="max-h-[calc(90vh-280px)] overflow-y-auto p-6 sm:max-h-[calc(85vh-280px)]">
+                <div className="relative max-h-[calc(90vh-280px)] overflow-x-hidden overflow-y-auto p-6 sm:max-h-[calc(85vh-280px)]">
+                  {/* Decorative orbs */}
+                  <div
+                    className={cn(
+                      'pointer-events-none absolute -right-20 top-20 h-40 w-40 rounded-full opacity-[0.04] blur-3xl',
+                      orbColor
+                    )}
+                  />
+                  <div
+                    className={cn(
+                      'pointer-events-none absolute -left-20 bottom-40 h-32 w-32 rounded-full opacity-[0.03] blur-3xl',
+                      orbColor
+                    )}
+                  />
                   {/* Primary CTAs */}
                   <div className="mb-6 flex flex-wrap gap-3">
                     {resource.website && (
@@ -372,18 +411,18 @@ export function ResourceDetailModal({
                   </div>
 
                   {/* Description */}
-                  <div className="mb-6">
-                    <h3 className="mb-2 text-lg font-semibold">About This Resource</h3>
-                    <p className="whitespace-pre-wrap text-muted-foreground">
+                  <div className={cn(sectionCardStyle, 'relative mb-6')}>
+                    <h3 className="mb-3 text-lg font-semibold text-[hsl(var(--v4v-navy))]">About This Resource</h3>
+                    <p className="whitespace-pre-wrap leading-relaxed text-muted-foreground">
                       {resource.description}
                     </p>
                   </div>
 
                   {/* Eligibility */}
                   {resource.eligibility && (
-                    <div className="mb-6">
-                      <h3 className="mb-2 text-lg font-semibold">Eligibility</h3>
-                      <p className="whitespace-pre-wrap text-muted-foreground">
+                    <div className={cn(sectionCardStyle, 'relative mb-6')}>
+                      <h3 className="mb-3 text-lg font-semibold text-[hsl(var(--v4v-navy))]">Eligibility</h3>
+                      <p className="whitespace-pre-wrap leading-relaxed text-muted-foreground">
                         {resource.eligibility}
                       </p>
                     </div>
@@ -395,55 +434,72 @@ export function ResourceDetailModal({
                   <IntakeSection resource={resource} />
 
                   {/* Additional Info */}
-                  <div className="mt-6 space-y-4">
-                    {resource.hours && (
+                  <div className={cn(sectionCardStyle, 'mt-6')}>
+                    <h3 className="mb-4 text-lg font-semibold text-[hsl(var(--v4v-navy))]">Details</h3>
+                    <div className="space-y-4">
+                      {resource.hours && (
+                        <div className="flex items-start gap-3">
+                          <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[hsl(var(--v4v-navy)/0.08)]">
+                            <Clock className="h-4 w-4 text-[hsl(var(--v4v-navy))]" />
+                          </div>
+                          <div>
+                            <p className="text-sm font-medium">Hours</p>
+                            <p className="text-sm text-muted-foreground">{resource.hours}</p>
+                          </div>
+                        </div>
+                      )}
+
+                      {resource.cost && (
+                        <div className="flex items-center gap-3">
+                          <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-green-100">
+                            <CheckCircle2 className="h-4 w-4 text-green-600" />
+                          </div>
+                          <p className="font-medium text-green-600 dark:text-green-400">
+                            {resource.cost}
+                          </p>
+                        </div>
+                      )}
+
+                      {/* Coverage */}
                       <div className="flex items-start gap-3">
-                        <Clock className="mt-0.5 h-4 w-4 text-muted-foreground" />
+                        <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[hsl(var(--v4v-gold)/0.1)]">
+                          <Globe className="h-4 w-4 text-[hsl(var(--v4v-gold-dark))]" />
+                        </div>
                         <div>
-                          <p className="text-sm font-medium">Hours</p>
-                          <p className="text-sm text-muted-foreground">{resource.hours}</p>
+                          <p className="mb-1 text-sm font-medium">Coverage</p>
+                          <div className="flex flex-wrap gap-1">
+                            {resource.scope === 'national' ? (
+                              <Badge variant="outline" className="border-[hsl(var(--v4v-gold)/0.3)] bg-[hsl(var(--v4v-gold)/0.08)]">Nationwide</Badge>
+                            ) : (
+                              resource.states.map((state) => (
+                                <Badge key={state} variant="outline">
+                                  {state}
+                                </Badge>
+                              ))
+                            )}
+                          </div>
                         </div>
                       </div>
-                    )}
 
-                    {resource.cost && (
-                      <div className="flex items-center gap-3">
-                        <CheckCircle2 className="h-4 w-4 text-green-600" />
-                        <p className="font-medium text-green-600 dark:text-green-400">
-                          {resource.cost}
-                        </p>
-                      </div>
-                    )}
-
-                    {/* Coverage */}
-                    <div>
-                      <p className="mb-2 text-sm font-medium">Coverage</p>
-                      <div className="flex flex-wrap gap-1">
-                        {resource.scope === 'national' ? (
-                          <Badge variant="outline">Nationwide</Badge>
-                        ) : (
-                          resource.states.map((state) => (
-                            <Badge key={state} variant="outline">
-                              {state}
-                            </Badge>
-                          ))
-                        )}
-                      </div>
+                      {/* Languages */}
+                      {resource.languages.length > 0 && (
+                        <div className="flex items-start gap-3">
+                          <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[hsl(var(--v4v-legal)/0.08)]">
+                            <FileText className="h-4 w-4 text-[hsl(var(--v4v-legal))]" />
+                          </div>
+                          <div>
+                            <p className="mb-1 text-sm font-medium">Languages</p>
+                            <div className="flex flex-wrap gap-1">
+                              {resource.languages.map((lang) => (
+                                <Badge key={lang} variant="secondary">
+                                  {lang.toUpperCase()}
+                                </Badge>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                      )}
                     </div>
-
-                    {/* Languages */}
-                    {resource.languages.length > 0 && (
-                      <div>
-                        <p className="mb-2 text-sm font-medium">Languages</p>
-                        <div className="flex flex-wrap gap-1">
-                          {resource.languages.map((lang) => (
-                            <Badge key={lang} variant="secondary">
-                              {lang.toUpperCase()}
-                            </Badge>
-                          ))}
-                        </div>
-                      </div>
-                    )}
                   </div>
                 </div>
           </motion.div>

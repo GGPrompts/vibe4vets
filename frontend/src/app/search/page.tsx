@@ -494,7 +494,7 @@ function SearchFallback() {
 
 export default function SearchPage() {
   return (
-    <main className="min-h-screen px-4 pb-6 pt-24 sm:px-6 lg:p-8 lg:pt-24">
+    <main className="grid-background min-h-screen px-4 pb-6 pt-24 sm:px-6 lg:p-8 lg:pt-24">
       <div className="mx-auto max-w-[1600px]">
         <Suspense fallback={<SearchFallback />}>
           <SearchResults />
