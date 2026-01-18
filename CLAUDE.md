@@ -378,6 +378,60 @@ Include issue ID in commits: `git commit -m "Fix bug (bd-abc)"`
 
 ---
 
+## Documentation Standards
+
+Documentation is **LLM-optimized** - meant for AI agents to consume, not humans to read. Keep it minimal, current, and machine-parseable.
+
+### Document Purposes
+
+| File | Audience | Purpose |
+|------|----------|---------|
+| `README.md` | **Humans** | Only human-facing doc. Project overview, setup, contribution guide. |
+| `CLAUDE.md` | **LLMs** | Project context, architecture, commands, workflows. Agents read this first. |
+| `AGENTS.md` | **LLMs** | Same as CLAUDE.md (for non-Claude agents like Codex, Cursor). Keep in sync. |
+| `CHANGELOG.md` | **Both** | What changed and when. LLMs use for context, humans for releases. |
+| `docs/*.md` | **LLMs** | Specs, API docs, architecture details. Reference material for agents. |
+
+### Update Rules
+
+**CLAUDE.md / AGENTS.md** - Update when:
+- Adding new API endpoints
+- Changing database schema
+- Adding new commands or workflows
+- Changing project structure
+- Modifying key files list
+
+**CHANGELOG.md** - Update when:
+- Completing a feature (add to `[Unreleased]`)
+- Fixing a bug
+- Making breaking changes
+- **Line limit: 200 lines** - When exceeded, archive old entries to `docs/changelog-archive.md`
+
+**docs/*.md** - Update when:
+- Writing specs before implementation (like `eligibility-wizard-spec.md`)
+- Documenting complex APIs (`docs/API.md`)
+- Recording architectural decisions
+
+### What NOT to Document
+
+- **No inline code comments** explaining obvious code
+- **No README files** in subdirectories (use CLAUDE.md key files table)
+- **No auto-generated docs** (OpenAPI is fine, but don't commit generated markdown)
+- **No meeting notes or design discussions** (use beads issues for context)
+
+### Keeping CLAUDE.md and AGENTS.md in Sync
+
+These files should be identical except for the title. When updating one:
+```bash
+# After editing CLAUDE.md
+cp CLAUDE.md AGENTS.md
+# Then update the title line in AGENTS.md
+```
+
+Or use a single source and symlink (if your workflow supports it).
+
+---
+
 ## Contact
 
 Built to help veterans find resources beyond VA.gov.
