@@ -34,6 +34,7 @@ class Settings(BaseSettings):
     refresh_schedule: str = "0 2 * * *"  # Daily at 2am
     freshness_schedule: str = "0 * * * *"  # Hourly
     link_checker_schedule: str = "0 3 * * *"  # Daily at 3am
+    discovery_schedule: str = "0 4 * * *"  # Daily at 4am
     scheduler_enabled: bool = True  # Can disable in dev
 
     model_config = {"env_file": ".env", "env_file_encoding": "utf-8"}
@@ -48,6 +49,7 @@ class Settings(BaseSettings):
             "REFRESH_SCHEDULE": self.refresh_schedule,
             "FRESHNESS_SCHEDULE": self.freshness_schedule,
             "LINK_CHECKER_SCHEDULE": self.link_checker_schedule,
+            "DISCOVERY_SCHEDULE": self.discovery_schedule,
             "SCHEDULER_ENABLED": self.scheduler_enabled,
         }
 

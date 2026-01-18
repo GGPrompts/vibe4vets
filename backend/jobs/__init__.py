@@ -5,10 +5,12 @@ This module provides:
 - Refresh job for connector data sync
 - Freshness job for trust score updates
 - Link checker job for URL health validation
+- Discovery job for AI-powered resource discovery
 - Job registry and configuration
 """
 
 from jobs.base import BaseJob, JobResult, JobStatus
+from jobs.discovery import DiscoveryJob
 from jobs.freshness import FreshnessJob
 from jobs.link_checker import LinkCheckerJob
 from jobs.refresh import RefreshJob, get_available_connectors
@@ -61,6 +63,14 @@ def setup_jobs(scheduler: JobScheduler, config: dict[str, str | bool]) -> None:
         enabled=bool(enabled) and bool(link_checker_schedule),
     )
 
+    # Register discovery job
+    discovery_schedule = config.get("DISCOVERY_SCHEDULE")
+    scheduler.register_job(
+        DiscoveryJob(),
+        schedule=discovery_schedule if isinstance(discovery_schedule, str) else None,
+        enabled=bool(enabled) and bool(discovery_schedule),
+    )
+
 
 __all__ = [
     # Base
@@ -68,6 +78,7 @@ __all__ = [
     "JobResult",
     "JobStatus",
     # Jobs
+    "DiscoveryJob",
     "FreshnessJob",
     "LinkCheckerJob",
     "RefreshJob",
