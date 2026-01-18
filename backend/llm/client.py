@@ -80,8 +80,7 @@ class ClaudeClient:
         key = api_key or settings.anthropic_api_key
         if not key:
             raise ValueError(
-                "ANTHROPIC_API_KEY not configured. "
-                "Set it in .env or pass api_key parameter."
+                "ANTHROPIC_API_KEY not configured. Set it in .env or pass api_key parameter."
             )
         self.client = anthropic.Anthropic(api_key=key)
 

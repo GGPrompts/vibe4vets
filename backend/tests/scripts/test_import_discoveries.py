@@ -1,6 +1,5 @@
 """Tests for import_discoveries script."""
 
-
 from scripts.import_discoveries import (
     map_eligibility_to_location_fields,
     parse_address,
@@ -115,9 +114,7 @@ class TestMapEligibilityToLocationFields:
 
     def test_combined_eligibility(self):
         """Test multiple eligibility criteria combined."""
-        result = map_eligibility_to_location_fields(
-            ["veteran", "homeless", "disabled_veteran"]
-        )
+        result = map_eligibility_to_location_fields(["veteran", "homeless", "disabled_veteran"])
         assert result["veteran_status_required"] is True
         assert "homeless" in result["housing_status_required"]
         assert "DD-214 or VA letter" in result["docs_required"]

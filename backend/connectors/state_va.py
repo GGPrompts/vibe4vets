@@ -163,13 +163,10 @@ class StateVAConnector(BaseConnector):
 
         if agency_name and state_name:
             parts.append(
-                f"The {agency_name} is the official state agency serving veterans "
-                f"in {state_name}."
+                f"The {agency_name} is the official state agency serving veterans in {state_name}."
             )
         elif state_name:
-            parts.append(
-                f"Official state veteran affairs agency serving veterans in {state_name}."
-            )
+            parts.append(f"Official state veteran affairs agency serving veterans in {state_name}.")
 
         parts.append(
             "State veteran affairs offices provide services including: assistance "

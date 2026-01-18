@@ -111,8 +111,7 @@ class TestEnricher:
         resource = NormalizedResource(
             title="HUD-VASH Program",
             description=(
-                "Emergency shelter and transitional housing for veterans "
-                "experiencing homelessness"
+                "Emergency shelter and transitional housing for veterans experiencing homelessness"
             ),
             source_url="https://example.com",
             org_name="Test Org",

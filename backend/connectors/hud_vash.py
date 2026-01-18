@@ -157,9 +157,7 @@ class HUDVASHConnector(BaseConnector):
         title = self._build_title(pha_name, vamc_name, state)
 
         # Build description
-        description = self._build_description(
-            pha_name, vamc_name, state, vouchers, budget
-        )
+        description = self._build_description(pha_name, vamc_name, state, vouchers, budget)
 
         return ResourceCandidate(
             title=title,
@@ -284,24 +282,18 @@ class HUDVASHConnector(BaseConnector):
 
         # PHA info
         if pha_name:
-            parts.append(
-                f"This program is administered by {pha_name} in partnership with the VA."
-            )
+            parts.append(f"This program is administered by {pha_name} in partnership with the VA.")
 
         # VAMC info
         if vamc_name:
-            parts.append(
-                f"Veterans receive case management services through {vamc_name}."
-            )
+            parts.append(f"Veterans receive case management services through {vamc_name}.")
 
         # Award info
         if vouchers:
             voucher_str = f"{vouchers:,}"
             if budget:
                 budget_str = f"${budget:,.0f}"
-                parts.append(
-                    f"2024 award: {voucher_str} vouchers ({budget_str} budget authority)."
-                )
+                parts.append(f"2024 award: {voucher_str} vouchers ({budget_str} budget authority).")
             else:
                 parts.append(f"2024 award: {voucher_str} vouchers.")
 

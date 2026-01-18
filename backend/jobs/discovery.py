@@ -59,10 +59,7 @@ class ValidatedCandidate:
     @property
     def should_auto_approve(self) -> bool:
         """Check if candidate should be auto-approved."""
-        return (
-            self.validation_status == "valid"
-            and self.confidence >= HIGH_CONFIDENCE_THRESHOLD
-        )
+        return self.validation_status == "valid" and self.confidence >= HIGH_CONFIDENCE_THRESHOLD
 
     @property
     def should_queue_for_review(self) -> bool:
@@ -78,10 +75,7 @@ class ValidatedCandidate:
     @property
     def should_discard(self) -> bool:
         """Check if candidate should be discarded."""
-        return (
-            self.validation_status == "invalid"
-            or self.confidence < MEDIUM_CONFIDENCE_THRESHOLD
-        )
+        return self.validation_status == "invalid" or self.confidence < MEDIUM_CONFIDENCE_THRESHOLD
 
 
 class DiscoveryJob(BaseJob):
@@ -153,9 +147,7 @@ class DiscoveryJob(BaseJob):
         all_candidates: list[dict[str, Any]] = []
         for prompt_path in prompts:
             try:
-                candidates = self._run_discovery(
-                    claude, prompt_path, region or "nationwide", stats
-                )
+                candidates = self._run_discovery(claude, prompt_path, region or "nationwide", stats)
                 all_candidates.extend(candidates)
                 stats.prompts_run += 1
             except Exception as e:
@@ -358,9 +350,7 @@ class DiscoveryJob(BaseJob):
                 validation_notes="Failed to parse validation response",
             )
 
-    def _check_duplicate(
-        self, session: Session, candidate: dict[str, Any]
-    ) -> bool:
+    def _check_duplicate(self, session: Session, candidate: dict[str, Any]) -> bool:
         """Check if a candidate is a duplicate of existing resources.
 
         Args:
@@ -382,9 +372,7 @@ class DiscoveryJob(BaseJob):
         org = candidate.get("organization") or candidate.get("org_name")
         if name and org:
             # Simple name matching - could be enhanced with fuzzy matching
-            stmt = select(Resource).where(
-                Resource.title == name
-            )
+            stmt = select(Resource).where(Resource.title == name)
             for resource in session.exec(stmt):
                 if resource.organization and resource.organization.name == org:
                     return True
@@ -413,8 +401,7 @@ class DiscoveryJob(BaseJob):
         if candidate.should_discard:
             stats.discarded += 1
             self._log(
-                f"Discarded: {data.get('name', 'unknown')} "
-                f"(confidence: {candidate.confidence:.2f})"
+                f"Discarded: {data.get('name', 'unknown')} (confidence: {candidate.confidence:.2f})"
             )
             return
 
@@ -487,9 +474,7 @@ class DiscoveryJob(BaseJob):
         session.flush()
         return source
 
-    def _get_or_create_org(
-        self, session: Session, data: dict[str, Any]
-    ) -> Organization:
+    def _get_or_create_org(self, session: Session, data: dict[str, Any]) -> Organization:
         """Get or create an organization.
 
         Args:
@@ -581,8 +566,10 @@ class DiscoveryJob(BaseJob):
 
         # Map scope
         scope_str = data.get("scope", "national")
-        scope = ResourceScope.STATE if scope_str == "state" else (
-            ResourceScope.LOCAL if scope_str == "local" else ResourceScope.NATIONAL
+        scope = (
+            ResourceScope.STATE
+            if scope_str == "state"
+            else (ResourceScope.LOCAL if scope_str == "local" else ResourceScope.NATIONAL)
         )
 
         states = data.get("states", [])

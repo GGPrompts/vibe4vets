@@ -223,8 +223,7 @@ class LegalAidConnector(BaseConnector):
             parts.append(f"Call {phone} to speak with an intake specialist.")
 
         parts.append(
-            "You can also find legal aid near you at LawHelp.org or call the LSC "
-            "Legal Aid Locator."
+            "You can also find legal aid near you at LawHelp.org or call the LSC Legal Aid Locator."
         )
 
         return " ".join(parts)

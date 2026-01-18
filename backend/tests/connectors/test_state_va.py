@@ -177,8 +177,7 @@ class TestStateVAConnector:
 
         assert "state-va" in tags
         excluded_prefixes = [
-            t for t in tags
-            if t.startswith("state-") and t not in ("state-va", "state-benefits")
+            t for t in tags if t.startswith("state-") and t not in ("state-va", "state-benefits")
         ]
         assert not excluded_prefixes
 
