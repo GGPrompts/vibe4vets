@@ -10,17 +10,19 @@ The JSON file should match the discovery output format with a "discovered" array
 
 import json
 import os
+import re
 import sys
 from datetime import datetime, timezone
 from difflib import SequenceMatcher
 from pathlib import Path
+from uuid import uuid4
 
 # Add backend to path
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from sqlmodel import Session, create_engine, select
 
-from app.models import Organization, Resource, Source
+from app.models import Location, Organization, Resource, Source
 from app.models.resource import ResourceScope, ResourceStatus
 from app.models.review import ReviewState, ReviewStatus
 from app.models.source import HealthStatus, SourceType
@@ -123,6 +125,169 @@ def map_scope(scope_str: str | None) -> ResourceScope:
     return ResourceScope.NATIONAL
 
 
+def parse_address(address_str: str | None) -> dict:
+    """Parse a full address string into components.
+
+    Examples:
+        "1201 Hull Street, Richmond, VA 23224"
+        "Fort Gregg-Adams, Petersburg, VA"
+        "101 North 14th Street, 17th Floor, Richmond, VA 23219"
+    """
+    result = {
+        "address": "",
+        "city": "",
+        "state": "",
+        "zip_code": "",
+    }
+
+    if not address_str:
+        return result
+
+    # Try to match: address, city, state zip
+    # Pattern: everything before last comma group, city, state zip
+    pattern = r"^(.+?),\s*([^,]+?),\s*([A-Z]{2})(?:\s+(\d{5}(?:-\d{4})?))?$"
+    match = re.match(pattern, address_str.strip())
+
+    if match:
+        result["address"] = match.group(1).strip()
+        result["city"] = match.group(2).strip()
+        result["state"] = match.group(3).strip()
+        result["zip_code"] = match.group(4).strip() if match.group(4) else ""
+    else:
+        # Fallback: try simpler pattern (location, state)
+        simple_pattern = r"^(.+?),\s*([A-Z]{2})(?:\s+(\d{5}(?:-\d{4})?))?$"
+        simple_match = re.match(simple_pattern, address_str.strip())
+        if simple_match:
+            result["address"] = simple_match.group(1).strip()
+            result["state"] = simple_match.group(2).strip()
+            result["zip_code"] = simple_match.group(3).strip() if simple_match.group(3) else ""
+        else:
+            # Last resort: just use the whole string as address
+            result["address"] = address_str.strip()
+
+    return result
+
+
+def map_eligibility_to_location_fields(eligibility_list: list[str]) -> dict:
+    """Map discovery eligibility array to Location model fields.
+
+    Discovery eligibility values:
+        veteran, homeless, at_risk_homeless, low_income, disabled_veteran,
+        transitioning_military, military_spouse, military_family, active_duty
+
+    Location model fields:
+        housing_status_required: ["homeless", "at_risk", "stably_housed"]
+        veteran_status_required: bool
+        active_duty_required: bool
+        docs_required: list[str]
+    """
+    result = {
+        "housing_status_required": [],
+        "veteran_status_required": False,
+        "active_duty_required": None,
+        "docs_required": [],
+    }
+
+    if not eligibility_list:
+        return result
+
+    for item in eligibility_list:
+        item_lower = item.lower().strip()
+
+        # Housing status
+        if item_lower == "homeless":
+            if "homeless" not in result["housing_status_required"]:
+                result["housing_status_required"].append("homeless")
+        elif item_lower in ("at_risk_homeless", "at_risk", "at-risk"):
+            if "at_risk" not in result["housing_status_required"]:
+                result["housing_status_required"].append("at_risk")
+        elif item_lower == "low_income":
+            # Low income often implies at-risk
+            if "at_risk" not in result["housing_status_required"]:
+                result["housing_status_required"].append("at_risk")
+            if "stably_housed" not in result["housing_status_required"]:
+                result["housing_status_required"].append("stably_housed")
+
+        # Veteran status
+        if item_lower in ("veteran", "disabled_veteran"):
+            result["veteran_status_required"] = True
+            if item_lower == "disabled_veteran":
+                if "VA disability rating documentation" not in result["docs_required"]:
+                    result["docs_required"].append("VA disability rating documentation")
+
+        # Active duty
+        if item_lower == "active_duty":
+            result["active_duty_required"] = True
+
+        # Military family (doesn't require veteran status)
+        if item_lower in ("military_spouse", "military_family", "transitioning_military"):
+            # These don't require veteran status
+            pass
+
+    # Default docs for veteran programs
+    if result["veteran_status_required"]:
+        if "DD-214 or VA letter" not in result["docs_required"]:
+            result["docs_required"].insert(0, "DD-214 or VA letter")
+        if "Photo ID" not in result["docs_required"]:
+            result["docs_required"].append("Photo ID")
+
+    return result
+
+
+def create_location_from_discovery(
+    session: Session,
+    disc: dict,
+    org: Organization,
+) -> Location | None:
+    """Create a Location entity from discovery data."""
+    # Parse address
+    address_str = disc.get("address")
+    parsed = parse_address(address_str)
+
+    # If no address at all, we might still want the location for intake info
+    if not parsed["address"] and not disc.get("phone") and not disc.get("website"):
+        return None
+
+    # Map eligibility
+    eligibility_raw = disc.get("eligibility", [])
+    if isinstance(eligibility_raw, str):
+        eligibility_raw = [eligibility_raw]
+    elig_fields = map_eligibility_to_location_fields(eligibility_raw)
+
+    # Use states from discovery if city/state not parsed
+    states = disc.get("states", [])
+    if not parsed["state"] and states:
+        parsed["state"] = states[0] if isinstance(states, list) else states
+
+    # Create location
+    location = Location(
+        id=uuid4(),
+        organization_id=org.id,
+        address=parsed["address"],
+        city=parsed["city"],
+        state=parsed["state"],
+        zip_code=parsed["zip_code"],
+        service_area=[],  # Could be populated from states
+        # Eligibility fields
+        housing_status_required=elig_fields["housing_status_required"],
+        veteran_status_required=elig_fields["veteran_status_required"],
+        active_duty_required=elig_fields["active_duty_required"],
+        docs_required=elig_fields["docs_required"],
+        # Intake fields from discovery
+        intake_phone=disc.get("phone"),
+        intake_url=disc.get("website"),
+        intake_hours=disc.get("hours"),
+        intake_notes=disc.get("notes"),
+        # Verification
+        last_verified_at=datetime.now(timezone.utc),
+        verified_by="ai_discovery",
+    )
+    session.add(location)
+    session.flush()
+
+    return location
+
+
 def import_discoveries(json_path: str, database_url: str, dry_run: bool = False):
     """Import discovered resources from JSON file into review queue."""
     # Load JSON file
@@ -175,6 +340,7 @@ def import_discoveries(json_path: str, database_url: str, dry_run: bool = False)
         "duplicates_skipped": 0,
         "orgs_created": 0,
         "orgs_reused": 0,
+        "locations_created": 0,
         "errors": 0,
     }
 
@@ -303,9 +469,16 @@ def import_discoveries(json_path: str, database_url: str, dry_run: bool = False)
                     stats["imported"] += 1
                     continue
 
+                # Create Location entity with eligibility/intake fields
+                location = create_location_from_discovery(session, disc, org)
+                location_id = location.id if location else None
+                if location:
+                    stats["locations_created"] += 1
+
                 # Create resource
                 resource = Resource(
                     organization_id=org.id,
+                    location_id=location_id,
                     source_id=source.id,
                     title=title,
                     description=description,
@@ -358,6 +531,7 @@ def import_discoveries(json_path: str, database_url: str, dry_run: bool = False)
     print("Import Summary")
     print("=" * 50)
     print(f"  Resources imported:    {stats['imported']}")
+    print(f"  Locations created:     {stats['locations_created']}")
     print(f"  Duplicates skipped:    {stats['duplicates_skipped']}")
     print(f"  Organizations created: {stats['orgs_created']}")
     print(f"  Organizations reused:  {stats['orgs_reused']}")
@@ -365,6 +539,7 @@ def import_discoveries(json_path: str, database_url: str, dry_run: bool = False)
 
     if not dry_run and stats["imported"] > 0:
         print(f"\n✓ {stats['imported']} resources added to review queue")
+        print(f"  ({stats['locations_created']} with Location entities for intake/eligibility details)")
         print("  Review at: /admin (or via API: GET /api/v1/admin/review-queue)")
 
 
