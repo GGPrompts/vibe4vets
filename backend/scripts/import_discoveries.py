@@ -236,13 +236,58 @@ def import_discoveries(json_path: str, database_url: str, dry_run: bool = False)
                 if isinstance(categories, str):
                     categories = [categories]
 
-                subcategories = disc.get("subcategories", disc.get("tags", []))
+                subcategories = disc.get("subcategories", [])
                 if isinstance(subcategories, str):
                     subcategories = [subcategories]
+
+                # Tags can come from tags field or eligibility array
+                tags = disc.get("tags", [])
+                if isinstance(tags, str):
+                    tags = [tags]
 
                 states = disc.get("states", [])
                 if isinstance(states, str):
                     states = [states]
+
+                # Convert eligibility array to readable string
+                eligibility_raw = disc.get("eligibility")
+                if isinstance(eligibility_raw, list):
+                    # Convert array like ["veteran", "homeless"] to readable string
+                    eligibility_map = {
+                        "veteran": "Must be a veteran",
+                        "homeless": "Must be homeless or at-risk",
+                        "at_risk_homeless": "For veterans at risk of homelessness",
+                        "low_income": "Income restrictions apply",
+                        "disabled_veteran": "For disabled veterans",
+                        "transitioning_military": "For transitioning service members",
+                        "military_spouse": "Open to military spouses",
+                        "military_family": "Open to military families",
+                        "active_duty": "For active duty service members",
+                    }
+                    eligibility_parts = []
+                    for e in eligibility_raw:
+                        if e in eligibility_map:
+                            eligibility_parts.append(eligibility_map[e])
+                        else:
+                            eligibility_parts.append(e.replace("_", " ").title())
+                    eligibility_str = ". ".join(eligibility_parts) + "." if eligibility_parts else None
+                    # Add eligibility items to tags for card display
+                    tags = list(set(tags + eligibility_raw))
+                elif isinstance(eligibility_raw, str):
+                    eligibility_str = eligibility_raw
+                else:
+                    eligibility_str = None
+
+                # Generate summary from description or notes (first sentence or 100 chars)
+                summary = disc.get("summary")
+                if not summary:
+                    desc_text = description or ""
+                    if ". " in desc_text:
+                        summary = desc_text.split(". ")[0] + "."
+                    elif len(desc_text) > 100:
+                        summary = desc_text[:100].rsplit(" ", 1)[0] + "..."
+                    else:
+                        summary = desc_text if desc_text else None
 
                 # Get suggested tier (affects reliability score)
                 suggested_tier = disc.get("suggested_tier", 4)
@@ -263,10 +308,12 @@ def import_discoveries(json_path: str, database_url: str, dry_run: bool = False)
                     source_id=source.id,
                     title=title,
                     description=description,
-                    eligibility=disc.get("eligibility"),
+                    summary=summary,
+                    eligibility=eligibility_str,
                     how_to_apply=disc.get("how_to_apply"),
                     categories=categories,
                     subcategories=subcategories,
+                    tags=tags,
                     scope=map_scope(disc.get("scope")),
                     states=states,
                     website=disc.get("website"),
