@@ -336,17 +336,45 @@ python backend/scripts/check_links.py
 
 ## Beads Workflow
 
-Track work with beads (not markdown):
+Track work with beads (not markdown). Always use `--json` flag for structured output.
+
+### Worker Workflow
+
+1. **Find work**: `bd ready --json`
+2. **Claim it**: `bd update ID --status in_progress --json`
+3. **Discover new work?** Create linked issue:
+   ```bash
+   bd create "Found issue" --deps discovered-from:PARENT-ID --json
+   ```
+4. **Add progress notes** (for context recovery):
+   ```bash
+   bd update ID --notes "Implemented X, still need Y"
+   ```
+5. **Complete**: `bd close ID --reason "Done: summary" --json`
+6. **Sync**: `bd sync` (commits and pushes)
+
+### Essential Commands
 
 ```bash
-bd ready           # Find available work
-bd show <id>       # Review issue details
-bd update <id> --status=in_progress  # Claim it
-
-# After completing work
-bd close <id> --reason="description of what was done"
-bd sync && git push
+bd ready --json              # Unblocked issues
+bd show ID --json            # Details with notes
+bd update ID --status in_progress --json  # Claim
+bd update ID --notes "Progress notes"     # Context
+bd close ID --reason "Done: what was done" --json
+bd create "Title" --deps discovered-from:PARENT --json  # Link discovered work
 ```
+
+### Session Close Protocol
+
+**CRITICAL**: Session is NOT complete until `git push` succeeds.
+
+```bash
+bd close ID --reason "Done: summary" --json  # Close finished work
+bd sync                      # Export/commit/push beads
+git push                     # MUST succeed before ending
+```
+
+Include issue ID in commits: `git commit -m "Fix bug (bd-abc)"`
 
 ---
 
