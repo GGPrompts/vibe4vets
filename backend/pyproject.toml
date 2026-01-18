@@ -45,6 +45,7 @@ line-length = 100
 target-version = "py312"
 exclude = [
     "scripts/seed_resources.py",  # Seed data with long string literals
+    "scripts/seed_dmv_housing.py",  # Seed data with long string literals
     "scripts/import_discoveries.py",  # Complex data processing script
 ]
 

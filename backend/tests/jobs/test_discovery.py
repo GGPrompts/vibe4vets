@@ -1,15 +1,12 @@
 """Tests for the AI discovery job."""
 
-from pathlib import Path
 from unittest.mock import MagicMock, patch
 
-import pytest
-
 from jobs.discovery import (
-    DiscoveryJob,
-    DiscoveryStats,
     HIGH_CONFIDENCE_THRESHOLD,
     MEDIUM_CONFIDENCE_THRESHOLD,
+    DiscoveryJob,
+    DiscoveryStats,
     ValidatedCandidate,
 )
 

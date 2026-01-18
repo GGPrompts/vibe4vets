@@ -110,7 +110,10 @@ class TestEnricher:
         """Test category inference for housing keywords."""
         resource = NormalizedResource(
             title="HUD-VASH Program",
-            description="Emergency shelter and transitional housing for veterans experiencing homelessness",
+            description=(
+                "Emergency shelter and transitional housing for veterans "
+                "experiencing homelessness"
+            ),
             source_url="https://example.com",
             org_name="Test Org",
             categories=[],

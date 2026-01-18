@@ -176,7 +176,11 @@ class TestStateVAConnector:
         tags = connector._build_tags(state=None)
 
         assert "state-va" in tags
-        assert not any(t.startswith("state-") and t != "state-va" and t != "state-benefits" for t in tags)
+        excluded_prefixes = [
+            t for t in tags
+            if t.startswith("state-") and t not in ("state-va", "state-benefits")
+        ]
+        assert not excluded_prefixes
 
     def test_eligibility_text(self):
         """Test that eligibility text is present and accurate."""

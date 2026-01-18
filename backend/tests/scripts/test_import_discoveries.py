@@ -1,6 +1,5 @@
 """Tests for import_discoveries script."""
 
-import pytest
 
 from scripts.import_discoveries import (
     map_eligibility_to_location_fields,
