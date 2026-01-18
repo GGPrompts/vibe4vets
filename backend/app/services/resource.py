@@ -9,12 +9,15 @@ from sqlmodel import Session, col, select
 from app.models import Location, Organization, Resource, Source
 from app.models.resource import ResourceScope, ResourceStatus
 from app.schemas.resource import (
+    EligibilityInfo,
+    IntakeInfo,
     LocationNested,
     OrganizationNested,
     ResourceCreate,
     ResourceRead,
     ResourceUpdate,
     TrustSignals,
+    VerificationInfo,
 )
 
 
@@ -182,12 +185,7 @@ class ResourceService:
         if resource.location_id:
             location = self.session.get(Location, resource.location_id)
             if location:
-                location_nested = LocationNested(
-                    id=location.id,
-                    city=location.city,
-                    state=location.state,
-                    address=location.address,
-                )
+                location_nested = self._build_location_nested(location)
 
         # Build trust signals
         source_tier = None
@@ -229,4 +227,75 @@ class ResourceService:
             organization=org_nested,
             location=location_nested,
             trust=trust,
+        )
+
+    def _build_location_nested(self, location: Location) -> LocationNested:
+        """Build LocationNested with eligibility, intake, and verification info."""
+        # Build eligibility info if any fields are set
+        eligibility = None
+        if any(
+            [
+                location.age_min,
+                location.age_max,
+                location.household_size_min,
+                location.household_size_max,
+                location.income_limit_type,
+                location.income_limit_ami_percent,
+                location.housing_status_required,
+                location.docs_required,
+                location.waitlist_status,
+            ]
+        ):
+            eligibility = EligibilityInfo(
+                age_min=location.age_min,
+                age_max=location.age_max,
+                household_size_min=location.household_size_min,
+                household_size_max=location.household_size_max,
+                income_limit_type=location.income_limit_type,
+                income_limit_value=location.income_limit_value,
+                income_limit_ami_percent=location.income_limit_ami_percent,
+                housing_status_required=location.housing_status_required or [],
+                active_duty_required=location.active_duty_required,
+                discharge_required=location.discharge_required,
+                veteran_status_required=location.veteran_status_required,
+                docs_required=location.docs_required or [],
+                waitlist_status=location.waitlist_status,
+            )
+
+        # Build intake info if any fields are set
+        intake = None
+        has_intake = any(
+            [
+                location.intake_phone,
+                location.intake_url,
+                location.intake_hours,
+                location.intake_notes,
+            ]
+        )
+        if has_intake:
+            intake = IntakeInfo(
+                phone=location.intake_phone,
+                url=location.intake_url,
+                hours=location.intake_hours,
+                notes=location.intake_notes,
+            )
+
+        # Build verification info if any fields are set
+        verification = None
+        if any([location.last_verified_at, location.verified_by, location.verification_notes]):
+            verification = VerificationInfo(
+                last_verified_at=location.last_verified_at,
+                verified_by=location.verified_by,
+                notes=location.verification_notes,
+            )
+
+        return LocationNested(
+            id=location.id,
+            city=location.city,
+            state=location.state,
+            address=location.address,
+            service_area=location.service_area or [],
+            eligibility=eligibility,
+            intake=intake,
+            verification=verification,
         )

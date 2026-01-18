@@ -418,6 +418,74 @@ export function ResourceDetailModal({
                     </p>
                   </div>
 
+                  {/* Local Provider Contact */}
+                  {resource.location && (resource.location.address || resource.location.intake?.phone) && (
+                    <div className={cn(sectionCardStyle, 'relative mb-6 border-l-4 border-l-[hsl(var(--v4v-gold))]')}>
+                      <h3 className="mb-3 flex items-center gap-2 text-lg font-semibold text-[hsl(var(--v4v-navy))]">
+                        <MapPin className="h-5 w-5 text-[hsl(var(--v4v-gold-dark))]" />
+                        Local Provider Contact
+                      </h3>
+                      <div className="space-y-3">
+                        {/* Address */}
+                        {resource.location.address && (
+                          <a
+                            href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+                              `${resource.location.address}, ${resource.location.city}, ${resource.location.state}`
+                            )}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-start gap-3 rounded-lg p-2 transition-colors hover:bg-muted/50"
+                          >
+                            <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-[hsl(var(--v4v-gold-dark))]" />
+                            <div>
+                              <p className="font-medium">{resource.location.address}</p>
+                              <p className="text-sm text-muted-foreground">
+                                {resource.location.city}, {resource.location.state}
+                              </p>
+                            </div>
+                          </a>
+                        )}
+
+                        {/* Phone */}
+                        {resource.location.intake?.phone && (
+                          <a
+                            href={`tel:${resource.location.intake.phone}`}
+                            className="flex items-center gap-3 rounded-lg p-2 transition-colors hover:bg-muted/50"
+                          >
+                            <Phone className="h-5 w-5 shrink-0 text-green-600" />
+                            <div>
+                              <p className="font-medium">{resource.location.intake.phone}</p>
+                              <p className="text-sm text-muted-foreground">Call for intake</p>
+                            </div>
+                          </a>
+                        )}
+
+                        {/* Hours */}
+                        {resource.location.intake?.hours && (
+                          <div className="flex items-center gap-3 p-2">
+                            <Clock className="h-5 w-5 shrink-0 text-muted-foreground" />
+                            <div>
+                              <p className="text-sm text-muted-foreground">{resource.location.intake.hours}</p>
+                            </div>
+                          </div>
+                        )}
+
+                        {/* Service Area */}
+                        {resource.location.service_area && resource.location.service_area.length > 0 && (
+                          <div className="flex items-start gap-3 p-2">
+                            <Globe className="mt-0.5 h-5 w-5 shrink-0 text-muted-foreground" />
+                            <div>
+                              <p className="text-sm font-medium">Service Area</p>
+                              <p className="text-sm text-muted-foreground">
+                                {resource.location.service_area.join(', ')}
+                              </p>
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  )}
+
                   {/* Eligibility */}
                   {resource.eligibility && (
                     <div className={cn(sectionCardStyle, 'relative mb-6')}>
