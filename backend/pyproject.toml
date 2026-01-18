@@ -16,6 +16,8 @@ dependencies = [
     "pgvector>=0.3.0",
     "python-multipart>=0.0.18",
     "apscheduler>=3.10.0",
+    "openpyxl>=3.1.0",
+    "pyyaml>=6.0.0",
 ]
 
 [project.optional-dependencies]
@@ -41,7 +43,10 @@ packages = ["app"]
 [tool.ruff]
 line-length = 100
 target-version = "py312"
-exclude = ["scripts/seed_resources.py"]  # Seed data with long string literals
+exclude = [
+    "scripts/seed_resources.py",  # Seed data with long string literals
+    "scripts/import_discoveries.py",  # Complex data processing script
+]
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "UP", "B", "SIM"]
