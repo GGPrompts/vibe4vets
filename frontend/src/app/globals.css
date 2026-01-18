@@ -662,3 +662,25 @@ html {
 .filter-section-hover:hover {
   background: hsl(var(--v4v-gold) / 0.04);
 }
+
+/* ==========================================================================
+ * TABLE ROW INTERACTIVE STATES
+ * ==========================================================================
+ * Fix transparent backgrounds on hover/selected states for Light Tokyo Night
+ */
+
+/* Table row hover - opaque background instead of transparent */
+[data-slot="table-row"]:hover {
+  background-color: hsl(var(--v4v-bg-surface)) !important;
+}
+
+/* Table row selected - opaque muted background */
+[data-slot="table-row"][data-state="selected"] {
+  background-color: hsl(var(--v4v-bg-muted)) !important;
+}
+
+/* Card interactive states - ensure opaque backgrounds */
+[data-slot="card"]:focus-within,
+[data-slot="card"]:active {
+  background-color: hsl(var(--card));
+}
