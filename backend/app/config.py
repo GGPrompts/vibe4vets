@@ -24,6 +24,7 @@ class Settings(BaseSettings):
 
     # AI
     anthropic_api_key: str = ""
+    openai_api_key: str = ""  # For embeddings (text-embedding-3-small)
 
     # Environment
     environment: str = "development"
@@ -35,6 +36,7 @@ class Settings(BaseSettings):
     freshness_schedule: str = "0 * * * *"  # Hourly
     link_checker_schedule: str = "0 3 * * *"  # Daily at 3am
     discovery_schedule: str = "0 4 * * *"  # Daily at 4am
+    embeddings_schedule: str = "0 5 * * *"  # Daily at 5am
     scheduler_enabled: bool = True  # Can disable in dev
 
     model_config = {"env_file": ".env", "env_file_encoding": "utf-8"}
@@ -50,6 +52,7 @@ class Settings(BaseSettings):
             "FRESHNESS_SCHEDULE": self.freshness_schedule,
             "LINK_CHECKER_SCHEDULE": self.link_checker_schedule,
             "DISCOVERY_SCHEDULE": self.discovery_schedule,
+            "EMBEDDINGS_SCHEDULE": self.embeddings_schedule,
             "SCHEDULER_ENABLED": self.scheduler_enabled,
         }
 
