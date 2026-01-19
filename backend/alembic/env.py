@@ -2,11 +2,17 @@
 
 import os
 from logging.config import fileConfig
+from pathlib import Path
 
+from dotenv import load_dotenv
 from sqlalchemy import engine_from_config, pool
 from sqlmodel import SQLModel
 
 from alembic import context
+
+# Load .env file from backend directory (same as app.config)
+env_path = Path(__file__).parent.parent / ".env"
+load_dotenv(env_path)
 
 # Import all models so SQLModel.metadata is populated
 from app.models import Location, Organization, Resource, Source, SourceRecord  # noqa: F401
@@ -16,7 +22,8 @@ from app.models.review import ChangeLog, ReviewState  # noqa: F401
 config = context.config
 
 # Override sqlalchemy.url from environment if DATABASE_URL is set
-database_url = os.getenv("DATABASE_URL", "postgresql://localhost:5432/vibe4vets")
+# Use psycopg (v3) driver - same as app.config
+database_url = os.getenv("DATABASE_URL", "postgresql+psycopg://localhost:5432/vibe4vets")
 config.set_main_option("sqlalchemy.url", database_url)
 
 # Setup loggers

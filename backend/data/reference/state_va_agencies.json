@@ -1,0 +1,400 @@
+{
+  "source": "NASDVA - National Association of State Directors of Veterans Affairs",
+  "source_url": "https://nasdva.us/resources/",
+  "last_updated": "2026-01-18",
+  "description": "State and territory veteran affairs agencies - all 50 states plus DC and territories",
+  "agencies": [
+    {
+      "state": "AL",
+      "state_name": "Alabama",
+      "agency_name": "Alabama Department of Veterans Affairs",
+      "director": "Jeffrey Newton",
+      "website": "https://va.alabama.gov/"
+    },
+    {
+      "state": "AK",
+      "state_name": "Alaska",
+      "agency_name": "Alaska Office of Veterans Affairs",
+      "director": "Verdie Bowen",
+      "website": "http://veterans.alaska.gov/"
+    },
+    {
+      "state": "AS",
+      "state_name": "American Samoa",
+      "agency_name": "American Samoa Office of Veterans Affairs",
+      "director": "Paepaetele Mapu Jamais",
+      "website": "https://www.va.gov/directory/guide/facility.asp?ID=5982&dnum=1"
+    },
+    {
+      "state": "AZ",
+      "state_name": "Arizona",
+      "agency_name": "Arizona Department of Veterans' Services",
+      "director": "John Scott II",
+      "website": "https://dvs.az.gov/"
+    },
+    {
+      "state": "AR",
+      "state_name": "Arkansas",
+      "agency_name": "Arkansas Department of Veterans Affairs",
+      "director": "Robert Ator II",
+      "website": "http://www.veterans.arkansas.gov/"
+    },
+    {
+      "state": "CA",
+      "state_name": "California",
+      "agency_name": "California Department of Veterans Affairs (CalVet)",
+      "director": "Lindsey Sin",
+      "website": "https://www.calvet.ca.gov/"
+    },
+    {
+      "state": "CO",
+      "state_name": "Colorado",
+      "agency_name": "Colorado Department of Military and Veterans Affairs",
+      "director": "Bruce Cowan",
+      "website": "https://www.colorado.gov/vets"
+    },
+    {
+      "state": "CT",
+      "state_name": "Connecticut",
+      "agency_name": "Connecticut Department of Veterans Affairs",
+      "director": "Ronald Welch",
+      "website": "https://portal.ct.gov/DVA/"
+    },
+    {
+      "state": "DE",
+      "state_name": "Delaware",
+      "agency_name": "Delaware Commission of Veterans Affairs",
+      "director": "Karen Berry",
+      "website": "https://veteransaffairs.delaware.gov"
+    },
+    {
+      "state": "DC",
+      "state_name": "District of Columbia",
+      "agency_name": "DC Mayor's Office of Veterans Affairs",
+      "director": "Nick Harrison",
+      "website": "https://communityaffairs.dc.gov/mova"
+    },
+    {
+      "state": "FL",
+      "state_name": "Florida",
+      "agency_name": "Florida Department of Veterans' Affairs",
+      "director": "James Hartsell",
+      "website": "https://www.floridavets.org/"
+    },
+    {
+      "state": "GA",
+      "state_name": "Georgia",
+      "agency_name": "Georgia Department of Veterans Service",
+      "director": "Patricia Ross",
+      "website": "https://veterans.georgia.gov/"
+    },
+    {
+      "state": "GU",
+      "state_name": "Guam",
+      "agency_name": "Guam Veterans Affairs Office",
+      "director": "Jose San Agustin",
+      "website": "http://gvao.guam.gov/"
+    },
+    {
+      "state": "HI",
+      "state_name": "Hawaii",
+      "agency_name": "Hawaii Office of Veterans' Services",
+      "director": "John P. Alamodin",
+      "website": "http://dod.hawaii.gov/"
+    },
+    {
+      "state": "ID",
+      "state_name": "Idaho",
+      "agency_name": "Idaho Division of Veterans Services",
+      "director": "Mark Tschampl",
+      "website": "http://www.veterans.idaho.gov/"
+    },
+    {
+      "state": "IL",
+      "state_name": "Illinois",
+      "agency_name": "Illinois Department of Veterans' Affairs",
+      "director": "Terry Prince",
+      "website": "https://veterans.illinois.gov"
+    },
+    {
+      "state": "IN",
+      "state_name": "Indiana",
+      "agency_name": "Indiana Department of Veterans Affairs",
+      "director": "Jake Adams",
+      "website": "https://www.in.gov/dva/"
+    },
+    {
+      "state": "IA",
+      "state_name": "Iowa",
+      "agency_name": "Iowa Department of Veterans Affairs",
+      "director": "Todd Jacobus",
+      "website": "https://va.iowa.gov/"
+    },
+    {
+      "state": "KS",
+      "state_name": "Kansas",
+      "agency_name": "Kansas Commission on Veterans Affairs Office",
+      "director": "William Turner",
+      "website": "https://kcva.ks.gov/"
+    },
+    {
+      "state": "KY",
+      "state_name": "Kentucky",
+      "agency_name": "Kentucky Department of Veterans Affairs",
+      "director": "Whitney Allen",
+      "website": "https://veterans.ky.gov/Pages/default.aspx"
+    },
+    {
+      "state": "LA",
+      "state_name": "Louisiana",
+      "agency_name": "Louisiana Department of Veterans Affairs",
+      "director": "Charlton Meginley",
+      "website": "https://www.vetaffairs.la.gov/"
+    },
+    {
+      "state": "ME",
+      "state_name": "Maine",
+      "agency_name": "Maine Bureau of Veterans' Services",
+      "director": "David Richmond",
+      "website": "https://www.maine.gov/veterans/"
+    },
+    {
+      "state": "MD",
+      "state_name": "Maryland",
+      "agency_name": "Maryland Department of Veterans Affairs",
+      "director": "Anthony Woods",
+      "website": "https://veterans.maryland.gov/"
+    },
+    {
+      "state": "MA",
+      "state_name": "Massachusetts",
+      "agency_name": "Massachusetts Department of Veterans' Services",
+      "director": "Dr. Jon Santiago",
+      "website": "https://www.mass.gov/orgs/massachusetts-department-of-veterans-services"
+    },
+    {
+      "state": "MI",
+      "state_name": "Michigan",
+      "agency_name": "Michigan Veterans Affairs Agency",
+      "director": "Brian Love",
+      "website": "http://Michigan.gov/mvaa"
+    },
+    {
+      "state": "MN",
+      "state_name": "Minnesota",
+      "agency_name": "Minnesota Department of Veterans Affairs",
+      "director": "Brad Lindsay",
+      "website": "https://mn.gov/mdva/"
+    },
+    {
+      "state": "MS",
+      "state_name": "Mississippi",
+      "agency_name": "Mississippi Veterans Affairs",
+      "director": "Mark Smith",
+      "website": "https://www.msva.ms.gov/"
+    },
+    {
+      "state": "MO",
+      "state_name": "Missouri",
+      "agency_name": "Missouri Veterans Commission",
+      "director": "Paul Kirchhoff",
+      "website": "https://mvc.dps.mo.gov/"
+    },
+    {
+      "state": "MT",
+      "state_name": "Montana",
+      "agency_name": "Montana Department of Military Affairs - Veterans Affairs",
+      "director": "Matt Young",
+      "website": "https://dma.mt.gov/"
+    },
+    {
+      "state": "NE",
+      "state_name": "Nebraska",
+      "agency_name": "Nebraska Department of Veterans' Affairs",
+      "director": "John Hilgert",
+      "website": "https://veterans.nebraska.gov/"
+    },
+    {
+      "state": "NV",
+      "state_name": "Nevada",
+      "agency_name": "Nevada Department of Veterans Services",
+      "director": "Mary Devine",
+      "website": "https://veterans.nv.gov/"
+    },
+    {
+      "state": "NH",
+      "state_name": "New Hampshire",
+      "agency_name": "New Hampshire Division of Veterans Services",
+      "director": "William Gaudreau",
+      "website": "https://www.dmavs.nh.gov/veterans-services"
+    },
+    {
+      "state": "NJ",
+      "state_name": "New Jersey",
+      "agency_name": "New Jersey Department of Military and Veterans Affairs",
+      "director": "Vincent Solomeno III",
+      "website": "https://www.nj.gov/military/"
+    },
+    {
+      "state": "NM",
+      "state_name": "New Mexico",
+      "agency_name": "New Mexico Department of Veterans Services",
+      "director": "Jamison Herrera",
+      "website": "http://www.nmdvs.org/"
+    },
+    {
+      "state": "NY",
+      "state_name": "New York",
+      "agency_name": "New York State Division of Veterans' Services",
+      "director": "Viviana DeCohen",
+      "website": "https://veterans.ny.gov/"
+    },
+    {
+      "state": "NC",
+      "state_name": "North Carolina",
+      "agency_name": "North Carolina Department of Military and Veterans Affairs",
+      "director": "Jocelyn Mitnaul Mallette",
+      "website": "https://www.milvets.nc.gov/"
+    },
+    {
+      "state": "ND",
+      "state_name": "North Dakota",
+      "agency_name": "North Dakota Department of Veterans Affairs",
+      "director": "Lonnie Wangen",
+      "website": "http://www.nd.gov/veterans/"
+    },
+    {
+      "state": "MP",
+      "state_name": "Northern Mariana Islands",
+      "agency_name": "Northern Mariana Islands Veterans Affairs Office",
+      "director": "Stanley T. Iakopo",
+      "website": "https://www.va.gov/directory/guide/state.asp?dnum=All&STATE=MP&map=1"
+    },
+    {
+      "state": "OH",
+      "state_name": "Ohio",
+      "agency_name": "Ohio Department of Veterans Services",
+      "director": "John Harris, Jr.",
+      "website": "https://dvs.ohio.gov/wps/portal/gov/dvs/"
+    },
+    {
+      "state": "OK",
+      "state_name": "Oklahoma",
+      "agency_name": "Oklahoma Department of Veterans Affairs",
+      "director": "James Bynum",
+      "website": "https://oklahoma.gov/veterans.html"
+    },
+    {
+      "state": "OR",
+      "state_name": "Oregon",
+      "agency_name": "Oregon Department of Veterans' Affairs",
+      "director": "Dr. Nakeia Council Daniels",
+      "website": "https://www.oregon.gov/odva/Pages/default.aspx"
+    },
+    {
+      "state": "PA",
+      "state_name": "Pennsylvania",
+      "agency_name": "Pennsylvania Department of Military and Veterans Affairs",
+      "director": "Maureen Weigl",
+      "website": "https://www.dmva.pa.gov/Pages/default.aspx"
+    },
+    {
+      "state": "PR",
+      "state_name": "Puerto Rico",
+      "agency_name": "Puerto Rico Veterans Affairs Office",
+      "director": "Agustín Montañez-Allman",
+      "website": "https://www.va.gov/directory/guide/state.asp?State=PR&dnum=ALL"
+    },
+    {
+      "state": "RI",
+      "state_name": "Rhode Island",
+      "agency_name": "Rhode Island Office of Veterans Services",
+      "director": "Kasim Yarn",
+      "website": "http://www.vets.ri.gov/"
+    },
+    {
+      "state": "SC",
+      "state_name": "South Carolina",
+      "agency_name": "South Carolina Department of Veterans' Affairs",
+      "director": "Todd McCaffrey",
+      "website": "https://scdva.sc.gov/"
+    },
+    {
+      "state": "SD",
+      "state_name": "South Dakota",
+      "agency_name": "South Dakota Department of Veterans Affairs",
+      "director": "Jeremiah Schneider",
+      "website": "https://vetaffairs.sd.gov/"
+    },
+    {
+      "state": "TN",
+      "state_name": "Tennessee",
+      "agency_name": "Tennessee Department of Veterans Services",
+      "director": "Tommy Baker",
+      "website": "https://www.tn.gov/veteran/"
+    },
+    {
+      "state": "TX",
+      "state_name": "Texas",
+      "agency_name": "Texas Veterans Commission",
+      "director": "Thomas Palladino",
+      "website": "https://www.tvc.texas.gov/"
+    },
+    {
+      "state": "UT",
+      "state_name": "Utah",
+      "agency_name": "Utah Department of Veterans and Military Affairs",
+      "director": "Gary Harter",
+      "website": "https://veterans.utah.gov/"
+    },
+    {
+      "state": "VT",
+      "state_name": "Vermont",
+      "agency_name": "Vermont Office of Veterans Affairs",
+      "director": "Robert Burke",
+      "website": "https://veterans.vermont.gov/"
+    },
+    {
+      "state": "VA",
+      "state_name": "Virginia",
+      "agency_name": "Virginia Department of Veterans Services",
+      "director": "Chuck Zingler",
+      "website": "https://www.dvs.virginia.gov/"
+    },
+    {
+      "state": "VI",
+      "state_name": "Virgin Islands",
+      "agency_name": "Virgin Islands Office of Veterans Affairs",
+      "director": "Patrick Farrell",
+      "website": "https://veterans.vi.gov/"
+    },
+    {
+      "state": "WA",
+      "state_name": "Washington",
+      "agency_name": "Washington State Department of Veterans Affairs",
+      "director": "David Puente Jr.",
+      "website": "https://www.dva.wa.gov/"
+    },
+    {
+      "state": "WV",
+      "state_name": "West Virginia",
+      "agency_name": "West Virginia Department of Veterans Assistance",
+      "director": "Ryan Kennedy",
+      "website": "https://veterans.wv.gov/Pages/default.aspx"
+    },
+    {
+      "state": "WI",
+      "state_name": "Wisconsin",
+      "agency_name": "Wisconsin Department of Veterans Affairs",
+      "director": "James Bond",
+      "website": "https://dva.wi.gov/Pages/Home.aspx"
+    },
+    {
+      "state": "WY",
+      "state_name": "Wyoming",
+      "agency_name": "Wyoming Veterans Commission",
+      "director": "Tim Sheppard",
+      "website": "https://www.wyomilitary.wyo.gov/veterans/"
+    }
+  ]
+}

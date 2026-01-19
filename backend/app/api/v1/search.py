@@ -109,7 +109,7 @@ def search_resources(
         min_length=2,
         max_length=2,
     ),
-    limit: int = Query(20, ge=1, le=100, description="Maximum results to return"),
+    limit: int = Query(20, ge=1, le=500, description="Maximum results to return"),
     offset: int = Query(0, ge=0, description="Pagination offset"),
 ) -> SearchResponse:
     """Search veteran resources using PostgreSQL full-text search.
@@ -222,7 +222,7 @@ def search_with_eligibility(
         description="Filter for disability-related resources",
         examples=[True, False],
     ),
-    limit: int = Query(20, ge=1, le=100, description="Maximum results to return"),
+    limit: int = Query(20, ge=1, le=500, description="Maximum results to return"),
     offset: int = Query(0, ge=0, description="Pagination offset"),
 ) -> EligibilitySearchResponse:
     """Search resources with eligibility criteria filtering.
@@ -349,7 +349,7 @@ def semantic_search(
         pattern="^(semantic|hybrid)$",
         examples=["hybrid", "semantic"],
     ),
-    limit: int = Query(20, ge=1, le=100, description="Maximum results to return"),
+    limit: int = Query(20, ge=1, le=500, description="Maximum results to return"),
     offset: int = Query(0, ge=0, description="Pagination offset"),
 ) -> SemanticSearchResponse:
     """AI-powered semantic search using vector embeddings.

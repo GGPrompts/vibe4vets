@@ -209,7 +209,7 @@ function SearchResults() {
         if (query) {
           const results = await api.search.query({
             q: query,
-            limit: 50,
+            limit: 500,
           });
           setSearchResults(results);
           setBrowseResults(null);
@@ -217,7 +217,7 @@ function SearchResults() {
           trackSearch(query, filters.categories[0], filters.states[0]);
         } else {
           const results = await api.resources.list({
-            limit: 50,
+            limit: 500,
           });
           setBrowseResults(results);
           setSearchResults(null);
