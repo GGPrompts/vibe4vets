@@ -13,8 +13,25 @@ All notable changes to this project will be documented in this file.
 
 #### Data Sources (2026-01-17)
 - **SSVF connector** - Import FY26 grantee data (235 organizations) from Excel (V4V-ct9)
+- **Legal aid connector** - 129 LSC-funded legal aid programs imported (V4V-6l4)
+- **HUD-VASH connector** - 153 PHA-VAMC partnership records imported (V4V-1ta)
 - **AI discovery prompts** - `.prompts/` directory with housing, employment, food discovery prompts (V4V-625)
+- **AI discovery pipeline** - Automated Haiku discovery → Sonnet validation → review queue (V4V-3ml)
 - **Resource Hub pages** - Static hub pages for employment, housing, legal, training categories (V4V-9fn)
+
+#### Search & Discovery UX (2026-01-16)
+- **Interactive US map** - SVG map on landing page hero for geographic browsing (V4V-num)
+- **Eligibility wizard** - No-PII wizard with location-based eligibility filtering (V4V-d6k)
+- **Animated card expansion** - Framer Motion layoutId for resource detail modal (V4V-i59)
+- **Horizontal filter bar** - Sort dropdown in search header (V4V-cri)
+- **Search filters redesign** - AnimatePresence-based sidebar (V4V-3hw)
+
+#### Resource Display (2026-01-15)
+- **Tags and eligibility badges** - Display tags, state badges on resource cards (V4V-wzt)
+- **Local provider contacts** - Show provider contact info on cards and detail modal (V4V-v9o)
+- **Location eligibility details** - Eligibility info imported with Location entities (V4V-2gn)
+- **Provider-to-program model** - Program model with organization relationships (V4V-3cf)
+- **pgvector semantic search** - Embedding column and EmbeddingService for similarity matching (V4V-7ke)
 
 ### Fixed
 
@@ -26,6 +43,7 @@ All notable changes to this project will be documented in this file.
 - **Skeleton colors** - Changed from yellow to gray (V4V-skeleton-colors)
 - **Dropdown placeholders** - Fixed empty state display (V4V-empty-dropdowns)
 - **CI failures** - Fixed psycopg2 module import in GitHub Actions (V4V-vcc)
+- **Person-first language** - Replaced 'homeless' terminology with person-first language (V4V-3wh)
 
 ### Changed
 - **Search page redesign** - Sidebar filters with card grid layout (V4V-search-redesign)
