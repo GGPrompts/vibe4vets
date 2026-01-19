@@ -1,732 +1,1154 @@
-# Legal Services Corporation (LSC) Funded Legal Aid Programs
-# Source: https://www.lsc.gov/grants/our-grantees
-# Updated: 2026-01-18
-#
-# LSC provides funding to 129 independent nonprofit legal aid programs
-# in every state, DC, and US territories.
-#
-# Note: This data was manually compiled from LSC.gov. Contact information
-# should be verified periodically.
-
 source:
-  name: "LSC Grantee Directory"
-  url: "https://www.lsc.gov/grants/our-grantees"
-  last_updated: "2026-01-18"
+  name: LSC Grantee Directory
+  url: https://www.lsc.gov/grants/our-grantees
+  last_updated: '2026-01-18'
   total_programs: 129
-
-# Grantees by state/territory
-# Each entry includes:
-#   - name: Organization name
-#   - state: State code (or territory code)
-#   - website: Organization website (when known)
-#   - phone: Main phone (when known)
-#   - services: Legal services offered
 grantees:
-  # Alabama
-  - name: "Legal Services Alabama"
-    state: "AL"
-    website: "https://www.legalservicesalabama.org"
-    services: ["civil", "housing", "family", "benefits"]
-
-  # Alaska
-  - name: "Alaska Legal Services Corporation"
-    state: "AK"
-    website: "https://www.alsc-law.org"
-    services: ["civil", "housing", "family", "benefits", "native-american"]
-
-  # American Samoa
-  - name: "American Samoa Legal Aid"
-    state: "AS"
-    services: ["civil", "housing", "family"]
-
-  # Arizona
-  - name: "Community Legal Services, Inc."
-    state: "AZ"
-    website: "https://www.clsaz.org"
-    services: ["civil", "housing", "family", "benefits", "consumer"]
-
-  - name: "DNA-Peoples Legal Services, Inc."
-    state: "AZ"
-    website: "https://www.dnalegalservices.org"
-    services: ["civil", "housing", "family", "native-american"]
-
-  - name: "Southern Arizona Legal Aid, Inc."
-    state: "AZ"
-    website: "https://www.sazlegalaid.org"
-    services: ["civil", "housing", "family", "immigration"]
-
-  # Arkansas
-  - name: "Center for Arkansas Legal Services"
-    state: "AR"
-    website: "https://www.arlegalservices.org"
-    services: ["civil", "housing", "family", "benefits"]
-
-  - name: "Legal Aid of Arkansas, Inc."
-    state: "AR"
-    website: "https://www.arlegalaid.org"
-    services: ["civil", "housing", "family", "benefits"]
-
-  # California (11 programs)
-  - name: "Bay Area Legal Aid"
-    state: "CA"
-    website: "https://www.baylegal.org"
-    services: ["civil", "housing", "family", "benefits", "consumer"]
-
-  - name: "California Indian Legal Services, Inc."
-    state: "CA"
-    website: "https://www.calindian.org"
-    services: ["civil", "native-american", "benefits"]
-
-  - name: "California Rural Legal Assistance, Inc."
-    state: "CA"
-    website: "https://www.crla.org"
-    services: ["civil", "housing", "family", "employment", "immigration"]
-
-  - name: "Central California Legal Services"
-    state: "CA"
-    website: "https://www.centralcallegal.org"
-    services: ["civil", "housing", "family", "benefits"]
-
-  - name: "Greater Bakersfield Legal Assistance, Inc."
-    state: "CA"
-    website: "https://www.gbla.org"
-    services: ["civil", "housing", "family"]
-
-  - name: "Inland Counties Legal Services, Inc."
-    state: "CA"
-    website: "https://www.inlandlegal.org"
-    services: ["civil", "housing", "family", "benefits"]
-
-  - name: "Legal Aid Foundation of Los Angeles"
-    state: "CA"
-    website: "https://www.lafla.org"
-    services: ["civil", "housing", "family", "benefits", "immigration"]
-
-  - name: "Community Legal Aid SoCal"
-    state: "CA"
-    website: "https://www.communitylegalsocal.org"
-    services: ["civil", "housing", "family", "benefits"]
-
-  - name: "Legal Aid Society of San Diego, Inc."
-    state: "CA"
-    website: "https://www.lassd.org"
-    services: ["civil", "housing", "family", "benefits"]
-
-  - name: "Legal Services of Northern California, Inc."
-    state: "CA"
-    website: "https://www.lsnc.net"
-    services: ["civil", "housing", "family", "benefits"]
-
-  - name: "Neighborhood Legal Services of Los Angeles County"
-    state: "CA"
-    website: "https://www.nlsla.org"
-    services: ["civil", "housing", "family", "benefits", "consumer"]
-
-  # Colorado
-  - name: "Colorado Legal Services"
-    state: "CO"
-    website: "https://www.coloradolegalservices.org"
-    services: ["civil", "housing", "family", "benefits", "immigration"]
-
-  # Connecticut
-  - name: "Statewide Legal Services of Connecticut, Inc."
-    state: "CT"
-    website: "https://www.slsct.org"
-    services: ["civil", "housing", "family", "benefits"]
-
-  # Delaware
-  - name: "Legal Services Corporation of Delaware, Inc."
-    state: "DE"
-    website: "https://www.lscd.com"
-    services: ["civil", "housing", "family", "benefits"]
-
-  # District of Columbia
-  - name: "Neighborhood Legal Services Program of the District of Columbia"
-    state: "DC"
-    website: "https://www.nlsp.org"
-    services: ["civil", "housing", "family", "benefits", "consumer"]
-
-  # Florida (7 programs)
-  - name: "Bay Area Legal Services, Inc."
-    state: "FL"
-    website: "https://www.bals.org"
-    services: ["civil", "housing", "family", "benefits"]
-
-  - name: "Coast to Coast Legal Aid of South Florida, Inc."
-    state: "FL"
-    website: "https://www.coasttocoastlegalaid.org"
-    services: ["civil", "housing", "family", "benefits"]
-
-  - name: "Community Legal Services of Mid-Florida, Inc."
-    state: "FL"
-    website: "https://www.clsmf.org"
-    services: ["civil", "housing", "family", "benefits"]
-
-  - name: "Florida Rural Legal Services, Inc."
-    state: "FL"
-    website: "https://www.frls.org"
-    services: ["civil", "housing", "family", "immigration"]
-
-  - name: "Legal Services of Greater Miami, Inc."
-    state: "FL"
-    website: "https://www.lsgmi.org"
-    services: ["civil", "housing", "family", "benefits", "immigration"]
-
-  - name: "Legal Services of North Florida, Inc."
-    state: "FL"
-    website: "https://www.lsnf.org"
-    services: ["civil", "housing", "family", "benefits"]
-
-  - name: "Three Rivers Legal Services, Inc."
-    state: "FL"
-    website: "https://www.trls.org"
-    services: ["civil", "housing", "family", "benefits"]
-
-  # Georgia
-  - name: "Atlanta Legal Aid Society, Inc."
-    state: "GA"
-    website: "https://www.atlantalegalaid.org"
-    services: ["civil", "housing", "family", "benefits"]
-
-  - name: "Georgia Legal Services Program"
-    state: "GA"
-    website: "https://www.glsp.org"
-    services: ["civil", "housing", "family", "benefits"]
-
-  # Hawaii
-  - name: "Legal Aid Society of Hawaii"
-    state: "HI"
-    website: "https://www.legalaidhawaii.org"
-    services: ["civil", "housing", "family", "benefits"]
-
-  # Idaho
-  - name: "Idaho Legal Aid Services, Inc."
-    state: "ID"
-    website: "https://www.idaholegalaid.org"
-    services: ["civil", "housing", "family", "benefits"]
-
-  # Illinois (3 programs)
-  - name: "Land of Lincoln Legal Aid, Inc."
-    state: "IL"
-    website: "https://www.lollaf.org"
-    services: ["civil", "housing", "family", "benefits"]
-
-  - name: "Legal Aid Chicago"
-    state: "IL"
-    website: "https://www.legalaidchicago.org"
-    services: ["civil", "housing", "family", "benefits", "consumer"]
-
-  - name: "Prairie State Legal Services, Inc."
-    state: "IL"
-    website: "https://www.pslegal.org"
-    services: ["civil", "housing", "family", "benefits"]
-
-  # Indiana
-  - name: "Indiana Legal Services, Inc."
-    state: "IN"
-    website: "https://www.indianalegalservices.org"
-    services: ["civil", "housing", "family", "benefits"]
-
-  # Iowa
-  - name: "Iowa Legal Aid"
-    state: "IA"
-    website: "https://www.iowalegalaid.org"
-    services: ["civil", "housing", "family", "benefits"]
-
-  # Kansas
-  - name: "Kansas Legal Services, Inc."
-    state: "KS"
-    website: "https://www.kansaslegalservices.org"
-    services: ["civil", "housing", "family", "benefits"]
-
-  # Kentucky (4 programs)
-  - name: "Appalachian Research and Defense Fund of Kentucky"
-    state: "KY"
-    website: "https://www.ardfky.org"
-    services: ["civil", "housing", "family", "benefits"]
-
-  - name: "Kentucky Legal Aid"
-    state: "KY"
-    website: "https://www.klaid.org"
-    services: ["civil", "housing", "family", "benefits"]
-
-  - name: "Legal Aid of the Bluegrass"
-    state: "KY"
-    website: "https://www.lablaw.org"
-    services: ["civil", "housing", "family", "benefits"]
-
-  - name: "Legal Aid Society"
-    state: "KY"
-    website: "https://www.laslou.org"
-    services: ["civil", "housing", "family", "benefits"]
-
-  # Louisiana
-  - name: "Acadiana Legal Service Corporation"
-    state: "LA"
-    website: "https://www.la-law.org"
-    services: ["civil", "housing", "family", "benefits"]
-
-  - name: "Southeast Louisiana Legal Services Corporation"
-    state: "LA"
-    website: "https://www.slls.org"
-    services: ["civil", "housing", "family", "benefits"]
-
-  # Maine
-  - name: "Pine Tree Legal Assistance, Inc."
-    state: "ME"
-    website: "https://www.ptla.org"
-    services: ["civil", "housing", "family", "benefits", "native-american"]
-
-  # Maryland
-  - name: "Maryland Legal Aid"
-    state: "MD"
-    website: "https://www.mdlab.org"
-    services: ["civil", "housing", "family", "benefits", "consumer"]
-
-  # Massachusetts (4 programs)
-  - name: "Community Legal Aid, Inc."
-    state: "MA"
-    website: "https://www.communitylegal.org"
-    services: ["civil", "housing", "family", "benefits"]
-
-  - name: "Northeast Legal Aid, Inc."
-    state: "MA"
-    website: "https://www.northeastlegalaid.org"
-    services: ["civil", "housing", "family", "benefits"]
-
-  - name: "South Coastal Counties Legal Services"
-    state: "MA"
-    website: "https://www.sccls.org"
-    services: ["civil", "housing", "family", "benefits"]
-
-  - name: "Volunteer Lawyers Project of the Boston Bar Association"
-    state: "MA"
-    website: "https://www.vlpnet.org"
-    services: ["civil", "housing", "family"]
-
-  # Michigan (6 programs)
-  - name: "Lakeshore Legal Aid"
-    state: "MI"
-    website: "https://www.lakeshorelegalaid.org"
-    services: ["civil", "housing", "family", "benefits"]
-
-  - name: "Legal Aid of Western Michigan"
-    state: "MI"
-    website: "https://www.lawestmi.org"
-    services: ["civil", "housing", "family", "benefits"]
-
-  - name: "Legal Services of Eastern Michigan"
-    state: "MI"
-    website: "https://www.lsem-mi.org"
-    services: ["civil", "housing", "family", "benefits"]
-
-  - name: "Legal Services of Northern Michigan, Inc."
-    state: "MI"
-    website: "https://www.lsnm.org"
-    services: ["civil", "housing", "family", "benefits"]
-
-  - name: "Michigan Advocacy Program"
-    state: "MI"
-    website: "https://www.miadvocacy.org"
-    services: ["civil", "housing", "family", "benefits"]
-
-  - name: "Michigan Indian Legal Services, Inc."
-    state: "MI"
-    website: "https://www.mils.org"
-    services: ["civil", "native-american", "family", "benefits"]
-
-  # Micronesia
-  - name: "Micronesian Legal Services, Inc."
-    state: "FM"
-    services: ["civil", "housing", "family"]
-
-  # Minnesota (5 programs)
-  - name: "Anishinabe Legal Services, Inc."
-    state: "MN"
-    website: "https://www.alslegal.org"
-    services: ["civil", "native-american", "family", "benefits"]
-
-  - name: "Central Minnesota Legal Services, Inc."
-    state: "MN"
-    website: "https://www.centralmnlegal.org"
-    services: ["civil", "housing", "family", "benefits"]
-
-  - name: "Legal Aid Service of Northeastern Minnesota"
-    state: "MN"
-    website: "https://www.lasnem.org"
-    services: ["civil", "housing", "family", "benefits"]
-
-  - name: "Legal Services of Northwest Minnesota Corporation"
-    state: "MN"
-    website: "https://www.lsnm.org"
-    services: ["civil", "housing", "family", "benefits"]
-
-  - name: "Southern Minnesota Regional Legal Services, Inc."
-    state: "MN"
-    website: "https://www.smrls.org"
-    services: ["civil", "housing", "family", "benefits", "immigration"]
-
-  # Mississippi
-  - name: "Mississippi Center for Legal Services"
-    state: "MS"
-    website: "https://www.mscls.org"
-    services: ["civil", "housing", "family", "benefits"]
-
-  - name: "North Mississippi Rural Legal Services, Inc."
-    state: "MS"
-    website: "https://www.nmrls.com"
-    services: ["civil", "housing", "family", "benefits"]
-
-  # Missouri (4 programs)
-  - name: "Legal Aid of Western Missouri"
-    state: "MO"
-    website: "https://www.lawmo.org"
-    services: ["civil", "housing", "family", "benefits"]
-
-  - name: "Legal Services of Eastern Missouri, Inc."
-    state: "MO"
-    website: "https://www.lsem.org"
-    services: ["civil", "housing", "family", "benefits"]
-
-  - name: "Legal Services of Southern Missouri"
-    state: "MO"
-    website: "https://www.lsosm.org"
-    services: ["civil", "housing", "family", "benefits"]
-
-  - name: "Mid-Missouri Legal Services Corporation"
-    state: "MO"
-    website: "https://www.mmls.org"
-    services: ["civil", "housing", "family", "benefits"]
-
-  # Montana
-  - name: "Montana Legal Services Association"
-    state: "MT"
-    website: "https://www.mtlsa.org"
-    services: ["civil", "housing", "family", "benefits", "native-american"]
-
-  # Nebraska
-  - name: "Legal Aid of Nebraska"
-    state: "NE"
-    website: "https://www.legalaidofnebraska.org"
-    services: ["civil", "housing", "family", "benefits"]
-
-  # Nevada
-  - name: "Nevada Legal Services, Inc."
-    state: "NV"
-    website: "https://www.nlslaw.net"
-    services: ["civil", "housing", "family", "benefits"]
-
-  # New Hampshire
-  - name: "603 Legal Aid"
-    state: "NH"
-    website: "https://www.603legalaid.org"
-    services: ["civil", "housing", "family", "benefits"]
-
-  # New Jersey (5 programs)
-  - name: "Central Jersey Legal Services, Inc."
-    state: "NJ"
-    website: "https://www.cjls.org"
-    services: ["civil", "housing", "family", "benefits"]
-
-  - name: "Essex-Newark Legal Services Project, Inc."
-    state: "NJ"
-    website: "https://www.lsnj.org"
-    services: ["civil", "housing", "family", "benefits"]
-
-  - name: "Legal Services of Northwest Jersey"
-    state: "NJ"
-    website: "https://www.lsnwj.org"
-    services: ["civil", "housing", "family", "benefits"]
-
-  - name: "Northeast New Jersey Legal Services Corporation"
-    state: "NJ"
-    website: "https://www.lsnj.org"
-    services: ["civil", "housing", "family", "benefits"]
-
-  - name: "South Jersey Legal Services, Inc."
-    state: "NJ"
-    website: "https://www.lsnj.org"
-    services: ["civil", "housing", "family", "benefits"]
-
-  # New Mexico
-  - name: "New Mexico Legal Aid"
-    state: "NM"
-    website: "https://www.newmexicolegalaid.org"
-    services: ["civil", "housing", "family", "benefits", "native-american"]
-
-  # New York (7 programs)
-  - name: "Legal Aid Society of Mid-New York, Inc."
-    state: "NY"
-    website: "https://www.lasmny.org"
-    services: ["civil", "housing", "family", "benefits"]
-
-  - name: "Legal Aid Society of Northeastern New York, Inc."
-    state: "NY"
-    website: "https://www.lasnny.org"
-    services: ["civil", "housing", "family", "benefits"]
-
-  - name: "Legal Assistance of Western New York, Inc."
-    state: "NY"
-    website: "https://www.lawny.org"
-    services: ["civil", "housing", "family", "benefits"]
-
-  - name: "Legal Services NYC"
-    state: "NY"
-    website: "https://www.legalservicesnyc.org"
-    services: ["civil", "housing", "family", "benefits", "immigration"]
-
-  - name: "Legal Services of the Hudson Valley"
-    state: "NY"
-    website: "https://www.lshv.org"
-    services: ["civil", "housing", "family", "benefits"]
-
-  - name: "Legal Services of Long Island, Inc."
-    state: "NY"
-    website: "https://www.lsli.org"
-    services: ["civil", "housing", "family", "benefits"]
-
-  - name: "Neighborhood Legal Services, Inc."
-    state: "NY"
-    website: "https://www.nls.org"
-    services: ["civil", "housing", "family", "benefits"]
-
-  # North Carolina
-  - name: "Legal Aid of North Carolina, Inc."
-    state: "NC"
-    website: "https://www.legalaidnc.org"
-    services: ["civil", "housing", "family", "benefits"]
-
-  # North Dakota
-  - name: "Legal Services of North Dakota"
-    state: "ND"
-    website: "https://www.legalassist.org"
-    services: ["civil", "housing", "family", "benefits", "native-american"]
-
-  # Ohio (5 programs)
-  - name: "Community Legal Aid Services, Inc."
-    state: "OH"
-    website: "https://www.communitylegalaid.org"
-    services: ["civil", "housing", "family", "benefits"]
-
-  - name: "Legal Aid of Western Ohio, Inc."
-    state: "OH"
-    website: "https://www.lawolaw.org"
-    services: ["civil", "housing", "family", "benefits"]
-
-  - name: "The Legal Aid Society of Cleveland"
-    state: "OH"
-    website: "https://www.lasclev.org"
-    services: ["civil", "housing", "family", "benefits"]
-
-  - name: "Legal Aid Society of Greater Cincinnati"
-    state: "OH"
-    website: "https://www.lascinti.org"
-    services: ["civil", "housing", "family", "benefits"]
-
-  - name: "Legal Aid of Southeast and Central Ohio"
-    state: "OH"
-    website: "https://www.seols.org"
-    services: ["civil", "housing", "family", "benefits"]
-
-  # Oklahoma
-  - name: "Legal Aid Services of Oklahoma, Inc."
-    state: "OK"
-    website: "https://www.legalaidok.org"
-    services: ["civil", "housing", "family", "benefits"]
-
-  - name: "Oklahoma Indian Legal Services, Inc."
-    state: "OK"
-    website: "https://www.oilsonline.org"
-    services: ["civil", "native-american", "family", "benefits"]
-
-  # Oregon
-  - name: "Legal Aid Services of Oregon"
-    state: "OR"
-    website: "https://www.lasoregon.org"
-    services: ["civil", "housing", "family", "benefits"]
-
-  # Pennsylvania (7 programs)
-  - name: "Legal Aid of Southeastern Pennsylvania"
-    state: "PA"
-    website: "https://www.lasp.org"
-    services: ["civil", "housing", "family", "benefits"]
-
-  - name: "MidPenn Legal Services, Inc."
-    state: "PA"
-    website: "https://www.midpenn.org"
-    services: ["civil", "housing", "family", "benefits"]
-
-  - name: "Neighborhood Legal Services Association"
-    state: "PA"
-    website: "https://www.nlsa.us"
-    services: ["civil", "housing", "family", "benefits"]
-
-  - name: "North Penn Legal Services, Inc."
-    state: "PA"
-    website: "https://www.northpennlegal.org"
-    services: ["civil", "housing", "family", "benefits"]
-
-  - name: "Northwestern Legal Services"
-    state: "PA"
-    website: "https://www.nwls.org"
-    services: ["civil", "housing", "family", "benefits"]
-
-  - name: "Philadelphia Legal Assistance Center"
-    state: "PA"
-    website: "https://www.philalegal.org"
-    services: ["civil", "housing", "family", "benefits"]
-
-  - name: "Summit Legal Aid"
-    state: "PA"
-    website: "https://www.summitlegalaid.org"
-    services: ["civil", "housing", "family", "benefits"]
-
-  # Puerto Rico
-  - name: "Community Law Office, Inc."
-    state: "PR"
-    services: ["civil", "housing", "family", "benefits"]
-
-  - name: "Puerto Rico Legal Services, Inc."
-    state: "PR"
-    website: "https://www.servicioslegales.org"
-    services: ["civil", "housing", "family", "benefits"]
-
-  # Rhode Island
-  - name: "Rhode Island Legal Services, Inc."
-    state: "RI"
-    website: "https://www.rils.org"
-    services: ["civil", "housing", "family", "benefits"]
-
-  # South Carolina
-  - name: "South Carolina Legal Services, Inc."
-    state: "SC"
-    website: "https://www.sclegal.org"
-    services: ["civil", "housing", "family", "benefits"]
-
-  # South Dakota
-  - name: "Dakota Plains Legal Services, Inc."
-    state: "SD"
-    website: "https://www.dpls.org"
-    services: ["civil", "housing", "family", "benefits", "native-american"]
-
-  - name: "East River Legal Services"
-    state: "SD"
-    website: "https://www.erlservices.org"
-    services: ["civil", "housing", "family", "benefits"]
-
-  # Tennessee (3 programs)
-  - name: "Legal Aid of East Tennessee"
-    state: "TN"
-    website: "https://www.laet.org"
-    services: ["civil", "housing", "family", "benefits"]
-
-  - name: "Legal Aid Society of Middle Tennessee and the Cumberlands"
-    state: "TN"
-    website: "https://www.las.org"
-    services: ["civil", "housing", "family", "benefits"]
-
-  - name: "West Tennessee Legal Services, Inc."
-    state: "TN"
-    website: "https://www.wtls.org"
-    services: ["civil", "housing", "family", "benefits"]
-
-  # Texas (3 programs)
-  - name: "Legal Aid of NorthWest Texas"
-    state: "TX"
-    website: "https://www.lanwt.org"
-    services: ["civil", "housing", "family", "benefits"]
-
-  - name: "Lone Star Legal Aid"
-    state: "TX"
-    website: "https://www.lonestarlegal.org"
-    services: ["civil", "housing", "family", "benefits"]
-
-  - name: "Texas RioGrande Legal Aid, Inc."
-    state: "TX"
-    website: "https://www.trla.org"
-    services: ["civil", "housing", "family", "benefits", "immigration"]
-
-  # Utah
-  - name: "Utah Legal Services, Inc."
-    state: "UT"
-    website: "https://www.utahlegalservices.org"
-    services: ["civil", "housing", "family", "benefits"]
-
-  # Vermont
-  - name: "Legal Services Vermont"
-    state: "VT"
-    website: "https://www.legalservicesvt.org"
-    services: ["civil", "housing", "family", "benefits"]
-
-  # Virgin Islands
-  - name: "Legal Services of the Virgin Islands, Inc."
-    state: "VI"
-    services: ["civil", "housing", "family", "benefits"]
-
-  # Virginia (6 programs)
-  - name: "Blue Ridge Legal Services, Inc."
-    state: "VA"
-    website: "https://www.brls.org"
-    services: ["civil", "housing", "family", "benefits"]
-
-  - name: "Central Virginia Legal Aid Society, Inc."
-    state: "VA"
-    website: "https://www.cvlas.org"
-    services: ["civil", "housing", "family", "benefits"]
-
-  - name: "Legal Aid Society of Eastern Virginia"
-    state: "VA"
-    website: "https://www.laseva.org"
-    services: ["civil", "housing", "family", "benefits"]
-
-  - name: "Legal Services of Northern Virginia, Inc."
-    state: "VA"
-    website: "https://www.lsnv.org"
-    services: ["civil", "housing", "family", "benefits"]
-
-  - name: "Southwest Virginia Legal Aid Society, Inc."
-    state: "VA"
-    website: "https://www.svlas.org"
-    services: ["civil", "housing", "family", "benefits"]
-
-  - name: "Virginia Legal Aid Society, Inc."
-    state: "VA"
-    website: "https://www.vlas.org"
-    services: ["civil", "housing", "family", "benefits"]
-
-  # Washington
-  - name: "Northwest Justice Project"
-    state: "WA"
-    website: "https://www.nwjustice.org"
-    services: ["civil", "housing", "family", "benefits"]
-
-  # West Virginia
-  - name: "Legal Aid of West Virginia, Inc."
-    state: "WV"
-    website: "https://www.lawv.net"
-    services: ["civil", "housing", "family", "benefits"]
-
-  # Wisconsin
-  - name: "Legal Action of Wisconsin, Inc."
-    state: "WI"
-    website: "https://www.legalaction.org"
-    services: ["civil", "housing", "family", "benefits"]
-
-  - name: "Judicare Legal Aid"
-    state: "WI"
-    website: "https://www.judicare.org"
-    services: ["civil", "housing", "family", "benefits", "native-american"]
-
-  # Wyoming
-  - name: "Legal Aid of Wyoming, Inc."
-    state: "WY"
-    website: "https://www.lawyoming.org"
-    services: ["civil", "housing", "family", "benefits"]
-
-# Veteran-relevant practice areas:
-# - benefits: VA benefits appeals, disability claims
-# - housing: Eviction defense, foreclosure prevention
-# - family: Custody, divorce, child support
-# - employment: Wage theft, wrongful termination
-# - consumer: Debt collection, bankruptcy
-# - civil: General civil legal issues
+- name: Legal Services Alabama
+  state: AL
+  website: https://www.legalservicesalabama.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+  phone: (866) 456-4995
+- name: Alaska Legal Services Corporation
+  state: AK
+  website: https://www.alsc-law.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+  - native-american
+- name: American Samoa Legal Aid
+  state: AS
+  services:
+  - civil
+  - housing
+  - family
+- name: Community Legal Services, Inc.
+  state: AZ
+  website: https://www.clsaz.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+  - consumer
+  phone: (800) 852-9075
+- name: DNA-Peoples Legal Services, Inc.
+  state: AZ
+  website: https://www.dnalegalservices.org
+  services:
+  - civil
+  - housing
+  - family
+  - native-american
+  phone: (928) 871-4151
+- name: Southern Arizona Legal Aid, Inc.
+  state: AZ
+  website: https://www.sazlegalaid.org
+  services:
+  - civil
+  - housing
+  - family
+  - immigration
+  phone: (520) 623-9461
+- name: Center for Arkansas Legal Services
+  state: AR
+  website: https://www.arlegalservices.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+- name: Legal Aid of Arkansas, Inc.
+  state: AR
+  website: https://www.arlegalaid.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+  phone: (800) 952-9243
+- name: Bay Area Legal Aid
+  state: CA
+  website: https://www.baylegal.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+  - consumer
+  phone: (800) 551-5554
+- name: California Indian Legal Services, Inc.
+  state: CA
+  website: https://www.calindian.org
+  services:
+  - civil
+  - native-american
+  - benefits
+- name: California Rural Legal Assistance, Inc.
+  state: CA
+  website: https://www.crla.org
+  services:
+  - civil
+  - housing
+  - family
+  - employment
+  - immigration
+  phone: (800) 337-0690
+- name: Central California Legal Services
+  state: CA
+  website: https://www.centralcallegal.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+  phone: (800) 675-8001
+- name: Greater Bakersfield Legal Assistance, Inc.
+  state: CA
+  website: https://www.gbla.org
+  services:
+  - civil
+  - housing
+  - family
+- name: Inland Counties Legal Services, Inc.
+  state: CA
+  website: https://www.inlandlegal.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+  phone: (888) 245-4257
+- name: Legal Aid Foundation of Los Angeles
+  state: CA
+  website: https://www.lafla.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+  - immigration
+  phone: (800) 399-4529
+    Blvd., 4 th Floor Los Angeles, CA 90022
+- name: Community Legal Aid SoCal
+  state: CA
+  website: https://www.communitylegalsocal.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+  phone: (714) 571-5200
+- name: Legal Aid Society of San Diego, Inc.
+  state: CA
+  website: https://www.lassd.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+  phone: (877) 534-2524
+- name: Legal Services of Northern California, Inc.
+  state: CA
+  website: https://www.lsnc.net
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+  phone: (916) 551-2150
+- name: Neighborhood Legal Services of Los Angeles County
+  state: CA
+  website: https://www.nlsla.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+  - consumer
+  phone: (800) 433-6251
+- name: Colorado Legal Services
+  state: CO
+  website: https://www.coloradolegalservices.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+  - immigration
+  phone: (303) 837-1313
+- name: Statewide Legal Services of Connecticut, Inc.
+  state: CT
+  website: https://www.slsct.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+  phone: (800) 453-3320
+- name: Legal Services Corporation of Delaware, Inc.
+  state: DE
+  website: https://www.lscd.com
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+- name: Neighborhood Legal Services Program of the District of Columbia
+  state: DC
+  website: https://www.nlsp.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+  - consumer
+  phone: (202) 832-6577
+- name: Bay Area Legal Services, Inc.
+  state: FL
+  website: https://www.bals.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+  phone: (813) 232-1343
+- name: Coast to Coast Legal Aid of South Florida, Inc.
+  state: FL
+  website: https://www.coasttocoastlegalaid.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+  phone: (800) 877-8339
+- name: Community Legal Services of Mid-Florida, Inc.
+  state: FL
+  website: https://www.clsmf.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+- name: Florida Rural Legal Services, Inc.
+  state: FL
+  website: https://www.frls.org
+  services:
+  - civil
+  - housing
+  - family
+  - immigration
+  phone: (888) 582-3410
+- name: Legal Services of Greater Miami, Inc.
+  state: FL
+  website: https://www.lsgmi.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+  - immigration
+- name: Legal Services of North Florida, Inc.
+  state: FL
+  website: https://www.lsnf.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+  phone: (850) 385-9007
+- name: Three Rivers Legal Services, Inc.
+  state: FL
+  website: https://www.trls.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+- name: Atlanta Legal Aid Society, Inc.
+  state: GA
+  website: https://www.atlantalegalaid.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+  phone: (404) 524-5811
+- name: Georgia Legal Services Program
+  state: GA
+  website: https://www.glsp.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+  phone: (833) 457-7529
+- name: Legal Aid Society of Hawaii
+  state: HI
+  website: https://www.legalaidhawaii.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+  phone: (808) 536-4302
+- name: Idaho Legal Aid Services, Inc.
+  state: ID
+  website: https://www.idaholegalaid.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+  phone: (208) 746-7541
+- name: Land of Lincoln Legal Aid, Inc.
+  state: IL
+  website: https://www.lollaf.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+  phone: (877) 342-7891
+- name: Legal Aid Chicago
+  state: IL
+  website: https://www.legalaidchicago.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+  - consumer
+  phone: (312) 341-1070
+- name: Prairie State Legal Services, Inc.
+  state: IL
+  website: https://www.pslegal.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+  phone: (815) 965-2134
+- name: Indiana Legal Services, Inc.
+  state: IN
+  website: https://www.indianalegalservices.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+  phone: (317) 829-3085
+- name: Iowa Legal Aid
+  state: IA
+  website: https://www.iowalegalaid.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+- name: Kansas Legal Services, Inc.
+  state: KS
+  website: https://www.kansaslegalservices.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+  phone: (316) 267-3975
+- name: Appalachian Research and Defense Fund of Kentucky
+  state: KY
+  website: https://www.ardfky.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+  phone: (844) 478-0099
+- name: Kentucky Legal Aid
+  state: KY
+  website: https://www.klaid.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+  phone: (800) 782-1924
+- name: Legal Aid of the Bluegrass
+  state: KY
+  website: https://www.lablaw.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+  phone: (859) 431-8200
+- name: Legal Aid Society
+  state: KY
+  website: https://www.laslou.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+- name: Acadiana Legal Service Corporation
+  state: LA
+  website: https://www.la-law.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+- name: Southeast Louisiana Legal Services Corporation
+  state: LA
+  website: https://www.slls.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+  phone: (844) 244-7871
+- name: Pine Tree Legal Assistance, Inc.
+  state: ME
+  website: https://www.ptla.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+  - native-american
+- name: Maryland Legal Aid
+  state: MD
+  website: https://www.mdlab.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+  - consumer
+  phone: (888) 465-2468
+- name: Community Legal Aid, Inc.
+  state: MA
+  website: https://www.communitylegal.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+  phone: (855) 252-5342
+- name: Northeast Legal Aid, Inc.
+  state: MA
+  website: https://www.northeastlegalaid.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+  phone: (978) 458-1465
+- name: South Coastal Counties Legal Services
+  state: MA
+  website: https://www.sccls.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+- name: Volunteer Lawyers Project of the Boston Bar Association
+  state: MA
+  website: https://www.vlpnet.org
+  services:
+  - civil
+  - housing
+  - family
+  phone: (617) 603-1700
+- name: Lakeshore Legal Aid
+  state: MI
+  website: https://www.lakeshorelegalaid.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+  phone: (888) 783-8190
+- name: Legal Aid of Western Michigan
+  state: MI
+  website: https://www.lawestmi.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+- name: Legal Services of Eastern Michigan
+  state: MI
+  website: https://www.lsem-mi.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+- name: Legal Services of Northern Michigan, Inc.
+  state: MI
+  website: https://www.lsnm.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+  phone: (800) 872-8432
+- name: Michigan Advocacy Program
+  state: MI
+  website: https://www.miadvocacy.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+  phone: (734) 665-6181
+- name: Michigan Indian Legal Services, Inc.
+  state: MI
+  website: https://www.mils.org
+  services:
+  - civil
+  - native-american
+  - family
+  - benefits
+  phone: (231) 947-0122
+- name: Micronesian Legal Services, Inc.
+  state: FM
+  services:
+  - civil
+  - housing
+  - family
+- name: Anishinabe Legal Services, Inc.
+  state: MN
+  website: https://www.alslegal.org
+  services:
+  - civil
+  - native-american
+  - family
+  - benefits
+  phone: (800) 422-1335
+- name: Central Minnesota Legal Services, Inc.
+  state: MN
+  website: https://www.centralmnlegal.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+  phone: (612) 332-8151
+- name: Legal Aid Service of Northeastern Minnesota
+  state: MN
+  website: https://www.lasnem.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+  phone: (877) 696-6529
+- name: Legal Services of Northwest Minnesota Corporation
+  state: MN
+  website: https://www.lsnm.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+  phone: (800) 872-8432
+- name: Southern Minnesota Regional Legal Services, Inc.
+  state: MN
+  website: https://www.smrls.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+  - immigration
+  phone: (877) 696-6529
+- name: Mississippi Center for Legal Services
+  state: MS
+  website: https://www.mscls.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+- name: North Mississippi Rural Legal Services, Inc.
+  state: MS
+  website: https://www.nmrls.com
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+  phone: (800) 898-8731
+- name: Legal Aid of Western Missouri
+  state: MO
+  website: https://www.lawmo.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+  phone: (816) 474-6750
+- name: Legal Services of Eastern Missouri, Inc.
+  state: MO
+  website: https://www.lsem.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+  phone: (800) 444-0514
+- name: Legal Services of Southern Missouri
+  state: MO
+  website: https://www.lsosm.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+  phone: (800) 444-4863
+- name: Mid-Missouri Legal Services Corporation
+  state: MO
+  website: https://www.mmls.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+  phone: (800) 568-4931
+- name: Montana Legal Services Association
+  state: MT
+  website: https://www.mtlsa.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+  - native-american
+- name: Legal Aid of Nebraska
+  state: NE
+  website: https://www.legalaidofnebraska.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+  phone: (402) 348-1069
+- name: Nevada Legal Services, Inc.
+  state: NV
+  website: https://www.nlslaw.net
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+- name: 603 Legal Aid
+  state: NH
+  website: https://www.603legalaid.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+  phone: (800) 639-5290
+- name: Central Jersey Legal Services, Inc.
+  state: NJ
+  website: https://www.cjls.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+- name: Essex-Newark Legal Services Project, Inc.
+  state: NJ
+  website: https://www.lsnj.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+  phone: (732) 572-9100
+- name: Legal Services of Northwest Jersey
+  state: NJ
+  website: https://www.lsnwj.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+- name: Northeast New Jersey Legal Services Corporation
+  state: NJ
+  website: https://www.lsnj.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+  phone: (732) 572-9100
+- name: South Jersey Legal Services, Inc.
+  state: NJ
+  website: https://www.lsnj.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+  phone: (732) 572-9100
+- name: New Mexico Legal Aid
+  state: NM
+  website: https://www.newmexicolegalaid.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+  - native-american
+  phone: (833) 545-4357
+- name: Legal Aid Society of Mid-New York, Inc.
+  state: NY
+  website: https://www.lasmny.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+- name: Legal Aid Society of Northeastern New York, Inc.
+  state: NY
+  website: https://www.lasnny.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+  phone: (833) 628-0087
+- name: Legal Assistance of Western New York, Inc.
+  state: NY
+  website: https://www.lawny.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+  phone: (866) 781-5235
+- name: Legal Services NYC
+  state: NY
+  website: https://www.legalservicesnyc.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+  - immigration
+  phone: (917) 661-4500
+- name: Legal Services of the Hudson Valley
+  state: NY
+  website: https://www.lshv.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+  phone: (877) 574-8529
+- name: Legal Services of Long Island, Inc.
+  state: NY
+  website: https://www.lsli.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+  phone: (225) 578-0200
+- name: Neighborhood Legal Services, Inc.
+  state: NY
+  website: https://www.nls.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+  phone: (716) 847-0650
+- name: Legal Aid of North Carolina, Inc.
+  state: NC
+  website: https://www.legalaidnc.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+- name: Legal Services of North Dakota
+  state: ND
+  website: https://www.legalassist.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+  - native-american
+  phone: (800) 634-5263
+- name: Community Legal Aid Services, Inc.
+  state: OH
+  website: https://www.communitylegalaid.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+  phone: (800) 998-9454
+- name: Legal Aid of Western Ohio, Inc.
+  state: OH
+  website: https://www.lawolaw.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+  phone: (877) 894-4599
+- name: The Legal Aid Society of Cleveland
+  state: OH
+  website: https://www.lasclev.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+  phone: (888) 817-3777
+- name: Legal Aid Society of Greater Cincinnati
+  state: OH
+  website: https://www.lascinti.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+- name: Legal Aid of Southeast and Central Ohio
+  state: OH
+  website: https://www.seols.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+- name: Legal Aid Services of Oklahoma, Inc.
+  state: OK
+  website: https://www.legalaidok.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+  phone: (888) 534-5243
+- name: Oklahoma Indian Legal Services, Inc.
+  state: OK
+  website: https://www.oilsonline.org
+  services:
+  - civil
+  - native-american
+  - family
+  - benefits
+  phone: (800) 658-1497
+- name: Legal Aid Services of Oregon
+  state: OR
+  website: https://www.lasoregon.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+- name: Legal Aid of Southeastern Pennsylvania
+  state: PA
+  website: https://www.lasp.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+- name: MidPenn Legal Services, Inc.
+  state: PA
+  website: https://www.midpenn.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+  phone: (800) 326-9177
+- name: Neighborhood Legal Services Association
+  state: PA
+  website: https://www.nlsa.us
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+  phone: (866) 761-6572
+- name: North Penn Legal Services, Inc.
+  state: PA
+  website: https://www.northpennlegal.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+  phone: (877) 953-4250
+- name: Northwestern Legal Services
+  state: PA
+  website: https://www.nwls.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+  phone: (814) 452-6949
+- name: Philadelphia Legal Assistance Center
+  state: PA
+  website: https://www.philalegal.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+  phone: (215) 981-3800
+- name: Summit Legal Aid
+  state: PA
+  website: https://www.summitlegalaid.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+- name: Community Law Office, Inc.
+  state: PR
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+- name: Puerto Rico Legal Services, Inc.
+  state: PR
+  website: https://www.servicioslegales.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+  phone: (800) 981-5342
+- name: Rhode Island Legal Services, Inc.
+  state: RI
+  website: https://www.rils.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+  phone: (800) 662-5034
+- name: South Carolina Legal Services, Inc.
+  state: SC
+  website: https://www.sclegal.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+- name: Dakota Plains Legal Services, Inc.
+  state: SD
+  website: https://www.dpls.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+  - native-american
+  phone: (605) 245-2341
+- name: East River Legal Services
+  state: SD
+  website: https://www.erlservices.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+  phone: (877) 952-3015
+- name: Legal Aid of East Tennessee
+  state: TN
+  website: https://www.laet.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+  phone: (865) 637-0484
+- name: Legal Aid Society of Middle Tennessee and the Cumberlands
+  state: TN
+  website: https://www.las.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+  phone: (800) 238-1443
+- name: West Tennessee Legal Services, Inc.
+  state: TN
+  website: https://www.wtls.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+  phone: (800) 372-8346
+- name: Legal Aid of NorthWest Texas
+  state: TX
+  website: https://www.lanwt.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+  phone: (888) 529-5277
+- name: Lone Star Legal Aid
+  state: TX
+  website: https://www.lonestarlegal.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+  phone: (800) 733-8394
+- name: Texas RioGrande Legal Aid, Inc.
+  state: TX
+  website: https://www.trla.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+  - immigration
+  phone: (956) 996-8752
+- name: Utah Legal Services, Inc.
+  state: UT
+  website: https://www.utahlegalservices.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+  phone: (801) 328-8891
+- name: Legal Services Vermont
+  state: VT
+  website: https://www.legalservicesvt.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+  phone: (800) 889-2047
+- name: Legal Services of the Virgin Islands, Inc.
+  state: VI
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+- name: Blue Ridge Legal Services, Inc.
+  state: VA
+  website: https://www.brls.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+- name: Central Virginia Legal Aid Society, Inc.
+  state: VA
+  website: https://www.cvlas.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+  phone: (804) 648-1012
+- name: Legal Aid Society of Eastern Virginia
+  state: VA
+  website: https://www.laseva.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+  phone: (757) 827-5078
+- name: Legal Services of Northern Virginia, Inc.
+  state: VA
+  website: https://www.lsnv.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+  phone: (703) 778-6800
+- name: Southwest Virginia Legal Aid Society, Inc.
+  state: VA
+  website: https://www.svlas.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+  phone: (888) 201-2772
+- name: Virginia Legal Aid Society, Inc.
+  state: VA
+  website: https://www.vlas.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+  phone: (866) 534-5243
+- name: Northwest Justice Project
+  state: WA
+  website: https://www.nwjustice.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+- name: Legal Aid of West Virginia, Inc.
+  state: WV
+  website: https://www.lawv.net
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+  phone: (866) 255-4370
+- name: Legal Action of Wisconsin, Inc.
+  state: WI
+  website: https://www.legalaction.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+  phone: (855) 947-2529
+- name: Judicare Legal Aid
+  state: WI
+  website: https://www.judicare.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+  - native-american
+  phone: (855) 947-2529
+- name: Legal Aid of Wyoming, Inc.
+  state: WY
+  website: https://www.lawyoming.org
+  services:
+  - civil
+  - housing
+  - family
+  - benefits
+  phone: (877) 432-9955
