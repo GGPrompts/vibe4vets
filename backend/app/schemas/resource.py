@@ -1,4 +1,8 @@
-"""Resource schemas for API validation."""
+"""Resource schemas for API validation.
+
+Defines Pydantic schemas for resource CRUD operations, search results,
+and nested entity representations.
+"""
 
 from datetime import datetime
 from uuid import UUID
@@ -9,59 +13,63 @@ from app.models.resource import ResourceScope, ResourceStatus
 
 
 class OrganizationNested(BaseModel):
-    """Nested organization info in resource response."""
+    """Organization information nested in resource responses."""
 
-    id: UUID
-    name: str
-    website: str | None = None
+    id: UUID = Field(..., description="Organization unique identifier")
+    name: str = Field(..., description="Organization name")
+    website: str | None = Field(None, description="Organization website URL")
 
 
 class EligibilityInfo(BaseModel):
-    """Eligibility constraints for a location."""
+    """Eligibility constraints for a resource location.
 
-    age_min: int | None = None
-    age_max: int | None = None
-    household_size_min: int | None = None
-    household_size_max: int | None = None
-    income_limit_type: str | None = None
-    income_limit_value: int | None = None
-    income_limit_ami_percent: int | None = None
-    housing_status_required: list[str] = Field(default_factory=list)
-    active_duty_required: bool | None = None
-    discharge_required: str | None = None
-    veteran_status_required: bool = True
-    docs_required: list[str] = Field(default_factory=list)
-    waitlist_status: str | None = None
+    Used to match resources with veteran eligibility criteria.
+    All fields are optional to support partial matching.
+    """
+
+    age_min: int | None = Field(None, description="Minimum age requirement")
+    age_max: int | None = Field(None, description="Maximum age limit")
+    household_size_min: int | None = Field(None, description="Minimum household size")
+    household_size_max: int | None = Field(None, description="Maximum household size")
+    income_limit_type: str | None = Field(None, description="Type of income limit (e.g., 'annual', 'monthly')")
+    income_limit_value: int | None = Field(None, description="Income limit amount in dollars")
+    income_limit_ami_percent: int | None = Field(None, description="Income limit as percentage of Area Median Income")
+    housing_status_required: list[str] = Field(default_factory=list, description="Required housing statuses (homeless, at_risk)")
+    active_duty_required: bool | None = Field(None, description="Whether active duty status is required")
+    discharge_required: str | None = Field(None, description="Required discharge type (honorable, other)")
+    veteran_status_required: bool = Field(True, description="Whether veteran status is required")
+    docs_required: list[str] = Field(default_factory=list, description="Required documentation (DD-214, proof of income, etc.)")
+    waitlist_status: str | None = Field(None, description="Current waitlist status (open, closed, limited)")
 
 
 class IntakeInfo(BaseModel):
-    """Intake information for a location."""
+    """Intake and contact information for applying to a resource."""
 
-    phone: str | None = None
-    url: str | None = None
-    hours: str | None = None
-    notes: str | None = None
+    phone: str | None = Field(None, description="Intake phone number")
+    url: str | None = Field(None, description="Application or intake URL")
+    hours: str | None = Field(None, description="Intake hours (e.g., 'Mon-Fri 9am-5pm')")
+    notes: str | None = Field(None, description="Additional intake instructions")
 
 
 class VerificationInfo(BaseModel):
-    """Verification metadata for a location."""
+    """Verification metadata tracking when resource info was last confirmed."""
 
-    last_verified_at: datetime | None = None
-    verified_by: str | None = None
-    notes: str | None = None
+    last_verified_at: datetime | None = Field(None, description="When the resource was last verified")
+    verified_by: str | None = Field(None, description="Who performed the verification")
+    notes: str | None = Field(None, description="Verification notes or issues found")
 
 
 class LocationNested(BaseModel):
-    """Nested location info in resource response."""
+    """Physical location information for a resource."""
 
-    id: UUID
-    city: str
-    state: str
-    address: str | None = None
-    service_area: list[str] = Field(default_factory=list)
-    eligibility: EligibilityInfo | None = None
-    intake: IntakeInfo | None = None
-    verification: VerificationInfo | None = None
+    id: UUID = Field(..., description="Location unique identifier")
+    city: str = Field(..., description="City name")
+    state: str = Field(..., description="2-letter state code")
+    address: str | None = Field(None, description="Street address")
+    service_area: list[str] = Field(default_factory=list, description="Areas served (counties, regions)")
+    eligibility: EligibilityInfo | None = Field(None, description="Location-specific eligibility requirements")
+    intake: IntakeInfo | None = Field(None, description="How to apply at this location")
+    verification: VerificationInfo | None = Field(None, description="Verification status")
 
 
 class ResourceCreate(BaseModel):
@@ -130,48 +138,74 @@ class ResourceUpdate(BaseModel):
 
 
 class TrustSignals(BaseModel):
-    """Trust signals for a resource."""
+    """Trust scoring signals indicating resource reliability and freshness.
 
-    freshness_score: float = Field(..., ge=0.0, le=1.0)
-    reliability_score: float = Field(..., ge=0.0, le=1.0)
-    last_verified: datetime | None = None
-    source_tier: int | None = None
-    source_name: str | None = None
+    Every resource has a trust score = reliability × freshness.
+    """
+
+    freshness_score: float = Field(
+        ...,
+        ge=0.0,
+        le=1.0,
+        description="Freshness score (0-1) based on time since last verification",
+    )
+    reliability_score: float = Field(
+        ...,
+        ge=0.0,
+        le=1.0,
+        description="Reliability score (0-1) based on source tier",
+    )
+    last_verified: datetime | None = Field(
+        None,
+        description="When the resource was last verified",
+    )
+    source_tier: int | None = Field(
+        None,
+        description="Source tier (1=highest trust, 4=lowest)",
+    )
+    source_name: str | None = Field(
+        None,
+        description="Name of the data source",
+    )
 
 
 class ResourceRead(BaseModel):
-    """Schema for reading a resource."""
+    """Complete resource data returned from the API.
 
-    id: UUID
-    title: str
-    description: str
-    summary: str | None = None
-    eligibility: str | None = None
-    how_to_apply: str | None = None
+    Includes all resource fields, organization info, location details,
+    and trust scoring signals.
+    """
 
-    categories: list[str]
-    subcategories: list[str]
-    tags: list[str]
+    id: UUID = Field(..., description="Resource unique identifier")
+    title: str = Field(..., description="Resource title/name")
+    description: str = Field(..., description="Full description of the resource")
+    summary: str | None = Field(None, description="Brief summary (1-2 sentences)")
+    eligibility: str | None = Field(None, description="Who qualifies for this resource")
+    how_to_apply: str | None = Field(None, description="Application instructions")
 
-    scope: ResourceScope
-    states: list[str]
+    categories: list[str] = Field(..., description="Categories (employment, training, housing, legal)")
+    subcategories: list[str] = Field(..., description="More specific subcategories")
+    tags: list[str] = Field(..., description="Searchable tags")
 
-    website: str | None = None
-    phone: str | None = None
-    hours: str | None = None
-    languages: list[str]
-    cost: str | None = None
+    scope: ResourceScope = Field(..., description="Geographic scope (national, state, local)")
+    states: list[str] = Field(..., description="States where available (2-letter codes)")
 
-    status: ResourceStatus
-    created_at: datetime
-    updated_at: datetime
+    website: str | None = Field(None, description="Official website URL")
+    phone: str | None = Field(None, description="Contact phone number")
+    hours: str | None = Field(None, description="Operating hours")
+    languages: list[str] = Field(..., description="Languages supported")
+    cost: str | None = Field(None, description="Cost information (free, sliding scale, etc.)")
+
+    status: ResourceStatus = Field(..., description="Resource status (active, inactive, pending)")
+    created_at: datetime = Field(..., description="When the resource was added")
+    updated_at: datetime = Field(..., description="When the resource was last updated")
 
     # Nested relations
-    organization: OrganizationNested
-    location: LocationNested | None = None
+    organization: OrganizationNested = Field(..., description="Organization providing the resource")
+    location: LocationNested | None = Field(None, description="Physical location if applicable")
 
     # Trust signals
-    trust: TrustSignals
+    trust: TrustSignals = Field(..., description="Trust scoring information")
 
     model_config = {"from_attributes": True}
 
@@ -179,31 +213,40 @@ class ResourceRead(BaseModel):
 class ResourceList(BaseModel):
     """Paginated list of resources."""
 
-    resources: list[ResourceRead]
-    total: int
-    limit: int
-    offset: int
+    resources: list[ResourceRead] = Field(..., description="List of resources")
+    total: int = Field(..., description="Total number of matching resources")
+    limit: int = Field(..., description="Maximum results per page")
+    offset: int = Field(..., description="Current pagination offset")
 
 
 class MatchExplanation(BaseModel):
-    """Explanation of why a resource matched."""
+    """Explanation of why a resource matched a search query."""
 
-    reason: str
-    field: str | None = None
-    highlight: str | None = None
+    reason: str = Field(..., description="Human-readable match reason")
+    field: str | None = Field(None, description="Which field matched")
+    highlight: str | None = Field(None, description="Highlighted matching text")
 
 
 class MatchReason(BaseModel):
     """Structured match reason for eligibility wizard results."""
 
-    type: str  # location, age, income, housing_status, veteran_status, discharge, category
-    label: str  # Human-readable label
+    type: str = Field(
+        ...,
+        description="Match type: location, age, income, housing_status, veteran_status, discharge, category",
+    )
+    label: str = Field(..., description="Human-readable label for display")
 
 
 class ResourceSearchResult(BaseModel):
-    """Search result with match explanations."""
+    """Search result with relevance ranking and match explanations."""
 
-    resource: ResourceRead
-    rank: float = Field(..., ge=0.0)
-    explanations: list[MatchExplanation]
-    match_reasons: list[MatchReason] = Field(default_factory=list)
+    resource: ResourceRead = Field(..., description="The matched resource")
+    rank: float = Field(..., ge=0.0, description="Relevance score (higher = better match)")
+    explanations: list[MatchExplanation] = Field(
+        ...,
+        description="Why this resource matched the query",
+    )
+    match_reasons: list[MatchReason] = Field(
+        default_factory=list,
+        description="Eligibility match reasons (for eligibility search)",
+    )

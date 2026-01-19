@@ -1,4 +1,9 @@
-"""Feedback endpoints for anonymous user-reported resource corrections."""
+"""Feedback endpoints for anonymous user-reported resource corrections.
+
+Allows users to report outdated or incorrect resource information without
+requiring an account. Feedback is reviewed by admins and applied to improve
+data quality.
+"""
 
 from datetime import datetime
 from uuid import UUID
@@ -24,15 +29,49 @@ router = APIRouter()
 # ============================================================================
 
 
-@router.post("", response_model=FeedbackResponse, status_code=201)
+@router.post(
+    "",
+    response_model=FeedbackResponse,
+    status_code=201,
+    summary="Submit feedback",
+    response_description="The submitted feedback with tracking ID",
+    responses={
+        201: {
+            "description": "Feedback submitted successfully",
+        },
+        404: {
+            "description": "Resource not found",
+            "content": {
+                "application/json": {
+                    "example": {"detail": "Resource not found"}
+                }
+            },
+        },
+        422: {
+            "description": "Invalid feedback data",
+        },
+    },
+)
 def submit_feedback(
     feedback_data: FeedbackCreate,
     session: SessionDep,
 ) -> Feedback:
     """Submit anonymous feedback about a resource.
 
-    Allows veterans and users to report when resource information is
-    outdated or incorrect. No account or PII required.
+    Report outdated phone numbers, closed programs, or incorrect information.
+    **No account or personal information required.**
+
+    **Issue types:**
+    - `phone_wrong` - Phone number is incorrect or disconnected
+    - `website_wrong` - Website URL is broken or incorrect
+    - `address_wrong` - Address has changed
+    - `program_closed` - Program is no longer available
+    - `eligibility_changed` - Eligibility requirements have changed
+    - `other` - Other corrections or updates
+
+    **Tips for helpful feedback:**
+    - Include the source of your correction if available
+    - Be specific about what's wrong and what the correct info is
     """
     # Verify resource exists
     resource = session.get(Resource, feedback_data.resource_id)

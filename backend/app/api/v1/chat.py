@@ -85,29 +85,71 @@ def _add_to_conversation(conversation_id: str, role: str, content: str) -> None:
 class ChatMessage(BaseModel):
     """Chat message from user."""
 
-    message: str = Field(..., min_length=1, max_length=2000)
-    conversation_id: str | None = None
-    client_id: str | None = Field(
-        None, description="Client identifier for rate limiting. If not provided, uses conversation_id."
+    message: str = Field(
+        ...,
+        min_length=1,
+        max_length=2000,
+        description="The user's message to the AI assistant",
+        json_schema_extra={"example": "I'm a veteran looking for housing assistance in Virginia"},
     )
+    conversation_id: str | None = Field(
+        None,
+        description="Optional ID to continue an existing conversation. Omit for new conversations.",
+    )
+    client_id: str | None = Field(
+        None,
+        description="Optional client identifier for rate limiting. Uses conversation_id if not provided.",
+    )
+
+    model_config = {
+        "json_schema_extra": {
+            "example": {
+                "message": "What housing programs are available for homeless veterans?",
+                "conversation_id": None,
+                "client_id": None,
+            }
+        }
+    }
 
 
 class ResourceReference(BaseModel):
     """Reference to a resource included in chat response."""
 
-    id: int
-    title: str
-    url: str | None = None
-    phone: str | None = None
-    category: str
+    id: int = Field(..., description="Resource database ID")
+    title: str = Field(..., description="Resource title")
+    url: str | None = Field(None, description="Resource website URL")
+    phone: str | None = Field(None, description="Contact phone number")
+    category: str = Field(..., description="Resource category")
 
 
 class ChatResponse(BaseModel):
     """Chat response with resources."""
 
-    response: str
-    resources: list[ResourceReference]
-    conversation_id: str
+    response: str = Field(..., description="AI assistant's response text")
+    resources: list[ResourceReference] = Field(
+        ..., description="Resources referenced in the response"
+    )
+    conversation_id: str = Field(
+        ..., description="Conversation ID for follow-up messages"
+    )
+
+    model_config = {
+        "json_schema_extra": {
+            "example": {
+                "response": "There are several housing programs available for homeless veterans...",
+                "resources": [
+                    {
+                        "id": 1,
+                        "title": "HUD-VASH Housing Program",
+                        "url": "https://www.va.gov/homeless/hud-vash.asp",
+                        "phone": "1-877-4AID-VET",
+                        "category": "housing",
+                    }
+                ],
+                "conversation_id": "550e8400-e29b-41d4-a716-446655440000",
+            }
+        }
+    }
 
 
 SYSTEM_PROMPT = """You are a helpful assistant for Vibe4Vets, a veteran resource directory.
@@ -131,13 +173,58 @@ You have access to a database of veteran resources covering:
 When resources are found, they will be provided to you. Reference them naturally in your response."""
 
 
-@router.post("", response_model=ChatResponse)
+@router.post(
+    "",
+    response_model=ChatResponse,
+    summary="Chat with AI assistant",
+    response_description="AI response with relevant resource references",
+    responses={
+        200: {
+            "description": "Successful chat response",
+        },
+        429: {
+            "description": "Rate limit exceeded (10 requests/minute)",
+            "content": {
+                "application/json": {
+                    "example": {"detail": "Rate limit exceeded. Please wait before sending more messages."}
+                }
+            },
+        },
+        503: {
+            "description": "Chat service not configured or temporarily unavailable",
+            "content": {
+                "application/json": {
+                    "example": {"detail": "Chat service is not configured. Please contact support."}
+                }
+            },
+        },
+    },
+)
 async def chat(message: ChatMessage, session: SessionDep) -> ChatResponse:
-    """Chat with AI assistant about veteran resources.
+    """Chat with the AI assistant about veteran resources.
 
-    Rate limited to 10 requests per minute per client.
-    Maintains conversation history for context.
-    Searches the resource database to provide grounded responses.
+    The assistant uses Claude (Haiku model) to provide helpful, grounded responses
+    based on resources in our database.
+
+    **Features:**
+    - Natural conversation about veteran resources
+    - Automatic resource search based on your question
+    - Conversation history maintained for context
+    - Rate limited to 10 requests per minute per client
+
+    **How it works:**
+    1. Your message is searched against the resource database
+    2. Relevant resources are provided to the AI as context
+    3. The AI generates a helpful response referencing specific resources
+    4. Resource contact info (phone, website) is included when available
+
+    **Continuing conversations:**
+    Save the `conversation_id` from the response and include it in follow-up
+    messages to maintain context.
+
+    **Rate limiting:**
+    Limited to 10 requests per minute. Use `client_id` to identify your
+    application if not using conversation tracking.
     """
     # Rate limiting
     client_id = message.client_id or message.conversation_id or "anonymous"
