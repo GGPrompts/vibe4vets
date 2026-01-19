@@ -96,8 +96,8 @@ class ResourceService:
 
         total = len(self.session.exec(count_query).all())
 
-        # Apply pagination and ordering
-        query = query.order_by(col(Resource.reliability_score).desc()).offset(offset).limit(limit)
+        # Apply pagination and ordering (secondary sort by id for stable pagination)
+        query = query.order_by(col(Resource.reliability_score).desc(), col(Resource.id)).offset(offset).limit(limit)
 
         resources = self.session.exec(query).all()
         return [self._to_read_schema(r) for r in resources], total
