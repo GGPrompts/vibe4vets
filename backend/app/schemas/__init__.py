@@ -1,5 +1,12 @@
 """Pydantic schemas for API request/response validation."""
 
+from app.schemas.feedback import (
+    FeedbackAdminResponse,
+    FeedbackCreate,
+    FeedbackListResponse,
+    FeedbackResponse,
+    FeedbackReviewAction,
+)
 from app.schemas.health import (
     DashboardStats,
     ErrorListResponse,
@@ -19,6 +26,12 @@ from app.schemas.resource import (
 from app.schemas.review import ReviewAction, ReviewQueueItem
 
 __all__ = [
+    # Feedback schemas
+    "FeedbackAdminResponse",
+    "FeedbackCreate",
+    "FeedbackListResponse",
+    "FeedbackResponse",
+    "FeedbackReviewAction",
     # Health schemas
     "DashboardStats",
     "ErrorListResponse",

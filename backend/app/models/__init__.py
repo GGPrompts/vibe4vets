@@ -1,5 +1,6 @@
 """Database models using SQLModel."""
 
+from app.models.feedback import Feedback, FeedbackIssueType, FeedbackStatus
 from app.models.location import Location
 from app.models.organization import Organization
 from app.models.program import Program, ProgramStatus, ProgramType
@@ -15,6 +16,9 @@ from app.models.source import (
 )
 
 __all__ = [
+    "Feedback",
+    "FeedbackIssueType",
+    "FeedbackStatus",
     "Organization",
     "Location",
     "Program",
