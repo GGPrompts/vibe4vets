@@ -23,6 +23,7 @@ import {
   Scale,
 } from 'lucide-react';
 import api, { type Resource } from '@/lib/api';
+import { useAnalytics } from '@/lib/useAnalytics';
 import { cn } from '@/lib/utils';
 import { ReportFeedbackModal } from '@/components/ReportFeedbackModal';
 
@@ -208,6 +209,7 @@ function IntakeCard({ resource }: { resource: Resource }) {
 export default function ResourceDetailPage() {
   const params = useParams();
   const searchParams = useSearchParams();
+  const { trackResourceView } = useAnalytics();
   const id = params.id as string;
 
   // Build back link with preserved search params
@@ -223,6 +225,8 @@ export default function ResourceDetailPage() {
       try {
         const data = await api.resources.get(id);
         setResource(data);
+        // Track resource view analytics
+        trackResourceView(data.id, data.categories[0], data.states[0]);
       } catch (err) {
         setError(err instanceof Error ? err.message : 'Failed to load resource');
       } finally {
@@ -231,7 +235,7 @@ export default function ResourceDetailPage() {
     }
 
     fetchResource();
-  }, [id]);
+  }, [id, trackResourceView]);
 
   if (loading) {
     return (

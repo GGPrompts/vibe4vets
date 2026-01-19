@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import {
+  BarChart3,
   ClipboardCheck,
   Database,
   Calendar,
@@ -21,6 +22,12 @@ const navItems = [
     label: 'Review Queue',
     icon: ClipboardCheck,
     description: 'Pending reviews',
+  },
+  {
+    href: '/admin/analytics',
+    label: 'Analytics',
+    icon: BarChart3,
+    description: 'Usage metrics',
   },
   {
     href: '/admin/sources',

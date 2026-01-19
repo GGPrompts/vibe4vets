@@ -24,12 +24,14 @@ import {
 import { FilterChips } from '@/components/filter-chips';
 import type { SortOption } from '@/components/sort-dropdown';
 import api, { type SearchResponse, type ResourceList, type Resource, type MatchExplanation } from '@/lib/api';
+import { useAnalytics } from '@/lib/useAnalytics';
 import { Filter } from 'lucide-react';
 
 
 function SearchResults() {
   const searchParams = useSearchParams();
   const router = useRouter();
+  const { trackSearch, trackFilter, trackResourceView } = useAnalytics();
   const query = searchParams.get('q') || '';
   const selectedResourceId = searchParams.get('resource');
 
@@ -96,6 +98,8 @@ function SearchResults() {
   const handleFiltersChange = (newFilters: FilterState) => {
     setFilters(newFilters);
     updateURL(newFilters);
+    // Track filter usage analytics
+    trackFilter(newFilters.categories[0], newFilters.states[0]);
   };
 
   // Filter chip handlers
@@ -136,12 +140,15 @@ function SearchResults() {
       setSelectedResource(resource);
       setSelectedExplanations(explanations);
 
+      // Track resource view analytics
+      trackResourceView(resource.id, resource.categories[0], resource.states[0]);
+
       // Update URL with shallow routing (no navigation)
       const params = new URLSearchParams(searchParams.toString());
       params.set('resource', resource.id);
       router.push(`/search?${params.toString()}`, { scroll: false });
     },
-    [router, searchParams]
+    [router, searchParams, trackResourceView]
   );
 
   const closeResourceModal = useCallback(() => {
@@ -206,6 +213,8 @@ function SearchResults() {
           });
           setSearchResults(results);
           setBrowseResults(null);
+          // Track search analytics
+          trackSearch(query, filters.categories[0], filters.states[0]);
         } else {
           const results = await api.resources.list({
             limit: 50,
