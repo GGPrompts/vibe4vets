@@ -1,10 +1,14 @@
-"""HUD-VASH (HUD-VA Supportive Housing) 2024 awards data connector.
+"""HUD-VASH (HUD-VA Supportive Housing) multi-year awards data connector.
 
 Imports HUD-VASH voucher awards by Public Housing Authority (PHA) linked to
 VA Medical Centers (VAMCs). This data helps veterans find local housing
 voucher resources.
 
-Source: HUD PIH Notice 2024-18
+Supports both:
+- Single-year detailed data (2024) with VAMC and budget info
+- Multi-year data (2020-2024) for comprehensive PHA coverage
+
+Source: HUD PIH Notices (2020-2024)
 """
 
 import json
@@ -13,27 +17,37 @@ from pathlib import Path
 
 from connectors.base import BaseConnector, ResourceCandidate, SourceMetadata
 
-# Map of state abbreviations in PHA codes
+# Map of state abbreviations to full names
 STATE_CODES = {
+    "AK": "Alaska",
     "AL": "Alabama",
     "AR": "Arkansas",
     "AZ": "Arizona",
     "CA": "California",
     "CO": "Colorado",
+    "CT": "Connecticut",
+    "DC": "District of Columbia",
+    "DE": "Delaware",
     "FL": "Florida",
     "GA": "Georgia",
     "GQ": "Guam",
     "HI": "Hawaii",
     "IA": "Iowa",
     "ID": "Idaho",
+    "IL": "Illinois",
     "IN": "Indiana",
     "KS": "Kansas",
     "KY": "Kentucky",
     "LA": "Louisiana",
+    "MA": "Massachusetts",
+    "MD": "Maryland",
+    "ME": "Maine",
     "MI": "Michigan",
     "MN": "Minnesota",
     "MO": "Missouri",
+    "MT": "Montana",
     "NC": "North Carolina",
+    "NH": "New Hampshire",
     "NJ": "New Jersey",
     "NM": "New Mexico",
     "NV": "Nevada",
@@ -42,54 +56,64 @@ STATE_CODES = {
     "OK": "Oklahoma",
     "OR": "Oregon",
     "PA": "Pennsylvania",
+    "RI": "Rhode Island",
     "SC": "South Carolina",
     "TN": "Tennessee",
     "TX": "Texas",
+    "UT": "Utah",
     "VA": "Virginia",
     "WA": "Washington",
+    "WI": "Wisconsin",
     "WV": "West Virginia",
 }
 
 
 class HUDVASHConnector(BaseConnector):
-    """Connector for HUD-VASH 2024 voucher awards data.
+    """Connector for HUD-VASH voucher awards data (2020-2024).
 
-    Parses the HUD-VASH awards JSON file containing PHA-to-VAMC partnerships
-    for housing vouchers awarded to homeless veterans.
+    Merges two data sources:
+    1. Multi-year data (HUD_VASH_All_Years.json) - 421 PHAs across 46 states
+    2. Single-year detailed data (HUD_VASH_2024_Awards.json) - with VAMC/budget info
 
-    Data fields:
-        - pha_code: Public Housing Authority code (e.g., CA004)
-        - pha_name: PHA organization name
-        - vamc: VA Medical Center name with VISN prefix
-        - vouchers: Number of HUD-VASH vouchers awarded
-        - budget: Budget authority awarded in dollars
+    This provides comprehensive coverage:
+    - More PHAs than single-year data alone
+    - Historical award tracking
+    - VAMC partnership details where available
     """
 
-    # Path to the HUD-VASH data file relative to project root
-    DEFAULT_DATA_PATH = "data/reference/HUD_VASH_2024_Awards.json"
+    # Data file paths relative to project root
+    MULTIYEAR_DATA_PATH = "data/reference/HUD_VASH_All_Years.json"
+    SINGLE_YEAR_DATA_PATH = "data/reference/HUD_VASH_2024_Awards.json"
 
-    def __init__(self, data_path: str | Path | None = None):
+    def __init__(
+        self,
+        multiyear_path: str | Path | None = None,
+        single_year_path: str | Path | None = None,
+    ):
         """Initialize the connector.
 
         Args:
-            data_path: Path to JSON file. Falls back to DEFAULT_DATA_PATH.
+            multiyear_path: Path to multi-year JSON. Falls back to MULTIYEAR_DATA_PATH.
+            single_year_path: Path to single-year JSON. Falls back to SINGLE_YEAR_DATA_PATH.
         """
-        if data_path is None:
-            # Find project root (directory containing 'data' folder)
-            current = Path(__file__).resolve().parent
-            while current != current.parent:
-                if (current / "data").is_dir():
-                    break
-                current = current.parent
-            self.data_path = current / self.DEFAULT_DATA_PATH
-        else:
-            self.data_path = Path(data_path)
+        root = self._find_project_root()
+        self.multiyear_path = Path(multiyear_path) if multiyear_path else root / self.MULTIYEAR_DATA_PATH
+        self.single_year_path = Path(single_year_path) if single_year_path else root / self.SINGLE_YEAR_DATA_PATH
+
+    def _find_project_root(self) -> Path:
+        """Find project root (directory containing 'data' folder)."""
+        current = Path(__file__).resolve().parent
+        while current != current.parent:
+            if (current / "data").is_dir():
+                return current
+            current = current.parent
+        return Path(__file__).resolve().parent.parent
 
     @property
     def metadata(self) -> SourceMetadata:
         """Return source metadata."""
         return SourceMetadata(
-            name="HUD-VASH 2024 Voucher Awards",
+            name="HUD-VASH Voucher Awards (2020-2024)",
             url="https://www.hud.gov/program_offices/public_indian_housing/programs/hcv/vash",
             tier=1,  # Official HUD/VA program data
             frequency="yearly",  # Updated with annual awards
@@ -98,39 +122,76 @@ class HUDVASHConnector(BaseConnector):
         )
 
     def run(self) -> list[ResourceCandidate]:
-        """Parse HUD-VASH awards data from JSON file.
+        """Parse and merge HUD-VASH awards data.
+
+        Merges multi-year data with detailed single-year data to provide:
+        - Comprehensive PHA coverage (421 PHAs vs 153 in 2024 alone)
+        - VAMC partnership details where available
+        - Historical award context
 
         Returns:
             List of normalized ResourceCandidate objects.
         """
-        if not self.data_path.exists():
-            raise FileNotFoundError(f"HUD-VASH data file not found: {self.data_path}")
-
-        with open(self.data_path) as f:
-            data = json.load(f)
-
-        resources: list[ResourceCandidate] = []
         now = datetime.now(UTC)
 
-        for award in data.get("awards", []):
+        # Load multi-year data (primary source for comprehensive coverage)
+        multiyear_data = self._load_multiyear_data()
+
+        # Load single-year data for VAMC details
+        single_year_lookup = self._load_single_year_lookup()
+
+        resources: list[ResourceCandidate] = []
+
+        for award in multiyear_data.get("awards", []):
+            pha_code = award.get("pha_code")
+
+            # Get detailed info from single-year data if available
+            detailed = single_year_lookup.get(pha_code, {})
+
             candidate = self._parse_award(
-                pha_code=award.get("pha_code"),
+                pha_code=pha_code,
                 pha_name=award.get("pha_name"),
-                vamc=award.get("vamc"),
-                vouchers=award.get("vouchers"),
-                budget=award.get("budget"),
+                awards_by_year=award.get("awards_by_year", {}),
+                total_vouchers=award.get("total_vouchers", 0),
+                vamc=detailed.get("vamc"),
+                budget=detailed.get("budget"),
                 fetched_at=now,
             )
             resources.append(candidate)
 
         return resources
 
+    def _load_multiyear_data(self) -> dict:
+        """Load multi-year awards data."""
+        if not self.multiyear_path.exists():
+            # Fall back to single-year if multi-year not available
+            return {"awards": []}
+
+        with open(self.multiyear_path) as f:
+            return json.load(f)
+
+    def _load_single_year_lookup(self) -> dict[str, dict]:
+        """Load single-year data as PHA code lookup for detailed info."""
+        if not self.single_year_path.exists():
+            return {}
+
+        with open(self.single_year_path) as f:
+            data = json.load(f)
+
+        # Create lookup by PHA code
+        return {
+            award["pha_code"]: award
+            for award in data.get("awards", [])
+            if "pha_code" in award
+        }
+
     def _parse_award(
         self,
         pha_code: str | None,
         pha_name: str | None,
+        awards_by_year: dict[str, int],
+        total_vouchers: int,
         vamc: str | None,
-        vouchers: int | None,
         budget: int | float | None,
         fetched_at: datetime,
     ) -> ResourceCandidate:
@@ -139,25 +200,22 @@ class HUDVASHConnector(BaseConnector):
         Args:
             pha_code: Public Housing Authority code
             pha_name: PHA organization name
-            vamc: VA Medical Center with VISN prefix
-            vouchers: Number of vouchers awarded
-            budget: Budget authority awarded
+            awards_by_year: Dict of year -> voucher count
+            total_vouchers: Total vouchers across all years
+            vamc: VA Medical Center with VISN prefix (from 2024 data)
+            budget: Budget authority awarded (from 2024 data)
             fetched_at: Timestamp when data was fetched
 
         Returns:
             ResourceCandidate for this HUD-VASH partnership.
         """
-        # Extract state from PHA code (first 2 characters)
         state = self._extract_state(pha_code)
-
-        # Parse VAMC info
         visn, vamc_name = self._parse_vamc(vamc)
 
-        # Build title
         title = self._build_title(pha_name, vamc_name, state)
-
-        # Build description
-        description = self._build_description(pha_name, vamc_name, state, vouchers, budget)
+        description = self._build_description(
+            pha_name, vamc_name, state, awards_by_year, total_vouchers, budget
+        )
 
         return ResourceCandidate(
             title=title,
@@ -166,7 +224,7 @@ class HUDVASHConnector(BaseConnector):
             org_name=pha_name or "Unknown PHA",
             org_website=None,
             categories=["housing"],
-            tags=self._build_tags(pha_code, visn, vamc_name),
+            tags=self._build_tags(pha_code, visn, vamc_name, awards_by_year),
             eligibility=(
                 "Homeless veterans or veterans at risk of homelessness. Must be "
                 "eligible for VA health care. Income must be at or below 80% of Area "
@@ -185,44 +243,29 @@ class HUDVASHConnector(BaseConnector):
             raw_data={
                 "pha_code": pha_code,
                 "pha_name": pha_name,
+                "awards_by_year": awards_by_year,
+                "total_vouchers": total_vouchers,
                 "vamc": vamc,
-                "vouchers": vouchers,
                 "budget": budget,
             },
             fetched_at=fetched_at,
         )
 
     def _extract_state(self, pha_code: str | None) -> str | None:
-        """Extract state code from PHA code.
-
-        Args:
-            pha_code: PHA code like "CA004" or "TX901"
-
-        Returns:
-            Two-letter state code or None.
-        """
+        """Extract state code from PHA code."""
         if not pha_code or len(pha_code) < 2:
             return None
         state = pha_code[:2].upper()
         return state if state in STATE_CODES else None
 
     def _parse_vamc(self, vamc: str | None) -> tuple[str | None, str | None]:
-        """Parse VAMC string into VISN and name.
-
-        Args:
-            vamc: VAMC string like "V22/Phoenix" or "V21/Northern California HCS"
-
-        Returns:
-            Tuple of (visn, vamc_name).
-        """
+        """Parse VAMC string into VISN and name."""
         if not vamc:
             return None, None
 
         parts = vamc.split("/", 1)
         if len(parts) == 2:
-            visn = parts[0].strip()
-            vamc_name = parts[1].strip()
-            return visn, vamc_name
+            return parts[0].strip(), parts[1].strip()
         return None, vamc
 
     def _build_title(
@@ -231,16 +274,7 @@ class HUDVASHConnector(BaseConnector):
         vamc_name: str | None,
         state: str | None,
     ) -> str:
-        """Build resource title.
-
-        Args:
-            pha_name: PHA organization name
-            vamc_name: VAMC name
-            state: State code
-
-        Returns:
-            Formatted title string.
-        """
+        """Build resource title."""
         if vamc_name and state:
             return f"HUD-VASH - {vamc_name} ({state})"
         elif pha_name and state:
@@ -256,21 +290,11 @@ class HUDVASHConnector(BaseConnector):
         pha_name: str | None,
         vamc_name: str | None,
         state: str | None,
-        vouchers: int | None,
+        awards_by_year: dict[str, int],
+        total_vouchers: int,
         budget: int | float | None,
     ) -> str:
-        """Build resource description.
-
-        Args:
-            pha_name: PHA organization name
-            vamc_name: VAMC name
-            state: State code
-            vouchers: Number of vouchers
-            budget: Budget amount
-
-        Returns:
-            Formatted description string.
-        """
+        """Build resource description with multi-year context."""
         parts = []
 
         # Main description
@@ -288,14 +312,24 @@ class HUDVASHConnector(BaseConnector):
         if vamc_name:
             parts.append(f"Veterans receive case management services through {vamc_name}.")
 
-        # Award info
-        if vouchers:
-            voucher_str = f"{vouchers:,}"
-            if budget:
-                budget_str = f"${budget:,.0f}"
-                parts.append(f"2024 award: {voucher_str} vouchers ({budget_str} budget authority).")
+        # Multi-year award summary
+        if awards_by_year:
+            years = sorted(awards_by_year.keys(), reverse=True)
+            recent_years = years[:3]  # Show up to 3 most recent years
+
+            if len(recent_years) == 1:
+                year = recent_years[0]
+                vouchers = awards_by_year[year]
+                if budget:
+                    parts.append(f"FY{year} award: {vouchers:,} vouchers (${budget:,.0f} budget authority).")
+                else:
+                    parts.append(f"FY{year} award: {vouchers:,} vouchers.")
             else:
-                parts.append(f"2024 award: {voucher_str} vouchers.")
+                year_strs = [f"FY{y}: {awards_by_year[y]:,}" for y in recent_years]
+                parts.append(f"Recent awards: {', '.join(year_strs)} vouchers.")
+
+            if total_vouchers > sum(awards_by_year.get(y, 0) for y in recent_years):
+                parts.append(f"Total vouchers awarded (2020-2024): {total_vouchers:,}.")
 
         # Services
         parts.append(
@@ -311,17 +345,9 @@ class HUDVASHConnector(BaseConnector):
         pha_code: str | None,
         visn: str | None,
         vamc_name: str | None,
+        awards_by_year: dict[str, int],
     ) -> list[str]:
-        """Build tags list.
-
-        Args:
-            pha_code: PHA code
-            visn: VISN identifier
-            vamc_name: VAMC name
-
-        Returns:
-            List of tag strings.
-        """
+        """Build tags list."""
         tags = [
             "hud-vash",
             "housing-voucher",
@@ -334,14 +360,16 @@ class HUDVASHConnector(BaseConnector):
             tags.append(f"pha-{pha_code.lower()}")
 
         if visn:
-            # Normalize VISN to lowercase, e.g., "V22" -> "visn-22"
             visn_normalized = visn.lower().replace("v", "visn-")
             tags.append(visn_normalized)
 
         if vamc_name:
-            # Create slug from VAMC name
             vamc_slug = vamc_name.lower().replace(" ", "-").replace("/", "-")
             vamc_slug = "".join(c for c in vamc_slug if c.isalnum() or c == "-")
             tags.append(f"vamc-{vamc_slug}")
+
+        # Add year tags for recent awards
+        for year in sorted(awards_by_year.keys(), reverse=True)[:3]:
+            tags.append(f"fy{year}")
 
         return tags

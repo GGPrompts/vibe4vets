@@ -1,0 +1,3693 @@
+{
+  "metadata": {
+    "source": "https://www.hud.gov/sites/dfiles/PIH/documents/HUD-VASH-Awards.pdf",
+    "description": "HUD-VASH voucher awards by PHA across multiple fiscal years",
+    "years_included": [
+      2020,
+      2021,
+      2022,
+      2023,
+      2024
+    ],
+    "totals_by_year": {
+      "2020": 4875,
+      "2021": 2050,
+      "2022": 2308,
+      "2023": 3145,
+      "2024": 3518
+    },
+    "total_phas": 421,
+    "states_covered": [
+      "AK",
+      "AL",
+      "AR",
+      "AZ",
+      "CA",
+      "CO",
+      "CT",
+      "DC",
+      "DE",
+      "FL",
+      "GA",
+      "GQ",
+      "HI",
+      "IA",
+      "ID",
+      "IL",
+      "IN",
+      "KS",
+      "KY",
+      "LA",
+      "MA",
+      "MD",
+      "ME",
+      "MI",
+      "MN",
+      "MO",
+      "MT",
+      "NC",
+      "NH",
+      "NJ",
+      "NM",
+      "NV",
+      "NY",
+      "OH",
+      "OK",
+      "OR",
+      "PA",
+      "RI",
+      "SC",
+      "TN",
+      "TX",
+      "UT",
+      "VA",
+      "WA",
+      "WI",
+      "WV"
+    ],
+    "extracted_date": "2026-01-19"
+  },
+  "awards": [
+    {
+      "pha_code": "AK901",
+      "pha_name": "Alaska Housing Finance Corporation",
+      "awards_by_year": {
+        "2020": 17,
+        "2021": 22,
+        "2023": 20
+      },
+      "total_vouchers": 59
+    },
+    {
+      "pha_code": "AL001",
+      "pha_name": "Housing Authority of the Birmingham District",
+      "awards_by_year": {
+        "2023": 28
+      },
+      "total_vouchers": 28
+    },
+    {
+      "pha_code": "AL002",
+      "pha_name": "Mobile Housing Board",
+      "awards_by_year": {
+        "2024": 65
+      },
+      "total_vouchers": 65
+    },
+    {
+      "pha_code": "AL006",
+      "pha_name": "Housing Authority of the City of Montgomery",
+      "awards_by_year": {
+        "2020": 7
+      },
+      "total_vouchers": 7
+    },
+    {
+      "pha_code": "AL007",
+      "pha_name": "Housing Authority of the City of Dothan",
+      "awards_by_year": {
+        "2023": 20
+      },
+      "total_vouchers": 20
+    },
+    {
+      "pha_code": "AL047",
+      "pha_name": "The Housing Authority of the City of Huntsville",
+      "awards_by_year": {
+        "2023": 28
+      },
+      "total_vouchers": 28
+    },
+    {
+      "pha_code": "AL125",
+      "pha_name": "Housing Authority Bessemer",
+      "awards_by_year": {
+        "2023": 28
+      },
+      "total_vouchers": 28
+    },
+    {
+      "pha_code": "AR006",
+      "pha_name": "Housing Authority of the City of Conway",
+      "awards_by_year": {
+        "2024": 5
+      },
+      "total_vouchers": 5
+    },
+    {
+      "pha_code": "AR015",
+      "pha_name": "Texarkana Housing Authority",
+      "awards_by_year": {
+        "2020": 10
+      },
+      "total_vouchers": 10
+    },
+    {
+      "pha_code": "AR017",
+      "pha_name": "Pinebluff Housing Authority",
+      "awards_by_year": {
+        "2020": 10
+      },
+      "total_vouchers": 10
+    },
+    {
+      "pha_code": "AR031",
+      "pha_name": "Housing Authority of the City of Hot Springs",
+      "awards_by_year": {
+        "2021": 14,
+        "2022": 11,
+        "2024": 5
+      },
+      "total_vouchers": 30
+    },
+    {
+      "pha_code": "AR170",
+      "pha_name": "Jacksonville Housing Authority",
+      "awards_by_year": {
+        "2024": 10
+      },
+      "total_vouchers": 10
+    },
+    {
+      "pha_code": "AZ001",
+      "pha_name": "City of Phoenix Housing Department",
+      "awards_by_year": {
+        "2024": 100
+      },
+      "total_vouchers": 100
+    },
+    {
+      "pha_code": "AZ003",
+      "pha_name": "Glendale Housing Authority",
+      "awards_by_year": {
+        "2022": 20,
+        "2024": 15
+      },
+      "total_vouchers": 35
+    },
+    {
+      "pha_code": "AZ004",
+      "pha_name": "Housing And Community Development Tucson",
+      "awards_by_year": {
+        "2023": 75,
+        "2024": 20
+      },
+      "total_vouchers": 95
+    },
+    {
+      "pha_code": "AZ005",
+      "pha_name": "City of Mesa Housing Authority",
+      "awards_by_year": {
+        "2024": 15
+      },
+      "total_vouchers": 15
+    },
+    {
+      "pha_code": "AZ010",
+      "pha_name": "Pinal County Housing Authority",
+      "awards_by_year": {
+        "2024": 40
+      },
+      "total_vouchers": 40
+    },
+    {
+      "pha_code": "AZ028",
+      "pha_name": "City of Chandler Housing and Redevelopment",
+      "awards_by_year": {
+        "2022": 10,
+        "2024": 10
+      },
+      "total_vouchers": 20
+    },
+    {
+      "pha_code": "AZ031",
+      "pha_name": "Tempe Housing Authority",
+      "awards_by_year": {
+        "2022": 10,
+        "2023": 20
+      },
+      "total_vouchers": 30
+    },
+    {
+      "pha_code": "AZ032",
+      "pha_name": "City of Scottsdale’s Housing Agency",
+      "awards_by_year": {
+        "2021": 15,
+        "2024": 10
+      },
+      "total_vouchers": 25
+    },
+    {
+      "pha_code": "AZ034",
+      "pha_name": "Housing Authority of Cochise County",
+      "awards_by_year": {
+        "2023": 10
+      },
+      "total_vouchers": 10
+    },
+    {
+      "pha_code": "AZ043",
+      "pha_name": "Mohave County Housing Authority",
+      "awards_by_year": {
+        "2022": 5
+      },
+      "total_vouchers": 5
+    },
+    {
+      "pha_code": "AZ901",
+      "pha_name": "Arizona Department of Housing",
+      "awards_by_year": {
+        "2020": 5,
+        "2022": 84
+      },
+      "total_vouchers": 89
+    },
+    {
+      "pha_code": "CA002",
+      "pha_name": "Housing Authority of the County of Los Angeles",
+      "awards_by_year": {
+        "2020": 500,
+        "2022": 250
+      },
+      "total_vouchers": 750
+    },
+    {
+      "pha_code": "CA003",
+      "pha_name": "Oakland Housing Authority",
+      "awards_by_year": {
+        "2020": 130
+      },
+      "total_vouchers": 130
+    },
+    {
+      "pha_code": "CA004",
+      "pha_name": "Housing Authority of the City of Los Angeles",
+      "awards_by_year": {
+        "2022": 250,
+        "2024": 250
+      },
+      "total_vouchers": 500
+    },
+    {
+      "pha_code": "CA006",
+      "pha_name": "Housing Authority City of Fresno",
+      "awards_by_year": {
+        "2020": 90
+      },
+      "total_vouchers": 90
+    },
+    {
+      "pha_code": "CA007",
+      "pha_name": "County of Sacramento Housing Authority",
+      "awards_by_year": {
+        "2021": 200,
+        "2022": 10,
+        "2024": 30
+      },
+      "total_vouchers": 240
+    },
+    {
+      "pha_code": "CA011",
+      "pha_name": "Contra Costa Housing Authority",
+      "awards_by_year": {
+        "2020": 80,
+        "2022": 45,
+        "2023": 170
+      },
+      "total_vouchers": 295
+    },
+    {
+      "pha_code": "CA014",
+      "pha_name": "Housing Authority of the County of San Mateo",
+      "awards_by_year": {
+        "2020": 20,
+        "2021": 35,
+        "2022": 10,
+        "2023": 30,
+        "2024": 35
+      },
+      "total_vouchers": 130
+    },
+    {
+      "pha_code": "CA019",
+      "pha_name": "Housing Authority of the County of San Bernardino",
+      "awards_by_year": {
+        "2020": 100,
+        "2023": 62,
+        "2024": 75
+      },
+      "total_vouchers": 237
+    },
+    {
+      "pha_code": "CA022",
+      "pha_name": "Housing Authority City of Needles",
+      "awards_by_year": {
+        "2023": 30
+      },
+      "total_vouchers": 30
+    },
+    {
+      "pha_code": "CA023",
+      "pha_name": "County of Merced Housing Authority",
+      "awards_by_year": {
+        "2020": 20
+      },
+      "total_vouchers": 20
+    },
+    {
+      "pha_code": "CA024",
+      "pha_name": "County of San Joaquin Housing Auth.",
+      "awards_by_year": {
+        "2022": 15,
+        "2023": 10,
+        "2024": 10
+      },
+      "total_vouchers": 35
+    },
+    {
+      "pha_code": "CA026",
+      "pha_name": "County of Stanislaus Housing Auth",
+      "awards_by_year": {
+        "2022": 10,
+        "2023": 20
+      },
+      "total_vouchers": 30
+    },
+    {
+      "pha_code": "CA027",
+      "pha_name": "Housing Authority of the County of Riverside",
+      "awards_by_year": {
+        "2020": 41
+      },
+      "total_vouchers": 41
+    },
+    {
+      "pha_code": "CA030",
+      "pha_name": "Tulare County Housing Authority",
+      "awards_by_year": {
+        "2020": 8
+      },
+      "total_vouchers": 8
+    },
+    {
+      "pha_code": "CA031",
+      "pha_name": "Housing Authority of the City of Oxnard",
+      "awards_by_year": {
+        "2020": 10
+      },
+      "total_vouchers": 10
+    },
+    {
+      "pha_code": "CA033",
+      "pha_name": "County of Monterey Hsg Auth",
+      "awards_by_year": {
+        "2020": 65,
+        "2021": 60
+      },
+      "total_vouchers": 125
+    },
+    {
+      "pha_code": "CA043",
+      "pha_name": "County of Butte Housing Authority",
+      "awards_by_year": {
+        "2020": 30,
+        "2024": 20
+      },
+      "total_vouchers": 50
+    },
+    {
+      "pha_code": "CA044",
+      "pha_name": "Yolo County Housing Authority",
+      "awards_by_year": {
+        "2020": 20,
+        "2022": 15,
+        "2024": 20
+      },
+      "total_vouchers": 55
+    },
+    {
+      "pha_code": "CA048",
+      "pha_name": "Regional Housing Authority of Sutter and Nevada Counties",
+      "awards_by_year": {
+        "2022": 10
+      },
+      "total_vouchers": 10
+    },
+    {
+      "pha_code": "CA052",
+      "pha_name": "Housing Authority of County of Marin",
+      "awards_by_year": {
+        "2022": 5
+      },
+      "total_vouchers": 5
+    },
+    {
+      "pha_code": "CA059",
+      "pha_name": "Housing Authority of the County Santa Clara",
+      "awards_by_year": {
+        "2020": 173,
+        "2022": 35
+      },
+      "total_vouchers": 208
+    },
+    {
+      "pha_code": "CA063",
+      "pha_name": "San Diego Housing Commission",
+      "awards_by_year": {
+        "2021": 50,
+        "2022": 25,
+        "2023": 75,
+        "2024": 75
+      },
+      "total_vouchers": 225
+    },
+    {
+      "pha_code": "CA064",
+      "pha_name": "Housing Authority of the City of San Luis Obispo",
+      "awards_by_year": {
+        "2023": 20
+      },
+      "total_vouchers": 20
+    },
+    {
+      "pha_code": "CA065",
+      "pha_name": "Fairfield Housing Authority",
+      "awards_by_year": {
+        "2023": 20
+      },
+      "total_vouchers": 20
+    },
+    {
+      "pha_code": "CA066",
+      "pha_name": "Suisun City Housing Authority",
+      "awards_by_year": {
+        "2024": 5
+      },
+      "total_vouchers": 5
+    },
+    {
+      "pha_code": "CA067",
+      "pha_name": "Alameda County Hsg Auth",
+      "awards_by_year": {
+        "2020": 70,
+        "2022": 20,
+        "2023": 25
+      },
+      "total_vouchers": 115
+    },
+    {
+      "pha_code": "CA068",
+      "pha_name": "City of Long Beach Housing Authority",
+      "awards_by_year": {
+        "2022": 90
+      },
+      "total_vouchers": 90
+    },
+    {
+      "pha_code": "CA072",
+      "pha_name": "Santa Cruz County Housing Authority",
+      "awards_by_year": {
+        "2020": 16,
+        "2021": 15,
+        "2022": 50,
+        "2023": 30,
+        "2024": 20
+      },
+      "total_vouchers": 131
+    },
+    {
+      "pha_code": "CA073",
+      "pha_name": "Housing Authority of the City of Napa",
+      "awards_by_year": {
+        "2024": 15
+      },
+      "total_vouchers": 15
+    },
+    {
+      "pha_code": "CA074",
+      "pha_name": "HSG AUTH OF THE CITY OF LIVERMORE",
+      "awards_by_year": {
+        "2020": 5,
+        "2022": 5,
+        "2024": 8
+      },
+      "total_vouchers": 18
+    },
+    {
+      "pha_code": "CA082",
+      "pha_name": "Housing Authority of the City of Inglewood",
+      "awards_by_year": {
+        "2024": 35
+      },
+      "total_vouchers": 35
+    },
+    {
+      "pha_code": "CA085",
+      "pha_name": "Sonoma County Housing Authority",
+      "awards_by_year": {
+        "2022": 5,
+        "2024": 10
+      },
+      "total_vouchers": 15
+    },
+    {
+      "pha_code": "CA088",
+      "pha_name": "City of Santa Rosa",
+      "awards_by_year": {
+        "2022": 10
+      },
+      "total_vouchers": 10
+    },
+    {
+      "pha_code": "CA094",
+      "pha_name": "Orange County Housing Authority",
+      "awards_by_year": {
+        "2021": 30,
+        "2022": 10,
+        "2023": 10,
+        "2024": 50
+      },
+      "total_vouchers": 100
+    },
+    {
+      "pha_code": "CA103",
+      "pha_name": "Redondo Beach Housing Authority",
+      "awards_by_year": {
+        "2023": 10
+      },
+      "total_vouchers": 10
+    },
+    {
+      "pha_code": "CA104",
+      "pha_name": "Anaheim Housing Authority",
+      "awards_by_year": {
+        "2023": 10
+      },
+      "total_vouchers": 10
+    },
+    {
+      "pha_code": "CA106",
+      "pha_name": "Redding Housing Authority",
+      "awards_by_year": {
+        "2022": 5,
+        "2023": 10,
+        "2024": 15
+      },
+      "total_vouchers": 30
+    },
+    {
+      "pha_code": "CA108",
+      "pha_name": "Housing Authority of the County of San Diego",
+      "awards_by_year": {
+        "2020": 50,
+        "2023": 5,
+        "2024": 50
+      },
+      "total_vouchers": 105
+    },
+    {
+      "pha_code": "CA121",
+      "pha_name": "Housing Authority of the City of Torrance",
+      "awards_by_year": {
+        "2020": 10,
+        "2021": 15
+      },
+      "total_vouchers": 25
+    },
+    {
+      "pha_code": "CA123",
+      "pha_name": "Pomona Housing Authority",
+      "awards_by_year": {
+        "2024": 30
+      },
+      "total_vouchers": 30
+    },
+    {
+      "pha_code": "CA125",
+      "pha_name": "Vacaville Housing Authority",
+      "awards_by_year": {
+        "2020": 15,
+        "2022": 20
+      },
+      "total_vouchers": 35
+    },
+    {
+      "pha_code": "CA128",
+      "pha_name": "Roseville Housing Authority",
+      "awards_by_year": {
+        "2020": 25,
+        "2021": 10,
+        "2022": 10,
+        "2023": 15
+      },
+      "total_vouchers": 60
+    },
+    {
+      "pha_code": "CA131",
+      "pha_name": "Solano County Housing Authority",
+      "awards_by_year": {
+        "2020": 25
+      },
+      "total_vouchers": 25
+    },
+    {
+      "pha_code": "CA143",
+      "pha_name": "Imperial Valley Housing Authority",
+      "awards_by_year": {
+        "2022": 10
+      },
+      "total_vouchers": 10
+    },
+    {
+      "pha_code": "CA144",
+      "pha_name": "Lake County Housing Commission",
+      "awards_by_year": {
+        "2024": 5
+      },
+      "total_vouchers": 5
+    },
+    {
+      "pha_code": "CO001",
+      "pha_name": "Housing Authority of the City And County of Denver",
+      "awards_by_year": {
+        "2024": 25
+      },
+      "total_vouchers": 25
+    },
+    {
+      "pha_code": "CO040",
+      "pha_name": "Delta Housing Authority",
+      "awards_by_year": {
+        "2020": 5,
+        "2023": 5
+      },
+      "total_vouchers": 10
+    },
+    {
+      "pha_code": "CO041",
+      "pha_name": "Fort Collins Housing Authority",
+      "awards_by_year": {
+        "2020": 22,
+        "2023": 25,
+        "2024": 10
+      },
+      "total_vouchers": 57
+    },
+    {
+      "pha_code": "CO049",
+      "pha_name": "Metro West Housing Solutions",
+      "awards_by_year": {
+        "2023": 20
+      },
+      "total_vouchers": 20
+    },
+    {
+      "pha_code": "CO051",
+      "pha_name": "Grand Junction Housing Authority",
+      "awards_by_year": {
+        "2020": 5
+      },
+      "total_vouchers": 5
+    },
+    {
+      "pha_code": "CO052",
+      "pha_name": "Aurora Housing Authority",
+      "awards_by_year": {
+        "2020": 20
+      },
+      "total_vouchers": 20
+    },
+    {
+      "pha_code": "CO061",
+      "pha_name": "Boulder County Housing Authority",
+      "awards_by_year": {
+        "2021": 7,
+        "2023": 6,
+        "2024": 10
+      },
+      "total_vouchers": 23
+    },
+    {
+      "pha_code": "CO072",
+      "pha_name": "Jefferson County Housing Authority",
+      "awards_by_year": {
+        "2020": 10
+      },
+      "total_vouchers": 10
+    },
+    {
+      "pha_code": "CO087",
+      "pha_name": "Montrose County Housing Authority",
+      "awards_by_year": {
+        "2023": 5
+      },
+      "total_vouchers": 5
+    },
+    {
+      "pha_code": "CO095",
+      "pha_name": "Garfield County Housing Authority",
+      "awards_by_year": {
+        "2020": 5,
+        "2022": 5
+      },
+      "total_vouchers": 10
+    },
+    {
+      "pha_code": "CO911",
+      "pha_name": "Colorado Division of Housing",
+      "awards_by_year": {
+        "2020": 200,
+        "2023": 25,
+        "2024": 50
+      },
+      "total_vouchers": 275
+    },
+    {
+      "pha_code": "CT001",
+      "pha_name": "Housing Authority of the City of Bridgeport",
+      "awards_by_year": {
+        "2023": 10
+      },
+      "total_vouchers": 10
+    },
+    {
+      "pha_code": "CT004",
+      "pha_name": "Housing Authority of the City of New Haven",
+      "awards_by_year": {
+        "2021": 15
+      },
+      "total_vouchers": 15
+    },
+    {
+      "pha_code": "CT008",
+      "pha_name": "Enfield Housing Authority",
+      "awards_by_year": {
+        "2020": 5
+      },
+      "total_vouchers": 5
+    },
+    {
+      "pha_code": "CT017",
+      "pha_name": "Derby Housing Authority",
+      "awards_by_year": {
+        "2020": 5
+      },
+      "total_vouchers": 5
+    },
+    {
+      "pha_code": "CT029",
+      "pha_name": "West Haven Housing Authority",
+      "awards_by_year": {
+        "2020": 12,
+        "2021": 15,
+        "2023": 10
+      },
+      "total_vouchers": 37
+    },
+    {
+      "pha_code": "CT051",
+      "pha_name": "City of Hartford",
+      "awards_by_year": {
+        "2020": 5,
+        "2022": 25
+      },
+      "total_vouchers": 30
+    },
+    {
+      "pha_code": "CT901",
+      "pha_name": "Connecticut Department of Housing",
+      "awards_by_year": {
+        "2020": 25,
+        "2021": 35,
+        "2023": 24
+      },
+      "total_vouchers": 84
+    },
+    {
+      "pha_code": "DC001",
+      "pha_name": "D.C Housing Authority",
+      "awards_by_year": {
+        "2020": 87
+      },
+      "total_vouchers": 87
+    },
+    {
+      "pha_code": "DE005",
+      "pha_name": "New Castle County Housing Authority",
+      "awards_by_year": {
+        "2020": 5,
+        "2023": 90
+      },
+      "total_vouchers": 95
+    },
+    {
+      "pha_code": "DE901",
+      "pha_name": "Delaware State Housing Authority",
+      "awards_by_year": {
+        "2020": 5
+      },
+      "total_vouchers": 5
+    },
+    {
+      "pha_code": "FL001",
+      "pha_name": "Jacksonville Housing Authority",
+      "awards_by_year": {
+        "2022": 5
+      },
+      "total_vouchers": 5
+    },
+    {
+      "pha_code": "FL002",
+      "pha_name": "Housing Authority of the City of St. Petersburg",
+      "awards_by_year": {
+        "2020": 50,
+        "2022": 50,
+        "2024": 35
+      },
+      "total_vouchers": 135
+    },
+    {
+      "pha_code": "FL003",
+      "pha_name": "Tampa Housing Authority",
+      "awards_by_year": {
+        "2020": 31
+      },
+      "total_vouchers": 31
+    },
+    {
+      "pha_code": "FL005",
+      "pha_name": "Miami Dade Public Housing And Community Dev",
+      "awards_by_year": {
+        "2020": 30
+      },
+      "total_vouchers": 30
+    },
+    {
+      "pha_code": "FL008",
+      "pha_name": "Sarasota Housing Authority",
+      "awards_by_year": {
+        "2023": 125
+      },
+      "total_vouchers": 125
+    },
+    {
+      "pha_code": "FL009",
+      "pha_name": "West Palm Beach Housing Authority",
+      "awards_by_year": {
+        "2020": 8,
+        "2021": 11
+      },
+      "total_vouchers": 19
+    },
+    {
+      "pha_code": "FL011",
+      "pha_name": "Housing Authority of the City of Lakeland",
+      "awards_by_year": {
+        "2021": 10,
+        "2022": 10,
+        "2023": 5
+      },
+      "total_vouchers": 25
+    },
+    {
+      "pha_code": "FL017",
+      "pha_name": "Housing Authority of the City of Miami Beach",
+      "awards_by_year": {
+        "2020": 10,
+        "2021": 18
+      },
+      "total_vouchers": 28
+    },
+    {
+      "pha_code": "FL018",
+      "pha_name": "Panama City Housing Authority",
+      "awards_by_year": {
+        "2022": 10,
+        "2024": 10
+      },
+      "total_vouchers": 20
+    },
+    {
+      "pha_code": "FL025",
+      "pha_name": "Housing Authority of the City of Titusville",
+      "awards_by_year": {
+        "2024": 25
+      },
+      "total_vouchers": 25
+    },
+    {
+      "pha_code": "FL032",
+      "pha_name": "Ocala Housing Authority",
+      "awards_by_year": {
+        "2020": 20,
+        "2021": 20
+      },
+      "total_vouchers": 40
+    },
+    {
+      "pha_code": "FL033",
+      "pha_name": "Seminole County Housing Authority",
+      "awards_by_year": {
+        "2022": 25,
+        "2024": 8
+      },
+      "total_vouchers": 33
+    },
+    {
+      "pha_code": "FL057",
+      "pha_name": "Palatka Housing Authority",
+      "awards_by_year": {
+        "2020": 12
+      },
+      "total_vouchers": 12
+    },
+    {
+      "pha_code": "FL062",
+      "pha_name": "Pinellas County Housing Authority",
+      "awards_by_year": {
+        "2024": 35
+      },
+      "total_vouchers": 35
+    },
+    {
+      "pha_code": "FL063",
+      "pha_name": "Gainesville Housing Authority",
+      "awards_by_year": {
+        "2020": 45
+      },
+      "total_vouchers": 45
+    },
+    {
+      "pha_code": "FL066",
+      "pha_name": "Hialeah Housing Authority",
+      "awards_by_year": {
+        "2021": 50,
+        "2024": 30
+      },
+      "total_vouchers": 80
+    },
+    {
+      "pha_code": "FL068",
+      "pha_name": "HOUSING AUTHORITY OF THE CITY OF HOMESTEAD",
+      "awards_by_year": {
+        "2024": 30
+      },
+      "total_vouchers": 30
+    },
+    {
+      "pha_code": "FL073",
+      "pha_name": "Tallahassee Housing Authority",
+      "awards_by_year": {
+        "2021": 40
+      },
+      "total_vouchers": 40
+    },
+    {
+      "pha_code": "FL075",
+      "pha_name": "Clearwater Housing Authority",
+      "awards_by_year": {
+        "2024": 10
+      },
+      "total_vouchers": 10
+    },
+    {
+      "pha_code": "FL079",
+      "pha_name": "Broward County Housing Authority",
+      "awards_by_year": {
+        "2020": 30,
+        "2021": 33,
+        "2024": 68
+      },
+      "total_vouchers": 131
+    },
+    {
+      "pha_code": "FL080",
+      "pha_name": "Palm Beach County Housing Authority",
+      "awards_by_year": {
+        "2020": 15
+      },
+      "total_vouchers": 15
+    },
+    {
+      "pha_code": "FL083",
+      "pha_name": "Delray Beach Housing Authority",
+      "awards_by_year": {
+        "2020": 5,
+        "2021": 30,
+        "2023": 5,
+        "2024": 5
+      },
+      "total_vouchers": 45
+    },
+    {
+      "pha_code": "FL104",
+      "pha_name": "Pasco County Housing Authority",
+      "awards_by_year": {
+        "2020": 30
+      },
+      "total_vouchers": 30
+    },
+    {
+      "pha_code": "FL106",
+      "pha_name": "Lake County Housing Agency",
+      "awards_by_year": {
+        "2022": 35,
+        "2024": 5
+      },
+      "total_vouchers": 40
+    },
+    {
+      "pha_code": "FL116",
+      "pha_name": "Dania Beach Housing Authority",
+      "awards_by_year": {
+        "2020": 10
+      },
+      "total_vouchers": 10
+    },
+    {
+      "pha_code": "FL119",
+      "pha_name": "Boca Raton Housing Authority",
+      "awards_by_year": {
+        "2020": 5
+      },
+      "total_vouchers": 5
+    },
+    {
+      "pha_code": "FL132",
+      "pha_name": "Indian River County Housing Authority",
+      "awards_by_year": {
+        "2020": 5,
+        "2021": 7
+      },
+      "total_vouchers": 12
+    },
+    {
+      "pha_code": "FL137",
+      "pha_name": "Hernando County Housing Authority",
+      "awards_by_year": {
+        "2023": 5,
+        "2024": 5
+      },
+      "total_vouchers": 10
+    },
+    {
+      "pha_code": "FL139",
+      "pha_name": "Winter Haven Housing Authority",
+      "awards_by_year": {
+        "2022": 15
+      },
+      "total_vouchers": 15
+    },
+    {
+      "pha_code": "FL147",
+      "pha_name": "CITRUS COUNTY HOUSING SERVICES",
+      "awards_by_year": {
+        "2020": 10,
+        "2021": 10,
+        "2022": 10,
+        "2023": 5,
+        "2024": 10
+      },
+      "total_vouchers": 45
+    },
+    {
+      "pha_code": "FL201",
+      "pha_name": "OSCEOLA COUNTY HOUSING AGENCY",
+      "awards_by_year": {
+        "2022": 10,
+        "2024": 8
+      },
+      "total_vouchers": 18
+    },
+    {
+      "pha_code": "GA004",
+      "pha_name": "Columbus Housing Authority",
+      "awards_by_year": {
+        "2020": 20
+      },
+      "total_vouchers": 20
+    },
+    {
+      "pha_code": "GA006",
+      "pha_name": "Housing Authority of the City of Atlanta Georgia",
+      "awards_by_year": {
+        "2024": 25
+      },
+      "total_vouchers": 25
+    },
+    {
+      "pha_code": "GA007",
+      "pha_name": "Macon Housing Authority",
+      "awards_by_year": {
+        "2020": 18
+      },
+      "total_vouchers": 18
+    },
+    {
+      "pha_code": "GA009",
+      "pha_name": "Brunswick Housing Authority",
+      "awards_by_year": {
+        "2021": 5
+      },
+      "total_vouchers": 5
+    },
+    {
+      "pha_code": "GA078",
+      "pha_name": "East Point Housing Authority",
+      "awards_by_year": {
+        "2024": 25
+      },
+      "total_vouchers": 25
+    },
+    {
+      "pha_code": "GQ901",
+      "pha_name": "Guam Housing & Urban Renewal Authority",
+      "awards_by_year": {
+        "2022": 10,
+        "2024": 24
+      },
+      "total_vouchers": 34
+    },
+    {
+      "pha_code": "HI002",
+      "pha_name": "County of Hawai'I (OFFICE OF HSG & COMM DEV)",
+      "awards_by_year": {
+        "2021": 10,
+        "2023": 10,
+        "2024": 46
+      },
+      "total_vouchers": 66
+    },
+    {
+      "pha_code": "HI003",
+      "pha_name": "City and County of Honolulu",
+      "awards_by_year": {
+        "2022": 10,
+        "2024": 5
+      },
+      "total_vouchers": 15
+    },
+    {
+      "pha_code": "HI004",
+      "pha_name": "County of Maui Dept of Housing and Human Concerns",
+      "awards_by_year": {
+        "2021": 5,
+        "2023": 10,
+        "2024": 30
+      },
+      "total_vouchers": 45
+    },
+    {
+      "pha_code": "HI005",
+      "pha_name": "County of Kaua'i Housing Agency",
+      "awards_by_year": {
+        "2022": 7
+      },
+      "total_vouchers": 7
+    },
+    {
+      "pha_code": "HI901",
+      "pha_name": "Hawaii Public Housing Authority",
+      "awards_by_year": {
+        "2022": 10,
+        "2023": 10
+      },
+      "total_vouchers": 20
+    },
+    {
+      "pha_code": "IA018",
+      "pha_name": "City of Sioux City Housing Authority",
+      "awards_by_year": {
+        "2022": 5,
+        "2023": 5
+      },
+      "total_vouchers": 10
+    },
+    {
+      "pha_code": "IA020",
+      "pha_name": "Des Moines Municipal Housing Agency",
+      "awards_by_year": {
+        "2024": 20
+      },
+      "total_vouchers": 20
+    },
+    {
+      "pha_code": "IA022",
+      "pha_name": "City of Iowa City Housing Authority",
+      "awards_by_year": {
+        "2020": 12
+      },
+      "total_vouchers": 12
+    },
+    {
+      "pha_code": "IA024",
+      "pha_name": "City of Cedar Rapids",
+      "awards_by_year": {
+        "2020": 6,
+        "2021": 6
+      },
+      "total_vouchers": 12
+    },
+    {
+      "pha_code": "IA087",
+      "pha_name": "City of Dubuque Public Housing Authority",
+      "awards_by_year": {
+        "2020": 6,
+        "2021": 6
+      },
+      "total_vouchers": 12
+    },
+    {
+      "pha_code": "ID005",
+      "pha_name": "Housing Authority of the City of Pocatello",
+      "awards_by_year": {
+        "2021": 5
+      },
+      "total_vouchers": 5
+    },
+    {
+      "pha_code": "ID016",
+      "pha_name": "Southwestern Idaho Cooperative Housing Authority",
+      "awards_by_year": {
+        "2024": 25
+      },
+      "total_vouchers": 25
+    },
+    {
+      "pha_code": "IL003",
+      "pha_name": "Peoria Housing Authority",
+      "awards_by_year": {
+        "2022": 5
+      },
+      "total_vouchers": 5
+    },
+    {
+      "pha_code": "IL020",
+      "pha_name": "Moline Housing Authority",
+      "awards_by_year": {
+        "2022": 7
+      },
+      "total_vouchers": 7
+    },
+    {
+      "pha_code": "IL024",
+      "pha_name": "Joliet Housing Authority",
+      "awards_by_year": {
+        "2021": 25
+      },
+      "total_vouchers": 25
+    },
+    {
+      "pha_code": "IL026",
+      "pha_name": "Housing Authority of the City of Waukegan",
+      "awards_by_year": {
+        "2020": 5
+      },
+      "total_vouchers": 5
+    },
+    {
+      "pha_code": "IL051",
+      "pha_name": "Bloomington Housing Authority",
+      "awards_by_year": {
+        "2023": 5
+      },
+      "total_vouchers": 5
+    },
+    {
+      "pha_code": "IL056",
+      "pha_name": "Lake County Housing Authority",
+      "awards_by_year": {
+        "2020": 6
+      },
+      "total_vouchers": 6
+    },
+    {
+      "pha_code": "IL101",
+      "pha_name": "DuPage County",
+      "awards_by_year": {
+        "2021": 15,
+        "2023": 30
+      },
+      "total_vouchers": 45
+    },
+    {
+      "pha_code": "IN003",
+      "pha_name": "Fort Wayne Housing Authority",
+      "awards_by_year": {
+        "2024": 5
+      },
+      "total_vouchers": 5
+    },
+    {
+      "pha_code": "IN016",
+      "pha_name": "Housing Authority of the City of Evansville",
+      "awards_by_year": {
+        "2023": 23
+      },
+      "total_vouchers": 23
+    },
+    {
+      "pha_code": "IN071",
+      "pha_name": "Lafayette Housing Authority",
+      "awards_by_year": {
+        "2020": 5
+      },
+      "total_vouchers": 5
+    },
+    {
+      "pha_code": "IN901",
+      "pha_name": "Indiana Housing And Community Development Au",
+      "awards_by_year": {
+        "2022": 15,
+        "2024": 5
+      },
+      "total_vouchers": 20
+    },
+    {
+      "pha_code": "KS002",
+      "pha_name": "Topeka Housing Authority",
+      "awards_by_year": {
+        "2024": 25
+      },
+      "total_vouchers": 25
+    },
+    {
+      "pha_code": "KS004",
+      "pha_name": "Wichita Housing Authority",
+      "awards_by_year": {
+        "2023": 60
+      },
+      "total_vouchers": 60
+    },
+    {
+      "pha_code": "KS063",
+      "pha_name": "Manhattan Housing Authority",
+      "awards_by_year": {
+        "2024": 8
+      },
+      "total_vouchers": 8
+    },
+    {
+      "pha_code": "KS068",
+      "pha_name": "Leavenworth Housing Authority",
+      "awards_by_year": {
+        "2024": 15
+      },
+      "total_vouchers": 15
+    },
+    {
+      "pha_code": "KY061",
+      "pha_name": "Georgetown Housing Authority",
+      "awards_by_year": {
+        "2024": 5
+      },
+      "total_vouchers": 5
+    },
+    {
+      "pha_code": "KY132",
+      "pha_name": "City of Richmond Section 8 Housing",
+      "awards_by_year": {
+        "2024": 25
+      },
+      "total_vouchers": 25
+    },
+    {
+      "pha_code": "KY161",
+      "pha_name": "Appalachian Foothills Housing Authority",
+      "awards_by_year": {
+        "2024": 5
+      },
+      "total_vouchers": 5
+    },
+    {
+      "pha_code": "KY171",
+      "pha_name": "Bowling Green Housing Authority",
+      "awards_by_year": {
+        "2021": 25
+      },
+      "total_vouchers": 25
+    },
+    {
+      "pha_code": "KY901",
+      "pha_name": "Kentucky Housing Corporation-State Agency",
+      "awards_by_year": {
+        "2022": 12
+      },
+      "total_vouchers": 12
+    },
+    {
+      "pha_code": "LA001",
+      "pha_name": "Housing Authority of New Orleans",
+      "awards_by_year": {
+        "2020": 14
+      },
+      "total_vouchers": 14
+    },
+    {
+      "pha_code": "LA003",
+      "pha_name": "Housing Authority of East Baton Rouge",
+      "awards_by_year": {
+        "2020": 14
+      },
+      "total_vouchers": 14
+    },
+    {
+      "pha_code": "LA104",
+      "pha_name": "Housing AuthorityMMOND HOUSING AUTHORITY",
+      "awards_by_year": {
+        "2020": 5
+      },
+      "total_vouchers": 5
+    },
+    {
+      "pha_code": "LA171",
+      "pha_name": "Ouachita Parish Housing",
+      "awards_by_year": {
+        "2020": 10
+      },
+      "total_vouchers": 10
+    },
+    {
+      "pha_code": "LA190",
+      "pha_name": "Bossier Parish Section 8",
+      "awards_by_year": {
+        "2024": 20
+      },
+      "total_vouchers": 20
+    },
+    {
+      "pha_code": "LA194",
+      "pha_name": "City of Thibodaux, Department of Housing and Community Development",
+      "awards_by_year": {
+        "2020": 5
+      },
+      "total_vouchers": 5
+    },
+    {
+      "pha_code": "LA903",
+      "pha_name": "Louisiana Housing Authority",
+      "awards_by_year": {
+        "2024": 10
+      },
+      "total_vouchers": 10
+    },
+    {
+      "pha_code": "MA002",
+      "pha_name": "Boston Housing Authority",
+      "awards_by_year": {
+        "2020": 20,
+        "2021": 70,
+        "2022": 7,
+        "2023": 30
+      },
+      "total_vouchers": 127
+    },
+    {
+      "pha_code": "MA003",
+      "pha_name": "Cambridge Housing Authority",
+      "awards_by_year": {
+        "2021": 12,
+        "2022": 11,
+        "2023": 5
+      },
+      "total_vouchers": 28
+    },
+    {
+      "pha_code": "MA007",
+      "pha_name": "New Bedford Housing Authority",
+      "awards_by_year": {
+        "2020": 7
+      },
+      "total_vouchers": 7
+    },
+    {
+      "pha_code": "MA020",
+      "pha_name": "Quincy Housing Authority",
+      "awards_by_year": {
+        "2020": 16,
+        "2022": 5
+      },
+      "total_vouchers": 21
+    },
+    {
+      "pha_code": "MA024",
+      "pha_name": "Brockton Housing Authority",
+      "awards_by_year": {
+        "2023": 5
+      },
+      "total_vouchers": 5
+    },
+    {
+      "pha_code": "MA031",
+      "pha_name": "Somerville Housing Authority",
+      "awards_by_year": {
+        "2023": 10
+      },
+      "total_vouchers": 10
+    },
+    {
+      "pha_code": "MA033",
+      "pha_name": "Brookline Housing Authority",
+      "awards_by_year": {
+        "2021": 20,
+        "2023": 5
+      },
+      "total_vouchers": 25
+    },
+    {
+      "pha_code": "MA040",
+      "pha_name": "Dedham Housing Authority",
+      "awards_by_year": {
+        "2023": 10
+      },
+      "total_vouchers": 10
+    },
+    {
+      "pha_code": "MA046",
+      "pha_name": "Barnstable Housing Authority",
+      "awards_by_year": {
+        "2020": 5
+      },
+      "total_vouchers": 5
+    },
+    {
+      "pha_code": "MA053",
+      "pha_name": "Braintree Housing Authority",
+      "awards_by_year": {
+        "2023": 15
+      },
+      "total_vouchers": 15
+    },
+    {
+      "pha_code": "MA093",
+      "pha_name": "Watertown Housing Authority",
+      "awards_by_year": {
+        "2023": 10
+      },
+      "total_vouchers": 10
+    },
+    {
+      "pha_code": "MA147",
+      "pha_name": "Milton Housing Authority",
+      "awards_by_year": {
+        "2020": 10,
+        "2022": 11
+      },
+      "total_vouchers": 21
+    },
+    {
+      "pha_code": "MA901",
+      "pha_name": "Department of Housing & Community Development",
+      "awards_by_year": {
+        "2020": 5,
+        "2021": 10,
+        "2022": 97,
+        "2023": 5
+      },
+      "total_vouchers": 117
+    },
+    {
+      "pha_code": "MD001",
+      "pha_name": "Housing Authority of the City of Annapolis",
+      "awards_by_year": {
+        "2020": 5
+      },
+      "total_vouchers": 5
+    },
+    {
+      "pha_code": "MD002",
+      "pha_name": "Housing Authority of Baltimore City",
+      "awards_by_year": {
+        "2020": 25
+      },
+      "total_vouchers": 25
+    },
+    {
+      "pha_code": "MD004",
+      "pha_name": "Housing Opprty Com of Montgomery Co",
+      "awards_by_year": {
+        "2020": 15,
+        "2023": 20
+      },
+      "total_vouchers": 35
+    },
+    {
+      "pha_code": "MD007",
+      "pha_name": "Rockville Housing Enterprises",
+      "awards_by_year": {
+        "2021": 5
+      },
+      "total_vouchers": 5
+    },
+    {
+      "pha_code": "MD015",
+      "pha_name": "Housing Authority of Prince Georges County",
+      "awards_by_year": {
+        "2021": 10,
+        "2023": 10
+      },
+      "total_vouchers": 20
+    },
+    {
+      "pha_code": "MD018",
+      "pha_name": "Anne Arundel Housing Commission",
+      "awards_by_year": {
+        "2020": 10
+      },
+      "total_vouchers": 10
+    },
+    {
+      "pha_code": "MD025",
+      "pha_name": "Harford County Housing Agency",
+      "awards_by_year": {
+        "2020": 5
+      },
+      "total_vouchers": 5
+    },
+    {
+      "pha_code": "MD028",
+      "pha_name": "Washington County Housing Authority",
+      "awards_by_year": {
+        "2020": 5
+      },
+      "total_vouchers": 5
+    },
+    {
+      "pha_code": "MD033",
+      "pha_name": "Baltimore County Housing Authority",
+      "awards_by_year": {
+        "2020": 10
+      },
+      "total_vouchers": 10
+    },
+    {
+      "pha_code": "MD901",
+      "pha_name": "MD Dept. of Housing And Community Development",
+      "awards_by_year": {
+        "2020": 45
+      },
+      "total_vouchers": 45
+    },
+    {
+      "pha_code": "ME005",
+      "pha_name": "Lewiston Housing Authority",
+      "awards_by_year": {
+        "2022": 8
+      },
+      "total_vouchers": 8
+    },
+    {
+      "pha_code": "MI058",
+      "pha_name": "Lansing Housing Commission",
+      "awards_by_year": {
+        "2024": 23
+      },
+      "total_vouchers": 23
+    },
+    {
+      "pha_code": "MI064",
+      "pha_name": "Ann Arbor Housing Commission",
+      "awards_by_year": {
+        "2024": 41
+      },
+      "total_vouchers": 41
+    },
+    {
+      "pha_code": "MI073",
+      "pha_name": "Grand Rapids Housing Commission",
+      "awards_by_year": {
+        "2023": 14
+      },
+      "total_vouchers": 14
+    },
+    {
+      "pha_code": "MI198",
+      "pha_name": "Kent County Housing Commission",
+      "awards_by_year": {
+        "2023": 14
+      },
+      "total_vouchers": 14
+    },
+    {
+      "pha_code": "MI901",
+      "pha_name": "Michigan State Housing Development Authority",
+      "awards_by_year": {
+        "2020": 17,
+        "2023": 17,
+        "2024": 93
+      },
+      "total_vouchers": 127
+    },
+    {
+      "pha_code": "MN001",
+      "pha_name": "Public Housing Agency of the City of St Paul",
+      "awards_by_year": {
+        "2020": 5,
+        "2021": 15,
+        "2022": 20
+      },
+      "total_vouchers": 40
+    },
+    {
+      "pha_code": "MN002",
+      "pha_name": "PHousing Authority In and for the City of Minneapolis",
+      "awards_by_year": {
+        "2020": 5,
+        "2021": 20
+      },
+      "total_vouchers": 25
+    },
+    {
+      "pha_code": "MN003",
+      "pha_name": "HRA of Duluth",
+      "awards_by_year": {
+        "2024": 7
+      },
+      "total_vouchers": 7
+    },
+    {
+      "pha_code": "MN009",
+      "pha_name": "HRA of Bemidji",
+      "awards_by_year": {
+        "2021": 5
+      },
+      "total_vouchers": 5
+    },
+    {
+      "pha_code": "MN144",
+      "pha_name": "Housing Authority of St. Louis Park",
+      "awards_by_year": {
+        "2021": 15,
+        "2022": 10
+      },
+      "total_vouchers": 25
+    },
+    {
+      "pha_code": "MN151",
+      "pha_name": "Olmsted County HRA",
+      "awards_by_year": {
+        "2021": 5,
+        "2022": 5
+      },
+      "total_vouchers": 10
+    },
+    {
+      "pha_code": "MN152",
+      "pha_name": "Bloomington HRA",
+      "awards_by_year": {
+        "2021": 5
+      },
+      "total_vouchers": 5
+    },
+    {
+      "pha_code": "MN163",
+      "pha_name": "Metropolitan Council",
+      "awards_by_year": {
+        "2020": 5,
+        "2021": 10,
+        "2022": 30
+      },
+      "total_vouchers": 45
+    },
+    {
+      "pha_code": "MN164",
+      "pha_name": "Clay County Housing & Redevelopment Authority",
+      "awards_by_year": {
+        "2020": 25
+      },
+      "total_vouchers": 25
+    },
+    {
+      "pha_code": "MN170",
+      "pha_name": "Plymouth Housing & Redevelopment Authority",
+      "awards_by_year": {
+        "2021": 5
+      },
+      "total_vouchers": 5
+    },
+    {
+      "pha_code": "MN212",
+      "pha_name": "Washington County Housing & Redevelopment Authority",
+      "awards_by_year": {
+        "2020": 5,
+        "2022": 5
+      },
+      "total_vouchers": 10
+    },
+    {
+      "pha_code": "MO001",
+      "pha_name": "St. Louis Housing Authority",
+      "awards_by_year": {
+        "2020": 5,
+        "2021": 10,
+        "2023": 10
+      },
+      "total_vouchers": 25
+    },
+    {
+      "pha_code": "MO004",
+      "pha_name": "Housing Authority of St. Louis County",
+      "awards_by_year": {
+        "2020": 5,
+        "2021": 20,
+        "2023": 10,
+        "2024": 40
+      },
+      "total_vouchers": 75
+    },
+    {
+      "pha_code": "MO006",
+      "pha_name": "Housing Authority of the City of St. Charles",
+      "awards_by_year": {
+        "2020": 5,
+        "2024": 5
+      },
+      "total_vouchers": 10
+    },
+    {
+      "pha_code": "MO007",
+      "pha_name": "Housing Authority of the City of Columbia",
+      "awards_by_year": {
+        "2024": 28
+      },
+      "total_vouchers": 28
+    },
+    {
+      "pha_code": "MO058",
+      "pha_name": "Springfield Housing Authority",
+      "awards_by_year": {
+        "2023": 25
+      },
+      "total_vouchers": 25
+    },
+    {
+      "pha_code": "MO188",
+      "pha_name": "Housing Authority of the City of Joplin",
+      "awards_by_year": {
+        "2020": 5,
+        "2023": 20
+      },
+      "total_vouchers": 25
+    },
+    {
+      "pha_code": "MO198",
+      "pha_name": "Boone County PHousing Authority",
+      "awards_by_year": {
+        "2021": 10
+      },
+      "total_vouchers": 10
+    },
+    {
+      "pha_code": "MO199",
+      "pha_name": "LINCOLN COUNTY PUBLIC HOUSING AGENCY",
+      "awards_by_year": {
+        "2020": 5
+      },
+      "total_vouchers": 5
+    },
+    {
+      "pha_code": "MO205",
+      "pha_name": "Franklin County Public Housing Agency",
+      "awards_by_year": {
+        "2020": 5,
+        "2023": 5,
+        "2024": 5
+      },
+      "total_vouchers": 15
+    },
+    {
+      "pha_code": "MO212",
+      "pha_name": "Ripley County Public Housing Agency",
+      "awards_by_year": {
+        "2020": 6
+      },
+      "total_vouchers": 6
+    },
+    {
+      "pha_code": "MO215",
+      "pha_name": "Jasper County Public Housing Agency",
+      "awards_by_year": {
+        "2020": 20
+      },
+      "total_vouchers": 20
+    },
+    {
+      "pha_code": "MO227",
+      "pha_name": "St. Charles County Housing Assistance Program",
+      "awards_by_year": {
+        "2020": 5
+      },
+      "total_vouchers": 5
+    },
+    {
+      "pha_code": "MT033",
+      "pha_name": "Missoula Housing Authority",
+      "awards_by_year": {
+        "2023": 20
+      },
+      "total_vouchers": 20
+    },
+    {
+      "pha_code": "NC003",
+      "pha_name": "Housing Authority of the City of Charlotte",
+      "awards_by_year": {
+        "2020": 50
+      },
+      "total_vouchers": 50
+    },
+    {
+      "pha_code": "NC007",
+      "pha_name": "Housing Authority of the City of Asheville",
+      "awards_by_year": {
+        "2022": 25
+      },
+      "total_vouchers": 25
+    },
+    {
+      "pha_code": "NC009",
+      "pha_name": "Fayetteville Metropolitan Housing Authority",
+      "awards_by_year": {
+        "2024": 40
+      },
+      "total_vouchers": 40
+    },
+    {
+      "pha_code": "NC011",
+      "pha_name": "Housing Authority of the City of Greensboro",
+      "awards_by_year": {
+        "2024": 30
+      },
+      "total_vouchers": 30
+    },
+    {
+      "pha_code": "NC013",
+      "pha_name": "The Housing Authority of the City of Durham",
+      "awards_by_year": {
+        "2021": 10
+      },
+      "total_vouchers": 10
+    },
+    {
+      "pha_code": "NC014",
+      "pha_name": "Housing Authority of the City of Lumberton",
+      "awards_by_year": {
+        "2023": 5
+      },
+      "total_vouchers": 5
+    },
+    {
+      "pha_code": "NC015",
+      "pha_name": "Housing Authority of the City of Goldsboro",
+      "awards_by_year": {
+        "2023": 7
+      },
+      "total_vouchers": 7
+    },
+    {
+      "pha_code": "NC019",
+      "pha_name": "The Housing Authority of the City of Rocky Mount",
+      "awards_by_year": {
+        "2023": 10
+      },
+      "total_vouchers": 10
+    },
+    {
+      "pha_code": "NC020",
+      "pha_name": "Housing Authority of the City of Wilson",
+      "awards_by_year": {
+        "2024": 5
+      },
+      "total_vouchers": 5
+    },
+    {
+      "pha_code": "NC022",
+      "pha_name": "Housing Authority of the City of Greenville",
+      "awards_by_year": {
+        "2020": 10,
+        "2021": 21
+      },
+      "total_vouchers": 31
+    },
+    {
+      "pha_code": "NC035",
+      "pha_name": "Sanford Housing Authority",
+      "awards_by_year": {
+        "2023": 10
+      },
+      "total_vouchers": 10
+    },
+    {
+      "pha_code": "NC104",
+      "pha_name": "Orange County Housing Authority (NC)",
+      "awards_by_year": {
+        "2020": 10,
+        "2021": 21
+      },
+      "total_vouchers": 31
+    },
+    {
+      "pha_code": "NC140",
+      "pha_name": "Western Carolina Community Action",
+      "awards_by_year": {
+        "2022": 5,
+        "2023": 5
+      },
+      "total_vouchers": 10
+    },
+    {
+      "pha_code": "NC141",
+      "pha_name": "Coastal Community Action",
+      "awards_by_year": {
+        "2024": 5
+      },
+      "total_vouchers": 5
+    },
+    {
+      "pha_code": "NC144",
+      "pha_name": "Eastern Carolina Human Services Agency, Inc",
+      "awards_by_year": {
+        "2020": 24,
+        "2024": 10
+      },
+      "total_vouchers": 34
+    },
+    {
+      "pha_code": "NC159",
+      "pha_name": "Western Piedmont Council of Governments Regional Housing Authority",
+      "awards_by_year": {
+        "2020": 10,
+        "2021": 5,
+        "2022": 5,
+        "2023": 10,
+        "2024": 10
+      },
+      "total_vouchers": 40
+    },
+    {
+      "pha_code": "NC161",
+      "pha_name": "Isothermal Planning & Development Commission",
+      "awards_by_year": {
+        "2022": 5,
+        "2024": 5
+      },
+      "total_vouchers": 10
+    },
+    {
+      "pha_code": "NH901",
+      "pha_name": "New Hampshire Housing Finance Agency",
+      "awards_by_year": {
+        "2021": 5,
+        "2023": 25
+      },
+      "total_vouchers": 30
+    },
+    {
+      "pha_code": "NJ008",
+      "pha_name": "Long Branch Housing Authority",
+      "awards_by_year": {
+        "2020": 10,
+        "2021": 15,
+        "2022": 15,
+        "2023": 5,
+        "2024": 10
+      },
+      "total_vouchers": 55
+    },
+    {
+      "pha_code": "NJ009",
+      "pha_name": "Housing Authority City of Jersey City",
+      "awards_by_year": {
+        "2020": 10
+      },
+      "total_vouchers": 10
+    },
+    {
+      "pha_code": "NJ014",
+      "pha_name": "Housing Authority And Urban Redevelopment Age",
+      "awards_by_year": {
+        "2020": 5
+      },
+      "total_vouchers": 5
+    },
+    {
+      "pha_code": "NJ015",
+      "pha_name": "The Housing Authority of the City of Hoboken",
+      "awards_by_year": {
+        "2023": 18
+      },
+      "total_vouchers": 18
+    },
+    {
+      "pha_code": "NJ022",
+      "pha_name": "New Brunswick Housing Authority",
+      "awards_by_year": {
+        "2020": 10
+      },
+      "total_vouchers": 10
+    },
+    {
+      "pha_code": "NJ059",
+      "pha_name": "Pleasantville Housing Authority",
+      "awards_by_year": {
+        "2020": 5
+      },
+      "total_vouchers": 5
+    },
+    {
+      "pha_code": "NJ113",
+      "pha_name": "Union County Housing Authority",
+      "awards_by_year": {
+        "2024": 22
+      },
+      "total_vouchers": 22
+    },
+    {
+      "pha_code": "NJ204",
+      "pha_name": "Gloucester County Housing Authority",
+      "awards_by_year": {
+        "2023": 10,
+        "2024": 40
+      },
+      "total_vouchers": 50
+    },
+    {
+      "pha_code": "NJ912",
+      "pha_name": "State of NJ Dept. of Comm. Affairs",
+      "awards_by_year": {
+        "2020": 124,
+        "2021": 75,
+        "2022": 20,
+        "2023": 10,
+        "2024": 70
+      },
+      "total_vouchers": 299
+    },
+    {
+      "pha_code": "NM001",
+      "pha_name": "City of Albuquerque Housing Authority",
+      "awards_by_year": {
+        "2024": 77
+      },
+      "total_vouchers": 77
+    },
+    {
+      "pha_code": "NM003",
+      "pha_name": "Housing Authority of the City of Las Cruces",
+      "awards_by_year": {
+        "2020": 5,
+        "2024": 10
+      },
+      "total_vouchers": 15
+    },
+    {
+      "pha_code": "NM057",
+      "pha_name": "Bernalillo County Housing Department",
+      "awards_by_year": {
+        "2024": 50
+      },
+      "total_vouchers": 50
+    },
+    {
+      "pha_code": "NM063",
+      "pha_name": "Eastern Regional Housing Authority",
+      "awards_by_year": {
+        "2021": 5
+      },
+      "total_vouchers": 5
+    },
+    {
+      "pha_code": "NM066",
+      "pha_name": "Housing Authority of the County of San Juan",
+      "awards_by_year": {
+        "2020": 5
+      },
+      "total_vouchers": 5
+    },
+    {
+      "pha_code": "NV001",
+      "pha_name": "City of Reno Housing Authority",
+      "awards_by_year": {
+        "2020": 98,
+        "2023": 125,
+        "2024": 52
+      },
+      "total_vouchers": 275
+    },
+    {
+      "pha_code": "NV018",
+      "pha_name": "Southern Nevada Regional Housing Authority",
+      "awards_by_year": {
+        "2024": 99
+      },
+      "total_vouchers": 99
+    },
+    {
+      "pha_code": "NV905",
+      "pha_name": "Nevada Rural Hsg Auth",
+      "awards_by_year": {
+        "2023": 45
+      },
+      "total_vouchers": 45
+    },
+    {
+      "pha_code": "NY005",
+      "pha_name": "New York City Housing Authority",
+      "awards_by_year": {
+        "2020": 105,
+        "2021": 90,
+        "2024": 55
+      },
+      "total_vouchers": 250
+    },
+    {
+      "pha_code": "NY012",
+      "pha_name": "Troy Housing Authority",
+      "awards_by_year": {
+        "2020": 10
+      },
+      "total_vouchers": 10
+    },
+    {
+      "pha_code": "NY016",
+      "pha_name": "Binghamton Housing Authority",
+      "awards_by_year": {
+        "2021": 5
+      },
+      "total_vouchers": 5
+    },
+    {
+      "pha_code": "NY018",
+      "pha_name": "Plattsburgh Housing Authority",
+      "awards_by_year": {
+        "2020": 5,
+        "2021": 5
+      },
+      "total_vouchers": 10
+    },
+    {
+      "pha_code": "NY020",
+      "pha_name": "Saratoga Springs Housing Authority",
+      "awards_by_year": {
+        "2020": 22
+      },
+      "total_vouchers": 22
+    },
+    {
+      "pha_code": "NY060",
+      "pha_name": "Amsterdam Housing Authority",
+      "awards_by_year": {
+        "2020": 5
+      },
+      "total_vouchers": 5
+    },
+    {
+      "pha_code": "NY079",
+      "pha_name": "Glens Falls Housing Authority",
+      "awards_by_year": {
+        "2020": 10,
+        "2024": 15
+      },
+      "total_vouchers": 25
+    },
+    {
+      "pha_code": "NY110",
+      "pha_name": "NYC Dept of Housing Preservation and Development",
+      "awards_by_year": {
+        "2024": 8
+      },
+      "total_vouchers": 8
+    },
+    {
+      "pha_code": "NY904",
+      "pha_name": "NYS Housing Trust Fund Corporation",
+      "awards_by_year": {
+        "2024": 83
+      },
+      "total_vouchers": 83
+    },
+    {
+      "pha_code": "OH001",
+      "pha_name": "Columbus Metropolitan Housing Authority",
+      "awards_by_year": {
+        "2020": 10,
+        "2023": 50,
+        "2024": 15
+      },
+      "total_vouchers": 75
+    },
+    {
+      "pha_code": "OH002",
+      "pha_name": "Youngstown Metropolitan Housing Authority",
+      "awards_by_year": {
+        "2024": 5
+      },
+      "total_vouchers": 5
+    },
+    {
+      "pha_code": "OH003",
+      "pha_name": "Cuyahoga Metropolitan Housing Authority",
+      "awards_by_year": {
+        "2020": 50,
+        "2024": 5
+      },
+      "total_vouchers": 55
+    },
+    {
+      "pha_code": "OH004",
+      "pha_name": "Cincinnati Metropolitan Housing Authority",
+      "awards_by_year": {
+        "2020": 32
+      },
+      "total_vouchers": 32
+    },
+    {
+      "pha_code": "OH007",
+      "pha_name": "Akron Metropolitan Housing Authority",
+      "awards_by_year": {
+        "2020": 12,
+        "2021": 20,
+        "2022": 30,
+        "2023": 20,
+        "2024": 5
+      },
+      "total_vouchers": 87
+    },
+    {
+      "pha_code": "OH008",
+      "pha_name": "Trumbull Metropolitan Housing Authority",
+      "awards_by_year": {
+        "2024": 5
+      },
+      "total_vouchers": 5
+    },
+    {
+      "pha_code": "OH012",
+      "pha_name": "Lorain Metropolitan Housing Authority",
+      "awards_by_year": {
+        "2024": 5
+      },
+      "total_vouchers": 5
+    },
+    {
+      "pha_code": "OH015",
+      "pha_name": "The Butler Metropolitan Housing Authority",
+      "awards_by_year": {
+        "2021": 10
+      },
+      "total_vouchers": 10
+    },
+    {
+      "pha_code": "OH018",
+      "pha_name": "Stark County Housing Authority",
+      "awards_by_year": {
+        "2023": 40
+      },
+      "total_vouchers": 40
+    },
+    {
+      "pha_code": "OH025",
+      "pha_name": "Lake Metropolitan Housing Authority",
+      "awards_by_year": {
+        "2021": 8
+      },
+      "total_vouchers": 8
+    },
+    {
+      "pha_code": "OH026",
+      "pha_name": "COLUMBIANA METROPOLITAN HOUSING AUTHORITY",
+      "awards_by_year": {
+        "2024": 5
+      },
+      "total_vouchers": 5
+    },
+    {
+      "pha_code": "OH027",
+      "pha_name": "Medina Metropolitan Housing Authority",
+      "awards_by_year": {
+        "2024": 5
+      },
+      "total_vouchers": 5
+    },
+    {
+      "pha_code": "OH028",
+      "pha_name": "ERIE METROPOLITAN HOUSING AUTHORITY",
+      "awards_by_year": {
+        "2024": 5
+      },
+      "total_vouchers": 5
+    },
+    {
+      "pha_code": "OH038",
+      "pha_name": "Clermont Metropolitan Housing Authority",
+      "awards_by_year": {
+        "2023": 10
+      },
+      "total_vouchers": 10
+    },
+    {
+      "pha_code": "OH043",
+      "pha_name": "Licking Metropolitan Housing Authority",
+      "awards_by_year": {
+        "2024": 30
+      },
+      "total_vouchers": 30
+    },
+    {
+      "pha_code": "OH081",
+      "pha_name": "Brown Metropolitan Housing Authority",
+      "awards_by_year": {
+        "2022": 5
+      },
+      "total_vouchers": 5
+    },
+    {
+      "pha_code": "OK002",
+      "pha_name": "Housing Authority of the City of Oklahoma City",
+      "awards_by_year": {
+        "2021": 30,
+        "2024": 50
+      },
+      "total_vouchers": 80
+    },
+    {
+      "pha_code": "OK005",
+      "pha_name": "Housing Authority of the City of Lawton",
+      "awards_by_year": {
+        "2023": 10,
+        "2024": 10
+      },
+      "total_vouchers": 20
+    },
+    {
+      "pha_code": "OK073",
+      "pha_name": "Tulsa Housing Authority",
+      "awards_by_year": {
+        "2020": 35
+      },
+      "total_vouchers": 35
+    },
+    {
+      "pha_code": "OK139",
+      "pha_name": "Norman Housing Authority",
+      "awards_by_year": {
+        "2020": 8,
+        "2024": 5
+      },
+      "total_vouchers": 13
+    },
+    {
+      "pha_code": "OK901",
+      "pha_name": "Oklahoma Housing Finance Agency",
+      "awards_by_year": {
+        "2020": 51,
+        "2024": 49
+      },
+      "total_vouchers": 100
+    },
+    {
+      "pha_code": "OR001",
+      "pha_name": "Housing Authority of Clackamas County",
+      "awards_by_year": {
+        "2020": 25,
+        "2023": 25,
+        "2024": 25
+      },
+      "total_vouchers": 75
+    },
+    {
+      "pha_code": "OR002",
+      "pha_name": "Housing Authority of Portland",
+      "awards_by_year": {
+        "2020": 75
+      },
+      "total_vouchers": 75
+    },
+    {
+      "pha_code": "OR005",
+      "pha_name": "Lincoln County Housing Authority",
+      "awards_by_year": {
+        "2024": 5
+      },
+      "total_vouchers": 5
+    },
+    {
+      "pha_code": "OR006",
+      "pha_name": "Housing Authority & Comm Svcs of Lane Co",
+      "awards_by_year": {
+        "2022": 50
+      },
+      "total_vouchers": 50
+    },
+    {
+      "pha_code": "OR008",
+      "pha_name": "Housing And Urban Renewal Agency of Polk County",
+      "awards_by_year": {
+        "2024": 5
+      },
+      "total_vouchers": 5
+    },
+    {
+      "pha_code": "OR011",
+      "pha_name": "Housing Authority of the City of Salem",
+      "awards_by_year": {
+        "2020": 20,
+        "2022": 25,
+        "2024": 25
+      },
+      "total_vouchers": 70
+    },
+    {
+      "pha_code": "OR014",
+      "pha_name": "Marion County Housing Authority",
+      "awards_by_year": {
+        "2024": 5
+      },
+      "total_vouchers": 5
+    },
+    {
+      "pha_code": "OR017",
+      "pha_name": "Klamath Housing Authority",
+      "awards_by_year": {
+        "2020": 31,
+        "2021": 7
+      },
+      "total_vouchers": 38
+    },
+    {
+      "pha_code": "OR019",
+      "pha_name": "Linn-Benton Housing Authority",
+      "awards_by_year": {
+        "2022": 20,
+        "2023": 25
+      },
+      "total_vouchers": 45
+    },
+    {
+      "pha_code": "OR022",
+      "pha_name": "Housing Authority of Washington County",
+      "awards_by_year": {
+        "2020": 30,
+        "2021": 50,
+        "2023": 25,
+        "2024": 50
+      },
+      "total_vouchers": 155
+    },
+    {
+      "pha_code": "OR028",
+      "pha_name": "Northwest Oregon Housing Authority",
+      "awards_by_year": {
+        "2024": 10
+      },
+      "total_vouchers": 10
+    },
+    {
+      "pha_code": "OR034",
+      "pha_name": "Central Oregon Regional Housing Authority",
+      "awards_by_year": {
+        "2024": 5
+      },
+      "total_vouchers": 5
+    },
+    {
+      "pha_code": "PA002",
+      "pha_name": "Philadelphia Housing Authority",
+      "awards_by_year": {
+        "2020": 23,
+        "2021": 20,
+        "2023": 100,
+        "2024": 20
+      },
+      "total_vouchers": 163
+    },
+    {
+      "pha_code": "PA004",
+      "pha_name": "Allentown Housing Authority",
+      "awards_by_year": {
+        "2021": 19
+      },
+      "total_vouchers": 19
+    },
+    {
+      "pha_code": "PA006",
+      "pha_name": "Allegheny County Housing Authority",
+      "awards_by_year": {
+        "2024": 10
+      },
+      "total_vouchers": 10
+    },
+    {
+      "pha_code": "PA008",
+      "pha_name": "Harrisburg Housing Authority",
+      "awards_by_year": {
+        "2023": 45
+      },
+      "total_vouchers": 45
+    },
+    {
+      "pha_code": "PA010",
+      "pha_name": "Housing Authority of the County of Butler",
+      "awards_by_year": {
+        "2023": 10
+      },
+      "total_vouchers": 10
+    },
+    {
+      "pha_code": "PA012",
+      "pha_name": "Housing Authority of the County of Montgomery",
+      "awards_by_year": {
+        "2024": 5
+      },
+      "total_vouchers": 5
+    },
+    {
+      "pha_code": "PA020",
+      "pha_name": "Mercer County Housing Authority",
+      "awards_by_year": {
+        "2023": 5
+      },
+      "total_vouchers": 5
+    },
+    {
+      "pha_code": "PA022",
+      "pha_name": "York Housing Authority",
+      "awards_by_year": {
+        "2020": 6,
+        "2023": 24
+      },
+      "total_vouchers": 30
+    },
+    {
+      "pha_code": "PA024",
+      "pha_name": "Easton Housing Authority",
+      "awards_by_year": {
+        "2024": 15
+      },
+      "total_vouchers": 15
+    },
+    {
+      "pha_code": "PA035",
+      "pha_name": "Housing Authority of the County of Dauphin",
+      "awards_by_year": {
+        "2024": 25
+      },
+      "total_vouchers": 25
+    },
+    {
+      "pha_code": "PA046",
+      "pha_name": "Housing Authority of the County of Chester",
+      "awards_by_year": {
+        "2020": 68,
+        "2023": 40,
+        "2024": 5
+      },
+      "total_vouchers": 113
+    },
+    {
+      "pha_code": "PA047",
+      "pha_name": "Wilkes Barre Housing Authority",
+      "awards_by_year": {
+        "2020": 19,
+        "2021": 5,
+        "2024": 10
+      },
+      "total_vouchers": 34
+    },
+    {
+      "pha_code": "PA048",
+      "pha_name": "Housing Authority of Indiana County",
+      "awards_by_year": {
+        "2021": 10
+      },
+      "total_vouchers": 10
+    },
+    {
+      "pha_code": "PA051",
+      "pha_name": "Bucks County Housing Authority",
+      "awards_by_year": {
+        "2021": 5
+      },
+      "total_vouchers": 5
+    },
+    {
+      "pha_code": "PA061",
+      "pha_name": "Housing Authority of the County of Jefferson",
+      "awards_by_year": {
+        "2020": 10
+      },
+      "total_vouchers": 10
+    },
+    {
+      "pha_code": "PA071",
+      "pha_name": "BERKS COUNTY HOUSING AUTHORITY",
+      "awards_by_year": {
+        "2023": 15,
+        "2024": 14
+      },
+      "total_vouchers": 29
+    },
+    {
+      "pha_code": "PA075",
+      "pha_name": "Cumberland County Housing Authority",
+      "awards_by_year": {
+        "2021": 5,
+        "2022": 14,
+        "2023": 16
+      },
+      "total_vouchers": 35
+    },
+    {
+      "pha_code": "PA076",
+      "pha_name": "Northhampton County Housing Authority",
+      "awards_by_year": {
+        "2024": 8
+      },
+      "total_vouchers": 8
+    },
+    {
+      "pha_code": "PA090",
+      "pha_name": "Lancaster County Housing Authority",
+      "awards_by_year": {
+        "2023": 17
+      },
+      "total_vouchers": 17
+    },
+    {
+      "pha_code": "PA091",
+      "pha_name": "Adams County Housing Authority",
+      "awards_by_year": {
+        "2021": 5,
+        "2022": 13
+      },
+      "total_vouchers": 18
+    },
+    {
+      "pha_code": "RI015",
+      "pha_name": "West Warick Housing Authority",
+      "awards_by_year": {
+        "2020": 10
+      },
+      "total_vouchers": 10
+    },
+    {
+      "pha_code": "RI017",
+      "pha_name": "North Providence Housing Authority",
+      "awards_by_year": {
+        "2020": 10,
+        "2023": 25
+      },
+      "total_vouchers": 35
+    },
+    {
+      "pha_code": "RI019",
+      "pha_name": "Town of Bristol Housing Authority",
+      "awards_by_year": {
+        "2020": 10
+      },
+      "total_vouchers": 10
+    },
+    {
+      "pha_code": "RI901",
+      "pha_name": "Rhode Island Housing and Mortgage Finance Corporation",
+      "awards_by_year": {
+        "2023": 25
+      },
+      "total_vouchers": 25
+    },
+    {
+      "pha_code": "SC001",
+      "pha_name": "Housing Authority of the City of Charleston",
+      "awards_by_year": {
+        "2020": 25,
+        "2021": 30
+      },
+      "total_vouchers": 55
+    },
+    {
+      "pha_code": "SC004",
+      "pha_name": "Housing Authority of Greenville",
+      "awards_by_year": {
+        "2020": 26,
+        "2021": 12,
+        "2023": 25,
+        "2024": 50
+      },
+      "total_vouchers": 113
+    },
+    {
+      "pha_code": "SC022",
+      "pha_name": "Housing Authority of Rock Hill",
+      "awards_by_year": {
+        "2022": 10
+      },
+      "total_vouchers": 10
+    },
+    {
+      "pha_code": "SC026",
+      "pha_name": "HOUSING AUTHORITY OF BEAUFORT",
+      "awards_by_year": {
+        "2021": 14
+      },
+      "total_vouchers": 14
+    },
+    {
+      "pha_code": "SC027",
+      "pha_name": "Housing Authority of Florence",
+      "awards_by_year": {
+        "2020": 6
+      },
+      "total_vouchers": 6
+    },
+    {
+      "pha_code": "SC034",
+      "pha_name": "Housing Authority of Myrtle Beach",
+      "awards_by_year": {
+        "2024": 25
+      },
+      "total_vouchers": 25
+    },
+    {
+      "pha_code": "SC056",
+      "pha_name": "Charleston County Housing Redevelopment Authority",
+      "awards_by_year": {
+        "2021": 10
+      },
+      "total_vouchers": 10
+    },
+    {
+      "pha_code": "SC911",
+      "pha_name": "SC Housing Finance & Development Authority",
+      "awards_by_year": {
+        "2023": 55
+      },
+      "total_vouchers": 55
+    },
+    {
+      "pha_code": "TN004",
+      "pha_name": "Chattanooga Housing Authority",
+      "awards_by_year": {
+        "2020": 20
+      },
+      "total_vouchers": 20
+    },
+    {
+      "pha_code": "TN005",
+      "pha_name": "Metropolitan Development & Housing Agency",
+      "awards_by_year": {
+        "2020": 44
+      },
+      "total_vouchers": 44
+    },
+    {
+      "pha_code": "TN007",
+      "pha_name": "Jackson Housing Authority",
+      "awards_by_year": {
+        "2024": 6
+      },
+      "total_vouchers": 6
+    },
+    {
+      "pha_code": "TN020",
+      "pha_name": "Murfreesboro Housing Authority",
+      "awards_by_year": {
+        "2020": 35
+      },
+      "total_vouchers": 35
+    },
+    {
+      "pha_code": "TN042",
+      "pha_name": "Crossville Housing Authority",
+      "awards_by_year": {
+        "2023": 30
+      },
+      "total_vouchers": 30
+    },
+    {
+      "pha_code": "TN054",
+      "pha_name": "Clevelnad Housing Authority",
+      "awards_by_year": {
+        "2020": 15
+      },
+      "total_vouchers": 15
+    },
+    {
+      "pha_code": "TN903",
+      "pha_name": "Tennessee Housing Development Agency",
+      "awards_by_year": {
+        "2023": 20
+      },
+      "total_vouchers": 20
+    },
+    {
+      "pha_code": "TX001",
+      "pha_name": "Austin Housing Authority",
+      "awards_by_year": {
+        "2020": 112,
+        "2021": 75
+      },
+      "total_vouchers": 187
+    },
+    {
+      "pha_code": "TX004",
+      "pha_name": "Housing Authority of Fort Worth",
+      "awards_by_year": {
+        "2020": 5,
+        "2022": 25,
+        "2024": 10
+      },
+      "total_vouchers": 40
+    },
+    {
+      "pha_code": "TX006",
+      "pha_name": "San Antonio Housing Authority",
+      "awards_by_year": {
+        "2024": 10
+      },
+      "total_vouchers": 10
+    },
+    {
+      "pha_code": "TX007",
+      "pha_name": "Housing Authority of the City of Brownsville",
+      "awards_by_year": {
+        "2023": 5
+      },
+      "total_vouchers": 5
+    },
+    {
+      "pha_code": "TX008",
+      "pha_name": "Corpus Christi Housing Authority",
+      "awards_by_year": {
+        "2022": 5
+      },
+      "total_vouchers": 5
+    },
+    {
+      "pha_code": "TX009",
+      "pha_name": "Housing Authority of the City of Dallas",
+      "awards_by_year": {
+        "2020": 40,
+        "2021": 25,
+        "2022": 10,
+        "2023": 15
+      },
+      "total_vouchers": 90
+    },
+    {
+      "pha_code": "TX010",
+      "pha_name": "Housing Authority of the City of Waco",
+      "awards_by_year": {
+        "2024": 15
+      },
+      "total_vouchers": 15
+    },
+    {
+      "pha_code": "TX017",
+      "pha_name": "Housing Authority of the City of Galveston",
+      "awards_by_year": {
+        "2020": 20
+      },
+      "total_vouchers": 20
+    },
+    {
+      "pha_code": "TX027",
+      "pha_name": "McKinney Housing Authority",
+      "awards_by_year": {
+        "2020": 5
+      },
+      "total_vouchers": 5
+    },
+    {
+      "pha_code": "TX028",
+      "pha_name": "McAllen Housing Authority",
+      "awards_by_year": {
+        "2020": 11,
+        "2023": 5
+      },
+      "total_vouchers": 16
+    },
+    {
+      "pha_code": "TX065",
+      "pha_name": "Harlingen Housing Authority",
+      "awards_by_year": {
+        "2020": 5
+      },
+      "total_vouchers": 5
+    },
+    {
+      "pha_code": "TX087",
+      "pha_name": "San Marcos Housing Authority",
+      "awards_by_year": {
+        "2022": 8,
+        "2023": 8
+      },
+      "total_vouchers": 16
+    },
+    {
+      "pha_code": "TX341",
+      "pha_name": "Tatum Housing Authority",
+      "awards_by_year": {
+        "2023": 5
+      },
+      "total_vouchers": 5
+    },
+    {
+      "pha_code": "TX343",
+      "pha_name": "City of New Braunfels Housing Authority",
+      "awards_by_year": {
+        "2020": 5,
+        "2023": 5
+      },
+      "total_vouchers": 10
+    },
+    {
+      "pha_code": "TX392",
+      "pha_name": "DENTON HOUSING AUTHORITY",
+      "awards_by_year": {
+        "2020": 15,
+        "2022": 10
+      },
+      "total_vouchers": 25
+    },
+    {
+      "pha_code": "TX431",
+      "pha_name": "Tarrant County Housing Assistance Office",
+      "awards_by_year": {
+        "2020": 5,
+        "2021": 25,
+        "2022": 25,
+        "2024": 30
+      },
+      "total_vouchers": 85
+    },
+    {
+      "pha_code": "TX432",
+      "pha_name": "El Paso County Housing Authority",
+      "awards_by_year": {
+        "2024": 10
+      },
+      "total_vouchers": 10
+    },
+    {
+      "pha_code": "TX433",
+      "pha_name": "Arlington Housing Authority",
+      "awards_by_year": {
+        "2020": 5
+      },
+      "total_vouchers": 5
+    },
+    {
+      "pha_code": "TX436",
+      "pha_name": "Mesquite Housing Division",
+      "awards_by_year": {
+        "2020": 5,
+        "2021": 5,
+        "2022": 5
+      },
+      "total_vouchers": 15
+    },
+    {
+      "pha_code": "TX452",
+      "pha_name": "Bexar County Housing Authority",
+      "awards_by_year": {
+        "2024": 50
+      },
+      "total_vouchers": 50
+    },
+    {
+      "pha_code": "TX455",
+      "pha_name": "Housing Authority of the City of Odessa",
+      "awards_by_year": {
+        "2024": 5
+      },
+      "total_vouchers": 5
+    },
+    {
+      "pha_code": "TX456",
+      "pha_name": "Tyler Housing Authority",
+      "awards_by_year": {
+        "2021": 5
+      },
+      "total_vouchers": 5
+    },
+    {
+      "pha_code": "TX457",
+      "pha_name": "City of Marshall Housing Authority",
+      "awards_by_year": {
+        "2023": 5,
+        "2024": 5
+      },
+      "total_vouchers": 10
+    },
+    {
+      "pha_code": "TX459",
+      "pha_name": "LONGVIEW HSG. & COMM. DEVELOPMENT",
+      "awards_by_year": {
+        "2020": 16
+      },
+      "total_vouchers": 16
+    },
+    {
+      "pha_code": "TX470",
+      "pha_name": "San Angelo Housing Authority",
+      "awards_by_year": {
+        "2022": 8
+      },
+      "total_vouchers": 8
+    },
+    {
+      "pha_code": "TX472",
+      "pha_name": "City of Amarillo",
+      "awards_by_year": {
+        "2020": 17
+      },
+      "total_vouchers": 17
+    },
+    {
+      "pha_code": "TX481",
+      "pha_name": "Panhandle Community Services",
+      "awards_by_year": {
+        "2020": 17
+      },
+      "total_vouchers": 17
+    },
+    {
+      "pha_code": "TX483",
+      "pha_name": "Rosenberg Housing Authority",
+      "awards_by_year": {
+        "2020": 10
+      },
+      "total_vouchers": 10
+    },
+    {
+      "pha_code": "TX485",
+      "pha_name": "The Housing Authority of the City of Big Spring, Texas",
+      "awards_by_year": {
+        "2023": 10,
+        "2024": 5
+      },
+      "total_vouchers": 15
+    },
+    {
+      "pha_code": "TX499",
+      "pha_name": "Ark Teck Council of Governments",
+      "awards_by_year": {
+        "2020": 5,
+        "2022": 5
+      },
+      "total_vouchers": 10
+    },
+    {
+      "pha_code": "TX519",
+      "pha_name": "Athens Housing Authority",
+      "awards_by_year": {
+        "2021": 7
+      },
+      "total_vouchers": 7
+    },
+    {
+      "pha_code": "TX526",
+      "pha_name": "Brazos Valley Council of Governements (BVCOG)",
+      "awards_by_year": {
+        "2022": 25
+      },
+      "total_vouchers": 25
+    },
+    {
+      "pha_code": "TX534",
+      "pha_name": "Midland County Housing Authority",
+      "awards_by_year": {
+        "2020": 5,
+        "2024": 5
+      },
+      "total_vouchers": 10
+    },
+    {
+      "pha_code": "TX559",
+      "pha_name": "Dallas County Housing Assistance Program",
+      "awards_by_year": {
+        "2021": 10
+      },
+      "total_vouchers": 10
+    },
+    {
+      "pha_code": "TX901",
+      "pha_name": "Texas Department of Housing and Community Affairs",
+      "awards_by_year": {
+        "2021": 10,
+        "2023": 5,
+        "2024": 25
+      },
+      "total_vouchers": 40
+    },
+    {
+      "pha_code": "UT002",
+      "pha_name": "Housing Authority of the City of Ogden",
+      "awards_by_year": {
+        "2020": 15,
+        "2021": 15
+      },
+      "total_vouchers": 30
+    },
+    {
+      "pha_code": "UT003",
+      "pha_name": "Housing Authority of the County of Salt Lake",
+      "awards_by_year": {
+        "2020": 10,
+        "2021": 5,
+        "2022": 5
+      },
+      "total_vouchers": 20
+    },
+    {
+      "pha_code": "UT004",
+      "pha_name": "Housing Authority of Salt Lake City",
+      "awards_by_year": {
+        "2020": 10,
+        "2021": 10
+      },
+      "total_vouchers": 20
+    },
+    {
+      "pha_code": "UT009",
+      "pha_name": "Davis County Housing Authority",
+      "awards_by_year": {
+        "2020": 5
+      },
+      "total_vouchers": 5
+    },
+    {
+      "pha_code": "UT021",
+      "pha_name": "St. George Housing Authority",
+      "awards_by_year": {
+        "2023": 5
+      },
+      "total_vouchers": 5
+    },
+    {
+      "pha_code": "UT022",
+      "pha_name": "Weber Housing Authority",
+      "awards_by_year": {
+        "2021": 5,
+        "2022": 15
+      },
+      "total_vouchers": 20
+    },
+    {
+      "pha_code": "UT030",
+      "pha_name": "Logan City/Bear River Regional Housing Authority",
+      "awards_by_year": {
+        "2020": 5
+      },
+      "total_vouchers": 5
+    },
+    {
+      "pha_code": "VA001",
+      "pha_name": "Portsmouth Redevelopment & Housing Authority",
+      "awards_by_year": {
+        "2020": 8
+      },
+      "total_vouchers": 8
+    },
+    {
+      "pha_code": "VA003",
+      "pha_name": "Newport News Redevelopment and Housing Authority",
+      "awards_by_year": {
+        "2020": 8
+      },
+      "total_vouchers": 8
+    },
+    {
+      "pha_code": "VA006",
+      "pha_name": "Norfolk Redevelopment & Housing Authority",
+      "awards_by_year": {
+        "2020": 20
+      },
+      "total_vouchers": 20
+    },
+    {
+      "pha_code": "VA007",
+      "pha_name": "Richmond Redevelopment & Housing Authority",
+      "awards_by_year": {
+        "2020": 5,
+        "2021": 5,
+        "2022": 5
+      },
+      "total_vouchers": 15
+    },
+    {
+      "pha_code": "VA010",
+      "pha_name": "Danville Redevelopment & Housing Authority",
+      "awards_by_year": {
+        "2021": 5
+      },
+      "total_vouchers": 5
+    },
+    {
+      "pha_code": "VA011",
+      "pha_name": "Roanoke Redevelopment & Housing Authority",
+      "awards_by_year": {
+        "2020": 5,
+        "2021": 5,
+        "2022": 7,
+        "2023": 26,
+        "2024": 5
+      },
+      "total_vouchers": 48
+    },
+    {
+      "pha_code": "VA012",
+      "pha_name": "Chesapeake Housing Authority",
+      "awards_by_year": {
+        "2020": 8
+      },
+      "total_vouchers": 8
+    },
+    {
+      "pha_code": "VA013",
+      "pha_name": "Lynchburg Redevelopment and Housing Authority",
+      "awards_by_year": {
+        "2023": 10
+      },
+      "total_vouchers": 10
+    },
+    {
+      "pha_code": "VA014",
+      "pha_name": "Harrisonburg HRA",
+      "awards_by_year": {
+        "2023": 15
+      },
+      "total_vouchers": 15
+    },
+    {
+      "pha_code": "VA019",
+      "pha_name": "Fairfax County Redevelopment & Hsg Authority",
+      "awards_by_year": {
+        "2022": 30,
+        "2023": 20
+      },
+      "total_vouchers": 50
+    },
+    {
+      "pha_code": "VA023",
+      "pha_name": "Staunton Redevelopment and Housing Authority",
+      "awards_by_year": {
+        "2022": 5,
+        "2023": 5,
+        "2024": 5
+      },
+      "total_vouchers": 15
+    },
+    {
+      "pha_code": "VA039",
+      "pha_name": "Va. Beach Dept. of Hsg & Neighborhood Pres.",
+      "awards_by_year": {
+        "2020": 5
+      },
+      "total_vouchers": 5
+    },
+    {
+      "pha_code": "VA046",
+      "pha_name": "Prince William County Office of Hcd",
+      "awards_by_year": {
+        "2020": 10,
+        "2023": 25
+      },
+      "total_vouchers": 35
+    },
+    {
+      "pha_code": "VA901",
+      "pha_name": "Virginia Housing Development Authority",
+      "awards_by_year": {
+        "2020": 20,
+        "2021": 20,
+        "2022": 36,
+        "2024": 25
+      },
+      "total_vouchers": 101
+    },
+    {
+      "pha_code": "WA001",
+      "pha_name": "Seattle Housing Authority",
+      "awards_by_year": {
+        "2022": 100,
+        "2023": 25
+      },
+      "total_vouchers": 125
+    },
+    {
+      "pha_code": "WA002",
+      "pha_name": "Housing Authority of King County",
+      "awards_by_year": {
+        "2020": 200,
+        "2022": 100
+      },
+      "total_vouchers": 300
+    },
+    {
+      "pha_code": "WA003",
+      "pha_name": "Housing Authority of the City of Bremerton",
+      "awards_by_year": {
+        "2021": 20,
+        "2023": 15
+      },
+      "total_vouchers": 35
+    },
+    {
+      "pha_code": "WA004",
+      "pha_name": "Peninsula Housing Authority",
+      "awards_by_year": {
+        "2020": 10
+      },
+      "total_vouchers": 10
+    },
+    {
+      "pha_code": "WA005",
+      "pha_name": "Housing Authority City of Tacoma",
+      "awards_by_year": {
+        "2020": 50,
+        "2023": 50
+      },
+      "total_vouchers": 100
+    },
+    {
+      "pha_code": "WA007",
+      "pha_name": "Housing Authority City of Longview",
+      "awards_by_year": {
+        "2022": 12
+      },
+      "total_vouchers": 12
+    },
+    {
+      "pha_code": "WA008",
+      "pha_name": "Housing Authority of the City of Vancouver",
+      "awards_by_year": {
+        "2020": 48,
+        "2024": 50
+      },
+      "total_vouchers": 98
+    },
+    {
+      "pha_code": "WA012",
+      "pha_name": "Kennewick Housing Authority",
+      "awards_by_year": {
+        "2020": 20,
+        "2022": 20,
+        "2024": 15
+      },
+      "total_vouchers": 55
+    },
+    {
+      "pha_code": "WA018",
+      "pha_name": "Housing Authority of Grays Harbor County",
+      "awards_by_year": {
+        "2023": 5
+      },
+      "total_vouchers": 5
+    },
+    {
+      "pha_code": "WA021",
+      "pha_name": "HA City of Pasco And Franklin County",
+      "awards_by_year": {
+        "2020": 20,
+        "2023": 20
+      },
+      "total_vouchers": 40
+    },
+    {
+      "pha_code": "WA024",
+      "pha_name": "Housing Authority of Island County",
+      "awards_by_year": {
+        "2020": 5
+      },
+      "total_vouchers": 5
+    },
+    {
+      "pha_code": "WA025",
+      "pha_name": "Housing Authority City of Bellingham",
+      "awards_by_year": {
+        "2021": 5,
+        "2023": 5,
+        "2024": 10
+      },
+      "total_vouchers": 20
+    },
+    {
+      "pha_code": "WA036",
+      "pha_name": "Kitsap County Consolidated Housing Authority",
+      "awards_by_year": {
+        "2023": 5
+      },
+      "total_vouchers": 5
+    },
+    {
+      "pha_code": "WA039",
+      "pha_name": "Housing Authority of Snohomish County",
+      "awards_by_year": {
+        "2020": 5,
+        "2021": 50,
+        "2023": 25
+      },
+      "total_vouchers": 80
+    },
+    {
+      "pha_code": "WA042",
+      "pha_name": "Housing Authority City of Yakima",
+      "awards_by_year": {
+        "2021": 20
+      },
+      "total_vouchers": 20
+    },
+    {
+      "pha_code": "WA049",
+      "pha_name": "Housing Authority of Thurston County",
+      "awards_by_year": {
+        "2020": 25,
+        "2022": 25
+      },
+      "total_vouchers": 50
+    },
+    {
+      "pha_code": "WA054",
+      "pha_name": "Housing Authority of Pierce County",
+      "awards_by_year": {
+        "2023": 50
+      },
+      "total_vouchers": 50
+    },
+    {
+      "pha_code": "WA055",
+      "pha_name": "Housing Authority City of Spokane",
+      "awards_by_year": {
+        "2021": 50,
+        "2023": 270
+      },
+      "total_vouchers": 320
+    },
+    {
+      "pha_code": "WA061",
+      "pha_name": "Housing Authority of Skagit County",
+      "awards_by_year": {
+        "2020": 5,
+        "2022": 25
+      },
+      "total_vouchers": 30
+    },
+    {
+      "pha_code": "WA064",
+      "pha_name": "Housing Authority of Chelan Co And the City of Wenatchee",
+      "awards_by_year": {
+        "2020": 35
+      },
+      "total_vouchers": 35
+    },
+    {
+      "pha_code": "WA071",
+      "pha_name": "Housing Authority of Okanogan County",
+      "awards_by_year": {
+        "2020": 35
+      },
+      "total_vouchers": 35
+    },
+    {
+      "pha_code": "WI001",
+      "pha_name": "Housing Authority of the City of Superior",
+      "awards_by_year": {
+        "2022": 5
+      },
+      "total_vouchers": 5
+    },
+    {
+      "pha_code": "WI003",
+      "pha_name": "Madison Community Development Authority",
+      "awards_by_year": {
+        "2021": 5
+      },
+      "total_vouchers": 5
+    },
+    {
+      "pha_code": "WI060",
+      "pha_name": "River Falls Housing Authority",
+      "awards_by_year": {
+        "2020": 5
+      },
+      "total_vouchers": 5
+    },
+    {
+      "pha_code": "WI183",
+      "pha_name": "Racine County Housing Authority",
+      "awards_by_year": {
+        "2020": 10
+      },
+      "total_vouchers": 10
+    },
+    {
+      "pha_code": "WI195",
+      "pha_name": "City of Kenosha Housing Authority",
+      "awards_by_year": {
+        "2020": 5
+      },
+      "total_vouchers": 5
+    },
+    {
+      "pha_code": "WI201",
+      "pha_name": "CDA of the City of West Allis",
+      "awards_by_year": {
+        "2021": 25
+      },
+      "total_vouchers": 25
+    },
+    {
+      "pha_code": "WI222",
+      "pha_name": "Sawyer County Housing Authority",
+      "awards_by_year": {
+        "2020": 5
+      },
+      "total_vouchers": 5
+    },
+    {
+      "pha_code": "WI901",
+      "pha_name": "Wisconsin Housing & Economic Development Authority",
+      "awards_by_year": {
+        "2023": 5
+      },
+      "total_vouchers": 5
+    },
+    {
+      "pha_code": "WV005",
+      "pha_name": "PARKERSBURG HOUSING AUTHORITY",
+      "awards_by_year": {
+        "2022": 5
+      },
+      "total_vouchers": 5
+    },
+    {
+      "pha_code": "WV037",
+      "pha_name": "Housing Authority of Mingo County",
+      "awards_by_year": {
+        "2021": 10,
+        "2024": 23
+      },
+      "total_vouchers": 33
+    }
+  ]
+}
