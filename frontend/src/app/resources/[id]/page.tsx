@@ -24,6 +24,7 @@ import {
 } from 'lucide-react';
 import api, { type Resource } from '@/lib/api';
 import { cn } from '@/lib/utils';
+import { ReportFeedbackModal } from '@/components/ReportFeedbackModal';
 
 const categoryColors: Record<string, string> = {
   employment: 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300',
@@ -560,6 +561,14 @@ export default function ResourceDetailPage() {
                 )}
               </CardContent>
             </Card>
+
+            {/* Report Issue */}
+            <div className="flex justify-center pt-2">
+              <ReportFeedbackModal
+                resourceId={resource.id}
+                resourceTitle={resource.title}
+              />
+            </div>
             </div>
           </div>
         </div>

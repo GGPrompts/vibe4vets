@@ -30,7 +30,8 @@ import {
 import { Input } from '@/components/ui/input';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import api, { type ReviewQueueItem, type DashboardStats } from '@/lib/api';
+import api, { type ReviewQueueItem, type DashboardStats, type FeedbackStats } from '@/lib/api';
+import { FeedbackAdminTab } from '@/components/FeedbackAdminTab';
 
 export default function AdminPage() {
   const [items, setItems] = useState<ReviewQueueItem[]>([]);
@@ -45,6 +46,8 @@ export default function AdminPage() {
   const [activeTab, setActiveTab] = useState('pending');
   const [stats, setStats] = useState<DashboardStats | null>(null);
   const [statsLoading, setStatsLoading] = useState(true);
+  const [feedbackStats, setFeedbackStats] = useState<FeedbackStats | null>(null);
+  const [mainTab, setMainTab] = useState<'reviews' | 'feedback'>('reviews');
 
   const fetchQueue = async (status: string) => {
     setLoading(true);
@@ -67,8 +70,12 @@ export default function AdminPage() {
   useEffect(() => {
     const fetchStats = async () => {
       try {
-        const data = await api.admin.getDashboardStats();
-        setStats(data);
+        const [dashboardData, feedbackData] = await Promise.all([
+          api.admin.getDashboardStats(),
+          api.admin.getFeedbackStats(),
+        ]);
+        setStats(dashboardData);
+        setFeedbackStats(feedbackData);
       } catch {
         // Stats fetch failure is non-critical, just leave as null
       } finally {
@@ -124,7 +131,7 @@ export default function AdminPage() {
         </div>
 
         {/* Stats Cards */}
-        <div className="mb-8 grid gap-4 md:grid-cols-3">
+        <div className="mb-8 grid gap-4 md:grid-cols-4">
           <Card>
             <CardHeader className="pb-2">
               <CardDescription>Pending Reviews</CardDescription>
@@ -133,6 +140,18 @@ export default function AdminPage() {
                   <Skeleton className="h-9 w-16" />
                 ) : (
                   stats?.pending_reviews ?? '-'
+                )}
+              </CardTitle>
+            </CardHeader>
+          </Card>
+          <Card>
+            <CardHeader className="pb-2">
+              <CardDescription>Pending Feedback</CardDescription>
+              <CardTitle className="text-3xl">
+                {statsLoading ? (
+                  <Skeleton className="h-9 w-16" />
+                ) : (
+                  feedbackStats?.pending ?? '-'
                 )}
               </CardTitle>
             </CardHeader>
@@ -163,111 +182,140 @@ export default function AdminPage() {
           </Card>
         </div>
 
-        {/* Review Queue */}
-        <Card>
-          <CardHeader>
-            <CardTitle>Review Queue</CardTitle>
-            <CardDescription>
-              Resources pending human verification
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <Tabs value={activeTab} onValueChange={setActiveTab}>
-              <TabsList>
-                <TabsTrigger value="pending">Pending</TabsTrigger>
-                <TabsTrigger value="approved">Approved</TabsTrigger>
-                <TabsTrigger value="rejected">Rejected</TabsTrigger>
-                <TabsTrigger value="all">All</TabsTrigger>
-              </TabsList>
+        {/* Main Tab Navigation */}
+        <Tabs value={mainTab} onValueChange={(v) => setMainTab(v as 'reviews' | 'feedback')} className="mb-6">
+          <TabsList>
+            <TabsTrigger value="reviews">
+              Review Queue {stats?.pending_reviews ? `(${stats.pending_reviews})` : ''}
+            </TabsTrigger>
+            <TabsTrigger value="feedback">
+              User Feedback {feedbackStats?.pending ? `(${feedbackStats.pending})` : ''}
+            </TabsTrigger>
+          </TabsList>
+        </Tabs>
 
-              <TabsContent value={activeTab} className="mt-4">
-                {loading ? (
-                  <div className="space-y-4">
-                    {[...Array(3)].map((_, i) => (
-                      <Skeleton key={i} className="h-16 w-full" />
-                    ))}
-                  </div>
-                ) : error ? (
-                  <p className="py-8 text-center text-destructive">{error}</p>
-                ) : items.length === 0 ? (
-                  <p className="py-8 text-center text-muted-foreground">
-                    No items in queue
-                  </p>
-                ) : (
-                  <Table>
-                    <TableHeader>
-                      <TableRow>
-                        <TableHead>Resource</TableHead>
-                        <TableHead>Organization</TableHead>
-                        <TableHead>Reason</TableHead>
-                        <TableHead>Status</TableHead>
-                        <TableHead>Date</TableHead>
-                        <TableHead className="text-right">Actions</TableHead>
-                      </TableRow>
-                    </TableHeader>
-                    <TableBody>
-                      {items.map((item) => (
-                        <TableRow key={item.id}>
-                          <TableCell>
-                            <Link
-                              href={`/resources/${item.resource_id}`}
-                              className="font-medium hover:underline"
-                            >
-                              {item.resource_title}
-                            </Link>
-                          </TableCell>
-                          <TableCell>{item.organization_name}</TableCell>
-                          <TableCell className="max-w-xs truncate">
-                            {item.reason || 'Manual entry'}
-                          </TableCell>
-                          <TableCell>
-                            <Badge
-                              variant={
-                                item.status === 'pending'
-                                  ? 'secondary'
-                                  : item.status === 'approved'
-                                  ? 'default'
-                                  : 'destructive'
-                              }
-                            >
-                              {item.status}
-                            </Badge>
-                          </TableCell>
-                          <TableCell>
-                            {new Date(item.created_at).toLocaleDateString()}
-                          </TableCell>
-                          <TableCell className="text-right">
-                            {item.status === 'pending' && (
-                              <div className="flex justify-end gap-2">
-                                <Button
-                                  size="sm"
-                                  onClick={() =>
-                                    openActionDialog(item, 'approve')
-                                  }
-                                >
-                                  Approve
-                                </Button>
-                                <Button
-                                  size="sm"
-                                  variant="destructive"
-                                  onClick={() =>
-                                    openActionDialog(item, 'reject')
-                                  }
-                                >
-                                  Reject
-                                </Button>
-                              </div>
-                            )}
-                          </TableCell>
-                        </TableRow>
+        {/* Review Queue - shown when mainTab is 'reviews' */}
+        {mainTab === 'reviews' && (
+          <Card>
+            <CardHeader>
+              <CardTitle>Review Queue</CardTitle>
+              <CardDescription>
+                Resources pending human verification
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <Tabs value={activeTab} onValueChange={setActiveTab}>
+                <TabsList>
+                  <TabsTrigger value="pending">Pending</TabsTrigger>
+                  <TabsTrigger value="approved">Approved</TabsTrigger>
+                  <TabsTrigger value="rejected">Rejected</TabsTrigger>
+                  <TabsTrigger value="all">All</TabsTrigger>
+                </TabsList>
+
+                <TabsContent value={activeTab} className="mt-4">
+                  {loading ? (
+                    <div className="space-y-4">
+                      {[...Array(3)].map((_, i) => (
+                        <Skeleton key={i} className="h-16 w-full" />
                       ))}
-                    </TableBody>
-                  </Table>
-                )}
-              </TabsContent>
-            </Tabs>
-          </CardContent>
-        </Card>
+                    </div>
+                  ) : error ? (
+                    <p className="py-8 text-center text-destructive">{error}</p>
+                  ) : items.length === 0 ? (
+                    <p className="py-8 text-center text-muted-foreground">
+                      No items in queue
+                    </p>
+                  ) : (
+                    <Table>
+                      <TableHeader>
+                        <TableRow>
+                          <TableHead>Resource</TableHead>
+                          <TableHead>Organization</TableHead>
+                          <TableHead>Reason</TableHead>
+                          <TableHead>Status</TableHead>
+                          <TableHead>Date</TableHead>
+                          <TableHead className="text-right">Actions</TableHead>
+                        </TableRow>
+                      </TableHeader>
+                      <TableBody>
+                        {items.map((item) => (
+                          <TableRow key={item.id}>
+                            <TableCell>
+                              <Link
+                                href={`/resources/${item.resource_id}`}
+                                className="font-medium hover:underline"
+                              >
+                                {item.resource_title}
+                              </Link>
+                            </TableCell>
+                            <TableCell>{item.organization_name}</TableCell>
+                            <TableCell className="max-w-xs truncate">
+                              {item.reason || 'Manual entry'}
+                            </TableCell>
+                            <TableCell>
+                              <Badge
+                                variant={
+                                  item.status === 'pending'
+                                    ? 'secondary'
+                                    : item.status === 'approved'
+                                    ? 'default'
+                                    : 'destructive'
+                                }
+                              >
+                                {item.status}
+                              </Badge>
+                            </TableCell>
+                            <TableCell>
+                              {new Date(item.created_at).toLocaleDateString()}
+                            </TableCell>
+                            <TableCell className="text-right">
+                              {item.status === 'pending' && (
+                                <div className="flex justify-end gap-2">
+                                  <Button
+                                    size="sm"
+                                    onClick={() =>
+                                      openActionDialog(item, 'approve')
+                                    }
+                                  >
+                                    Approve
+                                  </Button>
+                                  <Button
+                                    size="sm"
+                                    variant="destructive"
+                                    onClick={() =>
+                                      openActionDialog(item, 'reject')
+                                    }
+                                  >
+                                    Reject
+                                  </Button>
+                                </div>
+                              )}
+                            </TableCell>
+                          </TableRow>
+                        ))}
+                      </TableBody>
+                    </Table>
+                  )}
+                </TabsContent>
+              </Tabs>
+            </CardContent>
+          </Card>
+        )}
+
+        {/* User Feedback - shown when mainTab is 'feedback' */}
+        {mainTab === 'feedback' && (
+          <Card>
+            <CardHeader>
+              <CardTitle>User Feedback</CardTitle>
+              <CardDescription>
+                Reports from users about outdated or incorrect resource information
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <FeedbackAdminTab />
+            </CardContent>
+          </Card>
+        )}
 
         {/* Action Dialog */}
         <Dialog open={actionDialogOpen} onOpenChange={setActionDialogOpen}>

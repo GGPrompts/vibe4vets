@@ -281,6 +281,68 @@ export interface JobRunResult {
   error: string | null;
 }
 
+// Feedback types (from V4V-1ca)
+export type FeedbackIssueType =
+  | 'phone'
+  | 'address'
+  | 'hours'
+  | 'website'
+  | 'closed'
+  | 'eligibility'
+  | 'other';
+
+export type FeedbackStatus = 'pending' | 'reviewed' | 'applied' | 'dismissed';
+
+export interface FeedbackCreate {
+  resource_id: string;
+  issue_type: FeedbackIssueType;
+  description: string;
+  suggested_correction?: string;
+  source_of_correction?: string;
+}
+
+export interface FeedbackResponse {
+  id: string;
+  resource_id: string;
+  issue_type: FeedbackIssueType;
+  description: string;
+  suggested_correction: string | null;
+  source_of_correction: string | null;
+  status: FeedbackStatus;
+  created_at: string;
+}
+
+export interface FeedbackAdminResponse {
+  id: string;
+  resource_id: string;
+  resource_title: string;
+  organization_name: string;
+  issue_type: FeedbackIssueType;
+  description: string;
+  suggested_correction: string | null;
+  source_of_correction: string | null;
+  status: FeedbackStatus;
+  reviewer: string | null;
+  reviewed_at: string | null;
+  reviewer_notes: string | null;
+  created_at: string;
+}
+
+export interface FeedbackListResponse {
+  items: FeedbackAdminResponse[];
+  total: number;
+  limit: number;
+  offset: number;
+}
+
+export interface FeedbackStats {
+  pending: number;
+  reviewed: number;
+  applied: number;
+  dismissed: number;
+  total: number;
+}
+
 async function fetchAPI<T>(
   endpoint: string,
   options: RequestInit = {}
@@ -448,6 +510,47 @@ export const api = {
 
     getConnectors: (): Promise<ConnectorsResponse> => {
       return fetchAPI('/api/v1/admin/jobs/connectors');
+    },
+
+    // Feedback Admin API (from V4V-1ca)
+    getFeedback: (params: {
+      status?: FeedbackStatus;
+      limit?: number;
+      offset?: number;
+    } = {}): Promise<FeedbackListResponse> => {
+      const searchParams = new URLSearchParams();
+      if (params.status) searchParams.set('status', params.status);
+      if (params.limit) searchParams.set('limit', String(params.limit));
+      if (params.offset) searchParams.set('offset', String(params.offset));
+
+      const query = searchParams.toString();
+      return fetchAPI(`/api/v1/feedback/admin${query ? `?${query}` : ''}`);
+    },
+
+    reviewFeedback: (
+      feedbackId: string,
+      status: FeedbackStatus,
+      reviewer: string,
+      reviewer_notes?: string
+    ): Promise<FeedbackAdminResponse> => {
+      return fetchAPI(`/api/v1/feedback/admin/${feedbackId}`, {
+        method: 'PATCH',
+        body: JSON.stringify({ status, reviewer, reviewer_notes }),
+      });
+    },
+
+    getFeedbackStats: (): Promise<FeedbackStats> => {
+      return fetchAPI('/api/v1/feedback/admin/stats/summary');
+    },
+  },
+
+  // Public Feedback API (no auth required)
+  feedback: {
+    submit: (data: FeedbackCreate): Promise<FeedbackResponse> => {
+      return fetchAPI('/api/v1/feedback', {
+        method: 'POST',
+        body: JSON.stringify(data),
+      });
     },
   },
 };
