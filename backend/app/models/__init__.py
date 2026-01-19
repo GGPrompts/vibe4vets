@@ -1,5 +1,10 @@
 """Database models using SQLModel."""
 
+from app.models.analytics import (
+    AnalyticsDailyAggregate,
+    AnalyticsEvent,
+    AnalyticsEventType,
+)
 from app.models.feedback import Feedback, FeedbackIssueType, FeedbackStatus
 from app.models.location import Location
 from app.models.organization import Organization
@@ -16,6 +21,9 @@ from app.models.source import (
 )
 
 __all__ = [
+    "AnalyticsDailyAggregate",
+    "AnalyticsEvent",
+    "AnalyticsEventType",
     "Feedback",
     "FeedbackIssueType",
     "FeedbackStatus",

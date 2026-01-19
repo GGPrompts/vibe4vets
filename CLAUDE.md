@@ -187,6 +187,7 @@ docker-compose up -d
 | GET | `/api/v1/search` | Advanced search with filters |
 | GET | `/api/v1/search/eligibility` | Eligibility-filtered search with match reasons |
 | POST | `/api/v1/chat` | AI chat endpoint |
+| POST | `/api/v1/analytics/events` | Record anonymous analytics event |
 
 ### Admin Endpoints
 
@@ -202,6 +203,14 @@ docker-compose up -d
 | POST | `/api/v1/admin/jobs/{name}/run` | Trigger job manually |
 | GET | `/api/v1/admin/jobs/history` | Job run history |
 | GET | `/api/v1/admin/jobs/connectors` | Available connectors |
+| GET | `/api/v1/analytics/admin/dashboard` | Full analytics dashboard data |
+| GET | `/api/v1/analytics/admin/summary` | Summary statistics |
+| GET | `/api/v1/analytics/admin/popular-searches` | Popular search queries |
+| GET | `/api/v1/analytics/admin/popular-categories` | Popular categories |
+| GET | `/api/v1/analytics/admin/popular-states` | Popular states |
+| GET | `/api/v1/analytics/admin/popular-resources` | Most viewed resources |
+| GET | `/api/v1/analytics/admin/wizard-funnel` | Wizard completion funnel |
+| GET | `/api/v1/analytics/admin/daily-trends` | Daily event trends |
 
 ---
 
@@ -237,8 +246,8 @@ docker-compose up -d
 
 ### Phase 4: Production
 - [ ] Public API docs
-- [ ] Feedback loop
-- [ ] Analytics
+- [x] Feedback loop
+- [x] Analytics (privacy-respecting usage tracking)
 - [ ] Partner contributions
 
 ---
@@ -269,6 +278,9 @@ docker-compose up -d
 | `backend/jobs/refresh.py` | Full refresh job |
 | `backend/jobs/freshness.py` | Freshness update job |
 | `backend/app/services/discovery.py` | AI-powered resource discovery service |
+| `backend/app/models/analytics.py` | Anonymous analytics models |
+| `backend/app/services/analytics.py` | Analytics tracking service |
+| `backend/app/api/v1/analytics.py` | Analytics API endpoints |
 | `backend/scripts/seed_hubs.py` | Hub data seeding script |
 | `backend/scripts/seed_dmv_housing.py` | DC/MD/VA housing seed data with eligibility |
 | `backend/.claude/commands/scan-resources.md` | Discovery slash command |
@@ -288,6 +300,8 @@ docker-compose up -d
 | `frontend/src/app/hubs/*/page.tsx` | Static resource hub pages (employment, housing, legal, training) |
 | `frontend/src/components/HubCard.tsx` | Hub resource card component |
 | `frontend/src/components/ui/` | shadcn/ui components |
+| `frontend/src/lib/useAnalytics.ts` | Analytics tracking React hook |
+| `frontend/src/app/admin/analytics/page.tsx` | Admin analytics dashboard |
 
 ### Infrastructure
 | File | Purpose |

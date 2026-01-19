@@ -343,6 +343,94 @@ export interface FeedbackStats {
   total: number;
 }
 
+// Analytics types (from V4V-u87)
+export type AnalyticsEventType =
+  | 'search'
+  | 'search_filter'
+  | 'resource_view'
+  | 'wizard_start'
+  | 'wizard_step'
+  | 'wizard_complete'
+  | 'chat_start'
+  | 'chat_message'
+  | 'page_view';
+
+export interface AnalyticsEventCreate {
+  event_type: AnalyticsEventType;
+  event_name: string;
+  category?: string;
+  state?: string;
+  resource_id?: string;
+  search_query?: string;
+  wizard_step?: number;
+  page_path?: string;
+}
+
+export interface AnalyticsEventResponse {
+  id: string;
+  event_type: AnalyticsEventType;
+  event_name: string;
+  created_at: string;
+}
+
+export interface AnalyticsSummaryStats {
+  period_days: number;
+  total_searches: number;
+  total_resource_views: number;
+  wizard_starts: number;
+  wizard_completions: number;
+  chat_sessions: number;
+  chat_messages: number;
+  filter_usage: number;
+}
+
+export interface PopularSearchItem {
+  query: string;
+  count: number;
+}
+
+export interface PopularCategoryItem {
+  category: string;
+  count: number;
+}
+
+export interface PopularStateItem {
+  state: string;
+  count: number;
+}
+
+export interface PopularResourceItem {
+  resource_id: string;
+  resource_title: string | null;
+  count: number;
+}
+
+export interface WizardFunnelStats {
+  starts: number;
+  completions: number;
+  completion_rate: number;
+}
+
+export interface DailyTrendItem {
+  date: string;
+  search?: number;
+  resource_view?: number;
+  wizard_start?: number;
+  wizard_complete?: number;
+  chat_start?: number;
+  chat_message?: number;
+}
+
+export interface AnalyticsDashboardResponse {
+  summary: AnalyticsSummaryStats;
+  popular_searches: PopularSearchItem[];
+  popular_categories: PopularCategoryItem[];
+  popular_states: PopularStateItem[];
+  popular_resources: PopularResourceItem[];
+  wizard_funnel: WizardFunnelStats;
+  daily_trends: DailyTrendItem[];
+}
+
 async function fetchAPI<T>(
   endpoint: string,
   options: RequestInit = {}
@@ -551,6 +639,70 @@ export const api = {
         method: 'POST',
         body: JSON.stringify(data),
       });
+    },
+  },
+
+  // Analytics API (from V4V-u87)
+  analytics: {
+    // Public endpoint - record anonymous event
+    trackEvent: (data: AnalyticsEventCreate): Promise<AnalyticsEventResponse> => {
+      return fetchAPI('/api/v1/analytics/events', {
+        method: 'POST',
+        body: JSON.stringify(data),
+      });
+    },
+
+    // Admin endpoints
+    getDashboard: (days: number = 30): Promise<AnalyticsDashboardResponse> => {
+      return fetchAPI(`/api/v1/analytics/admin/dashboard?days=${days}`);
+    },
+
+    getSummary: (days: number = 30): Promise<AnalyticsSummaryStats> => {
+      return fetchAPI(`/api/v1/analytics/admin/summary?days=${days}`);
+    },
+
+    getPopularSearches: (
+      days: number = 30,
+      limit: number = 10
+    ): Promise<PopularSearchItem[]> => {
+      return fetchAPI(
+        `/api/v1/analytics/admin/popular-searches?days=${days}&limit=${limit}`
+      );
+    },
+
+    getPopularCategories: (
+      days: number = 30,
+      limit: number = 10
+    ): Promise<PopularCategoryItem[]> => {
+      return fetchAPI(
+        `/api/v1/analytics/admin/popular-categories?days=${days}&limit=${limit}`
+      );
+    },
+
+    getPopularStates: (
+      days: number = 30,
+      limit: number = 10
+    ): Promise<PopularStateItem[]> => {
+      return fetchAPI(
+        `/api/v1/analytics/admin/popular-states?days=${days}&limit=${limit}`
+      );
+    },
+
+    getPopularResources: (
+      days: number = 30,
+      limit: number = 10
+    ): Promise<PopularResourceItem[]> => {
+      return fetchAPI(
+        `/api/v1/analytics/admin/popular-resources?days=${days}&limit=${limit}`
+      );
+    },
+
+    getWizardFunnel: (days: number = 30): Promise<WizardFunnelStats> => {
+      return fetchAPI(`/api/v1/analytics/admin/wizard-funnel?days=${days}`);
+    },
+
+    getDailyTrends: (days: number = 30): Promise<DailyTrendItem[]> => {
+      return fetchAPI(`/api/v1/analytics/admin/daily-trends?days=${days}`);
     },
   },
 };

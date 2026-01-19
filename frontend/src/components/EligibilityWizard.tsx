@@ -19,6 +19,7 @@ import {
   Home,
   Calendar,
 } from 'lucide-react';
+import { useAnalytics } from '@/lib/useAnalytics';
 import { cn } from '@/lib/utils';
 
 // DMV states for initial focus
@@ -76,6 +77,7 @@ export function EligibilityWizard({
 }: EligibilityWizardProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
+  const { trackWizardStart, trackWizardStep, trackWizardComplete } = useAnalytics();
 
   // Initialize state from URL params
   const getInitialState = (): EligibilityState => {
@@ -100,8 +102,20 @@ export function EligibilityWizard({
     income: false,
     housing: false,
   });
+  const [hasTrackedStart, setHasTrackedStart] = useState(false);
 
   const toggleSection = (section: keyof typeof sectionsOpen) => {
+    const sectionMap: Record<string, number> = {
+      location: 1,
+      age: 2,
+      household: 3,
+      income: 4,
+      housing: 5,
+    };
+    // Track wizard step when opening a section
+    if (!sectionsOpen[section]) {
+      trackWizardStep(sectionMap[section] || 0);
+    }
     setSectionsOpen((prev) => ({ ...prev, [section]: !prev[section] }));
   };
 
@@ -147,9 +161,24 @@ export function EligibilityWizard({
   );
 
   const handleFiltersChange = (newFilters: EligibilityState) => {
+    // Track wizard start on first interaction
+    if (!hasTrackedStart) {
+      trackWizardStart();
+      setHasTrackedStart(true);
+    }
+
     setFilters(newFilters);
     updateUrl(newFilters);
     onFiltersChange?.(newFilters);
+
+    // Track wizard complete when all main fields are filled
+    const isComplete =
+      newFilters.states.length > 0 &&
+      newFilters.ageBracket &&
+      newFilters.housingStatus;
+    if (isComplete) {
+      trackWizardComplete();
+    }
   };
 
   const handleStateToggle = (state: string) => {
