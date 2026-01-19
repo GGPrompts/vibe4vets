@@ -298,6 +298,10 @@ class SearchService:
                 location.housing_status_required,
                 location.docs_required,
                 location.waitlist_status,
+                location.distribution_schedule,
+                location.serves_dietary,
+                location.quantity_limit,
+                location.id_required is not None,
             ]
         ):
             eligibility = EligibilityInfo(
@@ -314,6 +318,10 @@ class SearchService:
                 veteran_status_required=location.veteran_status_required,
                 docs_required=location.docs_required or [],
                 waitlist_status=location.waitlist_status,
+                distribution_schedule=location.distribution_schedule,
+                serves_dietary=location.serves_dietary or [],
+                quantity_limit=location.quantity_limit,
+                id_required=location.id_required,
             )
 
         # Build intake info if any fields are set
@@ -530,6 +538,7 @@ class SearchService:
                 "employment": "Employment services",
                 "training": "Training program",
                 "legal": "Legal services",
+                "food": "Food assistance",
             }
             if cat in cat_labels:
                 reasons.append(MatchReason(type="category", label=cat_labels[cat]))
@@ -576,6 +585,19 @@ class SearchService:
             # Waitlist status
             if location.waitlist_status == "open":
                 reasons.append(MatchReason(type="availability", label="Waitlist open"))
+
+            # Food distribution specific reasons
+            if location.distribution_schedule:
+                reasons.append(
+                    MatchReason(type="schedule", label=location.distribution_schedule)
+                )
+            if location.serves_dietary:
+                dietary_str = ", ".join(location.serves_dietary[:3])
+                if len(location.serves_dietary) > 3:
+                    dietary_str += f" +{len(location.serves_dietary) - 3}"
+                reasons.append(MatchReason(type="dietary", label=f"Offers: {dietary_str}"))
+            if location.id_required is False:
+                reasons.append(MatchReason(type="access", label="No ID required"))
 
         elif resource.scope == ResourceScope.NATIONAL:
             reasons.append(MatchReason(type="location", label="Available nationwide"))

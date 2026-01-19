@@ -47,6 +47,11 @@ CATEGORIES: dict[str, Category] = {
         name="Legal",
         description="Legal aid, VA appeals, discharge upgrades, and benefits claims",
     ),
+    "food": Category(
+        id="food",
+        name="Food Assistance",
+        description="Food pantries, meal programs, and emergency food distributions",
+    ),
 }
 
 # Subcategories organized by parent category
@@ -150,6 +155,31 @@ SUBCATEGORIES: dict[str, Subcategory] = {
         name="Veterans Treatment Court",
         category_id="legal",
         description="Veterans treatment courts and diversion programs",
+    ),
+    # Food subcategories
+    "food-pantry": Subcategory(
+        id="food-pantry",
+        name="Food Pantry",
+        category_id="food",
+        description="Food banks and pantries for grocery pickup",
+    ),
+    "meal-program": Subcategory(
+        id="meal-program",
+        name="Meal Program",
+        category_id="food",
+        description="Hot meals and community dining programs",
+    ),
+    "mobile-distribution": Subcategory(
+        id="mobile-distribution",
+        name="Mobile Distribution",
+        category_id="food",
+        description="Mobile food pantries and pop-up distributions",
+    ),
+    "senior-food": Subcategory(
+        id="senior-food",
+        name="Senior Food Programs",
+        category_id="food",
+        description="SNAP assistance and senior-focused food programs",
     ),
 }
 

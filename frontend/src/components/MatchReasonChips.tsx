@@ -11,6 +11,10 @@ import {
   Scale,
   Clock,
   Shield,
+  UtensilsCrossed,
+  CalendarDays,
+  Leaf,
+  KeyRound,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -64,6 +68,21 @@ const matchReasonStyles: Record<
     textClass: 'text-green-800 dark:text-green-300',
     icon: Clock,
   },
+  schedule: {
+    bgClass: 'bg-cyan-100 dark:bg-cyan-900/40',
+    textClass: 'text-cyan-800 dark:text-cyan-300',
+    icon: CalendarDays,
+  },
+  dietary: {
+    bgClass: 'bg-lime-100 dark:bg-lime-900/40',
+    textClass: 'text-lime-800 dark:text-lime-300',
+    icon: Leaf,
+  },
+  access: {
+    bgClass: 'bg-teal-100 dark:bg-teal-900/40',
+    textClass: 'text-teal-800 dark:text-teal-300',
+    icon: KeyRound,
+  },
 };
 
 // Category-specific icons
@@ -72,6 +91,7 @@ const categoryIcons: Record<string, React.ElementType> = {
   'Employment services': Briefcase,
   'Training program': GraduationCap,
   'Legal services': Scale,
+  'Food assistance': UtensilsCrossed,
 };
 
 interface MatchReasonChipsProps {

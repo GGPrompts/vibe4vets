@@ -119,6 +119,27 @@ class Location(SQLModel, table=True):
         default=None, description="Additional intake notes (e.g., Walk-ins welcome Tues/Thurs)"
     )
 
+    # === Food distribution specific fields ===
+    distribution_schedule: str | None = Field(
+        default=None,
+        max_length=500,
+        description="Distribution schedule (e.g., 'Every Tuesday 10am-2pm')",
+    )
+    serves_dietary: list[str] = Field(
+        default_factory=list,
+        sa_column=Column(ARRAY(Text), nullable=False, default=[]),
+        description="Dietary options served: halal, kosher, vegetarian, vegan, gluten-free",
+    )
+    quantity_limit: str | None = Field(
+        default=None,
+        max_length=255,
+        description="Quantity limits (e.g., 'One box per household per week')",
+    )
+    id_required: bool | None = Field(
+        default=None,
+        description="Whether ID is required for food distribution",
+    )
+
     # === Verification metadata ===
     last_verified_at: datetime | None = Field(
         default=None, description="When data was last verified"
