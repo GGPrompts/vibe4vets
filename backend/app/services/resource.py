@@ -29,40 +29,68 @@ class ResourceService:
 
     def list_resources(
         self,
-        category: str | None = None,
-        state: str | None = None,
+        categories: list[str] | None = None,
+        states: list[str] | None = None,
+        scope: str | None = None,
         status: ResourceStatus | None = None,
         limit: int = 20,
         offset: int = 0,
     ) -> tuple[list[ResourceRead], int]:
-        """List resources with optional filtering."""
+        """List resources with optional filtering.
+
+        Args:
+            categories: Filter by categories (resources must match ANY of the provided categories)
+            states: Filter by states (resources must match ANY of the provided states, or be national)
+            scope: Filter by resource scope ('national', 'state', 'local', or 'all')
+            status: Filter by resource status
+            limit: Maximum results to return
+            offset: Number of results to skip for pagination
+
+        Returns:
+            Tuple of (list of resources, total count matching filters)
+        """
         # Build base query
         query = select(Resource).where(Resource.status != ResourceStatus.INACTIVE)
 
-        # Apply filters
-        if category:
-            query = query.where(Resource.categories.contains([category]))
-        if state:
+        # Apply category filter (OR logic: match any of the categories)
+        if categories:
+            category_conditions = [Resource.categories.contains([cat]) for cat in categories]
+            query = query.where(or_(*category_conditions))
+
+        # Apply state filter (resources in those states OR national resources)
+        if states:
+            state_conditions = [Resource.states.contains([s]) for s in states]
             query = query.where(
                 or_(
                     Resource.scope == ResourceScope.NATIONAL,
-                    Resource.states.contains([state]),
+                    *state_conditions,
                 )
             )
+
+        # Apply scope filter
+        if scope and scope != "all":
+            scope_enum = ResourceScope(scope)
+            query = query.where(Resource.scope == scope_enum)
+
         if status:
             query = query.where(Resource.status == status)
 
-        # Get total count
+        # Get total count with same filters
         count_query = select(Resource.id).where(Resource.status != ResourceStatus.INACTIVE)
-        if category:
-            count_query = count_query.where(Resource.categories.contains([category]))
-        if state:
+        if categories:
+            category_conditions = [Resource.categories.contains([cat]) for cat in categories]
+            count_query = count_query.where(or_(*category_conditions))
+        if states:
+            state_conditions = [Resource.states.contains([s]) for s in states]
             count_query = count_query.where(
                 or_(
                     Resource.scope == ResourceScope.NATIONAL,
-                    Resource.states.contains([state]),
+                    *state_conditions,
                 )
             )
+        if scope and scope != "all":
+            scope_enum = ResourceScope(scope)
+            count_query = count_query.where(Resource.scope == scope_enum)
         if status:
             count_query = count_query.where(Resource.status == status)
 
