@@ -1,6 +1,6 @@
 'use client';
 
-import { Suspense, useCallback, useEffect, useMemo, useState } from 'react';
+import { Suspense, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { useQuery } from '@tanstack/react-query';
 import { motion, AnimatePresence, LayoutGroup } from 'framer-motion';
@@ -201,6 +201,21 @@ function SearchResults() {
 
   // Get total from first page (server returns filtered total)
   const browseTotal = browseQuery.data?.pages[0]?.total ?? 0;
+
+  // Track previously rendered resource IDs to only animate new items
+  const previousResourceIdsRef = useRef<Set<string>>(new Set());
+  const newResourceIds = useMemo(() => {
+    const currentIds = new Set(browseResources.map(r => r.id));
+    const newIds = new Set<string>();
+    currentIds.forEach(id => {
+      if (!previousResourceIdsRef.current.has(id)) {
+        newIds.add(id);
+      }
+    });
+    // Update ref for next render
+    previousResourceIdsRef.current = currentIds;
+    return newIds;
+  }, [browseResources]);
 
   // Loading states
   const initialLoading = isSearchMode ? searchQuery.isLoading : browseQuery.isLoading;
@@ -433,13 +448,17 @@ function SearchResults() {
                   {resources.map((resource, index) => {
                     // Card needs elevated z-index when selected OR when it's the one being animated back during modal close
                     const isCardAnimating = selectedResource?.id === resource.id || animatingResourceId === resource.id;
+                    // Only animate entrance for newly loaded items
+                    const isNewItem = newResourceIds.has(resource.id);
+                    // For new items in subsequent pages, use index relative to new batch
+                    const newItemIndex = isNewItem ? Array.from(newResourceIds).indexOf(resource.id) : 0;
                     return (
                     <motion.div
                       key={resource.id}
-                      initial={{ opacity: 0, y: 20 }}
+                      initial={isNewItem ? { opacity: 0, y: 20 } : false}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, scale: 0.95 }}
-                      transition={{ delay: index * 0.03, layout: { duration: 0.3 } }}
+                      transition={isNewItem ? { delay: newItemIndex * 0.02, layout: { duration: 0.3 } } : { layout: { duration: 0.3 } }}
                       layout
                       style={{ position: 'relative', willChange: 'transform', zIndex: isCardAnimating ? 100 : undefined }}
                       whileHover={{ zIndex: 50, transition: { duration: 0 } }}
