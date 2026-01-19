@@ -61,15 +61,30 @@ def list_resources(
     session: SessionDep,
     category: str | None = Query(
         default=None,
-        description="Filter by category (employment, training, housing, legal)",
+        description="Filter by single category (deprecated, use 'categories' instead)",
         examples=["housing", "employment"],
+    ),
+    categories: str | None = Query(
+        default=None,
+        description="Filter by categories (comma-separated, e.g., 'housing,legal')",
+        examples=["housing,legal", "employment,training"],
     ),
     state: str | None = Query(
         default=None,
-        description="Filter by state using 2-letter code",
+        description="Filter by single state (deprecated, use 'states' instead)",
         examples=["VA", "TX", "CA"],
         min_length=2,
         max_length=2,
+    ),
+    states: str | None = Query(
+        default=None,
+        description="Filter by states (comma-separated 2-letter codes, e.g., 'VA,MD,DC')",
+        examples=["VA,MD,DC", "TX,CA"],
+    ),
+    scope: str | None = Query(
+        default=None,
+        description="Filter by resource scope: 'national', 'state', 'local', or 'all'",
+        examples=["national", "state", "local"],
     ),
     status: ResourceStatus | None = Query(
         default=None,
@@ -89,10 +104,24 @@ def list_resources(
     - `housing` - HUD-VASH, SSVF, shelters
     - `legal` - VA appeals, legal aid
     """
+    # Parse comma-separated filters into lists
+    category_list: list[str] | None = None
+    if categories:
+        category_list = [c.strip() for c in categories.split(",") if c.strip()]
+    elif category:
+        category_list = [category]
+
+    state_list: list[str] | None = None
+    if states:
+        state_list = [s.strip().upper() for s in states.split(",") if s.strip()]
+    elif state:
+        state_list = [state.upper()]
+
     service = ResourceService(session)
     resources, total = service.list_resources(
-        category=category,
-        state=state,
+        categories=category_list,
+        states=state_list,
+        scope=scope,
         status=status,
         limit=limit,
         offset=offset,
