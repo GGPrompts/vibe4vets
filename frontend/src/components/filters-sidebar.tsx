@@ -143,6 +143,7 @@ function CollapsibleSection({
   return (
     <div>
       <button
+        type="button"
         onClick={onToggle}
         className="flex w-full min-h-[44px] items-center justify-between py-2 text-left"
         aria-expanded={isOpen}
