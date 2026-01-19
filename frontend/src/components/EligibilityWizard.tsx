@@ -18,6 +18,7 @@ import {
   DollarSign,
   Home,
   Calendar,
+  FileCheck,
 } from 'lucide-react';
 import { useAnalytics } from '@/lib/useAnalytics';
 import { cn } from '@/lib/utils';
@@ -56,12 +57,28 @@ const HOUSING_STATUSES = [
   { value: 'stably_housed', label: 'Stably housed' },
 ] as const;
 
+const BENEFIT_TYPES = [
+  { value: 'disability', label: 'Disability compensation' },
+  { value: 'pension', label: 'VA pension' },
+  { value: 'education', label: 'Education benefits (GI Bill)' },
+  { value: 'healthcare', label: 'Healthcare enrollment' },
+  { value: 'survivor', label: 'Survivor/dependent benefits' },
+] as const;
+
+const CONSULTATION_PREFERENCES = [
+  { value: 'walk_in', label: 'Walk-in appointments' },
+  { value: 'virtual', label: 'Virtual consultation' },
+  { value: 'any', label: 'Any format' },
+] as const;
+
 export interface EligibilityState {
   states: string[];
   ageBracket: string | null;
   householdSize: string | null;
   incomeBracket: string | null;
   housingStatus: string | null;
+  benefitTypes: string[];
+  consultationPreference: string | null;
 }
 
 interface EligibilityWizardProps {
@@ -82,12 +99,15 @@ export function EligibilityWizard({
   // Initialize state from URL params
   const getInitialState = (): EligibilityState => {
     const statesParam = searchParams.get('states');
+    const benefitTypesParam = searchParams.get('benefit_types');
     return {
       states: statesParam ? statesParam.split(',') : [],
       ageBracket: searchParams.get('age_bracket'),
       householdSize: searchParams.get('household_size'),
       incomeBracket: searchParams.get('income_bracket'),
       housingStatus: searchParams.get('housing_status'),
+      benefitTypes: benefitTypesParam ? benefitTypesParam.split(',') : [],
+      consultationPreference: searchParams.get('consultation_preference'),
     };
   };
 
@@ -101,6 +121,8 @@ export function EligibilityWizard({
     household: false,
     income: false,
     housing: false,
+    benefits: false,
+    consultation: false,
   });
   const [hasTrackedStart, setHasTrackedStart] = useState(false);
 
@@ -111,6 +133,8 @@ export function EligibilityWizard({
       household: 3,
       income: 4,
       housing: 5,
+      benefits: 6,
+      consultation: 7,
     };
     // Track wizard step when opening a section
     if (!sectionsOpen[section]) {
@@ -153,6 +177,18 @@ export function EligibilityWizard({
         params.set('housing_status', newFilters.housingStatus);
       } else {
         params.delete('housing_status');
+      }
+
+      if (newFilters.benefitTypes.length > 0) {
+        params.set('benefit_types', newFilters.benefitTypes.join(','));
+      } else {
+        params.delete('benefit_types');
+      }
+
+      if (newFilters.consultationPreference) {
+        params.set('consultation_preference', newFilters.consultationPreference);
+      } else {
+        params.delete('consultation_preference');
       }
 
       router.push(`?${params.toString()}`, { scroll: false });
@@ -204,6 +240,17 @@ export function EligibilityWizard({
     handleFiltersChange({ ...filters, housingStatus: value });
   };
 
+  const handleBenefitTypeToggle = (benefitType: string) => {
+    const newBenefitTypes = filters.benefitTypes.includes(benefitType)
+      ? filters.benefitTypes.filter((bt) => bt !== benefitType)
+      : [...filters.benefitTypes, benefitType];
+    handleFiltersChange({ ...filters, benefitTypes: newBenefitTypes });
+  };
+
+  const handleConsultationPreferenceChange = (value: string) => {
+    handleFiltersChange({ ...filters, consultationPreference: value });
+  };
+
   const clearAllFilters = () => {
     const emptyFilters: EligibilityState = {
       states: [],
@@ -211,6 +258,8 @@ export function EligibilityWizard({
       householdSize: null,
       incomeBracket: null,
       housingStatus: null,
+      benefitTypes: [],
+      consultationPreference: null,
     };
     handleFiltersChange(emptyFilters);
   };
@@ -220,7 +269,9 @@ export function EligibilityWizard({
     (filters.ageBracket ? 1 : 0) +
     (filters.householdSize ? 1 : 0) +
     (filters.incomeBracket ? 1 : 0) +
-    (filters.housingStatus ? 1 : 0);
+    (filters.housingStatus ? 1 : 0) +
+    filters.benefitTypes.length +
+    (filters.consultationPreference ? 1 : 0);
 
   return (
     <div className={cn('rounded-lg border bg-card p-4', className)}>
@@ -490,6 +541,97 @@ export function EligibilityWizard({
                         className="flex-1 cursor-pointer text-sm"
                       >
                         {status.label}
+                      </Label>
+                    </div>
+                  ))}
+                </RadioGroup>
+              </div>
+            )}
+          </div>
+
+          <Separator />
+
+          {/* Benefits Type Section */}
+          <div>
+            <button
+              onClick={() => toggleSection('benefits')}
+              className="flex w-full min-h-[44px] items-center justify-between py-2"
+            >
+              <div className="flex items-center gap-2">
+                <FileCheck className="h-4 w-4 text-muted-foreground" />
+                <span className="text-sm font-medium">Benefits Help Needed</span>
+                {filters.benefitTypes.length > 0 && (
+                  <Badge variant="outline" className="text-xs">
+                    {filters.benefitTypes.length}
+                  </Badge>
+                )}
+              </div>
+              <ChevronDown
+                className={cn(
+                  'h-4 w-4 text-muted-foreground transition-transform',
+                  sectionsOpen.benefits && 'rotate-180'
+                )}
+              />
+            </button>
+            {sectionsOpen.benefits && (
+              <div className="mt-2 space-y-2 pl-6">
+                {BENEFIT_TYPES.map((benefitType) => (
+                  <div key={benefitType.value} className="flex min-h-[44px] items-center space-x-3">
+                    <Checkbox
+                      id={`benefit-${benefitType.value}`}
+                      checked={filters.benefitTypes.includes(benefitType.value)}
+                      onCheckedChange={() => handleBenefitTypeToggle(benefitType.value)}
+                    />
+                    <Label
+                      htmlFor={`benefit-${benefitType.value}`}
+                      className="flex-1 cursor-pointer text-sm"
+                    >
+                      {benefitType.label}
+                    </Label>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+
+          <Separator />
+
+          {/* Consultation Preference Section */}
+          <div>
+            <button
+              onClick={() => toggleSection('consultation')}
+              className="flex w-full min-h-[44px] items-center justify-between py-2"
+            >
+              <div className="flex items-center gap-2">
+                <Users className="h-4 w-4 text-muted-foreground" />
+                <span className="text-sm font-medium">Consultation Format</span>
+                {filters.consultationPreference && (
+                  <Badge variant="outline" className="text-xs">
+                    {CONSULTATION_PREFERENCES.find((p) => p.value === filters.consultationPreference)?.label}
+                  </Badge>
+                )}
+              </div>
+              <ChevronDown
+                className={cn(
+                  'h-4 w-4 text-muted-foreground transition-transform',
+                  sectionsOpen.consultation && 'rotate-180'
+                )}
+              />
+            </button>
+            {sectionsOpen.consultation && (
+              <div className="mt-2 pl-6">
+                <RadioGroup
+                  value={filters.consultationPreference || ''}
+                  onValueChange={handleConsultationPreferenceChange}
+                >
+                  {CONSULTATION_PREFERENCES.map((pref) => (
+                    <div key={pref.value} className="flex min-h-[44px] items-center space-x-3">
+                      <RadioGroupItem value={pref.value} id={`consultation-${pref.value}`} />
+                      <Label
+                        htmlFor={`consultation-${pref.value}`}
+                        className="flex-1 cursor-pointer text-sm"
+                      >
+                        {pref.label}
                       </Label>
                     </div>
                   ))}

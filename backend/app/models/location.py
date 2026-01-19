@@ -48,6 +48,27 @@ class WaitlistStatus(str, Enum):
     UNKNOWN = "unknown"
 
 
+class BenefitType(str, Enum):
+    """Types of VA benefits supported by a consult location."""
+
+    DISABILITY = "disability"
+    PENSION = "pension"
+    EDUCATION = "education"
+    HEALTHCARE = "healthcare"
+    BURIAL = "burial"
+    SURVIVOR = "survivor"
+    VRE = "vre"  # Vocational Rehabilitation & Employment
+
+
+class RepresentativeType(str, Enum):
+    """Types of accredited representatives."""
+
+    VSO = "vso"  # Veterans Service Organization
+    ATTORNEY = "attorney"
+    CLAIMS_AGENT = "claims_agent"
+    CVSO = "cvso"  # County Veteran Service Officer
+
+
 class Location(SQLModel, table=True):
     """Physical location with geocoding and eligibility criteria."""
 
@@ -105,6 +126,36 @@ class Location(SQLModel, table=True):
     )
     waitlist_status: str | None = Field(
         default=None, description="Waitlist status: open, closed, unknown"
+    )
+
+    # === Benefits consultation fields ===
+    benefits_types_supported: list[str] = Field(
+        default_factory=list,
+        sa_column=Column(ARRAY(Text), nullable=False, default=[]),
+        description="Benefits types: disability, pension, education, healthcare, burial, survivor, vre",
+    )
+    representative_type: str | None = Field(
+        default=None, description="Accredited representative type: vso, attorney, claims_agent, cvso"
+    )
+    accredited: bool | None = Field(
+        default=None, description="Whether representatives are VA-accredited"
+    )
+    walk_in_available: bool | None = Field(
+        default=None, description="Whether walk-in appointments are available"
+    )
+    appointment_required: bool | None = Field(
+        default=None, description="Whether appointments are required"
+    )
+    virtual_available: bool | None = Field(
+        default=None, description="Whether virtual consultations are available"
+    )
+    free_service: bool | None = Field(
+        default=None, description="Whether the consultation service is free"
+    )
+    languages_supported: list[str] = Field(
+        default_factory=list,
+        sa_column=Column(ARRAY(Text), nullable=False, default=[]),
+        description="Languages supported for consultations",
     )
 
     # === Intake information ===

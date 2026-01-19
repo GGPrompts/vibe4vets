@@ -15,6 +15,7 @@ if TYPE_CHECKING:
 
 logger = logging.getLogger(__name__)
 from app.schemas.resource import (
+    BenefitsInfo,
     EligibilityInfo,
     IntakeInfo,
     LocationNested,
@@ -343,6 +344,31 @@ class SearchService:
                 notes=location.verification_notes,
             )
 
+        # Build benefits info if any fields are set
+        benefits = None
+        if any(
+            [
+                location.benefits_types_supported,
+                location.representative_type,
+                location.accredited,
+                location.walk_in_available,
+                location.appointment_required,
+                location.virtual_available,
+                location.free_service,
+                location.languages_supported,
+            ]
+        ):
+            benefits = BenefitsInfo(
+                benefits_types=location.benefits_types_supported or [],
+                representative_type=location.representative_type,
+                accredited=location.accredited,
+                walk_in_available=location.walk_in_available,
+                appointment_required=location.appointment_required,
+                virtual_available=location.virtual_available,
+                free_service=location.free_service,
+                languages=location.languages_supported or [],
+            )
+
         return LocationNested(
             id=location.id,
             city=location.city,
@@ -352,6 +378,7 @@ class SearchService:
             eligibility=eligibility,
             intake=intake,
             verification=verification,
+            benefits=benefits,
         )
 
     def search_with_eligibility(
@@ -530,6 +557,7 @@ class SearchService:
                 "employment": "Employment services",
                 "training": "Training program",
                 "legal": "Legal services",
+                "benefits": "Benefits consultation",
             }
             if cat in cat_labels:
                 reasons.append(MatchReason(type="category", label=cat_labels[cat]))
@@ -576,6 +604,55 @@ class SearchService:
             # Waitlist status
             if location.waitlist_status == "open":
                 reasons.append(MatchReason(type="availability", label="Waitlist open"))
+
+            # Benefits-specific match reasons
+            if location.benefits_types_supported:
+                benefit_labels = {
+                    "disability": "Disability claims",
+                    "pension": "Pension claims",
+                    "education": "Education benefits",
+                    "healthcare": "Healthcare enrollment",
+                    "burial": "Burial benefits",
+                    "survivor": "Survivor benefits",
+                    "vre": "Voc Rehab (VR&E)",
+                }
+                # Show up to 2 benefit types
+                shown_benefits = []
+                for bt in location.benefits_types_supported[:2]:
+                    if bt in benefit_labels:
+                        shown_benefits.append(benefit_labels[bt])
+                if shown_benefits:
+                    label = ", ".join(shown_benefits)
+                    if len(location.benefits_types_supported) > 2:
+                        label += f" +{len(location.benefits_types_supported) - 2}"
+                    reasons.append(MatchReason(type="benefits", label=label))
+
+            if location.representative_type:
+                rep_labels = {
+                    "vso": "VSO representative",
+                    "attorney": "Accredited attorney",
+                    "claims_agent": "Claims agent",
+                    "cvso": "County veteran service officer",
+                }
+                if location.representative_type in rep_labels:
+                    reasons.append(
+                        MatchReason(
+                            type="representative",
+                            label=rep_labels[location.representative_type],
+                        )
+                    )
+
+            if location.accredited:
+                reasons.append(MatchReason(type="accredited", label="VA-accredited"))
+
+            if location.free_service:
+                reasons.append(MatchReason(type="cost", label="Free service"))
+
+            if location.virtual_available:
+                reasons.append(MatchReason(type="access", label="Virtual available"))
+
+            if location.walk_in_available:
+                reasons.append(MatchReason(type="access", label="Walk-ins welcome"))
 
         elif resource.scope == ResourceScope.NATIONAL:
             reasons.append(MatchReason(type="location", label="Available nationwide"))

@@ -11,6 +11,11 @@ import {
   Scale,
   Clock,
   Shield,
+  FileCheck,
+  Users,
+  BadgeCheck,
+  Video,
+  Coins,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -64,6 +69,31 @@ const matchReasonStyles: Record<
     textClass: 'text-green-800 dark:text-green-300',
     icon: Clock,
   },
+  benefits: {
+    bgClass: 'bg-indigo-100 dark:bg-indigo-900/40',
+    textClass: 'text-indigo-800 dark:text-indigo-300',
+    icon: FileCheck,
+  },
+  representative: {
+    bgClass: 'bg-teal-100 dark:bg-teal-900/40',
+    textClass: 'text-teal-800 dark:text-teal-300',
+    icon: Users,
+  },
+  accredited: {
+    bgClass: 'bg-cyan-100 dark:bg-cyan-900/40',
+    textClass: 'text-cyan-800 dark:text-cyan-300',
+    icon: BadgeCheck,
+  },
+  access: {
+    bgClass: 'bg-violet-100 dark:bg-violet-900/40',
+    textClass: 'text-violet-800 dark:text-violet-300',
+    icon: Video,
+  },
+  cost: {
+    bgClass: 'bg-lime-100 dark:bg-lime-900/40',
+    textClass: 'text-lime-800 dark:text-lime-300',
+    icon: Coins,
+  },
 };
 
 // Category-specific icons
@@ -72,6 +102,7 @@ const categoryIcons: Record<string, React.ElementType> = {
   'Employment services': Briefcase,
   'Training program': GraduationCap,
   'Legal services': Scale,
+  'Benefits consultation': FileCheck,
 };
 
 interface MatchReasonChipsProps {
