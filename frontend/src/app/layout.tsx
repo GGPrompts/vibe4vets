@@ -3,6 +3,7 @@ import { Suspense } from "react";
 import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/header";
+import { Providers } from "@/components/providers";
 
 // Compact, highly readable body font
 const inter = Inter({
@@ -39,10 +40,12 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${playfair.variable} ${inter.variable}`}>
       <body className="min-h-screen bg-background font-body antialiased">
-        <Suspense>
-          <Header />
-        </Suspense>
-        {children}
+        <Providers>
+          <Suspense>
+            <Header />
+          </Suspense>
+          {children}
+        </Providers>
       </body>
     </html>
   );
