@@ -1,7 +1,8 @@
 'use client';
 
-import { Suspense, useCallback, useEffect, useState } from 'react';
+import { Suspense, useCallback, useEffect, useMemo, useState } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
+import { useQuery } from '@tanstack/react-query';
 import { motion, AnimatePresence, LayoutGroup } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
@@ -23,9 +24,10 @@ import {
 } from '@/components/filters-sidebar';
 import { FilterChips } from '@/components/filter-chips';
 import type { SortOption } from '@/components/sort-dropdown';
-import api, { type SearchResponse, type ResourceList, type Resource, type MatchExplanation } from '@/lib/api';
+import api, { type Resource, type MatchExplanation } from '@/lib/api';
+import { useResourcesInfinite } from '@/lib/hooks/useResourcesInfinite';
 import { useAnalytics } from '@/lib/useAnalytics';
-import { Filter } from 'lucide-react';
+import { Filter, Loader2 } from 'lucide-react';
 
 
 function SearchResults() {
@@ -35,11 +37,6 @@ function SearchResults() {
   const query = searchParams.get('q') || '';
   const selectedResourceId = searchParams.get('resource');
 
-  const [initialLoading, setInitialLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-  const [searchResults, setSearchResults] = useState<SearchResponse | null>(null);
-  const [browseResults, setBrowseResults] = useState<ResourceList | null>(null);
-  const [lastQuery, setLastQuery] = useState<string | null>(null);
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
 
   // Modal state
@@ -169,6 +166,48 @@ function SearchResults() {
     router.push(`/search?${params.toString()}`, { scroll: false });
   }, [router, searchParams, selectedResource, selectedResourceId]);
 
+  // ========== DATA FETCHING ==========
+  // Browse mode: useInfiniteQuery with server-side filtering
+  const browseQuery = useResourcesInfinite({
+    categories: filters.categories,
+    states: filters.states,
+    scope: filters.scope,
+  });
+
+  // Search mode: useQuery (still fetches all for now, search API doesn't support pagination yet)
+  const searchQuery = useQuery({
+    queryKey: ['search', query, filters],
+    queryFn: async () => {
+      const results = await api.search.query({
+        q: query,
+        limit: 500,
+      });
+      // Track search analytics on new query
+      trackSearch(query, filters.categories[0], filters.states[0]);
+      return results;
+    },
+    enabled: !!query,
+  });
+
+  // Determine which data source to use
+  const isSearchMode = !!query;
+  const searchResults = searchQuery.data;
+
+  // Flatten browse pages into single array
+  const browseResources = useMemo(() => {
+    if (!browseQuery.data?.pages) return [];
+    return browseQuery.data.pages.flatMap((page) => page.resources);
+  }, [browseQuery.data?.pages]);
+
+  // Get total from first page (server returns filtered total)
+  const browseTotal = browseQuery.data?.pages[0]?.total ?? 0;
+
+  // Loading states
+  const initialLoading = isSearchMode ? searchQuery.isLoading : browseQuery.isLoading;
+  const error = isSearchMode
+    ? (searchQuery.error instanceof Error ? searchQuery.error.message : null)
+    : (browseQuery.error instanceof Error ? browseQuery.error.message : null);
+
   // Sync selected resource from URL on mount and when data loads
   useEffect(() => {
     if (
@@ -179,63 +218,33 @@ function SearchResults() {
       animatingResourceId !== selectedResourceId
     ) {
       // Find the resource in current results
-      const allResources = searchResults
-        ? searchResults.results.map((r) => r.resource)
-        : browseResults?.resources || [];
+      const allResources = isSearchMode
+        ? (searchResults?.results.map((r) => r.resource) ?? [])
+        : browseResources;
 
       const resource = allResources.find((r) => r.id === selectedResourceId);
       if (resource) {
-        const explanations = searchResults
-          ? searchResults.results.find((r) => r.resource.id === selectedResourceId)?.explanations
+        const explanations = isSearchMode
+          ? searchResults?.results.find((r) => r.resource.id === selectedResourceId)?.explanations
           : undefined;
         setSelectedResource(resource);
         setSelectedExplanations(explanations);
       }
     }
-  }, [selectedResourceId, selectedResource, initialLoading, searchResults, browseResults, animatingResourceId]);
+  }, [selectedResourceId, selectedResource, initialLoading, isSearchMode, searchResults, browseResources, animatingResourceId]);
 
-  // Only refetch when query changes, not on filter changes
-  // Filters are applied client-side to already-fetched data
-  useEffect(() => {
-    async function fetchData() {
-      // Only show loading skeleton on initial load or query change
-      const isQueryChange = query !== lastQuery;
-      if (isQueryChange || initialLoading) {
-        setInitialLoading(true);
-      }
-      setError(null);
+  // Client-side trust filter (server doesn't support minTrust yet)
+  const applyTrustFilter = (resources: Resource[]) => {
+    if (filters.minTrust <= 0) return resources;
+    return resources.filter((resource) => {
+      const trustScore =
+        resource.trust.freshness_score * resource.trust.reliability_score * 100;
+      return trustScore >= filters.minTrust;
+    });
+  };
 
-      try {
-        if (query) {
-          const results = await api.search.query({
-            q: query,
-            limit: 500,
-          });
-          setSearchResults(results);
-          setBrowseResults(null);
-          // Track search analytics
-          trackSearch(query, filters.categories[0], filters.states[0]);
-        } else {
-          const results = await api.resources.list({
-            limit: 500,
-          });
-          setBrowseResults(results);
-          setSearchResults(null);
-        }
-        setLastQuery(query);
-      } catch (err) {
-        setError(err instanceof Error ? err.message : 'Failed to load resources');
-      } finally {
-        setInitialLoading(false);
-      }
-    }
-
-    fetchData();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [query]); // Only refetch on query change, filters applied client-side
-
-  // Filter results client-side for multi-select and trust
-  const filterResults = <T extends Resource>(resources: T[]) => {
+  // Client-side filtering for search mode (server doesn't filter search results)
+  const filterSearchResults = (resources: Resource[]) => {
     return resources.filter((resource) => {
       // Category filter
       if (filters.categories.length > 0) {
@@ -257,13 +266,6 @@ function SearchResults() {
       if (filters.scope !== 'all') {
         if (filters.scope === 'national' && resource.scope !== 'national') return false;
         if (filters.scope === 'state' && resource.scope === 'national') return false;
-      }
-
-      // Trust filter
-      if (filters.minTrust > 0) {
-        const trustScore =
-          resource.trust.freshness_score * resource.trust.reliability_score * 100;
-        if (trustScore < filters.minTrust) return false;
       }
 
       return true;
@@ -292,18 +294,31 @@ function SearchResults() {
     return sorted;
   };
 
-  const filteredResources = searchResults
-    ? filterResults(searchResults.results.map((r) => r.resource))
-    : filterResults(browseResults?.resources || []);
+  // Compute final resources list
+  const resources = useMemo(() => {
+    if (isSearchMode) {
+      // Search mode: client-side filtering + sorting + trust filter
+      const searchResources = searchResults?.results.map((r) => r.resource) ?? [];
+      return sortResults(applyTrustFilter(filterSearchResults(searchResources)));
+    } else {
+      // Browse mode: server-side filtering already applied, just trust + sort
+      return sortResults(applyTrustFilter(browseResources));
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isSearchMode, searchResults, browseResources, filters, sort]);
 
-  const resources = sortResults(filteredResources);
+  const explanationsMap = useMemo(() => {
+    if (!searchResults) return new Map<string, MatchExplanation[]>();
+    return new Map(searchResults.results.map((r) => [r.resource.id, r.explanations]));
+  }, [searchResults]);
 
-  const explanationsMap = searchResults
-    ? new Map(searchResults.results.map((r) => [r.resource.id, r.explanations]))
-    : new Map();
+  // For browse mode, use server total; for search mode, use filtered count
+  const totalResults = isSearchMode ? resources.length : browseTotal;
+  const displayedCount = resources.length;
+  const hasResults = displayedCount > 0;
 
-  const totalResults = resources.length;
-  const hasResults = totalResults > 0;
+  // Infinite scroll helpers
+  const { fetchNextPage, hasNextPage, isFetchingNextPage } = browseQuery;
 
   return (
     <div className="flex gap-6">
@@ -333,7 +348,7 @@ function SearchResults() {
                     </>
                   ) : (
                     <>
-                      Showing <strong>{totalResults}</strong> resources
+                      Showing <strong>{displayedCount}</strong> of <strong>{totalResults}</strong> resources
                     </>
                   )}
                 </>
@@ -445,6 +460,27 @@ function SearchResults() {
                   })}
                 </div>
               </AnimatePresence>
+
+              {/* Load More Button - browse mode only */}
+              {!isSearchMode && hasNextPage && (
+                <div className="mt-6 flex justify-center">
+                  <Button
+                    onClick={() => fetchNextPage()}
+                    disabled={isFetchingNextPage}
+                    variant="outline"
+                    size="lg"
+                  >
+                    {isFetchingNextPage ? (
+                      <>
+                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                        Loading...
+                      </>
+                    ) : (
+                      `Load More (${displayedCount} of ${totalResults})`
+                    )}
+                  </Button>
+                </div>
+              )}
 
               {/* Resource Detail Modal */}
               <ResourceDetailModal

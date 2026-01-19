@@ -457,12 +457,20 @@ export const api = {
     list: (params: {
       category?: string;
       state?: string;
+      // Multi-value filters (comma-separated strings)
+      categories?: string;
+      states?: string;
+      scope?: string;
       limit?: number;
       offset?: number;
     } = {}): Promise<ResourceList> => {
       const searchParams = new URLSearchParams();
-      if (params.category) searchParams.set('category', params.category);
-      if (params.state) searchParams.set('state', params.state);
+      // Prefer multi-value params over deprecated single-value
+      if (params.categories) searchParams.set('categories', params.categories);
+      else if (params.category) searchParams.set('category', params.category);
+      if (params.states) searchParams.set('states', params.states);
+      else if (params.state) searchParams.set('state', params.state);
+      if (params.scope) searchParams.set('scope', params.scope);
       if (params.limit) searchParams.set('limit', String(params.limit));
       if (params.offset) searchParams.set('offset', String(params.offset));
 
