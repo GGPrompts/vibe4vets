@@ -6,11 +6,13 @@ This module provides:
 - Freshness job for trust score updates
 - Link checker job for URL health validation
 - Discovery job for AI-powered resource discovery
+- Embeddings job for vector embedding generation
 - Job registry and configuration
 """
 
 from jobs.base import BaseJob, JobResult, JobStatus
 from jobs.discovery import DiscoveryJob
+from jobs.embeddings import EmbeddingsJob
 from jobs.freshness import FreshnessJob
 from jobs.link_checker import LinkCheckerJob
 from jobs.refresh import RefreshJob, get_available_connectors
@@ -71,6 +73,14 @@ def setup_jobs(scheduler: JobScheduler, config: dict[str, str | bool]) -> None:
         enabled=bool(enabled) and bool(discovery_schedule),
     )
 
+    # Register embeddings job
+    embeddings_schedule = config.get("EMBEDDINGS_SCHEDULE")
+    scheduler.register_job(
+        EmbeddingsJob(),
+        schedule=embeddings_schedule if isinstance(embeddings_schedule, str) else None,
+        enabled=bool(enabled) and bool(embeddings_schedule),
+    )
+
 
 __all__ = [
     # Base
@@ -79,6 +89,7 @@ __all__ = [
     "JobStatus",
     # Jobs
     "DiscoveryJob",
+    "EmbeddingsJob",
     "FreshnessJob",
     "LinkCheckerJob",
     "RefreshJob",

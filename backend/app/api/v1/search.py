@@ -1,6 +1,6 @@
-"""Search endpoints with full-text search and eligibility filtering."""
+"""Search endpoints with full-text search, eligibility filtering, and semantic search."""
 
-from fastapi import APIRouter, Query
+from fastapi import APIRouter, HTTPException, Query
 from pydantic import BaseModel
 
 from app.database import SessionDep
@@ -144,19 +144,86 @@ def search_with_eligibility(
     )
 
 
-@router.post("/semantic")
+class SemanticSearchResponse(BaseModel):
+    """Response for semantic search endpoint."""
+
+    query: str
+    results: list[ResourceSearchResult]
+    total: int
+    limit: int
+    offset: int
+    search_mode: str  # "semantic" or "hybrid"
+
+
+@router.post("/semantic", response_model=SemanticSearchResponse)
 def semantic_search(
     session: SessionDep,
-    query: str = Query(..., min_length=1),
-    limit: int = Query(10, ge=1, le=50),
-) -> dict:
-    """Semantic search using embeddings (Phase 3).
+    q: str = Query(..., min_length=1, description="Search query"),
+    category: str | None = Query(None, description="Filter by category"),
+    state: str | None = Query(None, description="Filter by state (2-letter code)"),
+    mode: str = Query(
+        "hybrid",
+        description="Search mode: 'semantic' (vector only) or 'hybrid' (vector + FTS)",
+        pattern="^(semantic|hybrid)$",
+    ),
+    limit: int = Query(20, ge=1, le=100, description="Maximum results"),
+    offset: int = Query(0, ge=0, description="Offset for pagination"),
+) -> SemanticSearchResponse:
+    """Semantic search using pgvector embeddings.
 
-    This endpoint is a placeholder for future pgvector-based semantic search.
+    Supports two modes:
+    - semantic: Pure vector similarity search
+    - hybrid: Combines full-text search with semantic similarity using RRF
+
+    Requires OPENAI_API_KEY to be configured for embedding generation.
     """
-    return {
-        "query": query,
-        "results": [],
-        "total": 0,
-        "message": "Semantic search will be available in Phase 3",
-    }
+    from app.config import settings
+
+    # Check if OpenAI API key is configured
+    if not settings.openai_api_key:
+        raise HTTPException(
+            status_code=503,
+            detail="Semantic search requires OPENAI_API_KEY to be configured",
+        )
+
+    # Generate embedding for query
+    try:
+        from app.services.embedding import EmbeddingService
+
+        embedding_service = EmbeddingService()
+        result = embedding_service.generate_embedding(q)
+        query_embedding = result.embedding
+    except Exception as e:
+        raise HTTPException(
+            status_code=500,
+            detail=f"Failed to generate embedding: {e}",
+        ) from e
+
+    service = SearchService(session)
+
+    if mode == "semantic":
+        results, total = service.semantic_search(
+            query_embedding=query_embedding,
+            category=category,
+            state=state,
+            limit=limit,
+            offset=offset,
+        )
+    else:  # hybrid
+        results, total = service.hybrid_search(
+            query=q,
+            query_embedding=query_embedding,
+            category=category,
+            state=state,
+            limit=limit,
+            offset=offset,
+        )
+
+    return SemanticSearchResponse(
+        query=q,
+        results=results,
+        total=total,
+        limit=limit,
+        offset=offset,
+        search_mode=mode,
+    )

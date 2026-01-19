@@ -3,11 +3,15 @@
 import uuid
 from datetime import datetime
 from enum import Enum
-from typing import TYPE_CHECKING, Optional
+from typing import TYPE_CHECKING, Any, Optional
 
+from pgvector.sqlalchemy import Vector
 from sqlalchemy import Column, Text
 from sqlalchemy.dialects.postgresql import ARRAY, TSVECTOR
 from sqlmodel import Field, Relationship, SQLModel
+
+# Embedding dimension for text-embedding-3-small (OpenAI) or equivalent
+EMBEDDING_DIMENSION = 1536
 
 if TYPE_CHECKING:
     from app.models.location import Location
@@ -99,7 +103,11 @@ class Resource(SQLModel, table=True):
     # Full-text search vector (auto-populated by trigger or manually)
     search_vector: str | None = Field(default=None, sa_column=Column(TSVECTOR))
 
-    # Note: embedding column will be added via migration with pgvector
+    # Vector embedding for semantic search (pgvector)
+    embedding: Any = Field(
+        default=None,
+        sa_column=Column(Vector(EMBEDDING_DIMENSION), nullable=True),
+    )
 
     # Relationships
     organization: "Organization" = Relationship(back_populates="resources")

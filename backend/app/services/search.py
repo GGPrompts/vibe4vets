@@ -1,12 +1,19 @@
-"""Search service for full-text and filtered search."""
+"""Search service for full-text, semantic, and hybrid search."""
 
+import logging
 from dataclasses import dataclass
+from typing import TYPE_CHECKING
 
 from sqlalchemy import func, or_, text
 from sqlmodel import Session, col, select
 
 from app.models import Location, Organization, Resource, Source
-from app.models.resource import ResourceScope, ResourceStatus
+from app.models.resource import EMBEDDING_DIMENSION, ResourceScope, ResourceStatus
+
+if TYPE_CHECKING:
+    from app.services.embedding import EmbeddingService
+
+logger = logging.getLogger(__name__)
 from app.schemas.resource import (
     EligibilityInfo,
     IntakeInfo,
@@ -579,3 +586,257 @@ class SearchService:
             reasons.append(MatchReason(type="location", label=f"Serves {states_str}"))
 
         return reasons
+
+    def semantic_search(
+        self,
+        query_embedding: list[float],
+        category: str | None = None,
+        state: str | None = None,
+        limit: int = 20,
+        offset: int = 0,
+    ) -> tuple[list[ResourceSearchResult], int]:
+        """Search resources using vector similarity with pgvector.
+
+        Args:
+            query_embedding: The query text embedding vector.
+            category: Optional category filter.
+            state: Optional state filter.
+            limit: Maximum results to return.
+            offset: Offset for pagination.
+
+        Returns:
+            Tuple of (results, total_count)
+        """
+        # Use cosine distance for similarity (1 - cosine_distance = cosine_similarity)
+        # pgvector uses <=> for cosine distance
+        distance_col = Resource.embedding.op("<=>")(query_embedding).label("distance")
+
+        # Base query with vector similarity
+        stmt = (
+            select(Resource, distance_col)
+            .where(Resource.status == ResourceStatus.ACTIVE)
+            .where(Resource.embedding.isnot(None))
+        )
+
+        # Apply filters
+        if category:
+            stmt = stmt.where(Resource.categories.contains([category]))
+        if state:
+            stmt = stmt.where(
+                or_(
+                    Resource.scope == ResourceScope.NATIONAL,
+                    Resource.states.contains([state]),
+                )
+            )
+
+        # Get total count
+        count_stmt = (
+            select(func.count(Resource.id))
+            .where(Resource.status == ResourceStatus.ACTIVE)
+            .where(Resource.embedding.isnot(None))
+        )
+        if category:
+            count_stmt = count_stmt.where(Resource.categories.contains([category]))
+        if state:
+            count_stmt = count_stmt.where(
+                or_(
+                    Resource.scope == ResourceScope.NATIONAL,
+                    Resource.states.contains([state]),
+                )
+            )
+        total = self.session.exec(count_stmt).one()
+
+        # Order by distance (ascending = most similar first)
+        stmt = stmt.order_by(text("distance ASC")).offset(offset).limit(limit)
+        results = self.session.exec(stmt).all()
+
+        # Build search results
+        search_results = []
+        for resource, distance in results:
+            # Convert distance to similarity score (1 - distance for cosine)
+            similarity = 1.0 - float(distance)
+            explanations = [
+                MatchExplanation(
+                    reason=f"Semantic similarity: {similarity:.0%}",
+                    field="embedding",
+                )
+            ]
+            if category and category in resource.categories:
+                explanations.append(
+                    MatchExplanation(
+                        reason=f"Covers {category} resources",
+                        field="categories",
+                    )
+                )
+            if state and state in resource.states:
+                explanations.append(
+                    MatchExplanation(
+                        reason=f"Serves {state}",
+                        field="states",
+                    )
+                )
+
+            resource_read = self._to_read_schema(resource)
+            search_results.append(
+                ResourceSearchResult(
+                    resource=resource_read,
+                    rank=similarity,
+                    explanations=explanations,
+                )
+            )
+
+        return search_results, total
+
+    def hybrid_search(
+        self,
+        query: str,
+        query_embedding: list[float],
+        category: str | None = None,
+        state: str | None = None,
+        limit: int = 20,
+        offset: int = 0,
+        fts_weight: float = 0.5,
+        semantic_weight: float = 0.5,
+    ) -> tuple[list[ResourceSearchResult], int]:
+        """Hybrid search combining full-text search and semantic similarity.
+
+        Uses Reciprocal Rank Fusion (RRF) to combine FTS and vector rankings.
+
+        Args:
+            query: The search query text.
+            query_embedding: The query text embedding vector.
+            category: Optional category filter.
+            state: Optional state filter.
+            limit: Maximum results to return.
+            offset: Offset for pagination.
+            fts_weight: Weight for FTS ranking (default 0.5).
+            semantic_weight: Weight for semantic ranking (default 0.5).
+
+        Returns:
+            Tuple of (results, total_count)
+        """
+        # RRF constant (commonly 60)
+        k = 60
+
+        # Build FTS query
+        prefix_query = self._build_prefix_tsquery(query)
+        search_query = func.to_tsquery("english", prefix_query)
+
+        # Vector distance for semantic ranking
+        distance_col = Resource.embedding.op("<=>")(query_embedding).label("distance")
+
+        # FTS rank
+        fts_rank = func.ts_rank(Resource.search_vector, search_query).label("fts_rank")
+
+        # Combined query with both rankings
+        stmt = (
+            select(Resource, fts_rank, distance_col)
+            .where(Resource.status == ResourceStatus.ACTIVE)
+            .where(
+                or_(
+                    Resource.search_vector.op("@@")(search_query),
+                    Resource.embedding.isnot(None),
+                )
+            )
+        )
+
+        # Apply filters
+        if category:
+            stmt = stmt.where(Resource.categories.contains([category]))
+        if state:
+            stmt = stmt.where(
+                or_(
+                    Resource.scope == ResourceScope.NATIONAL,
+                    Resource.states.contains([state]),
+                )
+            )
+
+        # Execute to get all matching results for RRF
+        results = self.session.exec(stmt).all()
+
+        if not results:
+            return [], 0
+
+        # Apply RRF scoring
+        scored_results = []
+        for resource, fts_r, distance in results:
+            # FTS score (already a rank, higher is better)
+            fts_score = float(fts_r) if fts_r else 0.0
+
+            # Semantic score (convert distance to similarity)
+            semantic_score = 1.0 - float(distance) if distance else 0.0
+
+            # RRF: combine rankings
+            # For FTS, use rank directly (higher = better)
+            # For semantic, use similarity (higher = better)
+            rrf_score = (
+                fts_weight * (1.0 / (k + (1.0 / (fts_score + 0.001))))
+                + semantic_weight * (1.0 / (k + (1.0 / (semantic_score + 0.001))))
+            )
+
+            scored_results.append((resource, rrf_score, fts_score, semantic_score))
+
+        # Sort by RRF score
+        scored_results.sort(key=lambda x: x[1], reverse=True)
+        total = len(scored_results)
+
+        # Apply pagination
+        paginated = scored_results[offset : offset + limit]
+
+        # Build search results
+        search_results = []
+        for resource, rrf_score, fts_score, semantic_score in paginated:
+            explanations = []
+
+            # Add FTS explanation if matched
+            if fts_score > 0:
+                if query.lower() in resource.title.lower():
+                    explanations.append(
+                        MatchExplanation(
+                            reason=f'Title matches "{query}"',
+                            field="title",
+                        )
+                    )
+                else:
+                    explanations.append(
+                        MatchExplanation(
+                            reason="Matches your search terms",
+                            field="description",
+                        )
+                    )
+
+            # Add semantic explanation if matched
+            if semantic_score > 0:
+                explanations.append(
+                    MatchExplanation(
+                        reason=f"Semantic relevance: {semantic_score:.0%}",
+                        field="embedding",
+                    )
+                )
+
+            # Category and state explanations
+            if category and category in resource.categories:
+                explanations.append(
+                    MatchExplanation(
+                        reason=f"Covers {category} resources",
+                        field="categories",
+                    )
+                )
+            if state and state in resource.states:
+                explanations.append(
+                    MatchExplanation(
+                        reason=f"Serves {state}",
+                        field="states",
+                    )
+                )
+
+            resource_read = self._to_read_schema(resource)
+            search_results.append(
+                ResourceSearchResult(
+                    resource=resource_read,
+                    rank=rrf_score,
+                    explanations=explanations,
+                )
+            )
+
+        return search_results, total
