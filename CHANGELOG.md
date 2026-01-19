@@ -6,6 +6,32 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 
+#### Infinite Scroll & Data Fetching (2026-01-18)
+- **Infinite scroll pagination** - Load More with useInfiniteQuery, shows "X of Y resources" (V4V-rqr)
+- **Server-side filtering** - API supports categories, states, scope params with correct totals (V4V-8mn)
+- **TanStack Query** - Data fetching layer with QueryClientProvider (V4V-1zu)
+
+#### Data Sources (2026-01-17)
+- **SSVF connector** - Import FY26 grantee data (235 organizations) from Excel (V4V-ct9)
+- **AI discovery prompts** - `.prompts/` directory with housing, employment, food discovery prompts (V4V-625)
+- **Resource Hub pages** - Static hub pages for employment, housing, legal, training categories (V4V-9fn)
+
+### Fixed
+
+#### UX Fixes (2026-01-18)
+- **Infinite scroll UX** - Preserve scroll position, disable animations during pagination (V4V-gey)
+- **Sidebar layout shift** - Use invisible class instead of conditional render for Clear Filters (V4V-kgb)
+- **Admin dashboard transparency** - Fixed CSS issues with Light Tokyo Night theme (V4V-g2z)
+- **Search bar contrast** - Fixed white-on-white text (V4V-search-text-contrast)
+- **Skeleton colors** - Changed from yellow to gray (V4V-skeleton-colors)
+- **Dropdown placeholders** - Fixed empty state display (V4V-empty-dropdowns)
+- **CI failures** - Fixed psycopg2 module import in GitHub Actions (V4V-vcc)
+
+### Changed
+- **Search page redesign** - Sidebar filters with card grid layout (V4V-search-redesign)
+
+---
+
 #### UX + Coverage Improvements (2026-01-14)
 - **Territory + DC support** - State pickers include DC and territories (PR/GU/VI/AS/MP), and `/map` includes territory links (V4V-07y)
 - **Discover page upgrades** - Added search entrypoint and consistent select styling on `/discover` (V4V-a1i)

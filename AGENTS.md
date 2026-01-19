@@ -1,7 +1,5 @@
 # AGENTS.md - Vibe4Vets
 
-Instructions for AI agents (Claude Code, Codex, Cursor, etc.) working on this project.
-
 ## Overview
 
 Vibe4Vets is an AI-powered veteran resource database focusing on **Employment & Training** and **Housing & Legal** resources nationwide. Transparent about using web scraping and AI to aggregate resources that go beyond VA.gov.
@@ -55,7 +53,7 @@ vibe4vets/
 │   ├── jobs/                # Background tasks
 │   └── llm/                 # AI abstraction layer
 │
-├── .prompts/                # AI discovery prompts
+├── prompts/                 # Saved AI prompts
 ├── docs/                    # Architecture docs
 └── .beads/                  # Issue tracking
 ```
@@ -184,11 +182,12 @@ docker-compose up -d
 
 | Method | Path | Description |
 |--------|------|-------------|
-| GET | `/api/v1/resources` | List/search resources |
+| GET | `/api/v1/resources` | List resources with pagination (limit, offset) and filters (categories, states, scope) |
 | GET | `/api/v1/resources/{id}` | Resource detail |
 | GET | `/api/v1/search` | Advanced search with filters |
 | GET | `/api/v1/search/eligibility` | Eligibility-filtered search with match reasons |
 | POST | `/api/v1/chat` | AI chat endpoint |
+| POST | `/api/v1/analytics/events` | Record anonymous analytics event |
 
 ### Admin Endpoints
 
@@ -204,6 +203,52 @@ docker-compose up -d
 | POST | `/api/v1/admin/jobs/{name}/run` | Trigger job manually |
 | GET | `/api/v1/admin/jobs/history` | Job run history |
 | GET | `/api/v1/admin/jobs/connectors` | Available connectors |
+| GET | `/api/v1/analytics/admin/dashboard` | Full analytics dashboard data |
+| GET | `/api/v1/analytics/admin/summary` | Summary statistics |
+| GET | `/api/v1/analytics/admin/popular-searches` | Popular search queries |
+| GET | `/api/v1/analytics/admin/popular-categories` | Popular categories |
+| GET | `/api/v1/analytics/admin/popular-states` | Popular states |
+| GET | `/api/v1/analytics/admin/popular-resources` | Most viewed resources |
+| GET | `/api/v1/analytics/admin/wizard-funnel` | Wizard completion funnel |
+| GET | `/api/v1/analytics/admin/daily-trends` | Daily event trends |
+
+---
+
+## Phases
+
+### Phase 0: Scaffolding (COMPLETE)
+- [x] Directory structure
+- [x] Docker Compose (pgvector, backend, frontend)
+- [x] Database schema (Alembic migrations)
+- [x] Connector interface
+- [x] CI/CD (GitHub Actions)
+
+### Phase 1: MVP (COMPLETE)
+- [x] Manual resource entry
+- [x] Basic CRUD API (`backend/app/api/v1/resources.py`)
+- [x] Postgres full-text search (`backend/app/services/search.py`)
+- [x] Next.js UI (search + results)
+- [x] Admin review queue (`frontend/src/app/admin/page.tsx`)
+
+### Phase 2: Automation (COMPLETE)
+- [x] VA.gov connector (`backend/connectors/va_gov.py`)
+- [x] DOL/CareerOneStop connector (`backend/connectors/careeronestop.py`)
+- [x] ETL pipeline (`backend/etl/`)
+- [x] Scheduled refresh (`backend/jobs/`)
+- [x] Source health dashboard (`backend/app/services/health.py`)
+
+### Phase 3: AI + Scale
+- [ ] Claude extraction
+- [ ] pgvector semantic search
+- [ ] AI chatbot
+- [ ] Guided questionnaire
+- [ ] OpenSearch (if needed)
+
+### Phase 4: Production
+- [ ] Public API docs
+- [x] Feedback loop
+- [x] Analytics (privacy-respecting usage tracking)
+- [ ] Partner contributions
 
 ---
 
@@ -220,29 +265,59 @@ docker-compose up -d
 | `backend/app/services/trust.py` | Trust scoring logic |
 | `backend/app/services/search.py` | PostgreSQL FTS service |
 | `backend/app/services/health.py` | Source health monitoring |
-| `backend/app/services/discovery.py` | AI-powered resource discovery service |
 | `backend/app/core/taxonomy.py` | Categories and subcategories |
+| `backend/alembic/versions/` | Database migrations |
 | `backend/connectors/base.py` | Connector protocol interface |
+| `backend/connectors/va_gov.py` | VA.gov Lighthouse API connector |
+| `backend/connectors/careeronestop.py` | DOL CareerOneStop API connector |
 | `backend/etl/pipeline.py` | ETL orchestrator |
-| `backend/scripts/import_discoveries.py` | Import AI-discovered resources |
+| `backend/etl/normalize.py` | Data normalization |
+| `backend/etl/dedupe.py` | Duplicate detection |
+| `backend/etl/loader.py` | Database loader |
+| `backend/jobs/scheduler.py` | APScheduler integration |
+| `backend/jobs/refresh.py` | Full refresh job |
+| `backend/jobs/freshness.py` | Freshness update job |
+| `backend/app/services/discovery.py` | AI-powered resource discovery service |
+| `backend/app/models/analytics.py` | Anonymous analytics models |
+| `backend/app/services/analytics.py` | Analytics tracking service |
+| `backend/app/api/v1/analytics.py` | Analytics API endpoints |
+| `backend/scripts/seed_hubs.py` | Hub data seeding script |
+| `backend/scripts/seed_dmv_housing.py` | DC/MD/VA housing seed data with eligibility |
+| `backend/.claude/commands/scan-resources.md` | Discovery slash command |
 
 ### Frontend
 | File | Purpose |
 |------|---------|
 | `frontend/src/app/page.tsx` | Landing page |
 | `frontend/src/app/search/page.tsx` | Search UI with filters |
-| `frontend/src/app/discover/page.tsx` | Discovery feed |
+| `frontend/src/app/discover/page.tsx` | Discovery feed with date-grouped resources |
 | `frontend/src/app/resources/[id]/page.tsx` | Resource detail page |
 | `frontend/src/app/admin/page.tsx` | Admin review queue |
 | `frontend/src/lib/api.ts` | API client with TypeScript types |
+| `frontend/src/lib/hooks/useResourcesInfinite.ts` | TanStack Query hook for paginated resource fetching |
+| `frontend/src/components/providers.tsx` | QueryClientProvider wrapper for TanStack Query |
+| `frontend/src/components/DiscoveryFeed.tsx` | Date-grouped resource feed component |
+| `frontend/src/components/EligibilityWizard.tsx` | Eligibility wizard with URL state persistence |
+| `frontend/src/components/MatchReasonChips.tsx` | Match reason chips for search results |
+| `frontend/src/app/hubs/*/page.tsx` | Static resource hub pages (employment, housing, legal, training) |
+| `frontend/src/components/HubCard.tsx` | Hub resource card component |
 | `frontend/src/components/ui/` | shadcn/ui components |
+| `frontend/src/lib/useAnalytics.ts` | Analytics tracking React hook |
+| `frontend/src/app/admin/analytics/page.tsx` | Admin analytics dashboard |
 
-### AI Discovery
+### Infrastructure
 | File | Purpose |
 |------|---------|
-| `.prompts/discovery/` | Resource discovery prompts |
-| `.prompts/validation/` | Validation prompts |
-| `backend/.claude/commands/scan-resources.md` | Discovery slash command |
+| `docker-compose.yml` | Local dev environment |
+| `.github/workflows/ci.yml` | CI pipeline |
+| `.github/workflows/link-check.yml` | Scheduled external link checker |
+| `.env.example` | Environment template |
+
+### Maintenance
+```bash
+# Check curated external links (requires network access)
+python backend/scripts/check_links.py
+```
 
 ---
 
@@ -255,21 +330,29 @@ docker-compose up -d
 
 ---
 
+## Data Sources
+
+### Tier 1: Official APIs
+- [VA Developer API](https://developer.va.gov/) - Facilities, services
+- [CareerOneStop API](https://www.careeronestop.org/Developers/WebAPI/web-api.aspx) - Job resources
+- [USAJobs API](https://developer.usajobs.gov/) - Federal jobs
+
+### Tier 2: Structured Scraping
+- VA.gov Employment pages
+- DOL VETS Resources
+- HUD-VASH program info
+- SSVF provider listings
+
+### Tier 3: Nonprofit/Community
+- State veteran agencies
+- VSO websites (DAV, VFW, Legion)
+- Legal aid directories
+
+---
+
 ## Beads Workflow
 
-Track work with beads (`bd` command). Use `--json` flag for structured output.
-
-### Essential Commands
-
-```bash
-bd ready --json              # Find unblocked work
-bd show ID --json            # View issue details
-bd update ID --status in_progress --json  # Claim work
-bd update ID --notes "Progress notes"     # Add context
-bd close ID --reason "Done: summary" --json  # Complete
-bd create "Title" --deps discovered-from:PARENT --json  # Link new work
-bd sync                      # Sync with git
-```
+Track work with beads (not markdown). Always use `--json` flag for structured output.
 
 ### Worker Workflow
 
@@ -286,6 +369,17 @@ bd sync                      # Sync with git
 5. **Complete**: `bd close ID --reason "Done: summary" --json`
 6. **Sync**: `bd sync` (commits and pushes)
 
+### Essential Commands
+
+```bash
+bd ready --json              # Unblocked issues
+bd show ID --json            # Details with notes
+bd update ID --status in_progress --json  # Claim
+bd update ID --notes "Progress notes"     # Context
+bd close ID --reason "Done: what was done" --json
+bd create "Title" --deps discovered-from:PARENT --json  # Link discovered work
+```
+
 ### Session Close Protocol
 
 **CRITICAL**: Session is NOT complete until `git push` succeeds.
@@ -297,35 +391,6 @@ git push                     # MUST succeed before ending
 ```
 
 Include issue ID in commits: `git commit -m "Fix bug (bd-abc)"`
-
----
-
-## AI Resource Discovery Pipeline
-
-```
-┌─────────────────────────────────────────────────────────────────┐
-│ 1. DISCOVER                                                     │
-│    Run prompts from .prompts/discovery/ (use Haiku for volume)  │
-│    Or use /scan-resources slash command                         │
-└─────────────────────────────────────────────────────────────────┘
-                              ↓
-┌─────────────────────────────────────────────────────────────────┐
-│ 2. SAVE                                                         │
-│    Save JSON to: backend/data/discoveries/                      │
-└─────────────────────────────────────────────────────────────────┘
-                              ↓
-┌─────────────────────────────────────────────────────────────────┐
-│ 3. IMPORT                                                       │
-│    python -m backend.scripts.import_discoveries <file.json>     │
-│    (use --dry-run to preview first)                             │
-└─────────────────────────────────────────────────────────────────┘
-                              ↓
-┌─────────────────────────────────────────────────────────────────┐
-│ 4. REVIEW                                                       │
-│    Admin UI at /admin or API: GET /api/v1/admin/review-queue    │
-│    Approve → Resource goes live                                 │
-└─────────────────────────────────────────────────────────────────┘
-```
 
 ---
 

@@ -182,7 +182,7 @@ docker-compose up -d
 
 | Method | Path | Description |
 |--------|------|-------------|
-| GET | `/api/v1/resources` | List/search resources |
+| GET | `/api/v1/resources` | List resources with pagination (limit, offset) and filters (categories, states, scope) |
 | GET | `/api/v1/resources/{id}` | Resource detail |
 | GET | `/api/v1/search` | Advanced search with filters |
 | GET | `/api/v1/search/eligibility` | Eligibility-filtered search with match reasons |
@@ -294,6 +294,8 @@ docker-compose up -d
 | `frontend/src/app/resources/[id]/page.tsx` | Resource detail page |
 | `frontend/src/app/admin/page.tsx` | Admin review queue |
 | `frontend/src/lib/api.ts` | API client with TypeScript types |
+| `frontend/src/lib/hooks/useResourcesInfinite.ts` | TanStack Query hook for paginated resource fetching |
+| `frontend/src/components/providers.tsx` | QueryClientProvider wrapper for TanStack Query |
 | `frontend/src/components/DiscoveryFeed.tsx` | Date-grouped resource feed component |
 | `frontend/src/components/EligibilityWizard.tsx` | Eligibility wizard with URL state persistence |
 | `frontend/src/components/MatchReasonChips.tsx` | Match reason chips for search results |
