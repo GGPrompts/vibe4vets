@@ -1,6 +1,14 @@
 'use client';
 
-import { Suspense, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import {
+  Suspense,
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { useQuery } from '@tanstack/react-query';
 import { motion, AnimatePresence, LayoutGroup } from 'framer-motion';
@@ -204,18 +212,28 @@ function SearchResults() {
 
   // Track previously rendered resource IDs to only animate new items
   const previousResourceIdsRef = useRef<Set<string>>(new Set());
+  const currentBrowseResourceIds = useMemo(
+    () => new Set(browseResources.map((r) => r.id)),
+    [browseResources]
+  );
   const newResourceIds = useMemo(() => {
-    const currentIds = new Set(browseResources.map(r => r.id));
     const newIds = new Set<string>();
-    currentIds.forEach(id => {
-      if (!previousResourceIdsRef.current.has(id)) {
-        newIds.add(id);
-      }
+    currentBrowseResourceIds.forEach((id) => {
+      if (!previousResourceIdsRef.current.has(id)) newIds.add(id);
     });
-    // Update ref for next render
-    previousResourceIdsRef.current = currentIds;
     return newIds;
-  }, [browseResources]);
+  }, [currentBrowseResourceIds]);
+  const newResourceIndexById = useMemo(() => {
+    const indexById = new Map<string, number>();
+    let index = 0;
+    newResourceIds.forEach((id) => {
+      indexById.set(id, index++);
+    });
+    return indexById;
+  }, [newResourceIds]);
+  useEffect(() => {
+    previousResourceIdsRef.current = currentBrowseResourceIds;
+  }, [currentBrowseResourceIds]);
 
   // Loading states
   const initialLoading = isSearchMode ? searchQuery.isLoading : browseQuery.isLoading;
@@ -334,6 +352,72 @@ function SearchResults() {
 
   // Infinite scroll helpers
   const { fetchNextPage, hasNextPage, isFetchingNextPage } = browseQuery;
+  const restoreScrollYRef = useRef<number | null>(null);
+  const loadMoreSentinelRef = useRef<HTMLDivElement | null>(null);
+  const disableGridMotionRef = useRef(false);
+  const [disableGridMotion, setDisableGridMotion] = useState(false);
+
+  const handleLoadMore = useCallback(async () => {
+    restoreScrollYRef.current = window.scrollY;
+    disableGridMotionRef.current = true;
+    setDisableGridMotion(true);
+    await fetchNextPage();
+  }, [fetchNextPage]);
+
+  // Restore scroll after the DOM commits the newly appended items.
+  useLayoutEffect(() => {
+    const restoreY = restoreScrollYRef.current;
+    if (restoreY === null) return;
+    if (isFetchingNextPage) return;
+
+    requestAnimationFrame(() => {
+      const currentY = window.scrollY;
+      if (Math.abs(currentY - restoreY) > 10) {
+        window.scrollTo({ top: restoreY });
+      }
+      restoreScrollYRef.current = null;
+    });
+  }, [isFetchingNextPage]);
+
+  // Turn animations back on shortly after pagination settles.
+  useEffect(() => {
+    if (isFetchingNextPage) return;
+    if (!disableGridMotionRef.current) return;
+
+    const t = window.setTimeout(() => {
+      disableGridMotionRef.current = false;
+      setDisableGridMotion(false);
+    }, 150);
+
+    return () => window.clearTimeout(t);
+  }, [isFetchingNextPage]);
+
+  // Background prefetch: load the next page when the user is near the bottom.
+  useEffect(() => {
+    if (isSearchMode) return;
+    if (!hasNextPage) return;
+    if (isFetchingNextPage) return;
+
+    const el = loadMoreSentinelRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const isIntersecting = entries.some((entry) => entry.isIntersecting);
+        if (!isIntersecting) return;
+        if (!hasNextPage) return;
+        if (isFetchingNextPage) return;
+        restoreScrollYRef.current = window.scrollY;
+        disableGridMotionRef.current = true;
+        setDisableGridMotion(true);
+        fetchNextPage();
+      },
+      { root: null, rootMargin: '1200px 0px', threshold: 0 }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [fetchNextPage, hasNextPage, isFetchingNextPage, isSearchMode]);
 
   return (
     <div className="flex gap-6">
@@ -445,21 +529,27 @@ function SearchResults() {
             <LayoutGroup>
               <AnimatePresence mode="popLayout">
                 <div className="grid gap-4 pr-0 sm:grid-cols-2 sm:pr-4 lg:grid-cols-3 xl:grid-cols-4" style={{ isolation: 'isolate' }}>
-                  {resources.map((resource, index) => {
+                  {resources.map((resource) => {
                     // Card needs elevated z-index when selected OR when it's the one being animated back during modal close
                     const isCardAnimating = selectedResource?.id === resource.id || animatingResourceId === resource.id;
                     // Only animate entrance for newly loaded items
                     const isNewItem = newResourceIds.has(resource.id);
                     // For new items in subsequent pages, use index relative to new batch
-                    const newItemIndex = isNewItem ? Array.from(newResourceIds).indexOf(resource.id) : 0;
+                    const newItemIndex = isNewItem ? (newResourceIndexById.get(resource.id) ?? 0) : 0;
                     return (
                     <motion.div
                       key={resource.id}
-                      initial={isNewItem ? { opacity: 0, y: 20 } : false}
-                      animate={{ opacity: 1, y: 0 }}
+                      initial={disableGridMotion ? false : isNewItem ? { opacity: 0, y: 20 } : false}
+                      animate={disableGridMotion ? false : { opacity: 1, y: 0 }}
                       exit={{ opacity: 0, scale: 0.95 }}
-                      transition={isNewItem ? { delay: newItemIndex * 0.02, layout: { duration: 0.3 } } : { layout: { duration: 0.3 } }}
-                      layout
+                      transition={
+                        disableGridMotion
+                          ? { duration: 0 }
+                          : isNewItem
+                            ? { delay: newItemIndex * 0.02, layout: { duration: 0.3 } }
+                            : { layout: { duration: 0.3 } }
+                      }
+                      layout={disableGridMotion ? false : 'position'}
                       style={{ position: 'relative', willChange: 'transform', zIndex: isCardAnimating ? 100 : undefined }}
                       whileHover={{ zIndex: 50, transition: { duration: 0 } }}
                       whileTap={{ zIndex: 50 }}
@@ -484,7 +574,7 @@ function SearchResults() {
               {!isSearchMode && hasNextPage && (
                 <div className="mt-6 flex justify-center">
                   <Button
-                    onClick={() => fetchNextPage()}
+                    onClick={handleLoadMore}
                     disabled={isFetchingNextPage}
                     variant="outline"
                     size="lg"
@@ -500,6 +590,8 @@ function SearchResults() {
                   </Button>
                 </div>
               )}
+
+              {!isSearchMode && hasNextPage && <div ref={loadMoreSentinelRef} className="h-px w-full" />}
 
               {/* Resource Detail Modal */}
               <ResourceDetailModal
