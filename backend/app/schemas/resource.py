@@ -40,6 +40,11 @@ class EligibilityInfo(BaseModel):
     veteran_status_required: bool = Field(True, description="Whether veteran status is required")
     docs_required: list[str] = Field(default_factory=list, description="Required documentation (DD-214, proof of income, etc.)")
     waitlist_status: str | None = Field(None, description="Current waitlist status (open, closed, limited)")
+    # Food distribution specific fields
+    distribution_schedule: str | None = Field(None, description="Food distribution schedule (e.g., 'Every Tuesday 10am-2pm')")
+    serves_dietary: list[str] = Field(default_factory=list, description="Dietary options served: halal, kosher, vegetarian, vegan, gluten-free")
+    quantity_limit: str | None = Field(None, description="Quantity limits (e.g., 'One box per household per week')")
+    id_required: bool | None = Field(None, description="Whether ID is required for food distribution")
 
 
 class IntakeInfo(BaseModel):

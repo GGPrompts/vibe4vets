@@ -18,6 +18,8 @@ import {
   DollarSign,
   Home,
   Calendar,
+  UtensilsCrossed,
+  Leaf,
 } from 'lucide-react';
 import { useAnalytics } from '@/lib/useAnalytics';
 import { cn } from '@/lib/utils';
@@ -56,12 +58,30 @@ const HOUSING_STATUSES = [
   { value: 'stably_housed', label: 'Stably housed' },
 ] as const;
 
+const DIETARY_OPTIONS = [
+  { value: 'halal', label: 'Halal' },
+  { value: 'kosher', label: 'Kosher' },
+  { value: 'vegetarian', label: 'Vegetarian' },
+  { value: 'vegan', label: 'Vegan' },
+  { value: 'gluten_free', label: 'Gluten-free' },
+] as const;
+
+const RESOURCE_CATEGORIES = [
+  { value: 'housing', label: 'Housing assistance' },
+  { value: 'employment', label: 'Employment services' },
+  { value: 'training', label: 'Training programs' },
+  { value: 'legal', label: 'Legal services' },
+  { value: 'food', label: 'Food assistance' },
+] as const;
+
 export interface EligibilityState {
   states: string[];
   ageBracket: string | null;
   householdSize: string | null;
   incomeBracket: string | null;
   housingStatus: string | null;
+  category: string | null;
+  dietaryNeeds: string[];
 }
 
 interface EligibilityWizardProps {
@@ -82,12 +102,15 @@ export function EligibilityWizard({
   // Initialize state from URL params
   const getInitialState = (): EligibilityState => {
     const statesParam = searchParams.get('states');
+    const dietaryParam = searchParams.get('dietary');
     return {
       states: statesParam ? statesParam.split(',') : [],
       ageBracket: searchParams.get('age_bracket'),
       householdSize: searchParams.get('household_size'),
       incomeBracket: searchParams.get('income_bracket'),
       housingStatus: searchParams.get('housing_status'),
+      category: searchParams.get('category'),
+      dietaryNeeds: dietaryParam ? dietaryParam.split(',') : [],
     };
   };
 
@@ -97,10 +120,12 @@ export function EligibilityWizard({
   // Section expansion state
   const [sectionsOpen, setSectionsOpen] = useState({
     location: true,
+    category: false,
     age: false,
     household: false,
     income: false,
     housing: false,
+    dietary: false,
   });
   const [hasTrackedStart, setHasTrackedStart] = useState(false);
 
@@ -155,6 +180,18 @@ export function EligibilityWizard({
         params.delete('housing_status');
       }
 
+      if (newFilters.category) {
+        params.set('category', newFilters.category);
+      } else {
+        params.delete('category');
+      }
+
+      if (newFilters.dietaryNeeds.length > 0) {
+        params.set('dietary', newFilters.dietaryNeeds.join(','));
+      } else {
+        params.delete('dietary');
+      }
+
       router.push(`?${params.toString()}`, { scroll: false });
     },
     [router, searchParams]
@@ -204,6 +241,17 @@ export function EligibilityWizard({
     handleFiltersChange({ ...filters, housingStatus: value });
   };
 
+  const handleCategoryChange = (value: string) => {
+    handleFiltersChange({ ...filters, category: value });
+  };
+
+  const handleDietaryToggle = (dietary: string) => {
+    const newDietary = filters.dietaryNeeds.includes(dietary)
+      ? filters.dietaryNeeds.filter((d) => d !== dietary)
+      : [...filters.dietaryNeeds, dietary];
+    handleFiltersChange({ ...filters, dietaryNeeds: newDietary });
+  };
+
   const clearAllFilters = () => {
     const emptyFilters: EligibilityState = {
       states: [],
@@ -211,6 +259,8 @@ export function EligibilityWizard({
       householdSize: null,
       incomeBracket: null,
       housingStatus: null,
+      category: null,
+      dietaryNeeds: [],
     };
     handleFiltersChange(emptyFilters);
   };
@@ -220,7 +270,9 @@ export function EligibilityWizard({
     (filters.ageBracket ? 1 : 0) +
     (filters.householdSize ? 1 : 0) +
     (filters.incomeBracket ? 1 : 0) +
-    (filters.housingStatus ? 1 : 0);
+    (filters.housingStatus ? 1 : 0) +
+    (filters.category ? 1 : 0) +
+    filters.dietaryNeeds.length;
 
   return (
     <div className={cn('rounded-lg border bg-card p-4', className)}>
@@ -494,6 +546,100 @@ export function EligibilityWizard({
                     </div>
                   ))}
                 </RadioGroup>
+              </div>
+            )}
+          </div>
+
+          <Separator />
+
+          {/* Resource Category Section */}
+          <div>
+            <button
+              onClick={() => toggleSection('category')}
+              className="flex w-full min-h-[44px] items-center justify-between py-2"
+            >
+              <div className="flex items-center gap-2">
+                <UtensilsCrossed className="h-4 w-4 text-muted-foreground" />
+                <span className="text-sm font-medium">Resource Type</span>
+                {filters.category && (
+                  <Badge variant="outline" className="text-xs">
+                    {RESOURCE_CATEGORIES.find((c) => c.value === filters.category)?.label}
+                  </Badge>
+                )}
+              </div>
+              <ChevronDown
+                className={cn(
+                  'h-4 w-4 text-muted-foreground transition-transform',
+                  sectionsOpen.category && 'rotate-180'
+                )}
+              />
+            </button>
+            {sectionsOpen.category && (
+              <div className="mt-2 pl-6">
+                <RadioGroup
+                  value={filters.category || ''}
+                  onValueChange={handleCategoryChange}
+                >
+                  {RESOURCE_CATEGORIES.map((cat) => (
+                    <div key={cat.value} className="flex min-h-[44px] items-center space-x-3">
+                      <RadioGroupItem value={cat.value} id={`category-${cat.value}`} />
+                      <Label
+                        htmlFor={`category-${cat.value}`}
+                        className="flex-1 cursor-pointer text-sm"
+                      >
+                        {cat.label}
+                      </Label>
+                    </div>
+                  ))}
+                </RadioGroup>
+              </div>
+            )}
+          </div>
+
+          <Separator />
+
+          {/* Dietary Needs Section (for food resources) */}
+          <div>
+            <button
+              onClick={() => toggleSection('dietary')}
+              className="flex w-full min-h-[44px] items-center justify-between py-2"
+            >
+              <div className="flex items-center gap-2">
+                <Leaf className="h-4 w-4 text-muted-foreground" />
+                <span className="text-sm font-medium">Dietary Needs</span>
+                {filters.dietaryNeeds.length > 0 && (
+                  <Badge variant="outline" className="text-xs">
+                    {filters.dietaryNeeds.length}
+                  </Badge>
+                )}
+              </div>
+              <ChevronDown
+                className={cn(
+                  'h-4 w-4 text-muted-foreground transition-transform',
+                  sectionsOpen.dietary && 'rotate-180'
+                )}
+              />
+            </button>
+            {sectionsOpen.dietary && (
+              <div className="mt-2 space-y-2 pl-6">
+                <p className="text-xs text-muted-foreground mb-2">
+                  Filter for food pantries that offer specific dietary options
+                </p>
+                {DIETARY_OPTIONS.map((option) => (
+                  <div key={option.value} className="flex min-h-[44px] items-center space-x-3">
+                    <Checkbox
+                      id={`dietary-${option.value}`}
+                      checked={filters.dietaryNeeds.includes(option.value)}
+                      onCheckedChange={() => handleDietaryToggle(option.value)}
+                    />
+                    <Label
+                      htmlFor={`dietary-${option.value}`}
+                      className="flex-1 cursor-pointer text-sm"
+                    >
+                      {option.label}
+                    </Label>
+                  </div>
+                ))}
               </div>
             )}
           </div>
