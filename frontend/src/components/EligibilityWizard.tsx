@@ -20,6 +20,7 @@ import {
   Calendar,
   UtensilsCrossed,
   Leaf,
+  FileCheck,
 } from 'lucide-react';
 import { useAnalytics } from '@/lib/useAnalytics';
 import { cn } from '@/lib/utils';
@@ -72,6 +73,21 @@ const RESOURCE_CATEGORIES = [
   { value: 'training', label: 'Training programs' },
   { value: 'legal', label: 'Legal services' },
   { value: 'food', label: 'Food assistance' },
+  { value: 'benefits', label: 'Benefits consultation' },
+] as const;
+
+const BENEFIT_TYPES = [
+  { value: 'disability', label: 'Disability compensation' },
+  { value: 'pension', label: 'VA pension' },
+  { value: 'education', label: 'Education benefits (GI Bill)' },
+  { value: 'healthcare', label: 'Healthcare enrollment' },
+  { value: 'survivor', label: 'Survivor/dependent benefits' },
+] as const;
+
+const CONSULTATION_PREFERENCES = [
+  { value: 'walk_in', label: 'Walk-in appointments' },
+  { value: 'virtual', label: 'Virtual consultation' },
+  { value: 'any', label: 'Any format' },
 ] as const;
 
 export interface EligibilityState {
@@ -82,6 +98,8 @@ export interface EligibilityState {
   housingStatus: string | null;
   category: string | null;
   dietaryNeeds: string[];
+  benefitTypes: string[];
+  consultationPreference: string | null;
 }
 
 interface EligibilityWizardProps {
@@ -103,6 +121,7 @@ export function EligibilityWizard({
   const getInitialState = (): EligibilityState => {
     const statesParam = searchParams.get('states');
     const dietaryParam = searchParams.get('dietary');
+    const benefitTypesParam = searchParams.get('benefit_types');
     return {
       states: statesParam ? statesParam.split(',') : [],
       ageBracket: searchParams.get('age_bracket'),
@@ -111,6 +130,8 @@ export function EligibilityWizard({
       housingStatus: searchParams.get('housing_status'),
       category: searchParams.get('category'),
       dietaryNeeds: dietaryParam ? dietaryParam.split(',') : [],
+      benefitTypes: benefitTypesParam ? benefitTypesParam.split(',') : [],
+      consultationPreference: searchParams.get('consultation_preference'),
     };
   };
 
@@ -126,16 +147,22 @@ export function EligibilityWizard({
     income: false,
     housing: false,
     dietary: false,
+    benefits: false,
+    consultation: false,
   });
   const [hasTrackedStart, setHasTrackedStart] = useState(false);
 
   const toggleSection = (section: keyof typeof sectionsOpen) => {
     const sectionMap: Record<string, number> = {
       location: 1,
-      age: 2,
-      household: 3,
-      income: 4,
-      housing: 5,
+      category: 2,
+      age: 3,
+      household: 4,
+      income: 5,
+      housing: 6,
+      dietary: 7,
+      benefits: 8,
+      consultation: 9,
     };
     // Track wizard step when opening a section
     if (!sectionsOpen[section]) {
@@ -190,6 +217,18 @@ export function EligibilityWizard({
         params.set('dietary', newFilters.dietaryNeeds.join(','));
       } else {
         params.delete('dietary');
+      }
+
+      if (newFilters.benefitTypes.length > 0) {
+        params.set('benefit_types', newFilters.benefitTypes.join(','));
+      } else {
+        params.delete('benefit_types');
+      }
+
+      if (newFilters.consultationPreference) {
+        params.set('consultation_preference', newFilters.consultationPreference);
+      } else {
+        params.delete('consultation_preference');
       }
 
       router.push(`?${params.toString()}`, { scroll: false });
@@ -252,6 +291,17 @@ export function EligibilityWizard({
     handleFiltersChange({ ...filters, dietaryNeeds: newDietary });
   };
 
+  const handleBenefitTypeToggle = (benefitType: string) => {
+    const newBenefitTypes = filters.benefitTypes.includes(benefitType)
+      ? filters.benefitTypes.filter((bt) => bt !== benefitType)
+      : [...filters.benefitTypes, benefitType];
+    handleFiltersChange({ ...filters, benefitTypes: newBenefitTypes });
+  };
+
+  const handleConsultationPreferenceChange = (value: string) => {
+    handleFiltersChange({ ...filters, consultationPreference: value });
+  };
+
   const clearAllFilters = () => {
     const emptyFilters: EligibilityState = {
       states: [],
@@ -261,6 +311,8 @@ export function EligibilityWizard({
       housingStatus: null,
       category: null,
       dietaryNeeds: [],
+      benefitTypes: [],
+      consultationPreference: null,
     };
     handleFiltersChange(emptyFilters);
   };
@@ -272,7 +324,9 @@ export function EligibilityWizard({
     (filters.incomeBracket ? 1 : 0) +
     (filters.housingStatus ? 1 : 0) +
     (filters.category ? 1 : 0) +
-    filters.dietaryNeeds.length;
+    filters.dietaryNeeds.length +
+    filters.benefitTypes.length +
+    (filters.consultationPreference ? 1 : 0);
 
   return (
     <div className={cn('rounded-lg border bg-card p-4', className)}>
@@ -359,6 +413,52 @@ export function EligibilityWizard({
                     </Label>
                   </div>
                 ))}
+              </div>
+            )}
+          </div>
+
+          <Separator />
+
+          {/* Resource Category Section */}
+          <div>
+            <button
+              onClick={() => toggleSection('category')}
+              className="flex w-full min-h-[44px] items-center justify-between py-2"
+            >
+              <div className="flex items-center gap-2">
+                <UtensilsCrossed className="h-4 w-4 text-muted-foreground" />
+                <span className="text-sm font-medium">Resource Type</span>
+                {filters.category && (
+                  <Badge variant="outline" className="text-xs">
+                    {RESOURCE_CATEGORIES.find((c) => c.value === filters.category)?.label}
+                  </Badge>
+                )}
+              </div>
+              <ChevronDown
+                className={cn(
+                  'h-4 w-4 text-muted-foreground transition-transform',
+                  sectionsOpen.category && 'rotate-180'
+                )}
+              />
+            </button>
+            {sectionsOpen.category && (
+              <div className="mt-2 pl-6">
+                <RadioGroup
+                  value={filters.category || ''}
+                  onValueChange={handleCategoryChange}
+                >
+                  {RESOURCE_CATEGORIES.map((cat) => (
+                    <div key={cat.value} className="flex min-h-[44px] items-center space-x-3">
+                      <RadioGroupItem value={cat.value} id={`category-${cat.value}`} />
+                      <Label
+                        htmlFor={`category-${cat.value}`}
+                        className="flex-1 cursor-pointer text-sm"
+                      >
+                        {cat.label}
+                      </Label>
+                    </div>
+                  ))}
+                </RadioGroup>
               </div>
             )}
           </div>
@@ -552,52 +652,6 @@ export function EligibilityWizard({
 
           <Separator />
 
-          {/* Resource Category Section */}
-          <div>
-            <button
-              onClick={() => toggleSection('category')}
-              className="flex w-full min-h-[44px] items-center justify-between py-2"
-            >
-              <div className="flex items-center gap-2">
-                <UtensilsCrossed className="h-4 w-4 text-muted-foreground" />
-                <span className="text-sm font-medium">Resource Type</span>
-                {filters.category && (
-                  <Badge variant="outline" className="text-xs">
-                    {RESOURCE_CATEGORIES.find((c) => c.value === filters.category)?.label}
-                  </Badge>
-                )}
-              </div>
-              <ChevronDown
-                className={cn(
-                  'h-4 w-4 text-muted-foreground transition-transform',
-                  sectionsOpen.category && 'rotate-180'
-                )}
-              />
-            </button>
-            {sectionsOpen.category && (
-              <div className="mt-2 pl-6">
-                <RadioGroup
-                  value={filters.category || ''}
-                  onValueChange={handleCategoryChange}
-                >
-                  {RESOURCE_CATEGORIES.map((cat) => (
-                    <div key={cat.value} className="flex min-h-[44px] items-center space-x-3">
-                      <RadioGroupItem value={cat.value} id={`category-${cat.value}`} />
-                      <Label
-                        htmlFor={`category-${cat.value}`}
-                        className="flex-1 cursor-pointer text-sm"
-                      >
-                        {cat.label}
-                      </Label>
-                    </div>
-                  ))}
-                </RadioGroup>
-              </div>
-            )}
-          </div>
-
-          <Separator />
-
           {/* Dietary Needs Section (for food resources) */}
           <div>
             <button
@@ -640,6 +694,97 @@ export function EligibilityWizard({
                     </Label>
                   </div>
                 ))}
+              </div>
+            )}
+          </div>
+
+          <Separator />
+
+          {/* Benefits Type Section */}
+          <div>
+            <button
+              onClick={() => toggleSection('benefits')}
+              className="flex w-full min-h-[44px] items-center justify-between py-2"
+            >
+              <div className="flex items-center gap-2">
+                <FileCheck className="h-4 w-4 text-muted-foreground" />
+                <span className="text-sm font-medium">Benefits Help Needed</span>
+                {filters.benefitTypes.length > 0 && (
+                  <Badge variant="outline" className="text-xs">
+                    {filters.benefitTypes.length}
+                  </Badge>
+                )}
+              </div>
+              <ChevronDown
+                className={cn(
+                  'h-4 w-4 text-muted-foreground transition-transform',
+                  sectionsOpen.benefits && 'rotate-180'
+                )}
+              />
+            </button>
+            {sectionsOpen.benefits && (
+              <div className="mt-2 space-y-2 pl-6">
+                {BENEFIT_TYPES.map((benefitType) => (
+                  <div key={benefitType.value} className="flex min-h-[44px] items-center space-x-3">
+                    <Checkbox
+                      id={`benefit-${benefitType.value}`}
+                      checked={filters.benefitTypes.includes(benefitType.value)}
+                      onCheckedChange={() => handleBenefitTypeToggle(benefitType.value)}
+                    />
+                    <Label
+                      htmlFor={`benefit-${benefitType.value}`}
+                      className="flex-1 cursor-pointer text-sm"
+                    >
+                      {benefitType.label}
+                    </Label>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+
+          <Separator />
+
+          {/* Consultation Preference Section */}
+          <div>
+            <button
+              onClick={() => toggleSection('consultation')}
+              className="flex w-full min-h-[44px] items-center justify-between py-2"
+            >
+              <div className="flex items-center gap-2">
+                <Users className="h-4 w-4 text-muted-foreground" />
+                <span className="text-sm font-medium">Consultation Format</span>
+                {filters.consultationPreference && (
+                  <Badge variant="outline" className="text-xs">
+                    {CONSULTATION_PREFERENCES.find((p) => p.value === filters.consultationPreference)?.label}
+                  </Badge>
+                )}
+              </div>
+              <ChevronDown
+                className={cn(
+                  'h-4 w-4 text-muted-foreground transition-transform',
+                  sectionsOpen.consultation && 'rotate-180'
+                )}
+              />
+            </button>
+            {sectionsOpen.consultation && (
+              <div className="mt-2 pl-6">
+                <RadioGroup
+                  value={filters.consultationPreference || ''}
+                  onValueChange={handleConsultationPreferenceChange}
+                >
+                  {CONSULTATION_PREFERENCES.map((pref) => (
+                    <div key={pref.value} className="flex min-h-[44px] items-center space-x-3">
+                      <RadioGroupItem value={pref.value} id={`consultation-${pref.value}`} />
+                      <Label
+                        htmlFor={`consultation-${pref.value}`}
+                        className="flex-1 cursor-pointer text-sm"
+                      >
+                        {pref.label}
+                      </Label>
+                    </div>
+                  ))}
+                </RadioGroup>
               </div>
             )}
           </div>

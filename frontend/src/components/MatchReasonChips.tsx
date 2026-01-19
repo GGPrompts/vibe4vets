@@ -14,7 +14,11 @@ import {
   UtensilsCrossed,
   CalendarDays,
   Leaf,
-  KeyRound,
+  FileCheck,
+  Users,
+  BadgeCheck,
+  Video,
+  Coins,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -79,9 +83,29 @@ const matchReasonStyles: Record<
     icon: Leaf,
   },
   access: {
+    bgClass: 'bg-violet-100 dark:bg-violet-900/40',
+    textClass: 'text-violet-800 dark:text-violet-300',
+    icon: Video,
+  },
+  benefits: {
+    bgClass: 'bg-indigo-100 dark:bg-indigo-900/40',
+    textClass: 'text-indigo-800 dark:text-indigo-300',
+    icon: FileCheck,
+  },
+  representative: {
     bgClass: 'bg-teal-100 dark:bg-teal-900/40',
     textClass: 'text-teal-800 dark:text-teal-300',
-    icon: KeyRound,
+    icon: Users,
+  },
+  accredited: {
+    bgClass: 'bg-sky-100 dark:bg-sky-900/40',
+    textClass: 'text-sky-800 dark:text-sky-300',
+    icon: BadgeCheck,
+  },
+  cost: {
+    bgClass: 'bg-rose-100 dark:bg-rose-900/40',
+    textClass: 'text-rose-800 dark:text-rose-300',
+    icon: Coins,
   },
 };
 
@@ -92,6 +116,7 @@ const categoryIcons: Record<string, React.ElementType> = {
   'Training program': GraduationCap,
   'Legal services': Scale,
   'Food assistance': UtensilsCrossed,
+  'Benefits consultation': FileCheck,
 };
 
 interface MatchReasonChipsProps {

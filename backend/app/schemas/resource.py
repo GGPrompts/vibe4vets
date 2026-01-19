@@ -20,6 +20,28 @@ class OrganizationNested(BaseModel):
     website: str | None = Field(None, description="Organization website URL")
 
 
+class BenefitsInfo(BaseModel):
+    """Benefits consultation information for a resource location.
+
+    Used for benefits consultation resources to indicate what
+    types of benefits they assist with and how they operate.
+    """
+
+    benefits_types: list[str] = Field(
+        default_factory=list,
+        description="Benefits types supported: disability, pension, education, healthcare, burial, survivor, vre",
+    )
+    representative_type: str | None = Field(
+        None, description="Type of representative: vso, attorney, claims_agent, cvso"
+    )
+    accredited: bool | None = Field(None, description="Whether VA-accredited")
+    walk_in_available: bool | None = Field(None, description="Walk-ins accepted")
+    appointment_required: bool | None = Field(None, description="Appointment required")
+    virtual_available: bool | None = Field(None, description="Virtual consultations offered")
+    free_service: bool | None = Field(None, description="Service is free")
+    languages: list[str] = Field(default_factory=list, description="Languages supported")
+
+
 class EligibilityInfo(BaseModel):
     """Eligibility constraints for a resource location.
 
@@ -75,6 +97,7 @@ class LocationNested(BaseModel):
     eligibility: EligibilityInfo | None = Field(None, description="Location-specific eligibility requirements")
     intake: IntakeInfo | None = Field(None, description="How to apply at this location")
     verification: VerificationInfo | None = Field(None, description="Verification status")
+    benefits: BenefitsInfo | None = Field(None, description="Benefits consultation information")
 
 
 class ResourceCreate(BaseModel):

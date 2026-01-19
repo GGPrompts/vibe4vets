@@ -52,6 +52,11 @@ CATEGORIES: dict[str, Category] = {
         name="Food Assistance",
         description="Food pantries, meal programs, and emergency food distributions",
     ),
+    "benefits": Category(
+        id="benefits",
+        name="Benefits Consultation",
+        description="VA claims assistance, benefits counseling, and accredited representatives",
+    ),
 }
 
 # Subcategories organized by parent category
@@ -180,6 +185,49 @@ SUBCATEGORIES: dict[str, Subcategory] = {
         name="Senior Food Programs",
         category_id="food",
         description="SNAP assistance and senior-focused food programs",
+    ),
+    # Benefits subcategories
+    "disability-claims": Subcategory(
+        id="disability-claims",
+        name="Disability Claims",
+        category_id="benefits",
+        description="VA disability compensation claims assistance",
+    ),
+    "pension-claims": Subcategory(
+        id="pension-claims",
+        name="Pension Claims",
+        category_id="benefits",
+        description="VA pension and aid & attendance claims",
+    ),
+    "education-benefits": Subcategory(
+        id="education-benefits",
+        name="Education Benefits",
+        category_id="benefits",
+        description="GI Bill and education benefits counseling",
+    ),
+    "healthcare-enrollment": Subcategory(
+        id="healthcare-enrollment",
+        name="Healthcare Enrollment",
+        category_id="benefits",
+        description="VA healthcare enrollment assistance",
+    ),
+    "survivor-benefits": Subcategory(
+        id="survivor-benefits",
+        name="Survivor Benefits",
+        category_id="benefits",
+        description="DIC and survivor benefit claims",
+    ),
+    "vso-services": Subcategory(
+        id="vso-services",
+        name="VSO Services",
+        category_id="benefits",
+        description="Veterans Service Organization representation",
+    ),
+    "cvso": Subcategory(
+        id="cvso",
+        name="County Veteran Service Officers",
+        category_id="benefits",
+        description="Local county-level veteran service officers",
     ),
 }
 
