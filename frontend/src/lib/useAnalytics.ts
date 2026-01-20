@@ -120,6 +120,23 @@ export function useAnalytics() {
     [track]
   );
 
+  // Save/Export tracking - using page_view type to avoid backend schema changes
+  const trackResourceSave = useCallback(
+    (resourceId: string, action: 'save' | 'unsave') => {
+      return track('page_view', `resource_${action}`, { resourceId });
+    },
+    [track]
+  );
+
+  const trackExport = useCallback(
+    (format: 'excel' | 'pdf' | 'email', resourceCount: number) => {
+      return track('page_view', `export_${format}`, {
+        searchQuery: `${resourceCount} resources`,
+      });
+    },
+    [track]
+  );
+
   return {
     track,
     trackSearch,
@@ -131,5 +148,7 @@ export function useAnalytics() {
     trackChatStart,
     trackChatMessage,
     trackPageView,
+    trackResourceSave,
+    trackExport,
   };
 }

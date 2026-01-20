@@ -7,7 +7,7 @@ from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 
-from app.api.v1 import admin, analytics, chat, feedback, resources, search
+from app.api.v1 import admin, analytics, chat, email, feedback, resources, search
 from app.config import settings
 from app.database import create_db_and_tables
 from jobs import get_scheduler, setup_jobs
@@ -140,6 +140,7 @@ app.include_router(chat.router, prefix="/api/v1/chat", tags=["chat"])
 app.include_router(admin.router, prefix="/api/v1/admin", tags=["admin"])
 app.include_router(feedback.router, prefix="/api/v1/feedback", tags=["feedback"])
 app.include_router(analytics.router, prefix="/api/v1/analytics", tags=["analytics"])
+app.include_router(email.router, prefix="/api/v1/email-resources", tags=["email"])
 
 
 @app.get("/health")

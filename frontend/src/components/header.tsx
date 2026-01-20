@@ -8,9 +8,10 @@ import { useScrollDirection } from '@/hooks/use-scroll-direction';
 import { useDebounce } from '@/hooks/use-debounce';
 import { cn } from '@/lib/utils';
 import { Input } from '@/components/ui/input';
-import { Search, Loader2 } from 'lucide-react';
+import { Search, Loader2, Heart } from 'lucide-react';
 import { SortDropdownHeader, type SortOption } from '@/components/sort-dropdown-header';
 import { useOptionalFilterContext } from '@/context/filter-context';
+import { useOptionalSavedResources } from '@/context/saved-resources-context';
 
 export function Header() {
   const pathname = usePathname();
@@ -18,6 +19,7 @@ export function Header() {
   const router = useRouter();
   const { isAtTop } = useScrollDirection();
   const filterContext = useOptionalFilterContext();
+  const savedContext = useOptionalSavedResources();
   const [isMounted, setIsMounted] = useState(false);
 
   // Avoid hydration mismatch - badge only renders after mount
@@ -169,6 +171,29 @@ export function Header() {
                 ) : (
                   resourceCount?.toLocaleString()
                 )}
+              </span>
+            )}
+          </Link>
+          <Link
+            href="/saved"
+            className={cn(
+              "text-base font-medium transition-all duration-200 flex items-center gap-2",
+              pathname === '/saved'
+                ? "text-[hsl(var(--v4v-navy))]"
+                : "text-muted-foreground hover:text-[hsl(var(--v4v-navy))]"
+            )}
+          >
+            <Heart className={cn(
+              "h-4 w-4 transition-colors",
+              isMounted && savedContext && savedContext.count > 0
+                ? "text-red-500 fill-red-500"
+                : ""
+            )} />
+            Saved
+            {/* Saved count badge */}
+            {isMounted && savedContext && savedContext.count > 0 && (
+              <span className="inline-flex items-center justify-center min-w-[1.5rem] h-5 px-1.5 text-xs font-medium rounded-full bg-red-500 text-white">
+                {savedContext.count}
               </span>
             )}
           </Link>
