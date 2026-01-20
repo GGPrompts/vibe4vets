@@ -84,21 +84,25 @@ class HUDVASHConnector(BaseConnector):
     # Data file paths relative to project root
     MULTIYEAR_DATA_PATH = "data/reference/HUD_VASH_All_Years.json"
     SINGLE_YEAR_DATA_PATH = "data/reference/HUD_VASH_2024_Awards.json"
+    PHA_CONTACTS_PATH = "data/reference/PHA_Contacts.json"
 
     def __init__(
         self,
         multiyear_path: str | Path | None = None,
         single_year_path: str | Path | None = None,
+        contacts_path: str | Path | None = None,
     ):
         """Initialize the connector.
 
         Args:
             multiyear_path: Path to multi-year JSON. Falls back to MULTIYEAR_DATA_PATH.
             single_year_path: Path to single-year JSON. Falls back to SINGLE_YEAR_DATA_PATH.
+            contacts_path: Path to PHA contacts JSON. Falls back to PHA_CONTACTS_PATH.
         """
         root = self._find_project_root()
         self.multiyear_path = Path(multiyear_path) if multiyear_path else root / self.MULTIYEAR_DATA_PATH
         self.single_year_path = Path(single_year_path) if single_year_path else root / self.SINGLE_YEAR_DATA_PATH
+        self.contacts_path = Path(contacts_path) if contacts_path else root / self.PHA_CONTACTS_PATH
 
     def _find_project_root(self) -> Path:
         """Find project root (directory containing 'data' folder)."""
@@ -128,6 +132,7 @@ class HUDVASHConnector(BaseConnector):
         - Comprehensive PHA coverage (421 PHAs vs 153 in 2024 alone)
         - VAMC partnership details where available
         - Historical award context
+        - PHA contact information (phone numbers) for direct veteran access
 
         Returns:
             List of normalized ResourceCandidate objects.
@@ -140,6 +145,9 @@ class HUDVASHConnector(BaseConnector):
         # Load single-year data for VAMC details
         single_year_lookup = self._load_single_year_lookup()
 
+        # Load PHA contact information
+        pha_contacts = self._load_pha_contacts()
+
         resources: list[ResourceCandidate] = []
 
         for award in multiyear_data.get("awards", []):
@@ -148,6 +156,9 @@ class HUDVASHConnector(BaseConnector):
             # Get detailed info from single-year data if available
             detailed = single_year_lookup.get(pha_code, {})
 
+            # Get PHA contact info if available
+            contact = pha_contacts.get(pha_code, {})
+
             candidate = self._parse_award(
                 pha_code=pha_code,
                 pha_name=award.get("pha_name"),
@@ -155,6 +166,7 @@ class HUDVASHConnector(BaseConnector):
                 total_vouchers=award.get("total_vouchers", 0),
                 vamc=detailed.get("vamc"),
                 budget=detailed.get("budget"),
+                contact=contact,
                 fetched_at=now,
             )
             resources.append(candidate)
@@ -185,6 +197,27 @@ class HUDVASHConnector(BaseConnector):
             if "pha_code" in award
         }
 
+    def _load_pha_contacts(self) -> dict[str, dict]:
+        """Load PHA contact information lookup.
+
+        Returns:
+            Dictionary mapping PHA code to contact info dict with keys:
+            - phone: Phone number
+            - email: Email address
+            - address: Street address
+            - city: City name
+            - state: State code
+            - zip_code: ZIP code
+        """
+        if not self.contacts_path.exists():
+            return {}
+
+        with open(self.contacts_path) as f:
+            data = json.load(f)
+
+        # The contacts JSON has format: {"contacts": {"PHA_CODE": {...}, ...}}
+        return data.get("contacts", {})
+
     def _parse_award(
         self,
         pha_code: str | None,
@@ -193,6 +226,7 @@ class HUDVASHConnector(BaseConnector):
         total_vouchers: int,
         vamc: str | None,
         budget: int | float | None,
+        contact: dict,
         fetched_at: datetime,
     ) -> ResourceCandidate:
         """Parse an award entry into a ResourceCandidate.
@@ -204,6 +238,7 @@ class HUDVASHConnector(BaseConnector):
             total_vouchers: Total vouchers across all years
             vamc: VA Medical Center with VISN prefix (from 2024 data)
             budget: Budget authority awarded (from 2024 data)
+            contact: PHA contact info dict (phone, email, address, city, state, zip)
             fetched_at: Timestamp when data was fetched
 
         Returns:
@@ -216,6 +251,21 @@ class HUDVASHConnector(BaseConnector):
         description = self._build_description(
             pha_name, vamc_name, state, awards_by_year, total_vouchers, budget
         )
+
+        # Build how_to_apply with PHA contact info if available
+        how_to_apply = self._build_how_to_apply(pha_name, contact)
+
+        # Include contact info in raw_data for reference
+        raw_data = {
+            "pha_code": pha_code,
+            "pha_name": pha_name,
+            "awards_by_year": awards_by_year,
+            "total_vouchers": total_vouchers,
+            "vamc": vamc,
+            "budget": budget,
+        }
+        if contact:
+            raw_data["contact"] = contact
 
         return ResourceCandidate(
             title=title,
@@ -231,23 +281,11 @@ class HUDVASHConnector(BaseConnector):
                 "Median Income (AMI). Veterans must have served on active duty and "
                 "received an other than dishonorable discharge."
             ),
-            how_to_apply=(
-                "Contact your local VA Medical Center and ask for the HUD-VASH "
-                "coordinator, or call the National Call Center for Homeless Veterans "
-                "at 1-877-4AID-VET (1-877-424-3838). You can also contact the local "
-                "Public Housing Authority directly to inquire about HUD-VASH vouchers."
-            ),
+            how_to_apply=how_to_apply,
             scope="local",
             state=state,
             states=[state] if state else None,
-            raw_data={
-                "pha_code": pha_code,
-                "pha_name": pha_name,
-                "awards_by_year": awards_by_year,
-                "total_vouchers": total_vouchers,
-                "vamc": vamc,
-                "budget": budget,
-            },
+            raw_data=raw_data,
             fetched_at=fetched_at,
         )
 
@@ -336,6 +374,55 @@ class HUDVASHConnector(BaseConnector):
             "HUD-VASH combines Housing Choice Voucher rental assistance with VA "
             "supportive services including case management, mental health treatment, "
             "and substance use counseling."
+        )
+
+        return " ".join(parts)
+
+    def _build_how_to_apply(self, pha_name: str | None, contact: dict) -> str:
+        """Build how to apply instructions with PHA contact info.
+
+        Args:
+            pha_name: PHA organization name
+            contact: Contact info dict with phone, email, address, city, state, zip
+
+        Returns:
+            Instructions string with contact information
+        """
+        parts = []
+
+        # If we have a phone number, make it the primary contact method
+        phone = contact.get("phone")
+        if phone:
+            pha_display = pha_name or "the Public Housing Authority"
+            parts.append(f"Contact {pha_display} directly at {phone} to apply for HUD-VASH vouchers.")
+        else:
+            parts.append(
+                "Contact your local VA Medical Center and ask for the HUD-VASH "
+                "coordinator to apply for HUD-VASH vouchers."
+            )
+
+        # Add email if available
+        email = contact.get("email")
+        if email:
+            parts.append(f"Email: {email}")
+
+        # Add address if available
+        address = contact.get("address")
+        city = contact.get("city")
+        state = contact.get("state")
+        zip_code = contact.get("zip_code")
+        if address and city:
+            addr_parts = [address, city]
+            if state:
+                addr_parts.append(state)
+            if zip_code:
+                addr_parts.append(zip_code)
+            parts.append(f"Address: {', '.join(addr_parts)}")
+
+        # Always include the national hotline as backup
+        parts.append(
+            "You can also call the National Call Center for Homeless Veterans "
+            "at 1-877-4AID-VET (1-877-424-3838)."
         )
 
         return " ".join(parts)

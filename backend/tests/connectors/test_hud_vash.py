@@ -268,6 +268,7 @@ class TestHUDVASHConnector:
             total_vouchers=250,
             vamc="V22/Greater Los Angeles HCS",
             budget=3886200,
+            contact={},  # No contact info
             fetched_at=now,
         )
 
@@ -301,6 +302,7 @@ class TestHUDVASHConnector:
             total_vouchers=10,
             vamc="V17/Dallas",
             budget=95518,
+            contact={},  # No contact info
             fetched_at=now,
         )
 
@@ -316,6 +318,7 @@ class TestHUDVASHConnector:
         )
         now = datetime.now(UTC)
 
+        # Test without contact info
         candidate = connector._parse_award(
             pha_code="FL002",
             pha_name="Housing Authority of St. Petersburg",
@@ -323,13 +326,47 @@ class TestHUDVASHConnector:
             total_vouchers=35,
             vamc="V08/Bay Pines",
             budget=424448,
+            contact={},  # No contact info
             fetched_at=now,
         )
 
         assert "1-877-4AID-VET" in candidate.how_to_apply
         assert "1-877-424-3838" in candidate.how_to_apply
         assert "HUD-VASH coordinator" in candidate.how_to_apply
-        assert "Public Housing Authority" in candidate.how_to_apply
+
+    def test_how_to_apply_with_contact(self, tmp_path):
+        """Test that how_to_apply text includes PHA phone number when available."""
+        connector = HUDVASHConnector(
+            multiyear_path=tmp_path / "multiyear.json",
+            single_year_path=tmp_path / "single.json",
+        )
+        now = datetime.now(UTC)
+
+        candidate = connector._parse_award(
+            pha_code="FL002",
+            pha_name="Housing Authority of St. Petersburg",
+            awards_by_year={"2024": 35},
+            total_vouchers=35,
+            vamc="V08/Bay Pines",
+            budget=424448,
+            contact={
+                "phone": "(727) 555-1234",
+                "email": "info@stpeteha.org",
+                "address": "123 Main St",
+                "city": "St. Petersburg",
+                "state": "FL",
+                "zip_code": "33701",
+            },
+            fetched_at=now,
+        )
+
+        # Should include the PHA phone number prominently
+        assert "(727) 555-1234" in candidate.how_to_apply
+        assert "Housing Authority of St. Petersburg" in candidate.how_to_apply
+        # Should still include national hotline as backup
+        assert "1-877-4AID-VET" in candidate.how_to_apply
+        # Contact info should be in raw_data
+        assert candidate.raw_data["contact"]["phone"] == "(727) 555-1234"
 
     def test_run_no_files(self, tmp_path):
         """Test that run() returns empty list when no data files exist."""
