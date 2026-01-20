@@ -289,18 +289,21 @@ class AnalyticsService:
         """Get daily event counts for trend chart."""
         since = datetime.utcnow() - timedelta(days=days)
 
+        # Use a column reference for date_trunc to avoid GROUP BY issues
+        date_col = func.date_trunc("day", AnalyticsEvent.created_at)
+
         results = self.session.exec(
             select(
-                func.date_trunc("day", AnalyticsEvent.created_at).label("date"),
+                date_col.label("date"),
                 AnalyticsEvent.event_type,
                 func.count(AnalyticsEvent.id).label("count"),
             )
             .where(AnalyticsEvent.created_at >= since)
             .group_by(
-                func.date_trunc("day", AnalyticsEvent.created_at),
+                date_col,
                 AnalyticsEvent.event_type,
             )
-            .order_by(func.date_trunc("day", AnalyticsEvent.created_at))
+            .order_by(date_col)
         ).all()
 
         # Group by date

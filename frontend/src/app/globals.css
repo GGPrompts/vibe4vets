@@ -717,8 +717,13 @@ html {
 }
 
 /* ---------------------------------------------------------------------------
- * CARD INTERACTIVE STATES
+ * CARD COMPONENT - Always opaque background
  * --------------------------------------------------------------------------- */
+
+/* Cards should always have solid opaque backgrounds for readability */
+[data-slot="card"] {
+  background-color: hsl(var(--card)) !important;
+}
 
 [data-slot="card"]:focus-within,
 [data-slot="card"]:active {
@@ -766,4 +771,59 @@ html {
 /* Ensure skeletons are visible against muted backgrounds */
 [data-slot="skeleton"] {
   background-color: hsl(var(--v4v-bg-surface)) !important;
+}
+
+/* ---------------------------------------------------------------------------
+ * TOOLTIP COMPONENT - Solid opaque background
+ * --------------------------------------------------------------------------- */
+
+/* Tooltips need solid backgrounds for readability */
+[data-slot="tooltip-content"] {
+  background-color: hsl(var(--v4v-navy)) !important;
+  color: hsl(0 0% 100%) !important;
+}
+
+/* Tooltip arrow should match */
+[data-slot="tooltip-content"] svg {
+  fill: hsl(var(--v4v-navy)) !important;
+}
+
+/* ---------------------------------------------------------------------------
+ * BUTTON VARIANTS - Ensure solid backgrounds
+ * --------------------------------------------------------------------------- */
+
+/* Destructive button (Reject) - solid red background */
+[data-slot="button"][data-variant="destructive"] {
+  background-color: hsl(0 65% 50%) !important;
+  color: hsl(0 0% 100%) !important;
+}
+
+[data-slot="button"][data-variant="destructive"]:hover {
+  background-color: hsl(0 65% 45%) !important;
+}
+
+/* Primary button (Approve) - solid green background for admin actions */
+.admin-approve-btn,
+[data-slot="button"][data-variant="default"] {
+  background-color: hsl(142 50% 45%) !important;
+  color: hsl(0 0% 100%) !important;
+}
+
+.admin-approve-btn:hover,
+[data-slot="button"][data-variant="default"]:hover {
+  background-color: hsl(142 50% 40%) !important;
+}
+
+/* ---------------------------------------------------------------------------
+ * SHEET/SIDEBAR COMPONENTS - Solid opaque background
+ * --------------------------------------------------------------------------- */
+
+/* Sheet content must have solid background for readability */
+[data-slot="sheet-content"] {
+  background-color: hsl(var(--card)) !important;
+}
+
+/* Sheet overlay - semi-transparent backdrop */
+[data-slot="sheet-overlay"] {
+  background-color: hsl(var(--v4v-navy) / 0.5) !important;
 }

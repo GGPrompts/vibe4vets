@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef, useCallback } from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -61,6 +61,7 @@ export function FeedbackAdminTab() {
   const [activeTab, setActiveTab] = useState<FeedbackStatus | 'all'>('pending');
   const [stats, setStats] = useState<FeedbackStats | null>(null);
   const [statsLoading, setStatsLoading] = useState(true);
+  const [isRefreshing, setIsRefreshing] = useState(false);
 
   // Review dialog state
   const [selectedItem, setSelectedItem] = useState<FeedbackAdminResponse | null>(null);
@@ -70,21 +71,29 @@ export function FeedbackAdminTab() {
   const [reviewerNotes, setReviewerNotes] = useState('');
   const [submitting, setSubmitting] = useState(false);
 
-  const fetchFeedback = async (status: FeedbackStatus | 'all') => {
-    setLoading(true);
+  const initialLoadDone = useRef(false);
+
+  const fetchFeedback = useCallback(async (status: FeedbackStatus | 'all', isInitialLoad = false) => {
+    if (isInitialLoad) {
+      setLoading(true);
+    } else {
+      setIsRefreshing(true);
+    }
     try {
       const response = await api.admin.getFeedback({
         status: status === 'all' ? undefined : status,
       });
       setItems(response.items);
+      setError(null);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to load feedback');
     } finally {
       setLoading(false);
+      setIsRefreshing(false);
     }
-  };
+  }, []);
 
-  const fetchStats = async () => {
+  const fetchStats = useCallback(async () => {
     try {
       const data = await api.admin.getFeedbackStats();
       setStats(data);
@@ -93,15 +102,20 @@ export function FeedbackAdminTab() {
     } finally {
       setStatsLoading(false);
     }
-  };
+  }, []);
 
   useEffect(() => {
-    fetchFeedback(activeTab);
-  }, [activeTab]);
+    if (!initialLoadDone.current) {
+      fetchFeedback(activeTab, true);
+      initialLoadDone.current = true;
+    } else {
+      fetchFeedback(activeTab, false);
+    }
+  }, [activeTab, fetchFeedback]);
 
   useEffect(() => {
     fetchStats();
-  }, []);
+  }, [fetchStats]);
 
   const openReviewDialog = (item: FeedbackAdminResponse) => {
     setSelectedItem(item);
@@ -180,7 +194,7 @@ export function FeedbackAdminTab() {
               No feedback reports
             </p>
           ) : (
-            <Table>
+            <Table className={`transition-opacity duration-150 ${isRefreshing ? 'opacity-60' : 'opacity-100'}`}>
               <TableHeader>
                 <TableRow>
                   <TableHead>Resource</TableHead>

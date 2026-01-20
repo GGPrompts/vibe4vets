@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef, useCallback } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Badge } from '@/components/ui/badge';
@@ -26,77 +26,60 @@ import api, { type AnalyticsDashboardResponse } from '@/lib/api';
 export default function AnalyticsPage() {
   const [dashboard, setDashboard] = useState<AnalyticsDashboardResponse | null>(null);
   const [loading, setLoading] = useState(true);
+  const [isRefreshing, setIsRefreshing] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [days, setDays] = useState(30);
+  const initialLoadDone = useRef(false);
+
+  const fetchAnalytics = useCallback(async (daysParam: number, isInitialLoad = false) => {
+    if (isInitialLoad) {
+      setLoading(true);
+    } else {
+      setIsRefreshing(true);
+    }
+    setError(null);
+    try {
+      const data = await api.analytics.getDashboard(daysParam);
+      setDashboard(data);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Failed to load analytics');
+    } finally {
+      setLoading(false);
+      setIsRefreshing(false);
+    }
+  }, []);
 
   useEffect(() => {
-    async function fetchAnalytics() {
-      setLoading(true);
-      setError(null);
-      try {
-        const data = await api.analytics.getDashboard(days);
-        setDashboard(data);
-      } catch (err) {
-        setError(err instanceof Error ? err.message : 'Failed to load analytics');
-      } finally {
-        setLoading(false);
-      }
+    if (!initialLoadDone.current) {
+      fetchAnalytics(days, true);
+      initialLoadDone.current = true;
+    } else {
+      fetchAnalytics(days, false);
     }
+  }, [days, fetchAnalytics]);
 
-    fetchAnalytics();
-  }, [days]);
+  const summary = dashboard?.summary;
+  const popular_searches = dashboard?.popular_searches ?? [];
+  const popular_categories = dashboard?.popular_categories ?? [];
+  const popular_states = dashboard?.popular_states ?? [];
+  const popular_resources = dashboard?.popular_resources ?? [];
+  const wizard_funnel = dashboard?.wizard_funnel;
 
-  if (loading) {
+  // Show error state
+  if (error && !dashboard) {
     return (
-      <div className="p-6">
-        <div className="mb-6 flex items-center justify-between">
-          <Skeleton className="h-8 w-48" />
-          <Skeleton className="h-10 w-32" />
-        </div>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {[...Array(4)].map((_, i) => (
-            <Card key={i}>
-              <CardHeader className="pb-2">
-                <Skeleton className="h-4 w-24" />
-              </CardHeader>
-              <CardContent>
-                <Skeleton className="h-8 w-16" />
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-        <div className="mt-6 grid gap-6 lg:grid-cols-2">
-          {[...Array(4)].map((_, i) => (
-            <Card key={i}>
-              <CardHeader>
-                <Skeleton className="h-5 w-32" />
-              </CardHeader>
-              <CardContent className="space-y-2">
-                {[...Array(5)].map((_, j) => (
-                  <div key={j} className="flex justify-between">
-                    <Skeleton className="h-4 w-32" />
-                    <Skeleton className="h-4 w-12" />
-                  </div>
-                ))}
-              </CardContent>
-            </Card>
-          ))}
+      <div className="p-6 lg:p-8">
+        <div className="mx-auto max-w-6xl">
+          <div className="rounded-lg border border-destructive/50 bg-destructive/10 p-4 text-center">
+            <p className="text-destructive">{error}</p>
+          </div>
         </div>
       </div>
     );
   }
 
-  if (error || !dashboard) {
-    return (
-      <div className="p-6">
-        <div className="rounded-lg border border-destructive/50 bg-destructive/10 p-4 text-center">
-          <p className="text-destructive">{error || 'Failed to load analytics'}</p>
-        </div>
-      </div>
-    );
-  }
-
-  const { summary, popular_searches, popular_categories, popular_states, popular_resources, wizard_funnel } = dashboard;
+  const showSkeleton = loading && !dashboard;
+  const contentOpacity = isRefreshing ? 'opacity-60' : 'opacity-100';
 
   return (
     <div className="p-6 lg:p-8">
@@ -128,7 +111,7 @@ export default function AnalyticsPage() {
       </div>
 
       {/* Summary Stats */}
-      <div className="mb-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <div className={`mb-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4 transition-opacity duration-150 ${contentOpacity}`}>
         <Card className="border-border/50 bg-card/80 backdrop-blur-sm hover:shadow-md transition-shadow duration-200">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
             <CardTitle className="text-sm font-medium">Total Searches</CardTitle>
@@ -137,7 +120,11 @@ export default function AnalyticsPage() {
             </div>
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-bold">{summary.total_searches.toLocaleString()}</div>
+            {showSkeleton ? (
+              <Skeleton className="h-9 w-20" />
+            ) : (
+              <div className="text-3xl font-bold">{summary?.total_searches.toLocaleString() ?? 0}</div>
+            )}
           </CardContent>
         </Card>
 
@@ -149,7 +136,11 @@ export default function AnalyticsPage() {
             </div>
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-bold">{summary.total_resource_views.toLocaleString()}</div>
+            {showSkeleton ? (
+              <Skeleton className="h-9 w-20" />
+            ) : (
+              <div className="text-3xl font-bold">{summary?.total_resource_views.toLocaleString() ?? 0}</div>
+            )}
           </CardContent>
         </Card>
 
@@ -161,10 +152,19 @@ export default function AnalyticsPage() {
             </div>
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-bold">{summary.chat_sessions.toLocaleString()}</div>
-            <p className="text-xs text-muted-foreground">
-              {summary.chat_messages.toLocaleString()} messages
-            </p>
+            {showSkeleton ? (
+              <>
+                <Skeleton className="h-9 w-20" />
+                <Skeleton className="mt-1 h-4 w-24" />
+              </>
+            ) : (
+              <>
+                <div className="text-3xl font-bold">{summary?.chat_sessions.toLocaleString() ?? 0}</div>
+                <p className="text-xs text-muted-foreground">
+                  {summary?.chat_messages.toLocaleString() ?? 0} messages
+                </p>
+              </>
+            )}
           </CardContent>
         </Card>
 
@@ -176,13 +176,17 @@ export default function AnalyticsPage() {
             </div>
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-bold">{summary.filter_usage.toLocaleString()}</div>
+            {showSkeleton ? (
+              <Skeleton className="h-9 w-20" />
+            ) : (
+              <div className="text-3xl font-bold">{summary?.filter_usage.toLocaleString() ?? 0}</div>
+            )}
           </CardContent>
         </Card>
       </div>
 
       {/* Wizard Funnel */}
-      <Card className="mb-8 border-border/50 bg-card/80 backdrop-blur-sm">
+      <Card className={`mb-8 border-border/50 bg-card/80 backdrop-blur-sm transition-opacity duration-150 ${contentOpacity}`}>
         <CardHeader>
           <CardTitle className="flex items-center gap-2 font-display">
             <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[hsl(var(--v4v-gold)/0.15)]">
@@ -195,27 +199,39 @@ export default function AnalyticsPage() {
           <div className="flex flex-wrap items-center gap-8">
             <div className="rounded-lg bg-muted/50 p-4">
               <p className="text-sm text-muted-foreground">Started</p>
-              <p className="text-3xl font-bold">{wizard_funnel.starts.toLocaleString()}</p>
+              {showSkeleton ? (
+                <Skeleton className="h-9 w-16" />
+              ) : (
+                <p className="text-3xl font-bold">{wizard_funnel?.starts.toLocaleString() ?? 0}</p>
+              )}
             </div>
             <TrendingUp className="h-6 w-6 text-[hsl(var(--v4v-gold))]" />
             <div className="rounded-lg bg-muted/50 p-4">
               <p className="text-sm text-muted-foreground">Completed</p>
-              <p className="text-3xl font-bold">{wizard_funnel.completions.toLocaleString()}</p>
+              {showSkeleton ? (
+                <Skeleton className="h-9 w-16" />
+              ) : (
+                <p className="text-3xl font-bold">{wizard_funnel?.completions.toLocaleString() ?? 0}</p>
+              )}
             </div>
             <div className="ml-auto">
-              <Badge
-                variant={wizard_funnel.completion_rate >= 50 ? 'default' : 'secondary'}
-                className={wizard_funnel.completion_rate >= 50 ? 'bg-green-600 hover:bg-green-700' : ''}
-              >
-                {wizard_funnel.completion_rate}% completion rate
-              </Badge>
+              {showSkeleton ? (
+                <Skeleton className="h-6 w-32" />
+              ) : (
+                <Badge
+                  variant={(wizard_funnel?.completion_rate ?? 0) >= 50 ? 'default' : 'secondary'}
+                  className={(wizard_funnel?.completion_rate ?? 0) >= 50 ? 'bg-green-600 hover:bg-green-700' : ''}
+                >
+                  {wizard_funnel?.completion_rate ?? 0}% completion rate
+                </Badge>
+              )}
             </div>
           </div>
         </CardContent>
       </Card>
 
       {/* Detail Grids */}
-      <div className="grid gap-6 lg:grid-cols-2">
+      <div className={`grid gap-6 lg:grid-cols-2 transition-opacity duration-150 ${contentOpacity}`}>
         {/* Popular Searches */}
         <Card className="border-border/50 bg-card/80 backdrop-blur-sm">
           <CardHeader>
@@ -227,7 +243,19 @@ export default function AnalyticsPage() {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            {popular_searches.length === 0 ? (
+            {showSkeleton ? (
+              <div className="space-y-2">
+                {[...Array(5)].map((_, i) => (
+                  <div key={i} className="flex items-center justify-between rounded-lg border px-3 py-2">
+                    <div className="flex items-center gap-3">
+                      <Skeleton className="h-6 w-6 rounded-full" />
+                      <Skeleton className="h-4 w-24" />
+                    </div>
+                    <Skeleton className="h-5 w-10" />
+                  </div>
+                ))}
+              </div>
+            ) : popular_searches.length === 0 ? (
               <p className="text-sm text-muted-foreground">No search data yet</p>
             ) : (
               <ul className="space-y-2">
@@ -261,7 +289,16 @@ export default function AnalyticsPage() {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            {popular_categories.length === 0 ? (
+            {showSkeleton ? (
+              <div className="space-y-2">
+                {[...Array(4)].map((_, i) => (
+                  <div key={i} className="flex items-center justify-between rounded-lg border px-3 py-2">
+                    <Skeleton className="h-4 w-24" />
+                    <Skeleton className="h-5 w-10" />
+                  </div>
+                ))}
+              </div>
+            ) : popular_categories.length === 0 ? (
               <p className="text-sm text-muted-foreground">No category data yet</p>
             ) : (
               <ul className="space-y-2">
@@ -290,7 +327,16 @@ export default function AnalyticsPage() {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            {popular_states.length === 0 ? (
+            {showSkeleton ? (
+              <div className="space-y-2">
+                {[...Array(5)].map((_, i) => (
+                  <div key={i} className="flex items-center justify-between rounded-lg border px-3 py-2">
+                    <Skeleton className="h-4 w-16" />
+                    <Skeleton className="h-5 w-10" />
+                  </div>
+                ))}
+              </div>
+            ) : popular_states.length === 0 ? (
               <p className="text-sm text-muted-foreground">No state data yet</p>
             ) : (
               <ul className="space-y-2">
@@ -319,7 +365,19 @@ export default function AnalyticsPage() {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            {popular_resources.length === 0 ? (
+            {showSkeleton ? (
+              <div className="space-y-2">
+                {[...Array(5)].map((_, i) => (
+                  <div key={i} className="flex items-center justify-between rounded-lg border px-3 py-2">
+                    <div className="flex items-center gap-3">
+                      <Skeleton className="h-6 w-6 rounded-full" />
+                      <Skeleton className="h-4 w-32" />
+                    </div>
+                    <Skeleton className="h-5 w-10" />
+                  </div>
+                ))}
+              </div>
+            ) : popular_resources.length === 0 ? (
               <p className="text-sm text-muted-foreground">No resource view data yet</p>
             ) : (
               <ul className="space-y-2">

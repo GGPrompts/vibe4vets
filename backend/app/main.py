@@ -3,8 +3,9 @@
 from collections.abc import AsyncGenerator
 from contextlib import asynccontextmanager
 
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
 
 from app.api.v1 import admin, analytics, chat, feedback, resources, search
 from app.config import settings
@@ -145,3 +146,22 @@ app.include_router(analytics.router, prefix="/api/v1/analytics", tags=["analytic
 async def health_check() -> dict[str, str]:
     """Health check endpoint."""
     return {"status": "healthy"}
+
+
+@app.exception_handler(Exception)
+async def global_exception_handler(request: Request, exc: Exception) -> JSONResponse:
+    """Global exception handler that preserves CORS headers on errors."""
+    # Get the origin from the request
+    origin = request.headers.get("origin", "")
+
+    # Check if origin is allowed
+    headers = {}
+    if origin in settings.cors_origins or "*" in settings.cors_origins:
+        headers["Access-Control-Allow-Origin"] = origin
+        headers["Access-Control-Allow-Credentials"] = "true"
+
+    return JSONResponse(
+        status_code=500,
+        content={"detail": str(exc)},
+        headers=headers,
+    )

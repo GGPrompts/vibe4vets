@@ -109,7 +109,8 @@ You are validating a veteran resource to ensure the information is accurate and 
 ### Auto-Reject (invalid, don't publish)
 - Website is dead (404, domain expired)
 - Organization clearly shut down
-- Phone number is disconnected
+- Phone number format is invalid (wrong digit count, obvious placeholder like 555-xxxx)
+- Web search shows number is reported as disconnected/out of service
 - Source is very old (> 2 years) with no other verification
 
 ## Notes

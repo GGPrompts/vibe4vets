@@ -37,7 +37,6 @@ import { Input } from '@/components/ui/input';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Separator } from '@/components/ui/separator';
-import { ScrollArea } from '@/components/ui/scroll-area';
 import {
   Globe,
   Phone,
@@ -65,27 +64,43 @@ export default function AdminPage() {
   const [statsLoading, setStatsLoading] = useState(true);
   const [feedbackStats, setFeedbackStats] = useState<FeedbackStats | null>(null);
   const [mainTab, setMainTab] = useState<'reviews' | 'feedback'>('reviews');
+  const [isRefreshing, setIsRefreshing] = useState(false);
 
   // Ref to track the current fetch request and cancel stale ones
   const fetchAbortControllerRef = useRef<AbortController | null>(null);
+  const initialLoadDone = useRef(false);
 
-  const fetchQueue = async (status: string) => {
-    setLoading(true);
+  const fetchQueue = useCallback(async (status: string, isInitialLoad = false) => {
+    if (isInitialLoad) {
+      setLoading(true);
+    } else {
+      setIsRefreshing(true);
+    }
     try {
       const response = await api.admin.getReviewQueue({
         status: status === 'all' ? undefined : status,
       });
       setItems(response.items);
+      setError(null);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to load queue');
     } finally {
       setLoading(false);
+      setIsRefreshing(false);
     }
-  };
+  }, []);
 
+  // Handle tab changes
   useEffect(() => {
-    fetchQueue(activeTab);
-  }, [activeTab]);
+    if (!initialLoadDone.current) {
+      // Initial load
+      fetchQueue(activeTab, true);
+      initialLoadDone.current = true;
+    } else {
+      // Subsequent tab changes - no skeleton
+      fetchQueue(activeTab, false);
+    }
+  }, [activeTab, fetchQueue]);
 
   useEffect(() => {
     const fetchStats = async () => {
@@ -308,7 +323,7 @@ export default function AdminPage() {
                       No items in queue
                     </p>
                   ) : (
-                    <div className="overflow-x-auto rounded-md border">
+                    <div className={`overflow-x-auto rounded-md border transition-opacity duration-150 ${isRefreshing ? 'opacity-60' : 'opacity-100'}`}>
                       <TooltipProvider>
                         <Table>
                           <TableHeader>
@@ -434,8 +449,8 @@ export default function AdminPage() {
 
         {/* Review Sheet (Side Panel) */}
         <Sheet open={sheetOpen} onOpenChange={(open) => !open && closeSheet()}>
-          <SheetContent className="w-full sm:max-w-lg overflow-y-auto">
-            <SheetHeader>
+          <SheetContent className="w-full sm:max-w-lg flex flex-col p-0">
+            <SheetHeader className="p-6 pb-4">
               <SheetTitle className="flex items-center gap-2">
                 {action === 'approve' ? (
                   <Badge className="bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-300">
@@ -451,8 +466,8 @@ export default function AdminPage() {
               </SheetDescription>
             </SheetHeader>
 
-            <ScrollArea className="h-[calc(100vh-220px)] pr-4">
-              <div className="space-y-6 py-4">
+            <div className="flex-1 min-h-0 overflow-y-auto px-6 pb-4">
+              <div className="space-y-6 break-words">
                 {/* Resource Details */}
                 {resourceLoading ? (
                   <div className="space-y-4">
@@ -629,9 +644,9 @@ export default function AdminPage() {
                   </div>
                 )}
               </div>
-            </ScrollArea>
+            </div>
 
-            <SheetFooter className="mt-4 flex gap-2 sm:justify-between">
+            <SheetFooter className="border-t p-6 flex gap-2 sm:justify-between bg-card">
               <Button variant="outline" onClick={closeSheet}>
                 Cancel
               </Button>
