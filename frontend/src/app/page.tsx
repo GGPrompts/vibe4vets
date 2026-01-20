@@ -109,6 +109,28 @@ export default function Home() {
               <span className="text-[hsl(var(--v4v-gold))]">by State</span>
             </h1>
 
+            {/* How It Works - Steps below headline, above map */}
+            <div className="animate-fade-in-up delay-75 mx-auto mt-8 max-w-4xl" style={{ opacity: 0 }}>
+              <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center sm:gap-8 lg:gap-12">
+                {steps.map((step, index) => (
+                  <div key={step.number} className="flex items-center gap-3 sm:gap-4">
+                    <div className="flex items-center gap-3">
+                      <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[hsl(var(--v4v-gold))] font-display text-base font-bold text-[hsl(var(--v4v-navy))]">
+                        {step.number}
+                      </span>
+                      <div className="text-left">
+                        <span className="font-medium text-white">{step.title}</span>
+                        <p className="text-xs text-white/60 sm:text-sm">{step.description}</p>
+                      </div>
+                    </div>
+                    {index < steps.length - 1 && (
+                      <div className="hidden h-px w-8 bg-white/20 lg:block" />
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+
             {/* Interactive US Map */}
             <div className="animate-fade-in-up delay-100 mx-auto mt-8 max-w-4xl" style={{ opacity: 0 }}>
               <div className="hero-search-container rounded-xl p-4">
@@ -122,30 +144,6 @@ export default function Home() {
                 Click a state to explore resources in your area
               </p>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* How It Works - Compact steps */}
-      <section className="border-b border-border bg-muted/30 py-8">
-        <div className="mx-auto max-w-6xl px-6">
-          <div className="flex flex-col items-center gap-6 lg:flex-row lg:justify-between">
-            {steps.map((step, index) => (
-              <div key={step.number} className="flex items-center gap-4">
-                <div className="flex items-center gap-3">
-                  <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[hsl(var(--v4v-gold)/0.15)] font-display text-sm font-semibold text-[hsl(var(--v4v-gold-dark))]">
-                    {step.number}
-                  </span>
-                  <div>
-                    <span className="font-medium text-foreground">{step.title}</span>
-                    <p className="text-sm text-muted-foreground">{step.description}</p>
-                  </div>
-                </div>
-                {index < steps.length - 1 && (
-                  <div className="hidden h-px w-12 bg-border lg:block" />
-                )}
-              </div>
-            ))}
           </div>
         </div>
       </section>
