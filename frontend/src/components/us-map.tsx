@@ -66,7 +66,12 @@ interface TooltipState {
 
 interface USMapProps {
   className?: string;
+  /** @deprecated Use selectedStates + onToggleState for multi-select behavior */
   onStateSelect?: (stateAbbr: string) => void;
+  /** Array of currently selected state abbreviations (e.g., ['VA', 'NC']) */
+  selectedStates?: string[];
+  /** Toggle handler for multi-select mode */
+  onToggleState?: (stateAbbr: string) => void;
 }
 
 interface GeoType {
@@ -82,12 +87,14 @@ function MapGeographies({
   onMouseLeave,
   onSelectState,
   geographies,
+  selectedStates = [],
 }: {
   onLoaded: () => void;
   onMouseEnter: (geo: GeoType, event: React.MouseEvent) => void;
   onMouseLeave: () => void;
   onSelectState: (stateAbbr: string) => void;
   geographies: GeoType[];
+  selectedStates?: string[];
 }) {
   const didNotifyLoaded = useRef(false);
 
@@ -100,6 +107,8 @@ function MapGeographies({
 
   return geographies.map((geo) => {
     const stateAbbr = STATE_FIPS_TO_ABBR[geo.id];
+    const isSelected = stateAbbr && selectedStates.includes(stateAbbr);
+
     return (
       <Geography
         key={geo.rsmKey}
@@ -116,19 +125,20 @@ function MapGeographies({
             }
           }
         }}
-        aria-label={stateAbbr ? STATE_NAMES[stateAbbr] : 'Unknown state'}
+        aria-label={stateAbbr ? `${STATE_NAMES[stateAbbr]}${isSelected ? ' (selected)' : ''}` : 'Unknown state'}
+        aria-pressed={isSelected}
         role="button"
         style={{
           default: {
-            fill: 'hsl(222, 60%, 15%)',
-            stroke: 'hsl(220, 15%, 70%)',
-            strokeWidth: 0.5,
+            fill: isSelected ? 'hsl(45, 70%, 47%)' : 'hsl(222, 60%, 15%)',
+            stroke: isSelected ? 'hsl(45, 70%, 35%)' : 'hsl(220, 15%, 70%)',
+            strokeWidth: isSelected ? 1 : 0.5,
             outline: 'none',
             cursor: 'pointer',
-            transition: 'fill 0.2s ease',
+            transition: 'fill 0.2s ease, stroke 0.2s ease, stroke-width 0.2s ease',
           },
           hover: {
-            fill: 'hsl(45, 70%, 47%)',
+            fill: isSelected ? 'hsl(45, 70%, 55%)' : 'hsl(45, 70%, 47%)',
             stroke: 'hsl(45, 70%, 35%)',
             strokeWidth: 1,
             outline: 'none',
@@ -146,20 +156,30 @@ function MapGeographies({
   });
 }
 
-function USMapComponent({ className = '', onStateSelect }: USMapProps) {
+function USMapComponent({
+  className = '',
+  onStateSelect,
+  selectedStates = [],
+  onToggleState
+}: USMapProps) {
   const router = useRouter();
   const [hoveredState, setHoveredState] = useState<TooltipState | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
   const handleStateClick = useCallback(
     (stateAbbr: string) => {
-      if (onStateSelect) {
+      // Multi-select mode: use toggle handler
+      if (onToggleState) {
+        onToggleState(stateAbbr);
+      }
+      // Legacy mode: use onStateSelect or navigate
+      else if (onStateSelect) {
         onStateSelect(stateAbbr);
       } else {
         router.push(`/search?state=${stateAbbr}`);
       }
     },
-    [router, onStateSelect]
+    [router, onStateSelect, onToggleState]
   );
 
   const handleDropdownChange = useCallback(
@@ -241,6 +261,7 @@ function USMapComponent({ className = '', onStateSelect }: USMapProps) {
                   onMouseEnter={handleMouseEnter}
                   onMouseLeave={handleMouseLeave}
                   onSelectState={handleStateClick}
+                  selectedStates={selectedStates}
                 />
               )}
             </Geographies>
