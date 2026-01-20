@@ -87,7 +87,36 @@ export default function Home() {
 
   return (
     <main className="min-h-screen pt-14">
-      {/* Hero Section - Navy background */}
+      {/* How It Works - Light background, first thing after header */}
+      <section className="border-b border-border bg-background py-10 lg:py-12">
+        <div className="mx-auto max-w-6xl px-6">
+          <div className="text-center mb-8">
+            <h2 className="font-display text-2xl font-semibold text-foreground sm:text-3xl">
+              How It Works
+            </h2>
+          </div>
+          <div className="flex flex-col items-center gap-6 sm:flex-row sm:justify-center sm:gap-8 lg:gap-16">
+            {steps.map((step, index) => (
+              <div key={step.number} className="flex items-center gap-4">
+                <div className="flex items-center gap-4">
+                  <span className="flex h-12 w-12 items-center justify-center rounded-full bg-[hsl(var(--v4v-gold))] font-display text-lg font-bold text-[hsl(var(--v4v-navy))]">
+                    {step.number}
+                  </span>
+                  <div className="text-left">
+                    <span className="font-medium text-foreground">{step.title}</span>
+                    <p className="text-sm text-muted-foreground max-w-[200px]">{step.description}</p>
+                  </div>
+                </div>
+                {index < steps.length - 1 && (
+                  <div className="hidden h-px w-12 bg-border lg:block" />
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Map Section - Navy background */}
       <section className="relative overflow-hidden bg-v4v-navy text-white">
         {/* Background gradient and pattern */}
         <div className="hero-gradient absolute inset-0" />
@@ -100,7 +129,7 @@ export default function Home() {
 
         <div className="relative mx-auto max-w-6xl px-6 py-12 lg:py-16">
           <div className="text-center">
-            {/* Main headline - single line */}
+            {/* Main headline */}
             <h1
               className="animate-fade-in-up font-display text-3xl font-semibold sm:text-4xl lg:text-5xl"
               style={{ opacity: 0 }}
@@ -108,28 +137,6 @@ export default function Home() {
               Find Veteran Resources{' '}
               <span className="text-[hsl(var(--v4v-gold))]">by State</span>
             </h1>
-
-            {/* How It Works - Steps below headline, above map */}
-            <div className="animate-fade-in-up delay-75 mx-auto mt-8 max-w-4xl" style={{ opacity: 0 }}>
-              <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center sm:gap-8 lg:gap-12">
-                {steps.map((step, index) => (
-                  <div key={step.number} className="flex items-center gap-3 sm:gap-4">
-                    <div className="flex items-center gap-3">
-                      <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[hsl(var(--v4v-gold))] font-display text-base font-bold text-[hsl(var(--v4v-navy))]">
-                        {step.number}
-                      </span>
-                      <div className="text-left">
-                        <span className="font-medium text-white">{step.title}</span>
-                        <p className="text-xs text-white/60 sm:text-sm">{step.description}</p>
-                      </div>
-                    </div>
-                    {index < steps.length - 1 && (
-                      <div className="hidden h-px w-8 bg-white/20 lg:block" />
-                    )}
-                  </div>
-                ))}
-              </div>
-            </div>
 
             {/* Interactive US Map */}
             <div className="animate-fade-in-up delay-100 mx-auto mt-8 max-w-4xl" style={{ opacity: 0 }}>
