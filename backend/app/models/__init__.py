@@ -11,6 +11,12 @@ from app.models.organization import Organization
 from app.models.program import Program, ProgramStatus, ProgramType
 from app.models.resource import Resource, ResourceScope, ResourceStatus
 from app.models.review import ChangeLog, ChangeType, ReviewState, ReviewStatus
+from app.models.partner import (
+    Partner,
+    PartnerAPILog,
+    PartnerSubmission,
+    PartnerTier,
+)
 from app.models.source import (
     HealthStatus,
     Source,
@@ -29,6 +35,10 @@ __all__ = [
     "FeedbackStatus",
     "Organization",
     "Location",
+    "Partner",
+    "PartnerAPILog",
+    "PartnerSubmission",
+    "PartnerTier",
     "Program",
     "ProgramStatus",
     "ProgramType",

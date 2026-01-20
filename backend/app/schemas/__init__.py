@@ -16,6 +16,16 @@ from app.schemas.health import (
     SourceHealthListResponse,
 )
 from app.schemas.organization import OrganizationCreate, OrganizationRead
+from app.schemas.partner import (
+    PartnerCreate,
+    PartnerRead,
+    PartnerResourceCreate,
+    PartnerResourceList,
+    PartnerResourceRead,
+    PartnerResourceUpdate,
+    PartnerSubmissionRead,
+    PartnerWithKey,
+)
 from app.schemas.resource import (
     ResourceCreate,
     ResourceList,
@@ -39,6 +49,15 @@ __all__ = [
     "JobRunSummary",
     "SourceHealthDetail",
     "SourceHealthListResponse",
+    # Partner schemas
+    "PartnerCreate",
+    "PartnerRead",
+    "PartnerResourceCreate",
+    "PartnerResourceList",
+    "PartnerResourceRead",
+    "PartnerResourceUpdate",
+    "PartnerSubmissionRead",
+    "PartnerWithKey",
     # Resource schemas
     "ResourceCreate",
     "ResourceRead",

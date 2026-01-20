@@ -16,6 +16,7 @@ load_dotenv(env_path)
 
 # Import all models so SQLModel.metadata is populated
 from app.models import Location, Organization, Resource, Source, SourceRecord  # noqa: F401
+from app.models.partner import Partner, PartnerAPILog, PartnerSubmission  # noqa: F401
 from app.models.review import ChangeLog, ReviewState  # noqa: F401
 
 # Alembic Config object
