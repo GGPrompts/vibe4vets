@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback, useRef } from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import {
@@ -66,6 +66,9 @@ export default function AdminPage() {
   const [feedbackStats, setFeedbackStats] = useState<FeedbackStats | null>(null);
   const [mainTab, setMainTab] = useState<'reviews' | 'feedback'>('reviews');
 
+  // Ref to track the current fetch request and cancel stale ones
+  const fetchAbortControllerRef = useRef<AbortController | null>(null);
+
   const fetchQueue = async (status: string) => {
     setLoading(true);
     try {
@@ -124,15 +127,35 @@ export default function AdminPage() {
   };
 
   // Fetch resource details when opening the review sheet
+  // Uses AbortController to cancel pending requests when a new one starts,
+  // preventing race conditions where a slow response overwrites newer data.
   const fetchResourceDetails = useCallback(async (resourceId: string) => {
+    // Cancel any pending fetch before starting a new one
+    if (fetchAbortControllerRef.current) {
+      fetchAbortControllerRef.current.abort();
+    }
+
+    const abortController = new AbortController();
+    fetchAbortControllerRef.current = abortController;
+
     setResourceLoading(true);
     try {
       const resource = await api.resources.get(resourceId);
-      setSelectedResource(resource);
+
+      // Only update state if this request wasn't aborted
+      if (!abortController.signal.aborted) {
+        setSelectedResource(resource);
+      }
     } catch {
-      setSelectedResource(null);
+      // Only update state if this request wasn't aborted
+      if (!abortController.signal.aborted) {
+        setSelectedResource(null);
+      }
     } finally {
-      setResourceLoading(false);
+      // Only update loading state if this request wasn't aborted
+      if (!abortController.signal.aborted) {
+        setResourceLoading(false);
+      }
     }
   }, []);
 
@@ -147,6 +170,11 @@ export default function AdminPage() {
   };
 
   const closeSheet = () => {
+    // Cancel any pending resource fetch
+    if (fetchAbortControllerRef.current) {
+      fetchAbortControllerRef.current.abort();
+      fetchAbortControllerRef.current = null;
+    }
     setSheetOpen(false);
     setSelectedItem(null);
     setSelectedResource(null);
