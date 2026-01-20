@@ -68,12 +68,16 @@ function CardInner({
   explanations,
   showBookmark = false,
   renderBookmark = false,
+  /** When true, phone numbers render as plain text (to avoid nested <a> in <Link>) */
+  disablePhoneLinks = false,
 }: {
   resource: Resource;
   explanations?: MatchExplanation[];
   showBookmark?: boolean;
   /** Actually render the bookmark button inside the card (for modal/selectable variants) */
   renderBookmark?: boolean;
+  /** When true, phone numbers render as plain text (to avoid nested <a> in <Link>) */
+  disablePhoneLinks?: boolean;
 }) {
   const primaryCategory = resource.categories[0] || 'employment';
   const CategoryIcon = categoryIcons[primaryCategory] || Briefcase;
@@ -231,14 +235,21 @@ function CardInner({
             <p className="mb-2 text-xs font-semibold text-muted-foreground">Local Provider</p>
             <div className="space-y-1">
               {resource.location.intake?.phone && (
-                <a
-                  href={`tel:${resource.location.intake.phone}`}
-                  className="flex items-center gap-2 text-sm text-primary hover:underline"
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  <Phone className="h-3.5 w-3.5" />
-                  {resource.location.intake.phone}
-                </a>
+                disablePhoneLinks ? (
+                  <span className="flex items-center gap-2 text-sm text-primary">
+                    <Phone className="h-3.5 w-3.5" />
+                    {resource.location.intake.phone}
+                  </span>
+                ) : (
+                  <a
+                    href={`tel:${resource.location.intake.phone}`}
+                    className="flex items-center gap-2 text-sm text-primary hover:underline"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    <Phone className="h-3.5 w-3.5" />
+                    {resource.location.intake.phone}
+                  </a>
+                )
               )}
               {resource.location.intake?.hours && (
                 <p className="flex items-center gap-2 text-xs text-muted-foreground">
@@ -267,6 +278,8 @@ export function ResourceCard({
 
   // For modal/selectable variants, render bookmark inside card so it animates with the card
   const renderBookmarkInside = variant === 'modal' || variant === 'selectable';
+  // For link variant, disable phone links to avoid nested <a> tags
+  const isLinkVariant = variant === 'link';
 
   const cardContent = (
     <Card
@@ -280,8 +293,9 @@ export function ResourceCard({
       <CardInner
         resource={resource}
         explanations={explanations}
-        showBookmark={variant === 'link'}
+        showBookmark={isLinkVariant}
         renderBookmark={renderBookmarkInside}
+        disablePhoneLinks={isLinkVariant}
       />
     </Card>
   );
