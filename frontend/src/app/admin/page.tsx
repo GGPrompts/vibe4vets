@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import {
@@ -20,17 +20,32 @@ import {
 } from '@/components/ui/table';
 import { Badge } from '@/components/ui/badge';
 import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-} from '@/components/ui/dialog';
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetFooter,
+  SheetHeader,
+  SheetTitle,
+} from '@/components/ui/sheet';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '@/components/ui/tooltip';
 import { Input } from '@/components/ui/input';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import api, { type ReviewQueueItem, type DashboardStats, type FeedbackStats } from '@/lib/api';
+import { Separator } from '@/components/ui/separator';
+import { ScrollArea } from '@/components/ui/scroll-area';
+import {
+  Globe,
+  Phone,
+  MapPin,
+  ExternalLink,
+  AlertCircle,
+} from 'lucide-react';
+import api, { type ReviewQueueItem, type DashboardStats, type FeedbackStats, type Resource } from '@/lib/api';
 import { FeedbackAdminTab } from '@/components/FeedbackAdminTab';
 
 export default function AdminPage() {
@@ -38,7 +53,9 @@ export default function AdminPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [selectedItem, setSelectedItem] = useState<ReviewQueueItem | null>(null);
-  const [actionDialogOpen, setActionDialogOpen] = useState(false);
+  const [selectedResource, setSelectedResource] = useState<Resource | null>(null);
+  const [resourceLoading, setResourceLoading] = useState(false);
+  const [sheetOpen, setSheetOpen] = useState(false);
   const [action, setAction] = useState<'approve' | 'reject' | null>(null);
   const [reviewer, setReviewer] = useState('');
   const [notes, setNotes] = useState('');
@@ -96,11 +113,7 @@ export default function AdminPage() {
         reviewer.trim(),
         notes.trim() || undefined
       );
-      setActionDialogOpen(false);
-      setSelectedItem(null);
-      setAction(null);
-      setReviewer('');
-      setNotes('');
+      closeSheet();
       // Refresh the queue
       fetchQueue(activeTab);
     } catch (err) {
@@ -110,13 +123,36 @@ export default function AdminPage() {
     }
   };
 
-  const openActionDialog = (
+  // Fetch resource details when opening the review sheet
+  const fetchResourceDetails = useCallback(async (resourceId: string) => {
+    setResourceLoading(true);
+    try {
+      const resource = await api.resources.get(resourceId);
+      setSelectedResource(resource);
+    } catch {
+      setSelectedResource(null);
+    } finally {
+      setResourceLoading(false);
+    }
+  }, []);
+
+  const openReviewSheet = (
     item: ReviewQueueItem,
     actionType: 'approve' | 'reject'
   ) => {
     setSelectedItem(item);
     setAction(actionType);
-    setActionDialogOpen(true);
+    setSheetOpen(true);
+    fetchResourceDetails(item.resource_id);
+  };
+
+  const closeSheet = () => {
+    setSheetOpen(false);
+    setSelectedItem(null);
+    setSelectedResource(null);
+    setAction(null);
+    setReviewer('');
+    setNotes('');
   };
 
   return (
@@ -226,75 +262,94 @@ export default function AdminPage() {
                       No items in queue
                     </p>
                   ) : (
-                    <Table>
-                      <TableHeader>
-                        <TableRow>
-                          <TableHead>Resource</TableHead>
-                          <TableHead>Organization</TableHead>
-                          <TableHead>Reason</TableHead>
-                          <TableHead>Status</TableHead>
-                          <TableHead>Date</TableHead>
-                          <TableHead className="text-right">Actions</TableHead>
-                        </TableRow>
-                      </TableHeader>
-                      <TableBody>
-                        {items.map((item) => (
-                          <TableRow key={item.id}>
-                            <TableCell>
-                              <Link
-                                href={`/resources/${item.resource_id}`}
-                                className="font-medium hover:underline"
-                              >
-                                {item.resource_title}
-                              </Link>
-                            </TableCell>
-                            <TableCell>{item.organization_name}</TableCell>
-                            <TableCell className="max-w-xs truncate">
-                              {item.reason || 'Manual entry'}
-                            </TableCell>
-                            <TableCell>
-                              <Badge
-                                variant={
-                                  item.status === 'pending'
-                                    ? 'secondary'
-                                    : item.status === 'approved'
-                                    ? 'default'
-                                    : 'destructive'
-                                }
-                              >
-                                {item.status}
-                              </Badge>
-                            </TableCell>
-                            <TableCell>
-                              {new Date(item.created_at).toLocaleDateString()}
-                            </TableCell>
-                            <TableCell className="text-right">
-                              {item.status === 'pending' && (
-                                <div className="flex justify-end gap-2">
-                                  <Button
-                                    size="sm"
-                                    onClick={() =>
-                                      openActionDialog(item, 'approve')
+                    <div className="overflow-x-auto rounded-md border">
+                      <TooltipProvider>
+                        <Table>
+                          <TableHeader>
+                            <TableRow>
+                              <TableHead className="min-w-[200px]">Resource</TableHead>
+                              <TableHead className="min-w-[150px]">Organization</TableHead>
+                              <TableHead className="min-w-[200px]">Reason</TableHead>
+                              <TableHead className="min-w-[80px]">Status</TableHead>
+                              <TableHead className="min-w-[100px]">Date</TableHead>
+                              <TableHead className="sticky right-0 bg-background min-w-[160px] text-right">Actions</TableHead>
+                            </TableRow>
+                          </TableHeader>
+                          <TableBody>
+                            {items.map((item) => (
+                              <TableRow key={item.id}>
+                                <TableCell className="font-medium">
+                                  <Link
+                                    href={`/resources/${item.resource_id}`}
+                                    target="_blank"
+                                    className="flex items-center gap-1 hover:underline"
+                                  >
+                                    <span className="line-clamp-2">{item.resource_title}</span>
+                                    <ExternalLink className="h-3 w-3 flex-shrink-0 text-muted-foreground" />
+                                  </Link>
+                                </TableCell>
+                                <TableCell className="text-sm text-muted-foreground">
+                                  {item.organization_name}
+                                </TableCell>
+                                <TableCell>
+                                  <Tooltip>
+                                    <TooltipTrigger asChild>
+                                      <div className="max-w-[200px] cursor-help">
+                                        <p className="line-clamp-2 text-sm">
+                                          {item.reason || 'Manual entry'}
+                                        </p>
+                                      </div>
+                                    </TooltipTrigger>
+                                    <TooltipContent side="bottom" className="max-w-sm">
+                                      <p className="text-sm">{item.reason || 'Manual entry'}</p>
+                                    </TooltipContent>
+                                  </Tooltip>
+                                </TableCell>
+                                <TableCell>
+                                  <Badge
+                                    variant={
+                                      item.status === 'pending'
+                                        ? 'secondary'
+                                        : item.status === 'approved'
+                                        ? 'default'
+                                        : 'destructive'
                                     }
                                   >
-                                    Approve
-                                  </Button>
-                                  <Button
-                                    size="sm"
-                                    variant="destructive"
-                                    onClick={() =>
-                                      openActionDialog(item, 'reject')
-                                    }
-                                  >
-                                    Reject
-                                  </Button>
-                                </div>
-                              )}
-                            </TableCell>
-                          </TableRow>
-                        ))}
-                      </TableBody>
-                    </Table>
+                                    {item.status}
+                                  </Badge>
+                                </TableCell>
+                                <TableCell className="text-sm text-muted-foreground">
+                                  {new Date(item.created_at).toLocaleDateString()}
+                                </TableCell>
+                                <TableCell className="sticky right-0 bg-background">
+                                  {item.status === 'pending' && (
+                                    <div className="flex justify-end gap-2">
+                                      <Button
+                                        size="sm"
+                                        onClick={() =>
+                                          openReviewSheet(item, 'approve')
+                                        }
+                                      >
+                                        Approve
+                                      </Button>
+                                      <Button
+                                        size="sm"
+                                        variant="destructive"
+                                        onClick={() =>
+                                          openReviewSheet(item, 'reject')
+                                        }
+                                      >
+                                        Reject
+                                      </Button>
+                                    </div>
+                                  )}
+                                </TableCell>
+                              </TableRow>
+                            ))}
+                          </TableBody>
+                        </Table>
+                      </TooltipProvider>
+                    </div>
                   )}
                 </TabsContent>
               </Tabs>
@@ -317,56 +372,207 @@ export default function AdminPage() {
           </Card>
         )}
 
-        {/* Action Dialog */}
-        <Dialog open={actionDialogOpen} onOpenChange={setActionDialogOpen}>
-          <DialogContent>
-            <DialogHeader>
-              <DialogTitle>
-                {action === 'approve' ? 'Approve' : 'Reject'} Resource
-              </DialogTitle>
-              <DialogDescription>
-                {selectedItem?.resource_title}
-              </DialogDescription>
-            </DialogHeader>
+        {/* Review Sheet (Side Panel) */}
+        <Sheet open={sheetOpen} onOpenChange={(open) => !open && closeSheet()}>
+          <SheetContent className="w-full sm:max-w-lg overflow-y-auto">
+            <SheetHeader>
+              <SheetTitle className="flex items-center gap-2">
+                {action === 'approve' ? (
+                  <Badge className="bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-300">
+                    Approve
+                  </Badge>
+                ) : (
+                  <Badge variant="destructive">Reject</Badge>
+                )}
+                Review Resource
+              </SheetTitle>
+              <SheetDescription>
+                Review the resource details below and submit your decision
+              </SheetDescription>
+            </SheetHeader>
 
-            <div className="space-y-4 py-4">
-              <div>
-                <label className="text-sm font-medium">
-                  Reviewer Name <span className="text-destructive">*</span>
-                </label>
-                <Input
-                  value={reviewer}
-                  onChange={(e) => setReviewer(e.target.value)}
-                  placeholder="Your name"
-                />
-              </div>
-              <div>
-                <label className="text-sm font-medium">Notes (optional)</label>
-                <Input
-                  value={notes}
-                  onChange={(e) => setNotes(e.target.value)}
-                  placeholder="Add any notes..."
-                />
-              </div>
+            <ScrollArea className="h-[calc(100vh-220px)] pr-4">
+              <div className="space-y-6 py-4">
+                {/* Resource Details */}
+                {resourceLoading ? (
+                  <div className="space-y-4">
+                    <Skeleton className="h-6 w-3/4" />
+                    <Skeleton className="h-20 w-full" />
+                    <Skeleton className="h-16 w-full" />
+                  </div>
+                ) : selectedResource ? (
+                  <>
+                    {/* Title & Organization */}
+                    <div>
+                      <h3 className="text-lg font-semibold">{selectedResource.title}</h3>
+                      <p className="text-sm text-muted-foreground">
+                        {selectedResource.organization.name}
+                      </p>
+                    </div>
 
-              {selectedItem?.changes_summary &&
-                selectedItem.changes_summary.length > 0 && (
+                    {/* Categories & States */}
+                    <div className="flex flex-wrap gap-2">
+                      {selectedResource.categories.map((cat) => (
+                        <Badge key={cat} variant="outline" className="capitalize">
+                          {cat}
+                        </Badge>
+                      ))}
+                      {selectedResource.scope === 'national' ? (
+                        <Badge variant="secondary">Nationwide</Badge>
+                      ) : (
+                        selectedResource.states.map((state) => (
+                          <Badge key={state} variant="secondary">
+                            {state}
+                          </Badge>
+                        ))
+                      )}
+                    </div>
+
+                    <Separator />
+
+                    {/* Description */}
+                    <div>
+                      <h4 className="mb-2 text-sm font-medium text-muted-foreground">Description</h4>
+                      <p className="text-sm whitespace-pre-wrap">{selectedResource.description}</p>
+                    </div>
+
+                    {/* Eligibility */}
+                    {selectedResource.eligibility && (
+                      <div>
+                        <h4 className="mb-2 text-sm font-medium text-muted-foreground">Eligibility</h4>
+                        <p className="text-sm whitespace-pre-wrap">{selectedResource.eligibility}</p>
+                      </div>
+                    )}
+
+                    {/* How to Apply */}
+                    {selectedResource.how_to_apply && (
+                      <div>
+                        <h4 className="mb-2 text-sm font-medium text-muted-foreground">How to Apply</h4>
+                        <p className="text-sm whitespace-pre-wrap">{selectedResource.how_to_apply}</p>
+                      </div>
+                    )}
+
+                    <Separator />
+
+                    {/* Contact Info */}
+                    <div className="space-y-3">
+                      <h4 className="text-sm font-medium text-muted-foreground">Contact Information</h4>
+                      {selectedResource.website && (
+                        <a
+                          href={selectedResource.website}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-2 text-sm text-primary hover:underline"
+                        >
+                          <Globe className="h-4 w-4" />
+                          {selectedResource.website}
+                          <ExternalLink className="h-3 w-3" />
+                        </a>
+                      )}
+                      {selectedResource.phone && (
+                        <a
+                          href={`tel:${selectedResource.phone}`}
+                          className="flex items-center gap-2 text-sm text-primary hover:underline"
+                        >
+                          <Phone className="h-4 w-4" />
+                          {selectedResource.phone}
+                        </a>
+                      )}
+                      {selectedResource.location && (
+                        <div className="flex items-start gap-2 text-sm">
+                          <MapPin className="h-4 w-4 mt-0.5 text-muted-foreground" />
+                          <span>
+                            {selectedResource.location.address && (
+                              <>{selectedResource.location.address}, </>
+                            )}
+                            {selectedResource.location.city}, {selectedResource.location.state}
+                          </span>
+                        </div>
+                      )}
+                    </div>
+                  </>
+                ) : (
+                  <div className="text-center py-4">
+                    <p className="text-sm font-medium">{selectedItem?.resource_title}</p>
+                    <p className="text-xs text-muted-foreground">{selectedItem?.organization_name}</p>
+                  </div>
+                )}
+
+                <Separator />
+
+                {/* Review Reason */}
+                {selectedItem?.reason && (
+                  <div className="rounded-lg border border-amber-200 bg-amber-50 p-4 dark:border-amber-900 dark:bg-amber-900/20">
+                    <div className="flex items-start gap-2">
+                      <AlertCircle className="h-5 w-5 mt-0.5 text-amber-600 dark:text-amber-400" />
+                      <div>
+                        <h4 className="text-sm font-medium text-amber-800 dark:text-amber-300">
+                          Review Reason
+                        </h4>
+                        <p className="mt-1 text-sm text-amber-700 dark:text-amber-200">
+                          {selectedItem.reason}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {/* Recent Changes */}
+                {selectedItem?.changes_summary && selectedItem.changes_summary.length > 0 && (
                   <div>
-                    <label className="text-sm font-medium">Recent Changes</label>
-                    <div className="mt-1 rounded-md bg-muted p-2 text-sm">
+                    <h4 className="mb-2 text-sm font-medium text-muted-foreground">Recent Changes</h4>
+                    <div className="rounded-md bg-muted p-3 text-sm space-y-1">
                       {selectedItem.changes_summary.map((change, i) => (
                         <p key={i}>{change}</p>
                       ))}
                     </div>
                   </div>
                 )}
-            </div>
 
-            <DialogFooter>
-              <Button
-                variant="outline"
-                onClick={() => setActionDialogOpen(false)}
-              >
+                <Separator />
+
+                {/* Review Form */}
+                <div className="space-y-4">
+                  <div>
+                    <label className="text-sm font-medium">
+                      Reviewer Name <span className="text-destructive">*</span>
+                    </label>
+                    <Input
+                      value={reviewer}
+                      onChange={(e) => setReviewer(e.target.value)}
+                      placeholder="Your name"
+                      className="mt-1"
+                    />
+                  </div>
+                  <div>
+                    <label className="text-sm font-medium">Notes (optional)</label>
+                    <Input
+                      value={notes}
+                      onChange={(e) => setNotes(e.target.value)}
+                      placeholder="Add any notes..."
+                      className="mt-1"
+                    />
+                  </div>
+                </div>
+
+                {/* View Resource Link */}
+                {selectedItem && (
+                  <div className="pt-2">
+                    <Link
+                      href={`/resources/${selectedItem.resource_id}`}
+                      target="_blank"
+                      className="inline-flex items-center gap-1 text-sm text-primary hover:underline"
+                    >
+                      View full resource page
+                      <ExternalLink className="h-3 w-3" />
+                    </Link>
+                  </div>
+                )}
+              </div>
+            </ScrollArea>
+
+            <SheetFooter className="mt-4 flex gap-2 sm:justify-between">
+              <Button variant="outline" onClick={closeSheet}>
                 Cancel
               </Button>
               <Button
@@ -377,12 +583,12 @@ export default function AdminPage() {
                 {submitting
                   ? 'Processing...'
                   : action === 'approve'
-                  ? 'Approve'
-                  : 'Reject'}
+                  ? 'Approve Resource'
+                  : 'Reject Resource'}
               </Button>
-            </DialogFooter>
-          </DialogContent>
-        </Dialog>
+            </SheetFooter>
+          </SheetContent>
+        </Sheet>
       </div>
     </div>
   );
