@@ -1,45 +1,10 @@
+'use client';
+
+import { useState } from 'react';
 import Link from 'next/link';
 import { USMap } from '@/components/us-map';
-import { Briefcase, GraduationCap, Home as HomeIcon, Scale, Shield, RefreshCw, CheckCircle2, ChevronRight, Search } from 'lucide-react';
-
-const categories = [
-  {
-    name: 'Employment',
-    slug: 'employment',
-    description: 'Job placement, career services, and veteran-friendly employers',
-    icon: Briefcase,
-    colorClass: 'bg-v4v-employment',
-    mutedBgClass: 'bg-v4v-employment-muted',
-    textClass: 'text-v4v-employment',
-  },
-  {
-    name: 'Training',
-    slug: 'training',
-    description: 'Vocational rehabilitation, certifications, and skill-building programs',
-    icon: GraduationCap,
-    colorClass: 'bg-v4v-training',
-    mutedBgClass: 'bg-v4v-training-muted',
-    textClass: 'text-v4v-training',
-  },
-  {
-    name: 'Housing',
-    slug: 'housing',
-    description: 'HUD-VASH, SSVF, transitional housing, and shelter resources',
-    icon: HomeIcon,
-    colorClass: 'bg-v4v-housing',
-    mutedBgClass: 'bg-v4v-housing-muted',
-    textClass: 'text-v4v-housing',
-  },
-  {
-    name: 'Legal',
-    slug: 'legal',
-    description: 'Legal aid, VA appeals assistance, and advocacy services',
-    icon: Scale,
-    colorClass: 'bg-v4v-legal',
-    mutedBgClass: 'bg-v4v-legal-muted',
-    textClass: 'text-v4v-legal',
-  },
-];
+import { CategoryCards } from '@/components/CategoryCards';
+import { Shield, RefreshCw, CheckCircle2, Search } from 'lucide-react';
 
 const trustIndicators = [
   {
@@ -78,6 +43,16 @@ const steps = [
 ];
 
 export default function Home() {
+  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+
+  const handleToggleCategory = (category: string) => {
+    setSelectedCategories((prev) =>
+      prev.includes(category)
+        ? prev.filter((c) => c !== category)
+        : [...prev, category]
+    );
+  };
+
   return (
     <main className="min-h-screen pt-14">
       {/* Hero Section - Navy background */}
@@ -130,40 +105,10 @@ export default function Home() {
           </div>
 
           {/* Category cards grid */}
-          <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
-            {categories.map((category) => {
-              const Icon = category.icon;
-              return (
-                <Link
-                  key={category.slug}
-                  href={`/search?category=${category.slug}`}
-                  className="soft-card category-card group relative overflow-hidden p-5"
-                >
-                  {/* Color accent bar */}
-                  <div className={`absolute left-0 top-0 h-1 w-full ${category.colorClass} transition-all duration-300 group-hover:h-1.5`} />
-
-                  {/* Icon */}
-                  <div className={`mb-3 inline-flex rounded-lg p-2.5 ${category.mutedBgClass} transition-transform duration-300 group-hover:scale-110`}>
-                    <Icon className={`h-5 w-5 ${category.textClass}`} />
-                  </div>
-
-                  {/* Content */}
-                  <h3 className="font-display text-lg font-medium text-foreground">
-                    {category.name}
-                  </h3>
-                  <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
-                    {category.description}
-                  </p>
-
-                  {/* Arrow indicator */}
-                  <div className="mt-3 flex items-center text-sm font-medium text-[hsl(var(--v4v-gold-dark))] opacity-0 transition-all duration-300 group-hover:opacity-100">
-                    <span>Explore</span>
-                    <ChevronRight className="ml-1 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-                  </div>
-                </Link>
-              );
-            })}
-          </div>
+          <CategoryCards
+            selectedCategories={selectedCategories}
+            onToggleCategory={handleToggleCategory}
+          />
         </div>
       </section>
 
