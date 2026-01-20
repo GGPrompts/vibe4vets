@@ -15,7 +15,7 @@ export function Header() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const router = useRouter();
-  const { scrollDirection, isAtTop } = useScrollDirection();
+  const { isAtTop } = useScrollDirection();
 
   const isSearchPage = pathname === '/search';
   const isHomePage = pathname === '/';
@@ -86,14 +86,13 @@ export function Header() {
     return null;
   }
 
-  const isHidden = scrollDirection === 'down' && !isAtTop;
+  // Header always visible (no longer hides on scroll)
   const showShadow = !isAtTop;
 
   return (
     <header
       className={cn(
-        'fixed left-0 right-0 top-0 z-50 transition-all duration-300 ease-out',
-        isHidden && '-translate-y-full',
+        'fixed left-0 right-0 top-0 z-50 transition-shadow duration-300 ease-out',
         'bg-[hsl(var(--v4v-navy))] border-b border-[hsl(var(--v4v-navy-light))]',
         showShadow && 'shadow-lg'
       )}

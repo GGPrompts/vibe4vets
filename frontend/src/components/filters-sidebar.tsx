@@ -447,11 +447,13 @@ export function FixedFiltersSidebar({
   onFiltersChange,
   resultCount,
 }: FixedFiltersSidebarProps) {
-  const [isCollapsed, setIsCollapsed] = useState(false);
+  // Default to collapsed
+  const [isCollapsed, setIsCollapsed] = useState(true);
 
   // Load collapsed state from localStorage on mount
   useEffect(() => {
     const saved = localStorage.getItem('v4v-filters-collapsed');
+    // Default to collapsed if no saved preference
     if (saved !== null) setIsCollapsed(saved === 'true');
   }, []);
 
@@ -470,13 +472,8 @@ export function FixedFiltersSidebar({
 
   return (
     <TooltipProvider>
-      {/* Spacer div to reserve space in the layout flow */}
-      <div
-        className={cn(
-          'hidden flex-shrink-0 transition-all duration-200 lg:block',
-          isCollapsed ? 'w-12' : 'w-[280px]'
-        )}
-      />
+      {/* Spacer div - always collapsed width since expanded overlays */}
+      <div className="hidden w-12 flex-shrink-0 lg:block" />
 
       {/* Fixed sidebar */}
       <AnimatePresence mode="wait">
@@ -507,34 +504,55 @@ export function FixedFiltersSidebar({
 
             <div className="my-2 h-px w-6 bg-border" />
 
-            {FILTER_ICONS.map((item, index) => (
-              <motion.div
-                key={item.key}
-                initial={{ opacity: 0, x: -10 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: index * 0.05 }}
-              >
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <Button
-                      variant="ghost"
-                      size="icon"
-                      onClick={toggleCollapsed}
-                      className={cn(
-                        'h-8 w-8 rounded-lg transition-all hover:scale-105',
-                        item.bg,
-                        item.color
-                      )}
-                    >
-                      <item.icon className="h-4 w-4" />
-                    </Button>
-                  </TooltipTrigger>
-                  <TooltipContent side="right">
-                    <p className="text-xs">{item.label}</p>
-                  </TooltipContent>
-                </Tooltip>
-              </motion.div>
-            ))}
+            {FILTER_ICONS.map((item, index) => {
+              // Check if this category is currently active
+              const isActive = item.key !== 'filter' && filters.categories.includes(item.key);
+
+              const handleClick = () => {
+                if (item.key === 'filter') {
+                  // Main filter icon just expands the sidebar
+                  toggleCollapsed();
+                } else {
+                  // Category icons toggle the filter directly
+                  const newCategories = isActive
+                    ? filters.categories.filter((c) => c !== item.key)
+                    : [...filters.categories, item.key];
+                  onFiltersChange({ ...filters, categories: newCategories });
+                }
+              };
+
+              return (
+                <motion.div
+                  key={item.key}
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.05 }}
+                >
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        onClick={handleClick}
+                        className={cn(
+                          'h-8 w-8 rounded-lg transition-all hover:scale-105',
+                          item.bg,
+                          item.color,
+                          isActive && 'ring-2 ring-offset-1 ring-current'
+                        )}
+                      >
+                        <item.icon className="h-4 w-4" />
+                      </Button>
+                    </TooltipTrigger>
+                    <TooltipContent side="right">
+                      <p className="text-xs">
+                        {item.key === 'filter' ? item.label : `${isActive ? 'Remove' : 'Add'} ${item.label}`}
+                      </p>
+                    </TooltipContent>
+                  </Tooltip>
+                </motion.div>
+              );
+            })}
 
             {activeFilterCount > 0 && (
               <motion.div

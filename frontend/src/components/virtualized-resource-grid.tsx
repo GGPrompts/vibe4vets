@@ -36,6 +36,8 @@ const ROW_GAP = 16; // gap-4 = 1rem = 16px
 
 function useResponsiveColumns() {
   const [columns, setColumns] = useState(1);
+  const [isResizing, setIsResizing] = useState(false);
+  const resizeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     function updateColumns() {
@@ -51,12 +53,33 @@ function useResponsiveColumns() {
       }
     }
 
+    function handleResize() {
+      // Mark as resizing to disable animations
+      setIsResizing(true);
+      updateColumns();
+
+      // Clear existing timeout
+      if (resizeTimeoutRef.current) {
+        clearTimeout(resizeTimeoutRef.current);
+      }
+
+      // Re-enable animations after resize settles
+      resizeTimeoutRef.current = setTimeout(() => {
+        setIsResizing(false);
+      }, 150);
+    }
+
     updateColumns();
-    window.addEventListener('resize', updateColumns);
-    return () => window.removeEventListener('resize', updateColumns);
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      if (resizeTimeoutRef.current) {
+        clearTimeout(resizeTimeoutRef.current);
+      }
+    };
   }, []);
 
-  return columns;
+  return { columns, isResizing };
 }
 
 export function VirtualizedResourceGrid({
@@ -73,7 +96,10 @@ export function VirtualizedResourceGrid({
   newResourceIndexById,
 }: VirtualizedResourceGridProps) {
   const parentRef = useRef<HTMLDivElement>(null);
-  const columns = useResponsiveColumns();
+  const { columns, isResizing } = useResponsiveColumns();
+
+  // Disable all animations during resize to prevent lag
+  const shouldDisableAnimation = disableAnimation || isResizing;
 
   // Group resources into rows based on column count
   const rows = useMemo(() => {
@@ -89,56 +115,51 @@ export function VirtualizedResourceGrid({
     getScrollElement: () => parentRef.current,
     estimateSize: () => CARD_HEIGHT + ROW_GAP,
     overscan: 5, // Render 5 extra rows above/below viewport for smooth scrolling
+    measureElement: (element) => {
+      // Measure actual row height for variable-height cards
+      return element.getBoundingClientRect().height + ROW_GAP;
+    },
   });
 
   const virtualItems = virtualizer.getVirtualItems();
 
-  // Trigger fetchNextPage when scrolling near the bottom
+  // Track if user has scrolled (don't auto-fetch on initial load)
+  const hasScrolledRef = useRef(false);
+
+  useEffect(() => {
+    const onScroll = () => {
+      if (window.scrollY > 100) {
+        hasScrolledRef.current = true;
+      }
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  // Single fetch trigger: IntersectionObserver on a sentinel element
+  // This is more reliable than measuring container bounds
+  const sentinelRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     if (!fetchNextPage || !hasNextPage || isFetchingNextPage) return;
 
-    const lastItem = virtualItems[virtualItems.length - 1];
-    if (!lastItem) return;
+    const sentinel = sentinelRef.current;
+    if (!sentinel) return;
 
-    // Trigger when we're within 3 rows of the end
-    if (lastItem.index >= rows.length - 3) {
-      fetchNextPage();
-    }
-  }, [virtualItems, rows.length, hasNextPage, isFetchingNextPage, fetchNextPage]);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const isIntersecting = entries[0]?.isIntersecting;
+        // Only auto-fetch if user has scrolled down
+        if (isIntersecting && hasScrolledRef.current && hasNextPage && !isFetchingNextPage) {
+          fetchNextPage();
+        }
+      },
+      { root: null, rootMargin: '400px 0px', threshold: 0 }
+    );
 
-  // For window-level scrolling, we need to observe when the parent element is near the bottom of the viewport
-  const [isNearBottom, setIsNearBottom] = useState(false);
-
-  useEffect(() => {
-    if (!fetchNextPage || !hasNextPage || isFetchingNextPage) return;
-
-    const checkNearBottom = () => {
-      const el = parentRef.current;
-      if (!el) return;
-
-      const rect = el.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
-
-      // Check if the bottom of the container is within 1200px of the viewport bottom
-      const distanceToBottom = rect.bottom - windowHeight;
-      setIsNearBottom(distanceToBottom < 1200);
-    };
-
-    checkNearBottom();
-    window.addEventListener('scroll', checkNearBottom);
-    window.addEventListener('resize', checkNearBottom);
-
-    return () => {
-      window.removeEventListener('scroll', checkNearBottom);
-      window.removeEventListener('resize', checkNearBottom);
-    };
+    observer.observe(sentinel);
+    return () => observer.disconnect();
   }, [fetchNextPage, hasNextPage, isFetchingNextPage]);
-
-  useEffect(() => {
-    if (isNearBottom && hasNextPage && !isFetchingNextPage && fetchNextPage) {
-      fetchNextPage();
-    }
-  }, [isNearBottom, hasNextPage, isFetchingNextPage, fetchNextPage]);
 
   return (
     <LayoutGroup>
@@ -158,12 +179,13 @@ export function VirtualizedResourceGrid({
             return (
               <div
                 key={virtualRow.key}
+                data-index={virtualRow.index}
+                ref={virtualizer.measureElement}
                 style={{
                   position: 'absolute',
                   top: 0,
                   left: 0,
                   width: '100%',
-                  height: `${virtualRow.size}px`,
                   transform: `translateY(${virtualRow.start}px)`,
                 }}
               >
@@ -186,18 +208,18 @@ export function VirtualizedResourceGrid({
                       <motion.div
                         key={resource.id}
                         initial={
-                          disableAnimation
+                          shouldDisableAnimation
                             ? false
                             : isNewItem
                               ? { opacity: 0, y: 20 }
                               : false
                         }
                         animate={
-                          disableAnimation ? false : { opacity: 1, y: 0 }
+                          shouldDisableAnimation ? false : { opacity: 1, y: 0 }
                         }
                         exit={{ opacity: 0, scale: 0.95 }}
                         transition={
-                          disableAnimation
+                          shouldDisableAnimation
                             ? { duration: 0 }
                             : isNewItem
                               ? {
@@ -206,7 +228,7 @@ export function VirtualizedResourceGrid({
                                 }
                               : { layout: { duration: 0.3 } }
                         }
-                        layout={disableAnimation ? false : 'position'}
+                        layout={shouldDisableAnimation ? false : 'position'}
                         style={{
                           position: 'relative',
                           willChange: 'transform',
@@ -236,6 +258,19 @@ export function VirtualizedResourceGrid({
             );
           })}
         </AnimatePresence>
+        {/* Sentinel for infinite scroll - triggers fetch when visible */}
+        {hasNextPage && (
+          <div
+            ref={sentinelRef}
+            style={{
+              position: 'absolute',
+              bottom: 0,
+              left: 0,
+              width: '100%',
+              height: '1px',
+            }}
+          />
+        )}
       </div>
     </LayoutGroup>
   );
