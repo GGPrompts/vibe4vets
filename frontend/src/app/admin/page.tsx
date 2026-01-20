@@ -175,6 +175,7 @@ export default function AdminPage() {
       fetchAbortControllerRef.current.abort();
       fetchAbortControllerRef.current = null;
     }
+    setResourceLoading(false);
     setSheetOpen(false);
     setSelectedItem(null);
     setSelectedResource(null);
