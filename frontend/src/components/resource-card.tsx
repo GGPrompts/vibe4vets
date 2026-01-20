@@ -269,8 +269,10 @@ export function ResourceCard({
   );
 
   // Wrapper with bookmark button for clickable variants
+  // Uses isolation:isolate to create a stacking context that keeps the bookmark
+  // attached to the card during z-index changes in virtualized grids
   const withBookmark = (content: React.ReactNode) => (
-    <div className="relative h-full">
+    <div className="relative isolate h-full">
       {content}
       <div className="absolute right-3 top-[1.125rem] z-10">
         <BookmarkButton resourceId={resource.id} size="sm" showTooltip={false} />
