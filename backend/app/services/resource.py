@@ -27,6 +27,47 @@ class ResourceService:
     def __init__(self, session: Session) -> None:
         self.session = session
 
+    def get_count(
+        self,
+        categories: list[str] | None = None,
+        states: list[str] | None = None,
+        scope: str | None = None,
+    ) -> int:
+        """Get count of resources matching filters.
+
+        Args:
+            categories: Filter by categories (resources must match ANY of the provided categories)
+            states: Filter by states (resources must match ANY of the provided states, or be national)
+            scope: Filter by resource scope ('national', 'state', 'local', or 'all')
+
+        Returns:
+            Count of matching resources
+        """
+        query = select(func.count(Resource.id)).where(Resource.status != ResourceStatus.INACTIVE)
+
+        # Apply category filter (OR logic: match any of the categories)
+        if categories:
+            category_conditions = [Resource.categories.contains([cat]) for cat in categories]
+            query = query.where(or_(*category_conditions))
+
+        # Apply state filter (resources in those states OR national resources)
+        if states:
+            state_conditions = [Resource.states.contains([s]) for s in states]
+            query = query.where(
+                or_(
+                    Resource.scope == ResourceScope.NATIONAL,
+                    *state_conditions,
+                )
+            )
+
+        # Apply scope filter
+        if scope and scope != "all":
+            scope_enum = ResourceScope(scope)
+            query = query.where(Resource.scope == scope_enum)
+
+        result = self.session.exec(query).one()
+        return result
+
     def list_resources(
         self,
         categories: list[str] | None = None,

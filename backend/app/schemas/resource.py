@@ -247,6 +247,12 @@ class ResourceList(BaseModel):
     offset: int = Field(..., description="Current pagination offset")
 
 
+class ResourceCount(BaseModel):
+    """Resource count response for lightweight filter queries."""
+
+    count: int = Field(..., ge=0, description="Number of resources matching filters")
+
+
 class MatchExplanation(BaseModel):
     """Explanation of why a resource matched a search query."""
 

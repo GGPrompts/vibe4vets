@@ -10,10 +10,74 @@ from fastapi import APIRouter, HTTPException, Query
 
 from app.database import SessionDep
 from app.models.resource import ResourceStatus
-from app.schemas.resource import ResourceCreate, ResourceList, ResourceRead, ResourceUpdate
+from app.schemas.resource import ResourceCount, ResourceCreate, ResourceList, ResourceRead, ResourceUpdate
 from app.services.resource import ResourceService
 
 router = APIRouter()
+
+
+@router.get(
+    "/count",
+    response_model=ResourceCount,
+    summary="Get resource count",
+    response_description="Count of resources matching filters",
+    responses={
+        200: {
+            "description": "Successful response with resource count",
+            "content": {
+                "application/json": {
+                    "example": {"count": 523}
+                }
+            },
+        }
+    },
+)
+def get_resource_count(
+    session: SessionDep,
+    categories: str | None = Query(
+        default=None,
+        description="Filter by categories (comma-separated, e.g., 'housing,legal')",
+        examples=["housing,legal", "employment,training"],
+    ),
+    states: str | None = Query(
+        default=None,
+        description="Filter by states (comma-separated 2-letter codes, e.g., 'VA,MD,DC')",
+        examples=["VA,MD,DC", "TX,CA"],
+    ),
+    scope: str | None = Query(
+        default=None,
+        description="Filter by resource scope: 'national', 'state', 'local', or 'all'",
+        examples=["national", "state", "local"],
+    ),
+) -> ResourceCount:
+    """Get count of resources matching filters.
+
+    This is a lightweight endpoint for getting resource counts without returning
+    full resource data. Useful for live UI updates when filters change.
+
+    **Query Parameters:**
+    - `categories` - Comma-separated category names (housing, legal, employment, training)
+    - `states` - Comma-separated 2-letter state codes (VA, MD, DC)
+    - `scope` - Resource scope: national, state, local, or all
+
+    Returns count of all active resources when no filters provided.
+    """
+    # Parse comma-separated filters into lists
+    category_list: list[str] | None = None
+    if categories:
+        category_list = [c.strip() for c in categories.split(",") if c.strip()]
+
+    state_list: list[str] | None = None
+    if states:
+        state_list = [s.strip().upper() for s in states.split(",") if s.strip()]
+
+    service = ResourceService(session)
+    count = service.get_count(
+        categories=category_list,
+        states=state_list,
+        scope=scope,
+    )
+    return ResourceCount(count=count)
 
 
 @router.get(
