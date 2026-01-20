@@ -55,15 +55,26 @@ function SearchResults() {
   const [animatingResourceId, setAnimatingResourceId] = useState<string | null>(null);
 
   // Initialize filters from URL params
+  // Supports both formats: state=VA,NC (comma-separated) and state=VA&state=NC (multiple params)
   const [filters, setFilters] = useState<FilterState>(() => {
-    const categoryParam = searchParams.get('category');
-    const stateParam = searchParams.get('state');
+    // Get all 'category' params (handles both ?category=a&category=b and ?category=a,b)
+    const categoryParams = searchParams.getAll('category');
+    const categories = categoryParams.length > 0
+      ? categoryParams.flatMap((p) => p.split(','))
+      : [];
+
+    // Get all 'state' params (handles both ?state=VA&state=NC and ?state=VA,NC)
+    const stateParams = searchParams.getAll('state');
+    const states = stateParams.length > 0
+      ? stateParams.flatMap((p) => p.split(','))
+      : [];
+
     const scopeParam = searchParams.get('scope');
     const minTrustParam = searchParams.get('minTrust');
 
     return {
-      categories: categoryParam ? categoryParam.split(',') : [],
-      states: stateParam ? stateParam.split(',') : [],
+      categories,
+      states,
       scope: scopeParam || 'all',
       minTrust: minTrustParam ? parseInt(minTrustParam, 10) : 0,
     };

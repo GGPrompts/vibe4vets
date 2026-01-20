@@ -2,10 +2,12 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { USMap } from '@/components/us-map';
 import { CategoryCards } from '@/components/CategoryCards';
 import { SortChips } from '@/components/SortChips';
-import { Shield, RefreshCw, CheckCircle2, Search } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Shield, RefreshCw, CheckCircle2, Search, Loader2 } from 'lucide-react';
 import { useFilterContext } from '@/context/filter-context';
 import type { SortOption } from '@/components/sort-dropdown-header';
 
@@ -46,14 +48,42 @@ const steps = [
 ];
 
 export default function Home() {
-  const { filters, toggleCategory, toggleState, setEnabled } = useFilterContext();
+  const { filters, toggleCategory, toggleState, setEnabled, resourceCount, isLoadingCount } = useFilterContext();
   const [selectedSort, setSelectedSort] = useState<SortOption>('shuffle');
+  const router = useRouter();
 
   // Enable resource count fetching when on the home page
   useEffect(() => {
     setEnabled(true);
     return () => setEnabled(false);
   }, [setEnabled]);
+
+  // Build search URL with all selected filters
+  const buildSearchUrl = () => {
+    const params = new URLSearchParams();
+
+    // Add states (multiple values)
+    filters.states.forEach((state) => {
+      params.append('state', state);
+    });
+
+    // Add categories (multiple values)
+    filters.categories.forEach((category) => {
+      params.append('category', category);
+    });
+
+    // Add sort option
+    if (selectedSort && selectedSort !== 'newest') {
+      params.set('sort', selectedSort);
+    }
+
+    const queryString = params.toString();
+    return queryString ? `/search?${queryString}` : '/search';
+  };
+
+  const handleSearch = () => {
+    router.push(buildSearchUrl());
+  };
 
   return (
     <main className="min-h-screen pt-14">
@@ -122,6 +152,27 @@ export default function Home() {
               selectedSort={selectedSort}
               onSortChange={setSelectedSort}
             />
+          </div>
+
+          {/* Search button */}
+          <div className="mt-10 flex justify-center">
+            <Button
+              onClick={handleSearch}
+              size="lg"
+              className="btn-primary gap-2 rounded-lg px-8 py-4 text-base font-medium"
+            >
+              <Search className="h-5 w-5" />
+              {isLoadingCount ? (
+                <>
+                  <Loader2 className="h-4 w-4 animate-spin" />
+                  <span>Loading...</span>
+                </>
+              ) : resourceCount !== null ? (
+                <span>Search {resourceCount.toLocaleString()} Resources</span>
+              ) : (
+                <span>Search Resources</span>
+              )}
+            </Button>
           </div>
         </div>
       </section>
