@@ -99,17 +99,23 @@ export default function AnalyticsPage() {
   const { summary, popular_searches, popular_categories, popular_states, popular_resources, wizard_funnel } = dashboard;
 
   return (
-    <div className="p-6">
+    <div className="p-6 lg:p-8">
+      <div className="mx-auto max-w-6xl">
       {/* Header */}
-      <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+      <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h1 className="text-2xl font-bold">Usage Analytics</h1>
-          <p className="text-muted-foreground">
+          <div className="inline-flex items-center gap-2 mb-3">
+            <div className="h-px w-8 bg-gradient-to-r from-transparent to-[hsl(var(--v4v-gold)/0.5)]" />
+            <span className="text-sm font-medium uppercase tracking-widest text-[hsl(var(--v4v-gold-dark))]">Analytics</span>
+            <div className="h-px w-8 bg-gradient-to-l from-transparent to-[hsl(var(--v4v-gold)/0.5)]" />
+          </div>
+          <h1 className="font-display text-3xl font-semibold text-foreground">Usage Analytics</h1>
+          <p className="mt-1 text-muted-foreground">
             Privacy-respecting usage metrics (no PII collected)
           </p>
         </div>
         <Select value={String(days)} onValueChange={(v) => setDays(Number(v))}>
-          <SelectTrigger className="w-40">
+          <SelectTrigger className="w-40 bg-card border-border/50">
             <SelectValue placeholder="Time period" />
           </SelectTrigger>
           <SelectContent>
@@ -122,72 +128,85 @@ export default function AnalyticsPage() {
       </div>
 
       {/* Summary Stats */}
-      <div className="mb-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        <Card>
+      <div className="mb-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <Card className="border-border/50 bg-card/80 backdrop-blur-sm hover:shadow-md transition-shadow duration-200">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
             <CardTitle className="text-sm font-medium">Total Searches</CardTitle>
-            <Search className="h-4 w-4 text-muted-foreground" />
+            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[hsl(var(--v4v-employment)/0.1)]">
+              <Search className="h-4 w-4 text-[hsl(var(--v4v-employment))]" />
+            </div>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{summary.total_searches.toLocaleString()}</div>
+            <div className="text-3xl font-bold">{summary.total_searches.toLocaleString()}</div>
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="border-border/50 bg-card/80 backdrop-blur-sm hover:shadow-md transition-shadow duration-200">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
             <CardTitle className="text-sm font-medium">Resource Views</CardTitle>
-            <Eye className="h-4 w-4 text-muted-foreground" />
+            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[hsl(var(--v4v-training)/0.1)]">
+              <Eye className="h-4 w-4 text-[hsl(var(--v4v-training))]" />
+            </div>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{summary.total_resource_views.toLocaleString()}</div>
+            <div className="text-3xl font-bold">{summary.total_resource_views.toLocaleString()}</div>
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="border-border/50 bg-card/80 backdrop-blur-sm hover:shadow-md transition-shadow duration-200">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
             <CardTitle className="text-sm font-medium">Chat Sessions</CardTitle>
-            <MessageSquare className="h-4 w-4 text-muted-foreground" />
+            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[hsl(var(--v4v-housing)/0.1)]">
+              <MessageSquare className="h-4 w-4 text-[hsl(var(--v4v-housing))]" />
+            </div>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{summary.chat_sessions.toLocaleString()}</div>
+            <div className="text-3xl font-bold">{summary.chat_sessions.toLocaleString()}</div>
             <p className="text-xs text-muted-foreground">
               {summary.chat_messages.toLocaleString()} messages
             </p>
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="border-border/50 bg-card/80 backdrop-blur-sm hover:shadow-md transition-shadow duration-200">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
             <CardTitle className="text-sm font-medium">Filter Usage</CardTitle>
-            <Filter className="h-4 w-4 text-muted-foreground" />
+            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[hsl(var(--v4v-legal)/0.1)]">
+              <Filter className="h-4 w-4 text-[hsl(var(--v4v-legal))]" />
+            </div>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{summary.filter_usage.toLocaleString()}</div>
+            <div className="text-3xl font-bold">{summary.filter_usage.toLocaleString()}</div>
           </CardContent>
         </Card>
       </div>
 
       {/* Wizard Funnel */}
-      <Card className="mb-6">
+      <Card className="mb-8 border-border/50 bg-card/80 backdrop-blur-sm">
         <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Target className="h-5 w-5" />
+          <CardTitle className="flex items-center gap-2 font-display">
+            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[hsl(var(--v4v-gold)/0.15)]">
+              <Target className="h-5 w-5 text-[hsl(var(--v4v-gold-dark))]" />
+            </div>
             Eligibility Wizard Funnel
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="flex items-center gap-8">
-            <div>
+          <div className="flex flex-wrap items-center gap-8">
+            <div className="rounded-lg bg-muted/50 p-4">
               <p className="text-sm text-muted-foreground">Started</p>
-              <p className="text-2xl font-bold">{wizard_funnel.starts.toLocaleString()}</p>
+              <p className="text-3xl font-bold">{wizard_funnel.starts.toLocaleString()}</p>
             </div>
-            <TrendingUp className="h-6 w-6 text-muted-foreground" />
-            <div>
+            <TrendingUp className="h-6 w-6 text-[hsl(var(--v4v-gold))]" />
+            <div className="rounded-lg bg-muted/50 p-4">
               <p className="text-sm text-muted-foreground">Completed</p>
-              <p className="text-2xl font-bold">{wizard_funnel.completions.toLocaleString()}</p>
+              <p className="text-3xl font-bold">{wizard_funnel.completions.toLocaleString()}</p>
             </div>
             <div className="ml-auto">
-              <Badge variant={wizard_funnel.completion_rate >= 50 ? 'default' : 'secondary'}>
+              <Badge
+                variant={wizard_funnel.completion_rate >= 50 ? 'default' : 'secondary'}
+                className={wizard_funnel.completion_rate >= 50 ? 'bg-green-600 hover:bg-green-700' : ''}
+              >
                 {wizard_funnel.completion_rate}% completion rate
               </Badge>
             </div>
@@ -198,10 +217,12 @@ export default function AnalyticsPage() {
       {/* Detail Grids */}
       <div className="grid gap-6 lg:grid-cols-2">
         {/* Popular Searches */}
-        <Card>
+        <Card className="border-border/50 bg-card/80 backdrop-blur-sm">
           <CardHeader>
-            <CardTitle className="flex items-center gap-2 text-lg">
-              <Search className="h-5 w-5" />
+            <CardTitle className="flex items-center gap-2 text-lg font-display">
+              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[hsl(var(--v4v-employment)/0.1)]">
+                <Search className="h-4 w-4 text-[hsl(var(--v4v-employment))]" />
+              </div>
               Popular Searches
             </CardTitle>
           </CardHeader>
@@ -230,10 +251,12 @@ export default function AnalyticsPage() {
         </Card>
 
         {/* Popular Categories */}
-        <Card>
+        <Card className="border-border/50 bg-card/80 backdrop-blur-sm">
           <CardHeader>
-            <CardTitle className="flex items-center gap-2 text-lg">
-              <Filter className="h-5 w-5" />
+            <CardTitle className="flex items-center gap-2 text-lg font-display">
+              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[hsl(var(--v4v-training)/0.1)]">
+                <Filter className="h-4 w-4 text-[hsl(var(--v4v-training))]" />
+              </div>
               Popular Categories
             </CardTitle>
           </CardHeader>
@@ -257,10 +280,12 @@ export default function AnalyticsPage() {
         </Card>
 
         {/* Popular States */}
-        <Card>
+        <Card className="border-border/50 bg-card/80 backdrop-blur-sm">
           <CardHeader>
-            <CardTitle className="flex items-center gap-2 text-lg">
-              <MapPin className="h-5 w-5" />
+            <CardTitle className="flex items-center gap-2 text-lg font-display">
+              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[hsl(var(--v4v-housing)/0.1)]">
+                <MapPin className="h-4 w-4 text-[hsl(var(--v4v-housing))]" />
+              </div>
               Popular States
             </CardTitle>
           </CardHeader>
@@ -284,10 +309,12 @@ export default function AnalyticsPage() {
         </Card>
 
         {/* Most Viewed Resources */}
-        <Card>
+        <Card className="border-border/50 bg-card/80 backdrop-blur-sm">
           <CardHeader>
-            <CardTitle className="flex items-center gap-2 text-lg">
-              <FileText className="h-5 w-5" />
+            <CardTitle className="flex items-center gap-2 text-lg font-display">
+              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[hsl(var(--v4v-legal)/0.1)]">
+                <FileText className="h-4 w-4 text-[hsl(var(--v4v-legal))]" />
+              </div>
               Most Viewed Resources
             </CardTitle>
           </CardHeader>
@@ -321,12 +348,13 @@ export default function AnalyticsPage() {
       </div>
 
       {/* Privacy Notice */}
-      <div className="mt-6 rounded-lg border border-green-200 bg-green-50 p-4 dark:border-green-900 dark:bg-green-950">
+      <div className="mt-8 rounded-xl border border-green-200 bg-green-50/80 p-5 dark:border-green-900 dark:bg-green-950/50">
         <p className="text-sm text-green-800 dark:text-green-200">
           <strong>Privacy Notice:</strong> All analytics data is anonymous. No personal
           information, IP addresses, or user identifiers are collected or stored. This helps us
           understand aggregate usage patterns to improve the service for veterans.
         </p>
+      </div>
       </div>
     </div>
   );

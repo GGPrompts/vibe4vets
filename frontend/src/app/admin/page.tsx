@@ -189,18 +189,26 @@ export default function AdminPage() {
       <div className="mx-auto max-w-6xl">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-3xl font-bold">Review Queue</h1>
-          <p className="text-muted-foreground">
+          <div className="inline-flex items-center gap-2 mb-3">
+            <div className="h-px w-8 bg-gradient-to-r from-transparent to-[hsl(var(--v4v-gold)/0.5)]" />
+            <span className="text-sm font-medium uppercase tracking-widest text-[hsl(var(--v4v-gold-dark))]">Dashboard</span>
+            <div className="h-px w-8 bg-gradient-to-l from-transparent to-[hsl(var(--v4v-gold)/0.5)]" />
+          </div>
+          <h1 className="font-display text-3xl font-semibold text-foreground">Review Queue</h1>
+          <p className="mt-1 text-muted-foreground">
             Resources pending human verification
           </p>
         </div>
 
         {/* Stats Cards */}
         <div className="mb-8 grid gap-4 md:grid-cols-4">
-          <Card>
+          <Card className="border-border/50 bg-card/80 backdrop-blur-sm hover:shadow-md transition-shadow duration-200">
             <CardHeader className="pb-2">
-              <CardDescription>Pending Reviews</CardDescription>
-              <CardTitle className="text-3xl">
+              <CardDescription className="flex items-center gap-2">
+                <span className="h-2 w-2 rounded-full bg-amber-500" />
+                Pending Reviews
+              </CardDescription>
+              <CardTitle className="text-3xl text-amber-600">
                 {statsLoading ? (
                   <Skeleton className="h-9 w-16" />
                 ) : (
@@ -209,10 +217,13 @@ export default function AdminPage() {
               </CardTitle>
             </CardHeader>
           </Card>
-          <Card>
+          <Card className="border-border/50 bg-card/80 backdrop-blur-sm hover:shadow-md transition-shadow duration-200">
             <CardHeader className="pb-2">
-              <CardDescription>Pending Feedback</CardDescription>
-              <CardTitle className="text-3xl">
+              <CardDescription className="flex items-center gap-2">
+                <span className="h-2 w-2 rounded-full bg-blue-500" />
+                Pending Feedback
+              </CardDescription>
+              <CardTitle className="text-3xl text-blue-600">
                 {statsLoading ? (
                   <Skeleton className="h-9 w-16" />
                 ) : (
@@ -221,10 +232,13 @@ export default function AdminPage() {
               </CardTitle>
             </CardHeader>
           </Card>
-          <Card>
+          <Card className="border-border/50 bg-card/80 backdrop-blur-sm hover:shadow-md transition-shadow duration-200">
             <CardHeader className="pb-2">
-              <CardDescription>Approved Today</CardDescription>
-              <CardTitle className="text-3xl">
+              <CardDescription className="flex items-center gap-2">
+                <span className="h-2 w-2 rounded-full bg-green-500" />
+                Approved Today
+              </CardDescription>
+              <CardTitle className="text-3xl text-green-600">
                 {statsLoading ? (
                   <Skeleton className="h-9 w-16" />
                 ) : (
@@ -233,9 +247,12 @@ export default function AdminPage() {
               </CardTitle>
             </CardHeader>
           </Card>
-          <Card>
+          <Card className="border-border/50 bg-card/80 backdrop-blur-sm hover:shadow-md transition-shadow duration-200">
             <CardHeader className="pb-2">
-              <CardDescription>Total Resources</CardDescription>
+              <CardDescription className="flex items-center gap-2">
+                <span className="h-2 w-2 rounded-full bg-[hsl(var(--v4v-gold))]" />
+                Total Resources
+              </CardDescription>
               <CardTitle className="text-3xl">
                 {statsLoading ? (
                   <Skeleton className="h-9 w-16" />
@@ -249,11 +266,11 @@ export default function AdminPage() {
 
         {/* Main Tab Navigation */}
         <Tabs value={mainTab} onValueChange={(v) => setMainTab(v as 'reviews' | 'feedback')} className="mb-6">
-          <TabsList>
-            <TabsTrigger value="reviews">
+          <TabsList className="bg-muted/50">
+            <TabsTrigger value="reviews" className="data-[state=active]:bg-card data-[state=active]:shadow-sm">
               Review Queue {stats?.pending_reviews ? `(${stats.pending_reviews})` : ''}
             </TabsTrigger>
-            <TabsTrigger value="feedback">
+            <TabsTrigger value="feedback" className="data-[state=active]:bg-card data-[state=active]:shadow-sm">
               User Feedback {feedbackStats?.pending ? `(${feedbackStats.pending})` : ''}
             </TabsTrigger>
           </TabsList>
@@ -261,9 +278,9 @@ export default function AdminPage() {
 
         {/* Review Queue - shown when mainTab is 'reviews' */}
         {mainTab === 'reviews' && (
-          <Card>
+          <Card className="border-border/50 bg-card/80 backdrop-blur-sm">
             <CardHeader>
-              <CardTitle>Review Queue</CardTitle>
+              <CardTitle className="font-display">Review Queue</CardTitle>
               <CardDescription>
                 Resources pending human verification
               </CardDescription>
@@ -388,9 +405,9 @@ export default function AdminPage() {
 
         {/* User Feedback - shown when mainTab is 'feedback' */}
         {mainTab === 'feedback' && (
-          <Card>
+          <Card className="border-border/50 bg-card/80 backdrop-blur-sm">
             <CardHeader>
-              <CardTitle>User Feedback</CardTitle>
+              <CardTitle className="font-display">User Feedback</CardTitle>
               <CardDescription>
                 Reports from users about outdated or incorrect resource information
               </CardDescription>
