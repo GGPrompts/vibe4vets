@@ -316,8 +316,13 @@ export default function SourcesPage() {
         {/* Header */}
         <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <h1 className="text-3xl font-bold">Data Sources</h1>
-            <p className="text-muted-foreground">
+            <div className="inline-flex items-center gap-2 mb-3">
+              <div className="h-px w-8 bg-gradient-to-r from-transparent to-[hsl(var(--v4v-gold)/0.5)]" />
+              <span className="text-sm font-medium uppercase tracking-widest text-[hsl(var(--v4v-gold-dark))]">Data Sources</span>
+              <div className="h-px w-8 bg-gradient-to-l from-transparent to-[hsl(var(--v4v-gold)/0.5)]" />
+            </div>
+            <h1 className="font-display text-3xl font-semibold text-foreground">Source Health</h1>
+            <p className="mt-1 text-muted-foreground">
               Monitor source health and data freshness
             </p>
           </div>
@@ -343,43 +348,46 @@ export default function SourcesPage() {
 
         {/* Summary Cards */}
         <div className="mb-8 grid gap-4 md:grid-cols-4">
-          <Card>
+          <Card className="border-border/50 bg-card/80 backdrop-blur-sm hover:shadow-md transition-shadow duration-200">
             <CardHeader className="pb-2">
-              <CardDescription>Total Sources</CardDescription>
+              <CardDescription className="flex items-center gap-2">
+                <span className="h-2 w-2 rounded-full bg-[hsl(var(--v4v-gold))]" />
+                Total Sources
+              </CardDescription>
               <CardTitle className="text-3xl">
                 {loading ? <Skeleton className="h-9 w-12" /> : sources.length}
               </CardTitle>
             </CardHeader>
           </Card>
-          <Card className="border-green-200 dark:border-green-800">
+          <Card className="border-border/50 bg-card/80 backdrop-blur-sm hover:shadow-md transition-shadow duration-200">
             <CardHeader className="pb-2">
-              <CardDescription className="flex items-center gap-1.5">
+              <CardDescription className="flex items-center gap-2">
                 <span className="h-2 w-2 rounded-full bg-green-500" />
                 Healthy
               </CardDescription>
-              <CardTitle className="text-3xl text-green-700 dark:text-green-400">
+              <CardTitle className="text-3xl text-green-600">
                 {loading ? <Skeleton className="h-9 w-12" /> : healthySources}
               </CardTitle>
             </CardHeader>
           </Card>
-          <Card className="border-yellow-200 dark:border-yellow-800">
+          <Card className="border-border/50 bg-card/80 backdrop-blur-sm hover:shadow-md transition-shadow duration-200">
             <CardHeader className="pb-2">
-              <CardDescription className="flex items-center gap-1.5">
+              <CardDescription className="flex items-center gap-2">
                 <span className="h-2 w-2 rounded-full bg-yellow-500" />
                 Degraded
               </CardDescription>
-              <CardTitle className="text-3xl text-yellow-700 dark:text-yellow-400">
+              <CardTitle className="text-3xl text-yellow-600">
                 {loading ? <Skeleton className="h-9 w-12" /> : degradedSources}
               </CardTitle>
             </CardHeader>
           </Card>
-          <Card className="border-red-200 dark:border-red-800">
+          <Card className="border-border/50 bg-card/80 backdrop-blur-sm hover:shadow-md transition-shadow duration-200">
             <CardHeader className="pb-2">
-              <CardDescription className="flex items-center gap-1.5">
+              <CardDescription className="flex items-center gap-2">
                 <span className="h-2 w-2 rounded-full bg-red-500" />
                 Failing
               </CardDescription>
-              <CardTitle className="text-3xl text-red-700 dark:text-red-400">
+              <CardTitle className="text-3xl text-red-600">
                 {loading ? <Skeleton className="h-9 w-12" /> : failingSources}
               </CardTitle>
             </CardHeader>
@@ -387,9 +395,9 @@ export default function SourcesPage() {
         </div>
 
         {/* Sources Table */}
-        <Card>
+        <Card className="border-border/50 bg-card/80 backdrop-blur-sm">
           <CardHeader>
-            <CardTitle>All Sources</CardTitle>
+            <CardTitle className="font-display">All Sources</CardTitle>
             <CardDescription>
               {loading ? (
                 <Skeleton className="h-4 w-48" />

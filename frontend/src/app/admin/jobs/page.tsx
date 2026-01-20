@@ -219,8 +219,13 @@ export default function JobsPage() {
         {/* Header */}
         <div className="mb-8 flex items-center justify-between">
           <div>
-            <h1 className="text-3xl font-bold">Scheduled Jobs</h1>
-            <p className="text-muted-foreground">
+            <div className="inline-flex items-center gap-2 mb-3">
+              <div className="h-px w-8 bg-gradient-to-r from-transparent to-[hsl(var(--v4v-gold)/0.5)]" />
+              <span className="text-sm font-medium uppercase tracking-widest text-[hsl(var(--v4v-gold-dark))]">Jobs</span>
+              <div className="h-px w-8 bg-gradient-to-l from-transparent to-[hsl(var(--v4v-gold)/0.5)]" />
+            </div>
+            <h1 className="font-display text-3xl font-semibold text-foreground">Scheduled Jobs</h1>
+            <p className="mt-1 text-muted-foreground">
               Manage and monitor background jobs
             </p>
           </div>
@@ -240,9 +245,12 @@ export default function JobsPage() {
 
         {/* Stats Cards */}
         <div className="mb-8 grid gap-4 md:grid-cols-3">
-          <Card>
+          <Card className="border-border/50 bg-card/80 backdrop-blur-sm hover:shadow-md transition-shadow duration-200">
             <CardHeader className="pb-2">
-              <CardDescription>Scheduler Status</CardDescription>
+              <CardDescription className="flex items-center gap-2">
+                <span className={`h-2 w-2 rounded-full ${schedulerRunning ? 'bg-green-500' : 'bg-red-500'}`} />
+                Scheduler Status
+              </CardDescription>
               <CardTitle className="text-xl">
                 {loading ? (
                   <Skeleton className="h-7 w-20" />
@@ -260,10 +268,13 @@ export default function JobsPage() {
               </CardTitle>
             </CardHeader>
           </Card>
-          <Card>
+          <Card className="border-border/50 bg-card/80 backdrop-blur-sm hover:shadow-md transition-shadow duration-200">
             <CardHeader className="pb-2">
-              <CardDescription>Scheduled Jobs</CardDescription>
-              <CardTitle className="text-3xl">
+              <CardDescription className="flex items-center gap-2">
+                <span className="h-2 w-2 rounded-full bg-blue-500" />
+                Scheduled Jobs
+              </CardDescription>
+              <CardTitle className="text-3xl text-blue-600">
                 {loading ? (
                   <Skeleton className="h-9 w-16" />
                 ) : (
@@ -272,9 +283,12 @@ export default function JobsPage() {
               </CardTitle>
             </CardHeader>
           </Card>
-          <Card>
+          <Card className="border-border/50 bg-card/80 backdrop-blur-sm hover:shadow-md transition-shadow duration-200">
             <CardHeader className="pb-2">
-              <CardDescription>Available Connectors</CardDescription>
+              <CardDescription className="flex items-center gap-2">
+                <span className="h-2 w-2 rounded-full bg-[hsl(var(--v4v-gold))]" />
+                Available Connectors
+              </CardDescription>
               <CardTitle className="text-3xl">
                 {loading ? (
                   <Skeleton className="h-9 w-16" />
@@ -287,9 +301,9 @@ export default function JobsPage() {
         </div>
 
         {/* Main Content */}
-        <Card>
+        <Card className="border-border/50 bg-card/80 backdrop-blur-sm">
           <CardHeader>
-            <CardTitle>Job Management</CardTitle>
+            <CardTitle className="font-display">Job Management</CardTitle>
             <CardDescription>
               View scheduled jobs and execution history
             </CardDescription>
