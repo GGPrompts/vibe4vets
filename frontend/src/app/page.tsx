@@ -32,18 +32,18 @@ const trustIndicators = [
 const steps = [
   {
     number: '01',
-    title: 'Search',
-    description: 'Enter keywords or browse by category to find relevant resources',
+    title: 'Pick Your State',
+    description: 'Click states on the map to focus on resources in your area',
   },
   {
     number: '02',
-    title: 'Filter',
-    description: 'Narrow results by location, category, or specific needs',
+    title: 'Choose Categories',
+    description: 'Select what you need: employment, training, housing, or legal help',
   },
   {
     number: '03',
-    title: 'Connect',
-    description: 'Get contact info and details to access the resources you need',
+    title: 'Find Resources',
+    description: 'Hit search to see matching resources with contact details',
   },
 ];
 
@@ -126,6 +126,30 @@ export default function Home() {
         </div>
       </section>
 
+      {/* How It Works - Compact steps */}
+      <section className="border-b border-border bg-muted/30 py-8">
+        <div className="mx-auto max-w-6xl px-6">
+          <div className="flex flex-col items-center gap-6 lg:flex-row lg:justify-between">
+            {steps.map((step, index) => (
+              <div key={step.number} className="flex items-center gap-4">
+                <div className="flex items-center gap-3">
+                  <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[hsl(var(--v4v-gold)/0.15)] font-display text-sm font-semibold text-[hsl(var(--v4v-gold-dark))]">
+                    {step.number}
+                  </span>
+                  <div>
+                    <span className="font-medium text-foreground">{step.title}</span>
+                    <p className="text-sm text-muted-foreground">{step.description}</p>
+                  </div>
+                </div>
+                {index < steps.length - 1 && (
+                  <div className="hidden h-px w-12 bg-border lg:block" />
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Categories Section - Soft background */}
       <section className="relative bg-background py-16 lg:py-24">
         <div className="mx-auto max-w-6xl px-6">
@@ -199,61 +223,6 @@ export default function Home() {
                 </div>
               );
             })}
-          </div>
-        </div>
-      </section>
-
-      {/* How It Works Section */}
-      <section className="relative bg-background py-16 lg:py-24">
-        <div className="mx-auto max-w-6xl px-6">
-          {/* Section header */}
-          <div className="mb-10 text-center">
-            <div className="mx-auto editorial-divider mb-4" />
-            <h2 className="font-display text-2xl font-semibold text-foreground sm:text-3xl">
-              How It Works
-            </h2>
-            <p className="mx-auto mt-2 max-w-xl text-muted-foreground">
-              Finding veteran resources should be simple
-            </p>
-          </div>
-
-          {/* Steps */}
-          <div className="relative">
-            {/* Connecting line (desktop) */}
-            <div className="absolute left-0 right-0 top-12 hidden h-px bg-gradient-to-r from-transparent via-border to-transparent lg:block" />
-
-            <div className="grid gap-8 lg:grid-cols-3">
-              {steps.map((step) => (
-                <div key={step.number} className="relative text-center">
-                  {/* Step number */}
-                  <div className="relative mx-auto mb-5 inline-flex h-24 w-24 items-center justify-center">
-                    <div className="step-circle absolute inset-0 rounded-full" />
-                    <span className="relative font-display text-2xl font-semibold text-[hsl(var(--v4v-gold-dark))]">
-                      {step.number}
-                    </span>
-                  </div>
-
-                  {/* Content */}
-                  <h3 className="font-display text-lg font-medium text-foreground">
-                    {step.title}
-                  </h3>
-                  <p className="mt-1.5 text-muted-foreground">
-                    {step.description}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* CTA */}
-          <div className="mt-10 text-center">
-            <Link
-              href="/search"
-              className="btn-primary inline-flex items-center gap-2 rounded-lg px-6 py-3"
-            >
-              <Search className="h-4 w-4" />
-              <span className="text-sm font-medium">Start Searching</span>
-            </Link>
           </div>
         </div>
       </section>
