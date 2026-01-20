@@ -58,6 +58,14 @@ export interface TrustSignals {
   source_name: string | null;
 }
 
+export interface Program {
+  id: string;
+  name: string;
+  program_type: string;
+  description: string | null;
+  services_offered: string[];
+}
+
 export interface Resource {
   id: string;
   title: string;
@@ -65,6 +73,8 @@ export interface Resource {
   summary: string | null;
   eligibility: string | null;
   how_to_apply: string | null;
+  program_id: string | null;
+  program: Program | null;
   categories: string[];
   subcategories: string[];
   tags: string[];

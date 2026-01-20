@@ -197,6 +197,16 @@ class TrustSignals(BaseModel):
     )
 
 
+class ProgramNested(BaseModel):
+    """Program information nested in resource responses."""
+
+    id: UUID = Field(..., description="Program unique identifier")
+    name: str = Field(..., description="Program name")
+    program_type: str = Field(..., description="Program type (ssvf, hud_vash, etc.)")
+    description: str | None = Field(None, description="Program description")
+    services_offered: list[str] = Field(default_factory=list, description="Services provided")
+
+
 class ResourceRead(BaseModel):
     """Complete resource data returned from the API.
 
@@ -210,6 +220,10 @@ class ResourceRead(BaseModel):
     summary: str | None = Field(None, description="Brief summary (1-2 sentences)")
     eligibility: str | None = Field(None, description="Who qualifies for this resource")
     how_to_apply: str | None = Field(None, description="Application instructions")
+
+    # Program relationship (for hierarchical grouping)
+    program_id: UUID | None = Field(None, description="Parent program ID if this is a provider")
+    program: ProgramNested | None = Field(None, description="Parent program details")
 
     categories: list[str] = Field(..., description="Categories (employment, training, housing, legal)")
     subcategories: list[str] = Field(..., description="More specific subcategories")

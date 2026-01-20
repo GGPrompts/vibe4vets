@@ -24,6 +24,8 @@ import {
 } from '@/components/ui/sheet';
 import { ResourceDetailModal } from '@/components/resource-detail-modal';
 import { VirtualizedResourceGrid } from '@/components/virtualized-resource-grid';
+import { ProgramCard } from '@/components/ProgramCard';
+import { ResourceCard } from '@/components/resource-card';
 import {
   FiltersSidebar,
   FixedFiltersSidebar,
@@ -31,7 +33,66 @@ import {
 } from '@/components/filters-sidebar';
 import { FilterChips } from '@/components/filter-chips';
 import type { SortOption } from '@/components/sort-dropdown';
-import api, { type Resource, type MatchExplanation } from '@/lib/api';
+import api, { type Resource, type MatchExplanation, type Program } from '@/lib/api';
+
+// Helper type for grouped display
+interface ProgramGroup {
+  type: 'program';
+  program: Program;
+  resources: Resource[];
+}
+
+interface StandaloneResource {
+  type: 'standalone';
+  resource: Resource;
+}
+
+type DisplayItem = ProgramGroup | StandaloneResource;
+
+// Group resources by program_id for hierarchical display
+function groupResourcesByProgram(resources: Resource[]): DisplayItem[] {
+  const programMap = new Map<string, { program: Program; resources: Resource[] }>();
+  const standalone: Resource[] = [];
+
+  for (const resource of resources) {
+    if (resource.program_id && resource.program) {
+      const existing = programMap.get(resource.program_id);
+      if (existing) {
+        existing.resources.push(resource);
+      } else {
+        programMap.set(resource.program_id, {
+          program: resource.program,
+          resources: [resource],
+        });
+      }
+    } else {
+      standalone.push(resource);
+    }
+  }
+
+  const items: DisplayItem[] = [];
+
+  // Add program groups (only if they have 2+ resources to make grouping worthwhile)
+  for (const [, group] of programMap) {
+    if (group.resources.length >= 2) {
+      items.push({
+        type: 'program',
+        program: group.program,
+        resources: group.resources,
+      });
+    } else {
+      // Single-resource programs render as standalone
+      standalone.push(...group.resources);
+    }
+  }
+
+  // Add standalone resources
+  for (const resource of standalone) {
+    items.push({ type: 'standalone', resource });
+  }
+
+  return items;
+}
 import { useResourcesInfinite } from '@/lib/hooks/useResourcesInfinite';
 import { useAnalytics } from '@/lib/useAnalytics';
 import { useIsMobile } from '@/hooks/use-media-query';
@@ -358,6 +419,14 @@ function SearchResults() {
     return new Map(searchResults.results.map((r) => [r.resource.id, r.explanations]));
   }, [searchResults]);
 
+  // Group resources by program for hierarchical display
+  const groupedItems = useMemo(() => {
+    return groupResourcesByProgram(resources);
+  }, [resources]);
+
+  // Check if we have any program groups (to decide whether to use grouped vs flat view)
+  const hasProgramGroups = groupedItems.some((item) => item.type === 'program');
+
   // For browse mode, use server total; for search mode, use filtered count
   const totalResults = isSearchMode ? resources.length : browseTotal;
   const displayedCount = resources.length;
@@ -542,20 +611,54 @@ function SearchResults() {
             </div>
           ) : hasResults ? (
             <>
-              {/* Virtualized Grid */}
-              <VirtualizedResourceGrid
-                resources={resources}
-                explanationsMap={explanationsMap}
-                selectedResourceId={selectedResource?.id}
-                animatingResourceId={animatingResourceId}
-                onResourceClick={openResourceModal}
-                hasNextPage={!isSearchMode && hasNextPage}
-                isFetchingNextPage={isFetchingNextPage}
-                fetchNextPage={handleLoadMore}
-                disableAnimation={disableGridMotion}
-                newResourceIds={newResourceIds}
-                newResourceIndexById={newResourceIndexById}
-              />
+              {/* Grouped View (when program groups exist) or Virtualized Grid */}
+              {hasProgramGroups ? (
+                <div className="space-y-4">
+                  {groupedItems.map((item) => {
+                    if (item.type === 'program') {
+                      return (
+                        <ProgramCard
+                          key={item.program.id}
+                          program={item.program}
+                          resources={item.resources}
+                          explanationsMap={explanationsMap}
+                          onResourceClick={openResourceModal}
+                        />
+                      );
+                    } else {
+                      return (
+                        <ResourceCard
+                          key={item.resource.id}
+                          resource={item.resource}
+                          explanations={explanationsMap.get(item.resource.id)}
+                          variant="modal"
+                          onClick={() =>
+                            openResourceModal(
+                              item.resource,
+                              explanationsMap.get(item.resource.id)
+                            )
+                          }
+                        />
+                      );
+                    }
+                  })}
+                </div>
+              ) : (
+                /* Virtualized Grid (flat view for ungrouped resources) */
+                <VirtualizedResourceGrid
+                  resources={resources}
+                  explanationsMap={explanationsMap}
+                  selectedResourceId={selectedResource?.id}
+                  animatingResourceId={animatingResourceId}
+                  onResourceClick={openResourceModal}
+                  hasNextPage={!isSearchMode && hasNextPage}
+                  isFetchingNextPage={isFetchingNextPage}
+                  fetchNextPage={handleLoadMore}
+                  disableAnimation={disableGridMotion}
+                  newResourceIds={newResourceIds}
+                  newResourceIndexById={newResourceIndexById}
+                />
+              )}
 
               {/* Load More Button - mobile only (desktop uses auto-fetch) */}
               {!isSearchMode && hasNextPage && isMobile && (
