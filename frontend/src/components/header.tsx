@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useCallback, useRef } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname, useSearchParams, useRouter } from 'next/navigation';
 import { useScrollDirection } from '@/hooks/use-scroll-direction';
@@ -112,12 +113,15 @@ export function Header() {
       <div className="mx-auto flex h-14 max-w-6xl items-center justify-between gap-4 px-6">
         {/* Logo with light background plate */}
         <Link href="/" className="flex shrink-0 items-center group" aria-label="Vibe4Vets Home">
-          <span className="rounded-md bg-white/95 px-3 py-1.5 transition-all duration-200 group-hover:bg-white">
-            <span className="font-display text-lg font-bold tracking-tight">
-              <span className="text-[hsl(var(--v4v-navy))]">Vibe</span>
-              <span className="text-[hsl(var(--v4v-gold-dark))]">4</span>
-              <span className="text-[hsl(var(--v4v-navy))]">Vets</span>
-            </span>
+          <span className="rounded-md bg-white/95 px-3 py-1 transition-all duration-200 group-hover:bg-white">
+            <Image
+              src="/brand/vibe4vets-wordmark.png"
+              alt="Vibe4Vets"
+              width={391}
+              height={68}
+              priority
+              className="h-7 w-auto"
+            />
           </span>
         </Link>
 
