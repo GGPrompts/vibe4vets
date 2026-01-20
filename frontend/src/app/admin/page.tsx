@@ -287,11 +287,11 @@ export default function AdminPage() {
             </CardHeader>
             <CardContent>
               <Tabs value={activeTab} onValueChange={setActiveTab}>
-                <TabsList>
-                  <TabsTrigger value="pending">Pending</TabsTrigger>
-                  <TabsTrigger value="approved">Approved</TabsTrigger>
-                  <TabsTrigger value="rejected">Rejected</TabsTrigger>
-                  <TabsTrigger value="all">All</TabsTrigger>
+                <TabsList className="bg-muted">
+                  <TabsTrigger value="pending" className="data-[state=active]:bg-background">Pending</TabsTrigger>
+                  <TabsTrigger value="approved" className="data-[state=active]:bg-background">Approved</TabsTrigger>
+                  <TabsTrigger value="rejected" className="data-[state=active]:bg-background">Rejected</TabsTrigger>
+                  <TabsTrigger value="all" className="data-[state=active]:bg-background">All</TabsTrigger>
                 </TabsList>
 
                 <TabsContent value={activeTab} className="mt-4">
@@ -310,15 +310,15 @@ export default function AdminPage() {
                   ) : (
                     <div className="overflow-x-auto rounded-md border">
                       <TooltipProvider>
-                        <Table>
+                        <Table className="table-fixed w-full min-w-[900px]">
                           <TableHeader>
                             <TableRow>
-                              <TableHead className="min-w-[200px]">Resource</TableHead>
-                              <TableHead className="min-w-[150px]">Organization</TableHead>
-                              <TableHead className="min-w-[200px]">Reason</TableHead>
-                              <TableHead className="min-w-[80px]">Status</TableHead>
-                              <TableHead className="min-w-[100px]">Date</TableHead>
-                              <TableHead className="sticky right-0 bg-background min-w-[160px] text-right">Actions</TableHead>
+                              <TableHead className="w-[220px]">Resource</TableHead>
+                              <TableHead className="w-[180px]">Organization</TableHead>
+                              <TableHead className="w-[220px]">Reason</TableHead>
+                              <TableHead className="w-[90px]">Status</TableHead>
+                              <TableHead className="w-[100px]">Date</TableHead>
+                              <TableHead className="w-[140px] text-right">Actions</TableHead>
                             </TableRow>
                           </TableHeader>
                           <TableBody>
@@ -367,7 +367,7 @@ export default function AdminPage() {
                                 <TableCell className="text-sm text-muted-foreground">
                                   {new Date(item.created_at).toLocaleDateString()}
                                 </TableCell>
-                                <TableCell className="sticky right-0 bg-background">
+                                <TableCell>
                                   {item.status === 'pending' && (
                                     <div className="flex justify-end gap-2">
                                       <Button
