@@ -1,10 +1,11 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect } from 'react';
 import Link from 'next/link';
 import { USMap } from '@/components/us-map';
 import { CategoryCards } from '@/components/CategoryCards';
 import { Shield, RefreshCw, CheckCircle2, Search } from 'lucide-react';
+import { useFilterContext } from '@/context/filter-context';
 
 const trustIndicators = [
   {
@@ -43,15 +44,13 @@ const steps = [
 ];
 
 export default function Home() {
-  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+  const { filters, toggleCategory, toggleState, setEnabled } = useFilterContext();
 
-  const handleToggleCategory = (category: string) => {
-    setSelectedCategories((prev) =>
-      prev.includes(category)
-        ? prev.filter((c) => c !== category)
-        : [...prev, category]
-    );
-  };
+  // Enable resource count fetching when on the home page
+  useEffect(() => {
+    setEnabled(true);
+    return () => setEnabled(false);
+  }, [setEnabled]);
 
   return (
     <main className="min-h-screen pt-14">
@@ -80,7 +79,11 @@ export default function Home() {
             {/* Interactive US Map */}
             <div className="animate-fade-in-up delay-100 mx-auto mt-8 max-w-4xl" style={{ opacity: 0 }}>
               <div className="hero-search-container rounded-xl p-4">
-                <USMap className="[&_svg]:max-h-[320px]" />
+                <USMap
+                  className="[&_svg]:max-h-[320px]"
+                  selectedStates={filters.states}
+                  onToggleState={toggleState}
+                />
               </div>
               <p className="mt-3 text-sm text-white/50">
                 Click a state to explore resources in your area
@@ -106,8 +109,8 @@ export default function Home() {
 
           {/* Category cards grid */}
           <CategoryCards
-            selectedCategories={selectedCategories}
-            onToggleCategory={handleToggleCategory}
+            selectedCategories={filters.categories}
+            onToggleCategory={toggleCategory}
           />
         </div>
       </section>

@@ -451,6 +451,11 @@ async function fetchAPI<T>(
   return response.json();
 }
 
+// Resource count type
+export interface ResourceCount {
+  count: number;
+}
+
 // Resources API
 export const api = {
   resources: {
@@ -500,6 +505,20 @@ export const api = {
       return fetchAPI(`/api/v1/resources/${id}`, {
         method: 'DELETE',
       });
+    },
+
+    count: (params: {
+      categories?: string;
+      states?: string;
+      scope?: string;
+    } = {}): Promise<ResourceCount> => {
+      const searchParams = new URLSearchParams();
+      if (params.categories) searchParams.set('categories', params.categories);
+      if (params.states) searchParams.set('states', params.states);
+      if (params.scope) searchParams.set('scope', params.scope);
+
+      const query = searchParams.toString();
+      return fetchAPI(`/api/v1/resources/count${query ? `?${query}` : ''}`);
     },
   },
 
