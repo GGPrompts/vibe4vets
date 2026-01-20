@@ -1,0 +1,548 @@
+[
+  {
+    "grant_id": "26-ZZ-478",
+    "org_name": "Ponca Tribe of Nebraska",
+    "state": "IA;NE;SD",
+    "award_amount": 350000,
+    "visn": "VISN 23: VA Midwest Health Care Network"
+  },
+  {
+    "grant_id": "12-ID-032",
+    "org_name": "El-Ada, Inc.",
+    "state": "ID",
+    "award_amount": 648459,
+    "visn": "VISN 20: Northwest Network"
+  },
+  {
+    "grant_id": "20-ZZ-147",
+    "org_name": "Blue Mountain Action Council",
+    "state": "ID;OR;WA",
+    "award_amount": 3222578,
+    "visn": "VISN 20: Northwest Network"
+  },
+  {
+    "grant_id": "19-ZZ-317",
+    "org_name": "Homeless Veterans Fellowship",
+    "state": "ID;UT",
+    "award_amount": 1043540,
+    "visn": "VISN 19: Rocky Mountain Network"
+  },
+  {
+    "grant_id": "20-ZZ-301",
+    "org_name": "Goodwill Industries Of The Inland Northwest",
+    "state": "ID;WA",
+    "award_amount": 6199510,
+    "visn": "VISN 20: Northwest Network"
+  },
+  {
+    "grant_id": "12-IL-033",
+    "org_name": "Thresholds",
+    "state": "IL",
+    "award_amount": 2053998,
+    "visn": "VISN 12: VA Great Lakes Health Care System"
+  },
+  {
+    "grant_id": "13-IL-105",
+    "org_name": "Heartland Human Care Services, Inc.",
+    "state": "IL",
+    "award_amount": 4738105,
+    "visn": "VISN 12: VA Great Lakes Health Care System"
+  },
+  {
+    "grant_id": "14-IL-194",
+    "org_name": "Featherfist",
+    "state": "IL",
+    "award_amount": 3918558,
+    "visn": "VISN 12: VA Great Lakes Health Care System"
+  },
+  {
+    "grant_id": "14-IL-196",
+    "org_name": "Midwest Shelter for Homeless Veterans, Inc.",
+    "state": "IL",
+    "award_amount": 2637730,
+    "visn": "VISN 12: VA Great Lakes Health Care System"
+  },
+  {
+    "grant_id": "14-IL-197",
+    "org_name": "Chestnut Health Systems, Inc.",
+    "state": "IL",
+    "award_amount": 1065123,
+    "visn": "VISN 15: VA Heartland Network"
+  },
+  {
+    "grant_id": "18-ZZ-034",
+    "org_name": "Volunteers of America of Illinois",
+    "state": "IL;IN",
+    "award_amount": 4557851,
+    "visn": "VISN 12: VA Great Lakes Health Care System"
+  },
+  {
+    "grant_id": "14-ZZ-308",
+    "org_name": "Veterans Path to Hope",
+    "state": "IL;WI",
+    "award_amount": 2717963,
+    "visn": "VISN 12: VA Great Lakes Health Care System"
+  },
+  {
+    "grant_id": "13-IN-106",
+    "org_name": "Community Action of Northeast Indiana, Inc.",
+    "state": "IN",
+    "award_amount": 813856,
+    "visn": "VISN 10: VA Healthcare System"
+  },
+  {
+    "grant_id": "14-IN-199",
+    "org_name": "Lafayette Transitional Housing Center, Inc.",
+    "state": "IN",
+    "award_amount": 324407,
+    "visn": "VISN 10: VA Healthcare System"
+  },
+  {
+    "grant_id": "14-IN-200",
+    "org_name": "InteCare, Inc.",
+    "state": "IN",
+    "award_amount": 2986779,
+    "visn": "VISN 10: VA Healthcare System"
+  },
+  {
+    "grant_id": "15-IN-201",
+    "org_name": "Volunteers of America of Indiana, Inc.",
+    "state": "IN",
+    "award_amount": 2234541,
+    "visn": "VISN 10: VA Healthcare System"
+  },
+  {
+    "grant_id": "20-IN-451",
+    "org_name": "HVAF of Indiana, Inc.",
+    "state": "IN",
+    "award_amount": 2847745,
+    "visn": "VISN 10: VA Healthcare System"
+  },
+  {
+    "grant_id": "19-ZZ-263",
+    "org_name": "Talbert House",
+    "state": "IN;KY;OH",
+    "award_amount": 2249684,
+    "visn": "VISN 10: VA Healthcare System"
+  },
+  {
+    "grant_id": "25-ZZ-037",
+    "org_name": "Volunteers of America Mid-States, Inc.",
+    "state": "IN;KY;TN;WV",
+    "award_amount": 12202998,
+    "visn": "VISN 5: VA Capitol Health Care Network;VISN 9: VA MidSouth Healthcare Network;VISN 10: VA Healthcare System;VISN 15: VA Heartland Network"
+  },
+  {
+    "grant_id": "14-ZZ-260",
+    "org_name": "St. Vincent de Paul Social Services, Inc.",
+    "state": "IN;OH",
+    "award_amount": 1362835,
+    "visn": "VISN 10: VA Healthcare System"
+  },
+  {
+    "grant_id": "14-KS-479",
+    "org_name": "Catholic Charities, Inc. (Diocese of Wichita)",
+    "state": "KS",
+    "award_amount": 1476651,
+    "visn": "VISN 15: VA Heartland Network"
+  },
+  {
+    "grant_id": "20-KS-443",
+    "org_name": "The Salvation Army",
+    "state": "KS",
+    "award_amount": 2406793,
+    "visn": "VISN 15: VA Heartland Network"
+  },
+  {
+    "grant_id": "26-ZZ-110",
+    "org_name": "Catholic Charities of Kansas City - St Joseph, Inc.",
+    "state": "KS;MO",
+    "award_amount": 4447118,
+    "visn": "VISN 15: VA Heartland Network"
+  },
+  {
+    "grant_id": "20-KY-204",
+    "org_name": "Kentucky River Foothills Development Council, Inc.",
+    "state": "KY",
+    "award_amount": 2273199,
+    "visn": "VISN 9: VA MidSouth Healthcare Network"
+  },
+  {
+    "grant_id": "14-LA-205",
+    "org_name": "Hope Center, Inc.",
+    "state": "LA",
+    "award_amount": 3436180,
+    "visn": "VISN 16: South Central VA Health Care Network"
+  },
+  {
+    "grant_id": "20-LA-208",
+    "org_name": "Start Corporation",
+    "state": "LA",
+    "award_amount": 1807402,
+    "visn": "VISN 16: South Central VA Health Care Network"
+  },
+  {
+    "grant_id": "12-MA-040",
+    "org_name": "Volunteers of America of Massachusetts, Inc.",
+    "state": "MA",
+    "award_amount": 5789609,
+    "visn": "VISN 1: VA New England Healthcare System"
+  },
+  {
+    "grant_id": "20-MA-211",
+    "org_name": "Vietnam Veterans Workshop, Inc.",
+    "state": "MA",
+    "award_amount": 5253250,
+    "visn": "VISN 1: VA New England Healthcare System"
+  },
+  {
+    "grant_id": "26-MA-477",
+    "org_name": "Cape and Islands Veterans Outreach Center",
+    "state": "MA",
+    "award_amount": 500000,
+    "visn": "VISN 1: VA New England Healthcare System"
+  },
+  {
+    "grant_id": "24-MA-460",
+    "org_name": "Clear Path for Veterans New England Inc.",
+    "state": "MA;NH",
+    "award_amount": 2000000,
+    "visn": "VISN 1: VA New England Healthcare System"
+  },
+  {
+    "grant_id": "13-MD-107",
+    "org_name": "Three Oaks Homeless Shelter, Inc.",
+    "state": "MD",
+    "award_amount": 497308,
+    "visn": "VISN 5: VA Capitol Health Care Network"
+  },
+  {
+    "grant_id": "14-MD-214",
+    "org_name": "Project PLASE, Inc.",
+    "state": "MD",
+    "award_amount": 4024017,
+    "visn": "VISN 5: VA Capitol Health Care Network"
+  },
+  {
+    "grant_id": "14-MD-215",
+    "org_name": "New Vision House of Hope, Inc.",
+    "state": "MD",
+    "award_amount": 1961021,
+    "visn": "VISN 5: VA Capitol Health Care Network"
+  },
+  {
+    "grant_id": "14-MD-216",
+    "org_name": "Diakonia, Inc.",
+    "state": "MD",
+    "award_amount": 1313667,
+    "visn": "VISN 5: VA Capitol Health Care Network"
+  },
+  {
+    "grant_id": "14-MD-217",
+    "org_name": "St. James A.M.E. Zion Church-Zion House",
+    "state": "MD",
+    "award_amount": 1284687,
+    "visn": "VISN 5: VA Capitol Health Care Network"
+  },
+  {
+    "grant_id": "24-MD-464",
+    "org_name": "St. Vincent de Paul of Baltimore",
+    "state": "MD",
+    "award_amount": 2518731,
+    "visn": "VISN 5: VA Capitol Health Care Network"
+  },
+  {
+    "grant_id": "12-ME-043",
+    "org_name": "Preble Street",
+    "state": "ME",
+    "award_amount": 4383681,
+    "visn": "VISN 1: VA New England Healthcare System"
+  },
+  {
+    "grant_id": "12-MI-045",
+    "org_name": "Southwest Counseling Solutions",
+    "state": "MI",
+    "award_amount": 2610784,
+    "visn": "VISN 10: VA Healthcare System"
+  },
+  {
+    "grant_id": "13-MI-108",
+    "org_name": "Northwest Michigan Community Action Agency, Inc.",
+    "state": "MI",
+    "award_amount": 1363827,
+    "visn": "VISN 10: VA Healthcare System"
+  },
+  {
+    "grant_id": "14-MI-220",
+    "org_name": "Community Action Agency",
+    "state": "MI",
+    "award_amount": 1294517,
+    "visn": "VISN 10: VA Healthcare System"
+  },
+  {
+    "grant_id": "14-MI-223",
+    "org_name": "Community Rebuilders",
+    "state": "MI",
+    "award_amount": 793337,
+    "visn": "VISN 10: VA Healthcare System"
+  },
+  {
+    "grant_id": "15-MI-328",
+    "org_name": "Alger Marquette Community Action Board",
+    "state": "MI",
+    "award_amount": 927162,
+    "visn": "VISN 12: VA Great Lakes Health Care System"
+  },
+  {
+    "grant_id": "20-MI-221",
+    "org_name": "Oakland Livingston Human Service Agency",
+    "state": "MI",
+    "award_amount": 1775964,
+    "visn": "VISN 12: VA Great Lakes Health Care System"
+  },
+  {
+    "grant_id": "20-MI-222",
+    "org_name": "Mid Michigan Community Action Agency",
+    "state": "MI",
+    "award_amount": 1226175,
+    "visn": "VISN 10: VA Healthcare System"
+  },
+  {
+    "grant_id": "20-MI-226",
+    "org_name": "Volunteers of America of Michigan, Inc.",
+    "state": "MI",
+    "award_amount": 4125338,
+    "visn": "VISN 10: VA Healthcare System"
+  },
+  {
+    "grant_id": "22-MI-218",
+    "org_name": "Disability Network Oakland & Macomb",
+    "state": "MI",
+    "award_amount": 2516569,
+    "visn": "VISN 10: VA Healthcare System"
+  },
+  {
+    "grant_id": "19-MN-046",
+    "org_name": "Minnesota Assistance Council For Veterans",
+    "state": "MN",
+    "award_amount": 5588650,
+    "visn": "VISN 23: VA Midwest Health Care Network"
+  },
+  {
+    "grant_id": "14-MO-228",
+    "org_name": "The Kitchen, Inc.",
+    "state": "MO",
+    "award_amount": 995168,
+    "visn": "VISN 15: VA Heartland Network;VISN 16: South Central VA Health Care Network"
+  },
+  {
+    "grant_id": "15-MO-330",
+    "org_name": "Catholic Charities of Southern Missouri, Inc.",
+    "state": "MO",
+    "award_amount": 1308004,
+    "visn": "VISN 15: VA Heartland Network;VISN 16: South Central VA Health Care Network"
+  },
+  {
+    "grant_id": "16-MO-048",
+    "org_name": "St. Patrick Center",
+    "state": "MO",
+    "award_amount": 2990239,
+    "visn": "VISN 15: VA Heartland Network"
+  },
+  {
+    "grant_id": "23-MO-229",
+    "org_name": "Welcome Home, Inc.",
+    "state": "MO",
+    "award_amount": 726259,
+    "visn": "VISN 15: VA Heartland Network"
+  },
+  {
+    "grant_id": "26-MO-476",
+    "org_name": "Pettis County Community Partnership",
+    "state": "MO",
+    "award_amount": 396148,
+    "visn": "VISN 10: VA Healthcare System"
+  },
+  {
+    "grant_id": "14-MS-231",
+    "org_name": "Mississippi United To End Homelessness",
+    "state": "MS",
+    "award_amount": 1002245,
+    "visn": "VISN 16: South Central VA Health Care Network"
+  },
+  {
+    "grant_id": "14-MS-232",
+    "org_name": "Hancock Resource Center",
+    "state": "MS",
+    "award_amount": 366502,
+    "visn": "VISN 16: South Central VA Health Care Network"
+  },
+  {
+    "grant_id": "19-MS-111",
+    "org_name": "Region XII Commission on Mental Health & Retardation",
+    "state": "MS",
+    "award_amount": 2870384,
+    "visn": "VISN 16: South Central VA Health Care Network"
+  },
+  {
+    "grant_id": "23-MT-454",
+    "org_name": "Veterans Inc.",
+    "state": "MT",
+    "award_amount": 1837500,
+    "visn": "VISN 19: Rocky Mountain Network"
+  },
+  {
+    "grant_id": "20-ZZ-113",
+    "org_name": "Volunteers of America, Northern Rockies",
+    "state": "MT;WY",
+    "award_amount": 10917945,
+    "visn": "VISN 19: Rocky Mountain Network"
+  },
+  {
+    "grant_id": "12-NC-049",
+    "org_name": "United Way of Forsyth County, Inc.",
+    "state": "NC",
+    "award_amount": 1390782,
+    "visn": "VISN 6: VA Mid-Atlantic Health Care Network"
+  },
+  {
+    "grant_id": "18-NC-387",
+    "org_name": "Homeward Bound of Western North Carolina, Inc.",
+    "state": "NC",
+    "award_amount": 2181795,
+    "visn": "VISN 6: VA Mid-Atlantic Health Care Network"
+  },
+  {
+    "grant_id": "20-NC-444",
+    "org_name": "Catholic Charities Diocese Of Charlotte",
+    "state": "NC",
+    "award_amount": 1003415,
+    "visn": "VISN 6: VA Mid-Atlantic Health Care Network"
+  },
+  {
+    "grant_id": "21-NC-237",
+    "org_name": "Volunteers of America of the Carolinas, Inc.",
+    "state": "NC",
+    "award_amount": 8847498,
+    "visn": "VISN 6: VA Mid-Atlantic Health Care Network"
+  },
+  {
+    "grant_id": "23-NC-114",
+    "org_name": "Asheville Buncombe Community Christian Ministry, Inc.",
+    "state": "NC",
+    "award_amount": 4440850,
+    "visn": "VISN 6: VA Mid-Atlantic Health Care Network"
+  },
+  {
+    "grant_id": "20-SC-402",
+    "org_name": "Eastern Carolina Homelessness Organization, Inc.",
+    "state": "NC;SC",
+    "award_amount": 3060790,
+    "visn": "VISN 6: VA Mid-Atlantic Health Care Network;VISN 7: VA Southeast Network"
+  },
+  {
+    "grant_id": "12-ND-051",
+    "org_name": "Community Action Partnership of North Dakota",
+    "state": "ND",
+    "award_amount": 1903205,
+    "visn": "VISN 23: VA Midwest Health Care Network"
+  },
+  {
+    "grant_id": "14-NE-238",
+    "org_name": "Northeast Nebraska Community Action Partnership Inc",
+    "state": "NE",
+    "award_amount": 385294,
+    "visn": "VISN 23: VA Midwest Health Care Network"
+  },
+  {
+    "grant_id": "17-NE-052",
+    "org_name": "Central Nebraska Community Action Partnership, Inc",
+    "state": "NE",
+    "award_amount": 2308227,
+    "visn": "VISN 23: VA Midwest Health Care Network"
+  },
+  {
+    "grant_id": "13-NH-115",
+    "org_name": "Harbor Homes, Inc.",
+    "state": "NH",
+    "award_amount": 2119942,
+    "visn": "VISN 1: VA New England Healthcare System"
+  },
+  {
+    "grant_id": "12-NJ-053",
+    "org_name": "Catholic Charities Dioceses of Camden, Inc.",
+    "state": "NJ",
+    "award_amount": 2714089,
+    "visn": "VISN 4: VA Healthcare - VISN 4"
+  },
+  {
+    "grant_id": "14-NJ-242",
+    "org_name": "Catholic Family & Community Services",
+    "state": "NJ",
+    "award_amount": 3407873,
+    "visn": "VISN 2: New York/New Jersey VA Health Care Network"
+  },
+  {
+    "grant_id": "16-NJ-054",
+    "org_name": "Community Hope, Inc.",
+    "state": "NJ",
+    "award_amount": 4282793,
+    "visn": "VISN 2: New York/New Jersey VA Health Care Network;VISN 4: VA Healthcare - VISN 4"
+  },
+  {
+    "grant_id": "12-NM-055",
+    "org_name": "Goodwill Industries of New Mexico",
+    "state": "NM",
+    "award_amount": 2188548,
+    "visn": "VISN 22: Desert Pacific Healthcare Network"
+  },
+  {
+    "grant_id": "14-NM-246",
+    "org_name": "New Mexico Veterans Integration Centers",
+    "state": "NM",
+    "award_amount": 1676193,
+    "visn": "VISN 22: Desert Pacific Healthcare Network"
+  },
+  {
+    "grant_id": "14-NM-247",
+    "org_name": "Mesilla Valley Community of Hope",
+    "state": "NM",
+    "award_amount": 865022,
+    "visn": "VISN 22: Desert Pacific Healthcare Network"
+  },
+  {
+    "grant_id": "20-NV-056",
+    "org_name": "United States Veterans Initiative",
+    "state": "NV",
+    "award_amount": 5687730,
+    "visn": "VISN 21: Sierra Pacific Network"
+  },
+  {
+    "grant_id": "20-NV-118",
+    "org_name": "The Salvation Army",
+    "state": "NV",
+    "award_amount": 3014862,
+    "visn": "VISN 21: Sierra Pacific Network"
+  },
+  {
+    "grant_id": "12-NY-060",
+    "org_name": "HELP Social Service Corporation",
+    "state": "NY",
+    "award_amount": 2786637,
+    "visn": "VISN 2: New York/New Jersey VA Health Care Network"
+  },
+  {
+    "grant_id": "12-NY-063",
+    "org_name": "Westchester Community Opportunity Program, Inc. (WestCOP)",
+    "state": "NY",
+    "award_amount": 4041934,
+    "visn": "VISN 1: VA New England Healthcare System"
+  },
+  {
+    "grant_id": "13-NY-119",
+    "org_name": "Catholic Charities of Onondaga County",
+    "state": "NY",
+    "award_amount": 1267160,
+    "visn": "VISN 2: New York/New Jersey VA Health Care Network"
+  }
+]

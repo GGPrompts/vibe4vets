@@ -1,0 +1,72 @@
+[
+  {
+    "grant_id": "21-NC-237",
+    "org_name": "Volunteers of America of the Carolinas Inc",
+    "website": "https://www.voacarolinas.org",
+    "phone": "(803) 779-6465",
+    "address": "Multiple locations across Carolinas",
+    "city": "Columbia",
+    "state": "SC",
+    "zip": "29201",
+    "intake_process": "Contact by phone at (803) 779-6465 or visit website for SSVF program intake. Veterans can call to inquire about eligibility and services. Referrals accepted from VA, VSOs, and self-referral.",
+    "service_area": "27 North Carolina counties: Alamance, Bertie, Caswell, Chatham, Durham, Edgecombe, Franklin, Granville, Harnett, Halifax, Hertford, Johnston, Lee, Martin, Nash, Northampton, Orange, Person, Pitt, Randolph, Rockingham, Vance, Wake, Warren, Washington, Wayne, Wilson",
+    "confidence": 0.85,
+    "source_url": "https://www.voacarolinas.org/gethelp-ssvf"
+  },
+  {
+    "grant_id": "23-NC-114",
+    "org_name": "Asheville Buncombe Community Christian Ministry Inc",
+    "website": "https://www.abccm.org",
+    "phone": "(828) 259-5314",
+    "address": "24 Cumberland Ave",
+    "city": "Asheville",
+    "state": "NC",
+    "zip": "28801",
+    "intake_process": "Call SSVF program at (828) 259-5314 or email ssvf@abccm.org. Veterans can also call the Veterans Call Center at 855-962-8387 for homeless prevention and rapid rehousing services. Walk-in intake available at Cumberland Ave location.",
+    "service_area": "Western North Carolina (28 counties from Charlotte to Murphy and Boone to Tryon): Buncombe, Burke, Caldwell, Catawba, Cherokee, Clay, Cleveland, Gaston, Graham, Haywood, Henderson, Jackson, Lincoln, Macon, Madison, McDowell, Mecklenburg, Mitchell, Polk, Rutherford, Spalding, Stokes, Surry, Transylvania, Watauga, Wilkes, Yadkin, Yancey",
+    "confidence": 0.95,
+    "source_url": "https://www.abccm.org/contact-us/"
+  },
+  {
+    "grant_id": "20-SC-402",
+    "org_name": "Eastern Carolina Homelessness Organization Inc",
+    "website": "https://www.echousing.org",
+    "phone": "(843) 213-1798",
+    "address": "407 Broadway Street",
+    "city": "Myrtle Beach",
+    "state": "SC",
+    "zip": "29577",
+    "intake_process": "Call main line at (843) 213-1798 or Veterans Services line at (843) 492-2594. Veterans can also contact through website for SSVF rapid re-housing and homelessness prevention services. Walk-in appointments available.",
+    "service_area": "13 northeastern South Carolina counties (Chesterfield, Clarendon, Darlington, Dillon, Florence, Georgetown, Horry, Lee, Marion, Marlboro, Sumter, Williamsburg, and York) plus 3 North Carolina counties (Columbus, Robeson, Scotland)",
+    "confidence": 0.9,
+    "source_url": "https://www.echousing.org/get-help/"
+  },
+  {
+    "grant_id": "12-ND-051",
+    "org_name": "Community Action Partnership of North Dakota",
+    "website": "https://www.capnd.org",
+    "phone": "(701) 280-0707",
+    "address": "Multiple regional offices",
+    "city": "Bismarck",
+    "state": "ND",
+    "zip": "58501",
+    "intake_process": "Contact local Community Action Agency in your region. Call (701) 280-0707 or visit www.capnd.org to find contact for SSVF representative in your area. Services available statewide through eight regional Community Action Agencies. Housing First approach with homeless prevention and rapid re-housing.",
+    "service_area": "All 53 North Dakota counties served through 8 regional Community Action Agencies: Northwest, Northeast, Southwest, South Central, East Central, West Central, and Statewide programs",
+    "confidence": 0.85,
+    "source_url": "https://www.capnd.org/programsandinitiatives/statewideprograms/supportive-services-for-veteran-families/overview.html"
+  },
+  {
+    "grant_id": "14-NE-238",
+    "org_name": "Northeast Nebraska Community Action Partnership Inc",
+    "website": "https://nencap.org",
+    "phone": "(402) 385-6300",
+    "address": "603 Earl Street",
+    "city": "Pender",
+    "state": "NE",
+    "zip": "68047",
+    "intake_process": "Call SSVF program at (402) 385-6300 or 1-800-445-2505. Veterans can request intake assessment for case management, rent/utility deposits, emergency supplies, transportation, and moving assistance. Walk-in appointments available.",
+    "service_area": "Northeast Nebraska counties: Antelope, Boone, Cedar, Cuming, Dakota, Dixon, Dodge, Holt, Knox, Madison, Merrick, Nance, Pierce, Platte, Polk, Stanton, Thurston, Wayne (primary service area)",
+    "confidence": 0.9,
+    "source_url": "https://nencap.org/services/supportive-services-for-veteran-families-ssvf/"
+  }
+]
