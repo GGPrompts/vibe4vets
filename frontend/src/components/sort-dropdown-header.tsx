@@ -53,9 +53,6 @@ export function SortDropdownHeader({
   hasQuery = false,
   className,
 }: SortDropdownHeaderProps) {
-  const [isOpen, setIsOpen] = React.useState(false);
-  const closeTimeoutRef = React.useRef<NodeJS.Timeout | null>(null);
-
   // Filter out relevance when there's no search query
   const items = hasQuery
     ? SORT_ITEMS
@@ -63,71 +60,38 @@ export function SortDropdownHeader({
 
   const currentItem = SORT_ITEMS.find((item) => item.value === value) || SORT_ITEMS[1];
 
-  const handleMouseEnter = () => {
-    if (closeTimeoutRef.current) {
-      clearTimeout(closeTimeoutRef.current);
-      closeTimeoutRef.current = null;
-    }
-    setIsOpen(true);
-  };
-
-  const handleMouseLeave = () => {
-    closeTimeoutRef.current = setTimeout(() => {
-      setIsOpen(false);
-    }, 100);
-  };
-
-  // Cleanup on unmount
-  React.useEffect(() => {
-    return () => {
-      if (closeTimeoutRef.current) {
-        clearTimeout(closeTimeoutRef.current);
-      }
-    };
-  }, []);
-
   return (
     <div className={cn("relative", className)}>
-      <DropdownMenu onOpenChange={setIsOpen} open={isOpen} modal={false}>
-        <div
-          className="group relative"
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-        >
-          <DropdownMenuTrigger asChild>
-            <button
-              type="button"
-              className={cn(
-                "flex items-center gap-2 px-3 py-1.5 rounded-full",
-                "text-sm font-medium transition-all duration-200",
-                "text-white/70 hover:text-white",
-                "hover:bg-white/10",
-                "focus:outline-none focus:ring-2 focus:ring-[hsl(var(--v4v-gold)/0.3)]"
-              )}
-            >
-              <ArrowUpDown className="w-3.5 h-3.5" />
-              <span className="hidden sm:inline">Sort:</span>
-              <span>{currentItem.label}</span>
-            </button>
-          </DropdownMenuTrigger>
-
-          <DropdownMenuContent
-            align="end"
-            sideOffset={4}
-            className="w-56 p-2 bg-white/95 dark:bg-zinc-900/95 backdrop-blur-md border border-zinc-200/60 dark:border-zinc-800/60 rounded-xl shadow-xl shadow-zinc-900/10 dark:shadow-zinc-950/30"
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
+      <DropdownMenu modal={false}>
+        <DropdownMenuTrigger asChild>
+          <button
+            type="button"
+            className={cn(
+              "flex items-center gap-2 px-3 py-1.5 rounded-full",
+              "text-sm font-medium transition-all duration-200",
+              "text-white/70 hover:text-white",
+              "hover:bg-white/10",
+              "focus:outline-none focus:ring-2 focus:ring-[hsl(var(--v4v-gold)/0.3)]"
+            )}
           >
+            <ArrowUpDown className="w-3.5 h-3.5" />
+            <span className="hidden sm:inline">Sort:</span>
+            <span>{currentItem.label}</span>
+          </button>
+        </DropdownMenuTrigger>
+
+        <DropdownMenuContent
+          align="end"
+          sideOffset={4}
+          className="w-56 p-2 bg-white/95 dark:bg-zinc-900/95 backdrop-blur-md border border-zinc-200/60 dark:border-zinc-800/60 rounded-xl shadow-xl shadow-zinc-900/10 dark:shadow-zinc-950/30"
+        >
             <div className="space-y-1">
               {items.map((item) => {
                 const isSelected = item.value === value;
                 return (
                   <DropdownMenuItem
                     key={item.value}
-                    onClick={() => {
-                      onChange(item.value);
-                      setIsOpen(false);
-                    }}
+                    onClick={() => onChange(item.value)}
                     className={cn(
                       "flex items-center gap-3 p-3 rounded-lg cursor-pointer transition-all duration-200",
                       "hover:bg-zinc-100/80 dark:hover:bg-zinc-800/60",
@@ -164,7 +128,6 @@ export function SortDropdownHeader({
               })}
             </div>
           </DropdownMenuContent>
-        </div>
       </DropdownMenu>
     </div>
   );
