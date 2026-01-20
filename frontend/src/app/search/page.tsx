@@ -11,7 +11,6 @@ import {
 } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { useQuery } from '@tanstack/react-query';
-import { motion, AnimatePresence, LayoutGroup } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Card } from '@/components/ui/card';
@@ -23,8 +22,8 @@ import {
   SheetTitle,
   SheetTrigger,
 } from '@/components/ui/sheet';
-import { ResourceCard } from '@/components/resource-card';
 import { ResourceDetailModal } from '@/components/resource-detail-modal';
+import { VirtualizedResourceGrid } from '@/components/virtualized-resource-grid';
 import {
   FiltersSidebar,
   FixedFiltersSidebar,
@@ -530,49 +529,21 @@ function SearchResults() {
               ))}
             </div>
           ) : hasResults ? (
-            <LayoutGroup>
-              <AnimatePresence mode="popLayout">
-                <div className="grid gap-4 pr-0 sm:grid-cols-2 sm:pr-4 lg:grid-cols-3 xl:grid-cols-4" style={{ isolation: 'isolate' }}>
-                  {resources.map((resource) => {
-                    // Card needs elevated z-index when selected OR when it's the one being animated back during modal close
-                    const isCardAnimating = selectedResource?.id === resource.id || animatingResourceId === resource.id;
-                    // Only animate entrance for newly loaded items
-                    const isNewItem = newResourceIds.has(resource.id);
-                    // For new items in subsequent pages, use index relative to new batch
-                    const newItemIndex = isNewItem ? (newResourceIndexById.get(resource.id) ?? 0) : 0;
-                    return (
-                    <motion.div
-                      key={resource.id}
-                      initial={disableGridMotion ? false : isNewItem ? { opacity: 0, y: 20 } : false}
-                      animate={disableGridMotion ? false : { opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, scale: 0.95 }}
-                      transition={
-                        disableGridMotion
-                          ? { duration: 0 }
-                          : isNewItem
-                            ? { delay: newItemIndex * 0.02, layout: { duration: 0.3 } }
-                            : { layout: { duration: 0.3 } }
-                      }
-                      layout={disableGridMotion ? false : 'position'}
-                      style={{ position: 'relative', willChange: 'transform', zIndex: isCardAnimating ? 100 : undefined }}
-                      whileHover={{ zIndex: 50, transition: { duration: 0 } }}
-                      whileTap={{ zIndex: 50 }}
-                      layoutId={`card-wrapper-${resource.id}`}
-                    >
-                      <ResourceCard
-                        resource={resource}
-                        explanations={explanationsMap.get(resource.id)}
-                        variant="modal"
-                        onClick={() =>
-                          openResourceModal(resource, explanationsMap.get(resource.id))
-                        }
-                        enableLayoutId
-                      />
-                    </motion.div>
-                    );
-                  })}
-                </div>
-              </AnimatePresence>
+            <>
+              {/* Virtualized Grid */}
+              <VirtualizedResourceGrid
+                resources={resources}
+                explanationsMap={explanationsMap}
+                selectedResourceId={selectedResource?.id}
+                animatingResourceId={animatingResourceId}
+                onResourceClick={openResourceModal}
+                hasNextPage={!isSearchMode && hasNextPage}
+                isFetchingNextPage={isFetchingNextPage}
+                fetchNextPage={handleLoadMore}
+                disableAnimation={disableGridMotion}
+                newResourceIds={newResourceIds}
+                newResourceIndexById={newResourceIndexById}
+              />
 
               {/* Load More Button - mobile only (desktop uses auto-fetch) */}
               {!isSearchMode && hasNextPage && isMobile && (
@@ -611,7 +582,7 @@ function SearchResults() {
                 isOpen={!!selectedResource}
                 onClose={closeResourceModal}
               />
-            </LayoutGroup>
+            </>
           ) : (
             <div className="py-12 text-center">
               <p className="text-lg text-muted-foreground">
