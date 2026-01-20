@@ -8,7 +8,7 @@ import { useScrollDirection } from '@/hooks/use-scroll-direction';
 import { useDebounce } from '@/hooks/use-debounce';
 import { cn } from '@/lib/utils';
 import { Input } from '@/components/ui/input';
-import { Search, Loader2, Heart } from 'lucide-react';
+import { Search, Loader2, Bookmark } from 'lucide-react';
 import { SortDropdownHeader, type SortOption } from '@/components/sort-dropdown-header';
 import { useOptionalFilterContext } from '@/context/filter-context';
 import { useOptionalSavedResources } from '@/context/saved-resources-context';
@@ -183,16 +183,16 @@ export function Header() {
                 : "text-muted-foreground hover:text-[hsl(var(--v4v-navy))]"
             )}
           >
-            <Heart className={cn(
+            <Bookmark className={cn(
               "h-4 w-4 transition-colors",
               isMounted && savedContext && savedContext.count > 0
-                ? "text-red-500 fill-red-500"
+                ? "text-[hsl(var(--v4v-gold))] fill-[hsl(var(--v4v-gold))]"
                 : ""
             )} />
             Saved
             {/* Saved count badge */}
             {isMounted && savedContext && savedContext.count > 0 && (
-              <span className="inline-flex items-center justify-center min-w-[1.5rem] h-5 px-1.5 text-xs font-medium rounded-full bg-red-500 text-white">
+              <span className="inline-flex items-center justify-center min-w-[1.5rem] h-5 px-1.5 text-xs font-medium rounded-full bg-[hsl(var(--v4v-gold))] text-[hsl(var(--v4v-navy))]">
                 {savedContext.count}
               </span>
             )}

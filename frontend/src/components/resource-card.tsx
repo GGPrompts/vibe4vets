@@ -67,10 +67,13 @@ function CardInner({
   resource,
   explanations,
   showBookmark = false,
+  renderBookmark = false,
 }: {
   resource: Resource;
   explanations?: MatchExplanation[];
   showBookmark?: boolean;
+  /** Actually render the bookmark button inside the card (for modal/selectable variants) */
+  renderBookmark?: boolean;
 }) {
   const primaryCategory = resource.categories[0] || 'employment';
   const CategoryIcon = categoryIcons[primaryCategory] || Briefcase;
@@ -85,6 +88,13 @@ function CardInner({
         className={`absolute -right-8 -top-8 h-24 w-24 rounded-full opacity-[0.07] blur-2xl ${accentBarColors[primaryCategory] || accentBarColors.employment}`}
       />
 
+      {/* Bookmark button - rendered inside card so it animates with the card */}
+      {renderBookmark && (
+        <div className="absolute right-3 top-[1.125rem] z-10">
+          <BookmarkButton resourceId={resource.id} size="sm" showTooltip={false} />
+        </div>
+      )}
+
       <CardHeader className="pb-3 pt-4">
         {/* Title with icon and bookmark */}
         <div className="flex items-start gap-3">
@@ -96,8 +106,8 @@ function CardInner({
               <CardTitle className="font-display line-clamp-2 text-lg text-[hsl(var(--v4v-navy))] dark:text-foreground">
                 {resource.title}
               </CardTitle>
-              {/* Placeholder for bookmark button spacing - actual button rendered outside Link */}
-              {showBookmark && <div className="h-6 w-6 shrink-0" />}
+              {/* Placeholder for bookmark button spacing */}
+              {(showBookmark || renderBookmark) && <div className="h-6 w-6 shrink-0" />}
             </div>
             <p className="mt-1 text-sm text-muted-foreground">
               {resource.organization.name}
@@ -255,6 +265,9 @@ export function ResourceCard({
 }: ResourceCardProps) {
   const primaryCategory = resource.categories[0] || 'employment';
 
+  // For modal/selectable variants, render bookmark inside card so it animates with the card
+  const renderBookmarkInside = variant === 'modal' || variant === 'selectable';
+
   const cardContent = (
     <Card
       className={`category-card group relative h-full overflow-hidden border transition-all duration-300 ${
@@ -264,15 +277,19 @@ export function ResourceCard({
       } ${variant === 'modal' || variant === 'selectable' ? 'cursor-pointer' : ''}`}
       onClick={variant === 'modal' || variant === 'selectable' ? onClick : undefined}
     >
-      <CardInner resource={resource} explanations={explanations} showBookmark={variant === 'link'} />
+      <CardInner
+        resource={resource}
+        explanations={explanations}
+        showBookmark={variant === 'link'}
+        renderBookmark={renderBookmarkInside}
+      />
     </Card>
   );
 
-  // Wrapper with bookmark button for clickable variants
-  // Uses isolation:isolate to create a stacking context that keeps the bookmark
-  // attached to the card during z-index changes in virtualized grids
+  // Wrapper with bookmark button for link variant only
+  // (modal/selectable have bookmark rendered inside the card)
   const withBookmark = (content: React.ReactNode) => (
-    <div className="relative isolate h-full">
+    <div className="relative h-full">
       {content}
       <div className="absolute right-3 top-[1.125rem] z-10">
         <BookmarkButton resourceId={resource.id} size="sm" showTooltip={false} />
@@ -283,21 +300,22 @@ export function ResourceCard({
   // Modal variant: clickable card with layoutId for shared element transition
   if (variant === 'modal') {
     if (enableLayoutId) {
-      return withBookmark(
+      return (
         <motion.div layoutId={`resource-card-${resource.id}`} className="h-full">
           {cardContent}
         </motion.div>
       );
     }
-    return withBookmark(cardContent);
+    return cardContent;
   }
 
   // Selectable variant: clickable card without link
   if (variant === 'selectable') {
-    return withBookmark(cardContent);
+    return cardContent;
   }
 
   // Link variant (default): navigates to detail page
+  // Bookmark is outside the Link so it's clickable independently
   const href = searchParams
     ? `/resources/${resource.id}?from=${encodeURIComponent(searchParams)}`
     : `/resources/${resource.id}`;

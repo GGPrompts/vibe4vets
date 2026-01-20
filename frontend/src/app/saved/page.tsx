@@ -21,7 +21,7 @@ import { ResourceCard } from '@/components/resource-card';
 import { ExportDropdown } from '@/components/export-dropdown';
 import { useSavedResources } from '@/context/saved-resources-context';
 import api, { type Resource } from '@/lib/api';
-import { Heart, Trash2, ArrowLeft, AlertCircle, Info } from 'lucide-react';
+import { Bookmark, Trash2, ArrowLeft, AlertCircle, Info } from 'lucide-react';
 
 export default function SavedPage() {
   const { savedIds, clearAll, isHydrated, count } = useSavedResources();
@@ -86,7 +86,7 @@ export default function SavedPage() {
                 </Link>
               </div>
               <h1 className="font-display flex items-center gap-3 text-3xl font-bold text-[hsl(var(--v4v-navy))] dark:text-foreground">
-                <Heart className="h-8 w-8 text-red-500 fill-red-500" />
+                <Bookmark className="h-8 w-8 text-[hsl(var(--v4v-gold))] fill-[hsl(var(--v4v-gold))]" />
                 My Saved Resources
               </h1>
               <p className="mt-2 text-muted-foreground">
@@ -162,10 +162,10 @@ export default function SavedPage() {
           </div>
         ) : (
           <div className="flex flex-col items-center justify-center rounded-lg border-2 border-dashed border-muted-foreground/25 bg-muted/10 py-16 text-center">
-            <Heart className="mb-4 h-12 w-12 text-muted-foreground/40" />
+            <Bookmark className="mb-4 h-12 w-12 text-muted-foreground/40" />
             <h2 className="mb-2 text-xl font-semibold text-muted-foreground">No saved resources yet</h2>
             <p className="mb-6 max-w-md text-muted-foreground">
-              Click the heart icon on any resource to save it for later.
+              Click the bookmark icon on any resource to save it for later.
               Saved resources are stored on this device only.
             </p>
             <Button asChild>
