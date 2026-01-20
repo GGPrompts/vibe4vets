@@ -90,6 +90,11 @@ def list_resources(
         default=None,
         description="Filter by resource status",
     ),
+    sort: str | None = Query(
+        default=None,
+        description="Sort order: 'newest', 'alpha', 'shuffle', or 'relevance' (default)",
+        examples=["newest", "alpha", "shuffle"],
+    ),
     limit: int = Query(default=20, ge=1, le=500, description="Maximum results to return"),
     offset: int = Query(default=0, ge=0, description="Number of results to skip for pagination"),
 ) -> ResourceList:
@@ -123,6 +128,7 @@ def list_resources(
         states=state_list,
         scope=scope,
         status=status,
+        sort=sort,
         limit=limit,
         offset=offset,
     )

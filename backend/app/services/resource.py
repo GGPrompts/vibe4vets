@@ -3,7 +3,7 @@
 from datetime import datetime
 from uuid import UUID
 
-from sqlalchemy import or_
+from sqlalchemy import String, func, or_
 from sqlmodel import Session, col, select
 
 from app.models import Location, Organization, Resource, Source
@@ -33,6 +33,7 @@ class ResourceService:
         states: list[str] | None = None,
         scope: str | None = None,
         status: ResourceStatus | None = None,
+        sort: str | None = None,
         limit: int = 20,
         offset: int = 0,
     ) -> tuple[list[ResourceRead], int]:
@@ -43,6 +44,7 @@ class ResourceService:
             states: Filter by states (resources must match ANY of the provided states, or be national)
             scope: Filter by resource scope ('national', 'state', 'local', or 'all')
             status: Filter by resource status
+            sort: Sort order ('newest', 'alpha', 'shuffle', or 'relevance')
             limit: Maximum results to return
             offset: Number of results to skip for pagination
 
@@ -96,8 +98,22 @@ class ResourceService:
 
         total = len(self.session.exec(count_query).all())
 
-        # Apply pagination and ordering (secondary sort by id for stable pagination)
-        query = query.order_by(col(Resource.reliability_score).desc(), col(Resource.id)).offset(offset).limit(limit)
+        # Apply ordering based on sort option (secondary sort by id for stable pagination)
+        if sort == "newest":
+            query = query.order_by(col(Resource.created_at).desc(), col(Resource.id))
+        elif sort == "alpha":
+            query = query.order_by(col(Resource.title).asc(), col(Resource.id))
+        elif sort == "shuffle":
+            # Day-seeded random: consistent order within a day, varies day-to-day
+            # Uses md5(id::text || current_date::text) for deterministic shuffling
+            query = query.order_by(
+                func.md5(func.concat(Resource.id.cast(String), func.current_date().cast(String)))
+            )
+        else:
+            # Default: relevance (by reliability score)
+            query = query.order_by(col(Resource.reliability_score).desc(), col(Resource.id))
+
+        query = query.offset(offset).limit(limit)
 
         resources = self.session.exec(query).all()
         return [self._to_read_schema(r) for r in resources], total

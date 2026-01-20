@@ -71,7 +71,7 @@ function SearchResults() {
 
   // Get sort from URL params (header controls this now)
   const sortParam = searchParams.get('sort') as SortOption;
-  const sort: SortOption = (sortParam && ['relevance', 'newest', 'alpha'].includes(sortParam))
+  const sort: SortOption = (sortParam && ['relevance', 'newest', 'alpha', 'shuffle'].includes(sortParam))
     ? sortParam
     : (query ? 'relevance' : 'newest');
 
