@@ -345,6 +345,9 @@ export default function Home() {
               <Link href="/discover" className="text-white/70 transition-colors hover:text-[hsl(var(--v4v-gold))]">
                 Fresh Finds
               </Link>
+              <Link href="/about" className="text-white/70 transition-colors hover:text-[hsl(var(--v4v-gold))]">
+                About
+              </Link>
               <Link href="/admin" className="text-white/70 transition-colors hover:text-[hsl(var(--v4v-gold))]">
                 Admin
               </Link>
