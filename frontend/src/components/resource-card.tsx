@@ -6,6 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Briefcase, BookOpen, Home, Scale, MapPin, Globe, CheckCircle2, Tag, Phone, Clock } from 'lucide-react';
 import type { Resource, MatchExplanation } from '@/lib/api';
+import { BookmarkButton } from '@/components/bookmark-button';
 
 interface ResourceCardProps {
   resource: Resource;
@@ -83,15 +84,18 @@ function CardInner({
       />
 
       <CardHeader className="pb-3 pt-4">
-        {/* Title with icon */}
+        {/* Title with icon and bookmark */}
         <div className="flex items-start gap-3">
           <div className={`shrink-0 rounded-lg p-2 ${accentBarColors[primaryCategory] || accentBarColors.employment} text-white transition-transform duration-300 group-hover:scale-110`}>
             <CategoryIcon className="h-5 w-5" />
           </div>
           <div className="min-w-0 flex-1">
-            <CardTitle className="font-display line-clamp-2 text-lg text-[hsl(var(--v4v-navy))] dark:text-foreground">
-              {resource.title}
-            </CardTitle>
+            <div className="flex items-start justify-between gap-2">
+              <CardTitle className="font-display line-clamp-2 text-lg text-[hsl(var(--v4v-navy))] dark:text-foreground">
+                {resource.title}
+              </CardTitle>
+              <BookmarkButton resourceId={resource.id} size="sm" />
+            </div>
             <p className="mt-1 text-sm text-muted-foreground">
               {resource.organization.name}
             </p>
