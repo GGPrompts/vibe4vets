@@ -1,6 +1,6 @@
 'use client';
 
-import { Heart } from 'lucide-react';
+import { Bookmark } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { useSavedResources } from '@/context/saved-resources-context';
@@ -61,7 +61,7 @@ export function BookmarkButton({
       )}
       aria-label={saved ? 'Remove from saved' : 'Save to this device'}
     >
-      <Heart
+      <Bookmark
         className={cn(
           iconSizes[size],
           saved && 'fill-current'
