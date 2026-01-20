@@ -141,9 +141,7 @@ class CareerOneStopConnector(BaseConnector):
 
         return resources
 
-    def _fetch_ajcs_by_state(
-        self, client: httpx.Client, state: str, seen_ids: set[str]
-    ) -> list[ResourceCandidate]:
+    def _fetch_ajcs_by_state(self, client: httpx.Client, state: str, seen_ids: set[str]) -> list[ResourceCandidate]:
         """Fetch American Job Centers for a specific state.
 
         Args:

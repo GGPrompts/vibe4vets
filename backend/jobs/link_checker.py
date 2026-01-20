@@ -232,9 +232,7 @@ class LinkCheckerJob(BaseJob):
             ai_score = ai_result.get("score", 1.0)
 
             if ai_score < AI_HEALTH_THRESHOLD:
-                resource.link_flagged_reason = ai_result.get(
-                    "reason", "AI flagged as potentially inactive"
-                )
+                resource.link_flagged_reason = ai_result.get("reason", "AI flagged as potentially inactive")
                 resource.status = ResourceStatus.NEEDS_REVIEW
 
         # Update health score
@@ -366,7 +364,4 @@ Examples:
         broken = stats.get("broken", 0)
         flagged = stats.get("flagged", 0)
 
-        return (
-            f"Link check complete: {checked} checked, "
-            f"{healthy} healthy, {broken} broken, {flagged} flagged"
-        )
+        return f"Link check complete: {checked} checked, {healthy} healthy, {broken} broken, {flagged} flagged"

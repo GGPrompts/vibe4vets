@@ -96,12 +96,8 @@ class Location(SQLModel, table=True):
     age_max: int | None = Field(default=None, description="Maximum age limit")
     household_size_min: int | None = Field(default=None, description="Minimum household size")
     household_size_max: int | None = Field(default=None, description="Maximum household size")
-    income_limit_type: str | None = Field(
-        default=None, description="Type: ami_percent, monthly_abs, annual_abs"
-    )
-    income_limit_value: int | None = Field(
-        default=None, description="Value for monthly/annual absolute limits"
-    )
+    income_limit_type: str | None = Field(default=None, description="Type: ami_percent, monthly_abs, annual_abs")
+    income_limit_value: int | None = Field(default=None, description="Value for monthly/annual absolute limits")
     income_limit_ami_percent: int | None = Field(
         default=None, description="AMI percentage limit (e.g., 50 for 50% AMI)"
     )
@@ -110,23 +106,17 @@ class Location(SQLModel, table=True):
         sa_column=Column(ARRAY(Text), nullable=False, default=[]),
         description="Required housing status: homeless, at_risk, stably_housed",
     )
-    active_duty_required: bool | None = Field(
-        default=None, description="Whether active duty status is required"
-    )
+    active_duty_required: bool | None = Field(default=None, description="Whether active duty status is required")
     discharge_required: str | None = Field(
         default=None, description="Required discharge: honorable, other_than_dishonorable"
     )
-    veteran_status_required: bool = Field(
-        default=True, description="Whether veteran status is required"
-    )
+    veteran_status_required: bool = Field(default=True, description="Whether veteran status is required")
     docs_required: list[str] = Field(
         default_factory=list,
         sa_column=Column(ARRAY(Text), nullable=False, default=[]),
         description="Documents required: DD-214, Income verification, etc.",
     )
-    waitlist_status: str | None = Field(
-        default=None, description="Waitlist status: open, closed, unknown"
-    )
+    waitlist_status: str | None = Field(default=None, description="Waitlist status: open, closed, unknown")
 
     # === Benefits consultation fields ===
     benefits_types_supported: list[str] = Field(
@@ -137,21 +127,11 @@ class Location(SQLModel, table=True):
     representative_type: str | None = Field(
         default=None, description="Accredited representative type: vso, attorney, claims_agent, cvso"
     )
-    accredited: bool | None = Field(
-        default=None, description="Whether representatives are VA-accredited"
-    )
-    walk_in_available: bool | None = Field(
-        default=None, description="Whether walk-in appointments are available"
-    )
-    appointment_required: bool | None = Field(
-        default=None, description="Whether appointments are required"
-    )
-    virtual_available: bool | None = Field(
-        default=None, description="Whether virtual consultations are available"
-    )
-    free_service: bool | None = Field(
-        default=None, description="Whether the consultation service is free"
-    )
+    accredited: bool | None = Field(default=None, description="Whether representatives are VA-accredited")
+    walk_in_available: bool | None = Field(default=None, description="Whether walk-in appointments are available")
+    appointment_required: bool | None = Field(default=None, description="Whether appointments are required")
+    virtual_available: bool | None = Field(default=None, description="Whether virtual consultations are available")
+    free_service: bool | None = Field(default=None, description="Whether the consultation service is free")
     languages_supported: list[str] = Field(
         default_factory=list,
         sa_column=Column(ARRAY(Text), nullable=False, default=[]),
@@ -160,12 +140,8 @@ class Location(SQLModel, table=True):
 
     # === Intake information ===
     intake_phone: str | None = Field(default=None, max_length=50, description="Intake phone number")
-    intake_url: str | None = Field(
-        default=None, max_length=500, description="Intake/application URL"
-    )
-    intake_hours: str | None = Field(
-        default=None, max_length=255, description="Intake hours (e.g., Mon-Fri 9am-5pm)"
-    )
+    intake_url: str | None = Field(default=None, max_length=500, description="Intake/application URL")
+    intake_hours: str | None = Field(default=None, max_length=255, description="Intake hours (e.g., Mon-Fri 9am-5pm)")
     intake_notes: str | None = Field(
         default=None, description="Additional intake notes (e.g., Walk-ins welcome Tues/Thurs)"
     )
@@ -192,9 +168,7 @@ class Location(SQLModel, table=True):
     )
 
     # === Verification metadata ===
-    last_verified_at: datetime | None = Field(
-        default=None, description="When data was last verified"
-    )
+    last_verified_at: datetime | None = Field(default=None, description="When data was last verified")
     verified_by: str | None = Field(
         default=None, description="Verification source: official_directory, provider_contact, etc."
     )

@@ -32,14 +32,10 @@ def upgrade() -> None:
             server_default="{}",
         ),
     )
-    op.add_column(
-        "locations", sa.Column("representative_type", sa.String(50), nullable=True)
-    )
+    op.add_column("locations", sa.Column("representative_type", sa.String(50), nullable=True))
     op.add_column("locations", sa.Column("accredited", sa.Boolean, nullable=True))
     op.add_column("locations", sa.Column("walk_in_available", sa.Boolean, nullable=True))
-    op.add_column(
-        "locations", sa.Column("appointment_required", sa.Boolean, nullable=True)
-    )
+    op.add_column("locations", sa.Column("appointment_required", sa.Boolean, nullable=True))
     op.add_column("locations", sa.Column("virtual_available", sa.Boolean, nullable=True))
     op.add_column("locations", sa.Column("free_service", sa.Boolean, nullable=True))
     op.add_column(
@@ -59,9 +55,7 @@ def upgrade() -> None:
         ["benefits_types_supported"],
         postgresql_using="gin",
     )
-    op.create_index(
-        "ix_locations_representative_type", "locations", ["representative_type"]
-    )
+    op.create_index("ix_locations_representative_type", "locations", ["representative_type"])
     op.create_index("ix_locations_accredited", "locations", ["accredited"])
     op.create_index("ix_locations_virtual_available", "locations", ["virtual_available"])
     op.create_index("ix_locations_walk_in_available", "locations", ["walk_in_available"])

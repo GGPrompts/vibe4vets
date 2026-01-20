@@ -2,12 +2,12 @@
 
 from uuid import UUID
 
-from fastapi import APIRouter, HTTPException, BackgroundTasks
+from fastapi import APIRouter, BackgroundTasks, HTTPException
 from pydantic import BaseModel, EmailStr
 
 from app.database import SessionDep
-from app.services.resource import ResourceService
 from app.services.email import send_resources_email
+from app.services.resource import ResourceService
 
 router = APIRouter()
 
@@ -35,18 +35,12 @@ class EmailResourcesResponse(BaseModel):
         200: {
             "description": "Email queued successfully",
             "content": {
-                "application/json": {
-                    "example": {"success": True, "message": "Email sent to user@example.com"}
-                }
+                "application/json": {"example": {"success": True, "message": "Email sent to user@example.com"}}
             },
         },
         400: {
             "description": "Invalid request",
-            "content": {
-                "application/json": {
-                    "example": {"detail": "No resources found with the provided IDs"}
-                }
-            },
+            "content": {"application/json": {"example": {"detail": "No resources found with the provided IDs"}}},
         },
     },
 )

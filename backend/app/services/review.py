@@ -57,9 +57,7 @@ class ReviewService:
                 .limit(5)
             )
             changes = self.session.exec(changes_stmt).all()
-            changes_summary = [
-                f"{c.field}: {c.old_value or 'none'} -> {c.new_value or 'none'}" for c in changes
-            ]
+            changes_summary = [f"{c.field}: {c.old_value or 'none'} -> {c.new_value or 'none'}" for c in changes]
 
             items.append(
                 ReviewQueueItem(

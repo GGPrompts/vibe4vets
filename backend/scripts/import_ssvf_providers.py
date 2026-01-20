@@ -19,7 +19,7 @@ import argparse
 import json
 import os
 import sys
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 from uuid import uuid4
 
@@ -94,7 +94,7 @@ def get_or_create_source(session: Session, dry_run: bool = True) -> Source:
         source_type=SourceType.MANUAL,  # AI-enriched data
         tier=SSVF_TIER,
         health_status=HealthStatus.HEALTHY,
-        last_success=datetime.now(timezone.utc),
+        last_success=datetime.now(UTC),
     )
 
     if not dry_run:
@@ -132,9 +132,7 @@ def get_or_create_organization(
 
 def find_existing_resource(session: Session, title: str, org_id) -> Resource | None:
     """Find existing SSVF resource by title pattern and org."""
-    statement = select(Resource).where(
-        Resource.title == title, Resource.organization_id == org_id
-    )
+    statement = select(Resource).where(Resource.title == title, Resource.organization_id == org_id)
     return session.exec(statement).first()
 
 
@@ -193,9 +191,7 @@ def import_ssvf_providers(
                         print(f"  ⚠️  Low confidence ({confidence}): {org_name}")
 
                 # Get or create organization
-                org = get_or_create_organization(
-                    session, org_name, provider.get("website"), dry_run=dry_run
-                )
+                org = get_or_create_organization(session, org_name, provider.get("website"), dry_run=dry_run)
 
                 # Check for existing resource
                 existing = find_existing_resource(session, title, org.id)
@@ -254,7 +250,7 @@ def import_ssvf_providers(
                     intake_phone=provider.get("phone"),
                     intake_notes=provider.get("intake_process"),
                     # Verification
-                    last_verified_at=datetime.now(timezone.utc),
+                    last_verified_at=datetime.now(UTC),
                     verified_by="ai_enrichment",
                 )
 
@@ -271,7 +267,7 @@ def import_ssvf_providers(
                         f"supportive services to very low-income veteran families who are "
                         f"experiencing homelessness or at risk of housing instability."
                     ),
-                    summary=f"SSVF rapid re-housing and homelessness prevention services for veteran families",
+                    summary="SSVF rapid re-housing and homelessness prevention services for veteran families",
                     eligibility=SSVF_ELIGIBILITY,
                     how_to_apply=provider.get("intake_process"),
                     categories=["housing"],
@@ -284,7 +280,7 @@ def import_ssvf_providers(
                     status=ResourceStatus.NEEDS_REVIEW if confidence < 0.5 else ResourceStatus.ACTIVE,
                     freshness_score=1.0,
                     reliability_score=reliability,
-                    last_verified=datetime.now(timezone.utc),
+                    last_verified=datetime.now(UTC),
                 )
 
                 if not dry_run:
@@ -328,16 +324,15 @@ def print_summary(stats: dict):
 
 
 def main():
-    parser = argparse.ArgumentParser(
-        description="Import enriched SSVF providers into the database"
-    )
+    parser = argparse.ArgumentParser(description="Import enriched SSVF providers into the database")
     parser.add_argument(
         "--execute",
         action="store_true",
         help="Actually import (default is dry run)",
     )
     parser.add_argument(
-        "--verbose", "-v",
+        "--verbose",
+        "-v",
         action="store_true",
         help="Show detailed progress",
     )
@@ -349,9 +344,7 @@ def main():
     )
     args = parser.parse_args()
 
-    database_url = os.getenv(
-        "DATABASE_URL", "postgresql+psycopg://localhost:5432/vibe4vets"
-    )
+    database_url = os.getenv("DATABASE_URL", "postgresql+psycopg://localhost:5432/vibe4vets")
 
     dry_run = not args.execute
     if dry_run:

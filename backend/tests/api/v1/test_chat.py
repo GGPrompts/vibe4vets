@@ -4,7 +4,6 @@ from unittest.mock import MagicMock, patch
 
 import pytest
 from fastapi.testclient import TestClient
-from sqlmodel import Session
 
 from app.api.v1 import chat as chat_module
 
@@ -88,9 +87,7 @@ def test_chat_maintains_conversation_id(mock_settings, mock_claude_class, client
     assert conversation_id
 
     # Second message - use same conversation_id
-    response2 = client.post(
-        "/api/v1/chat", json={"message": "Help me", "conversation_id": conversation_id}
-    )
+    response2 = client.post("/api/v1/chat", json={"message": "Help me", "conversation_id": conversation_id})
     assert response2.status_code == 200
     assert response2.json()["conversation_id"] == conversation_id
 
@@ -107,16 +104,12 @@ def test_rate_limiting(mock_settings, client: TestClient):
     try:
         # First 3 requests should work (they'll get 503 for no API key)
         for _ in range(3):
-            response = client.post(
-                "/api/v1/chat", json={"message": "Test", "client_id": "test-client"}
-            )
+            response = client.post("/api/v1/chat", json={"message": "Test", "client_id": "test-client"})
             # Either 503 (no API key) or 200 is fine, we're testing rate limit
             assert response.status_code in [200, 503]
 
         # Fourth request should be rate limited
-        response = client.post(
-            "/api/v1/chat", json={"message": "Test", "client_id": "test-client"}
-        )
+        response = client.post("/api/v1/chat", json={"message": "Test", "client_id": "test-client"})
         assert response.status_code == 429
         assert "Rate limit exceeded" in response.json()["detail"]
     finally:

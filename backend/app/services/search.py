@@ -8,10 +8,10 @@ from sqlalchemy import func, or_, text
 from sqlmodel import Session, col, select
 
 from app.models import Location, Organization, Resource, Source
-from app.models.resource import EMBEDDING_DIMENSION, ResourceScope, ResourceStatus
+from app.models.resource import ResourceScope, ResourceStatus
 
 if TYPE_CHECKING:
-    from app.services.embedding import EmbeddingService
+    pass
 
 logger = logging.getLogger(__name__)
 from app.schemas.resource import (
@@ -118,11 +118,7 @@ class SearchService:
         total = self.session.exec(count_stmt).one()
 
         # Order by rank, then reliability
-        stmt = (
-            stmt.order_by(text("rank DESC"), col(Resource.reliability_score).desc())
-            .offset(offset)
-            .limit(limit)
-        )
+        stmt = stmt.order_by(text("rank DESC"), col(Resource.reliability_score).desc()).offset(offset).limit(limit)
 
         results = self.session.exec(stmt).all()
 
@@ -511,9 +507,7 @@ class SearchService:
         if query:
             stmt = stmt.order_by(text("rank DESC"), col(Resource.reliability_score).desc())
         else:
-            stmt = stmt.order_by(
-                col(Resource.reliability_score).desc(), col(Resource.created_at).desc()
-            )
+            stmt = stmt.order_by(col(Resource.reliability_score).desc(), col(Resource.created_at).desc())
 
         stmt = stmt.offset(offset).limit(limit)
         results = self.session.exec(stmt).all()
@@ -521,11 +515,7 @@ class SearchService:
         # Build search results with match reasons
         search_results = []
         for resource, rank in results:
-            state_filter = (
-                eligibility_filters.states[0]
-                if eligibility_filters and eligibility_filters.states
-                else None
-            )
+            state_filter = eligibility_filters.states[0] if eligibility_filters and eligibility_filters.states else None
             explanations = self._build_explanations(resource, query or "", category, state_filter)
             match_reasons = self._build_match_reasons(resource, eligibility_filters)
             resource_read = self._to_read_schema(resource)
@@ -616,9 +606,7 @@ class SearchService:
 
             # Food distribution specific reasons
             if location.distribution_schedule:
-                reasons.append(
-                    MatchReason(type="schedule", label=location.distribution_schedule)
-                )
+                reasons.append(MatchReason(type="schedule", label=location.distribution_schedule))
             if location.serves_dietary:
                 dietary_str = ", ".join(location.serves_dietary[:3])
                 if len(location.serves_dietary) > 3:
@@ -868,9 +856,8 @@ class SearchService:
             # RRF: combine rankings
             # For FTS, use rank directly (higher = better)
             # For semantic, use similarity (higher = better)
-            rrf_score = (
-                fts_weight * (1.0 / (k + (1.0 / (fts_score + 0.001))))
-                + semantic_weight * (1.0 / (k + (1.0 / (semantic_score + 0.001))))
+            rrf_score = fts_weight * (1.0 / (k + (1.0 / (fts_score + 0.001)))) + semantic_weight * (
+                1.0 / (k + (1.0 / (semantic_score + 0.001)))
             )
 
             scored_results.append((resource, rrf_score, fts_score, semantic_score))

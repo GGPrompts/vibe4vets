@@ -11,6 +11,7 @@ dependencies = [
     "alembic>=1.14.0",
     "psycopg[binary]>=3.2.0",
     "pydantic-settings>=2.6.0",
+    "email-validator>=2.0.0",
     "httpx>=0.28.0",
     "anthropic>=0.40.0",
     "pgvector>=0.3.0",
@@ -44,11 +45,13 @@ build-backend = "hatchling.build"
 packages = ["app"]
 
 [tool.ruff]
-line-length = 100
+line-length = 120
 target-version = "py312"
 exclude = [
     "scripts/seed_resources.py",  # Seed data with long string literals
     "scripts/seed_dmv_housing.py",  # Seed data with long string literals
+    "scripts/seed_dmv_benefits.py",  # Seed data with long string literals
+    "scripts/seed_dmv_food.py",  # Seed data with long string literals
     "scripts/import_discoveries.py",  # Complex data processing script
 ]
 
@@ -60,6 +63,27 @@ ignore = ["B008"]  # Allow function calls in defaults (standard FastAPI pattern)
 "tests/**/*.py" = [
     "SIM117",  # Allow nested with statements in tests for clearer mock setup
     "F841",    # Allow unused variables in tests (often side effects)
+]
+"alembic/env.py" = [
+    "E402",  # Imports must be after sys.path modification
+]
+"app/services/search.py" = [
+    "E402",  # Imports must be after logging setup
+]
+"app/services/email.py" = [
+    "E501",  # HTML template strings
+]
+"app/schemas/resource.py" = [
+    "E501",  # Long Field descriptions
+]
+"app/services/analytics.py" = [
+    "SIM108",  # Keep explicit if/else for clarity
+]
+"app/services/trust.py" = [
+    "SIM108",  # Keep explicit if/else with comment
+]
+"scripts/fetch_hud_vash_awards.py" = [
+    "SIM108",  # Keep explicit if/else for CLI handling
 ]
 
 [tool.mypy]
@@ -84,7 +108,11 @@ module = [
     "app.services.review",
     "app.services.resource",
     "app.services.health",
+    "app.services.analytics",
     "app.api.v1.admin",
+    "app.api.v1.analytics",
+    "app.api.v1.feedback",
+    "app.api.v1.chat",
 ]
 ignore_errors = true
 

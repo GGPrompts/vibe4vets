@@ -67,10 +67,7 @@ class ValidatedCandidate:
         return (
             self.validation_status in ("valid", "needs_review")
             and MEDIUM_CONFIDENCE_THRESHOLD <= self.confidence < HIGH_CONFIDENCE_THRESHOLD
-        ) or (
-            self.validation_status == "needs_review"
-            and self.confidence >= HIGH_CONFIDENCE_THRESHOLD
-        )
+        ) or (self.validation_status == "needs_review" and self.confidence >= HIGH_CONFIDENCE_THRESHOLD)
 
     @property
     def should_discard(self) -> bool:
@@ -400,9 +397,7 @@ class DiscoveryJob(BaseJob):
 
         if candidate.should_discard:
             stats.discarded += 1
-            self._log(
-                f"Discarded: {data.get('name', 'unknown')} (confidence: {candidate.confidence:.2f})"
-            )
+            self._log(f"Discarded: {data.get('name', 'unknown')} (confidence: {candidate.confidence:.2f})")
             return
 
         if dry_run:
@@ -429,8 +424,7 @@ class DiscoveryJob(BaseJob):
             review = ReviewState(
                 resource_id=resource.id,
                 status=ReviewStatus.PENDING,
-                reason=f"AI discovery (confidence: {candidate.confidence:.2f}). "
-                + candidate.validation_notes,
+                reason=f"AI discovery (confidence: {candidate.confidence:.2f}). " + candidate.validation_notes,
             )
             session.add(review)
             stats.queued_for_review += 1

@@ -42,9 +42,7 @@ class EmbeddingService:
         """
         self.api_key = api_key or settings.openai_api_key
         if not self.api_key:
-            raise ValueError(
-                "OPENAI_API_KEY not configured. Set it in .env or pass api_key parameter."
-            )
+            raise ValueError("OPENAI_API_KEY not configured. Set it in .env or pass api_key parameter.")
 
     def _prepare_text(self, resource: "Resource") -> str:
         """Prepare resource text for embedding.
@@ -128,9 +126,7 @@ class EmbeddingService:
         text = self._prepare_text(resource)
         return self.generate_embedding(text)
 
-    def generate_batch_embeddings(
-        self, texts: list[str], batch_size: int = 100
-    ) -> list[EmbeddingResult]:
+    def generate_batch_embeddings(self, texts: list[str], batch_size: int = 100) -> list[EmbeddingResult]:
         """Generate embeddings for multiple texts.
 
         Args:

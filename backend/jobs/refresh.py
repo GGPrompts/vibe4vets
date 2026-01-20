@@ -64,8 +64,7 @@ class RefreshJob(BaseJob):
 
         if not connectors:
             return {
-                "error": "No connectors found"
-                + (f" matching '{connector_name}'" if connector_name else ""),
+                "error": "No connectors found" + (f" matching '{connector_name}'" if connector_name else ""),
                 "connectors_run": 0,
             }
 
@@ -94,9 +93,7 @@ class RefreshJob(BaseJob):
             "failed": result.stats.failed,
             "errors": len(result.errors),
             "duration_seconds": (
-                (result.completed_at - result.started_at).total_seconds()
-                if result.completed_at
-                else None
+                (result.completed_at - result.started_at).total_seconds() if result.completed_at else None
             ),
         }
 

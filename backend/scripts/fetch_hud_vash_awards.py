@@ -26,7 +26,7 @@ import re
 import sys
 import tempfile
 from dataclasses import dataclass
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 
 import httpx
@@ -40,9 +40,7 @@ except ImportError:
 
 # HUD.gov PDF URL pattern for HUD-VASH awards
 # Pattern: https://www.hud.gov/sites/dfiles/PIH/documents/{YEAR}-HUD-VASH-Awards_List-by-PHA.pdf
-HUD_VASH_PDF_URL_TEMPLATE = (
-    "https://www.hud.gov/sites/dfiles/PIH/documents/{year}-HUD-VASH-Awards_List-by-PHA.pdf"
-)
+HUD_VASH_PDF_URL_TEMPLATE = "https://www.hud.gov/sites/dfiles/PIH/documents/{year}-HUD-VASH-Awards_List-by-PHA.pdf"
 
 # Default output path relative to backend/
 DEFAULT_OUTPUT_PATH = "data/reference/HUD_VASH_{year}_Awards.json"
@@ -118,10 +116,7 @@ def parse_pdf_table(pdf_content: bytes) -> list[dict]:
         List of dictionaries with extracted row data
     """
     if pdfplumber is None:
-        raise ImportError(
-            "pdfplumber is required for PDF parsing. "
-            "Install with: pip install pdfplumber"
-        )
+        raise ImportError("pdfplumber is required for PDF parsing. Install with: pip install pdfplumber")
 
     rows: list[dict] = []
 
@@ -236,7 +231,7 @@ def create_awards_json(
             "notice": f"PIH {year}-18",  # HUD notice number pattern
             "total_vouchers": total_vouchers,
             "total_budget": total_budget,
-            "extracted_date": datetime.now(timezone.utc).strftime("%Y-%m-%d"),
+            "extracted_date": datetime.now(UTC).strftime("%Y-%m-%d"),
         },
         "awards": awards,
     }
@@ -244,9 +239,7 @@ def create_awards_json(
 
 def main(argv: list[str] | None = None) -> int:
     """Main entry point for the script."""
-    parser = argparse.ArgumentParser(
-        description="Fetch and parse HUD-VASH annual award data from PDF."
-    )
+    parser = argparse.ArgumentParser(description="Fetch and parse HUD-VASH annual award data from PDF.")
     parser.add_argument(
         "--year",
         type=int,

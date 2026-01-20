@@ -1,28 +1,22 @@
 """Tests for HUD-VASH award PDF fetcher script."""
 
-import json
-from pathlib import Path
-from unittest.mock import patch, MagicMock
-
 import pytest
 
 # Import script functions - handle case where pdfplumber is not installed
 try:
     from scripts.fetch_hud_vash_awards import (
+        HUD_VASH_PDF_URL_TEMPLATE,
         _clean_text,
         _parse_table_row,
         create_awards_json,
-        HUD_VASH_PDF_URL_TEMPLATE,
     )
+
     SCRIPT_AVAILABLE = True
 except ImportError:
     SCRIPT_AVAILABLE = False
 
 
-pytestmark = pytest.mark.skipif(
-    not SCRIPT_AVAILABLE,
-    reason="fetch_hud_vash_awards script not available"
-)
+pytestmark = pytest.mark.skipif(not SCRIPT_AVAILABLE, reason="fetch_hud_vash_awards script not available")
 
 
 class TestCleanText:

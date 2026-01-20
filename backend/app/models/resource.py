@@ -58,12 +58,8 @@ class Resource(SQLModel, table=True):
     categories: list[str] = Field(
         default_factory=list, sa_column=Column(ARRAY(Text), nullable=False, default=[])
     )  # employment, training, housing, legal
-    subcategories: list[str] = Field(
-        default_factory=list, sa_column=Column(ARRAY(Text), nullable=False, default=[])
-    )
-    tags: list[str] = Field(
-        default_factory=list, sa_column=Column(ARRAY(Text), nullable=False, default=[])
-    )
+    subcategories: list[str] = Field(default_factory=list, sa_column=Column(ARRAY(Text), nullable=False, default=[]))
+    tags: list[str] = Field(default_factory=list, sa_column=Column(ARRAY(Text), nullable=False, default=[]))
 
     # Scope
     scope: ResourceScope = Field(default=ResourceScope.NATIONAL)

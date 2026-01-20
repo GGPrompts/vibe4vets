@@ -28,7 +28,7 @@ import re
 import sys
 import tempfile
 from dataclasses import dataclass, field
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 
 import httpx
@@ -41,9 +41,7 @@ except ImportError:
 
 
 # Comprehensive HUD-VASH awards PDF (2008-2024)
-HUD_VASH_MULTIYEAR_PDF_URL = (
-    "https://www.hud.gov/sites/dfiles/PIH/documents/HUD-VASH-Awards.pdf"
-)
+HUD_VASH_MULTIYEAR_PDF_URL = "https://www.hud.gov/sites/dfiles/PIH/documents/HUD-VASH-Awards.pdf"
 
 # Default output path
 DEFAULT_OUTPUT_PATH = "data/reference/HUD_VASH_All_Years.json"
@@ -116,10 +114,7 @@ def parse_multiyear_pdf(pdf_content: bytes) -> dict[str, PHAAward]:
         Dictionary mapping PHA code to PHAAward object
     """
     if pdfplumber is None:
-        raise ImportError(
-            "pdfplumber is required for PDF parsing. "
-            "Install with: pip install pdfplumber"
-        )
+        raise ImportError("pdfplumber is required for PDF parsing. Install with: pip install pdfplumber")
 
     phas: dict[str, PHAAward] = {}
 
@@ -301,12 +296,14 @@ def create_merged_json(phas: dict[str, PHAAward], source_url: str) -> dict:
     awards = []
     for pha_code in sorted(phas.keys()):
         pha = phas[pha_code]
-        awards.append({
-            "pha_code": pha.pha_code,
-            "pha_name": pha.pha_name,
-            "awards_by_year": pha.awards_by_year,
-            "total_vouchers": pha.total_vouchers,
-        })
+        awards.append(
+            {
+                "pha_code": pha.pha_code,
+                "pha_name": pha.pha_name,
+                "awards_by_year": pha.awards_by_year,
+                "total_vouchers": pha.total_vouchers,
+            }
+        )
 
     # Get unique states
     states = sorted({pha.pha_code[:2] for pha in phas.values() if len(pha.pha_code) >= 2})
@@ -319,7 +316,7 @@ def create_merged_json(phas: dict[str, PHAAward], source_url: str) -> dict:
             "totals_by_year": totals_by_year,
             "total_phas": len(awards),
             "states_covered": states,
-            "extracted_date": datetime.now(timezone.utc).strftime("%Y-%m-%d"),
+            "extracted_date": datetime.now(UTC).strftime("%Y-%m-%d"),
         },
         "awards": awards,
     }
@@ -327,9 +324,7 @@ def create_merged_json(phas: dict[str, PHAAward], source_url: str) -> dict:
 
 def main(argv: list[str] | None = None) -> int:
     """Main entry point."""
-    parser = argparse.ArgumentParser(
-        description="Fetch and merge multi-year HUD-VASH award data."
-    )
+    parser = argparse.ArgumentParser(description="Fetch and merge multi-year HUD-VASH award data.")
     parser.add_argument(
         "--output",
         type=str,
@@ -348,7 +343,8 @@ def main(argv: list[str] | None = None) -> int:
         help="Download and parse but don't write output",
     )
     parser.add_argument(
-        "--verbose", "-v",
+        "--verbose",
+        "-v",
         action="store_true",
         help="Print detailed progress",
     )
@@ -368,7 +364,7 @@ def main(argv: list[str] | None = None) -> int:
         output_path = root / DEFAULT_OUTPUT_PATH
 
     if args.verbose:
-        print(f"Fetching multi-year HUD-VASH awards...")
+        print("Fetching multi-year HUD-VASH awards...")
         print(f"  URL: {args.url}")
         print(f"  Output: {output_path}")
         print(f"  Target years: {TARGET_YEARS}")
@@ -397,6 +393,7 @@ def main(argv: list[str] | None = None) -> int:
     except Exception as e:
         print(f"Error: Failed to parse PDF: {e}")
         import traceback
+
         traceback.print_exc()
         return 1
 
@@ -409,7 +406,7 @@ def main(argv: list[str] | None = None) -> int:
     data = create_merged_json(phas, args.url)
 
     # Summary
-    print(f"\nHUD-VASH Multi-Year Awards Summary:")
+    print("\nHUD-VASH Multi-Year Awards Summary:")
     print(f"  Total unique PHAs: {len(phas)}")
     print(f"  States/territories: {len(data['metadata']['states_covered'])}")
     print(f"  Years: {TARGET_YEARS}")

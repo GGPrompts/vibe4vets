@@ -225,9 +225,7 @@ class AnalyticsService:
 
         return [{"state": state, "count": count} for state, count in results]
 
-    def get_most_viewed_resources(
-        self, days: int = 30, limit: int = 10
-    ) -> list[dict]:
+    def get_most_viewed_resources(self, days: int = 30, limit: int = 10) -> list[dict]:
         """Get most viewed resources."""
         since = datetime.utcnow() - timedelta(days=days)
 
@@ -393,9 +391,7 @@ class AnalyticsService:
 
         # Check if aggregate exists
         existing = self.session.exec(
-            select(AnalyticsDailyAggregate).where(
-                AnalyticsDailyAggregate.date == start
-            )
+            select(AnalyticsDailyAggregate).where(AnalyticsDailyAggregate.date == start)
         ).first()
 
         if existing:
@@ -412,9 +408,7 @@ class AnalyticsService:
         aggregate.top_categories = json.dumps({cat: cnt for cat, cnt in top_cats})
         aggregate.top_states = json.dumps({st: cnt for st, cnt in top_states})
         aggregate.top_searches = json.dumps({q: cnt for q, cnt in top_searches})
-        aggregate.top_resources = json.dumps(
-            {str(rid): cnt for rid, cnt in top_resources}
-        )
+        aggregate.top_resources = json.dumps({str(rid): cnt for rid, cnt in top_resources})
         aggregate.updated_at = datetime.utcnow()
 
         self.session.add(aggregate)

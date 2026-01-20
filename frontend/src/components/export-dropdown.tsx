@@ -37,7 +37,7 @@ export function ExportDropdown({ resources }: ExportDropdownProps) {
 
   const exportToExcel = async () => {
     // Dynamic import to keep bundle size down
-    const XLSX = (await import('xlsx')).default;
+    const XLSX = await import('xlsx');
 
     // Prepare data for Excel
     const data = resources.map((r) => ({

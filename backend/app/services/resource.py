@@ -148,9 +148,7 @@ class ResourceService:
         elif sort == "shuffle":
             # Day-seeded random: consistent order within a day, varies day-to-day
             # Uses md5(id::text || current_date::text) for deterministic shuffling
-            query = query.order_by(
-                func.md5(func.concat(Resource.id.cast(String), func.current_date().cast(String)))
-            )
+            query = query.order_by(func.md5(func.concat(Resource.id.cast(String), func.current_date().cast(String))))
         else:
             # Default: relevance (by reliability score)
             query = query.order_by(col(Resource.reliability_score).desc(), col(Resource.id))

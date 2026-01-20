@@ -25,9 +25,7 @@ def sample_candidate() -> ResourceCandidate:
     """Create a sample ResourceCandidate for testing."""
     return ResourceCandidate(
         title="VA Employment Services",
-        description=(
-            "Employment assistance for veterans including job placement and career counseling."
-        ),
+        description=("Employment assistance for veterans including job placement and career counseling."),
         source_url="https://www.va.gov/employment",
         org_name="U.S. Department of Veterans Affairs",
         org_website="https://www.va.gov",

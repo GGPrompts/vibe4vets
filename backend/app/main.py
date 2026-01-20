@@ -107,7 +107,9 @@ app = FastAPI(
         },
         {
             "name": "search",
-            "description": "Advanced search capabilities including full-text search, eligibility filtering, and semantic search.",
+            "description": (
+                "Advanced search capabilities including full-text search, eligibility filtering, and semantic search."
+            ),
         },
         {
             "name": "chat",
@@ -123,7 +125,10 @@ app = FastAPI(
         },
         {
             "name": "partner",
-            "description": "Partner API for trusted organizations (VSOs, nonprofits) to submit and manage resources via API key authentication.",
+            "description": (
+                "Partner API for trusted organizations (VSOs, nonprofits) to submit "
+                "and manage resources via API key authentication."
+            ),
         },
     ],
 )

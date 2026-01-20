@@ -12,9 +12,7 @@ class MockGeocoder:
         self.lng = lng
         self.calls: list[tuple[str, str, str, str]] = []
 
-    def geocode(
-        self, address: str, city: str, state: str, zip_code: str
-    ) -> tuple[float | None, float | None]:
+    def geocode(self, address: str, city: str, state: str, zip_code: str) -> tuple[float | None, float | None]:
         self.calls.append((address, city, state, zip_code))
         return self.lat, self.lng
 
@@ -110,9 +108,7 @@ class TestEnricher:
         """Test category inference for housing keywords."""
         resource = NormalizedResource(
             title="HUD-VASH Program",
-            description=(
-                "Emergency shelter and transitional housing for veterans experiencing homelessness"
-            ),
+            description=("Emergency shelter and transitional housing for veterans experiencing homelessness"),
             source_url="https://example.com",
             org_name="Test Org",
             categories=[],

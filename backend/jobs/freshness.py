@@ -78,9 +78,7 @@ class FreshnessJob(BaseJob):
 
     def _get_average_freshness(self, session: Session) -> float | None:
         """Get average freshness score for active resources."""
-        stmt = select(func.avg(Resource.freshness_score)).where(
-            Resource.status == ResourceStatus.ACTIVE
-        )
+        stmt = select(func.avg(Resource.freshness_score)).where(Resource.status == ResourceStatus.ACTIVE)
         result = session.exec(stmt).one()
         return float(result) if result else None
 
@@ -93,6 +91,4 @@ class FreshnessJob(BaseJob):
 
         avg_str = f"{avg:.1%}" if avg else "N/A"
 
-        return (
-            f"Freshness updated: {updated}/{total} resources changed, avg={avg_str}, {stale} stale"
-        )
+        return f"Freshness updated: {updated}/{total} resources changed, avg={avg_str}, {stale} stale"

@@ -1,0 +1,44 @@
+[
+  {
+    "grant_id": "12-NY-060",
+    "org_name": "HELP Social Service Corporation",
+    "website": "https://sus.org/our-services/veterans/",
+    "phone": "646-619-3277",
+    "address": "Multiple locations serving New York City",
+    "city": "New York",
+    "state": "NY",
+    "zip": "10001",
+    "intake_process": "Contact via phone (646-619-3277) or email for intake assessment. Veterans must provide proof of veteran status (DD-214) and income verification. Services available for homeless prevention and rapid re-housing. Eligibility requires very low income (at or below 50% AMI) and documented homelessness or at-risk status.",
+    "service_area": "New York City (Manhattan, Brooklyn, Queens, Bronx, Staten Island). HELP USA operates multiple locations throughout NYC providing SSVF services to veteran families.",
+    "confidence": 0.75,
+    "source_url": "https://www.findhelp.org/help-usa--new-york-ny--supportive-services-for-veteran-families-(ssvf)/5131099223621632"
+  },
+  {
+    "grant_id": "12-NY-063",
+    "org_name": "Westchester Community Opportunity Program, Inc. (WestCOP)",
+    "website": "https://westcop.org/programs/ssvf/",
+    "phone": "(914) 595-0968",
+    "address": "28 East 1st Street",
+    "city": "Mount Vernon",
+    "state": "NY",
+    "zip": "10550",
+    "intake_process": "Contact by phone at (914) 595-0968 for Westchester/Rockland/Putnam region or (845) 926-9914 for Dutchess/Ulster/Orange/Sullivan region. Initial phone screening followed by in-person intake assessment. Veterans must have DD-214 and income verification. Services include case management, temporary financial assistance for rent/utilities, job coaching, and housing counseling.",
+    "service_area": "Six-county region: Westchester County (primary), Rockland County, Putnam County, Dutchess County, Orange County, and Ulster County. WestCOP has two regional offices serving approximately 402 eligible veteran households.",
+    "confidence": 0.90,
+    "source_url": "https://westcop.org/programs/ssvf/"
+  },
+  {
+    "grant_id": "13-NY-119",
+    "org_name": "Catholic Charities of Onondaga County",
+    "website": "https://ccoc.us/services/ssvf-supportive-services-for-veteran-families",
+    "phone": "(315) 424-1800",
+    "address": "1654 West Onondaga Street",
+    "city": "Syracuse",
+    "state": "NY",
+    "zip": "13204",
+    "intake_process": "Apply online, call (315) 424-1800 during business hours (Monday-Friday, 8:30 AM - 4:30 PM), or visit Cathedral Emergency Services building at 262 E Onondaga Street, Syracuse, NY 13202. Intake includes verification of veteran status (DD-214), income assessment (must be at or below 50% of area median income), and documentation of homelessness or imminent housing loss.",
+    "service_area": "Onondaga County and surrounding Central New York region. Primary service hub in Syracuse with mobile outreach and case management support throughout the county. Serves very low-income veteran families experiencing housing instability.",
+    "confidence": 0.85,
+    "source_url": "https://ccoc.us/services/crisis-response/supportive-services-for-veteran-families"
+  }
+]

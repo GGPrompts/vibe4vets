@@ -84,9 +84,7 @@ class VAGovConnector(BaseConnector):
 
         return resources
 
-    def _fetch_facilities_by_type(
-        self, client: httpx.Client, facility_type: str
-    ) -> list[ResourceCandidate]:
+    def _fetch_facilities_by_type(self, client: httpx.Client, facility_type: str) -> list[ResourceCandidate]:
         """Fetch all facilities of a specific type.
 
         Args:
@@ -138,9 +136,7 @@ class VAGovConnector(BaseConnector):
 
         return resources
 
-    def _parse_facility(
-        self, facility: dict[str, Any], facility_type: str
-    ) -> ResourceCandidate | None:
+    def _parse_facility(self, facility: dict[str, Any], facility_type: str) -> ResourceCandidate | None:
         """Parse a facility object into a ResourceCandidate.
 
         Args:
@@ -208,9 +204,7 @@ class VAGovConnector(BaseConnector):
             tags=self._extract_tags(services, facility_type),
             phone=self._normalize_phone(attrs.get("phone", {}).get("main")),
             hours=hours,
-            eligibility=(
-                "Veterans, service members, and their families. Eligibility varies by program."
-            ),
+            eligibility=("Veterans, service members, and their families. Eligibility varies by program."),
             how_to_apply="Visit the facility, call, or apply online at va.gov",
             scope=scope,
             states=states,
@@ -218,9 +212,7 @@ class VAGovConnector(BaseConnector):
             fetched_at=datetime.now(UTC),
         )
 
-    def _build_description(
-        self, attrs: dict[str, Any], services: list[str], facility_type: str
-    ) -> str:
+    def _build_description(self, attrs: dict[str, Any], services: list[str], facility_type: str) -> str:
         """Build a description from facility attributes.
 
         Args:

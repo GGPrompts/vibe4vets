@@ -452,9 +452,7 @@ class HealthService:
                     job_name=h["job_name"],
                     status=h["status"],
                     started_at=datetime.fromisoformat(h["started_at"]),
-                    completed_at=(
-                        datetime.fromisoformat(h["completed_at"]) if h.get("completed_at") else None
-                    ),
+                    completed_at=(datetime.fromisoformat(h["completed_at"]) if h.get("completed_at") else None),
                     message=h.get("message", ""),
                     resources_processed=h.get("stats", {}).get("processed", 0),
                     errors=1 if h.get("error") else 0,

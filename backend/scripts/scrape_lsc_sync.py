@@ -2,7 +2,6 @@
 """Synchronous scraper for LSC grantee contact info - more reliable than async."""
 
 import re
-import sys
 from pathlib import Path
 
 import httpx
@@ -99,7 +98,7 @@ def main():
         if g.get("phone") or not website:
             continue
 
-        print(f"[{i+1}/{len(grantees)}] {name}...", end=" ", flush=True)
+        print(f"[{i + 1}/{len(grantees)}] {name}...", end=" ", flush=True)
 
         phone = get_phone(website)
         if phone:

@@ -32,7 +32,7 @@ import re
 import sys
 import tempfile
 from dataclasses import dataclass
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 from time import sleep
 
@@ -46,21 +46,67 @@ except ImportError:
 
 
 # PDF URL pattern
-PHA_CONTACT_PDF_URL_PATTERN = (
-    "https://www.hud.gov/sites/dfiles/PIH/documents/PHA_Contact_Report_{state}.pdf"
-)
+PHA_CONTACT_PDF_URL_PATTERN = "https://www.hud.gov/sites/dfiles/PIH/documents/PHA_Contact_Report_{state}.pdf"
 
 # Default output path
 DEFAULT_OUTPUT_PATH = "data/reference/PHA_Contacts.json"
 
 # All US states and territories with potential PHAs
 ALL_STATES = [
-    "AK", "AL", "AR", "AZ", "CA", "CO", "CT", "DC", "DE", "FL",
-    "GA", "GQ", "HI", "IA", "ID", "IL", "IN", "KS", "KY", "LA",
-    "MA", "MD", "ME", "MI", "MN", "MO", "MS", "MT", "NC", "ND",
-    "NE", "NH", "NJ", "NM", "NV", "NY", "OH", "OK", "OR", "PA",
-    "PR", "RI", "SC", "SD", "TN", "TX", "UT", "VA", "VI", "VT",
-    "WA", "WI", "WV", "WY",
+    "AK",
+    "AL",
+    "AR",
+    "AZ",
+    "CA",
+    "CO",
+    "CT",
+    "DC",
+    "DE",
+    "FL",
+    "GA",
+    "GQ",
+    "HI",
+    "IA",
+    "ID",
+    "IL",
+    "IN",
+    "KS",
+    "KY",
+    "LA",
+    "MA",
+    "MD",
+    "ME",
+    "MI",
+    "MN",
+    "MO",
+    "MS",
+    "MT",
+    "NC",
+    "ND",
+    "NE",
+    "NH",
+    "NJ",
+    "NM",
+    "NV",
+    "NY",
+    "OH",
+    "OK",
+    "OR",
+    "PA",
+    "PR",
+    "RI",
+    "SC",
+    "SD",
+    "TN",
+    "TX",
+    "UT",
+    "VA",
+    "VI",
+    "VT",
+    "WA",
+    "WI",
+    "WV",
+    "WY",
 ]
 
 
@@ -81,18 +127,22 @@ class PHAContact:
 
     def to_dict(self) -> dict:
         """Convert to dictionary, omitting None values."""
-        return {k: v for k, v in {
-            "pha_code": self.pha_code,
-            "pha_name": self.pha_name,
-            "phone": self.phone,
-            "fax": self.fax,
-            "email": self.email,
-            "address": self.address,
-            "city": self.city,
-            "state": self.state,
-            "zip_code": self.zip_code,
-            "executive_director": self.executive_director,
-        }.items() if v is not None}
+        return {
+            k: v
+            for k, v in {
+                "pha_code": self.pha_code,
+                "pha_name": self.pha_name,
+                "phone": self.phone,
+                "fax": self.fax,
+                "email": self.email,
+                "address": self.address,
+                "city": self.city,
+                "state": self.state,
+                "zip_code": self.zip_code,
+                "executive_director": self.executive_director,
+            }.items()
+            if v is not None
+        }
 
 
 def _repo_root() -> Path:
@@ -145,10 +195,7 @@ def parse_pha_contact_pdf(pdf_content: bytes, state: str) -> list[PHAContact]:
         List of PHAContact objects
     """
     if pdfplumber is None:
-        raise ImportError(
-            "pdfplumber is required for PDF parsing. "
-            "Install with: pip install pdfplumber"
-        )
+        raise ImportError("pdfplumber is required for PDF parsing. Install with: pip install pdfplumber")
 
     contacts: list[PHAContact] = []
 
@@ -256,7 +303,7 @@ def _parse_hud_contact_row(row: list, default_state: str) -> PHAContact | None:
 
     if len(row) > 2 and row[2]:
         addr_cell = str(row[2])
-        addr_lines = [l.strip() for l in addr_cell.split("\n") if l.strip()]
+        addr_lines = [line.strip() for line in addr_cell.split("\n") if line.strip()]
 
         if addr_lines:
             # First line is usually street address
@@ -270,7 +317,7 @@ def _parse_hud_contact_row(row: list, default_state: str) -> PHAContact | None:
                     state = zip_match.group(1)
                     zip_code = zip_match.group(2)
                     # City is everything before the state/zip
-                    city_part = line[:zip_match.start()].strip().rstrip(",")
+                    city_part = line[: zip_match.start()].strip().rstrip(",")
                     if city_part:
                         city = city_part
                 elif not city and line and not re.match(r"^[A-Z]{2}\s*,", line):
@@ -348,7 +395,7 @@ def fetch_all_pha_contacts(
 
             if pdf_content is None:
                 if verbose:
-                    print(f"  -> Not found (404)")
+                    print("  -> Not found (404)")
                 failed_states.append(state)
                 continue
 
@@ -399,9 +446,7 @@ def create_contacts_json(
         Complete JSON structure
     """
     # Get unique states
-    states_with_contacts = sorted({
-        c.state for c in contacts.values() if c.state
-    })
+    states_with_contacts = sorted({c.state for c in contacts.values() if c.state})
 
     # Count contacts with phone numbers
     with_phone = sum(1 for c in contacts.values() if c.phone)
@@ -414,20 +459,15 @@ def create_contacts_json(
             "total_phas": len(contacts),
             "phas_with_phone": with_phone,
             "states_covered": states_with_contacts,
-            "extracted_date": datetime.now(timezone.utc).strftime("%Y-%m-%d"),
+            "extracted_date": datetime.now(UTC).strftime("%Y-%m-%d"),
         },
-        "contacts": {
-            code: contact.to_dict()
-            for code, contact in sorted(contacts.items())
-        },
+        "contacts": {code: contact.to_dict() for code, contact in sorted(contacts.items())},
     }
 
 
 def main(argv: list[str] | None = None) -> int:
     """Main entry point."""
-    parser = argparse.ArgumentParser(
-        description="Fetch PHA contact information from HUD.gov PDFs."
-    )
+    parser = argparse.ArgumentParser(description="Fetch PHA contact information from HUD.gov PDFs.")
     parser.add_argument(
         "--output",
         type=str,
@@ -446,7 +486,8 @@ def main(argv: list[str] | None = None) -> int:
         help="Fetch and parse but don't write output",
     )
     parser.add_argument(
-        "--verbose", "-v",
+        "--verbose",
+        "-v",
         action="store_true",
         help="Print detailed progress",
     )
@@ -474,7 +515,7 @@ def main(argv: list[str] | None = None) -> int:
         output_path = root / DEFAULT_OUTPUT_PATH
 
     if args.verbose:
-        print(f"Fetching PHA contact information...")
+        print("Fetching PHA contact information...")
         print(f"  States: {', '.join(states) if states else 'All'}")
         print(f"  Output: {output_path}")
 
@@ -489,7 +530,7 @@ def main(argv: list[str] | None = None) -> int:
     data = create_contacts_json(contacts, PHA_CONTACT_PDF_URL_PATTERN)
 
     # Summary
-    print(f"\nPHA Contact Summary:")
+    print("\nPHA Contact Summary:")
     print(f"  Total PHAs: {len(contacts)}")
     print(f"  With phone: {data['metadata']['phas_with_phone']}")
     print(f"  States: {len(data['metadata']['states_covered'])}")

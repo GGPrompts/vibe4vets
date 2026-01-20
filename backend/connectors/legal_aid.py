@@ -159,10 +159,7 @@ class LegalAidConnector(BaseConnector):
         Returns:
             Formatted description string.
         """
-        parts = [
-            f"{org_name} provides free civil legal assistance to low-income residents "
-            f"in {state_name}."
-        ]
+        parts = [f"{org_name} provides free civil legal assistance to low-income residents in {state_name}."]
 
         # Describe veteran-relevant services
         veteran_services = []
@@ -222,9 +219,7 @@ class LegalAidConnector(BaseConnector):
         if phone:
             parts.append(f"Call {phone} to speak with an intake specialist.")
 
-        parts.append(
-            "You can also find legal aid near you at LawHelp.org or call the LSC Legal Aid Locator."
-        )
+        parts.append("You can also find legal aid near you at LawHelp.org or call the LSC Legal Aid Locator.")
 
         return " ".join(parts)
 

@@ -31,12 +31,59 @@ PHONE_PATTERNS = [
 
 # US state abbreviations for address detection
 US_STATES = {
-    "AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "DC", "FL",
-    "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME",
-    "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH",
-    "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "PR",
-    "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "VI", "WA",
-    "WV", "WI", "WY",
+    "AL",
+    "AK",
+    "AZ",
+    "AR",
+    "CA",
+    "CO",
+    "CT",
+    "DE",
+    "DC",
+    "FL",
+    "GA",
+    "HI",
+    "ID",
+    "IL",
+    "IN",
+    "IA",
+    "KS",
+    "KY",
+    "LA",
+    "ME",
+    "MD",
+    "MA",
+    "MI",
+    "MN",
+    "MS",
+    "MO",
+    "MT",
+    "NE",
+    "NV",
+    "NH",
+    "NJ",
+    "NM",
+    "NY",
+    "NC",
+    "ND",
+    "OH",
+    "OK",
+    "OR",
+    "PA",
+    "PR",
+    "RI",
+    "SC",
+    "SD",
+    "TN",
+    "TX",
+    "UT",
+    "VT",
+    "VA",
+    "VI",
+    "WA",
+    "WV",
+    "WI",
+    "WY",
 }
 
 # Address pattern: street address, city, state zip
@@ -45,7 +92,7 @@ ADDRESS_PATTERN = re.compile(
     r"[\w\s]+,?\s*"
     r"(?:" + "|".join(US_STATES) + r")\s*"
     r"\d{5}(?:-\d{4})?)",
-    re.IGNORECASE
+    re.IGNORECASE,
 )
 
 
@@ -209,7 +256,10 @@ async def scrape_all_grantees(
             return result
 
     headers = {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "User-Agent": (
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+            "(KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+        ),
         "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
         "Accept-Language": "en-US,en;q=0.5",
         "Accept-Encoding": "gzip, deflate, br",
@@ -282,7 +332,7 @@ def main():
 
     # Apply skip
     if args.skip:
-        grantees_with_websites = grantees_with_websites[args.skip:]
+        grantees_with_websites = grantees_with_websites[args.skip :]
 
     print(f"Found {len(grantees)} grantees, {len(grantees_with_websites)} with websites (after skip)")
     print()
@@ -299,6 +349,7 @@ def main():
     # Save results to JSON if requested
     if args.output:
         import json
+
         with open(args.output, "w") as f:
             json.dump(results, f, indent=2)
         print(f"Results saved to {args.output}")

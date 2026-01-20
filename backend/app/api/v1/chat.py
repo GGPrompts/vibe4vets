@@ -45,9 +45,7 @@ def _check_rate_limit(client_id: str) -> bool:
     now = time.time()
     with _rate_limit_lock:
         # Clean old entries
-        _rate_limit_store[client_id] = [
-            ts for ts in _rate_limit_store[client_id] if now - ts < RATE_LIMIT_WINDOW
-        ]
+        _rate_limit_store[client_id] = [ts for ts in _rate_limit_store[client_id] if now - ts < RATE_LIMIT_WINDOW]
         # Check limit
         if len(_rate_limit_store[client_id]) >= RATE_LIMIT_REQUESTS:
             return False
@@ -66,7 +64,8 @@ def _add_to_conversation(conversation_id: str, role: str, content: str) -> None:
     """Add message to conversation history."""
     with _conversation_lock:
         # Evict oldest conversations if at capacity
-        if conversation_id not in _conversation_store and len(_conversation_store) >= MAX_CONVERSATIONS:
+        is_new = conversation_id not in _conversation_store
+        if is_new and len(_conversation_store) >= MAX_CONVERSATIONS:
             oldest = next(iter(_conversation_store))
             del _conversation_store[oldest]
 
@@ -77,9 +76,7 @@ def _add_to_conversation(conversation_id: str, role: str, content: str) -> None:
 
         # Trim to max history
         if len(_conversation_store[conversation_id]) > MAX_CONVERSATION_HISTORY:
-            _conversation_store[conversation_id] = _conversation_store[conversation_id][
-                -MAX_CONVERSATION_HISTORY:
-            ]
+            _conversation_store[conversation_id] = _conversation_store[conversation_id][-MAX_CONVERSATION_HISTORY:]
 
 
 class ChatMessage(BaseModel):
@@ -98,7 +95,7 @@ class ChatMessage(BaseModel):
     )
     client_id: str | None = Field(
         None,
-        description="Optional client identifier for rate limiting. Uses conversation_id if not provided.",
+        description=("Optional client identifier for rate limiting. Uses conversation_id if not provided."),
     )
 
     model_config = {
@@ -126,12 +123,8 @@ class ChatResponse(BaseModel):
     """Chat response with resources."""
 
     response: str = Field(..., description="AI assistant's response text")
-    resources: list[ResourceReference] = Field(
-        ..., description="Resources referenced in the response"
-    )
-    conversation_id: str = Field(
-        ..., description="Conversation ID for follow-up messages"
-    )
+    resources: list[ResourceReference] = Field(..., description="Resources referenced in the response")
+    conversation_id: str = Field(..., description="Conversation ID for follow-up messages")
 
     model_config = {
         "json_schema_extra": {
@@ -170,7 +163,8 @@ You have access to a database of veteran resources covering:
 - Housing: HUD-VASH, SSVF, transitional housing, emergency shelter
 - Legal: VA appeals, discharge upgrades, legal aid
 
-When resources are found, they will be provided to you. Reference them naturally in your response."""
+When resources are found, they will be provided to you. \
+Reference them naturally in your response."""
 
 
 @router.post(
@@ -193,9 +187,7 @@ When resources are found, they will be provided to you. Reference them naturally
         503: {
             "description": "Chat service not configured or temporarily unavailable",
             "content": {
-                "application/json": {
-                    "example": {"detail": "Chat service is not configured. Please contact support."}
-                }
+                "application/json": {"example": {"detail": "Chat service is not configured. Please contact support."}}
             },
         },
     },

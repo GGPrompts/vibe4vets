@@ -13,9 +13,7 @@ from etl.models import NormalizedResource
 class GeocoderProtocol(Protocol):
     """Protocol for geocoding services."""
 
-    def geocode(
-        self, address: str, city: str, state: str, zip_code: str
-    ) -> tuple[float | None, float | None]:
+    def geocode(self, address: str, city: str, state: str, zip_code: str) -> tuple[float | None, float | None]:
         """Geocode an address.
 
         Args:
@@ -37,9 +35,7 @@ class StubGeocoder:
     in production.
     """
 
-    def geocode(
-        self, address: str, city: str, state: str, zip_code: str
-    ) -> tuple[float | None, float | None]:
+    def geocode(self, address: str, city: str, state: str, zip_code: str) -> tuple[float | None, float | None]:
         """Return None for stub geocoding."""
         return None, None
 
@@ -249,11 +245,7 @@ class Enricher:
         # If already has a valid scope, respect it
         if resource.scope in ("national", "state", "local"):
             # But update states list if we have address info
-            if (
-                resource.scope in ("local", "state")
-                and resource.state
-                and resource.state not in resource.states
-            ):
+            if resource.scope in ("local", "state") and resource.state and resource.state not in resource.states:
                 resource.states = list(set(resource.states) | {resource.state})
             return
 
@@ -288,9 +280,7 @@ class GoogleMapsGeocoder:
         """
         self.api_key = api_key
 
-    def geocode(
-        self, address: str, city: str, state: str, zip_code: str
-    ) -> tuple[float | None, float | None]:
+    def geocode(self, address: str, city: str, state: str, zip_code: str) -> tuple[float | None, float | None]:
         """Geocode using Google Maps API.
 
         TODO: Implement when API key is available.
@@ -313,9 +303,7 @@ class NominatimGeocoder:
         """
         self.user_agent = user_agent
 
-    def geocode(
-        self, address: str, city: str, state: str, zip_code: str
-    ) -> tuple[float | None, float | None]:
+    def geocode(self, address: str, city: str, state: str, zip_code: str) -> tuple[float | None, float | None]:
         """Geocode using Nominatim API.
 
         TODO: Implement with proper rate limiting.

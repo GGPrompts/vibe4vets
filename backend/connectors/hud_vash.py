@@ -191,11 +191,7 @@ class HUDVASHConnector(BaseConnector):
             data = json.load(f)
 
         # Create lookup by PHA code
-        return {
-            award["pha_code"]: award
-            for award in data.get("awards", [])
-            if "pha_code" in award
-        }
+        return {award["pha_code"]: award for award in data.get("awards", []) if "pha_code" in award}
 
     def _load_pha_contacts(self) -> dict[str, dict]:
         """Load PHA contact information lookup.
@@ -248,9 +244,7 @@ class HUDVASHConnector(BaseConnector):
         visn, vamc_name = self._parse_vamc(vamc)
 
         title = self._build_title(pha_name, vamc_name, state)
-        description = self._build_description(
-            pha_name, vamc_name, state, awards_by_year, total_vouchers, budget
-        )
+        description = self._build_description(pha_name, vamc_name, state, awards_by_year, total_vouchers, budget)
 
         # Build how_to_apply with PHA contact info if available
         how_to_apply = self._build_how_to_apply(pha_name, contact)
@@ -338,8 +332,7 @@ class HUDVASHConnector(BaseConnector):
         # Main description
         state_name = STATE_CODES.get(state, state) if state else "your area"
         parts.append(
-            f"HUD-VASH (HUD-VA Supportive Housing) provides housing vouchers to "
-            f"homeless veterans in {state_name}."
+            f"HUD-VASH (HUD-VA Supportive Housing) provides housing vouchers to homeless veterans in {state_name}."
         )
 
         # PHA info
@@ -421,8 +414,7 @@ class HUDVASHConnector(BaseConnector):
 
         # Always include the national hotline as backup
         parts.append(
-            "You can also call the National Call Center for Homeless Veterans "
-            "at 1-877-4AID-VET (1-877-424-3838)."
+            "You can also call the National Call Center for Homeless Veterans at 1-877-4AID-VET (1-877-424-3838)."
         )
 
         return " ".join(parts)

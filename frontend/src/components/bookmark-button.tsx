@@ -49,15 +49,14 @@ export function BookmarkButton({
     <Button
       variant="ghost"
       size="icon"
+      type="button"
       onClick={handleClick}
       className={cn(
         sizeClasses[size],
-        'shrink-0 rounded-full transition-all duration-200',
+        'shrink-0 rounded-full transition-colors duration-200 bg-white/80 border border-gray-300 shadow-sm',
         saved
           ? 'text-red-500 hover:text-red-600 hover:bg-red-50'
-          : 'text-muted-foreground hover:text-red-500 hover:bg-red-50',
-        // Prevent flash before hydration
-        !isHydrated && 'opacity-0',
+          : 'text-gray-500 hover:text-red-500 hover:bg-red-50',
         className
       )}
       aria-label={saved ? 'Remove from saved' : 'Save to this device'}
@@ -65,7 +64,6 @@ export function BookmarkButton({
       <Heart
         className={cn(
           iconSizes[size],
-          'transition-all duration-200',
           saved && 'fill-current'
         )}
       />

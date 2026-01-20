@@ -26,9 +26,7 @@ class Deduplicator:
         """
         self.title_threshold = title_threshold
 
-    def deduplicate(
-        self, resources: list[NormalizedResource]
-    ) -> tuple[list[NormalizedResource], int]:
+    def deduplicate(self, resources: list[NormalizedResource]) -> tuple[list[NormalizedResource], int]:
         """Remove duplicates from a list of normalized resources.
 
         Uses the following matching criteria:
@@ -93,9 +91,7 @@ class Deduplicator:
 
         return f"{org_key}|{location_key}"
 
-    def _dedupe_group(
-        self, group: list[NormalizedResource]
-    ) -> tuple[list[NormalizedResource], int]:
+    def _dedupe_group(self, group: list[NormalizedResource]) -> tuple[list[NormalizedResource], int]:
         """Deduplicate resources within a group using title similarity.
 
         Args:
@@ -255,9 +251,7 @@ def find_potential_duplicates(
         existing_group_key = deduplicator._create_group_key(existing)
 
         # Same group (org + location) and similar title?
-        if new_group_key == existing_group_key and deduplicator._are_duplicates(
-            new_resource, existing
-        ):
+        if new_group_key == existing_group_key and deduplicator._are_duplicates(new_resource, existing):
             duplicates.append(existing)
 
     return duplicates

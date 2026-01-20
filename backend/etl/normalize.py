@@ -164,9 +164,7 @@ class Normalizer:
                 source_url=self._normalize_url(candidate.source_url),
                 org_name=self._clean_text(candidate.org_name),
                 # Organization
-                org_website=(
-                    self._normalize_url(candidate.org_website) if candidate.org_website else None
-                ),
+                org_website=(self._normalize_url(candidate.org_website) if candidate.org_website else None),
                 # Location
                 address=self._clean_text(candidate.address) if candidate.address else None,
                 city=self._clean_text(candidate.city) if candidate.city else None,
@@ -180,12 +178,8 @@ class Normalizer:
                 email=self._normalize_email(candidate.email),
                 hours=self._clean_text(candidate.hours) if candidate.hours else None,
                 # Content
-                eligibility=(
-                    self._clean_text(candidate.eligibility) if candidate.eligibility else None
-                ),
-                how_to_apply=(
-                    self._clean_text(candidate.how_to_apply) if candidate.how_to_apply else None
-                ),
+                eligibility=(self._clean_text(candidate.eligibility) if candidate.eligibility else None),
+                how_to_apply=(self._clean_text(candidate.how_to_apply) if candidate.how_to_apply else None),
                 # Scope
                 scope=self._normalize_scope(candidate.scope),
                 states=self._normalize_states_list(candidate.states),

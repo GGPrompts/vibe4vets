@@ -129,9 +129,7 @@ def get_popular_resources(
 
     # Enrich with resource titles
     resource_ids = [item["resource_id"] for item in results]
-    resources = session.exec(
-        select(Resource).where(Resource.id.in_(resource_ids))
-    ).all()
+    resources = session.exec(select(Resource).where(Resource.id.in_(resource_ids))).all()
     title_map = {str(r.id): r.title for r in resources}
 
     return [
@@ -189,9 +187,7 @@ def get_dashboard(
 
     # Enrich resources with titles
     resource_ids = [item["resource_id"] for item in popular_resources_raw]
-    resources = session.exec(
-        select(Resource).where(Resource.id.in_(resource_ids))
-    ).all()
+    resources = session.exec(select(Resource).where(Resource.id.in_(resource_ids))).all()
     title_map = {str(r.id): r.title for r in resources}
 
     popular_resources = [

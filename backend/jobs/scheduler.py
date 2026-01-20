@@ -74,8 +74,7 @@ class JobScheduler:
         parts = schedule.split()
         if len(parts) != 5:
             raise ValueError(
-                f"Invalid cron expression: {schedule}. "
-                "Expected 5 parts: minute hour day month day_of_week"
+                f"Invalid cron expression: {schedule}. Expected 5 parts: minute hour day month day_of_week"
             )
 
         minute, hour, day, month, day_of_week = parts

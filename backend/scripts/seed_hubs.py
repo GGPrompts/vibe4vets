@@ -64,9 +64,7 @@ def get_or_create_source(session: Session, name: str, url: str) -> Source:
     return source
 
 
-def get_or_create_organization(
-    session: Session, name: str, website: str | None = None
-) -> Organization:
+def get_or_create_organization(session: Session, name: str, website: str | None = None) -> Organization:
     """Get existing organization or create new one (idempotent)."""
     statement = select(Organization).where(Organization.name == name)
     existing = session.exec(statement).first()

@@ -120,9 +120,7 @@ def get_source_health(source_id: UUID, session: SessionDep) -> dict:
 
     from app.models import Resource
 
-    resource_count = session.exec(
-        select(func.count(Resource.id)).where(Resource.source_id == source_id)
-    ).one()
+    resource_count = session.exec(select(func.count(Resource.id)).where(Resource.source_id == source_id)).one()
 
     return {
         "source_id": str(source.id),

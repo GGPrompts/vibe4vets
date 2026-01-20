@@ -38,9 +38,7 @@ class SearchResponse(BaseModel):
                             "categories": ["housing"],
                         },
                         "rank": 0.95,
-                        "explanations": [
-                            {"reason": "Matches 'housing' in title", "field": "title"}
-                        ],
+                        "explanations": [{"reason": "Matches 'housing' in title", "field": "title"}],
                     }
                 ],
                 "total": 15,
@@ -316,9 +314,7 @@ class SemanticSearchResponse(BaseModel):
         503: {
             "description": "Service unavailable - OpenAI API key not configured",
             "content": {
-                "application/json": {
-                    "example": {"detail": "Semantic search requires OPENAI_API_KEY to be configured"}
-                }
+                "application/json": {"example": {"detail": "Semantic search requires OPENAI_API_KEY to be configured"}}
             },
         },
     },

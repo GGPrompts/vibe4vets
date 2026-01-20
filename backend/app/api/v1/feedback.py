@@ -41,11 +41,7 @@ router = APIRouter()
         },
         404: {
             "description": "Resource not found",
-            "content": {
-                "application/json": {
-                    "example": {"detail": "Resource not found"}
-                }
-            },
+            "content": {"application/json": {"example": {"detail": "Resource not found"}}},
         },
         422: {
             "description": "Invalid feedback data",
@@ -165,9 +161,7 @@ def get_feedback(
 ) -> FeedbackAdminResponse:
     """Get a single feedback item with resource context."""
     result = session.exec(
-        select(Feedback, Resource)
-        .join(Resource, Feedback.resource_id == Resource.id)
-        .where(Feedback.id == feedback_id)
+        select(Feedback, Resource).join(Resource, Feedback.resource_id == Resource.id).where(Feedback.id == feedback_id)
     ).first()
 
     if not result:
@@ -207,9 +201,7 @@ def review_feedback(
     - dismissed: Feedback was incorrect or spam
     """
     result = session.exec(
-        select(Feedback, Resource)
-        .join(Resource, Feedback.resource_id == Resource.id)
-        .where(Feedback.id == feedback_id)
+        select(Feedback, Resource).join(Resource, Feedback.resource_id == Resource.id).where(Feedback.id == feedback_id)
     ).first()
 
     if not result:

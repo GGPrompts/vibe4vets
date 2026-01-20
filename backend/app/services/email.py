@@ -49,10 +49,7 @@ def format_resources_html(resources: list["ResourceRead"]) -> str:
         contact_parts = [p for p in [phone_html, website_html] if p]
         contact_html = f'<div class="contact">{" | ".join(contact_parts)}</div>' if contact_parts else ""
 
-        categories_html = "".join(
-            f'<span class="category">{cat.title()}</span>'
-            for cat in resource.categories
-        )
+        categories_html = "".join(f'<span class="category">{cat.title()}</span>' for cat in resource.categories)
 
         location_text = ""
         if resource.scope == "national":
@@ -70,7 +67,7 @@ def format_resources_html(resources: list["ResourceRead"]) -> str:
         html_parts.append(f"""
             <div class="resource">
                 <h2>{resource.title}</h2>
-                <div class="org">{resource.organization.name if resource.organization else ''}</div>
+                <div class="org">{resource.organization.name if resource.organization else ""}</div>
                 {contact_html}
                 <div class="categories">{categories_html}</div>
                 <div class="description">{description}</div>
@@ -117,11 +114,13 @@ def format_resources_text(resources: list["ResourceRead"]) -> str:
         lines.append(f"   {description}")
         lines.append("")
 
-    lines.extend([
-        "-" * 40,
-        "Sent from Vibe4Vets - https://vibe4vets.com",
-        "Veteran Resource Directory",
-    ])
+    lines.extend(
+        [
+            "-" * 40,
+            "Sent from Vibe4Vets - https://vibe4vets.com",
+            "Veteran Resource Directory",
+        ]
+    )
 
     return "\n".join(lines)
 

@@ -144,9 +144,7 @@ class ETLPipeline:
         """
         return self.run([connector])
 
-    def normalize_only(
-        self, connector: Connector
-    ) -> tuple[list[NormalizedResource], list[ETLError]]:
+    def normalize_only(self, connector: Connector) -> tuple[list[NormalizedResource], list[ETLError]]:
         """Run only the normalization step.
 
         Useful for testing connectors without loading to database.

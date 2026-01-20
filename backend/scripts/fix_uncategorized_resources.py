@@ -7,7 +7,7 @@ This script updates them with the correct categories identified in the issue.
 
 import os
 import sys
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 
 # Add backend to path
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -63,21 +63,17 @@ def fix_uncategorized_resources(database_url: str) -> dict:
                     break
 
             if not matched:
-                results["not_found"].append(
-                    f"{org_pattern} ({', '.join(title_patterns) if title_patterns else 'any'})"
-                )
+                results["not_found"].append(f"{org_pattern} ({', '.join(title_patterns) if title_patterns else 'any'})")
                 continue
 
             # Check if already has categories
             if matched.categories and len(matched.categories) > 0:
-                results["already_categorized"].append(
-                    f"{matched.title} (has: {matched.categories})"
-                )
+                results["already_categorized"].append(f"{matched.title} (has: {matched.categories})")
                 continue
 
             # Update categories
             matched.categories = categories
-            matched.updated_at = datetime.now(timezone.utc)
+            matched.updated_at = datetime.now(UTC)
             session.add(matched)
             results["updated"].append(f"{matched.title} -> {categories}")
 

@@ -93,9 +93,7 @@ class Loader:
                 error=f"Database error: {str(e)}",
             )
 
-    def load_batch(
-        self, resources: list[NormalizedResource]
-    ) -> tuple[list[LoadResult], list[ETLError]]:
+    def load_batch(self, resources: list[NormalizedResource]) -> tuple[list[LoadResult], list[ETLError]]:
         """Load a batch of resources.
 
         Commits after each successful load to avoid losing all
@@ -347,9 +345,7 @@ class Loader:
 
         # Record changes
         for field_name, old_val, new_val in changes:
-            change_type = (
-                ChangeType.RISKY_CHANGE if field_name in self.RISKY_FIELDS else ChangeType.UPDATE
-            )
+            change_type = ChangeType.RISKY_CHANGE if field_name in self.RISKY_FIELDS else ChangeType.UPDATE
             change_log = ChangeLog(
                 resource_id=existing.id,
                 field=field_name,

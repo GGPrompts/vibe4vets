@@ -66,9 +66,11 @@ export const categoryColors = categoryBadgeStyles;
 function CardInner({
   resource,
   explanations,
+  showBookmark = false,
 }: {
   resource: Resource;
   explanations?: MatchExplanation[];
+  showBookmark?: boolean;
 }) {
   const primaryCategory = resource.categories[0] || 'employment';
   const CategoryIcon = categoryIcons[primaryCategory] || Briefcase;
@@ -94,7 +96,8 @@ function CardInner({
               <CardTitle className="font-display line-clamp-2 text-lg text-[hsl(var(--v4v-navy))] dark:text-foreground">
                 {resource.title}
               </CardTitle>
-              <BookmarkButton resourceId={resource.id} size="sm" />
+              {/* Placeholder for bookmark button spacing - actual button rendered outside Link */}
+              {showBookmark && <div className="h-6 w-6 shrink-0" />}
             </div>
             <p className="mt-1 text-sm text-muted-foreground">
               {resource.organization.name}
@@ -261,25 +264,35 @@ export function ResourceCard({
       } ${variant === 'modal' || variant === 'selectable' ? 'cursor-pointer' : ''}`}
       onClick={variant === 'modal' || variant === 'selectable' ? onClick : undefined}
     >
-      <CardInner resource={resource} explanations={explanations} />
+      <CardInner resource={resource} explanations={explanations} showBookmark={variant === 'link'} />
     </Card>
+  );
+
+  // Wrapper with bookmark button for clickable variants
+  const withBookmark = (content: React.ReactNode) => (
+    <div className="relative h-full">
+      {content}
+      <div className="absolute right-3 top-[1.125rem] z-10">
+        <BookmarkButton resourceId={resource.id} size="sm" showTooltip={false} />
+      </div>
+    </div>
   );
 
   // Modal variant: clickable card with layoutId for shared element transition
   if (variant === 'modal') {
     if (enableLayoutId) {
-      return (
+      return withBookmark(
         <motion.div layoutId={`resource-card-${resource.id}`} className="h-full">
           {cardContent}
         </motion.div>
       );
     }
-    return cardContent;
+    return withBookmark(cardContent);
   }
 
   // Selectable variant: clickable card without link
   if (variant === 'selectable') {
-    return cardContent;
+    return withBookmark(cardContent);
   }
 
   // Link variant (default): navigates to detail page
@@ -287,7 +300,7 @@ export function ResourceCard({
     ? `/resources/${resource.id}?from=${encodeURIComponent(searchParams)}`
     : `/resources/${resource.id}`;
 
-  return (
+  return withBookmark(
     <Link href={href} className="block h-full">
       {cardContent}
     </Link>

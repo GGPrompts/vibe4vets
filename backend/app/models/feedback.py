@@ -46,9 +46,7 @@ class Feedback(SQLModel, table=True):
 
     # Optional correction info
     suggested_correction: str | None = Field(default=None, max_length=1000)
-    source_of_correction: str | None = Field(
-        default=None, max_length=255
-    )  # e.g., "Called them", "Website says..."
+    source_of_correction: str | None = Field(default=None, max_length=255)  # e.g., "Called them", "Website says..."
 
     # Review workflow
     status: FeedbackStatus = Field(default=FeedbackStatus.PENDING, index=True)

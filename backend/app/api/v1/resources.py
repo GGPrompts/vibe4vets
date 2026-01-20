@@ -10,7 +10,13 @@ from fastapi import APIRouter, HTTPException, Query
 
 from app.database import SessionDep
 from app.models.resource import ResourceStatus
-from app.schemas.resource import ResourceCount, ResourceCreate, ResourceList, ResourceRead, ResourceUpdate
+from app.schemas.resource import (
+    ResourceCount,
+    ResourceCreate,
+    ResourceList,
+    ResourceRead,
+    ResourceUpdate,
+)
 from app.services.resource import ResourceService
 
 router = APIRouter()
@@ -24,11 +30,7 @@ router = APIRouter()
     responses={
         200: {
             "description": "Successful response with resource count",
-            "content": {
-                "application/json": {
-                    "example": {"count": 523}
-                }
-            },
+            "content": {"application/json": {"example": {"count": 523}}},
         }
     },
 )
@@ -210,11 +212,7 @@ def list_resources(
         },
         404: {
             "description": "Resource not found",
-            "content": {
-                "application/json": {
-                    "example": {"detail": "Resource not found"}
-                }
-            },
+            "content": {"application/json": {"example": {"detail": "Resource not found"}}},
         },
     },
 )
@@ -287,11 +285,7 @@ def create_resource(data: ResourceCreate, session: SessionDep) -> ResourceRead:
         },
         404: {
             "description": "Resource not found",
-            "content": {
-                "application/json": {
-                    "example": {"detail": "Resource not found"}
-                }
-            },
+            "content": {"application/json": {"example": {"detail": "Resource not found"}}},
         },
         422: {
             "description": "Validation error in request body",
@@ -332,11 +326,7 @@ def update_resource(
         },
         404: {
             "description": "Resource not found",
-            "content": {
-                "application/json": {
-                    "example": {"detail": "Resource not found"}
-                }
-            },
+            "content": {"application/json": {"example": {"detail": "Resource not found"}}},
         },
     },
 )

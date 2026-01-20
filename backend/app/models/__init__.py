@@ -8,15 +8,15 @@ from app.models.analytics import (
 from app.models.feedback import Feedback, FeedbackIssueType, FeedbackStatus
 from app.models.location import Location
 from app.models.organization import Organization
-from app.models.program import Program, ProgramStatus, ProgramType
-from app.models.resource import Resource, ResourceScope, ResourceStatus
-from app.models.review import ChangeLog, ChangeType, ReviewState, ReviewStatus
 from app.models.partner import (
     Partner,
     PartnerAPILog,
     PartnerSubmission,
     PartnerTier,
 )
+from app.models.program import Program, ProgramStatus, ProgramType
+from app.models.resource import Resource, ResourceScope, ResourceStatus
+from app.models.review import ChangeLog, ChangeType, ReviewState, ReviewStatus
 from app.models.source import (
     HealthStatus,
     Source,
