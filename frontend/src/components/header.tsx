@@ -8,17 +8,23 @@ import { useScrollDirection } from '@/hooks/use-scroll-direction';
 import { useDebounce } from '@/hooks/use-debounce';
 import { cn } from '@/lib/utils';
 import { Input } from '@/components/ui/input';
-import { Search } from 'lucide-react';
+import { Search, Loader2 } from 'lucide-react';
 import { SortDropdownHeader, type SortOption } from '@/components/sort-dropdown-header';
+import { useOptionalFilterContext } from '@/context/filter-context';
 
 export function Header() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const router = useRouter();
   const { isAtTop } = useScrollDirection();
+  const filterContext = useOptionalFilterContext();
 
   const isSearchPage = pathname === '/search';
   const isHomePage = pathname === '/';
+
+  // Get resource count from filter context (only active on home page)
+  const resourceCount = isHomePage && filterContext?.isEnabled ? filterContext.resourceCount : null;
+  const isLoadingCount = isHomePage && filterContext?.isEnabled ? filterContext.isLoadingCount : false;
   const [searchQuery, setSearchQuery] = useState('');
   const debouncedQuery = useDebounce(searchQuery, 300);
   const skipDebounceRef = useRef(false);
@@ -143,13 +149,23 @@ export function Header() {
           <Link
             href="/search"
             className={cn(
-              "text-sm font-medium transition-all duration-200",
+              "text-sm font-medium transition-all duration-200 flex items-center gap-2",
               pathname === '/search'
                 ? "text-[hsl(var(--v4v-gold))]"
                 : "text-white/70 hover:text-[hsl(var(--v4v-gold))]"
             )}
           >
             Search
+            {/* Resource count badge - only on home page */}
+            {isHomePage && (isLoadingCount || resourceCount !== null) && (
+              <span className="inline-flex items-center justify-center min-w-[2rem] h-5 px-1.5 text-xs font-medium rounded-full bg-[hsl(var(--v4v-gold))] text-[hsl(var(--v4v-navy))]">
+                {isLoadingCount ? (
+                  <Loader2 className="h-3 w-3 animate-spin" />
+                ) : (
+                  resourceCount?.toLocaleString()
+                )}
+              </span>
+            )}
           </Link>
           <Link
             href="/admin"
