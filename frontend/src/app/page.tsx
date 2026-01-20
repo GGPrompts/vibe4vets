@@ -4,7 +4,9 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { USMap } from '@/components/us-map';
 import { CategoryCards } from '@/components/CategoryCards';
+import { SortChips } from '@/components/SortChips';
 import { Shield, RefreshCw, CheckCircle2, Search } from 'lucide-react';
+import type { SortOption } from '@/components/sort-dropdown-header';
 
 const trustIndicators = [
   {
@@ -44,6 +46,7 @@ const steps = [
 
 export default function Home() {
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+  const [selectedSort, setSelectedSort] = useState<SortOption>('shuffle');
 
   const handleToggleCategory = (category: string) => {
     setSelectedCategories((prev) =>
@@ -109,6 +112,14 @@ export default function Home() {
             selectedCategories={selectedCategories}
             onToggleCategory={handleToggleCategory}
           />
+
+          {/* Sort chips */}
+          <div className="mt-8">
+            <SortChips
+              selectedSort={selectedSort}
+              onSortChange={setSelectedSort}
+            />
+          </div>
         </div>
       </section>
 
