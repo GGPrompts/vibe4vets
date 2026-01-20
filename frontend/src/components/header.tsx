@@ -18,13 +18,19 @@ export function Header() {
   const router = useRouter();
   const { isAtTop } = useScrollDirection();
   const filterContext = useOptionalFilterContext();
+  const [isMounted, setIsMounted] = useState(false);
+
+  // Avoid hydration mismatch - badge only renders after mount
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   const isSearchPage = pathname === '/search';
   const isHomePage = pathname === '/';
 
-  // Get resource count from filter context (only active on home page)
-  const resourceCount = isHomePage && filterContext?.isEnabled ? filterContext.resourceCount : null;
-  const isLoadingCount = isHomePage && filterContext?.isEnabled ? filterContext.isLoadingCount : false;
+  // Get resource count from filter context (only active on home page, after mount)
+  const resourceCount = isMounted && isHomePage && filterContext?.isEnabled ? filterContext.resourceCount : null;
+  const isLoadingCount = isMounted && isHomePage && filterContext?.isEnabled ? filterContext.isLoadingCount : false;
   const [searchQuery, setSearchQuery] = useState('');
   const debouncedQuery = useDebounce(searchQuery, 300);
   const skipDebounceRef = useRef(false);
