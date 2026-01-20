@@ -36,6 +36,7 @@ import { useResourcesInfinite } from '@/lib/hooks/useResourcesInfinite';
 import { useAnalytics } from '@/lib/useAnalytics';
 import { useIsMobile } from '@/hooks/use-media-query';
 import { Filter, Loader2 } from 'lucide-react';
+import { BackToTop } from '@/components/BackToTop';
 
 
 function SearchResults() {
@@ -653,6 +654,9 @@ export default function SearchPage() {
           <SearchResults />
         </Suspense>
       </div>
+
+      {/* Back to top button */}
+      <BackToTop />
     </main>
   );
 }

@@ -14,12 +14,12 @@ interface FilterChipsProps {
   className?: string;
 }
 
-// Match the card badge styling from resource-card.tsx
+// Higher contrast badge styling for filter chips on light backgrounds
 const categoryBadgeStyles: Record<string, string> = {
-  employment: 'bg-[hsl(var(--v4v-employment)/0.1)] text-[hsl(var(--v4v-employment))] border-[hsl(var(--v4v-employment)/0.3)]',
-  training: 'bg-[hsl(var(--v4v-training)/0.1)] text-[hsl(var(--v4v-training))] border-[hsl(var(--v4v-training)/0.3)]',
-  housing: 'bg-[hsl(var(--v4v-housing)/0.1)] text-[hsl(var(--v4v-housing))] border-[hsl(var(--v4v-housing)/0.3)]',
-  legal: 'bg-[hsl(var(--v4v-legal)/0.1)] text-[hsl(var(--v4v-legal))] border-[hsl(var(--v4v-legal)/0.3)]',
+  employment: 'bg-[hsl(var(--v4v-employment))] text-white border-[hsl(var(--v4v-employment))]',
+  training: 'bg-[hsl(var(--v4v-training))] text-white border-[hsl(var(--v4v-training))]',
+  housing: 'bg-[hsl(var(--v4v-housing))] text-white border-[hsl(var(--v4v-housing))]',
+  legal: 'bg-[hsl(var(--v4v-legal))] text-white border-[hsl(var(--v4v-legal))]',
 };
 
 const categoryIcons: Record<string, typeof Briefcase> = {
@@ -80,12 +80,12 @@ export function FilterChips({
         );
       })}
 
-      {/* State chips - gold styling like location badges */}
+      {/* State chips - high contrast gold styling */}
       {filters.states.map((state) => (
         <Badge
           key={`state-${state}`}
           variant="outline"
-          className="cursor-pointer gap-1 border-[hsl(var(--v4v-gold)/0.4)] bg-[hsl(var(--v4v-gold)/0.08)] text-[hsl(var(--v4v-gold))] font-medium transition-opacity hover:opacity-80"
+          className="cursor-pointer gap-1 border-[hsl(var(--v4v-gold-dark))] bg-[hsl(var(--v4v-gold))] text-[hsl(var(--v4v-navy))] font-medium transition-opacity hover:opacity-80"
           onClick={() => onRemoveState(state)}
         >
           <MapPin className="h-3 w-3" />
@@ -94,11 +94,11 @@ export function FilterChips({
         </Badge>
       ))}
 
-      {/* Scope chip - gold styling */}
+      {/* Scope chip - high contrast gold styling */}
       {filters.scope !== 'all' && (
         <Badge
           variant="outline"
-          className="cursor-pointer gap-1 border-[hsl(var(--v4v-gold)/0.4)] bg-[hsl(var(--v4v-gold)/0.08)] text-[hsl(var(--v4v-gold))] font-medium transition-opacity hover:opacity-80"
+          className="cursor-pointer gap-1 border-[hsl(var(--v4v-gold-dark))] bg-[hsl(var(--v4v-gold))] text-[hsl(var(--v4v-navy))] font-medium transition-opacity hover:opacity-80"
           onClick={onClearScope}
         >
           <Globe className="h-3 w-3" />
