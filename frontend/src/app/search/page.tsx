@@ -35,6 +35,7 @@ import type { SortOption } from '@/components/sort-dropdown';
 import api, { type Resource, type MatchExplanation } from '@/lib/api';
 import { useResourcesInfinite } from '@/lib/hooks/useResourcesInfinite';
 import { useAnalytics } from '@/lib/useAnalytics';
+import { useIsMobile } from '@/hooks/use-media-query';
 import { Filter, Loader2 } from 'lucide-react';
 
 
@@ -46,6 +47,7 @@ function SearchResults() {
   const selectedResourceId = searchParams.get('resource');
 
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
+  const isMobile = useIsMobile();
 
   // Modal state
   const [selectedResource, setSelectedResource] = useState<Resource | null>(null);
@@ -393,8 +395,10 @@ function SearchResults() {
   }, [isFetchingNextPage]);
 
   // Background prefetch: load the next page when the user is near the bottom.
+  // Desktop only - on mobile, use the explicit "Load more" button.
   useEffect(() => {
     if (isSearchMode) return;
+    if (isMobile) return; // On mobile, use button instead of auto-fetch
     if (!hasNextPage) return;
     if (isFetchingNextPage) return;
 
@@ -417,7 +421,7 @@ function SearchResults() {
 
     observer.observe(el);
     return () => observer.disconnect();
-  }, [fetchNextPage, hasNextPage, isFetchingNextPage, isSearchMode]);
+  }, [fetchNextPage, hasNextPage, isFetchingNextPage, isMobile, isSearchMode]);
 
   return (
     <div className="flex gap-6">
@@ -570,13 +574,13 @@ function SearchResults() {
                 </div>
               </AnimatePresence>
 
-              {/* Load More Button - browse mode only */}
-              {!isSearchMode && hasNextPage && (
+              {/* Load More Button - mobile only (desktop uses auto-fetch) */}
+              {!isSearchMode && hasNextPage && isMobile && (
                 <div className="mt-6 flex justify-center">
                   <Button
                     onClick={handleLoadMore}
                     disabled={isFetchingNextPage}
-                    variant="outline"
+                    className="w-full"
                     size="lg"
                   >
                     {isFetchingNextPage ? (
@@ -585,9 +589,16 @@ function SearchResults() {
                         Loading...
                       </>
                     ) : (
-                      `Load More (${displayedCount} of ${totalResults})`
+                      `Load More (${totalResults - displayedCount} remaining)`
                     )}
                   </Button>
+                </div>
+              )}
+
+              {/* Loading indicator for desktop auto-fetch */}
+              {!isSearchMode && isFetchingNextPage && !isMobile && (
+                <div className="mt-6 flex justify-center">
+                  <Loader2 className="h-6 w-6 animate-spin text-muted-foreground" />
                 </div>
               )}
 
