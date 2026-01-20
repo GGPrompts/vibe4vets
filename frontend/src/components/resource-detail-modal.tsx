@@ -276,14 +276,17 @@ export function ResourceDetailModal({
               bodyBg
             )}
             layoutId={`resource-card-${resource.id}`}
-            initial={{ y: '100%', opacity: 0, zIndex: 100 }}
-            animate={{ y: 0, opacity: 1, zIndex: 100 }}
-            exit={{ y: '100%', opacity: 0, zIndex: 100 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
             style={{ zIndex: 100 }}
             transition={{
-              type: 'spring',
-              damping: 30,
-              stiffness: 300,
+              layout: {
+                type: 'spring',
+                damping: 25,
+                stiffness: 200,
+              },
+              opacity: { duration: 0.2 },
             }}
             drag="y"
             dragControls={dragControls}
