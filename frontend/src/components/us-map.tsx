@@ -296,6 +296,40 @@ function USMapComponent({
           <span>Selected</span>
         </div>
       </div>
+
+      {/* DC & Territories - not clickable on the map */}
+      <div className="mt-4 flex flex-col items-center gap-2">
+        <span className="text-xs text-[hsl(var(--muted-foreground))]">DC & Territories</span>
+        <div className="flex flex-wrap justify-center gap-2">
+          {[
+            { abbr: 'DC', name: 'DC' },
+            { abbr: 'PR', name: 'Puerto Rico' },
+            { abbr: 'GU', name: 'Guam' },
+            { abbr: 'VI', name: 'Virgin Islands' },
+            { abbr: 'AS', name: 'American Samoa' },
+            { abbr: 'MP', name: 'Mariana Islands' },
+          ].map(({ abbr, name }) => {
+            const isSelected = selectedStates.includes(abbr);
+            return (
+              <button
+                key={abbr}
+                type="button"
+                onClick={() => handleStateClick(abbr)}
+                className={`
+                  rounded-full px-3 py-1 text-xs font-medium transition-all duration-200
+                  ${isSelected
+                    ? 'bg-[hsl(45,70%,47%)] text-[hsl(222,60%,15%)] border border-[hsl(45,70%,35%)]'
+                    : 'bg-[hsl(222,60%,15%)] text-white/80 border border-[hsl(220,15%,70%)] hover:bg-[hsl(45,70%,47%)] hover:text-[hsl(222,60%,15%)] hover:border-[hsl(45,70%,35%)]'
+                  }
+                `}
+                aria-pressed={isSelected}
+              >
+                {name}
+              </button>
+            );
+          })}
+        </div>
+      </div>
     </div>
   );
 }
