@@ -698,9 +698,22 @@ html {
   background-color: hsl(var(--v4v-bg-muted)) !important;
 }
 
-/* TabsTrigger active state - solid background */
+/* TabsTrigger inactive state - ensure visible text */
+[data-slot="tabs-trigger"] {
+  color: hsl(var(--v4v-text-secondary)) !important;
+}
+
+/* TabsTrigger hover state */
+[data-slot="tabs-trigger"]:hover:not([data-state="active"]) {
+  background-color: hsl(var(--v4v-bg-surface) / 0.7) !important;
+  color: hsl(var(--foreground)) !important;
+}
+
+/* TabsTrigger active state - solid background with emphasis */
 [data-slot="tabs-trigger"][data-state="active"] {
   background-color: hsl(var(--card)) !important;
+  color: hsl(var(--foreground)) !important;
+  box-shadow: 0 1px 3px hsl(var(--v4v-navy) / 0.08);
 }
 
 /* ---------------------------------------------------------------------------

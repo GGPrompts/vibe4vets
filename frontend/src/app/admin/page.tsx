@@ -266,11 +266,11 @@ export default function AdminPage() {
 
         {/* Main Tab Navigation */}
         <Tabs value={mainTab} onValueChange={(v) => setMainTab(v as 'reviews' | 'feedback')} className="mb-6">
-          <TabsList className="bg-muted/50">
-            <TabsTrigger value="reviews" className="data-[state=active]:bg-card data-[state=active]:shadow-sm">
+          <TabsList>
+            <TabsTrigger value="reviews">
               Review Queue {stats?.pending_reviews ? `(${stats.pending_reviews})` : ''}
             </TabsTrigger>
-            <TabsTrigger value="feedback" className="data-[state=active]:bg-card data-[state=active]:shadow-sm">
+            <TabsTrigger value="feedback">
               User Feedback {feedbackStats?.pending ? `(${feedbackStats.pending})` : ''}
             </TabsTrigger>
           </TabsList>
@@ -287,11 +287,11 @@ export default function AdminPage() {
             </CardHeader>
             <CardContent>
               <Tabs value={activeTab} onValueChange={setActiveTab}>
-                <TabsList className="bg-muted">
-                  <TabsTrigger value="pending" className="data-[state=active]:bg-background">Pending</TabsTrigger>
-                  <TabsTrigger value="approved" className="data-[state=active]:bg-background">Approved</TabsTrigger>
-                  <TabsTrigger value="rejected" className="data-[state=active]:bg-background">Rejected</TabsTrigger>
-                  <TabsTrigger value="all" className="data-[state=active]:bg-background">All</TabsTrigger>
+                <TabsList>
+                  <TabsTrigger value="pending">Pending</TabsTrigger>
+                  <TabsTrigger value="approved">Approved</TabsTrigger>
+                  <TabsTrigger value="rejected">Rejected</TabsTrigger>
+                  <TabsTrigger value="all">All</TabsTrigger>
                 </TabsList>
 
                 <TabsContent value={activeTab} className="mt-4">
@@ -310,12 +310,12 @@ export default function AdminPage() {
                   ) : (
                     <div className="overflow-x-auto rounded-md border">
                       <TooltipProvider>
-                        <Table className="table-fixed w-full min-w-[900px]">
+                        <Table>
                           <TableHeader>
                             <TableRow>
-                              <TableHead className="w-[220px]">Resource</TableHead>
-                              <TableHead className="w-[180px]">Organization</TableHead>
-                              <TableHead className="w-[220px]">Reason</TableHead>
+                              <TableHead className="min-w-[180px] max-w-[220px]">Resource</TableHead>
+                              <TableHead className="min-w-[140px] max-w-[180px]">Organization</TableHead>
+                              <TableHead className="min-w-[160px] max-w-[220px]">Reason</TableHead>
                               <TableHead className="w-[90px]">Status</TableHead>
                               <TableHead className="w-[100px]">Date</TableHead>
                               <TableHead className="w-[140px] text-right">Actions</TableHead>
@@ -324,24 +324,38 @@ export default function AdminPage() {
                           <TableBody>
                             {items.map((item) => (
                               <TableRow key={item.id}>
-                                <TableCell className="font-medium">
-                                  <Link
-                                    href={`/resources/${item.resource_id}`}
-                                    target="_blank"
-                                    className="flex items-center gap-1 hover:underline"
-                                  >
-                                    <span className="line-clamp-2">{item.resource_title}</span>
-                                    <ExternalLink className="h-3 w-3 flex-shrink-0 text-muted-foreground" />
-                                  </Link>
-                                </TableCell>
-                                <TableCell className="text-sm text-muted-foreground">
-                                  {item.organization_name}
-                                </TableCell>
-                                <TableCell>
+                                <TableCell className="font-medium max-w-[220px]">
                                   <Tooltip>
                                     <TooltipTrigger asChild>
-                                      <div className="max-w-[200px] cursor-help">
-                                        <p className="line-clamp-2 text-sm">
+                                      <Link
+                                        href={`/resources/${item.resource_id}`}
+                                        target="_blank"
+                                        className="flex items-center gap-1 hover:underline"
+                                      >
+                                        <span className="line-clamp-2 break-words">{item.resource_title}</span>
+                                        <ExternalLink className="h-3 w-3 flex-shrink-0 text-muted-foreground" />
+                                      </Link>
+                                    </TooltipTrigger>
+                                    <TooltipContent side="bottom" className="max-w-sm">
+                                      <p className="text-sm">{item.resource_title}</p>
+                                    </TooltipContent>
+                                  </Tooltip>
+                                </TableCell>
+                                <TableCell className="text-sm text-muted-foreground max-w-[180px]">
+                                  <Tooltip>
+                                    <TooltipTrigger asChild>
+                                      <span className="line-clamp-2 break-words cursor-help">{item.organization_name}</span>
+                                    </TooltipTrigger>
+                                    <TooltipContent side="bottom" className="max-w-sm">
+                                      <p className="text-sm">{item.organization_name}</p>
+                                    </TooltipContent>
+                                  </Tooltip>
+                                </TableCell>
+                                <TableCell className="max-w-[220px]">
+                                  <Tooltip>
+                                    <TooltipTrigger asChild>
+                                      <div className="cursor-help">
+                                        <p className="line-clamp-2 text-sm break-words">
                                           {item.reason || 'Manual entry'}
                                         </p>
                                       </div>
