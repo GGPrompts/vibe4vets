@@ -6,13 +6,14 @@ from uuid import UUID
 from sqlalchemy import String, func, or_
 from sqlmodel import Session, col, select
 
-from app.models import Location, Organization, Resource, Source
+from app.models import Location, Organization, Program, Resource, Source
 from app.models.resource import ResourceScope, ResourceStatus
 from app.schemas.resource import (
     EligibilityInfo,
     IntakeInfo,
     LocationNested,
     OrganizationNested,
+    ProgramNested,
     ResourceCreate,
     ResourceRead,
     ResourceUpdate,
@@ -289,6 +290,19 @@ class ResourceService:
             source_name=source_name,
         )
 
+        # Get program if exists
+        program_nested = None
+        if resource.program_id:
+            program = self.session.get(Program, resource.program_id)
+            if program:
+                program_nested = ProgramNested(
+                    id=program.id,
+                    name=program.name,
+                    program_type=program.program_type.value,
+                    description=program.description,
+                    services_offered=program.services_offered or [],
+                )
+
         return ResourceRead(
             id=resource.id,
             title=resource.title,
@@ -296,6 +310,8 @@ class ResourceService:
             summary=resource.summary,
             eligibility=resource.eligibility,
             how_to_apply=resource.how_to_apply,
+            program_id=resource.program_id,
+            program=program_nested,
             categories=resource.categories,
             subcategories=resource.subcategories,
             tags=resource.tags,
