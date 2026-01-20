@@ -26,6 +26,7 @@ import api, { type Resource } from '@/lib/api';
 import { useAnalytics } from '@/lib/useAnalytics';
 import { cn } from '@/lib/utils';
 import { ReportFeedbackModal } from '@/components/ReportFeedbackModal';
+import { BookmarkButton } from '@/components/bookmark-button';
 
 const categoryColors: Record<string, string> = {
   employment: 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300',
@@ -357,10 +358,17 @@ export default function ResourceDetailPage() {
             </div>
           </div>
 
-          {/* Title */}
-          <h1 className="font-display mb-2 text-3xl font-bold leading-tight sm:text-4xl">
-            {resource.title}
-          </h1>
+          {/* Title and Bookmark */}
+          <div className="flex items-start justify-between gap-4">
+            <h1 className="font-display mb-2 text-3xl font-bold leading-tight sm:text-4xl">
+              {resource.title}
+            </h1>
+            <BookmarkButton
+              resourceId={resource.id}
+              size="lg"
+              className="shrink-0 border-white/30 bg-white/20 text-white hover:bg-white/30 hover:text-white"
+            />
+          </div>
 
           {/* Organization */}
           <p className="text-lg text-white/90">{resource.organization.name}</p>
