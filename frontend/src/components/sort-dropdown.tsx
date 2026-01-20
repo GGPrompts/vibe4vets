@@ -10,12 +10,13 @@ import {
 } from '@/components/ui/select';
 import { cn } from '@/lib/utils';
 
-export type SortOption = 'relevance' | 'newest' | 'alpha';
+export type SortOption = 'relevance' | 'newest' | 'alpha' | 'shuffle';
 
 export const SORT_OPTIONS = [
   { value: 'relevance', label: 'Relevance' },
   { value: 'newest', label: 'Newest' },
   { value: 'alpha', label: 'A-Z' },
+  { value: 'shuffle', label: 'Shuffle' },
 ] as const;
 
 interface SortDropdownProps {
