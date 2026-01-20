@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect, useCallback, useRef } from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname, useSearchParams, useRouter } from 'next/navigation';
 import { useScrollDirection } from '@/hooks/use-scroll-direction';
@@ -111,17 +110,15 @@ export function Header() {
       style={{ paddingRight: 'var(--removed-body-scroll-bar-size, 0px)' }}
     >
       <div className="mx-auto flex h-14 max-w-6xl items-center justify-between gap-4 px-6">
-        {/* Logo */}
-        <Link href="/" className="flex shrink-0 items-center gap-3 group" aria-label="Vibe4Vets Home">
-          <Image
-            src="/brand/vibe4vets-logo.png"
-            alt="Vibe4Vets"
-            width={851}
-            height={273}
-            priority
-            className="h-8 w-auto transition-transform duration-200 group-hover:scale-105"
-            sizes="(max-width: 768px) 140px, 180px"
-          />
+        {/* Logo with light background plate */}
+        <Link href="/" className="flex shrink-0 items-center group" aria-label="Vibe4Vets Home">
+          <span className="rounded-md bg-white/95 px-3 py-1.5 transition-all duration-200 group-hover:bg-white">
+            <span className="font-display text-lg font-bold tracking-tight">
+              <span className="text-[hsl(var(--v4v-navy))]">Vibe</span>
+              <span className="text-[hsl(var(--v4v-gold-dark))]">4</span>
+              <span className="text-[hsl(var(--v4v-navy))]">Vets</span>
+            </span>
+          </span>
         </Link>
 
         {/* Search Bar + Sort - All pages except home */}

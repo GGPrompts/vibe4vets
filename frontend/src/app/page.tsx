@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { USMap } from '@/components/us-map';
@@ -90,8 +91,19 @@ export default function Home() {
       {/* How It Works - Light background, first thing after header */}
       <section className="border-b border-border bg-background py-10 lg:py-12">
         <div className="mx-auto max-w-6xl px-6">
+          {/* Full logo centered */}
+          <div className="flex justify-center mb-8">
+            <Image
+              src="/brand/vibe4vets-logo-full.png"
+              alt="Vibe4Vets - Veteran Resource Directory"
+              width={400}
+              height={120}
+              priority
+              className="h-auto w-auto max-w-[300px] sm:max-w-[400px]"
+            />
+          </div>
           <div className="text-center mb-8">
-            <h2 className="font-display text-2xl font-semibold text-foreground sm:text-3xl">
+            <h2 className="font-display text-xl font-semibold text-foreground sm:text-2xl">
               How It Works
             </h2>
           </div>
