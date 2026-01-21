@@ -17,9 +17,10 @@ class ConnectorInfo(BaseModel):
     """Information about a data connector."""
 
     name: str
-    source_name: str
+    display_name: str
+    url: str
     tier: int
-    description: str
+    frequency: str
 
 
 class AIStats(BaseModel):
@@ -97,11 +98,13 @@ def get_ai_stats(session: SessionDep) -> AIStats:
     connectors = [
         ConnectorInfo(
             name=c["name"],
-            source_name=c["source_name"],
-            tier=c["tier"],
-            description=c["description"],
+            display_name=c.get("display_name", c["name"]),
+            url=c.get("url", ""),
+            tier=c.get("tier", 4),
+            frequency=c.get("frequency", "unknown"),
         )
         for c in connectors_raw
+        if "error" not in c  # Skip connectors that failed to load
     ]
 
     # Get last refresh time from job history
