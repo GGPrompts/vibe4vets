@@ -1,6 +1,8 @@
 'use client';
 
+import { Suspense } from 'react';
 import { EligibilityWizard } from '@/components/EligibilityWizard';
+import { Skeleton } from '@/components/ui/skeleton';
 
 /**
  * DEV PREVIEW: Eligibility Wizard Component
@@ -24,7 +26,9 @@ export default function WizardPreviewPage() {
         <h1 className="text-2xl font-bold mb-6">Eligibility Wizard</h1>
 
         <div className="bg-white rounded-lg shadow-sm border p-6">
-          <EligibilityWizard />
+          <Suspense fallback={<Skeleton className="h-96 w-full" />}>
+            <EligibilityWizard />
+          </Suspense>
         </div>
       </div>
     </main>
