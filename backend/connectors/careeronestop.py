@@ -131,15 +131,18 @@ class CareerOneStopConnector(BaseConnector):
             List of normalized ResourceCandidate objects.
         """
         resources: list[ResourceCandidate] = []
-        client = self._get_client()
         seen_ids: set[str] = set()  # Track unique centers to avoid duplicates
+        try:
+            client = self._get_client()
 
-        # Fetch AJCs by state to ensure comprehensive coverage
-        for state in self.US_STATES:
-            state_resources = self._fetch_ajcs_by_state(client, state, seen_ids)
-            resources.extend(state_resources)
+            # Fetch AJCs by state to ensure comprehensive coverage
+            for state in self.US_STATES:
+                state_resources = self._fetch_ajcs_by_state(client, state, seen_ids)
+                resources.extend(state_resources)
 
-        return resources
+            return resources
+        finally:
+            self.close()
 
     def _fetch_ajcs_by_state(self, client: httpx.Client, state: str, seen_ids: set[str]) -> list[ResourceCandidate]:
         """Fetch American Job Centers for a specific state.

@@ -3,7 +3,7 @@
 from abc import ABC, abstractmethod
 from dataclasses import dataclass
 from datetime import datetime
-from typing import Protocol
+from typing import Any, Protocol, Self
 
 
 @dataclass
@@ -71,6 +71,23 @@ class Connector(Protocol):
         """Return source metadata."""
         ...
 
+    def close(self) -> None:
+        """Close any open resources (HTTP clients, file handles, etc)."""
+        ...
+
+    def __enter__(self) -> Self:
+        """Context manager entry."""
+        ...
+
+    def __exit__(
+        self,
+        exc_type: type[BaseException] | None,
+        exc_val: BaseException | None,
+        exc_tb: Any,
+    ) -> None:
+        """Context manager exit."""
+        ...
+
 
 class BaseConnector(ABC):
     """Base class for connectors with common functionality."""
@@ -85,6 +102,23 @@ class BaseConnector(ABC):
     def metadata(self) -> SourceMetadata:
         """Return source metadata."""
         pass
+
+    def close(self) -> None:
+        """Close any open resources. Override in subclasses with resources to clean up."""
+        pass
+
+    def __enter__(self) -> Self:
+        """Context manager entry."""
+        return self
+
+    def __exit__(
+        self,
+        exc_type: type[BaseException] | None,
+        exc_val: BaseException | None,
+        exc_tb: Any,
+    ) -> None:
+        """Context manager exit - ensures resources are cleaned up."""
+        self.close()
 
     def _normalize_phone(self, phone: str | None) -> str | None:
         """Normalize phone number format."""
