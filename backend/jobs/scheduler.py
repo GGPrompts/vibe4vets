@@ -144,6 +144,13 @@ class JobScheduler:
         result = await loop.run_in_executor(None, lambda: job.run(**kwargs))
 
         self.history.append(result)
+
+        # Reschedule the job so next_run resets from now
+        # This prevents the job from running again shortly after a manual run
+        scheduled_job = self.scheduler.get_job(job_name)
+        if scheduled_job and scheduled_job.trigger:
+            self.scheduler.reschedule_job(job_name, trigger=scheduled_job.trigger)
+
         return result
 
     def get_scheduled_jobs(self) -> list[dict[str, Any]]:
