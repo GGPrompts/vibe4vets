@@ -6,7 +6,7 @@ This service provides methods to record events and query aggregated statistics.
 
 import json
 import uuid
-from datetime import datetime, timedelta
+from datetime import UTC, datetime, timedelta
 from typing import Any
 
 from sqlmodel import Session, func, select
@@ -151,7 +151,7 @@ class AnalyticsService:
 
     def get_summary_stats(self, days: int = 30) -> dict[str, Any]:
         """Get summary statistics for the dashboard."""
-        since = datetime.utcnow() - timedelta(days=days)
+        since = datetime.now(UTC) - timedelta(days=days)
 
         # Count by event type
         counts = self.session.exec(
@@ -175,7 +175,7 @@ class AnalyticsService:
 
     def get_popular_searches(self, days: int = 30, limit: int = 10) -> list[dict]:
         """Get most popular search queries."""
-        since = datetime.utcnow() - timedelta(days=days)
+        since = datetime.now(UTC) - timedelta(days=days)
 
         results = self.session.exec(
             select(AnalyticsEvent.search_query, func.count(AnalyticsEvent.id).label("count"))
@@ -193,7 +193,7 @@ class AnalyticsService:
 
     def get_popular_categories(self, days: int = 30, limit: int = 10) -> list[dict]:
         """Get most used categories."""
-        since = datetime.utcnow() - timedelta(days=days)
+        since = datetime.now(UTC) - timedelta(days=days)
 
         results = self.session.exec(
             select(AnalyticsEvent.category, func.count(AnalyticsEvent.id).label("count"))
@@ -210,7 +210,7 @@ class AnalyticsService:
 
     def get_popular_states(self, days: int = 30, limit: int = 10) -> list[dict]:
         """Get most searched states."""
-        since = datetime.utcnow() - timedelta(days=days)
+        since = datetime.now(UTC) - timedelta(days=days)
 
         results = self.session.exec(
             select(AnalyticsEvent.state, func.count(AnalyticsEvent.id).label("count"))
@@ -227,7 +227,7 @@ class AnalyticsService:
 
     def get_most_viewed_resources(self, days: int = 30, limit: int = 10) -> list[dict]:
         """Get most viewed resources."""
-        since = datetime.utcnow() - timedelta(days=days)
+        since = datetime.now(UTC) - timedelta(days=days)
 
         results = self.session.exec(
             select(AnalyticsEvent.resource_id, func.count(AnalyticsEvent.id).label("count"))
@@ -245,7 +245,7 @@ class AnalyticsService:
 
     def get_wizard_funnel(self, days: int = 30) -> dict[str, int]:
         """Get wizard completion funnel."""
-        since = datetime.utcnow() - timedelta(days=days)
+        since = datetime.now(UTC) - timedelta(days=days)
 
         # Count starts and completions
         starts = self.session.exec(
@@ -285,7 +285,7 @@ class AnalyticsService:
 
     def get_daily_trends(self, days: int = 30) -> list[dict]:
         """Get daily event counts for trend chart."""
-        since = datetime.utcnow() - timedelta(days=days)
+        since = datetime.now(UTC) - timedelta(days=days)
 
         # Use a column reference for date_trunc to avoid GROUP BY issues
         date_col = func.date_trunc("day", AnalyticsEvent.created_at)
@@ -409,7 +409,7 @@ class AnalyticsService:
         aggregate.top_states = json.dumps({st: cnt for st, cnt in top_states})
         aggregate.top_searches = json.dumps({q: cnt for q, cnt in top_searches})
         aggregate.top_resources = json.dumps({str(rid): cnt for rid, cnt in top_resources})
-        aggregate.updated_at = datetime.utcnow()
+        aggregate.updated_at = datetime.now(UTC)
 
         self.session.add(aggregate)
         self.session.commit()

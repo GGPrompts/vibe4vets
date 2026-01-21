@@ -1,6 +1,6 @@
 """Review service for admin review queue management."""
 
-from datetime import datetime
+from datetime import UTC, datetime
 from uuid import UUID
 
 from sqlmodel import Session, select
@@ -129,7 +129,7 @@ class ReviewService:
             review.status = ReviewStatus.REJECTED
 
         review.reviewer = action.reviewer
-        review.reviewed_at = datetime.utcnow()
+        review.reviewed_at = datetime.now(UTC)
         review.notes = action.notes
         self.session.add(review)
 
@@ -138,7 +138,7 @@ class ReviewService:
         if resource:
             if action.action == ReviewActionType.APPROVE:
                 resource.status = ResourceStatus.ACTIVE
-                resource.last_verified = datetime.utcnow()
+                resource.last_verified = datetime.now(UTC)
                 resource.freshness_score = 1.0
             else:
                 resource.status = ResourceStatus.INACTIVE
