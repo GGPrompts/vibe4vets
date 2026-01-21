@@ -11,6 +11,7 @@ from uuid import UUID
 from fastapi import APIRouter, HTTPException, Query
 from sqlmodel import select
 
+from app.api.deps import AdminAuthDep
 from app.database import SessionDep
 from app.models import Feedback, FeedbackStatus, Resource
 from app.schemas.feedback import (
@@ -97,6 +98,7 @@ def submit_feedback(
 
 @router.get("/admin", response_model=FeedbackListResponse)
 def list_feedback(
+    _auth: AdminAuthDep,
     session: SessionDep,
     status: FeedbackStatus | None = Query(default=None, description="Filter by status"),
     limit: int = Query(default=20, ge=1, le=100),
@@ -157,6 +159,7 @@ def list_feedback(
 @router.get("/admin/{feedback_id}", response_model=FeedbackAdminResponse)
 def get_feedback(
     feedback_id: UUID,
+    _auth: AdminAuthDep,
     session: SessionDep,
 ) -> FeedbackAdminResponse:
     """Get a single feedback item with resource context."""
@@ -191,6 +194,7 @@ def get_feedback(
 def review_feedback(
     feedback_id: UUID,
     action: FeedbackReviewAction,
+    _auth: AdminAuthDep,
     session: SessionDep,
 ) -> FeedbackAdminResponse:
     """Review and update feedback status.
@@ -238,7 +242,7 @@ def review_feedback(
 
 
 @router.get("/admin/stats/summary")
-def get_feedback_stats(session: SessionDep) -> dict:
+def get_feedback_stats(_auth: AdminAuthDep, session: SessionDep) -> dict:
     """Get summary statistics for feedback.
 
     Returns counts by status for the admin dashboard.

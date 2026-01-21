@@ -30,6 +30,9 @@ class Settings(BaseSettings):
     environment: str = "development"
     debug: bool = True
 
+    # Admin API Authentication
+    admin_api_key_hash: str | None = None  # SHA-256 hash of admin API key
+
     # Scheduler settings
     # Cron format: minute hour day month day_of_week
     refresh_schedule: str = "0 2 * * *"  # Daily at 2am

@@ -7,6 +7,7 @@ from fastapi import APIRouter, HTTPException, Query
 from pydantic import BaseModel
 from sqlmodel import select
 
+from app.api.deps import AdminAuthDep
 from app.database import SessionDep
 from app.models import Source
 from app.schemas.health import (
@@ -25,6 +26,7 @@ router = APIRouter()
 
 @router.get("/review-queue", response_model=ReviewQueueResponse)
 def get_review_queue(
+    _auth: AdminAuthDep,
     session: SessionDep,
     status: str = Query(default="pending", description="Filter by status"),
     limit: int = Query(default=20, ge=1, le=100),
@@ -46,6 +48,7 @@ def get_review_queue(
 def review_resource(
     review_id: UUID,
     action: ReviewAction,
+    _auth: AdminAuthDep,
     session: SessionDep,
 ) -> dict:
     """Approve or reject a pending review.
@@ -86,7 +89,7 @@ class SourcesResponse(BaseModel):
 
 
 @router.get("/sources", response_model=SourcesResponse)
-def get_sources(session: SessionDep) -> SourcesResponse:
+def get_sources(_auth: AdminAuthDep, session: SessionDep) -> SourcesResponse:
     """Get all data sources with health status."""
     stmt = select(Source).order_by(Source.tier, Source.name)
     sources = session.exec(stmt).all()
@@ -109,7 +112,7 @@ def get_sources(session: SessionDep) -> SourcesResponse:
 
 
 @router.get("/sources/{source_id}/health")
-def get_source_health(source_id: UUID, session: SessionDep) -> dict:
+def get_source_health(source_id: UUID, _auth: AdminAuthDep, session: SessionDep) -> dict:
     """Get detailed health info for a source."""
     source = session.get(Source, source_id)
     if not source:
@@ -143,7 +146,7 @@ def get_source_health(source_id: UUID, session: SessionDep) -> dict:
 
 
 @router.get("/dashboard/stats", response_model=DashboardStats)
-def get_dashboard_stats(session: SessionDep) -> DashboardStats:
+def get_dashboard_stats(_auth: AdminAuthDep, session: SessionDep) -> DashboardStats:
     """Get aggregated statistics for the admin dashboard.
 
     Returns:
@@ -158,7 +161,7 @@ def get_dashboard_stats(session: SessionDep) -> DashboardStats:
 
 
 @router.get("/dashboard/sources", response_model=SourceHealthListResponse)
-def get_sources_health_detailed(session: SessionDep) -> SourceHealthListResponse:
+def get_sources_health_detailed(_auth: AdminAuthDep, session: SessionDep) -> SourceHealthListResponse:
     """Get all sources with detailed health information.
 
     Returns comprehensive health metrics for each source including:
@@ -173,7 +176,7 @@ def get_sources_health_detailed(session: SessionDep) -> SourceHealthListResponse
 
 
 @router.get("/dashboard/sources/{source_id}", response_model=SourceHealthDetail)
-def get_source_health_detailed(source_id: UUID, session: SessionDep) -> SourceHealthDetail:
+def get_source_health_detailed(source_id: UUID, _auth: AdminAuthDep, session: SessionDep) -> SourceHealthDetail:
     """Get detailed health information for a single source.
 
     Returns comprehensive health metrics including:
@@ -191,6 +194,7 @@ def get_source_health_detailed(source_id: UUID, session: SessionDep) -> SourceHe
 
 @router.get("/dashboard/errors", response_model=ErrorListResponse)
 def get_recent_errors(
+    _auth: AdminAuthDep,
     session: SessionDep,
     limit: int = Query(default=20, ge=1, le=100, description="Maximum errors to return"),
 ) -> ErrorListResponse:
@@ -253,7 +257,7 @@ class JobHistoryResponse(BaseModel):
 
 
 @router.get("/jobs", response_model=JobsResponse)
-def list_jobs() -> JobsResponse:
+def list_jobs(_auth: AdminAuthDep) -> JobsResponse:
     """List all scheduled jobs with their next run times.
 
     Returns information about each registered job including:
@@ -281,6 +285,7 @@ def list_jobs() -> JobsResponse:
 @router.post("/jobs/{job_name}/run")
 async def run_job(
     job_name: str,
+    _auth: AdminAuthDep,
     request: JobRunRequest | None = None,
 ) -> dict[str, Any]:
     """Trigger a job to run immediately.
@@ -321,6 +326,7 @@ async def run_job(
 
 @router.get("/jobs/history", response_model=JobHistoryResponse)
 def get_job_history(
+    _auth: AdminAuthDep,
     limit: int = Query(default=20, ge=1, le=100),
 ) -> JobHistoryResponse:
     """Get recent job execution history.
@@ -353,7 +359,7 @@ def get_job_history(
 
 
 @router.get("/jobs/connectors")
-def list_connectors() -> dict[str, Any]:
+def list_connectors(_auth: AdminAuthDep) -> dict[str, Any]:
     """List available data source connectors.
 
     Returns metadata about each connector that can be used

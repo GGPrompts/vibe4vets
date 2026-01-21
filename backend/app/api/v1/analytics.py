@@ -7,6 +7,7 @@ Admin endpoints for viewing aggregated statistics.
 from fastapi import APIRouter, Query
 from sqlmodel import select
 
+from app.api.deps import AdminAuthDep
 from app.database import SessionDep
 from app.models import AnalyticsEvent, Resource
 from app.schemas.analytics import (
@@ -72,6 +73,7 @@ def record_event(
 
 @router.get("/admin/summary", response_model=AnalyticsSummaryStats)
 def get_summary_stats(
+    _auth: AdminAuthDep,
     session: SessionDep,
     days: int = Query(default=30, ge=1, le=365, description="Number of days to analyze"),
 ) -> AnalyticsSummaryStats:
@@ -83,6 +85,7 @@ def get_summary_stats(
 
 @router.get("/admin/popular-searches", response_model=list[PopularSearchItem])
 def get_popular_searches(
+    _auth: AdminAuthDep,
     session: SessionDep,
     days: int = Query(default=30, ge=1, le=365),
     limit: int = Query(default=10, ge=1, le=50),
@@ -95,6 +98,7 @@ def get_popular_searches(
 
 @router.get("/admin/popular-categories", response_model=list[PopularCategoryItem])
 def get_popular_categories(
+    _auth: AdminAuthDep,
     session: SessionDep,
     days: int = Query(default=30, ge=1, le=365),
     limit: int = Query(default=10, ge=1, le=50),
@@ -107,6 +111,7 @@ def get_popular_categories(
 
 @router.get("/admin/popular-states", response_model=list[PopularStateItem])
 def get_popular_states(
+    _auth: AdminAuthDep,
     session: SessionDep,
     days: int = Query(default=30, ge=1, le=365),
     limit: int = Query(default=10, ge=1, le=50),
@@ -119,6 +124,7 @@ def get_popular_states(
 
 @router.get("/admin/popular-resources", response_model=list[PopularResourceItem])
 def get_popular_resources(
+    _auth: AdminAuthDep,
     session: SessionDep,
     days: int = Query(default=30, ge=1, le=365),
     limit: int = Query(default=10, ge=1, le=50),
@@ -144,6 +150,7 @@ def get_popular_resources(
 
 @router.get("/admin/wizard-funnel", response_model=WizardFunnelStats)
 def get_wizard_funnel(
+    _auth: AdminAuthDep,
     session: SessionDep,
     days: int = Query(default=30, ge=1, le=365),
 ) -> WizardFunnelStats:
@@ -159,6 +166,7 @@ def get_wizard_funnel(
 
 @router.get("/admin/daily-trends", response_model=list[DailyTrendItem])
 def get_daily_trends(
+    _auth: AdminAuthDep,
     session: SessionDep,
     days: int = Query(default=30, ge=1, le=365),
 ) -> list[DailyTrendItem]:
@@ -170,6 +178,7 @@ def get_daily_trends(
 
 @router.get("/admin/dashboard", response_model=AnalyticsDashboardResponse)
 def get_dashboard(
+    _auth: AdminAuthDep,
     session: SessionDep,
     days: int = Query(default=30, ge=1, le=365),
 ) -> AnalyticsDashboardResponse:
