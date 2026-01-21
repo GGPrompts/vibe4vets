@@ -1,0 +1,1220 @@
+[
+  {
+    "name": "Miami-Dade CAHSD Veterans Services Program Food Assistance",
+    "organization": "Miami-Dade County Community Action and Human Services Department",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Veterans food assistance program through Miami-Dade CAHSD providing grocery and food support to eligible veterans",
+    "phone": "(305) 756-2830",
+    "website": "https://www.miamidade.gov/global/service.page?Mduid_service=ser1541189005378737",
+    "address": "Multiple locations in Miami-Dade County",
+    "city": "Miami",
+    "state": "FL",
+    "zip": "33101",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": ["Proof of veteran status", "ID"]
+    },
+    "food_details": {
+      "distribution_schedule": "Call for current hours",
+      "quantity_limit": "Not specified",
+      "id_required": true
+    },
+    "intake": {
+      "phone": "(305) 756-2830",
+      "hours": "Call for hours",
+      "notes": "Contact Veterans Services Center directly for intake"
+    },
+    "source_url": "https://www.miamidade.gov/global/service.page?Mduid_service=ser1541189005378737",
+    "confidence": 0.87
+  },
+  {
+    "name": "Feeding South Florida - Veteran Resource Hub",
+    "organization": "Feeding South Florida",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Feeding South Florida provides comprehensive food assistance to South Florida residents including veterans, children, seniors, and families",
+    "phone": "(954) 518-1818",
+    "website": "https://feedingsouthflorida.org/",
+    "address": "2501 SW 32nd Ter",
+    "city": "Pembroke Park",
+    "state": "FL",
+    "zip": "33027",
+    "eligibility": {
+      "veteran_status_required": false,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Multiple distribution locations throughout South Florida",
+      "quantity_limit": "Not specified",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "(954) 518-1818",
+      "hours": "Call for specific pantry hours",
+      "notes": "Multiple locations serving veterans and other populations"
+    },
+    "source_url": "https://feedingsouthflorida.org/contact/",
+    "confidence": 0.85
+  },
+  {
+    "name": "American Legion Post 67 - North Miami",
+    "organization": "J. Frank Cavanaugh Post 67, American Legion",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "American Legion post providing veteran services and food assistance in North Miami Beach area",
+    "phone": "(305) 945-2501",
+    "website": "https://www.floridalegion.org/findpost/southern-area/district-14/post67/",
+    "address": "14901 W Dixie Highway",
+    "city": "North Miami Beach",
+    "state": "FL",
+    "zip": "33181",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": ["Proof of veteran status"]
+    },
+    "food_details": {
+      "distribution_schedule": "Call for current schedule",
+      "quantity_limit": "Not specified",
+      "id_required": true
+    },
+    "intake": {
+      "phone": "(305) 945-2501",
+      "hours": "8:00 AM - 9:00 PM daily",
+      "notes": "Contact post directly for veteran assistance programs"
+    },
+    "source_url": "https://www.floridalegion.org/findpost/southern-area/district-14/post67/",
+    "confidence": 0.88
+  },
+  {
+    "name": "Food For Health Pantry - Fort Lauderdale",
+    "organization": "AIDS Healthcare Foundation (AHF)",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Food For Health provides high-quality groceries and produce from local farms to families experiencing food insecurity in Broward County",
+    "phone": "Contact through website for specific location",
+    "website": "https://foodforhealthahf.org/pantry/",
+    "address": "Multiple locations in Fort Lauderdale",
+    "city": "Fort Lauderdale",
+    "state": "FL",
+    "zip": "33301",
+    "eligibility": {
+      "veteran_status_required": false,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Call for current distribution schedule",
+      "quantity_limit": "Not specified",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "Visit website for contact",
+      "hours": "Call for hours",
+      "notes": "High-quality groceries and produce available; serves veterans and other populations"
+    },
+    "source_url": "https://foodforhealthahf.org/pantry/",
+    "confidence": 0.78
+  },
+  {
+    "name": "Tree of Life Food Bank - Fort Lauderdale",
+    "organization": "Tree of Life Food Bank",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Tree of Life Food Bank mission is to end hunger throughout Florida and the Caribbean by providing access to food and community services",
+    "phone": "(954) 376-3128",
+    "website": "http://www.themissionscenter.org/",
+    "address": "5440 NW 33rd Ave Suite 102",
+    "city": "Fort Lauderdale",
+    "state": "FL",
+    "zip": "33309",
+    "eligibility": {
+      "veteran_status_required": false,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Call for current distribution schedule",
+      "quantity_limit": "Not specified",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "(954) 376-3128",
+      "hours": "Call for hours",
+      "notes": "Serves veterans and other populations in need"
+    },
+    "source_url": "https://www.foodbanksearch.com/foodbank-profile.php?id=461&name=tree-of-life-food-bank",
+    "confidence": 0.86
+  },
+  {
+    "name": "American Legion Post 36 - Fort Lauderdale",
+    "organization": "American Legion Post 36",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "American Legion post providing veteran services and community support in Fort Lauderdale",
+    "phone": "(954) 763-9288",
+    "website": "https://www.americanlegionpost36fortlauderdale.com/",
+    "address": "1620 W State Road 84",
+    "city": "Fort Lauderdale",
+    "state": "FL",
+    "zip": "33315",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": ["Proof of veteran status"]
+    },
+    "food_details": {
+      "distribution_schedule": "Call for current schedule",
+      "quantity_limit": "Not specified",
+      "id_required": true
+    },
+    "intake": {
+      "phone": "(954) 763-9288",
+      "hours": "Call for hours",
+      "notes": "Contact post directly for veteran assistance"
+    },
+    "source_url": "https://www.floridalegion.org/findpost/southern-area/district-9/post36/",
+    "confidence": 0.88
+  },
+  {
+    "name": "The Pantry of Broward - Fort Lauderdale",
+    "organization": "The Pantry of Broward, Inc.",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "The Pantry of Broward provides monthly food boxes and senior/veteran program assistance to Broward County residents",
+    "phone": "(954) 358-1481",
+    "website": "https://www.thepantryofbroward.org/",
+    "address": "610 NW 3rd Ave",
+    "city": "Fort Lauderdale",
+    "state": "FL",
+    "zip": "33311",
+    "eligibility": {
+      "veteran_status_required": false,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Monday - Friday 8:00 am - 4:00 pm",
+      "quantity_limit": "Monthly food box",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "(954) 358-1481",
+      "hours": "Monday - Friday: 8:00 am - 4:00 pm",
+      "notes": "Specific senior and veteran program available"
+    },
+    "source_url": "https://www.thepantryofbroward.org/contact-us/",
+    "confidence": 0.89
+  },
+  {
+    "name": "Service to Service Pantry (Feeding Tampa Bay)",
+    "organization": "Feeding Tampa Bay",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Feeding Tampa Bay operates multiple food pantries serving the Tampa Bay region including Service to Service",
+    "phone": "(813) 254-1190",
+    "website": "https://feedingtampabay.org/",
+    "address": "4702 Transport Drive",
+    "city": "Tampa",
+    "state": "FL",
+    "zip": "33605",
+    "eligibility": {
+      "veteran_status_required": false,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Call for specific distribution schedule",
+      "quantity_limit": "Not specified",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "(813) 254-1190",
+      "hours": "Call for hours",
+      "notes": "Part of Feeding Tampa Bay network serving multiple locations"
+    },
+    "source_url": "https://feedingtampabay.org/",
+    "confidence": 0.82
+  },
+  {
+    "name": "Trinity Cafe (Feeding Tampa Bay)",
+    "organization": "Feeding Tampa Bay",
+    "category": "food",
+    "subcategory": "meal-program",
+    "description": "Trinity Cafe provides free, full-service 3-course meals for those in need, with walk-in or to-go options",
+    "phone": "(813) 865-4822",
+    "website": "https://feedingtampabay.org/ways-we-serve/trinity-cafe",
+    "address": "2801 N Nebraska Ave",
+    "city": "Tampa",
+    "state": "FL",
+    "zip": "33602",
+    "eligibility": {
+      "veteran_status_required": false,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Full-service 3-course meal - no call ahead needed",
+      "quantity_limit": "3-course meal per visit",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "(813) 865-4822",
+      "hours": "Call for current hours",
+      "notes": "Walk-in meals available on-site or to-go; no advance notification needed"
+    },
+    "source_url": "https://feedingtampabay.org/ways-we-serve/trinity-cafe",
+    "confidence": 0.87
+  },
+  {
+    "name": "ULOC Community Network Mobile Food Pantry",
+    "organization": "ULOC Community Network",
+    "category": "food",
+    "subcategory": "mobile-distribution",
+    "description": "ULOC Community Network operates a mobile food pantry providing free food to Tampa area residents and neighboring cities",
+    "phone": "(813) 489-4500",
+    "website": "https://uloccommunitynetwork.org/free-food/",
+    "address": "Multiple mobile locations in Tampa Bay area",
+    "city": "Tampa",
+    "state": "FL",
+    "zip": "33601",
+    "eligibility": {
+      "veteran_status_required": false,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Every 2nd & 4th Wednesday household items giveaway",
+      "quantity_limit": "Varies by distribution",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "(813) 489-4500",
+      "hours": "Call 2nd & 4th Mondays for appointment",
+      "notes": "Mobile food pantry serves Tampa Bay and neighboring cities"
+    },
+    "source_url": "https://uloccommunitynetwork.org/free-food/",
+    "confidence": 0.84
+  },
+  {
+    "name": "American Legion Post 138 (Hugh Gilbert Strickland) - Tampa",
+    "organization": "American Legion Post 138",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "American Legion post providing veteran services and community support in Tampa",
+    "phone": "(813) 839-5119",
+    "website": "https://tampapost138.com/",
+    "address": "5535 W Prescott St",
+    "city": "Tampa",
+    "state": "FL",
+    "zip": "33616",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": ["Proof of veteran status"]
+    },
+    "food_details": {
+      "distribution_schedule": "Call for veteran services schedule",
+      "quantity_limit": "Not specified",
+      "id_required": true
+    },
+    "intake": {
+      "phone": "(813) 839-5119",
+      "hours": "Monday – Saturday 11:00 AM – 12:00 AM, Sunday 8:00 AM – 11:00 PM",
+      "notes": "Contact post for veteran food assistance programs"
+    },
+    "source_url": "https://tampapost138.com/",
+    "confidence": 0.87
+  },
+  {
+    "name": "Soldiers' Angels Military and Veteran Food Distribution - Orlando",
+    "organization": "Soldiers' Angels",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Soldiers' Angels provides monthly food assistance to low-income veterans and their families in Orlando area",
+    "phone": "(210) 629-0020",
+    "website": "https://soldiersangels.org/location/orlando-fl/",
+    "address": "Orlando VA area",
+    "city": "Orlando",
+    "state": "FL",
+    "zip": "32801",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": ["Proof of veteran status"]
+    },
+    "food_details": {
+      "distribution_schedule": "3rd Friday of each month 11 AM - 1 PM",
+      "quantity_limit": "Approximately 75 lbs of groceries",
+      "id_required": true
+    },
+    "intake": {
+      "phone": "(210) 629-0020",
+      "hours": "Monthly distribution on 3rd Friday 11 AM - 1 PM",
+      "notes": "Drive-through style distribution; serves veterans and service members"
+    },
+    "source_url": "https://soldiersangels.org/location/orlando-fl/",
+    "confidence": 0.85
+  },
+  {
+    "name": "Veterans Pantry Pilot Program - Orlando VA Medical Center",
+    "organization": "Orlando VA Medical Center / Second Harvest Food Bank Central Florida",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Partnership between Orlando VA Medical Center and Second Harvest Food Bank providing dedicated veteran food pantry services",
+    "phone": "(407) 631-0021",
+    "website": "https://www.va.gov/orlando-health-care/locations/orlando-va-medical-center/",
+    "address": "13800 Veterans Way",
+    "city": "Orlando",
+    "state": "FL",
+    "zip": "32827",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": ["VA health enrollment"]
+    },
+    "food_details": {
+      "distribution_schedule": "Call VA Medical Center for schedule",
+      "quantity_limit": "Not specified",
+      "id_required": true
+    },
+    "intake": {
+      "phone": "(407) 631-0021",
+      "hours": "Call for hours",
+      "notes": "Veterans Pantry Pilot Program in partnership with Second Harvest Food Bank"
+    },
+    "source_url": "https://www.va.gov/orlando-health-care/locations/orlando-va-medical-center/",
+    "confidence": 0.83
+  },
+  {
+    "name": "Soldiers' Angels Military & Veteran Food Distribution - Atlanta",
+    "organization": "Soldiers' Angels",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Soldiers' Angels provides food assistance to low-income veterans and service members in Atlanta metro area",
+    "phone": "(210) 629-0020",
+    "website": "https://soldiersangels.org/location/atlanta-ga/",
+    "address": "Atlanta VA area",
+    "city": "Decatur",
+    "state": "GA",
+    "zip": "30030",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": ["Proof of veteran status"]
+    },
+    "food_details": {
+      "distribution_schedule": "Monthly distribution schedule",
+      "quantity_limit": "Varies by event",
+      "id_required": true
+    },
+    "intake": {
+      "phone": "(210) 629-0020",
+      "hours": "Call for current distribution schedule",
+      "notes": "Monthly food assistance events for veterans"
+    },
+    "source_url": "https://soldiersangels.org/location/atlanta-ga/",
+    "confidence": 0.82
+  },
+  {
+    "name": "Disabled Veterans National Foundation - Atlanta",
+    "organization": "Disabled Veterans National Foundation (DVNF)",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "National organization providing veteran food assistance and support services",
+    "phone": "Contact through website",
+    "website": "https://www.dvnf.org/",
+    "address": "Serves Atlanta metro area",
+    "city": "Atlanta",
+    "state": "GA",
+    "zip": "30301",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": ["Proof of veteran status"]
+    },
+    "food_details": {
+      "distribution_schedule": "Call for program details",
+      "quantity_limit": "Not specified",
+      "id_required": true
+    },
+    "intake": {
+      "phone": "Contact through website",
+      "hours": "Call for information",
+      "notes": "Contact DVNF directly through their website for Atlanta location details"
+    },
+    "source_url": "https://www.dvnf.org/contact-us/",
+    "confidence": 0.76
+  },
+  {
+    "name": "Soldiers' Angels Military & Veteran Food Distribution - Charlotte",
+    "organization": "Soldiers' Angels",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Soldiers' Angels provides food assistance to low-income veterans in Charlotte area",
+    "phone": "(210) 629-0020",
+    "website": "https://soldiersangels.org/contact-us/",
+    "address": "Charlotte VA area",
+    "city": "Charlotte",
+    "state": "NC",
+    "zip": "28205",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": ["Proof of veteran status"]
+    },
+    "food_details": {
+      "distribution_schedule": "Monthly distribution",
+      "quantity_limit": "Varies by event",
+      "id_required": true
+    },
+    "intake": {
+      "phone": "(210) 629-0020",
+      "hours": "Call for current schedule",
+      "notes": "Monthly food distribution for veterans"
+    },
+    "source_url": "https://soldiersangels.org/location/charlotte-nc/",
+    "confidence": 0.80
+  },
+  {
+    "name": "Second Harvest Food Bank of Metrolina - Charlotte",
+    "organization": "Second Harvest Food Bank of Metrolina",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Second Harvest Food Bank serves the Charlotte-metro area with food pantries and meal programs",
+    "phone": "(704) 376-1785",
+    "website": "https://www.secondharvestmetrolina.org/",
+    "address": "500 Spratt St Ste B",
+    "city": "Charlotte",
+    "state": "NC",
+    "zip": "28206",
+    "eligibility": {
+      "veteran_status_required": false,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Multiple pantries throughout region",
+      "quantity_limit": "Not specified",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "(704) 376-1785",
+      "hours": "Monday - Friday 7:30am - 5:00pm",
+      "notes": "Serves veterans and other populations in Metrolina region"
+    },
+    "source_url": "https://www.secondharvestmetrolina.org/",
+    "confidence": 0.88
+  },
+  {
+    "name": "North Charlotte VA Clinic",
+    "organization": "VA Salisbury Health Care System",
+    "category": "food",
+    "subcategory": "meal-program",
+    "description": "VA clinic providing healthcare and nutrition services to eligible veterans",
+    "phone": "(704) 597-3500",
+    "website": "https://www.va.gov/salisbury-health-care/locations/north-charlotte-va-clinic/",
+    "address": "8601 University East Drive",
+    "city": "Charlotte",
+    "state": "NC",
+    "zip": "28213",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": ["VA health enrollment"]
+    },
+    "food_details": {
+      "distribution_schedule": "Facility dining and nutrition services",
+      "quantity_limit": "Not specified",
+      "id_required": true
+    },
+    "intake": {
+      "phone": "(704) 597-3500",
+      "hours": "Monday-Friday: 7:30 a.m. to 4:30 p.m.",
+      "notes": "VA medical facility with nutritional support services"
+    },
+    "source_url": "https://www.va.gov/salisbury-health-care/locations/north-charlotte-va-clinic/",
+    "confidence": 0.90
+  },
+  {
+    "name": "Combined Arms - Veteran Mobile Food Pantry",
+    "organization": "Combined Arms",
+    "category": "food",
+    "subcategory": "mobile-distribution",
+    "description": "Combined Arms operates Veteran Mobile Food Pantries providing essential resources to military-connected individuals in Houston area",
+    "phone": "Contact through website or call Combined Arms",
+    "website": "https://www.combinedarms.us/foodpantry",
+    "address": "2727 McKinney Street",
+    "city": "Houston",
+    "state": "TX",
+    "zip": "77003",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": ["Proof of veteran status"]
+    },
+    "food_details": {
+      "distribution_schedule": "Mobile pantry schedule - call for details",
+      "quantity_limit": "Varies by distribution",
+      "id_required": true
+    },
+    "intake": {
+      "phone": "Register through Combined Arms website",
+      "hours": "Call for mobile pantry schedule",
+      "notes": "Served over 8,000 military-connected individuals"
+    },
+    "source_url": "https://www.combinedarms.us/houstonfoodpantry",
+    "confidence": 0.83
+  },
+  {
+    "name": "Northwest Assistance Ministries - Veteran Food Pantry",
+    "organization": "Northwest Assistance Ministries (NAM)",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Northwest Assistance Ministries operates food pantry and expanded veteran services programs for Houston area",
+    "phone": "(281) 885-4555",
+    "website": "https://www.namonline.org/veteran-services",
+    "address": "15555 Kuykendahl Road",
+    "city": "Houston",
+    "state": "TX",
+    "zip": "77090",
+    "eligibility": {
+      "veteran_status_required": false,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Call for current schedule",
+      "quantity_limit": "Not specified",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "(281) 885-4555 or (281) 885-4673",
+      "hours": "Call for hours",
+      "notes": "Veteran services now available; expanded food pantry hours"
+    },
+    "source_url": "https://www.namonline.org/veteran-services",
+    "confidence": 0.86
+  },
+  {
+    "name": "American Legion Post 654 (Spring Branch) - Houston",
+    "organization": "American Legion Post 654",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "American Legion post providing veteran services and community support in Spring Branch, Houston",
+    "phone": "(832) 588-6534",
+    "website": "https://legion654.org/",
+    "address": "3105 Campbell Road",
+    "city": "Houston",
+    "state": "TX",
+    "zip": "77080",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": ["Proof of veteran status"]
+    },
+    "food_details": {
+      "distribution_schedule": "Call for veteran services schedule",
+      "quantity_limit": "Not specified",
+      "id_required": true
+    },
+    "intake": {
+      "phone": "(832) 588-6534",
+      "hours": "Sun-Thu 12p-8p, Fri 12p-11p, Sat 12p-10p",
+      "notes": "Contact post for veteran assistance programs"
+    },
+    "source_url": "https://legion654.org/",
+    "confidence": 0.87
+  },
+  {
+    "name": "Soldiers' Angels - Dallas Monthly Food Assistance",
+    "organization": "Soldiers' Angels",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Soldiers' Angels provides monthly food assistance to veterans and service members in Dallas area",
+    "phone": "(210) 629-0020",
+    "website": "https://soldiersangels.org/get-support/food/dallas/",
+    "address": "Holy Cross Catholic Church, 5004 Bonnie View Rd",
+    "city": "Dallas",
+    "state": "TX",
+    "zip": "75241",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": ["Proof of veteran status"]
+    },
+    "food_details": {
+      "distribution_schedule": "Monthly food distribution events",
+      "quantity_limit": "Varies by event",
+      "id_required": true
+    },
+    "intake": {
+      "phone": "(210) 629-0020",
+      "hours": "Call for current schedule",
+      "notes": "Monthly military and food distribution events"
+    },
+    "source_url": "https://soldiersangels.org/get-support/food/dallas/",
+    "confidence": 0.84
+  },
+  {
+    "name": "Veterans Resource Center of Dallas - Food Pantry",
+    "organization": "Veterans Resource Center of Dallas",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Veterans Resource Center provides comprehensive veteran services including food pantry and case management",
+    "phone": "(214) 372-8822",
+    "website": "https://vrcdallas.org/service-category/food-support/food-pantry/",
+    "address": "1610 S. Malcolm X Blvd",
+    "city": "Dallas",
+    "state": "TX",
+    "zip": "75226",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": ["Proof of veteran status"]
+    },
+    "food_details": {
+      "distribution_schedule": "Call for current schedule",
+      "quantity_limit": "Not specified",
+      "id_required": true
+    },
+    "intake": {
+      "phone": "(214) 372-8822",
+      "hours": "Call for hours",
+      "notes": "First point of contact for veterans needing resources and support"
+    },
+    "source_url": "https://vrcdallas.org/service-category/food-support/food-pantry/",
+    "confidence": 0.87
+  },
+  {
+    "name": "North Dallas Shared Ministries - Food Pantry",
+    "organization": "North Dallas Shared Ministries (NDSM)",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "North Dallas Shared Ministries operates food pantry serving Dallas area residents in need",
+    "phone": "(214) 358-8700",
+    "website": "https://ndsm.org/food/",
+    "address": "2875 Merrell Road",
+    "city": "Dallas",
+    "state": "TX",
+    "zip": "75229",
+    "eligibility": {
+      "veteran_status_required": false,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Monday - Friday 9:00 am - 3:00 pm, Saturday 9:00 am - 11:30 am",
+      "quantity_limit": "Not specified",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "(214) 358-8700",
+      "hours": "Monday - Friday 9:00 am - 3:00 pm, Saturday 9:00 am - 11:30 am",
+      "notes": "Food pantry serving Dallas area residents"
+    },
+    "source_url": "https://ndsm.org/food/",
+    "confidence": 0.88
+  },
+  {
+    "name": "Dallas Legacy Mission - Veteran Luncheons",
+    "organization": "Dallas Legacy Mission, Inc.",
+    "category": "food",
+    "subcategory": "meal-program",
+    "description": "Dallas Legacy Mission provides solutions and support to community members including veteran luncheon programs",
+    "phone": "(469) 849-6329",
+    "website": "https://dlminc.org/",
+    "address": "2828 Fish Trap Road",
+    "city": "Dallas",
+    "state": "TX",
+    "zip": "75212",
+    "eligibility": {
+      "veteran_status_required": false,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Call for luncheon schedule",
+      "quantity_limit": "Meal program",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "(469) 849-6329",
+      "hours": "Call for program hours",
+      "notes": "Veteran luncheon programs available"
+    },
+    "source_url": "https://dlminc.org/",
+    "confidence": 0.81
+  },
+  {
+    "name": "North Texas Food Bank",
+    "organization": "North Texas Food Bank",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "North Texas Food Bank provides access to over 190,000 meals daily for hungry children, seniors and families across 13 counties",
+    "phone": "(214) 269-0906",
+    "website": "https://ntfb.org/",
+    "address": "4202 Dan Morton Dr",
+    "city": "Dallas",
+    "state": "TX",
+    "zip": "75234",
+    "eligibility": {
+      "veteran_status_required": false,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Multiple distribution locations throughout 13 counties",
+      "quantity_limit": "Not specified",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "(214) 269-0906",
+      "hours": "Call for specific pantry hours",
+      "notes": "Serves 190,000+ meals daily; veteran-friendly services available"
+    },
+    "source_url": "https://ntfb.org/",
+    "confidence": 0.87
+  },
+  {
+    "name": "Minnie's Food Pantry - Dallas",
+    "organization": "Minnie's Food Pantry Inc.",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Minnie's Food Pantry feeds families in North Texas through food pantry services",
+    "phone": "(972) 596-0253",
+    "website": "https://minniesfoodpantry.org/",
+    "address": "661 18th Street",
+    "city": "Plano",
+    "state": "TX",
+    "zip": "75074",
+    "eligibility": {
+      "veteran_status_required": false,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Call for pantry schedule",
+      "quantity_limit": "Not specified",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "(972) 596-0253",
+      "hours": "Call for hours",
+      "notes": "Serves North Texas families including veterans"
+    },
+    "source_url": "https://minniesfoodpantry.org/",
+    "confidence": 0.86
+  },
+  {
+    "name": "American Legion Post 511 - Dallas",
+    "organization": "American Legion Post 511",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "American Legion post providing veteran services and community support in Dallas",
+    "phone": "(469) 875-5213",
+    "website": "https://txlegion.org/post-locations/post-511/",
+    "address": "3607 S.R.L. Thornton Fwy",
+    "city": "Dallas",
+    "state": "TX",
+    "zip": "75224",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": ["Proof of veteran status"]
+    },
+    "food_details": {
+      "distribution_schedule": "Call for veteran services schedule",
+      "quantity_limit": "Not specified",
+      "id_required": true
+    },
+    "intake": {
+      "phone": "(469) 875-5213",
+      "hours": "Call for hours",
+      "notes": "Contact post for veteran assistance"
+    },
+    "source_url": "https://txlegion.org/post-locations/post-511/",
+    "confidence": 0.86
+  },
+  {
+    "name": "Soldiers' Angels Food Distribution San Antonio",
+    "organization": "Soldiers' Angels",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Soldiers' Angels headquarters provides food distribution and veteran services from San Antonio",
+    "phone": "(210) 629-0020",
+    "website": "https://soldiersangels.org/",
+    "address": "2895 NE Loop 410, Suite 107",
+    "city": "San Antonio",
+    "state": "TX",
+    "zip": "78218",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": ["Proof of veteran status"]
+    },
+    "food_details": {
+      "distribution_schedule": "Multiple locations across Texas",
+      "quantity_limit": "Varies by event",
+      "id_required": true
+    },
+    "intake": {
+      "phone": "(210) 629-0020",
+      "hours": "Monday - Friday 9:00 a.m. – 5:00 p.m. CT",
+      "notes": "National organization serving multiple locations"
+    },
+    "source_url": "https://soldiersangels.org/",
+    "confidence": 0.86
+  },
+  {
+    "name": "Blessed Angels Community Center - San Antonio",
+    "organization": "Blessed Angels Community Center",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Blessed Angels Community Center is an emergency food pantry serving San Antonio community with assistance programs",
+    "phone": "(210) 284-4391",
+    "website": "https://blessedangelscc.org/",
+    "address": "14078 Nacogdoches Rd",
+    "city": "San Antonio",
+    "state": "TX",
+    "zip": "78247",
+    "eligibility": {
+      "veteran_status_required": false,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Call for current schedule",
+      "quantity_limit": "Not specified",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "(210) 284-4391",
+      "hours": "Call for hours",
+      "notes": "Emergency food pantry serving San Antonio"
+    },
+    "source_url": "https://blessedangelscc.org/",
+    "confidence": 0.85
+  },
+  {
+    "name": "VFW Post 8397 - San Antonio",
+    "organization": "Veterans of Foreign Wars Post 8397",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "VFW post providing veteran services and community support in San Antonio",
+    "phone": "(210) 827-3803",
+    "website": "https://vfw8397.org/",
+    "address": "2541 W. Southcross Blvd",
+    "city": "San Antonio",
+    "state": "TX",
+    "zip": "78211",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": ["Proof of veteran status"]
+    },
+    "food_details": {
+      "distribution_schedule": "Call for program schedule",
+      "quantity_limit": "Not specified",
+      "id_required": true
+    },
+    "intake": {
+      "phone": "(210) 827-3803",
+      "hours": "Call for hours",
+      "notes": "Contact post for veteran services"
+    },
+    "source_url": "https://vfw8397.org/",
+    "confidence": 0.87
+  },
+  {
+    "name": "VFW Post 9174 - San Antonio",
+    "organization": "Veterans of Foreign Wars Post 9174 (Lackland)",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "VFW post providing veteran services and community support near Lackland Air Force Base",
+    "phone": "(210) 674-7821",
+    "website": "https://vfw9174.org/",
+    "address": "2410 Pinn Rd",
+    "city": "San Antonio",
+    "state": "TX",
+    "zip": "78227",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": ["Proof of veteran status"]
+    },
+    "food_details": {
+      "distribution_schedule": "Call for program schedule",
+      "quantity_limit": "Not specified",
+      "id_required": true
+    },
+    "intake": {
+      "phone": "(210) 674-7821",
+      "hours": "Call for hours",
+      "notes": "Contact post for veteran services"
+    },
+    "source_url": "https://vfw9174.org/",
+    "confidence": 0.86
+  },
+  {
+    "name": "Audie L. Murphy VA Hospital - San Antonio",
+    "organization": "VA South Texas Health Care System",
+    "category": "food",
+    "subcategory": "meal-program",
+    "description": "VA Medical Center providing healthcare and nutrition services to eligible veterans",
+    "phone": "(210) 617-5300",
+    "website": "https://www.va.gov/south-texas-health-care/locations/audie-l-murphy-memorial-veterans-hospital/",
+    "address": "7400 Merton Minter Boulevard",
+    "city": "San Antonio",
+    "state": "TX",
+    "zip": "78229",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": ["VA health enrollment"]
+    },
+    "food_details": {
+      "distribution_schedule": "Facility meal services and nutrition programs",
+      "quantity_limit": "Not specified",
+      "id_required": true
+    },
+    "intake": {
+      "phone": "(210) 617-5300",
+      "hours": "Call for facility hours",
+      "notes": "VA Medical Center with nutrition services"
+    },
+    "source_url": "https://www.va.gov/south-texas-health-care/locations/audie-l-murphy-memorial-veterans-hospital/",
+    "confidence": 0.89
+  },
+  {
+    "name": "San Antonio Food Bank",
+    "organization": "San Antonio Food Bank",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "San Antonio Food Bank provides food assistance and community services to residents in need",
+    "phone": "(210) 337-3663",
+    "website": "https://safoodbank.org/",
+    "address": "5200 Historic Old Hwy 90 W",
+    "city": "San Antonio",
+    "state": "TX",
+    "zip": "78227",
+    "eligibility": {
+      "veteran_status_required": false,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Multiple distribution locations throughout San Antonio",
+      "quantity_limit": "Not specified",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "(210) 337-3663 or (210) 431-8326",
+      "hours": "Mon-Fri 8AM – 6PM, Saturdays 9AM – 3PM",
+      "notes": "Live representatives available by phone"
+    },
+    "source_url": "https://safoodbank.org/",
+    "confidence": 0.88
+  },
+  {
+    "name": "William J Bordelon Post 300 American Legion - San Antonio",
+    "organization": "American Legion William J Bordelon Post 300",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "American Legion post providing veteran services and community support in San Antonio",
+    "phone": "(210) 674-3364",
+    "website": "https://post300tx.org/",
+    "address": "3290 Grosenbacher Road",
+    "city": "San Antonio",
+    "state": "TX",
+    "zip": "78245",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": ["Proof of veteran status"]
+    },
+    "food_details": {
+      "distribution_schedule": "Call for veteran services schedule",
+      "quantity_limit": "Not specified",
+      "id_required": true
+    },
+    "intake": {
+      "phone": "(210) 674-3364",
+      "hours": "Open 7 days a week 12pm-9pm",
+      "notes": "Contact post for veteran assistance programs"
+    },
+    "source_url": "https://post300tx.org/",
+    "confidence": 0.87
+  },
+  {
+    "name": "Austin VA Outpatient Clinic Mobile Food Pantry",
+    "organization": "VA Central Texas Health Care / Central Texas Food Bank",
+    "category": "food",
+    "subcategory": "mobile-distribution",
+    "description": "Partnership between Austin VA Outpatient Clinic and Central Texas Food Bank providing mobile food pantry for veterans",
+    "phone": "(512) 282-2111 or call 800-423-2111",
+    "website": "https://www.centraltexasfoodbank.org/location/va-clinic-s-austin-mobile-food-pantry",
+    "address": "7901 Metropolis Dr",
+    "city": "Austin",
+    "state": "TX",
+    "zip": "78744",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": ["No ID required, all veterans served"]
+    },
+    "food_details": {
+      "distribution_schedule": "Every 3rd Friday of the month 9:30 a.m. to 10:30 a.m. (Drive-Thru)",
+      "quantity_limit": "Not specified",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "(512) 282-2111 or 800-423-2111",
+      "hours": "3rd Friday 9:30 a.m. to 10:30 a.m.",
+      "notes": "Drive-thru distribution; no ID needed, all veterans welcome"
+    },
+    "source_url": "https://www.centraltexasfoodbank.org/location/va-clinic-s-austin-mobile-food-pantry",
+    "confidence": 0.88
+  },
+  {
+    "name": "Central Texas Food Bank",
+    "organization": "Central Texas Food Bank",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Central Texas Food Bank provides food assistance through multiple pantries and mobile programs across Austin area",
+    "phone": "(512) 282-2111",
+    "website": "https://www.centraltexasfoodbank.org/",
+    "address": "6500 Metropolis Dr",
+    "city": "Austin",
+    "state": "TX",
+    "zip": "78744",
+    "eligibility": {
+      "veteran_status_required": false,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Multiple locations throughout Central Texas",
+      "quantity_limit": "Not specified",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "(512) 282-2111 or 1-855-366-3401",
+      "hours": "Monday - Friday 8:00 am - 5:00 pm",
+      "notes": "Veteran-friendly services and mobile pantry programs"
+    },
+    "source_url": "https://www.centraltexasfoodbank.org/",
+    "confidence": 0.88
+  },
+  {
+    "name": "Caritas of Austin - Food Pantry",
+    "organization": "Caritas of Austin",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Caritas of Austin operates food pantry and kitchen services providing meals and food assistance",
+    "phone": "(512) 479-4610",
+    "website": "https://caritasofaustin.org/what-we-do/food/",
+    "address": "611 Neches St",
+    "city": "Austin",
+    "state": "TX",
+    "zip": "78701",
+    "eligibility": {
+      "veteran_status_required": false,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Mon-Fri 11am-12:30pm",
+      "quantity_limit": "Not specified",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "(512) 479-4610",
+      "hours": "Monday - Friday 11am - 12:30pm",
+      "notes": "Food pantry and kitchen services available"
+    },
+    "source_url": "https://caritasofaustin.org/what-we-do/food/",
+    "confidence": 0.87
+  },
+  {
+    "name": "American Legion Knebel Post 83 - Austin",
+    "organization": "American Legion Knebel Post 83",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "American Legion post providing veteran services and community support in Austin",
+    "phone": "(512) 442-2896",
+    "website": "https://www.txlegion83.org/",
+    "address": "4401 St Elmo Rd E",
+    "city": "Austin",
+    "state": "TX",
+    "zip": "78744",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": ["Proof of veteran status"]
+    },
+    "food_details": {
+      "distribution_schedule": "Call for veteran services schedule",
+      "quantity_limit": "Not specified",
+      "id_required": true
+    },
+    "intake": {
+      "phone": "(512) 442-2896",
+      "hours": "Call for hours",
+      "notes": "Contact post for veteran services"
+    },
+    "source_url": "https://www.txlegion83.org/",
+    "confidence": 0.86
+  },
+  {
+    "name": "American Legion Travis Post 76 - Austin",
+    "organization": "American Legion Travis Post 76",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "American Legion post providing veteran services and community support in Austin",
+    "phone": "(512) 623-9384",
+    "website": "https://www.travispost76.org/",
+    "address": "404 Atlanta Street",
+    "city": "Austin",
+    "state": "TX",
+    "zip": "78703",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": ["Proof of veteran status"]
+    },
+    "food_details": {
+      "distribution_schedule": "Call for veteran services schedule",
+      "quantity_limit": "Not specified",
+      "id_required": true
+    },
+    "intake": {
+      "phone": "(512) 623-9384",
+      "hours": "Call for hours",
+      "notes": "Contact post for veteran assistance programs"
+    },
+    "source_url": "https://www.travispost76.org/",
+    "confidence": 0.87
+  },
+  {
+    "name": "Nashville Food Project",
+    "organization": "Nashville Food Project",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Nashville Food Project operates food pantry and community meal programs serving Nashville residents in need",
+    "phone": "(615) 460-0172",
+    "website": "https://www.thenashvillefoodproject.org/",
+    "address": "5904 California Avenue",
+    "city": "Nashville",
+    "state": "TN",
+    "zip": "37209",
+    "eligibility": {
+      "veteran_status_required": false,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Monday-Thursday 9:00 am - 5:00 pm, Friday 9:00 am - 2:00 pm, Saturday 10:00 am - 1:00 pm",
+      "quantity_limit": "Not specified",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "(615) 460-0172",
+      "hours": "Mon-Thu 9:00 am - 5:00 pm, Fri 9:00 am - 2:00 pm, Sat 10:00 am - 1:00 pm",
+      "notes": "Community meals and food pantry services available"
+    },
+    "source_url": "https://www.thenashvillefoodproject.org/",
+    "confidence": 0.88
+  },
+  {
+    "name": "St. Vincent de Paul Memphis - Food Mission",
+    "organization": "Society of St. Vincent de Paul - Memphis",
+    "category": "food",
+    "subcategory": "meal-program",
+    "description": "St. Vincent de Paul operates food missions and pantry services providing meals and food assistance in Memphis",
+    "phone": "(901) 552-7038",
+    "website": "https://svdpmemphis.org/",
+    "address": "1306 Monroe Ave",
+    "city": "Memphis",
+    "state": "TN",
+    "zip": "38104",
+    "eligibility": {
+      "veteran_status_required": false,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Hot meals Tuesday through Sunday 10 am to 11 am",
+      "quantity_limit": "Hot meal per visit",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "(901) 552-7038",
+      "hours": "Tuesday - Sunday 10 am to 11 am",
+      "notes": "Hot meal service; also operates food pantry on select Saturdays"
+    },
+    "source_url": "https://svdpmemphis.org/",
+    "confidence": 0.86
+  }
+]
