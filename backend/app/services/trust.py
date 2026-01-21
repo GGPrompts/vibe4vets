@@ -1,6 +1,6 @@
 """Trust scoring service for resource reliability calculations."""
 
-from datetime import datetime, timedelta
+from datetime import UTC, datetime, timedelta
 
 from sqlmodel import Session
 
@@ -36,7 +36,7 @@ class TrustService:
         else:
             reference_date = resource.last_verified
 
-        days_old = (datetime.utcnow() - reference_date).days
+        days_old = (datetime.now(UTC) - reference_date).days
 
         # Exponential decay with half-life
         freshness = 0.5 ** (days_old / FRESHNESS_HALF_LIFE)
@@ -63,7 +63,7 @@ class TrustService:
 
     def mark_verified(self, resource: Resource) -> None:
         """Mark a resource as verified, resetting freshness."""
-        resource.last_verified = datetime.utcnow()
+        resource.last_verified = datetime.now(UTC)
         resource.freshness_score = 1.0
         self.session.add(resource)
 
@@ -95,7 +95,7 @@ class TrustService:
 
         from app.models.resource import ResourceStatus
 
-        cutoff = datetime.utcnow() - timedelta(days=days)
+        cutoff = datetime.now(UTC) - timedelta(days=days)
 
         stmt = (
             select(Resource)

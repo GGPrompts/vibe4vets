@@ -1,6 +1,6 @@
 """Resource service for CRUD operations."""
 
-from datetime import datetime
+from datetime import UTC, datetime
 from uuid import UUID
 
 from sqlalchemy import String, func, or_
@@ -235,7 +235,7 @@ class ResourceService:
                 value = str(value)
             setattr(resource, field, value)
 
-        resource.updated_at = datetime.utcnow()
+        resource.updated_at = datetime.now(UTC)
         self.session.add(resource)
         self.session.commit()
         self.session.refresh(resource)
@@ -249,7 +249,7 @@ class ResourceService:
             return False
 
         resource.status = ResourceStatus.INACTIVE
-        resource.updated_at = datetime.utcnow()
+        resource.updated_at = datetime.now(UTC)
         self.session.add(resource)
         self.session.commit()
         return True

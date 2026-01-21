@@ -2,6 +2,7 @@
 
 import logging
 from dataclasses import dataclass
+from datetime import UTC, datetime
 from typing import TYPE_CHECKING
 
 from sqlalchemy import func, or_, text
@@ -206,7 +207,7 @@ class SearchService:
 
         # Trust signal explanation
         if resource.last_verified:
-            days_ago = (resource.last_verified.now() - resource.last_verified).days
+            days_ago = (datetime.now(UTC) - resource.last_verified).days
             if days_ago <= 7:
                 explanations.append(
                     MatchExplanation(

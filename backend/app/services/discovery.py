@@ -5,7 +5,7 @@ to ResourceCandidate format for review queue integration.
 """
 
 from dataclasses import dataclass, field
-from datetime import datetime
+from datetime import UTC, datetime
 from difflib import SequenceMatcher
 from typing import Any
 from uuid import UUID
@@ -79,7 +79,7 @@ class DiscoveredResource:
             how_to_apply=self.how_to_apply,
             scope=self.scope,
             states=self.states,
-            fetched_at=datetime.utcnow(),
+            fetched_at=datetime.now(UTC),
         )
 
 
