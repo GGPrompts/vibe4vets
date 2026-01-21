@@ -68,8 +68,9 @@ class ETLPipeline:
             source_tier = connector.metadata.tier
 
             try:
-                # Extract
-                candidates = connector.run()
+                # Extract using context manager to ensure HTTP client cleanup
+                with connector:
+                    candidates = connector.run()
                 stats.extracted += len(candidates)
 
                 # Normalize
@@ -155,7 +156,8 @@ class ETLPipeline:
         Returns:
             Tuple of (normalized resources, errors).
         """
-        candidates = connector.run()
+        with connector:
+            candidates = connector.run()
         return self.normalizer.normalize_batch(
             candidates,
             source_name=connector.metadata.name,
@@ -185,7 +187,9 @@ class ETLPipeline:
             source_tier = connector.metadata.tier
 
             try:
-                candidates = connector.run()
+                # Extract using context manager to ensure HTTP client cleanup
+                with connector:
+                    candidates = connector.run()
                 stats.extracted += len(candidates)
 
                 normalized, norm_errors = self.normalizer.normalize_batch(

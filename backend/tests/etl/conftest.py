@@ -4,6 +4,8 @@ from datetime import UTC, datetime
 
 import pytest
 
+from typing import Any, Self
+
 from connectors.base import ResourceCandidate, SourceMetadata
 
 # Note: The etl_session fixture uses the main conftest's session fixture
@@ -104,6 +106,23 @@ class MockConnector:
     def metadata(self) -> SourceMetadata:
         return self._metadata
 
+    def close(self) -> None:
+        """No-op close for mock."""
+        pass
+
+    def __enter__(self) -> Self:
+        """Context manager entry."""
+        return self
+
+    def __exit__(
+        self,
+        exc_type: type[BaseException] | None,
+        exc_val: BaseException | None,
+        exc_tb: Any,
+    ) -> None:
+        """Context manager exit."""
+        self.close()
+
 
 class FailingConnector:
     """Connector that raises an exception for testing error handling."""
@@ -119,6 +138,23 @@ class FailingConnector:
 
     def run(self) -> list[ResourceCandidate]:
         raise RuntimeError("Simulated connector failure")
+
+    def close(self) -> None:
+        """No-op close for mock."""
+        pass
+
+    def __enter__(self) -> Self:
+        """Context manager entry."""
+        return self
+
+    def __exit__(
+        self,
+        exc_type: type[BaseException] | None,
+        exc_val: BaseException | None,
+        exc_tb: Any,
+    ) -> None:
+        """Context manager exit."""
+        self.close()
 
 
 @pytest.fixture

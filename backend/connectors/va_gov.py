@@ -75,14 +75,17 @@ class VAGovConnector(BaseConnector):
             List of normalized ResourceCandidate objects.
         """
         resources: list[ResourceCandidate] = []
-        client = self._get_client()
+        try:
+            client = self._get_client()
 
-        # Fetch facilities by type to ensure we get employment-relevant ones
-        for facility_type in ["health", "benefits", "vet_center"]:
-            page_resources = self._fetch_facilities_by_type(client, facility_type)
-            resources.extend(page_resources)
+            # Fetch facilities by type to ensure we get employment-relevant ones
+            for facility_type in ["health", "benefits", "vet_center"]:
+                page_resources = self._fetch_facilities_by_type(client, facility_type)
+                resources.extend(page_resources)
 
-        return resources
+            return resources
+        finally:
+            self.close()
 
     def _fetch_facilities_by_type(self, client: httpx.Client, facility_type: str) -> list[ResourceCandidate]:
         """Fetch all facilities of a specific type.
