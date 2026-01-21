@@ -22,6 +22,7 @@ import {
   Scale,
   ChevronDown,
 } from 'lucide-react';
+import { BookmarkButton } from '@/components/bookmark-button';
 import type { Resource, MatchExplanation } from '@/lib/api';
 import { cn } from '@/lib/utils';
 
@@ -301,15 +302,26 @@ export function ResourceDetailModal({
 
                 {/* Header with gradient background */}
                 <div className={cn('p-6 text-white', gradient)}>
-                  {/* Close button */}
-                  <button
-                    onClick={onClose}
-                    type="button"
-                    className="absolute right-4 top-4 rounded-full bg-white/20 p-2 transition-colors hover:bg-white/30 focus:outline-none focus:ring-2 focus:ring-white/50"
-                    aria-label="Close"
-                  >
-                    <X className="h-5 w-5" />
-                  </button>
+                  {/* Header action buttons */}
+                  <div className="absolute right-4 top-4 flex items-center gap-2">
+                    {/* Bookmark button */}
+                    <BookmarkButton
+                      resourceId={resource.id}
+                      variant="gold"
+                      size="default"
+                      showTooltip={false}
+                      className="bg-white/20 border-0 hover:bg-white/30 text-white hover:text-[hsl(var(--v4v-gold))]"
+                    />
+                    {/* Close button */}
+                    <button
+                      onClick={onClose}
+                      type="button"
+                      className="rounded-full bg-white/20 p-2 transition-colors hover:bg-white/30 focus:outline-none focus:ring-2 focus:ring-white/50"
+                      aria-label="Close"
+                    >
+                      <X className="h-5 w-5" />
+                    </button>
+                  </div>
 
                   {/* Mobile: pull down indicator */}
                   <div className="absolute left-1/2 top-4 -translate-x-1/2 sm:hidden">

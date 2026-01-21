@@ -12,6 +12,7 @@ interface BookmarkButtonProps {
   className?: string;
   size?: 'default' | 'sm' | 'lg';
   showTooltip?: boolean;
+  variant?: 'default' | 'gold';
 }
 
 export function BookmarkButton({
@@ -19,8 +20,9 @@ export function BookmarkButton({
   className,
   size = 'default',
   showTooltip = true,
+  variant = 'default',
 }: BookmarkButtonProps) {
-  const { isSaved, toggleSaved, isHydrated } = useSavedResources();
+  const { isSaved, toggleSaved } = useSavedResources();
   const { trackResourceSave } = useAnalytics();
   const saved = isSaved(resourceId);
 
@@ -45,6 +47,15 @@ export function BookmarkButton({
     lg: 'h-5 w-5',
   };
 
+  // Color scheme based on variant
+  const colorClasses = variant === 'gold'
+    ? saved
+      ? 'text-[hsl(var(--v4v-gold))] hover:text-[hsl(var(--v4v-gold-dark))] hover:bg-[hsl(var(--v4v-gold)/0.1)]'
+      : 'text-gray-500 hover:text-[hsl(var(--v4v-gold))] hover:bg-[hsl(var(--v4v-gold)/0.1)]'
+    : saved
+      ? 'text-red-500 hover:text-red-600 hover:bg-red-50'
+      : 'text-gray-500 hover:text-red-500 hover:bg-red-50';
+
   const button = (
     <Button
       variant="ghost"
@@ -54,9 +65,7 @@ export function BookmarkButton({
       className={cn(
         sizeClasses[size],
         'shrink-0 rounded-full transition-colors duration-200 bg-white/80 border border-gray-300 shadow-sm',
-        saved
-          ? 'text-red-500 hover:text-red-600 hover:bg-red-50'
-          : 'text-gray-500 hover:text-red-500 hover:bg-red-50',
+        colorClasses,
         className
       )}
       aria-label={saved ? 'Remove from saved' : 'Save to this device'}
