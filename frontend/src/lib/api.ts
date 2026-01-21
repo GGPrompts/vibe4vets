@@ -270,9 +270,10 @@ export interface JobHistoryResponse {
 
 export interface ConnectorInfo {
   name: string;
-  source_name: string;
+  display_name: string;
+  url: string;
   tier: number;
-  description: string;
+  frequency: string;
 }
 
 export interface ConnectorsResponse {
@@ -442,12 +443,7 @@ export interface AnalyticsDashboardResponse {
 }
 
 // AI Stats types (for About page transparency section)
-export interface ConnectorInfo {
-  name: string;
-  source_name: string;
-  tier: number;
-  description: string;
-}
+// Note: ConnectorInfo is defined above, reusing it here
 
 export interface AIStats {
   total_resources: number;

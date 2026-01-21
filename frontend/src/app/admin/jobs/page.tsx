@@ -481,7 +481,7 @@ export default function JobsPage() {
                       <SelectItem value="all">All connectors</SelectItem>
                       {connectors.map((c) => (
                         <SelectItem key={c.name} value={c.name}>
-                          {c.source_name} (Tier {c.tier})
+                          {c.display_name} (Tier {c.tier})
                         </SelectItem>
                       ))}
                     </SelectContent>

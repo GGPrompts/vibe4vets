@@ -69,10 +69,10 @@ function ConnectorCard({ connector }: { connector: ConnectorInfo }) {
       <div className={`h-2 w-2 rounded-full ${tierColors[connector.tier] || 'bg-gray-500'}`} />
       <div className="flex-1 min-w-0">
         <span className="font-medium text-sm text-foreground block truncate">
-          {connector.source_name}
+          {connector.display_name}
         </span>
         <span className="text-xs text-muted-foreground truncate block">
-          {connector.description}
+          {connector.frequency} refresh
         </span>
       </div>
       <span className="text-xs px-2 py-0.5 rounded-full bg-[hsl(var(--v4v-gold)/0.15)] text-[hsl(var(--v4v-gold-dark))]">
