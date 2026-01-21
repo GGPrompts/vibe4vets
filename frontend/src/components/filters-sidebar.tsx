@@ -527,6 +527,7 @@ export function FixedFiltersSidebar({
                   initial={{ opacity: 0, x: -10 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.05 }}
+                  className="mb-1"
                 >
                   <Tooltip>
                     <TooltipTrigger asChild>
@@ -536,9 +537,9 @@ export function FixedFiltersSidebar({
                         onClick={handleClick}
                         className={cn(
                           'h-8 w-8 rounded-lg transition-all hover:scale-105',
-                          item.bg,
-                          item.color,
-                          isActive && 'ring-2 ring-offset-1 ring-current'
+                          isActive
+                            ? cn(item.bg, item.color, 'shadow-sm border-2 border-current')
+                            : 'bg-muted/50 text-muted-foreground hover:bg-muted hover:text-foreground'
                         )}
                       >
                         <item.icon className="h-4 w-4" />
@@ -555,15 +556,24 @@ export function FixedFiltersSidebar({
             })}
 
             {activeFilterCount > 0 && (
-              <motion.div
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                className="mt-2"
-              >
-                <Badge variant="secondary" className="h-6 w-6 rounded-full p-0 text-xs flex items-center justify-center">
-                  {activeFilterCount}
-                </Badge>
-              </motion.div>
+              <>
+                <div className="my-2 h-px w-6 bg-border" />
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      onClick={() => onFiltersChange({ categories: [], states: [], scope: 'all', minTrust: 0 })}
+                      className="h-8 w-8 rounded-lg text-muted-foreground hover:text-destructive hover:bg-destructive/10"
+                    >
+                      <X className="h-4 w-4" />
+                    </Button>
+                  </TooltipTrigger>
+                  <TooltipContent side="right">
+                    <p className="text-xs">Clear all filters ({activeFilterCount})</p>
+                  </TooltipContent>
+                </Tooltip>
+              </>
             )}
           </motion.div>
         ) : (

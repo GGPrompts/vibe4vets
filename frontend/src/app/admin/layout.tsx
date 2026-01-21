@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import {
   BarChart3,
@@ -72,13 +71,6 @@ export default function AdminLayout({
           <Menu className="h-5 w-5" />
         </Button>
         <div className="flex items-center gap-3">
-          <Image
-            src="/brand/vibe4vets-icon.png"
-            alt="Vibe4Vets"
-            width={28}
-            height={28}
-            className="h-7 w-7"
-          />
           <span className="font-display font-semibold text-[hsl(var(--v4v-navy))]">Admin</span>
         </div>
       </header>
@@ -99,13 +91,6 @@ export default function AdminLayout({
       >
         <div className="flex h-16 items-center justify-between border-b border-border/50 px-4 bg-gradient-to-r from-[hsl(var(--v4v-navy))] to-[hsl(var(--v4v-navy)/0.9)]">
           <div className="flex items-center gap-3">
-            <Image
-              src="/brand/vibe4vets-icon.png"
-              alt="Vibe4Vets"
-              width={28}
-              height={28}
-              className="h-7 w-7"
-            />
             <span className="font-display font-semibold text-[hsl(var(--v4v-gold))]">
               Admin Panel
             </span>
@@ -169,13 +154,6 @@ export default function AdminLayout({
         <aside className="sticky top-0 hidden h-screen w-64 shrink-0 border-r border-border/50 bg-card lg:block">
           {/* Sidebar Header with Navy Background */}
           <div className="flex h-16 items-center gap-3 px-5 bg-gradient-to-r from-[hsl(var(--v4v-navy))] to-[hsl(var(--v4v-navy)/0.95)]">
-            <Image
-              src="/brand/vibe4vets-icon.png"
-              alt="Vibe4Vets"
-              width={32}
-              height={32}
-              className="h-8 w-8"
-            />
             <span className="font-display font-semibold text-[hsl(var(--v4v-gold))]">
               Admin Panel
             </span>

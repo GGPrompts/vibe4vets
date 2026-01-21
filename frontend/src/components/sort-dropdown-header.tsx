@@ -75,9 +75,9 @@ export function SortDropdownHeader({
             className={cn(
               "flex items-center gap-2 px-3 py-1.5 rounded-full",
               "text-sm font-medium transition-all duration-200",
-              "text-muted-foreground hover:text-[hsl(var(--v4v-navy))]",
-              "hover:bg-[hsl(var(--v4v-bg-surface))]",
-              "border border-border/60",
+              "text-white/70 hover:text-[hsl(var(--v4v-gold))]",
+              "hover:bg-white/10",
+              "border border-white/20",
               "focus:outline-none focus:ring-2 focus:ring-[hsl(var(--v4v-gold)/0.3)]"
             )}
           >

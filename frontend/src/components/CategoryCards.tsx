@@ -1,6 +1,6 @@
 'use client';
 
-import { Briefcase, GraduationCap, Home as HomeIcon, Scale } from 'lucide-react';
+import { Briefcase, GraduationCap, Home as HomeIcon, Scale, UtensilsCrossed, FileCheck } from 'lucide-react';
 
 const categories = [
   {
@@ -39,6 +39,24 @@ const categories = [
     mutedBgClass: 'bg-v4v-legal-muted',
     textClass: 'text-v4v-legal',
   },
+  {
+    name: 'Food',
+    slug: 'food',
+    description: 'Food pantries, meal programs, and emergency food assistance',
+    icon: UtensilsCrossed,
+    colorClass: 'bg-v4v-food',
+    mutedBgClass: 'bg-v4v-food-muted',
+    textClass: 'text-v4v-food',
+  },
+  {
+    name: 'Benefits',
+    slug: 'benefits',
+    description: 'VA claims assistance, benefits counseling, and VSO services',
+    icon: FileCheck,
+    colorClass: 'bg-v4v-benefits',
+    mutedBgClass: 'bg-v4v-benefits-muted',
+    textClass: 'text-v4v-benefits',
+  },
 ];
 
 interface CategoryCardsProps {
@@ -48,7 +66,7 @@ interface CategoryCardsProps {
 
 export function CategoryCards({ selectedCategories, onToggleCategory }: CategoryCardsProps) {
   return (
-    <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+    <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
       {categories.map((category) => {
         const Icon = category.icon;
         const isSelected = selectedCategories.includes(category.slug);

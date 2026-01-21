@@ -59,6 +59,14 @@
   --v4v-legal-light: 265 45% 65%;
   --v4v-legal-muted: 265 40% 92%;
 
+  --v4v-food: 145 55% 42%;              /* Fresh green */
+  --v4v-food-light: 145 50% 52%;
+  --v4v-food-muted: 145 45% 90%;
+
+  --v4v-benefits: 340 55% 50%;          /* Rose/magenta */
+  --v4v-benefits-light: 340 50% 60%;
+  --v4v-benefits-muted: 340 45% 92%;
+
   /* Text colors */
   --v4v-text-primary: 220 50% 20%;      /* Deep navy */
   --v4v-text-secondary: 220 20% 45%;    /* Muted navy */
@@ -229,6 +237,14 @@ html {
   --color-v4v-legal: var(--v4v-legal);
   --color-v4v-legal-light: var(--v4v-legal-light);
   --color-v4v-legal-muted: var(--v4v-legal-muted);
+
+  --color-v4v-food: var(--v4v-food);
+  --color-v4v-food-light: var(--v4v-food-light);
+  --color-v4v-food-muted: var(--v4v-food-muted);
+
+  --color-v4v-benefits: var(--v4v-benefits);
+  --color-v4v-benefits-light: var(--v4v-benefits-light);
+  --color-v4v-benefits-muted: var(--v4v-benefits-muted);
 }
 
 @layer base {
@@ -527,6 +543,16 @@ html {
 .bg-v4v-legal-muted { background-color: hsl(var(--v4v-legal-muted)); }
 .text-v4v-legal { color: hsl(var(--v4v-legal)); }
 .border-v4v-legal { border-color: hsl(var(--v4v-legal)); }
+
+.bg-v4v-food { background-color: hsl(var(--v4v-food)); }
+.bg-v4v-food-muted { background-color: hsl(var(--v4v-food-muted)); }
+.text-v4v-food { color: hsl(var(--v4v-food)); }
+.border-v4v-food { border-color: hsl(var(--v4v-food)); }
+
+.bg-v4v-benefits { background-color: hsl(var(--v4v-benefits)); }
+.bg-v4v-benefits-muted { background-color: hsl(var(--v4v-benefits-muted)); }
+.text-v4v-benefits { color: hsl(var(--v4v-benefits)); }
+.border-v4v-benefits { border-color: hsl(var(--v4v-benefits)); }
 
 /* Search input styling - matches hero aesthetic */
 .search-glow {

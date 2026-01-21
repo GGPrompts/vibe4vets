@@ -128,7 +128,7 @@ export default function AboutPage() {
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute -right-20 -top-20 h-80 w-80 opacity-[0.03]">
             <Image
-              src="/brand/vibe4vets-icon.png"
+              src="/brand/vibe4vets-icon-square.png"
               alt=""
               fill
               className="object-contain"
@@ -447,14 +447,7 @@ export default function AboutPage() {
 
         <div className="relative mx-auto max-w-6xl px-6">
           <div className="flex flex-col items-center text-center">
-            <Image
-              src="/brand/vibe4vets-icon.png"
-              alt=""
-              width={56}
-              height={56}
-              className="h-14 w-14 opacity-80"
-            />
-            <h2 className="mt-3 font-display text-2xl font-semibold text-[hsl(var(--v4v-gold))]">Vibe4Vets</h2>
+            <h2 className="font-display text-2xl font-semibold text-[hsl(var(--v4v-gold))]">Vibe4Vets</h2>
 
             <p className="mt-4 max-w-lg text-base leading-relaxed text-white/70">
               Built with transparency. We aggregate veteran resources from VA.gov,

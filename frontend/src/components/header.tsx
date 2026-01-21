@@ -107,13 +107,13 @@ export function Header() {
     <header
       className={cn(
         'fixed left-0 right-0 top-0 z-50 transition-all duration-300 ease-out',
-        'bg-[hsl(var(--v4v-bg-elevated))] border-b border-border/60',
-        showShadow && 'shadow-md'
+        'bg-v4v-navy border-b border-[hsl(var(--v4v-navy-light))]',
+        showShadow && 'shadow-lg'
       )}
       style={{ paddingRight: 'var(--removed-body-scroll-bar-size, 0px)' }}
     >
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-6">
-        {/* Logo - no plate needed on light header */}
+        {/* Logo */}
         <Link href="/" className="flex shrink-0 items-center group" aria-label="Vibe4Vets Home">
           <Image
             src="/brand/vibe4vets-wordmark.png"
@@ -121,35 +121,33 @@ export function Header() {
             width={391}
             height={68}
             priority
-            className="h-9 w-auto transition-transform duration-200 group-hover:scale-105"
+            className="h-9 w-auto transition-transform duration-200 group-hover:scale-105 brightness-0 invert"
           />
         </Link>
 
-        {/* Search Bar + Sort - All pages except home */}
-        {!isHomePage && (
-          <div className="flex items-center gap-2 mx-4 flex-1 max-w-xl">
-            <form onSubmit={handleSearch} className="relative hidden flex-1 md:block">
-              <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-              <Input
-                type="text"
-                placeholder="Search resources..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="h-9 w-full rounded-full border-border bg-background pl-9 pr-4 text-sm text-foreground placeholder:text-muted-foreground focus:border-[hsl(var(--v4v-gold)/0.5)] focus:ring-[hsl(var(--v4v-gold)/0.2)]"
-              />
-            </form>
+        {/* Search Bar + Sort */}
+        <div className="flex items-center gap-2 mx-4 flex-1 max-w-xl">
+          <form onSubmit={handleSearch} className="relative hidden flex-1 md:block">
+            <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-white/60" />
+            <Input
+              type="text"
+              placeholder="Search resources..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="h-9 w-full rounded-full border-white/20 bg-white/10 pl-9 pr-4 text-sm text-white placeholder:text-white/50 focus:border-[hsl(var(--v4v-gold))] focus:bg-white/15 focus:ring-[hsl(var(--v4v-gold)/0.3)]"
+            />
+          </form>
 
-            {/* Sort dropdown - only on search page */}
-            {isSearchPage && (
-              <SortDropdownHeader
-                value={currentSort}
-                onChange={handleSortChange}
-                hasQuery={!!query}
-                className="hidden md:block"
-              />
-            )}
-          </div>
-        )}
+          {/* Sort dropdown - only on search page */}
+          {isSearchPage && (
+            <SortDropdownHeader
+              value={currentSort}
+              onChange={handleSortChange}
+              hasQuery={!!query}
+              className="hidden md:block"
+            />
+          )}
+        </div>
 
         {/* Navigation */}
         <nav className="flex shrink-0 items-center gap-6">
@@ -158,8 +156,8 @@ export function Header() {
             className={cn(
               "text-base font-medium transition-all duration-200 flex items-center gap-2",
               pathname === '/search'
-                ? "text-[hsl(var(--v4v-navy))]"
-                : "text-muted-foreground hover:text-[hsl(var(--v4v-navy))]"
+                ? "text-[hsl(var(--v4v-gold))]"
+                : "text-white/80 hover:text-[hsl(var(--v4v-gold))]"
             )}
           >
             Search
@@ -179,8 +177,8 @@ export function Header() {
             className={cn(
               "text-base font-medium transition-all duration-200 flex items-center gap-2",
               pathname === '/saved'
-                ? "text-[hsl(var(--v4v-navy))]"
-                : "text-muted-foreground hover:text-[hsl(var(--v4v-navy))]"
+                ? "text-[hsl(var(--v4v-gold))]"
+                : "text-white/80 hover:text-[hsl(var(--v4v-gold))]"
             )}
           >
             <Bookmark className={cn(
@@ -199,7 +197,7 @@ export function Header() {
           </Link>
           <Link
             href="/admin"
-            className="text-base font-medium text-muted-foreground transition-all duration-200 hover:text-[hsl(var(--v4v-navy))]"
+            className="text-base font-medium text-white/80 transition-all duration-200 hover:text-[hsl(var(--v4v-gold))]"
           >
             Admin
           </Link>
