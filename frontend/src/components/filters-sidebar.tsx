@@ -15,7 +15,8 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from '@/components/ui/tooltip';
-import { Filter, X, Briefcase, GraduationCap, Home, Scale, ChevronDown, PanelLeft, PanelLeftClose } from 'lucide-react';
+import { Filter, X, Briefcase, GraduationCap, Home, Scale, ChevronDown, PanelLeft, PanelLeftClose, Search } from 'lucide-react';
+import { Input } from '@/components/ui/input';
 import { cn } from '@/lib/utils';
 
 export const CATEGORIES = [
@@ -181,6 +182,21 @@ export function FiltersSidebar({
   const [categoriesOpen, setCategoriesOpen] = useState(true);
   const [scopeOpen, setScopeOpen] = useState(true);
   const [statesOpen, setStatesOpen] = useState(false);
+  const [stateSearch, setStateSearch] = useState('');
+
+  // Clear state search when section collapses
+  const handleStatesToggle = () => {
+    if (statesOpen) {
+      setStateSearch('');
+    }
+    setStatesOpen(!statesOpen);
+  };
+
+  // Filter states based on search query
+  const filteredStates = STATES.filter((state) =>
+    state.label.toLowerCase().includes(stateSearch.toLowerCase()) ||
+    state.value.toLowerCase().includes(stateSearch.toLowerCase())
+  );
 
   const activeFilterCount =
     filters.categories.length +
@@ -357,39 +373,56 @@ export function FiltersSidebar({
           )
         }
         isOpen={statesOpen}
-        onToggle={() => setStatesOpen(!statesOpen)}
+        onToggle={handleStatesToggle}
       >
+        {/* State search input */}
+        <div className="relative mb-2">
+          <Search className="absolute left-2.5 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+          <Input
+            type="text"
+            placeholder="Search states..."
+            value={stateSearch}
+            onChange={(e) => setStateSearch(e.target.value)}
+            className="h-9 pl-8 text-sm bg-muted/50"
+          />
+        </div>
         <ScrollArea className="h-48 rounded-lg border bg-card/50 p-2">
           <div className="space-y-0.5">
-            {STATES.map((state) => {
-              const isChecked = filters.states.includes(state.value);
-              return (
-                <div
-                  key={state.value}
-                  className={cn(
-                    'flex min-h-[40px] items-center space-x-3 rounded-md border-l-2 px-2 transition-all duration-200',
-                    isChecked
-                      ? 'border-l-[hsl(var(--v4v-navy))] bg-[hsl(var(--v4v-navy)/0.06)]'
-                      : 'border-l-transparent hover:bg-muted/50'
-                  )}
-                >
-                  <Checkbox
-                    id={`state-${state.value}`}
-                    checked={isChecked}
-                    onCheckedChange={() => handleStateToggle(state.value)}
-                  />
-                  <Label
-                    htmlFor={`state-${state.value}`}
+            {filteredStates.length === 0 ? (
+              <div className="flex items-center justify-center h-20 text-sm text-muted-foreground">
+                No states match &ldquo;{stateSearch}&rdquo;
+              </div>
+            ) : (
+              filteredStates.map((state) => {
+                const isChecked = filters.states.includes(state.value);
+                return (
+                  <div
+                    key={state.value}
                     className={cn(
-                      'flex flex-1 min-h-[40px] cursor-pointer items-center text-sm',
-                      isChecked && 'font-medium text-[hsl(var(--v4v-navy))]'
+                      'flex min-h-[40px] items-center space-x-3 rounded-md border-l-2 px-2 transition-all duration-200',
+                      isChecked
+                        ? 'border-l-[hsl(var(--v4v-navy))] bg-[hsl(var(--v4v-navy)/0.06)]'
+                        : 'border-l-transparent hover:bg-muted/50'
                     )}
                   >
-                    {state.label}
-                  </Label>
-                </div>
-              );
-            })}
+                    <Checkbox
+                      id={`state-${state.value}`}
+                      checked={isChecked}
+                      onCheckedChange={() => handleStateToggle(state.value)}
+                    />
+                    <Label
+                      htmlFor={`state-${state.value}`}
+                      className={cn(
+                        'flex flex-1 min-h-[40px] cursor-pointer items-center text-sm',
+                        isChecked && 'font-medium text-[hsl(var(--v4v-navy))]'
+                      )}
+                    >
+                      {state.label}
+                    </Label>
+                  </div>
+                );
+              })
+            )}
           </div>
         </ScrollArea>
       </CollapsibleSection>
