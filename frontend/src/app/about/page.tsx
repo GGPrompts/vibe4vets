@@ -17,6 +17,7 @@ import {
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { BackToTop } from '@/components/BackToTop';
+import { AIStatsWidget } from '@/components/AIStatsWidget';
 
 interface ExpandableSectionProps {
   title: string;
@@ -174,8 +175,31 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Expandable Sections */}
+      {/* AI Transparency Section */}
       <section className="py-16 bg-background">
+        <div className="mx-auto max-w-4xl px-6">
+          <div className="text-center mb-8">
+            <div className="inline-flex items-center gap-2 mb-4">
+              <div className="h-px w-10 bg-gradient-to-r from-transparent to-border" />
+              <span className="text-sm font-medium uppercase tracking-widest text-[hsl(var(--v4v-gold-dark))]">
+                AI Transparency
+              </span>
+              <div className="h-px w-10 bg-gradient-to-l from-transparent to-border" />
+            </div>
+            <h2 className="font-display text-2xl font-medium text-foreground sm:text-3xl mb-3">
+              How Our AI Works
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              We believe in radical transparency. Here&apos;s real-time data on how our AI-powered
+              system discovers and verifies veteran resources.
+            </p>
+          </div>
+          <AIStatsWidget />
+        </div>
+      </section>
+
+      {/* Expandable Sections */}
+      <section className="py-16 bg-[hsl(var(--v4v-bg-muted))]">
         <div className="mx-auto max-w-4xl px-6 space-y-4">
           {/* How Resources Are Gathered */}
           <ExpandableSection

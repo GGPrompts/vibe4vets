@@ -441,6 +441,26 @@ export interface AnalyticsDashboardResponse {
   daily_trends: DailyTrendItem[];
 }
 
+// AI Stats types (for About page transparency section)
+export interface ConnectorInfo {
+  name: string;
+  source_name: string;
+  tier: number;
+  description: string;
+}
+
+export interface AIStats {
+  total_resources: number;
+  resources_verified: number;
+  resources_by_category: Record<string, number>;
+  total_sources: number;
+  connectors_active: ConnectorInfo[];
+  last_refresh: string | null;
+  average_trust_score: number;
+  scheduler_status: string;
+  jobs_completed_today: number;
+}
+
 async function fetchAPI<T>(
   endpoint: string,
   options: RequestInit = {}
@@ -748,6 +768,13 @@ export const api = {
 
     getDailyTrends: (days: number = 30): Promise<DailyTrendItem[]> => {
       return fetchAPI(`/api/v1/analytics/admin/daily-trends?days=${days}`);
+    },
+  },
+
+  // AI Stats API (for About page transparency)
+  stats: {
+    getAIStats: (): Promise<AIStats> => {
+      return fetchAPI('/api/v1/stats/ai');
     },
   },
 };
