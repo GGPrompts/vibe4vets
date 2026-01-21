@@ -64,18 +64,16 @@ export default function Home() {
         <div className="absolute right-1/4 top-1/3 h-64 w-64 rounded-full bg-[hsl(var(--v4v-employment)/0.08)] blur-3xl" />
 
         <div className="relative mx-auto max-w-6xl px-6 py-10 lg:py-14">
-          {/* Logo centered with light background for contrast */}
+          {/* Logo centered - light version for dark background */}
           <div className="flex flex-col items-center text-center mb-8">
-            <div className="rounded-2xl bg-white/95 px-6 py-4 shadow-lg backdrop-blur-sm">
-              <Image
-                src="/brand/vibe4vets-logo-full-cropped.png"
-                alt="Vibe4Vets - Veteran Resource Directory"
-                width={582}
-                height={157}
-                priority
-                className="h-auto w-auto max-w-[260px] sm:max-w-[340px] lg:max-w-[400px]"
-              />
-            </div>
+            <Image
+              src="/brand/vibe4vets-logo-light.png"
+              alt="Vibe4Vets - Veteran Resource Directory"
+              width={600}
+              height={150}
+              priority
+              className="h-auto w-auto max-w-[340px] sm:max-w-[450px] lg:max-w-[550px] drop-shadow-lg"
+            />
           </div>
 
           {/* Interactive US Map */}
