@@ -1,13 +1,17 @@
 """Source and SourceRecord models using SQLModel."""
 
 import uuid
-from datetime import datetime
+from datetime import UTC, datetime
 from enum import Enum
 from typing import TYPE_CHECKING, Any
 
 from sqlalchemy import Column
 from sqlalchemy.dialects.postgresql import JSONB
 from sqlmodel import Field, Relationship, SQLModel
+
+
+def _utc_now() -> datetime:
+    return datetime.now(UTC)
 
 if TYPE_CHECKING:
     from app.models.resource import Resource
@@ -66,7 +70,7 @@ class Source(SQLModel, table=True):
     health_status: HealthStatus = Field(default=HealthStatus.HEALTHY)
     error_count: int = Field(default=0)
 
-    created_at: datetime = Field(default_factory=datetime.utcnow)
+    created_at: datetime = Field(default_factory=_utc_now)
 
     # Relationships
     resources: list["Resource"] = Relationship(back_populates="source")
@@ -84,7 +88,7 @@ class SourceRecord(SQLModel, table=True):
     source_id: uuid.UUID = Field(foreign_key="sources.id")
 
     url: str = Field(max_length=500)
-    fetched_at: datetime = Field(default_factory=datetime.utcnow)
+    fetched_at: datetime = Field(default_factory=_utc_now)
     raw_hash: str = Field(max_length=64)  # SHA-256 for change detection
     raw_path: str | None = Field(default=None, max_length=500)  # S3/local path
     extracted_text: str | None = None
@@ -108,7 +112,7 @@ class SourceError(SQLModel, table=True):
     )  # Stack trace, request info, etc.
 
     job_run_id: str | None = Field(default=None, max_length=50)  # Links to scheduler history
-    occurred_at: datetime = Field(default_factory=datetime.utcnow, index=True)
+    occurred_at: datetime = Field(default_factory=_utc_now, index=True)
 
     # Relationships
     source: "Source" = Relationship(back_populates="errors")

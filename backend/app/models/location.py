@@ -1,13 +1,17 @@
 """Location model using SQLModel."""
 
 import uuid
-from datetime import datetime
+from datetime import UTC, datetime
 from enum import Enum
 from typing import TYPE_CHECKING
 
 from sqlalchemy import Column, Text
 from sqlalchemy.dialects.postgresql import ARRAY
 from sqlmodel import Field, Relationship, SQLModel
+
+
+def _utc_now() -> datetime:
+    return datetime.now(UTC)
 
 if TYPE_CHECKING:
     from app.models.organization import Organization
@@ -89,7 +93,7 @@ class Location(SQLModel, table=True):
         default_factory=list, sa_column=Column(ARRAY(Text), nullable=False, default=[])
     )  # Counties/regions served
 
-    created_at: datetime = Field(default_factory=datetime.utcnow)
+    created_at: datetime = Field(default_factory=_utc_now)
 
     # === Eligibility constraints ===
     age_min: int | None = Field(default=None, description="Minimum age requirement")

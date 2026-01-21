@@ -5,7 +5,7 @@ requiring an account. Feedback is reviewed by admins and applied to improve
 data quality.
 """
 
-from datetime import datetime
+from datetime import UTC, datetime
 from uuid import UUID
 
 from fastapi import APIRouter, HTTPException, Query
@@ -216,7 +216,7 @@ def review_feedback(
     # Update feedback
     feedback.status = action.status
     feedback.reviewer = action.reviewer
-    feedback.reviewed_at = datetime.utcnow()
+    feedback.reviewed_at = datetime.now(UTC)
     feedback.reviewer_notes = action.reviewer_notes
 
     session.add(feedback)

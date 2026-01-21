@@ -1,12 +1,16 @@
 """Organization model using SQLModel."""
 
 import uuid
-from datetime import datetime
+from datetime import UTC, datetime
 from typing import TYPE_CHECKING
 
 from sqlalchemy import Column, Text
 from sqlalchemy.dialects.postgresql import ARRAY
 from sqlmodel import Field, Relationship, SQLModel
+
+
+def _utc_now() -> datetime:
+    return datetime.now(UTC)
 
 if TYPE_CHECKING:
     from app.models.location import Location
@@ -26,8 +30,8 @@ class Organization(SQLModel, table=True):
     phones: list[str] = Field(default_factory=list, sa_column=Column(ARRAY(Text), nullable=False, default=[]))
     emails: list[str] = Field(default_factory=list, sa_column=Column(ARRAY(Text), nullable=False, default=[]))
 
-    created_at: datetime = Field(default_factory=datetime.utcnow)
-    updated_at: datetime = Field(default_factory=datetime.utcnow)
+    created_at: datetime = Field(default_factory=_utc_now)
+    updated_at: datetime = Field(default_factory=_utc_now)
 
     # Relationships
     locations: list["Location"] = Relationship(back_populates="organization")

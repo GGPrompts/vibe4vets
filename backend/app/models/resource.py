@@ -1,7 +1,7 @@
 """Resource model using SQLModel - the core entity."""
 
 import uuid
-from datetime import datetime
+from datetime import UTC, datetime
 from enum import Enum
 from typing import TYPE_CHECKING, Any, Optional
 
@@ -9,6 +9,10 @@ from pgvector.sqlalchemy import Vector
 from sqlalchemy import Column, Text
 from sqlalchemy.dialects.postgresql import ARRAY, TSVECTOR
 from sqlmodel import Field, Relationship, SQLModel
+
+
+def _utc_now() -> datetime:
+    return datetime.now(UTC)
 
 # Embedding dimension for text-embedding-3-small (OpenAI) or equivalent
 EMBEDDING_DIMENSION = 1536
@@ -93,8 +97,8 @@ class Resource(SQLModel, table=True):
 
     # State
     status: ResourceStatus = Field(default=ResourceStatus.ACTIVE)
-    created_at: datetime = Field(default_factory=datetime.utcnow)
-    updated_at: datetime = Field(default_factory=datetime.utcnow)
+    created_at: datetime = Field(default_factory=_utc_now)
+    updated_at: datetime = Field(default_factory=_utc_now)
 
     # Full-text search vector (auto-populated by trigger or manually)
     search_vector: str | None = Field(default=None, sa_column=Column(TSVECTOR))

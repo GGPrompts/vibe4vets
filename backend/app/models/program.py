@@ -1,13 +1,17 @@
 """Program model using SQLModel - represents funded programs/grants run by organizations."""
 
 import uuid
-from datetime import date, datetime
+from datetime import UTC, date, datetime
 from enum import Enum
 from typing import TYPE_CHECKING
 
 from sqlalchemy import Column, Text
 from sqlalchemy.dialects.postgresql import ARRAY
 from sqlmodel import Field, Relationship, SQLModel
+
+
+def _utc_now() -> datetime:
+    return datetime.now(UTC)
 
 if TYPE_CHECKING:
     from app.models.organization import Organization
@@ -77,8 +81,8 @@ class Program(SQLModel, table=True):
 
     # Status
     status: ProgramStatus = Field(default=ProgramStatus.ACTIVE)
-    created_at: datetime = Field(default_factory=datetime.utcnow)
-    updated_at: datetime = Field(default_factory=datetime.utcnow)
+    created_at: datetime = Field(default_factory=_utc_now)
+    updated_at: datetime = Field(default_factory=_utc_now)
 
     # Relationships
     organization: "Organization" = Relationship(back_populates="programs")

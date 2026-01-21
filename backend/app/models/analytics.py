@@ -5,10 +5,14 @@ Data is aggregated to understand usage patterns without tracking individuals.
 """
 
 import uuid
-from datetime import datetime
+from datetime import UTC, datetime
 from enum import Enum
 
 from sqlmodel import Field, SQLModel
+
+
+def _utc_now() -> datetime:
+    return datetime.now(UTC)
 
 
 class AnalyticsEventType(str, Enum):
@@ -64,7 +68,7 @@ class AnalyticsEvent(SQLModel, table=True):
     page_path: str | None = Field(default=None, max_length=255)
 
     # Timestamp
-    created_at: datetime = Field(default_factory=datetime.utcnow, index=True)
+    created_at: datetime = Field(default_factory=_utc_now, index=True)
 
 
 class AnalyticsDailyAggregate(SQLModel, table=True):
@@ -100,5 +104,5 @@ class AnalyticsDailyAggregate(SQLModel, table=True):
     top_resources: str | None = Field(default=None)  # JSON: {"uuid1": 100, "uuid2": 80}
 
     # Metadata
-    created_at: datetime = Field(default_factory=datetime.utcnow)
-    updated_at: datetime = Field(default_factory=datetime.utcnow)
+    created_at: datetime = Field(default_factory=_utc_now)
+    updated_at: datetime = Field(default_factory=_utc_now)

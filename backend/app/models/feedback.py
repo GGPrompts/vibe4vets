@@ -1,10 +1,14 @@
 """User feedback model for reporting outdated or incorrect resource information."""
 
 import uuid
-from datetime import datetime
+from datetime import UTC, datetime
 from enum import Enum
 
 from sqlmodel import Field, SQLModel
+
+
+def _utc_now() -> datetime:
+    return datetime.now(UTC)
 
 
 class FeedbackIssueType(str, Enum):
@@ -55,4 +59,4 @@ class Feedback(SQLModel, table=True):
     reviewer_notes: str | None = Field(default=None, max_length=1000)
 
     # Timestamps
-    created_at: datetime = Field(default_factory=datetime.utcnow)
+    created_at: datetime = Field(default_factory=_utc_now)

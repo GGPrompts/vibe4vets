@@ -1,11 +1,15 @@
 """Review and ChangeLog models using SQLModel."""
 
 import uuid
-from datetime import datetime
+from datetime import UTC, datetime
 from enum import Enum
 from typing import TYPE_CHECKING
 
 from sqlmodel import Field, Relationship, SQLModel
+
+
+def _utc_now() -> datetime:
+    return datetime.now(UTC)
 
 if TYPE_CHECKING:
     from app.models.resource import Resource
@@ -41,7 +45,7 @@ class ReviewState(SQLModel, table=True):
     reviewed_at: datetime | None = None
     notes: str | None = None
 
-    created_at: datetime = Field(default_factory=datetime.utcnow)
+    created_at: datetime = Field(default_factory=_utc_now)
 
     # Relationships
     resource: "Resource" = Relationship(back_populates="reviews")
@@ -60,7 +64,7 @@ class ChangeLog(SQLModel, table=True):
     new_value: str | None = None
     change_type: ChangeType = Field(default=ChangeType.UPDATE)
 
-    timestamp: datetime = Field(default_factory=datetime.utcnow)
+    timestamp: datetime = Field(default_factory=_utc_now)
 
     # Relationships
     resource: "Resource" = Relationship(back_populates="changes")

@@ -6,7 +6,7 @@ and SourceRecord entities with conflict resolution.
 
 import hashlib
 import json
-from datetime import datetime
+from datetime import UTC, datetime
 
 from sqlmodel import Session, select
 
@@ -140,7 +140,7 @@ class Loader:
             # Update website if we have a better one
             if resource.org_website and not org.website:
                 org.website = resource.org_website
-                org.updated_at = datetime.utcnow()
+                org.updated_at = datetime.now(UTC)
                 self.session.add(org)
             self._org_cache[org_key] = org
             return org
@@ -232,7 +232,7 @@ class Loader:
         source: Source | None,
     ) -> LoadResult:
         """Create a new resource."""
-        now = datetime.utcnow()
+        now = datetime.now(UTC)
 
         resource = Resource(
             organization_id=org.id,
@@ -331,7 +331,7 @@ class Loader:
             existing.reliability_score = normalized.reliability_score
 
         # Update timestamps
-        now = datetime.utcnow()
+        now = datetime.now(UTC)
         existing.last_scraped = normalized.fetched_at or now
         existing.updated_at = now
 
@@ -393,14 +393,14 @@ class Loader:
             resource_id=resource.id,
             source_id=source.id,
             url=normalized.source_url,
-            fetched_at=normalized.fetched_at or datetime.utcnow(),
+            fetched_at=normalized.fetched_at or datetime.now(UTC),
             raw_hash=raw_hash,
         )
         self.session.add(record)
 
         # Update source health
-        source.last_run = datetime.utcnow()
-        source.last_success = datetime.utcnow()
+        source.last_run = datetime.now(UTC)
+        source.last_success = datetime.now(UTC)
         source.health_status = HealthStatus.HEALTHY
         source.error_count = 0
         self.session.add(source)

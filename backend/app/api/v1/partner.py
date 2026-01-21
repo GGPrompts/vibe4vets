@@ -4,7 +4,7 @@ Allows trusted partners (VSOs, nonprofits) to submit and manage resources
 through API key authentication. Submissions go through human review.
 """
 
-from datetime import datetime, timedelta
+from datetime import UTC, datetime, timedelta
 from typing import Annotated
 from uuid import UUID
 
@@ -66,7 +66,7 @@ class PartnerAuth:
             )
 
         # Check rate limiting
-        now = datetime.utcnow()
+        now = datetime.now(UTC)
         if partner.rate_limit_reset_at is None or now >= partner.rate_limit_reset_at:
             # Reset the rate limit window
             partner.rate_limit_count = 0
@@ -316,7 +316,7 @@ def update_resource(
 
     # Reset to needs_review status
     resource.status = ResourceStatus.NEEDS_REVIEW
-    resource.updated_at = datetime.utcnow()
+    resource.updated_at = datetime.now(UTC)
     session.add(resource)
 
     # Create or update review state
@@ -339,7 +339,7 @@ def update_resource(
         session.add(review)
 
     # Update submission tracking
-    submission.updated_at = datetime.utcnow()
+    submission.updated_at = datetime.now(UTC)
     session.add(submission)
 
     session.commit()

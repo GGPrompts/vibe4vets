@@ -4,7 +4,7 @@ Chains normalization, deduplication, enrichment, and loading
 into a complete pipeline with error handling and statistics.
 """
 
-from datetime import datetime
+from datetime import UTC, datetime
 
 from sqlmodel import Session
 
@@ -55,7 +55,7 @@ class ETLPipeline:
         Returns:
             ETLResult with statistics and errors.
         """
-        started_at = datetime.utcnow()
+        started_at = datetime.now(UTC)
         stats = ETLStats()
         errors: list[ETLError] = []
 
@@ -99,7 +99,7 @@ class ETLPipeline:
                 stats=stats,
                 errors=errors,
                 started_at=started_at,
-                completed_at=datetime.utcnow(),
+                completed_at=datetime.now(UTC),
             )
 
         # Step 2: Deduplicate across all sources
@@ -129,7 +129,7 @@ class ETLPipeline:
             stats=stats,
             errors=errors,
             started_at=started_at,
-            completed_at=datetime.utcnow(),
+            completed_at=datetime.now(UTC),
         )
 
     def run_single(self, connector: Connector) -> ETLResult:
@@ -175,7 +175,7 @@ class ETLPipeline:
         Returns:
             ETLResult with statistics (no database changes).
         """
-        started_at = datetime.utcnow()
+        started_at = datetime.now(UTC)
         stats = ETLStats()
         errors: list[ETLError] = []
 
@@ -227,7 +227,7 @@ class ETLPipeline:
             stats=stats,
             errors=errors,
             started_at=started_at,
-            completed_at=datetime.utcnow(),
+            completed_at=datetime.now(UTC),
         )
 
 

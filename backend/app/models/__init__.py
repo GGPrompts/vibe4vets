@@ -1,5 +1,17 @@
 """Database models using SQLModel."""
 
+from datetime import UTC, datetime
+
+
+def utc_now() -> datetime:
+    """Return current UTC time (timezone-aware).
+
+    Use this as default_factory for datetime fields instead of
+    datetime.utcnow() which is deprecated in Python 3.12+.
+    """
+    return datetime.now(UTC)
+
+
 from app.models.analytics import (
     AnalyticsDailyAggregate,
     AnalyticsEvent,
@@ -27,6 +39,7 @@ from app.models.source import (
 )
 
 __all__ = [
+    "utc_now",
     "AnalyticsDailyAggregate",
     "AnalyticsEvent",
     "AnalyticsEventType",

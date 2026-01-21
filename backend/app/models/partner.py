@@ -3,11 +3,15 @@
 import hashlib
 import secrets
 import uuid
-from datetime import datetime
+from datetime import UTC, datetime
 from enum import Enum
 from typing import TYPE_CHECKING
 
 from sqlmodel import Field, Relationship, SQLModel
+
+
+def _utc_now() -> datetime:
+    return datetime.now(UTC)
 
 if TYPE_CHECKING:
     from app.models.resource import Resource
@@ -45,7 +49,7 @@ class Partner(SQLModel, table=True):
     rate_limit_reset_at: datetime | None = None
 
     # Audit
-    created_at: datetime = Field(default_factory=datetime.utcnow)
+    created_at: datetime = Field(default_factory=_utc_now)
     created_by: str | None = Field(default=None, max_length=100)  # Admin who created
 
     # Relationships
@@ -72,7 +76,7 @@ class PartnerSubmission(SQLModel, table=True):
     partner_id: uuid.UUID = Field(foreign_key="partners.id", index=True)
     resource_id: uuid.UUID = Field(foreign_key="resources.id", index=True)
 
-    submitted_at: datetime = Field(default_factory=datetime.utcnow)
+    submitted_at: datetime = Field(default_factory=_utc_now)
     updated_at: datetime | None = None
 
     # Relationships
@@ -93,7 +97,7 @@ class PartnerAPILog(SQLModel, table=True):
     status_code: int
     request_summary: str | None = Field(default=None, max_length=500)
 
-    timestamp: datetime = Field(default_factory=datetime.utcnow, index=True)
+    timestamp: datetime = Field(default_factory=_utc_now, index=True)
 
     # Relationships
     partner: "Partner" = Relationship(back_populates="api_logs")
