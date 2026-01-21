@@ -130,7 +130,7 @@ export default function Home() {
             <Button
               onClick={handleSearch}
               size="lg"
-              className="btn-gold gap-3 rounded-xl px-12 py-6 text-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+              className="btn-gold gap-3 rounded-xl px-12 py-6 text-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 min-w-[320px]"
             >
               <Search className="h-6 w-6" />
               {isLoadingCount ? (
@@ -139,7 +139,7 @@ export default function Home() {
                   <span>Loading...</span>
                 </>
               ) : resourceCount !== null ? (
-                <span>Search {resourceCount.toLocaleString()} Resources</span>
+                <span className="tabular-nums">Search {resourceCount.toLocaleString()} Resources</span>
               ) : (
                 <span>Search Resources</span>
               )}
