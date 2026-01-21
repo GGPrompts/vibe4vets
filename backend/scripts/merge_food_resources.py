@@ -143,11 +143,11 @@ def main():
     print(f"With schedule: {stats['with_schedule']} ({100*stats['with_schedule']/stats['total']:.1f}%)")
     print(f"With source_url: {stats['with_source_url']} ({100*stats['with_source_url']/stats['total']:.1f}%)")
 
-    print(f"\nBy state:")
+    print("\nBy state:")
     for state, count in sorted(stats['by_state'].items(), key=lambda x: -x[1]):
         print(f"  {state}: {count}")
 
-    print(f"\nBy subcategory:")
+    print("\nBy subcategory:")
     for subcat, count in sorted(stats['by_subcategory'].items(), key=lambda x: -x[1]):
         print(f"  {subcat}: {count}")
 
@@ -162,7 +162,8 @@ def main():
     print("ACCEPTANCE CRITERIA CHECK")
     print(f"{'='*50}")
 
-    has_contact = stats['with_website'] + stats['with_phone'] - sum(1 for r in merged if r.get('website') and r.get('phone'))
+    both_contact = sum(1 for r in merged if r.get('website') and r.get('phone'))
+    has_contact = stats['with_website'] + stats['with_phone'] - both_contact
     contact_pct = 100 * has_contact / stats['total']
     schedule_pct = 100 * stats['with_schedule'] / stats['total']
     source_pct = 100 * stats['with_source_url'] / stats['total']

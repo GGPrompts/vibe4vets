@@ -118,7 +118,7 @@ def main():
     print(f"Found {len(missing)} resources needing enrichment")
 
     regions = group_by_region(missing)
-    print(f"\nBy region:")
+    print("\nBy region:")
     for region, res_list in regions.items():
         print(f"  {region}: {len(res_list)}")
 
