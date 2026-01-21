@@ -1,0 +1,959 @@
+[
+  {
+    "name": "Veterans Inc. Food Pantry",
+    "organization": "Veterans Inc.",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Community food pantry serving veterans in need across New England. Provides food assistance 24/7.",
+    "phone": "1-800-482-2565",
+    "website": "https://www.veteransinc.org/",
+    "address": "69 Grove Street",
+    "city": "Worcester",
+    "state": "MA",
+    "zip": "01605",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": ["DD214", "Military ID", "VA ID"]
+    },
+    "food_details": {
+      "distribution_schedule": "1st and 3rd Thursday of month, 9:00 AM - 1:00 PM",
+      "quantity_limit": "Once per month",
+      "id_required": true
+    },
+    "intake": {
+      "phone": "1-800-482-2565",
+      "hours": "24 hours available",
+      "notes": "24-hour availability for assistance"
+    },
+    "source_url": "https://www.veteransinc.org/",
+    "confidence": 0.9
+  },
+  {
+    "name": "Revere Veterans Food Pantry",
+    "organization": "City of Revere Veterans Services",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Food pantry exclusively for veterans, widows/widowers of veterans, and veteran dependents.",
+    "phone": "781-286-8119",
+    "website": "https://www.revere.org/departments/veterans-office",
+    "address": "249 Broadway Rear, American Legion Building",
+    "city": "Revere",
+    "state": "MA",
+    "zip": "02151",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": ["Military Service Documentation"]
+    },
+    "food_details": {
+      "distribution_schedule": "1st Wednesday of month (weather dependent)",
+      "quantity_limit": "Once per month",
+      "id_required": true
+    },
+    "intake": {
+      "phone": "781-286-8119",
+      "hours": "Contact Veterans Services for distribution times",
+      "notes": "First-time visitors must bring military documentation to register"
+    },
+    "source_url": "https://www.revere.org/departments/veterans-office",
+    "confidence": 0.8
+  },
+  {
+    "name": "Jamaica Plain VA Medical Center - Food Assistance",
+    "organization": "VA Boston Healthcare System",
+    "category": "food",
+    "subcategory": "meal-program",
+    "description": "VA Medical Center providing nutrition services and food assistance programs with registered dietitians.",
+    "phone": "617-232-9500",
+    "website": "https://www.va.gov/boston-health-care/locations/jamaica-plain-va-medical-center/",
+    "address": "150 South Huntington Avenue",
+    "city": "Boston",
+    "state": "MA",
+    "zip": "02130",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Nutrition counseling by appointment",
+      "quantity_limit": "Individual sessions available",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "617-232-9500",
+      "hours": "During facility business hours",
+      "notes": "Offers group, individual and telehealth nutrition sessions"
+    },
+    "source_url": "https://www.va.gov/boston-health-care/locations/jamaica-plain-va-medical-center/",
+    "confidence": 0.9
+  },
+  {
+    "name": "Montachusett Veterans Outreach Center - Food & Clothing Pantry",
+    "organization": "Montachusett Veterans Outreach Center, Inc.",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Need-based food and clothing pantry serving veterans and surviving family members across Worcester County.",
+    "phone": "978-632-9601",
+    "website": "https://www.veterans-outreach.org/",
+    "address": "268 Central Street",
+    "city": "Gardner",
+    "state": "MA",
+    "zip": "01440",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": ["Military Service Proof"]
+    },
+    "food_details": {
+      "distribution_schedule": "Monday, Wednesday, Friday, 9:00 AM - 12:00 PM",
+      "quantity_limit": "Monthly distribution",
+      "id_required": true
+    },
+    "intake": {
+      "phone": "978-632-9601",
+      "hours": "Monday, Wednesday, Friday 9 AM - 12 PM",
+      "notes": "Serves over 200 family units monthly, covers Worcester County veterans"
+    },
+    "source_url": "https://www.veterans-outreach.org/",
+    "confidence": 0.8
+  },
+  {
+    "name": "Clear Path for Veterans New England - Canteen Lunch Program",
+    "organization": "Clear Path for Veterans New England",
+    "category": "food",
+    "subcategory": "meal-program",
+    "description": "Weekly canteen lunch program serving freshly prepared plated meals to veterans.",
+    "phone": "978-760-2282",
+    "website": "https://www.clearpathne.org/",
+    "address": "84 Antietam Street",
+    "city": "Devens",
+    "state": "MA",
+    "zip": "01434",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Thursday, 11:00 AM - 2:00 PM (two seating sessions)",
+      "quantity_limit": "Once per week",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "978-760-2282",
+      "hours": "Thursday 11 AM - 2 PM",
+      "notes": "Veterans must register each week for accurate meal count"
+    },
+    "source_url": "https://www.clearpathne.org/",
+    "confidence": 0.8
+  },
+  {
+    "name": "Rhode Island Community Food Bank",
+    "organization": "Rhode Island Community Food Bank",
+    "category": "food",
+    "subcategory": "groceries",
+    "description": "Community food bank serving 63,000+ Rhode Islanders monthly through network of pantries and meal sites.",
+    "phone": "401-942-6325",
+    "website": "https://rifoodbank.org/",
+    "address": "200 Niantic Avenue",
+    "city": "Providence",
+    "state": "RI",
+    "zip": "02907",
+    "eligibility": {
+      "veteran_status_required": false,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Through network of affiliated pantries and meal sites",
+      "quantity_limit": "Variable by location",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "401-942-6325",
+      "hours": "Monday - Friday 8:00 AM - 5:00 PM",
+      "notes": "Visit rifoodbank.org/find-food for specific pantry locations"
+    },
+    "source_url": "https://rifoodbank.org/",
+    "confidence": 0.8
+  },
+  {
+    "name": "Operation Stand Down Rhode Island - Food Pantry",
+    "organization": "Operation Stand Down Rhode Island (OSDRI)",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Veteran-focused food pantry and personal hygiene program for in-need veterans.",
+    "phone": "401-383-4730",
+    "website": "https://osdri.org/",
+    "address": "321 Main Street",
+    "city": "Johnston",
+    "state": "RI",
+    "zip": "02919",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": ["Proof of Veteran Status"]
+    },
+    "food_details": {
+      "distribution_schedule": "During normal business hours (call for specifics)",
+      "quantity_limit": "As needed",
+      "id_required": true
+    },
+    "intake": {
+      "phone": "401-383-4730",
+      "hours": "Business hours - call for specifics",
+      "notes": "Stocked with non-perishables, personal hygiene items also available"
+    },
+    "source_url": "https://osdri.org/",
+    "confidence": 0.8
+  },
+  {
+    "name": "Providence VA Medical Center - Food Assistance",
+    "organization": "VA Providence Healthcare System",
+    "category": "food",
+    "subcategory": "meal-program",
+    "description": "VA Medical Center providing immediate food and shelter assistance through care coordinators.",
+    "phone": "401-273-7100",
+    "website": "https://www.va.gov/providence-health-care/locations/providence-va-medical-center/",
+    "address": "830 Chalkstone Avenue",
+    "city": "Providence",
+    "state": "RI",
+    "zip": "02908",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "By appointment with care coordinators",
+      "quantity_limit": "As needed",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "401-273-7100",
+      "hours": "During facility business hours",
+      "notes": "Assistance available through care coordinators for homeless or at-risk veterans"
+    },
+    "source_url": "https://www.va.gov/providence-health-care/locations/providence-va-medical-center/",
+    "confidence": 0.9
+  },
+  {
+    "name": "CAPP Food Pantry",
+    "organization": "Community Action Partnership of Providence County",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Largest community food pantry in Providence County serving 1,000+ residents monthly with culturally appropriate food.",
+    "phone": "401-273-2000 Ext. 309",
+    "website": "https://cappri.org/programs/food-pantry",
+    "address": "550 Hartford Avenue",
+    "city": "Providence",
+    "state": "RI",
+    "zip": "02909",
+    "eligibility": {
+      "veteran_status_required": false,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Tuesday 1:30 PM - 3:00 PM (seniors/disabled), Wednesday 10:00 AM - 2:00 PM",
+      "quantity_limit": "Once per month",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "401-273-2000 Ext. 309",
+      "hours": "Mon 12:00 PM - 3:30 PM, Thu 9:00 AM - 2:00 PM (registration)",
+      "notes": "Partners with RI Community Food Bank for enhanced services"
+    },
+    "source_url": "https://cappri.org/programs/food-pantry",
+    "confidence": 0.7
+  },
+  {
+    "name": "RI Veterans Action Center - Basic Needs Assistance",
+    "organization": "RI Veterans Action Center",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Community-based veterans service organization providing basic needs assistance including food support.",
+    "phone": "401-521-6711",
+    "website": "https://vets.ri.gov/",
+    "address": "685 Cranston Street",
+    "city": "Providence",
+    "state": "RI",
+    "zip": "02917",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Contact center for availability",
+      "quantity_limit": "As needed",
+      "id_required": true
+    },
+    "intake": {
+      "phone": "401-521-6711",
+      "hours": "Contact for hours",
+      "notes": "Provides benefits, housing, and basic needs assistance"
+    },
+    "source_url": "https://vets.ri.gov/",
+    "confidence": 0.7
+  },
+  {
+    "name": "Feeding Our Heroes",
+    "organization": "Feeding Our Heroes",
+    "category": "food",
+    "subcategory": "meal-program",
+    "description": "Food charity providing meals to veterans and first responders with prep, serve, and delivery capabilities.",
+    "phone": "973-509-8387",
+    "website": "https://feedingourheroes.org/",
+    "address": "Contact for current location",
+    "city": "Newark",
+    "state": "NJ",
+    "zip": "07101",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Event-based and mobile delivery",
+      "quantity_limit": "As needed",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "973-509-8387",
+      "hours": "24/7 disaster relief available",
+      "notes": "Serves hundreds of veterans, mobile trucks available"
+    },
+    "source_url": "https://feedingourheroes.org/",
+    "confidence": 0.6
+  },
+  {
+    "name": "SUHA Foundation Food Pantry",
+    "organization": "SUHA Foundation",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Community food pantry serving families, seniors, students, veterans, and working families.",
+    "phone": "(862) 368-4721",
+    "website": "https://www.suha.org/",
+    "address": "Contact for address",
+    "city": "Newark",
+    "state": "NJ",
+    "zip": "07104",
+    "eligibility": {
+      "veteran_status_required": false,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Saturday 10:00 AM - 1:00 PM (call for alternate times)",
+      "quantity_limit": "Once per visit",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "(862) 368-4721",
+      "hours": "Saturday 10:00 AM - 1:00 PM",
+      "notes": "Call or text to arrange different times"
+    },
+    "source_url": "https://www.suha.org/",
+    "confidence": 0.6
+  },
+  {
+    "name": "The Apostles' House Food Pantry",
+    "organization": "The Apostles' House",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "One of largest food pantries in Essex County serving 18,000+ people annually with groceries.",
+    "phone": "973-622-6007",
+    "website": "https://theapostleshouse.org/food-pantry/",
+    "address": "22 Grant Street",
+    "city": "Newark",
+    "state": "NJ",
+    "zip": "07101",
+    "eligibility": {
+      "veteran_status_required": false,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Monday, Wednesday, Friday, 10:00 AM - 3:00 PM",
+      "quantity_limit": "Once per month",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "973-622-6007",
+      "hours": "Monday, Wednesday, Friday 10 AM - 3 PM",
+      "notes": "Serves Essex County residents, free service"
+    },
+    "source_url": "https://theapostleshouse.org/food-pantry/",
+    "confidence": 0.7
+  },
+  {
+    "name": "Lyons VA Medical Center - Veterans Canteen Service",
+    "organization": "VA New Jersey Healthcare System",
+    "category": "food",
+    "subcategory": "meal-program",
+    "description": "VA facility Veterans Canteen Service offering food items, grill service, and retail store.",
+    "phone": "(908) 647-0180",
+    "website": "https://www.va.gov/new-jersey-health-care/locations/lyons-va-medical-center/",
+    "address": "151 Knollcroft Road",
+    "city": "Lyons",
+    "state": "NJ",
+    "zip": "07939",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Monday, Friday 8:00 AM - 11:00 AM, 1:00 PM - 3:00 PM ET",
+      "quantity_limit": "As needed",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "(908) 647-0180",
+      "hours": "Monday, Friday 8 AM - 11 AM, 1 PM - 3 PM ET",
+      "notes": "Full-service retail and food service available to patients, staff, caregivers"
+    },
+    "source_url": "https://www.va.gov/new-jersey-health-care/locations/lyons-va-medical-center/",
+    "confidence": 0.9
+  },
+  {
+    "name": "East Orange VA Medical Center",
+    "organization": "VA New Jersey Healthcare System",
+    "category": "food",
+    "subcategory": "meal-program",
+    "description": "VA Medical Center providing healthcare services to veterans including nutritional support.",
+    "phone": "(973) 676-1000",
+    "website": "https://www.va.gov/new-jersey-health-care/locations/east-orange-va-medical-center/",
+    "address": "385 Tremont Avenue",
+    "city": "East Orange",
+    "state": "NJ",
+    "zip": "07018",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Contact facility for food program specifics",
+      "quantity_limit": "As part of healthcare services",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "(973) 676-1000",
+      "hours": "During facility business hours",
+      "notes": "Part of VA New Jersey Healthcare System services"
+    },
+    "source_url": "https://www.va.gov/new-jersey-health-care/locations/east-orange-va-medical-center/",
+    "confidence": 0.7
+  },
+  {
+    "name": "West Haven VA Medical Center - Food Assistance",
+    "organization": "VA Connecticut Healthcare System",
+    "category": "food",
+    "subcategory": "meal-program",
+    "description": "VA Medical Center providing food and shelter assistance to veterans.",
+    "phone": "(203) 932-5711",
+    "website": "https://www.va.gov/connecticut-health-care/locations/west-haven-va-medical-center/",
+    "address": "950 Campbell Avenue",
+    "city": "West Haven",
+    "state": "CT",
+    "zip": "06516",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Contact facility for specific programs",
+      "quantity_limit": "As needed",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "(203) 932-5711",
+      "hours": "During facility business hours",
+      "notes": "Offers food and shelter assistance for immediate needs"
+    },
+    "source_url": "https://www.va.gov/connecticut-health-care/locations/west-haven-va-medical-center/",
+    "confidence": 0.8
+  },
+  {
+    "name": "Salvation Army Greater Hartford Food Pantry",
+    "organization": "The Salvation Army - Greater Hartford",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Community food pantry providing supplemental food for individuals and families with income disruption.",
+    "phone": "(860) 543-8413",
+    "website": "https://easternusa.salvationarmy.org/southern-new-england/hartford/",
+    "address": "217 Washington Street",
+    "city": "Hartford",
+    "state": "CT",
+    "zip": "06106",
+    "eligibility": {
+      "veteran_status_required": false,
+      "docs_required": ["Photo ID", "Proof of Address", "Proof of Income"]
+    },
+    "food_details": {
+      "distribution_schedule": "Monday, Wednesday, Friday, 9:00 AM - 12:00 PM",
+      "quantity_limit": "Once every 30 days",
+      "id_required": true
+    },
+    "intake": {
+      "phone": "(860) 543-8413",
+      "hours": "Monday, Wednesday, Friday 9 AM - 12 PM",
+      "notes": "Appointments available outside regular hours upon request"
+    },
+    "source_url": "https://easternusa.salvationarmy.org/southern-new-england/hartford/",
+    "confidence": 0.8
+  },
+  {
+    "name": "Community Renewal Team (CRT) Wethersfield Avenue Center",
+    "organization": "Community Renewal Team (CRT)",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Family Service Center food pantry providing up to 3 days of food monthly on first-come basis.",
+    "phone": "(860) 560-5738",
+    "website": "https://www.crtct.org/programs/basic-needs/food-clothing-assistance/",
+    "address": "395 Wethersfield Avenue",
+    "city": "Hartford",
+    "state": "CT",
+    "zip": "06114",
+    "eligibility": {
+      "veteran_status_required": false,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Monday - Friday, 8:00 AM - 4:00 PM",
+      "quantity_limit": "Up to 3 days of food per month",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "(860) 560-5738",
+      "hours": "Monday - Friday 8 AM - 4 PM, Walk-in",
+      "notes": "First-come, first-served basis for Hartford families"
+    },
+    "source_url": "https://www.crtct.org/programs/basic-needs/food-clothing-assistance/",
+    "confidence": 0.7
+  },
+  {
+    "name": "Joan C. Dauber Food Pantry",
+    "organization": "Trinity Health of New England / Saint Francis Hospital",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "First hospital-based food bank in nation providing nutritious food and support services for 50 years.",
+    "phone": "(860) 714-2845",
+    "website": "https://www.trinityhealthofne.org/location/the-joan-c-dauber-food-pantry",
+    "address": "675 Tower Avenue",
+    "city": "Hartford",
+    "state": "CT",
+    "zip": "06112",
+    "eligibility": {
+      "veteran_status_required": false,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Monday 9:00 AM - 2:00 PM, Wednesday 3:00 PM - 5:00 PM, Thursday 9:00 AM - 12:00 PM",
+      "quantity_limit": "Monthly",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "(860) 714-2845",
+      "hours": "Monday 9 AM - 2 PM, Wednesday 3 PM - 5 PM, Thursday 9 AM - 12 PM",
+      "notes": "Connecticut residents preferred, appointments recommended, walk-ins accepted"
+    },
+    "source_url": "https://www.trinityhealthofne.org/location/the-joan-c-dauber-food-pantry",
+    "confidence": 0.8
+  },
+  {
+    "name": "Louis Stokes Cleveland VA Medical Center - Food Services",
+    "organization": "VA Northeast Ohio Healthcare System",
+    "category": "food",
+    "subcategory": "meal-program",
+    "description": "VA Medical Center nutrition and food services department serving 1,600+ meals daily.",
+    "phone": "216-791-3800",
+    "website": "https://www.va.gov/northeast-ohio-health-care/locations/louis-stokes-cleveland-department-of-veterans-affairs-medical-center/",
+    "address": "10701 East Boulevard",
+    "city": "Cleveland",
+    "state": "OH",
+    "zip": "44106",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Daily meal service during hospitalization/treatment",
+      "quantity_limit": "As needed for care",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "216-791-3800",
+      "hours": "During facility hours",
+      "notes": "High-quality medical nutrition care and professional education partnerships"
+    },
+    "source_url": "https://www.va.gov/northeast-ohio-health-care/locations/louis-stokes-cleveland-department-of-veterans-affairs-medical-center/",
+    "confidence": 0.9
+  },
+  {
+    "name": "American Legion - Cleveland",
+    "organization": "American Legion Department of Ohio",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "American Legion providing emergency financial assistance including food support to veterans.",
+    "phone": "216-522-3530",
+    "website": "https://www.ohiolegion.com/",
+    "address": "1240 East 9th Street, Room 1259",
+    "city": "Cleveland",
+    "state": "OH",
+    "zip": "44199",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "As needed emergency assistance",
+      "quantity_limit": "Up to $2,500 emergency assistance available",
+      "id_required": true
+    },
+    "intake": {
+      "phone": "216-522-3530",
+      "hours": "Contact for hours",
+      "notes": "National Emergency Fund and Temporary Financial Assistance programs"
+    },
+    "source_url": "https://www.ohiolegion.com/",
+    "confidence": 0.7
+  },
+  {
+    "name": "VFW Post 9857 Paul S. Lawrence",
+    "organization": "Veterans of Foreign Wars Post 9857",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "VFW post providing support services and community programs for veterans.",
+    "phone": "614-475-9188",
+    "website": "https://vfw9857.org/",
+    "address": "2330 Stelzer Road",
+    "city": "Columbus",
+    "state": "OH",
+    "zip": "43219",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Contact post for food program details",
+      "quantity_limit": "Variable",
+      "id_required": true
+    },
+    "intake": {
+      "phone": "614-475-9188",
+      "hours": "Monday-Friday 3 PM - 9 PM, Saturday 12 PM - 9 PM, Sunday 12 PM - 8 PM",
+      "notes": "Community programs and services for veterans support"
+    },
+    "source_url": "https://vfw9857.org/",
+    "confidence": 0.6
+  },
+  {
+    "name": "Chalmers P. Wylie Veterans Outpatient Clinic - Food Services",
+    "organization": "VA Central Ohio Healthcare System",
+    "category": "food",
+    "subcategory": "meal-program",
+    "description": "VA outpatient clinic providing healthcare services including nutritional support.",
+    "phone": "614-257-5200",
+    "website": "https://www.va.gov/central-ohio-health-care/locations/chalmers-p-wylie-veterans-outpatient-clinic/",
+    "address": "420 North James Road",
+    "city": "Columbus",
+    "state": "OH",
+    "zip": "43219",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "As part of clinical services",
+      "quantity_limit": "As needed",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "614-257-5200",
+      "hours": "During clinic hours",
+      "notes": "Primary care and specialty services available"
+    },
+    "source_url": "https://www.va.gov/central-ohio-health-care/locations/chalmers-p-wylie-veterans-outpatient-clinic/",
+    "confidence": 0.6
+  },
+  {
+    "name": "Detroit Veteran Housing Program - Food Assistance",
+    "organization": "Volunteers of America Michigan",
+    "category": "food",
+    "subcategory": "meal-program",
+    "description": "60-bed housing program with 3 meals daily and Veteran Food Security Project for emergency assistance.",
+    "phone": "877-509-8387",
+    "website": "https://www.voami.org/services/veteran-food-security-project/",
+    "address": "Contact for location",
+    "city": "Detroit",
+    "state": "MI",
+    "zip": "48201",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "3 meals daily, 7 days a week for residents; emergency food weekly for project",
+      "quantity_limit": "One week of food for emergency program",
+      "id_required": true
+    },
+    "intake": {
+      "phone": "877-509-8387",
+      "hours": "24/7 for emergency food assistance",
+      "notes": "80% completion rate to independent living, garden on-site"
+    },
+    "source_url": "https://www.voami.org/services/veteran-food-security-project/",
+    "confidence": 0.7
+  },
+  {
+    "name": "Vietnam Veterans of America Chapter 77 Food Pantry",
+    "organization": "Vietnam Veterans of America Chapter 77",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Paul Rudnicki food pantry serving approximately 73 families monthly, all veterans welcome.",
+    "phone": "(716) 807-5241",
+    "website": "https://vva77.org/",
+    "address": "47 Main Street",
+    "city": "Tonawanda",
+    "state": "NY",
+    "zip": "14150",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": ["VA Card or Proof of Service"]
+    },
+    "food_details": {
+      "distribution_schedule": "Wednesday and Saturday, 9:00 AM - 1:00 PM",
+      "quantity_limit": "Monthly service",
+      "id_required": true
+    },
+    "intake": {
+      "phone": "(716) 807-5241",
+      "hours": "Wednesday, Saturday 9 AM - 1 PM",
+      "notes": "All veterans welcome including family members in need"
+    },
+    "source_url": "https://vva77.org/",
+    "confidence": 0.7
+  },
+  {
+    "name": "Hearts Food Pantry Express at Buffalo VA Medical Center",
+    "organization": "Hearts for the Homeless / Buffalo VA Medical Center",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Mobile food pantry partnership bringing groceries directly to veterans at VA campus.",
+    "phone": "716-834-9200",
+    "website": "https://heartsforthehomeless.org/hearts-food-pantry-express/",
+    "address": "3495 Bailey Avenue",
+    "city": "Buffalo",
+    "state": "NY",
+    "zip": "14215",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Mobile schedule, contact for current times",
+      "quantity_limit": "As available",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "716-834-9200",
+      "hours": "Contact for current schedule",
+      "notes": "Partnership with FeedMore WNY and Hearts for the Homeless"
+    },
+    "source_url": "https://heartsforthehomeless.org/hearts-food-pantry-express/",
+    "confidence": 0.7
+  },
+  {
+    "name": "Buffalo VA Medical Center - Nutritional Support Programs",
+    "organization": "VA Western New York Healthcare System",
+    "category": "food",
+    "subcategory": "meal-program",
+    "description": "VA Medical Center providing weight management, diabetes management, and nutritional support programs.",
+    "phone": "716-834-9200",
+    "website": "https://www.va.gov/western-new-york-health-care/locations/buffalo-va-medical-center/",
+    "address": "3495 Bailey Avenue",
+    "city": "Buffalo",
+    "state": "NY",
+    "zip": "14215",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "By appointment for nutritional counseling",
+      "quantity_limit": "Individual programs",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "716-834-9200",
+      "hours": "During facility hours",
+      "notes": "Weight management plans, diabetes classes, cooking classes available"
+    },
+    "source_url": "https://www.va.gov/western-new-york-health-care/locations/buffalo-va-medical-center/",
+    "confidence": 0.8
+  },
+  {
+    "name": "Jesse Brown VA Medical Center - Food Pantry",
+    "organization": "VA Chicago Healthcare System",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Self-select food pantry in VA facility serving 800+ veterans monthly with fresh produce and shelf-stable items.",
+    "phone": "312-569-8387",
+    "website": "https://www.va.gov/chicago-health-care/locations/jesse-brown-department-of-veterans-affairs-medical-center/",
+    "address": "820 South Damen Avenue, Damen Pavilion, 2nd Floor",
+    "city": "Chicago",
+    "state": "IL",
+    "zip": "60612",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Tuesday, 11:00 AM - 1:00 PM",
+      "quantity_limit": "Monthly",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "312-569-8387",
+      "hours": "Tuesday 11 AM - 1 PM",
+      "notes": "Self-select pantry allowing veterans to choose items meeting personal dietary needs"
+    },
+    "source_url": "https://www.va.gov/chicago-health-care/locations/jesse-brown-department-of-veterans-affairs-medical-center/",
+    "confidence": 0.9
+  },
+  {
+    "name": "Edward Hines VA Hospital Veterans Food Pantry",
+    "organization": "VA Hines Healthcare System",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "VA Hospital food pantry with micro pantries at outpatient clinics, serving fresh and shelf-stable foods.",
+    "phone": "708-202-8387",
+    "website": "https://www.va.gov/hines-health-care/",
+    "address": "5000 South 5th Avenue",
+    "city": "Hines",
+    "state": "IL",
+    "zip": "60141",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Thursday, 11:00 AM - 1:00 PM",
+      "quantity_limit": "Once per month",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "708-202-8387",
+      "hours": "Thursday 11 AM - 1 PM",
+      "notes": "Micro pantries at multiple VA locations, partnership with Greater Chicago Food Depository"
+    },
+    "source_url": "https://www.va.gov/hines-health-care/",
+    "confidence": 0.9
+  },
+  {
+    "name": "Greater Chicago Food Depository - Network Food Pantries",
+    "organization": "Greater Chicago Food Depository",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Food bank network serving 125-175 veterans weekly at VA pantries, supports 12,000+ veterans in Cook County.",
+    "phone": "773-247-3663",
+    "website": "https://www.chicagosfoodbank.org/about/how-we-help/veterans-programs/",
+    "address": "Contact for pantry locations",
+    "city": "Chicago",
+    "state": "IL",
+    "zip": "60601",
+    "eligibility": {
+      "veteran_status_required": false,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Monthly at various VA and community locations",
+      "quantity_limit": "As available",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "773-247-3663",
+      "hours": "Contact for specific pantry hours",
+      "notes": "Veteran Stand Down events twice yearly with additional resources"
+    },
+    "source_url": "https://www.chicagosfoodbank.org/about/how-we-help/veterans-programs/",
+    "confidence": 0.8
+  },
+  {
+    "name": "Veterans Assistance Commission of Cook County (VACCC)",
+    "organization": "Veterans Assistance Commission of Cook County",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Nonprofit providing emergency financial assistance and food support to Cook County veterans.",
+    "phone": "312-433-6010",
+    "website": "https://vaccookcounty.org/",
+    "address": "1100 South Hamilton, C-O11, Cook County Juvenile Detention Center Lower Level",
+    "city": "Chicago",
+    "state": "IL",
+    "zip": "60612",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "As needed emergency assistance",
+      "quantity_limit": "Immediate food support available",
+      "id_required": true
+    },
+    "intake": {
+      "phone": "312-433-6010",
+      "hours": "Monday - Friday 8:30 AM - 3:00 PM",
+      "notes": "Emergency aid for food, rent, utilities, transportation for families"
+    },
+    "source_url": "https://vaccookcounty.org/",
+    "confidence": 0.8
+  },
+  {
+    "name": "Inner Voice - Transition in Place (TIP) Program",
+    "organization": "Inner Voice, Inc.",
+    "category": "food",
+    "subcategory": "meal-program",
+    "description": "Housing and supportive services program for veteran families experiencing homelessness with transitional meals.",
+    "phone": "773-502-5547",
+    "website": "https://www.ivchi.org/services/veterans-services/",
+    "address": "Contact for housing locations",
+    "city": "Chicago",
+    "state": "IL",
+    "zip": "60601",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "As part of supportive housing program",
+      "quantity_limit": "Daily meals during housing",
+      "id_required": true
+    },
+    "intake": {
+      "phone": "773-502-5547",
+      "hours": "Contact for program intake",
+      "notes": "95% transition to permanent housing, food included with housing support"
+    },
+    "source_url": "https://www.ivchi.org/services/veterans-services/",
+    "confidence": 0.7
+  },
+  {
+    "name": "Auburn Gresham Community Based VA Outpatient Clinic",
+    "organization": "VA Chicago Healthcare System",
+    "category": "food",
+    "subcategory": "meal-program",
+    "description": "VA community-based outpatient clinic providing primary care and referral services to veterans.",
+    "phone": "773-962-3700",
+    "website": "https://www.va.gov/chicago-health-care/locations/auburn-gresham-va-clinic/",
+    "address": "7731 South Halsted Street",
+    "city": "Chicago",
+    "state": "IL",
+    "zip": "60620",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Referrals to food programs as needed",
+      "quantity_limit": "As appropriate",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "773-962-3700",
+      "hours": "Monday - Friday 7:30 AM - 4:00 PM",
+      "notes": "Primary care with mental health, nutrition counseling referrals available"
+    },
+    "source_url": "https://www.va.gov/chicago-health-care/locations/auburn-gresham-va-clinic/",
+    "confidence": 0.7
+  }
+]

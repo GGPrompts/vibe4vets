@@ -2991,5 +2991,4403 @@
     },
     "source_url": "https://vfw3944.org/",
     "confidence": 0.83
+  },
+  {
+    "name": "Veterans Inc. Food Pantry",
+    "organization": "Veterans Inc.",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Community food pantry serving veterans in need across New England. Provides food assistance 24/7.",
+    "phone": "1-800-482-2565",
+    "website": "https://www.veteransinc.org/",
+    "address": "69 Grove Street",
+    "city": "Worcester",
+    "state": "MA",
+    "zip": "01605",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": [
+        "DD214",
+        "Military ID",
+        "VA ID"
+      ]
+    },
+    "food_details": {
+      "distribution_schedule": "1st and 3rd Thursday of month, 9:00 AM - 1:00 PM",
+      "quantity_limit": "Once per month",
+      "id_required": true
+    },
+    "intake": {
+      "phone": "1-800-482-2565",
+      "hours": "24 hours available",
+      "notes": "24-hour availability for assistance"
+    },
+    "source_url": "https://www.veteransinc.org/",
+    "confidence": 0.9
+  },
+  {
+    "name": "Revere Veterans Food Pantry",
+    "organization": "City of Revere Veterans Services",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Food pantry exclusively for veterans, widows/widowers of veterans, and veteran dependents.",
+    "phone": "781-286-8119",
+    "website": "https://www.revere.org/departments/veterans-office",
+    "address": "249 Broadway Rear, American Legion Building",
+    "city": "Revere",
+    "state": "MA",
+    "zip": "02151",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": [
+        "Military Service Documentation"
+      ]
+    },
+    "food_details": {
+      "distribution_schedule": "1st Wednesday of month (weather dependent)",
+      "quantity_limit": "Once per month",
+      "id_required": true
+    },
+    "intake": {
+      "phone": "781-286-8119",
+      "hours": "Contact Veterans Services for distribution times",
+      "notes": "First-time visitors must bring military documentation to register"
+    },
+    "source_url": "https://www.revere.org/departments/veterans-office",
+    "confidence": 0.8
+  },
+  {
+    "name": "Jamaica Plain VA Medical Center - Food Assistance",
+    "organization": "VA Boston Healthcare System",
+    "category": "food",
+    "subcategory": "meal-program",
+    "description": "VA Medical Center providing nutrition services and food assistance programs with registered dietitians.",
+    "phone": "617-232-9500",
+    "website": "https://www.va.gov/boston-health-care/locations/jamaica-plain-va-medical-center/",
+    "address": "150 South Huntington Avenue",
+    "city": "Boston",
+    "state": "MA",
+    "zip": "02130",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Nutrition counseling by appointment",
+      "quantity_limit": "Individual sessions available",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "617-232-9500",
+      "hours": "During facility business hours",
+      "notes": "Offers group, individual and telehealth nutrition sessions"
+    },
+    "source_url": "https://www.va.gov/boston-health-care/locations/jamaica-plain-va-medical-center/",
+    "confidence": 0.9
+  },
+  {
+    "name": "Montachusett Veterans Outreach Center - Food & Clothing Pantry",
+    "organization": "Montachusett Veterans Outreach Center, Inc.",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Need-based food and clothing pantry serving veterans and surviving family members across Worcester County.",
+    "phone": "978-632-9601",
+    "website": "https://www.veterans-outreach.org/",
+    "address": "268 Central Street",
+    "city": "Gardner",
+    "state": "MA",
+    "zip": "01440",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": [
+        "Military Service Proof"
+      ]
+    },
+    "food_details": {
+      "distribution_schedule": "Monday, Wednesday, Friday, 9:00 AM - 12:00 PM",
+      "quantity_limit": "Monthly distribution",
+      "id_required": true
+    },
+    "intake": {
+      "phone": "978-632-9601",
+      "hours": "Monday, Wednesday, Friday 9 AM - 12 PM",
+      "notes": "Serves over 200 family units monthly, covers Worcester County veterans"
+    },
+    "source_url": "https://www.veterans-outreach.org/",
+    "confidence": 0.8
+  },
+  {
+    "name": "Clear Path for Veterans New England - Canteen Lunch Program",
+    "organization": "Clear Path for Veterans New England",
+    "category": "food",
+    "subcategory": "meal-program",
+    "description": "Weekly canteen lunch program serving freshly prepared plated meals to veterans.",
+    "phone": "978-760-2282",
+    "website": "https://www.clearpathne.org/",
+    "address": "84 Antietam Street",
+    "city": "Devens",
+    "state": "MA",
+    "zip": "01434",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Thursday, 11:00 AM - 2:00 PM (two seating sessions)",
+      "quantity_limit": "Once per week",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "978-760-2282",
+      "hours": "Thursday 11 AM - 2 PM",
+      "notes": "Veterans must register each week for accurate meal count"
+    },
+    "source_url": "https://www.clearpathne.org/",
+    "confidence": 0.8
+  },
+  {
+    "name": "Rhode Island Community Food Bank",
+    "organization": "Rhode Island Community Food Bank",
+    "category": "food",
+    "subcategory": "groceries",
+    "description": "Community food bank serving 63,000+ Rhode Islanders monthly through network of pantries and meal sites.",
+    "phone": "401-942-6325",
+    "website": "https://rifoodbank.org/",
+    "address": "200 Niantic Avenue",
+    "city": "Providence",
+    "state": "RI",
+    "zip": "02907",
+    "eligibility": {
+      "veteran_status_required": false,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Through network of affiliated pantries and meal sites",
+      "quantity_limit": "Variable by location",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "401-942-6325",
+      "hours": "Monday - Friday 8:00 AM - 5:00 PM",
+      "notes": "Visit rifoodbank.org/find-food for specific pantry locations"
+    },
+    "source_url": "https://rifoodbank.org/",
+    "confidence": 0.8
+  },
+  {
+    "name": "Operation Stand Down Rhode Island - Food Pantry",
+    "organization": "Operation Stand Down Rhode Island (OSDRI)",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Veteran-focused food pantry and personal hygiene program for in-need veterans.",
+    "phone": "401-383-4730",
+    "website": "https://osdri.org/",
+    "address": "321 Main Street",
+    "city": "Johnston",
+    "state": "RI",
+    "zip": "02919",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": [
+        "Proof of Veteran Status"
+      ]
+    },
+    "food_details": {
+      "distribution_schedule": "During normal business hours (call for specifics)",
+      "quantity_limit": "As needed",
+      "id_required": true
+    },
+    "intake": {
+      "phone": "401-383-4730",
+      "hours": "Business hours - call for specifics",
+      "notes": "Stocked with non-perishables, personal hygiene items also available"
+    },
+    "source_url": "https://osdri.org/",
+    "confidence": 0.8
+  },
+  {
+    "name": "Providence VA Medical Center - Food Assistance",
+    "organization": "VA Providence Healthcare System",
+    "category": "food",
+    "subcategory": "meal-program",
+    "description": "VA Medical Center providing immediate food and shelter assistance through care coordinators.",
+    "phone": "401-273-7100",
+    "website": "https://www.va.gov/providence-health-care/locations/providence-va-medical-center/",
+    "address": "830 Chalkstone Avenue",
+    "city": "Providence",
+    "state": "RI",
+    "zip": "02908",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "By appointment with care coordinators",
+      "quantity_limit": "As needed",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "401-273-7100",
+      "hours": "During facility business hours",
+      "notes": "Assistance available through care coordinators for homeless or at-risk veterans"
+    },
+    "source_url": "https://www.va.gov/providence-health-care/locations/providence-va-medical-center/",
+    "confidence": 0.9
+  },
+  {
+    "name": "CAPP Food Pantry",
+    "organization": "Community Action Partnership of Providence County",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Largest community food pantry in Providence County serving 1,000+ residents monthly with culturally appropriate food.",
+    "phone": "401-273-2000 Ext. 309",
+    "website": "https://cappri.org/programs/food-pantry",
+    "address": "550 Hartford Avenue",
+    "city": "Providence",
+    "state": "RI",
+    "zip": "02909",
+    "eligibility": {
+      "veteran_status_required": false,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Tuesday 1:30 PM - 3:00 PM (seniors/disabled), Wednesday 10:00 AM - 2:00 PM",
+      "quantity_limit": "Once per month",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "401-273-2000 Ext. 309",
+      "hours": "Mon 12:00 PM - 3:30 PM, Thu 9:00 AM - 2:00 PM (registration)",
+      "notes": "Partners with RI Community Food Bank for enhanced services"
+    },
+    "source_url": "https://cappri.org/programs/food-pantry",
+    "confidence": 0.7
+  },
+  {
+    "name": "RI Veterans Action Center - Basic Needs Assistance",
+    "organization": "RI Veterans Action Center",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Community-based veterans service organization providing basic needs assistance including food support.",
+    "phone": "401-521-6711",
+    "website": "https://vets.ri.gov/",
+    "address": "685 Cranston Street",
+    "city": "Providence",
+    "state": "RI",
+    "zip": "02917",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Contact center for availability",
+      "quantity_limit": "As needed",
+      "id_required": true
+    },
+    "intake": {
+      "phone": "401-521-6711",
+      "hours": "Contact for hours",
+      "notes": "Provides benefits, housing, and basic needs assistance"
+    },
+    "source_url": "https://vets.ri.gov/",
+    "confidence": 0.7
+  },
+  {
+    "name": "Feeding Our Heroes",
+    "organization": "Feeding Our Heroes",
+    "category": "food",
+    "subcategory": "meal-program",
+    "description": "Food charity providing meals to veterans and first responders with prep, serve, and delivery capabilities.",
+    "phone": "973-509-8387",
+    "website": "https://feedingourheroes.org/",
+    "address": "Contact for current location",
+    "city": "Newark",
+    "state": "NJ",
+    "zip": "07101",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Event-based and mobile delivery",
+      "quantity_limit": "As needed",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "973-509-8387",
+      "hours": "24/7 disaster relief available",
+      "notes": "Serves hundreds of veterans, mobile trucks available"
+    },
+    "source_url": "https://feedingourheroes.org/",
+    "confidence": 0.6
+  },
+  {
+    "name": "SUHA Foundation Food Pantry",
+    "organization": "SUHA Foundation",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Community food pantry serving families, seniors, students, veterans, and working families.",
+    "phone": "(862) 368-4721",
+    "website": "https://www.suha.org/",
+    "address": "Contact for address",
+    "city": "Newark",
+    "state": "NJ",
+    "zip": "07104",
+    "eligibility": {
+      "veteran_status_required": false,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Saturday 10:00 AM - 1:00 PM (call for alternate times)",
+      "quantity_limit": "Once per visit",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "(862) 368-4721",
+      "hours": "Saturday 10:00 AM - 1:00 PM",
+      "notes": "Call or text to arrange different times"
+    },
+    "source_url": "https://www.suha.org/",
+    "confidence": 0.6
+  },
+  {
+    "name": "The Apostles' House Food Pantry",
+    "organization": "The Apostles' House",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "One of largest food pantries in Essex County serving 18,000+ people annually with groceries.",
+    "phone": "973-622-6007",
+    "website": "https://theapostleshouse.org/food-pantry/",
+    "address": "22 Grant Street",
+    "city": "Newark",
+    "state": "NJ",
+    "zip": "07101",
+    "eligibility": {
+      "veteran_status_required": false,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Monday, Wednesday, Friday, 10:00 AM - 3:00 PM",
+      "quantity_limit": "Once per month",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "973-622-6007",
+      "hours": "Monday, Wednesday, Friday 10 AM - 3 PM",
+      "notes": "Serves Essex County residents, free service"
+    },
+    "source_url": "https://theapostleshouse.org/food-pantry/",
+    "confidence": 0.7
+  },
+  {
+    "name": "Lyons VA Medical Center - Veterans Canteen Service",
+    "organization": "VA New Jersey Healthcare System",
+    "category": "food",
+    "subcategory": "meal-program",
+    "description": "VA facility Veterans Canteen Service offering food items, grill service, and retail store.",
+    "phone": "(908) 647-0180",
+    "website": "https://www.va.gov/new-jersey-health-care/locations/lyons-va-medical-center/",
+    "address": "151 Knollcroft Road",
+    "city": "Lyons",
+    "state": "NJ",
+    "zip": "07939",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Monday, Friday 8:00 AM - 11:00 AM, 1:00 PM - 3:00 PM ET",
+      "quantity_limit": "As needed",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "(908) 647-0180",
+      "hours": "Monday, Friday 8 AM - 11 AM, 1 PM - 3 PM ET",
+      "notes": "Full-service retail and food service available to patients, staff, caregivers"
+    },
+    "source_url": "https://www.va.gov/new-jersey-health-care/locations/lyons-va-medical-center/",
+    "confidence": 0.9
+  },
+  {
+    "name": "East Orange VA Medical Center",
+    "organization": "VA New Jersey Healthcare System",
+    "category": "food",
+    "subcategory": "meal-program",
+    "description": "VA Medical Center providing healthcare services to veterans including nutritional support.",
+    "phone": "(973) 676-1000",
+    "website": "https://www.va.gov/new-jersey-health-care/locations/east-orange-va-medical-center/",
+    "address": "385 Tremont Avenue",
+    "city": "East Orange",
+    "state": "NJ",
+    "zip": "07018",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Contact facility for food program specifics",
+      "quantity_limit": "As part of healthcare services",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "(973) 676-1000",
+      "hours": "During facility business hours",
+      "notes": "Part of VA New Jersey Healthcare System services"
+    },
+    "source_url": "https://www.va.gov/new-jersey-health-care/locations/east-orange-va-medical-center/",
+    "confidence": 0.7
+  },
+  {
+    "name": "West Haven VA Medical Center - Food Assistance",
+    "organization": "VA Connecticut Healthcare System",
+    "category": "food",
+    "subcategory": "meal-program",
+    "description": "VA Medical Center providing food and shelter assistance to veterans.",
+    "phone": "(203) 932-5711",
+    "website": "https://www.va.gov/connecticut-health-care/locations/west-haven-va-medical-center/",
+    "address": "950 Campbell Avenue",
+    "city": "West Haven",
+    "state": "CT",
+    "zip": "06516",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Contact facility for specific programs",
+      "quantity_limit": "As needed",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "(203) 932-5711",
+      "hours": "During facility business hours",
+      "notes": "Offers food and shelter assistance for immediate needs"
+    },
+    "source_url": "https://www.va.gov/connecticut-health-care/locations/west-haven-va-medical-center/",
+    "confidence": 0.8
+  },
+  {
+    "name": "Salvation Army Greater Hartford Food Pantry",
+    "organization": "The Salvation Army - Greater Hartford",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Community food pantry providing supplemental food for individuals and families with income disruption.",
+    "phone": "(860) 543-8413",
+    "website": "https://easternusa.salvationarmy.org/southern-new-england/hartford/",
+    "address": "217 Washington Street",
+    "city": "Hartford",
+    "state": "CT",
+    "zip": "06106",
+    "eligibility": {
+      "veteran_status_required": false,
+      "docs_required": [
+        "Photo ID",
+        "Proof of Address",
+        "Proof of Income"
+      ]
+    },
+    "food_details": {
+      "distribution_schedule": "Monday, Wednesday, Friday, 9:00 AM - 12:00 PM",
+      "quantity_limit": "Once every 30 days",
+      "id_required": true
+    },
+    "intake": {
+      "phone": "(860) 543-8413",
+      "hours": "Monday, Wednesday, Friday 9 AM - 12 PM",
+      "notes": "Appointments available outside regular hours upon request"
+    },
+    "source_url": "https://easternusa.salvationarmy.org/southern-new-england/hartford/",
+    "confidence": 0.8
+  },
+  {
+    "name": "Community Renewal Team (CRT) Wethersfield Avenue Center",
+    "organization": "Community Renewal Team (CRT)",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Family Service Center food pantry providing up to 3 days of food monthly on first-come basis.",
+    "phone": "(860) 560-5738",
+    "website": "https://www.crtct.org/programs/basic-needs/food-clothing-assistance/",
+    "address": "395 Wethersfield Avenue",
+    "city": "Hartford",
+    "state": "CT",
+    "zip": "06114",
+    "eligibility": {
+      "veteran_status_required": false,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Monday - Friday, 8:00 AM - 4:00 PM",
+      "quantity_limit": "Up to 3 days of food per month",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "(860) 560-5738",
+      "hours": "Monday - Friday 8 AM - 4 PM, Walk-in",
+      "notes": "First-come, first-served basis for Hartford families"
+    },
+    "source_url": "https://www.crtct.org/programs/basic-needs/food-clothing-assistance/",
+    "confidence": 0.7
+  },
+  {
+    "name": "Joan C. Dauber Food Pantry",
+    "organization": "Trinity Health of New England / Saint Francis Hospital",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "First hospital-based food bank in nation providing nutritious food and support services for 50 years.",
+    "phone": "(860) 714-2845",
+    "website": "https://www.trinityhealthofne.org/location/the-joan-c-dauber-food-pantry",
+    "address": "675 Tower Avenue",
+    "city": "Hartford",
+    "state": "CT",
+    "zip": "06112",
+    "eligibility": {
+      "veteran_status_required": false,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Monday 9:00 AM - 2:00 PM, Wednesday 3:00 PM - 5:00 PM, Thursday 9:00 AM - 12:00 PM",
+      "quantity_limit": "Monthly",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "(860) 714-2845",
+      "hours": "Monday 9 AM - 2 PM, Wednesday 3 PM - 5 PM, Thursday 9 AM - 12 PM",
+      "notes": "Connecticut residents preferred, appointments recommended, walk-ins accepted"
+    },
+    "source_url": "https://www.trinityhealthofne.org/location/the-joan-c-dauber-food-pantry",
+    "confidence": 0.8
+  },
+  {
+    "name": "Louis Stokes Cleveland VA Medical Center - Food Services",
+    "organization": "VA Northeast Ohio Healthcare System",
+    "category": "food",
+    "subcategory": "meal-program",
+    "description": "VA Medical Center nutrition and food services department serving 1,600+ meals daily.",
+    "phone": "216-791-3800",
+    "website": "https://www.va.gov/northeast-ohio-health-care/locations/louis-stokes-cleveland-department-of-veterans-affairs-medical-center/",
+    "address": "10701 East Boulevard",
+    "city": "Cleveland",
+    "state": "OH",
+    "zip": "44106",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Daily meal service during hospitalization/treatment",
+      "quantity_limit": "As needed for care",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "216-791-3800",
+      "hours": "During facility hours",
+      "notes": "High-quality medical nutrition care and professional education partnerships"
+    },
+    "source_url": "https://www.va.gov/northeast-ohio-health-care/locations/louis-stokes-cleveland-department-of-veterans-affairs-medical-center/",
+    "confidence": 0.9
+  },
+  {
+    "name": "American Legion - Cleveland",
+    "organization": "American Legion Department of Ohio",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "American Legion providing emergency financial assistance including food support to veterans.",
+    "phone": "216-522-3530",
+    "website": "https://www.ohiolegion.com/",
+    "address": "1240 East 9th Street, Room 1259",
+    "city": "Cleveland",
+    "state": "OH",
+    "zip": "44199",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "As needed emergency assistance",
+      "quantity_limit": "Up to $2,500 emergency assistance available",
+      "id_required": true
+    },
+    "intake": {
+      "phone": "216-522-3530",
+      "hours": "Contact for hours",
+      "notes": "National Emergency Fund and Temporary Financial Assistance programs"
+    },
+    "source_url": "https://www.ohiolegion.com/",
+    "confidence": 0.7
+  },
+  {
+    "name": "VFW Post 9857 Paul S. Lawrence",
+    "organization": "Veterans of Foreign Wars Post 9857",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "VFW post providing support services and community programs for veterans.",
+    "phone": "614-475-9188",
+    "website": "https://vfw9857.org/",
+    "address": "2330 Stelzer Road",
+    "city": "Columbus",
+    "state": "OH",
+    "zip": "43219",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Contact post for food program details",
+      "quantity_limit": "Variable",
+      "id_required": true
+    },
+    "intake": {
+      "phone": "614-475-9188",
+      "hours": "Monday-Friday 3 PM - 9 PM, Saturday 12 PM - 9 PM, Sunday 12 PM - 8 PM",
+      "notes": "Community programs and services for veterans support"
+    },
+    "source_url": "https://vfw9857.org/",
+    "confidence": 0.6
+  },
+  {
+    "name": "Chalmers P. Wylie Veterans Outpatient Clinic - Food Services",
+    "organization": "VA Central Ohio Healthcare System",
+    "category": "food",
+    "subcategory": "meal-program",
+    "description": "VA outpatient clinic providing healthcare services including nutritional support.",
+    "phone": "614-257-5200",
+    "website": "https://www.va.gov/central-ohio-health-care/locations/chalmers-p-wylie-veterans-outpatient-clinic/",
+    "address": "420 North James Road",
+    "city": "Columbus",
+    "state": "OH",
+    "zip": "43219",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "As part of clinical services",
+      "quantity_limit": "As needed",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "614-257-5200",
+      "hours": "During clinic hours",
+      "notes": "Primary care and specialty services available"
+    },
+    "source_url": "https://www.va.gov/central-ohio-health-care/locations/chalmers-p-wylie-veterans-outpatient-clinic/",
+    "confidence": 0.6
+  },
+  {
+    "name": "Detroit Veteran Housing Program - Food Assistance",
+    "organization": "Volunteers of America Michigan",
+    "category": "food",
+    "subcategory": "meal-program",
+    "description": "60-bed housing program with 3 meals daily and Veteran Food Security Project for emergency assistance.",
+    "phone": "877-509-8387",
+    "website": "https://www.voami.org/services/veteran-food-security-project/",
+    "address": "Contact for location",
+    "city": "Detroit",
+    "state": "MI",
+    "zip": "48201",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "3 meals daily, 7 days a week for residents; emergency food weekly for project",
+      "quantity_limit": "One week of food for emergency program",
+      "id_required": true
+    },
+    "intake": {
+      "phone": "877-509-8387",
+      "hours": "24/7 for emergency food assistance",
+      "notes": "80% completion rate to independent living, garden on-site"
+    },
+    "source_url": "https://www.voami.org/services/veteran-food-security-project/",
+    "confidence": 0.7
+  },
+  {
+    "name": "Vietnam Veterans of America Chapter 77 Food Pantry",
+    "organization": "Vietnam Veterans of America Chapter 77",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Paul Rudnicki food pantry serving approximately 73 families monthly, all veterans welcome.",
+    "phone": "(716) 807-5241",
+    "website": "https://vva77.org/",
+    "address": "47 Main Street",
+    "city": "Tonawanda",
+    "state": "NY",
+    "zip": "14150",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": [
+        "VA Card or Proof of Service"
+      ]
+    },
+    "food_details": {
+      "distribution_schedule": "Wednesday and Saturday, 9:00 AM - 1:00 PM",
+      "quantity_limit": "Monthly service",
+      "id_required": true
+    },
+    "intake": {
+      "phone": "(716) 807-5241",
+      "hours": "Wednesday, Saturday 9 AM - 1 PM",
+      "notes": "All veterans welcome including family members in need"
+    },
+    "source_url": "https://vva77.org/",
+    "confidence": 0.7
+  },
+  {
+    "name": "Hearts Food Pantry Express at Buffalo VA Medical Center",
+    "organization": "Hearts for the Homeless / Buffalo VA Medical Center",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Mobile food pantry partnership bringing groceries directly to veterans at VA campus.",
+    "phone": "716-834-9200",
+    "website": "https://heartsforthehomeless.org/hearts-food-pantry-express/",
+    "address": "3495 Bailey Avenue",
+    "city": "Buffalo",
+    "state": "NY",
+    "zip": "14215",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Mobile schedule, contact for current times",
+      "quantity_limit": "As available",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "716-834-9200",
+      "hours": "Contact for current schedule",
+      "notes": "Partnership with FeedMore WNY and Hearts for the Homeless"
+    },
+    "source_url": "https://heartsforthehomeless.org/hearts-food-pantry-express/",
+    "confidence": 0.7
+  },
+  {
+    "name": "Buffalo VA Medical Center - Nutritional Support Programs",
+    "organization": "VA Western New York Healthcare System",
+    "category": "food",
+    "subcategory": "meal-program",
+    "description": "VA Medical Center providing weight management, diabetes management, and nutritional support programs.",
+    "phone": "716-834-9200",
+    "website": "https://www.va.gov/western-new-york-health-care/locations/buffalo-va-medical-center/",
+    "address": "3495 Bailey Avenue",
+    "city": "Buffalo",
+    "state": "NY",
+    "zip": "14215",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "By appointment for nutritional counseling",
+      "quantity_limit": "Individual programs",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "716-834-9200",
+      "hours": "During facility hours",
+      "notes": "Weight management plans, diabetes classes, cooking classes available"
+    },
+    "source_url": "https://www.va.gov/western-new-york-health-care/locations/buffalo-va-medical-center/",
+    "confidence": 0.8
+  },
+  {
+    "name": "Jesse Brown VA Medical Center - Food Pantry",
+    "organization": "VA Chicago Healthcare System",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Self-select food pantry in VA facility serving 800+ veterans monthly with fresh produce and shelf-stable items.",
+    "phone": "312-569-8387",
+    "website": "https://www.va.gov/chicago-health-care/locations/jesse-brown-department-of-veterans-affairs-medical-center/",
+    "address": "820 South Damen Avenue, Damen Pavilion, 2nd Floor",
+    "city": "Chicago",
+    "state": "IL",
+    "zip": "60612",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Tuesday, 11:00 AM - 1:00 PM",
+      "quantity_limit": "Monthly",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "312-569-8387",
+      "hours": "Tuesday 11 AM - 1 PM",
+      "notes": "Self-select pantry allowing veterans to choose items meeting personal dietary needs"
+    },
+    "source_url": "https://www.va.gov/chicago-health-care/locations/jesse-brown-department-of-veterans-affairs-medical-center/",
+    "confidence": 0.9
+  },
+  {
+    "name": "Edward Hines VA Hospital Veterans Food Pantry",
+    "organization": "VA Hines Healthcare System",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "VA Hospital food pantry with micro pantries at outpatient clinics, serving fresh and shelf-stable foods.",
+    "phone": "708-202-8387",
+    "website": "https://www.va.gov/hines-health-care/",
+    "address": "5000 South 5th Avenue",
+    "city": "Hines",
+    "state": "IL",
+    "zip": "60141",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Thursday, 11:00 AM - 1:00 PM",
+      "quantity_limit": "Once per month",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "708-202-8387",
+      "hours": "Thursday 11 AM - 1 PM",
+      "notes": "Micro pantries at multiple VA locations, partnership with Greater Chicago Food Depository"
+    },
+    "source_url": "https://www.va.gov/hines-health-care/",
+    "confidence": 0.9
+  },
+  {
+    "name": "Greater Chicago Food Depository - Network Food Pantries",
+    "organization": "Greater Chicago Food Depository",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Food bank network serving 125-175 veterans weekly at VA pantries, supports 12,000+ veterans in Cook County.",
+    "phone": "773-247-3663",
+    "website": "https://www.chicagosfoodbank.org/about/how-we-help/veterans-programs/",
+    "address": "Contact for pantry locations",
+    "city": "Chicago",
+    "state": "IL",
+    "zip": "60601",
+    "eligibility": {
+      "veteran_status_required": false,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Monthly at various VA and community locations",
+      "quantity_limit": "As available",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "773-247-3663",
+      "hours": "Contact for specific pantry hours",
+      "notes": "Veteran Stand Down events twice yearly with additional resources"
+    },
+    "source_url": "https://www.chicagosfoodbank.org/about/how-we-help/veterans-programs/",
+    "confidence": 0.8
+  },
+  {
+    "name": "Veterans Assistance Commission of Cook County (VACCC)",
+    "organization": "Veterans Assistance Commission of Cook County",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Nonprofit providing emergency financial assistance and food support to Cook County veterans.",
+    "phone": "312-433-6010",
+    "website": "https://vaccookcounty.org/",
+    "address": "1100 South Hamilton, C-O11, Cook County Juvenile Detention Center Lower Level",
+    "city": "Chicago",
+    "state": "IL",
+    "zip": "60612",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "As needed emergency assistance",
+      "quantity_limit": "Immediate food support available",
+      "id_required": true
+    },
+    "intake": {
+      "phone": "312-433-6010",
+      "hours": "Monday - Friday 8:30 AM - 3:00 PM",
+      "notes": "Emergency aid for food, rent, utilities, transportation for families"
+    },
+    "source_url": "https://vaccookcounty.org/",
+    "confidence": 0.8
+  },
+  {
+    "name": "Inner Voice - Transition in Place (TIP) Program",
+    "organization": "Inner Voice, Inc.",
+    "category": "food",
+    "subcategory": "meal-program",
+    "description": "Housing and supportive services program for veteran families experiencing homelessness with transitional meals.",
+    "phone": "773-502-5547",
+    "website": "https://www.ivchi.org/services/veterans-services/",
+    "address": "Contact for housing locations",
+    "city": "Chicago",
+    "state": "IL",
+    "zip": "60601",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "As part of supportive housing program",
+      "quantity_limit": "Daily meals during housing",
+      "id_required": true
+    },
+    "intake": {
+      "phone": "773-502-5547",
+      "hours": "Contact for program intake",
+      "notes": "95% transition to permanent housing, food included with housing support"
+    },
+    "source_url": "https://www.ivchi.org/services/veterans-services/",
+    "confidence": 0.7
+  },
+  {
+    "name": "Auburn Gresham Community Based VA Outpatient Clinic",
+    "organization": "VA Chicago Healthcare System",
+    "category": "food",
+    "subcategory": "meal-program",
+    "description": "VA community-based outpatient clinic providing primary care and referral services to veterans.",
+    "phone": "773-962-3700",
+    "website": "https://www.va.gov/chicago-health-care/locations/auburn-gresham-va-clinic/",
+    "address": "7731 South Halsted Street",
+    "city": "Chicago",
+    "state": "IL",
+    "zip": "60620",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Referrals to food programs as needed",
+      "quantity_limit": "As appropriate",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "773-962-3700",
+      "hours": "Monday - Friday 7:30 AM - 4:00 PM",
+      "notes": "Primary care with mental health, nutrition counseling referrals available"
+    },
+    "source_url": "https://www.va.gov/chicago-health-care/locations/auburn-gresham-va-clinic/",
+    "confidence": 0.7
+  },
+  {
+    "name": "Volunteers of America - Miami Veterans Food Pantry",
+    "organization": "Volunteers of America of Florida",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Veterans food pantry providing groceries and assistance to veterans",
+    "phone": "305-644-0335",
+    "website": "https://www.voaflorida.org/",
+    "address": "Miami",
+    "city": "Miami",
+    "state": "FL",
+    "zip": "33101",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Call for appointment",
+      "quantity_limit": "Weekly grocery delivery",
+      "id_required": true
+    },
+    "intake": {
+      "phone": "305-644-0335",
+      "hours": "Call for hours",
+      "notes": "Serves veterans experiencing functional impairment"
+    },
+    "source_url": "https://www.voaflorida.org/",
+    "confidence": 0.7
+  },
+  {
+    "name": "Patriot Caf\u00e9 at Bruce W. Carter VA Medical Center",
+    "organization": "VA Miami Health Care",
+    "category": "food",
+    "subcategory": "meal-program",
+    "description": "On-site caf\u00e9 serving hot and cold meals to veterans at VA Medical Center",
+    "phone": "305-575-7000",
+    "website": "https://www.va.gov/miami-health-care/",
+    "address": "1201 NW 16th St",
+    "city": "Miami",
+    "state": "FL",
+    "zip": "33125",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": [
+        "VA ID"
+      ]
+    },
+    "food_details": {
+      "distribution_schedule": "Mon-Fri 7am-4pm",
+      "quantity_limit": "Daily meal service",
+      "id_required": true
+    },
+    "intake": {
+      "phone": "305-575-7000",
+      "hours": "Mon-Fri 7am-4pm",
+      "notes": "Located on second floor of medical center"
+    },
+    "source_url": "https://www.va.gov/miami-health-care/locations/bruce-w-carter-department-of-veterans-affairs-medical-center/",
+    "confidence": 0.9
+  },
+  {
+    "name": "Salvation Army - Broward County Food Pantry",
+    "organization": "The Salvation Army - Broward County",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Food pantry serving Broward County residents with free nutritious meals and food boxes",
+    "phone": "954-524-6991",
+    "website": "https://fortlauderdale.salvationarmyflorida.org/",
+    "address": "1445 W Broward Blvd",
+    "city": "Fort Lauderdale",
+    "state": "FL",
+    "zip": "33312",
+    "eligibility": {
+      "veteran_status_required": false,
+      "docs_required": [
+        "Social Security card",
+        "ID"
+      ]
+    },
+    "food_details": {
+      "distribution_schedule": "Thu 9am-12pm, Daily meals 4:30-5:15pm",
+      "quantity_limit": "Food box once per week",
+      "id_required": true
+    },
+    "intake": {
+      "phone": "954-524-6991",
+      "hours": "Thu 9am-12pm",
+      "notes": "Free food, groceries, and holiday meals available"
+    },
+    "source_url": "https://fortlauderdale.salvationarmyflorida.org/",
+    "confidence": 0.8
+  },
+  {
+    "name": "The Pantry of Broward - Senior and Veteran Program",
+    "organization": "The Pantry of Broward, Inc.",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Food pantry serving seniors and veterans with nutritional food packages",
+    "phone": "No public phone",
+    "website": "https://www.thepantryofbroward.org/",
+    "address": "2800 W State Road 84, Suite 101",
+    "city": "Fort Lauderdale",
+    "state": "FL",
+    "zip": "33312",
+    "eligibility": {
+      "veteran_status_required": false,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Mon-Fri 8am-3pm",
+      "quantity_limit": "Monthly food packages",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "No public phone",
+      "hours": "Mon-Fri 8am-3pm",
+      "notes": "Serves seniors 60+ and grandparents with custody"
+    },
+    "source_url": "https://www.thepantryofbroward.org/",
+    "confidence": 0.7
+  },
+  {
+    "name": "Area Agency on Aging Broward - Veteran Directed Care & Food Program",
+    "organization": "Area Agency on Aging Broward County",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Food assistance and veteran-directed care services",
+    "phone": "954-745-9779",
+    "website": "https://www.adrcbroward.org/",
+    "address": "Fort Lauderdale",
+    "city": "Fort Lauderdale",
+    "state": "FL",
+    "zip": "33301",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Call for details",
+      "quantity_limit": "Varies by program",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "954-745-9779",
+      "hours": "Call for hours",
+      "notes": "Part of Aging and Disability Resource Center"
+    },
+    "source_url": "https://www.adrcbroward.org/",
+    "confidence": 0.6
+  },
+  {
+    "name": "VFW Post 10140 Tampa",
+    "organization": "Veterans of Foreign Wars",
+    "category": "food",
+    "subcategory": "meal-program",
+    "description": "VFW post providing meals and veteran services",
+    "phone": "813-985-6111",
+    "website": "https://vfw-post-10140.edan.io/",
+    "address": "8414 N 40th St",
+    "city": "Tampa",
+    "state": "FL",
+    "zip": "33604",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Sat 11am-11pm, Sun-Fri 11am-9pm",
+      "quantity_limit": "As available",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "813-985-6111",
+      "hours": "Sat 11am-11pm, Sun-Fri 11am-9pm",
+      "notes": "Meals and veteran community services"
+    },
+    "source_url": "https://vfw-post-10140.edan.io/",
+    "confidence": 0.7
+  },
+  {
+    "name": "James A. Haley Veterans' Hospital Food Assistance",
+    "organization": "VA Tampa Health Care",
+    "category": "food",
+    "subcategory": "meal-program",
+    "description": "Hospital nutrition services and food assistance for homeless and at-risk veterans",
+    "phone": "813-972-2000",
+    "website": "https://www.va.gov/tampa-health-care/",
+    "address": "13000 Bruce B. Downs Blvd",
+    "city": "Tampa",
+    "state": "FL",
+    "zip": "33612",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": [
+        "VA ID"
+      ]
+    },
+    "food_details": {
+      "distribution_schedule": "Daily inpatient meals",
+      "quantity_limit": "3 meals daily for inpatients",
+      "id_required": true
+    },
+    "intake": {
+      "phone": "813-972-2000",
+      "hours": "24/7 for inpatients",
+      "notes": "Care coordinators assist with emergency food needs"
+    },
+    "source_url": "https://www.va.gov/tampa-health-care/locations/james-a-haley-veterans-hospital/",
+    "confidence": 0.9
+  },
+  {
+    "name": "Orlando VA Medical Center Food Assistance & Nutrition Services",
+    "organization": "VA Orlando Health Care",
+    "category": "food",
+    "subcategory": "meal-program",
+    "description": "Nutrition services and food assistance for homeless and at-risk veterans",
+    "phone": "407-453-3692",
+    "website": "https://www.va.gov/orlando-health-care/",
+    "address": "13800 Veterans Way",
+    "city": "Orlando",
+    "state": "FL",
+    "zip": "32827",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": [
+        "VA ID"
+      ]
+    },
+    "food_details": {
+      "distribution_schedule": "Call for nutrition appointments",
+      "quantity_limit": "As needed per care plan",
+      "id_required": true
+    },
+    "intake": {
+      "phone": "407-453-3692",
+      "hours": "Call for appointment hours",
+      "notes": "Registered dietitians provide 24/7 virtual and in-person services"
+    },
+    "source_url": "https://www.va.gov/orlando-health-care/programs/nutrition-and-food-service/",
+    "confidence": 0.9
+  },
+  {
+    "name": "VFW Post 2093 - Orlando",
+    "organization": "Veterans of Foreign Wars",
+    "category": "food",
+    "subcategory": "meal-program",
+    "description": "VFW post providing meals and veteran community services",
+    "phone": "407-270-7025",
+    "website": "https://vfw2093.org/",
+    "address": "4444 Edgewater Dr",
+    "city": "Orlando",
+    "state": "FL",
+    "zip": "32804",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Call for meal information",
+      "quantity_limit": "As available",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "407-270-7025",
+      "hours": "Call for hours",
+      "notes": "Veteran community and meal services"
+    },
+    "source_url": "https://vfw2093.org/",
+    "confidence": 0.7
+  },
+  {
+    "name": "VFW Post 4287 - Orlando",
+    "organization": "Veterans of Foreign Wars",
+    "category": "food",
+    "subcategory": "meal-program",
+    "description": "VFW post providing meals and veteran services",
+    "phone": "407-273-6581",
+    "website": "https://www.vfwpost4287fl.org/",
+    "address": "3500 S Goldenrod Rd",
+    "city": "Orlando",
+    "state": "FL",
+    "zip": "32829",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Call for meal information",
+      "quantity_limit": "As available",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "407-273-6581",
+      "hours": "Call for hours",
+      "notes": "Veteran meals and community services"
+    },
+    "source_url": "https://www.vfwpost4287fl.org/",
+    "confidence": 0.7
+  },
+  {
+    "name": "PROJECT: VetRelief - American Legion Florida",
+    "organization": "American Legion Department of Florida",
+    "category": "food",
+    "subcategory": "emergency-assistance",
+    "description": "Emergency assistance including food support for veterans",
+    "phone": "407-295-2631",
+    "website": "https://projectvetrelief.org/",
+    "address": "1912A Lee Road",
+    "city": "Orlando",
+    "state": "FL",
+    "zip": "32810",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Emergency basis",
+      "quantity_limit": "One-time emergency food assistance",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "407-295-2631",
+      "hours": "Call for emergency assistance",
+      "notes": "Emergency food and support services"
+    },
+    "source_url": "https://projectvetrelief.org/",
+    "confidence": 0.8
+  },
+  {
+    "name": "Atlanta VA Farmers Market",
+    "organization": "VA Atlanta Health Care",
+    "category": "food",
+    "subcategory": "groceries",
+    "description": "Farmers market providing fresh produce and healthy choices for veterans and families",
+    "phone": "404-321-6111",
+    "website": "https://www.va.gov/atlanta-health-care/",
+    "address": "1670 Clairmont Road",
+    "city": "Decatur",
+    "state": "GA",
+    "zip": "30033",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": [
+        "VA ID"
+      ]
+    },
+    "food_details": {
+      "distribution_schedule": "10am-4:30pm (seasonal)",
+      "quantity_limit": "Fresh produce as available",
+      "id_required": true
+    },
+    "intake": {
+      "phone": "404-321-6111",
+      "hours": "10am-4:30pm",
+      "notes": "May expand to other clinics in 2024"
+    },
+    "source_url": "https://www.va.gov/atlanta-health-care/stories/atlanta-vahcs-farmers-market-offers-healthy-choices-to-veterans-and-families/",
+    "confidence": 0.9
+  },
+  {
+    "name": "VFW Post 6449 Grab N Go VFW Market - Fairburn",
+    "organization": "Veterans of Foreign Wars",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "VFW post food distribution in Duncan Memorial Park",
+    "phone": "678-223-3663",
+    "website": "https://www.bluepageswiki.org/wiki/VFW_Post_6449",
+    "address": "6000 Rivertown Rd",
+    "city": "Fairburn",
+    "state": "GA",
+    "zip": "30213",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Call for distribution schedule",
+      "quantity_limit": "Monthly grab-n-go distribution",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "678-223-3663",
+      "hours": "Call for hours",
+      "notes": "Drive-through food distribution at Duncan Memorial Park"
+    },
+    "source_url": "https://www.bluepageswiki.org/wiki/VFW_Post_6449",
+    "confidence": 0.6
+  },
+  {
+    "name": "Open Hand Atlanta",
+    "organization": "Open Hand Atlanta",
+    "category": "food",
+    "subcategory": "meal-program",
+    "description": "Medically tailored meals delivered to metro Atlanta residents",
+    "phone": "404-872-8089",
+    "website": "https://www.openhandatlanta.org/",
+    "address": "181 Armour Dr NE",
+    "city": "Atlanta",
+    "state": "GA",
+    "zip": "30324",
+    "eligibility": {
+      "veteran_status_required": false,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Mon-Sat 9am-5pm for coordination",
+      "quantity_limit": "Delivered per care plan",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "404-872-8089",
+      "hours": "Mon-Sat 9am-5pm",
+      "notes": "Free medically tailored meals throughout Georgia"
+    },
+    "source_url": "https://www.openhandatlanta.org/",
+    "confidence": 0.8
+  },
+  {
+    "name": "Atlanta Community Food Bank",
+    "organization": "Atlanta Community Food Bank",
+    "category": "food",
+    "subcategory": "food-bank",
+    "description": "Food bank serving Atlanta metro area with emergency food assistance",
+    "phone": "404-892-3333",
+    "website": "https://www.acfb.org/",
+    "address": "3400 North Desert Drive",
+    "city": "Atlanta",
+    "state": "GA",
+    "zip": "30344",
+    "eligibility": {
+      "veteran_status_required": false,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Mon-Fri 8am-5pm",
+      "quantity_limit": "Through partner agencies",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "404-892-3333",
+      "hours": "Mon-Fri 8am-5pm",
+      "notes": "Serves metro Atlanta area"
+    },
+    "source_url": "https://www.acfb.org/",
+    "confidence": 0.8
+  },
+  {
+    "name": "Disabled Veterans National Foundation Veteran Food Assistance Program",
+    "organization": "Disabled Veterans National Foundation",
+    "category": "food",
+    "subcategory": "groceries",
+    "description": "National program providing groceries delivered to veterans' doors",
+    "phone": "No regional phone",
+    "website": "https://www.dvnf.org/veteran-food-assistance-program/",
+    "address": "Atlanta",
+    "city": "Atlanta",
+    "state": "GA",
+    "zip": "30303",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Online application, delivery upon approval",
+      "quantity_limit": "One-time grant per application",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "No regional phone",
+      "hours": "Online applications 24/7",
+      "notes": "National program for all veterans, apply online only"
+    },
+    "source_url": "https://www.dvnf.org/veteran-food-assistance-program/",
+    "confidence": 0.8
+  },
+  {
+    "name": "Rowan Community Center Soldiers Angels Food Pantry - Salisbury",
+    "organization": "Soldiers' Angels",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Food pantry partnership with Charlotte Hornets providing healthy groceries to military and veteran families",
+    "phone": "Contact Tara Newton",
+    "website": "https://soldiersangels.org/get-support/food/charlotte/",
+    "address": "1959 Jake Alexander Blvd West, Suite B9",
+    "city": "Salisbury",
+    "state": "NC",
+    "zip": "28147",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Tue 10:30am-12:30pm",
+      "quantity_limit": "Weekly pantry access",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "Contact Tara Newton",
+      "hours": "Tue 10:30am-12:30pm",
+      "notes": "Fresh produce, frozen goods, and pantry staples available"
+    },
+    "source_url": "https://soldiersangels.org/get-support/food/charlotte/",
+    "confidence": 0.8
+  },
+  {
+    "name": "Catholic Charities Diocese of Charlotte Food Pantry",
+    "organization": "Catholic Charities Diocese of Charlotte",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Food pantry serving Charlotte residents including veterans",
+    "phone": "704-370-3262",
+    "website": "https://ccdoc.org/food-clothing",
+    "address": "1123 S. Church Street",
+    "city": "Charlotte",
+    "state": "NC",
+    "zip": "28203",
+    "eligibility": {
+      "veteran_status_required": false,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Tue 10am-12pm, Thu 1-3pm",
+      "quantity_limit": "Food boxes as available",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "704-370-3262",
+      "hours": "Tue 10am-12pm, Thu 1-3pm",
+      "notes": "Call 24 hours in advance to schedule. Text FOOD to 704-268-9821"
+    },
+    "source_url": "https://ccdoc.org/food-clothing",
+    "confidence": 0.8
+  },
+  {
+    "name": "Veterans Services of the Carolinas Food Pantry",
+    "organization": "Veterans Services of the Carolinas",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Food assistance program through veteran services organization",
+    "phone": "704-370-3262",
+    "website": "https://abccm-vsc.org/",
+    "address": "Charlotte",
+    "city": "Charlotte",
+    "state": "NC",
+    "zip": "28202",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Call for details",
+      "quantity_limit": "As available through program",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "855-962-8387",
+      "hours": "Mon-Fri 8:30am-5pm",
+      "notes": "Care coordination center for veteran support"
+    },
+    "source_url": "https://abccm-vsc.org/",
+    "confidence": 0.7
+  },
+  {
+    "name": "Houston Food Bank - Emergency Food Pantry",
+    "organization": "Houston Food Bank",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Emergency food pantry for veterans and low-income families",
+    "phone": "832-369-9390",
+    "website": "https://www.houstonfoodbank.org/",
+    "address": "535 Portwall St or 146 Knobcrest Dr",
+    "city": "Houston",
+    "state": "TX",
+    "zip": "77029",
+    "eligibility": {
+      "veteran_status_required": false,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Extended hours for working families",
+      "quantity_limit": "Emergency food as available",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "832-369-9390",
+      "hours": "Call for current hours",
+      "notes": "Find nearest pantry location by calling"
+    },
+    "source_url": "https://www.houstonfoodbank.org/find-help/",
+    "confidence": 0.8
+  },
+  {
+    "name": "Operation Restock - Houston Food Bank",
+    "organization": "Houston Food Bank / Combined Arms / Houston VA",
+    "category": "food",
+    "subcategory": "emergency-assistance",
+    "description": "Large-scale food distribution event for military and veteran families",
+    "phone": "832-369-9390",
+    "website": "https://www.houstonfoodbank.org/",
+    "address": "Michael E. DeBakey VA Medical Center",
+    "city": "Houston",
+    "state": "TX",
+    "zip": "77030",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": [
+        "VA ID"
+      ]
+    },
+    "food_details": {
+      "distribution_schedule": "Special event basis",
+      "quantity_limit": "Disaster/emergency food boxes",
+      "id_required": true
+    },
+    "intake": {
+      "phone": "832-369-9390",
+      "hours": "Check website for event dates",
+      "notes": "Disaster relief and emergency food distribution"
+    },
+    "source_url": "https://www.houstonfoodbank.org/blog/operation-restock-houstons-largest-military-and-veteran-families-resource-distribution/",
+    "confidence": 0.8
+  },
+  {
+    "name": "American Legion Post 490 (South Houston)",
+    "organization": "American Legion",
+    "category": "food",
+    "subcategory": "meal-program",
+    "description": "VFW post providing meals and veteran services",
+    "phone": "281-481-1179",
+    "website": "https://legion490.com/",
+    "address": "11702 Old Galveston Road",
+    "city": "Houston",
+    "state": "TX",
+    "zip": "77034",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Monthly steak dinners and events",
+      "quantity_limit": "Event-based meals",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "281-481-1179",
+      "hours": "Call for event schedule",
+      "notes": "Sponsors meals for disabled and recovery veterans"
+    },
+    "source_url": "https://legion490.com/",
+    "confidence": 0.7
+  },
+  {
+    "name": "VFW Post 6796 - Dallas",
+    "organization": "Veterans of Foreign Wars",
+    "category": "food",
+    "subcategory": "meal-program",
+    "description": "VFW post providing meals and veteran services",
+    "phone": "214-327-9565",
+    "website": "https://vfw6796.org/",
+    "address": "9179 Garland Road",
+    "city": "Dallas",
+    "state": "TX",
+    "zip": "75218",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Noon-closing daily",
+      "quantity_limit": "Meals available daily",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "214-327-9565",
+      "hours": "Daily 12pm opening",
+      "notes": "Meals, adult daycare, and community services"
+    },
+    "source_url": "https://vfw6796.org/",
+    "confidence": 0.7
+  },
+  {
+    "name": "Highland Park Community Assistance Network Client Choice Food Pantry",
+    "organization": "Highland Park Community Assistance Network",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Client choice food pantry serving San Antonio residents",
+    "phone": "210-533-7114",
+    "website": "https://www.thebranchofnashville.org/",
+    "address": "901 E. Drexel Avenue",
+    "city": "San Antonio",
+    "state": "TX",
+    "zip": "78210",
+    "eligibility": {
+      "veteran_status_required": false,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Tue, Thu 9am-12:30pm",
+      "quantity_limit": "Monthly food assistance",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "210-533-7114",
+      "hours": "Tue, Thu 9am-12:30pm",
+      "notes": "Appointment required, no walk-ins"
+    },
+    "source_url": "https://www.thepantryofbroward.org/",
+    "confidence": 0.7
+  },
+  {
+    "name": "VFW Post 8397 Food Distribution",
+    "organization": "Veterans of Foreign Wars",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Monthly food distribution from VFW post",
+    "phone": "210-827-3803",
+    "website": "https://vfw8397.org/",
+    "address": "2541 W Southcross Blvd",
+    "city": "San Antonio",
+    "state": "TX",
+    "zip": "78211",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Second Saturday of each month 9am",
+      "quantity_limit": "Monthly drive-through distribution",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "210-827-3803",
+      "hours": "Second Saturday 9am (while supplies last)",
+      "notes": "Drive-through food distribution, stay in car"
+    },
+    "source_url": "https://vfw8397.org/",
+    "confidence": 0.8
+  },
+  {
+    "name": "VFW Post 9174 Food Distribution",
+    "organization": "Veterans of Foreign Wars",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Food distribution in partnership with San Antonio Food Bank",
+    "phone": "210-674-7821",
+    "website": "https://vfw9174.org/",
+    "address": "2410 Pinn Road",
+    "city": "San Antonio",
+    "state": "TX",
+    "zip": "78228",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Call for prepack pantry dates",
+      "quantity_limit": "Every 14 days if needed",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "210-674-7821",
+      "hours": "Registration day of event",
+      "notes": "San Antonio Food Bank prepack pantry partnership"
+    },
+    "source_url": "https://vfw9174.org/",
+    "confidence": 0.7
+  },
+  {
+    "name": "Audie L. Murphy VA Hospital Nutrition Services",
+    "organization": "VA South Texas Health Care",
+    "category": "food",
+    "subcategory": "meal-program",
+    "description": "Hospital nutrition and food services for veteran patients",
+    "phone": "210-617-5300",
+    "website": "https://www.va.gov/south-texas-health-care/",
+    "address": "7400 Merton Minter Boulevard",
+    "city": "San Antonio",
+    "state": "TX",
+    "zip": "78229",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": [
+        "VA ID"
+      ]
+    },
+    "food_details": {
+      "distribution_schedule": "Daily patient meals",
+      "quantity_limit": "3 meals daily for inpatients",
+      "id_required": true
+    },
+    "intake": {
+      "phone": "210-617-5300",
+      "hours": "24/7 for inpatients",
+      "notes": "Cook-to-order service with diabetes survival skills classes"
+    },
+    "source_url": "https://news.va.gov/98078/san-antonio-va-serving-meals-to-veterans-in-friendly-appetizing-manner/",
+    "confidence": 0.9
+  },
+  {
+    "name": "Alamo Post 2 American Legion",
+    "organization": "American Legion",
+    "category": "food",
+    "subcategory": "meal-program",
+    "description": "American Legion post providing meals and veteran services",
+    "phone": "210-732-1891",
+    "website": "https://www.americanlegionalamopost2.org/",
+    "address": "3518 Fredericksburg Rd",
+    "city": "San Antonio",
+    "state": "TX",
+    "zip": "78201",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Call for meal events",
+      "quantity_limit": "Event-based meals",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "210-732-1891",
+      "hours": "Call for event schedule",
+      "notes": "Veteran meals and community events"
+    },
+    "source_url": "https://www.americanlegionalamopost2.org/",
+    "confidence": 0.7
+  },
+  {
+    "name": "Caritas of Austin Food Services",
+    "organization": "Caritas of Austin",
+    "category": "food",
+    "subcategory": "meal-program",
+    "description": "Free meal services to Austin residents in need",
+    "phone": "512-472-4135",
+    "website": "https://caritasofaustin.org/",
+    "address": "611 Neches Street",
+    "city": "Austin",
+    "state": "TX",
+    "zip": "78701",
+    "eligibility": {
+      "veteran_status_required": false,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Sun-Wed 11am-12:30pm",
+      "quantity_limit": "Daily free meals",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "512-472-4135",
+      "hours": "Sun-Wed 11am-12:30pm",
+      "notes": "Free meals to anyone in need"
+    },
+    "source_url": "https://caritasofaustin.org/",
+    "confidence": 0.8
+  },
+  {
+    "name": "Operation Commissary",
+    "organization": "Operation Stand Down Tennessee",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Food insecurity program specifically for veterans",
+    "phone": "615-248-1981",
+    "website": "https://www.osdtn.org/food",
+    "address": "OSDTN Service Center, Edgehill",
+    "city": "Nashville",
+    "state": "TN",
+    "zip": "37215",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Call or visit service center",
+      "quantity_limit": "Food bags available",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "615-248-1981",
+      "hours": "Call for hours",
+      "notes": "All veterans eligible regardless of income. Pickup at VFW, VSO, or veteran centers"
+    },
+    "source_url": "https://www.osdtn.org/food",
+    "confidence": 0.8
+  },
+  {
+    "name": "The Pantry at St. Luke's Community House",
+    "organization": "St. Luke's Community House",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Community food pantry serving Nashville residents",
+    "phone": "615-350-7893",
+    "website": "https://www.stlch.org/thepantry",
+    "address": "5601 New York Avenue",
+    "city": "Nashville",
+    "state": "TN",
+    "zip": "37209",
+    "eligibility": {
+      "veteran_status_required": false,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Tue-Fri 10:30am-2:30pm",
+      "quantity_limit": "Monthly food assistance",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "615-350-7893",
+      "hours": "Tue-Fri 10:30am-2:30pm",
+      "notes": "Appointments available but walk-ups welcome"
+    },
+    "source_url": "https://www.stlch.org/thepantry",
+    "confidence": 0.8
+  },
+  {
+    "name": "Second Harvest Food Bank of Middle Tennessee",
+    "organization": "Second Harvest Food Bank",
+    "category": "food",
+    "subcategory": "food-bank",
+    "description": "Food bank serving Middle Tennessee region",
+    "phone": "615-329-3491",
+    "website": "https://www.secondharvestmidtn.org/",
+    "address": "331 Great Circle Rd",
+    "city": "Nashville",
+    "state": "TN",
+    "zip": "38228",
+    "eligibility": {
+      "veteran_status_required": false,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Mon-Fri 8:30am-4:30pm",
+      "quantity_limit": "Through partner agencies",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "615-329-3491",
+      "hours": "Mon-Fri 8:30am-4:30pm",
+      "notes": "Central warehouse for partner food pantries"
+    },
+    "source_url": "https://www.secondharvestmidtn.org/",
+    "confidence": 0.8
+  },
+  {
+    "name": "The Branch of Nashville",
+    "organization": "The Branch of Nashville",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Food pantry serving Antioch area families",
+    "phone": "615-752-5941",
+    "website": "https://www.thebranchofnashville.org/",
+    "address": "41 Tusculum Road",
+    "city": "Antioch",
+    "state": "TN",
+    "zip": "37013",
+    "eligibility": {
+      "veteran_status_required": false,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Mon-Wed 10am-2pm, Sat 9:30am-12pm",
+      "quantity_limit": "70-90 lbs monthly",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "615-752-5941",
+      "hours": "Mon-Wed 10am-2pm, Sat 9:30am-12pm",
+      "notes": "Seniors walk-in Wed. Others need appointment. Emergency box available."
+    },
+    "source_url": "https://www.thebranchofnashville.org/",
+    "confidence": 0.8
+  },
+  {
+    "name": "ENCM - East Nashville Care Market",
+    "organization": "East Nashville Care Market",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Food pantry and market serving East Nashville residents",
+    "phone": "615-540-0122",
+    "website": "https://www.encm.org/",
+    "address": "3115 Gallatin Pike",
+    "city": "Nashville",
+    "state": "TN",
+    "zip": "37216",
+    "eligibility": {
+      "veteran_status_required": false,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Tue-Thu 9am-2:45pm, Sat 9am-12pm",
+      "quantity_limit": "Varies by program",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "615-540-0122",
+      "hours": "Tue-Thu 9am-2:45pm, Sat 9am-12pm",
+      "notes": "Community care market and food assistance"
+    },
+    "source_url": "https://www.encm.org/",
+    "confidence": 0.7
+  },
+  {
+    "name": "VA Tennessee Valley Healthcare - Nashville VA Medical Center",
+    "organization": "VA Tennessee Valley Health Care",
+    "category": "food",
+    "subcategory": "meal-program",
+    "description": "Hospital nutrition and food services for veteran patients",
+    "phone": "615-327-4751",
+    "website": "https://www.va.gov/tennessee-valley-health-care/",
+    "address": "1310 24th Avenue South",
+    "city": "Nashville",
+    "state": "TN",
+    "zip": "37212",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": [
+        "VA ID"
+      ]
+    },
+    "food_details": {
+      "distribution_schedule": "Daily inpatient meals",
+      "quantity_limit": "3 meals daily for inpatients",
+      "id_required": true
+    },
+    "intake": {
+      "phone": "615-327-4751",
+      "hours": "24/7 for inpatients",
+      "notes": "Nutrition counseling and dietary services available"
+    },
+    "source_url": "https://www.va.gov/tennessee-valley-health-care/",
+    "confidence": 0.9
+  },
+  {
+    "name": "Mid-South Food Bank",
+    "organization": "Mid-South Food Bank",
+    "category": "food",
+    "subcategory": "food-bank",
+    "description": "Food bank serving Memphis and mid-south region",
+    "phone": "901-527-0841",
+    "website": "https://www.midsouthfoodbank.org/",
+    "address": "3865 S. Perkins",
+    "city": "Memphis",
+    "state": "TN",
+    "zip": "38118",
+    "eligibility": {
+      "veteran_status_required": false,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Mon-Fri 8:30am-3:30pm",
+      "quantity_limit": "Through partner agencies",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "901-527-0841",
+      "hours": "Mon-Fri 8:30am-3:30pm",
+      "notes": "Central warehouse for food bank partners"
+    },
+    "source_url": "https://www.midsouthfoodbank.org/",
+    "confidence": 0.8
+  },
+  {
+    "name": "St. Vincent de Paul Food Pantry",
+    "organization": "Society of St. Vincent de Paul",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Food pantry and meal program in Memphis",
+    "phone": "901-274-2137",
+    "website": "https://svdpmemphis.org/",
+    "address": "1306 Monroe Avenue (Food Mission at Ozanam Center)",
+    "city": "Memphis",
+    "state": "TN",
+    "zip": "38104",
+    "eligibility": {
+      "veteran_status_required": false,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Tue-Sun 10am-11am hot meals, Mid-month Sat pantry",
+      "quantity_limit": "Daily meal and pantry",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "901-274-2137",
+      "hours": "Tue-Sun 10am-11am (Food Mission), Mid-month Sat (Pantry)",
+      "notes": "Hot meals daily to 100-175 people plus food pantry"
+    },
+    "source_url": "https://svdpmemphis.org/",
+    "confidence": 0.7
+  },
+  {
+    "name": "Catholic Charities Emergency Food Program",
+    "organization": "Catholic Charities of West Tennessee",
+    "category": "food",
+    "subcategory": "emergency-assistance",
+    "description": "Emergency food assistance and mobile food pantry",
+    "phone": "901-722-4700",
+    "website": "https://ccwtn.org/our-services/hungry/",
+    "address": "1325 Jefferson Ave",
+    "city": "Memphis",
+    "state": "TN",
+    "zip": "38104",
+    "eligibility": {
+      "veteran_status_required": false,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Mon-Thu starting 9am, Daily meal bags available",
+      "quantity_limit": "Emergency food and daily meals",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "901-722-4700",
+      "hours": "Mon-Thu 9am+, Daily meal bags",
+      "notes": "Mobile food pantry and emergency meal bags"
+    },
+    "source_url": "https://ccwtn.org/our-services/hungry/",
+    "confidence": 0.8
+  },
+  {
+    "name": "Friends For All Food Pantry",
+    "organization": "Friends For All Memphis",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Community food pantry serving Memphis residents",
+    "phone": "901-272-0855",
+    "website": "https://www.friendsforall.org/food",
+    "address": "Memphis",
+    "city": "Memphis",
+    "state": "TN",
+    "zip": "38101",
+    "eligibility": {
+      "veteran_status_required": false,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "First visit Mon-Thu 8:30am-3pm",
+      "quantity_limit": "Regular pantry access",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "901-272-0855",
+      "hours": "Mon-Thu 8:30am-3pm for intake",
+      "notes": "Community food pantry services"
+    },
+    "source_url": "https://www.friendsforall.org/food",
+    "confidence": 0.7
+  },
+  {
+    "name": "Sunshine and Daisy Mobile Food Pantry",
+    "organization": "Sunshine and Daisy Mobile Food Pantry",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Mobile food pantry serving Memphis neighborhoods",
+    "phone": "901-320-9376",
+    "website": "https://www.sunshineanddaisy.org/",
+    "address": "Nutbush neighborhood",
+    "city": "Memphis",
+    "state": "TN",
+    "zip": "38106",
+    "eligibility": {
+      "veteran_status_required": false,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Every Saturday",
+      "quantity_limit": "Food distribution while supplies last",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "901-320-9376",
+      "hours": "Saturdays (call for time)",
+      "notes": "No questions asked, inclusive approach to food assistance"
+    },
+    "source_url": "https://www.sunshineanddaisy.org/",
+    "confidence": 0.7
+  },
+  {
+    "name": "Memphis Dream Center - FeedMemphis",
+    "organization": "Memphis Dream Center",
+    "category": "food",
+    "subcategory": "meal-program",
+    "description": "Mobile food distribution and food insecurity programs",
+    "phone": "901-602-7168",
+    "website": "https://memphisdreamcenter.com/feedmemphis/",
+    "address": "255 N Highland St",
+    "city": "Memphis",
+    "state": "TN",
+    "zip": "38111",
+    "eligibility": {
+      "veteran_status_required": false,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Mobile drives, in-school, weekend bags",
+      "quantity_limit": "Program varies",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "901-602-7168",
+      "hours": "Call for program schedule",
+      "notes": "Multiple food insecurity programs throughout Memphis"
+    },
+    "source_url": "https://memphisdreamcenter.com/feedmemphis/",
+    "confidence": 0.7
+  },
+  {
+    "name": "VA Memphis Healthcare - Lt. Col. Luke Weathers Jr. VA Medical Center",
+    "organization": "VA Memphis Health Care",
+    "category": "food",
+    "subcategory": "meal-program",
+    "description": "Hospital nutrition and food services for veteran patients",
+    "phone": "901-523-8990",
+    "website": "https://www.va.gov/memphis-health-care/",
+    "address": "116 North Pauline Street",
+    "city": "Memphis",
+    "state": "TN",
+    "zip": "38103",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": [
+        "VA ID"
+      ]
+    },
+    "food_details": {
+      "distribution_schedule": "Daily inpatient meals",
+      "quantity_limit": "3 meals daily for inpatients",
+      "id_required": true
+    },
+    "intake": {
+      "phone": "901-523-8990",
+      "hours": "24/7 for inpatients",
+      "notes": "Full nutrition services and dietary support"
+    },
+    "source_url": "https://www.va.gov/memphis-health-care/locations/lt-col-luke-weathers-jr-va-medical-center/",
+    "confidence": 0.9
+  },
+  {
+    "name": "Giving Hope NOLA Food Pantry - New Orleans East",
+    "organization": "Giving Hope NOLA",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Food pantry providing nutritious groceries and hot meals to New Orleans residents",
+    "phone": "504-940-1592",
+    "website": "https://givinghopenola.org/",
+    "address": "13040 I-10 Service Rd",
+    "city": "New Orleans",
+    "state": "LA",
+    "zip": "70128",
+    "eligibility": {
+      "veteran_status_required": false,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Monday-Friday operations",
+      "quantity_limit": "Grocery box and hot meal daily",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "504-940-1592",
+      "hours": "Call for current hours",
+      "notes": "5 days/week hot meals plus grocery boxes"
+    },
+    "source_url": "https://givinghopenola.org/",
+    "confidence": 0.8
+  },
+  {
+    "name": "Second Harvest Food Bank of Greater New Orleans and Acadiana",
+    "organization": "Second Harvest Food Bank",
+    "category": "food",
+    "subcategory": "food-bank",
+    "description": "Food bank serving New Orleans and surrounding parishes",
+    "phone": "504-734-1322",
+    "website": "https://no-hunger.org/",
+    "address": "700 Edwards Avenue",
+    "city": "New Orleans",
+    "state": "LA",
+    "zip": "70123",
+    "eligibility": {
+      "veteran_status_required": false,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Mon-Fri 7:30am-4pm",
+      "quantity_limit": "Through partner agencies",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "504-734-1322",
+      "hours": "Mon-Fri 7:30am-4pm",
+      "notes": "Central warehouse for partner food pantries"
+    },
+    "source_url": "https://no-hunger.org/",
+    "confidence": 0.8
+  },
+  {
+    "name": "Food For Life of New Orleans",
+    "organization": "Food For Life of New Orleans, Inc.",
+    "category": "food",
+    "subcategory": "meal-program",
+    "description": "Vegetarian food relief and nutrition assistance",
+    "phone": "601-215-9095",
+    "website": "http://www.neworleansffl.com/",
+    "address": "2936 Esplanade Ave",
+    "city": "New Orleans",
+    "state": "LA",
+    "zip": "70119",
+    "eligibility": {
+      "veteran_status_required": false,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Call for meal schedule",
+      "quantity_limit": "Vegetarian meals and food relief",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "601-215-9095",
+      "hours": "Call for hours",
+      "notes": "Vegetarian food relief to needy and homeless since 1969"
+    },
+    "source_url": "http://www.neworleansffl.com/",
+    "confidence": 0.7
+  },
+  {
+    "name": "Five STAR Veterans Center Food Pantry",
+    "organization": "Five STAR Veterans Center",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Dedicated food pantry for veterans in need",
+    "phone": "904-723-5950",
+    "website": "https://www.5starveteranscenter.org/",
+    "address": "40 Acme Street",
+    "city": "Jacksonville",
+    "state": "FL",
+    "zip": "32211",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Mon-Fri 8am-5pm",
+      "quantity_limit": "Once per month maximum",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "904-723-5950",
+      "hours": "Mon-Fri 8am-5pm",
+      "notes": "Veteran-only food pantry"
+    },
+    "source_url": "https://www.5starveteranscenter.org/",
+    "confidence": 0.9
+  },
+  {
+    "name": "Feeding Northeast Florida - Veteran Food Box Program",
+    "organization": "Feeding Northeast Florida",
+    "category": "food",
+    "subcategory": "groceries",
+    "description": "Veteran-specific meal boxes with fresh produce, dairy, and proteins",
+    "phone": "904-513-1333",
+    "website": "https://feedingnefl.org/",
+    "address": "Jacksonville",
+    "city": "Jacksonville",
+    "state": "FL",
+    "zip": "32099",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Weekly delivery to homebound veterans",
+      "quantity_limit": "Weekly meal boxes",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "904-513-1333",
+      "hours": "Call for details",
+      "notes": "Partnership with United Way, DoorDash, and VA"
+    },
+    "source_url": "https://feedingnefl.org/",
+    "confidence": 0.8
+  },
+  {
+    "name": "USO Mayport Food Pantry",
+    "organization": "USO of Greater Jacksonville",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Food pantry for military families (Note: Location closed December 2023)",
+    "phone": "904-513-1333",
+    "website": "https://jax.uso.org/",
+    "address": "2560 Mayport Rd",
+    "city": "Jacksonville",
+    "state": "FL",
+    "zip": "32233",
+    "eligibility": {
+      "veteran_status_required": false,
+      "docs_required": [
+        "Military ID"
+      ]
+    },
+    "food_details": {
+      "distribution_schedule": "Closed December 2023",
+      "quantity_limit": "Historical: As available",
+      "id_required": true
+    },
+    "intake": {
+      "phone": "904-513-1333",
+      "hours": "Closed",
+      "notes": "Contact USO for current military family services in Jacksonville"
+    },
+    "source_url": "https://jax.uso.org/",
+    "confidence": 0.6
+  },
+  {
+    "name": "NAS Jax Food Farmacy",
+    "organization": "Naval Air Station Jacksonville",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Food distribution for active-duty military families",
+    "phone": "904-255-5550",
+    "website": "https://www.jacksonville.gov/departments/military-affairs-and-veterans-department/",
+    "address": "5391 Collins Rd",
+    "city": "Jacksonville",
+    "state": "FL",
+    "zip": "32244",
+    "eligibility": {
+      "veteran_status_required": false,
+      "docs_required": [
+        "Military ID"
+      ]
+    },
+    "food_details": {
+      "distribution_schedule": "4th Tuesday of month 10am-12pm",
+      "quantity_limit": "Monthly food distribution",
+      "id_required": true
+    },
+    "intake": {
+      "phone": "904-255-5550",
+      "hours": "4th Tuesday 10am-12pm",
+      "notes": "Active-duty families only, bring military ID"
+    },
+    "source_url": "https://www.jacksonville.gov/departments/military-affairs-and-veterans-department/",
+    "confidence": 0.9
+  },
+  {
+    "name": "Mayport Food Farmacy",
+    "organization": "Fleet Reserve Association / City of Jacksonville",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Food distribution for military families",
+    "phone": "904-255-5550",
+    "website": "https://www.jacksonville.gov/departments/military-affairs-and-veterans-department/",
+    "address": "390 Mayport Road",
+    "city": "Atlantic Beach",
+    "state": "FL",
+    "zip": "32233",
+    "eligibility": {
+      "veteran_status_required": false,
+      "docs_required": [
+        "Military ID"
+      ]
+    },
+    "food_details": {
+      "distribution_schedule": "Monthly program",
+      "quantity_limit": "Food boxes for military families",
+      "id_required": true
+    },
+    "intake": {
+      "phone": "904-255-5550",
+      "hours": "Call for schedule",
+      "notes": "Valid military ID required"
+    },
+    "source_url": "https://www.jacksonville.gov/departments/military-affairs-and-veterans-department/",
+    "confidence": 0.7
+  },
+  {
+    "name": "Max Block Food Pantry - Jacksonville",
+    "organization": "The LJD Jewish Family & Community Services",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Community food pantry serving all Jacksonville residents",
+    "phone": "904-448-1933",
+    "website": "https://jfcsjax.org/services/max-block-food-pantry/",
+    "address": "6261 Dupont Station Court East",
+    "city": "Jacksonville",
+    "state": "FL",
+    "zip": "32217",
+    "eligibility": {
+      "veteran_status_required": false,
+      "docs_required": [
+        "Picture ID"
+      ]
+    },
+    "food_details": {
+      "distribution_schedule": "Tue, Thu 1pm-3pm",
+      "quantity_limit": "3 times per 12 months",
+      "id_required": true
+    },
+    "intake": {
+      "phone": "904-448-1933",
+      "hours": "Tue, Thu 1pm-3pm (walk-in)",
+      "notes": "Picture ID required, serves entire Jacksonville community"
+    },
+    "source_url": "https://jfcsjax.org/services/max-block-food-pantry/",
+    "confidence": 0.8
+  },
+  {
+    "name": "UCOM - United Community Outreach Ministry Food Pantry",
+    "organization": "United Community Outreach Ministry",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Community food pantry for Duval County residents",
+    "phone": "904-396-2401",
+    "website": "https://ucomjax.org/food-pantry-1",
+    "address": "3349 St. Augustine Rd",
+    "city": "Jacksonville",
+    "state": "FL",
+    "zip": "32207",
+    "eligibility": {
+      "veteran_status_required": false,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Call for hours",
+      "quantity_limit": "Monthly food assistance",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "904-396-2401",
+      "hours": "Call for hours",
+      "notes": "Serves specific zip codes in Duval County"
+    },
+    "source_url": "https://ucomjax.org/food-pantry-1",
+    "confidence": 0.7
+  },
+  {
+    "name": "BEAM Food Pantry",
+    "organization": "Beaches Emergency Assistance Ministry",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Food pantry for eligible residents and active-duty military",
+    "phone": "904-241-2326",
+    "website": "https://jaxbeam.org/food-pantry/",
+    "address": "850 6th Ave S, Ste 400",
+    "city": "Jacksonville",
+    "state": "FL",
+    "zip": "32250",
+    "eligibility": {
+      "veteran_status_required": false,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "By appointment (7 days advance)",
+      "quantity_limit": "Every three weeks",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "904-241-2326",
+      "hours": "Call for appointment",
+      "notes": "All active-duty military eligible regardless of zip code"
+    },
+    "source_url": "https://jaxbeam.org/food-pantry/",
+    "confidence": 0.8
+  },
+  {
+    "name": "West LA Food Hub",
+    "organization": "VA Greater Los Angeles",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Veteran-focused food hub offering fresh produce, non-perishables, dairy and eggs",
+    "phone": "310-268-4350",
+    "website": "https://www.va.gov/greater-los-angeles-health-care/programs/whole-health/food-security-resources/",
+    "address": "Building 258 Room 119, West LA VA Medical Center",
+    "city": "Los Angeles",
+    "state": "CA",
+    "zip": "90073",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Mon-Fri 10am-2pm",
+      "quantity_limit": "Varies",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "310-268-4350",
+      "hours": "Mon-Fri 10am-2pm",
+      "notes": "Email VHAWLAFoodHub@VA.gov for questions"
+    },
+    "source_url": "https://www.va.gov/greater-los-angeles-health-care/programs/whole-health/food-security-resources/",
+    "confidence": 0.9
+  },
+  {
+    "name": "West LA Food Hub - Center for Development and Civic Engagement",
+    "organization": "Center for Development and Civic Engagement",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Food hub supporting veterans and community members",
+    "phone": "310-268-4350",
+    "website": "https://www.va.gov/greater-los-angeles-health-care/",
+    "address": "Building 258, West LA VA Campus",
+    "city": "Los Angeles",
+    "state": "CA",
+    "zip": "90073",
+    "eligibility": {
+      "veteran_status_required": false,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Mon-Fri 10am-2pm",
+      "quantity_limit": "As available",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "310-268-4350",
+      "hours": "Mon-Fri 10am-2pm",
+      "notes": "Community focused food hub"
+    },
+    "source_url": "https://www.va.gov/greater-los-angeles-health-care/",
+    "confidence": 0.8
+  },
+  {
+    "name": "Bandini Foundation Food Distribution",
+    "organization": "Bandini Foundation",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Food distribution for homeless veterans at Heroes Golf Course",
+    "phone": "310-268-3725",
+    "website": "https://bandinifoundation.org/",
+    "address": "Building 329, Heroes Golf Course",
+    "city": "Los Angeles",
+    "state": "CA",
+    "zip": "90073",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Mon 11am-5pm",
+      "quantity_limit": "As available",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "310-268-3725",
+      "hours": "Mon 11am-5pm",
+      "notes": "Fresh produce and non-perishables available"
+    },
+    "source_url": "https://bandinifoundation.org/",
+    "confidence": 0.8
+  },
+  {
+    "name": "Village for Vets Food First Program",
+    "organization": "Village for Vets",
+    "category": "food",
+    "subcategory": "meal-program",
+    "description": "Daily meals and food programs for homeless veterans",
+    "phone": "424-248-5263",
+    "website": "https://www.villageforvets.org/foodfirst",
+    "address": "Los Angeles",
+    "city": "Los Angeles",
+    "state": "CA",
+    "zip": "90010",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Daily",
+      "quantity_limit": "Daily meals",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "424-248-5263",
+      "hours": "Daily",
+      "notes": "Four-star rated nonprofit"
+    },
+    "source_url": "https://www.villageforvets.org/foodfirst",
+    "confidence": 0.85
+  },
+  {
+    "name": "LA Regional Food Bank - Veteran Services",
+    "organization": "Los Angeles Regional Food Bank",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Food bank serving veterans and other populations",
+    "phone": "323-234-3030",
+    "website": "https://www.lafoodbank.org/",
+    "address": "1734 E 41st St",
+    "city": "Los Angeles",
+    "state": "CA",
+    "zip": "90058",
+    "eligibility": {
+      "veteran_status_required": false,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Mon-Sat 8am-5pm",
+      "quantity_limit": "Varies",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "323-234-3030",
+      "hours": "Mon-Sat 8am-5pm",
+      "notes": "Serves 300,000+ clients monthly"
+    },
+    "source_url": "https://www.lafoodbank.org/",
+    "confidence": 0.85
+  },
+  {
+    "name": "Feeding Heroes Program",
+    "organization": "Feeding San Diego",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Program ensuring military members and families have access to nutritious food",
+    "phone": "211",
+    "website": "https://feedingsandiego.org/our-programs/feeding-heroes/",
+    "address": "San Diego County",
+    "city": "San Diego",
+    "state": "CA",
+    "zip": "92101",
+    "eligibility": {
+      "veteran_status_required": false,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Multiple mobile sites",
+      "quantity_limit": "20-25 lbs produce per household",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "211",
+      "hours": "Varies by location",
+      "notes": "Mobile pantry with 25 strategic sites"
+    },
+    "source_url": "https://feedingsandiego.org/our-programs/feeding-heroes/",
+    "confidence": 0.85
+  },
+  {
+    "name": "AHF Heroes Pantry",
+    "organization": "AIDS Healthcare Foundation",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Food pantry specifically for San Diego veterans",
+    "phone": "323-791-5526",
+    "website": "https://www.aidshealth.org/",
+    "address": "12650 Lindo Ln",
+    "city": "Lakeside",
+    "state": "CA",
+    "zip": "92040",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Select dates 9am-12pm",
+      "quantity_limit": "Per visit",
+      "id_required": true
+    },
+    "intake": {
+      "phone": "323-791-5526",
+      "hours": "9am-12pm (select dates)",
+      "notes": "May 11, 25; June 8, 22; July 6, 20"
+    },
+    "source_url": "https://www.aidshealth.org/",
+    "confidence": 0.8
+  },
+  {
+    "name": "Wounded Warrior Homes Food For Vets Pantry",
+    "organization": "Wounded Warrior Homes",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Fully stocked food pantry with healthy options for enrolled veterans",
+    "phone": "760-205-5050",
+    "website": "https://www.woundedwarriorhomes.org/food-pantry-for-veterans",
+    "address": "San Marcos",
+    "city": "San Marcos",
+    "state": "CA",
+    "zip": "92069",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "By appointment",
+      "quantity_limit": "As needed",
+      "id_required": true
+    },
+    "intake": {
+      "phone": "760-205-5050",
+      "hours": "By appointment",
+      "notes": "Includes protein, dairy, produce, hygiene items"
+    },
+    "source_url": "https://www.woundedwarriorhomes.org/food-pantry-for-veterans",
+    "confidence": 0.85
+  },
+  {
+    "name": "San Diego VA Medical Center Cafeteria",
+    "organization": "VA San Diego Healthcare",
+    "category": "food",
+    "subcategory": "meal-program",
+    "description": "On-site cafeteria serving veteran patients",
+    "phone": "858-552-7475",
+    "website": "https://www.va.gov/san-diego-health-care/",
+    "address": "3350 La Jolla Village Dr, Floor 1",
+    "city": "San Diego",
+    "state": "CA",
+    "zip": "92161",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": [
+        "VA ID"
+      ]
+    },
+    "food_details": {
+      "distribution_schedule": "Mon-Thu 6:30am-6pm",
+      "quantity_limit": "As purchased",
+      "id_required": true
+    },
+    "intake": {
+      "phone": "858-552-7475",
+      "hours": "Mon-Thu 6:30am-6pm",
+      "notes": "Patient care call center"
+    },
+    "source_url": "https://www.va.gov/san-diego-health-care/",
+    "confidence": 0.8
+  },
+  {
+    "name": "San Diego Food Bank Military Initiative",
+    "organization": "Feeding San Diego",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Military-focused food assistance initiative",
+    "phone": "211",
+    "website": "https://feedingsandiego.org/",
+    "address": "San Diego",
+    "city": "San Diego",
+    "state": "CA",
+    "zip": "92101",
+    "eligibility": {
+      "veteran_status_required": false,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Varies",
+      "quantity_limit": "Varies",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "211",
+      "hours": "Varies",
+      "notes": "Military community focused"
+    },
+    "source_url": "https://feedingsandiego.org/",
+    "confidence": 0.7
+  },
+  {
+    "name": "ASYMCA San Diego - Military Food Assistance",
+    "organization": "Armed Services YMCA of San Diego",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Military food assistance program",
+    "phone": "211",
+    "website": "https://www.asymca.org/",
+    "address": "San Diego",
+    "city": "San Diego",
+    "state": "CA",
+    "zip": "92101",
+    "eligibility": {
+      "veteran_status_required": false,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Varies",
+      "quantity_limit": "Varies",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "211",
+      "hours": "Varies",
+      "notes": "Military community support"
+    },
+    "source_url": "https://www.asymca.org/",
+    "confidence": 0.7
+  },
+  {
+    "name": "VFW Food Drive Partnership",
+    "organization": "Veterans of Foreign Wars",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "VFW food drive partnership supporting veterans",
+    "phone": "211",
+    "website": "https://www.vfw.org/",
+    "address": "San Diego",
+    "city": "San Diego",
+    "state": "CA",
+    "zip": "92101",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Varies",
+      "quantity_limit": "Varies",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "211",
+      "hours": "Varies",
+      "notes": "VFW post support"
+    },
+    "source_url": "https://www.vfw.org/",
+    "confidence": 0.65
+  },
+  {
+    "name": "Swords to Plowshares Veterans Community Center",
+    "organization": "Swords to Plowshares",
+    "category": "food",
+    "subcategory": "meal-program",
+    "description": "Expanded hours with nutritious meals and community-building activities",
+    "phone": "415-252-4788",
+    "website": "https://www.swords-to-plowshares.org/",
+    "address": "1060 Howard St",
+    "city": "San Francisco",
+    "state": "CA",
+    "zip": "94103",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Mon 11am-6pm, Tue-Sat 11am-7pm",
+      "quantity_limit": "Daily communal meals",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "415-252-4788",
+      "hours": "Mon 11am-6pm, Tue-Sat 11am-7pm",
+      "notes": "Wraparound supportive services"
+    },
+    "source_url": "https://www.swords-to-plowshares.org/",
+    "confidence": 0.85
+  },
+  {
+    "name": "SF-Marin Food Bank",
+    "organization": "San Francisco-Marin Food Bank",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Food pantry serving SF and Marin County veterans",
+    "phone": "415-824-3663",
+    "website": "https://www.sfmfoodbank.org/",
+    "address": "900 Pennsylvania Ave",
+    "city": "San Francisco",
+    "state": "CA",
+    "zip": "94107",
+    "eligibility": {
+      "veteran_status_required": false,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Mon-Fri 8am-5pm",
+      "quantity_limit": "Varies",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "415-824-3663",
+      "hours": "Mon-Fri 8am-5pm",
+      "notes": "Help@sfmfoodbank.org for enrollment"
+    },
+    "source_url": "https://www.sfmfoodbank.org/",
+    "confidence": 0.8
+  },
+  {
+    "name": "San Francisco VA Medical Center - Food Security Services",
+    "organization": "VA San Francisco",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Food security services for veteran patients",
+    "phone": "415-221-4810",
+    "website": "https://www.va.gov/san-francisco-health-care/",
+    "address": "4150 Clement St",
+    "city": "San Francisco",
+    "state": "CA",
+    "zip": "94121",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": [
+        "VA ID"
+      ]
+    },
+    "food_details": {
+      "distribution_schedule": "Varies",
+      "quantity_limit": "As needed",
+      "id_required": true
+    },
+    "intake": {
+      "phone": "415-221-4810",
+      "hours": "Business hours",
+      "notes": "Helps with food and shelter access"
+    },
+    "source_url": "https://www.va.gov/san-francisco-health-care/",
+    "confidence": 0.8
+  },
+  {
+    "name": "Operation Dignity - House of Dignity Emergency Shelter",
+    "organization": "Operation Dignity",
+    "category": "food",
+    "subcategory": "meal-program",
+    "description": "Emergency shelter with three daily meals for homeless veterans",
+    "phone": "510-453-8478",
+    "website": "https://operationdignity.org/",
+    "address": "318 Harrison St",
+    "city": "Oakland",
+    "state": "CA",
+    "zip": "94607",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Three daily meals",
+      "quantity_limit": "Per resident",
+      "id_required": true
+    },
+    "intake": {
+      "phone": "510-453-8478",
+      "hours": "24/7 shelter",
+      "notes": "Distributes 1000+ meals monthly"
+    },
+    "source_url": "https://operationdignity.org/",
+    "confidence": 0.85
+  },
+  {
+    "name": "East Oakland Community Project (EOCP) - Veterans Services",
+    "organization": "East Oakland Community Project",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Food services integrated into veteran support programs",
+    "phone": "510-746-3633",
+    "website": "https://www.eocp.net/veteran-services/",
+    "address": "Oakland",
+    "city": "Oakland",
+    "state": "CA",
+    "zip": "94621",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "As part of housing programs",
+      "quantity_limit": "Varies",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "510-746-3633",
+      "hours": "Business hours",
+      "notes": "Rapid re-housing and support services"
+    },
+    "source_url": "https://www.eocp.net/veteran-services/",
+    "confidence": 0.75
+  },
+  {
+    "name": "Second Harvest of Silicon Valley",
+    "organization": "Second Harvest of Silicon Valley",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Large food bank serving Silicon Valley",
+    "phone": "408-266-8866",
+    "website": "https://www.shfb.org/",
+    "address": "750 Curtner Ave",
+    "city": "San Jose",
+    "state": "CA",
+    "zip": "95125",
+    "eligibility": {
+      "veteran_status_required": false,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Mon-Fri 8am-5pm",
+      "quantity_limit": "Varies",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "408-266-8866",
+      "hours": "Mon-Fri 8am-5pm",
+      "notes": "One of largest food banks in nation"
+    },
+    "source_url": "https://www.shfb.org/",
+    "confidence": 0.75
+  },
+  {
+    "name": "Harvest Compassion Center - North Phoenix",
+    "organization": "Harvest Compassion Center",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Free food, clothing, hygiene items pantry with veteran services",
+    "phone": "602-788-2444",
+    "website": "https://harvestcompassioncenter.org/",
+    "address": "4744 E Thunderbird Rd Ste 9",
+    "city": "Phoenix",
+    "state": "AZ",
+    "zip": "85032",
+    "eligibility": {
+      "veteran_status_required": false,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Mon/Wed/Sat 9am-11:30am",
+      "quantity_limit": "As available",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "602-788-2444",
+      "hours": "Mon/Wed/Sat 9am-11:30am",
+      "notes": "Veterans special partner events"
+    },
+    "source_url": "https://harvestcompassioncenter.org/",
+    "confidence": 0.8
+  },
+  {
+    "name": "Harvest Compassion Center - West Phoenix",
+    "organization": "Harvest Compassion Center",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Free food and clothing mini-mart pantry",
+    "phone": "602-841-7110",
+    "website": "https://harvestcompassioncenter.org/",
+    "address": "5608 N 27th Ave",
+    "city": "Phoenix",
+    "state": "AZ",
+    "zip": "85017",
+    "eligibility": {
+      "veteran_status_required": false,
+      "docs_required": [
+        "Arizona ID or utility bill"
+      ]
+    },
+    "food_details": {
+      "distribution_schedule": "Mon/Thu 9am-11:30am",
+      "quantity_limit": "As available",
+      "id_required": true
+    },
+    "intake": {
+      "phone": "602-841-7110",
+      "hours": "Mon/Thu 9am-11:30am",
+      "notes": "Walk-ins welcome, no referral needed"
+    },
+    "source_url": "https://harvestcompassioncenter.org/",
+    "confidence": 0.8
+  },
+  {
+    "name": "Harvest Compassion Center - Maryvale",
+    "organization": "Harvest Compassion Center",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Free food, hygiene, baby items pantry",
+    "phone": "623-247-0039",
+    "website": "https://harvestcompassioncenter.org/",
+    "address": "4002 N 67th Ave",
+    "city": "Phoenix",
+    "state": "AZ",
+    "zip": "85033",
+    "eligibility": {
+      "veteran_status_required": false,
+      "docs_required": [
+        "Arizona ID or utility bill"
+      ]
+    },
+    "food_details": {
+      "distribution_schedule": "Tue/Fri/Sat 9am-11:30am",
+      "quantity_limit": "As available",
+      "id_required": true
+    },
+    "intake": {
+      "phone": "623-247-0039",
+      "hours": "Tue/Fri/Sat 9am-11:30am",
+      "notes": "Partners with American Legion"
+    },
+    "source_url": "https://harvestcompassioncenter.org/",
+    "confidence": 0.8
+  },
+  {
+    "name": "Carl T. Hayden VA Medical Center - Veggies for Veterans",
+    "organization": "VA Phoenix",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Fresh produce distribution event for veterans five times yearly",
+    "phone": "602-277-5551",
+    "website": "https://www.va.gov/phoenix-health-care/",
+    "address": "Phoenix VA Medical Center",
+    "city": "Phoenix",
+    "state": "AZ",
+    "zip": "85012",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": [
+        "VA ID"
+      ]
+    },
+    "food_details": {
+      "distribution_schedule": "Five times yearly",
+      "quantity_limit": "Bags of fresh fruits/vegetables",
+      "id_required": true
+    },
+    "intake": {
+      "phone": "602-277-5551",
+      "hours": "Event based",
+      "notes": "Addresses food insecurity and diabetes prevention"
+    },
+    "source_url": "https://www.va.gov/phoenix-health-care/events/84863/",
+    "confidence": 0.85
+  },
+  {
+    "name": "Calvary United Methodist Church Mobile Food Pantry",
+    "organization": "Calvary United Methodist Church",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Mobile food pantry serving Phoenix area",
+    "phone": "623-849-1676",
+    "website": "https://www.mycalvaryphx.org/",
+    "address": "7949 W Indian School Rd",
+    "city": "Phoenix",
+    "state": "AZ",
+    "zip": "85033",
+    "eligibility": {
+      "veteran_status_required": false,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "3rd Saturday 8am-11am",
+      "quantity_limit": "Until all food distributed",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "623-849-1676",
+      "hours": "3rd Saturday 8am-11am",
+      "notes": "Office@mycalvaryphx.org"
+    },
+    "source_url": "https://www.mycalvaryphx.org/",
+    "confidence": 0.75
+  },
+  {
+    "name": "VFW Post 9400 - Phoenix Food Programs",
+    "organization": "Veterans of Foreign Wars Post 9400",
+    "category": "food",
+    "subcategory": "meal-program",
+    "description": "VFW food kitchen and community programs",
+    "phone": "602-678-2726",
+    "website": "https://vfwpost9400.org/",
+    "address": "804 E Purdue Ave",
+    "city": "Phoenix",
+    "state": "AZ",
+    "zip": "85020",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Varies by event",
+      "quantity_limit": "Community events",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "602-678-2726",
+      "hours": "Sun-Thu varies, Fri-Sat until 11pm",
+      "notes": "Fish fries and community kitchen"
+    },
+    "source_url": "https://vfwpost9400.org/",
+    "confidence": 0.75
+  },
+  {
+    "name": "Salvation Army Phoenix - Veteran Services",
+    "organization": "The Salvation Army",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Food box and ready-to-eat meal assistance for veterans",
+    "phone": "602-267-4122",
+    "website": "https://www.salvationarmyphoenix.org/veteran-services",
+    "address": "Phoenix",
+    "city": "Phoenix",
+    "state": "AZ",
+    "zip": "85001",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": [
+        "ID"
+      ]
+    },
+    "food_details": {
+      "distribution_schedule": "Monthly food boxes",
+      "quantity_limit": "Once per month",
+      "id_required": true
+    },
+    "intake": {
+      "phone": "602-267-4122",
+      "hours": "Business hours",
+      "notes": "Additional daily ready-to-eat meals"
+    },
+    "source_url": "https://www.salvationarmyphoenix.org/veteran-services",
+    "confidence": 0.8
+  },
+  {
+    "name": "U.S. VETS Phoenix - Food Pantry",
+    "organization": "U.S. VETS",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Food pantry at veteran housing and support center",
+    "phone": "602-717-6682",
+    "website": "https://usvets.org/locations/phoenix/",
+    "address": "3507 North Central Avenue Suite 200",
+    "city": "Phoenix",
+    "state": "AZ",
+    "zip": "85012",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Planned expansion",
+      "quantity_limit": "As available",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "602-717-6682",
+      "hours": "Business hours",
+      "notes": "New MD Hawkins Veterans Center with fitness and food pantry"
+    },
+    "source_url": "https://usvets.org/locations/phoenix/",
+    "confidence": 0.75
+  },
+  {
+    "name": "Operation Care Food Bank",
+    "organization": "Operation Care Food Bank",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Christian food bank serving North Phoenix",
+    "phone": "602-866-0135",
+    "website": "https://www.operationcarefoodbank.org/",
+    "address": "1827 W Grovers Ave",
+    "city": "Phoenix",
+    "state": "AZ",
+    "zip": "85023",
+    "eligibility": {
+      "veteran_status_required": false,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Tue/Thu 9am-11:30am",
+      "quantity_limit": "As available",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "602-866-0135",
+      "hours": "Tue/Thu 9am-11:30am",
+      "notes": "4.6 star rating"
+    },
+    "source_url": "https://www.operationcarefoodbank.org/",
+    "confidence": 0.75
+  },
+  {
+    "name": "Southern Arizona VA Patriot Pantry",
+    "organization": "VA Southern Arizona",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Emergency food pantry for veteran patients addressing food insecurity",
+    "phone": "520-792-1450",
+    "website": "https://www.va.gov/southern-arizona-health-care/",
+    "address": "Tucson VA Medical Center, 3601 S 6th Ave",
+    "city": "Tucson",
+    "state": "AZ",
+    "zip": "85723",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": [
+        "VA ID"
+      ]
+    },
+    "food_details": {
+      "distribution_schedule": "As needed",
+      "quantity_limit": "Three days of meals",
+      "id_required": true
+    },
+    "intake": {
+      "phone": "520-792-1450",
+      "hours": "During appointments",
+      "notes": "Delivered at discharge or appointment completion"
+    },
+    "source_url": "https://www.va.gov/southern-arizona-health-care/",
+    "confidence": 0.85
+  },
+  {
+    "name": "VFW Post 549 - No Vet Goes Hungry Program",
+    "organization": "VFW Post 549 Tucson Charities",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Direct food delivery program for hungry veterans",
+    "phone": "520-790-4626",
+    "website": "https://www.vfwpost549.com/",
+    "address": "8424 E Old Spanish Trail",
+    "city": "Tucson",
+    "state": "AZ",
+    "zip": "85710",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Direct delivery",
+      "quantity_limit": "As needed",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "520-790-4626",
+      "hours": "Business hours",
+      "notes": "Person-to-person service since 2021"
+    },
+    "source_url": "https://www.vfwpost549.com/",
+    "confidence": 0.8
+  },
+  {
+    "name": "American Legion Post 59 Cocio Estrada",
+    "organization": "American Legion Post 59",
+    "category": "food",
+    "subcategory": "meal-program",
+    "description": "Legion post providing meals and veteran community support",
+    "phone": "520-622-9513",
+    "website": "https://www.azlegion.org/",
+    "address": "750 N Grande Ave",
+    "city": "Tucson",
+    "state": "AZ",
+    "zip": "85745",
+    "eligibility": {
+      "veteran_status_required": false,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Meetings 1st Saturday 11am",
+      "quantity_limit": "Community meals",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "520-622-9513",
+      "hours": "1st Saturday 11am",
+      "notes": "Established post for 17+ years"
+    },
+    "source_url": "https://www.azlegion.org/",
+    "confidence": 0.7
+  },
+  {
+    "name": "Interfaith Community Services - Tucson Food Bank",
+    "organization": "Interfaith Community Services",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Food bank with monthly and holiday boxes for low-income individuals",
+    "phone": "520-297-6049",
+    "website": "https://icstucson.org/what-we-do/emergency-assistance/food-bank/",
+    "address": "2820 W Ina Rd",
+    "city": "Tucson",
+    "state": "AZ",
+    "zip": "85741",
+    "eligibility": {
+      "veteran_status_required": false,
+      "docs_required": [
+        "Photo ID",
+        "Proof of address"
+      ]
+    },
+    "food_details": {
+      "distribution_schedule": "Mon-Sat 8am-11am, Tue 5-6:30pm",
+      "quantity_limit": "Monthly",
+      "id_required": true
+    },
+    "intake": {
+      "phone": "520-297-6049",
+      "hours": "Mon-Sat 8am-11am, Tue 5-6:30pm",
+      "notes": "1000+ volunteers, 112 faith communities"
+    },
+    "source_url": "https://icstucson.org/what-we-do/emergency-assistance/food-bank/",
+    "confidence": 0.8
+  },
+  {
+    "name": "Community Food Bank of Southern Arizona",
+    "organization": "Community Food Bank",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Large food bank serving 5 Southern Arizona counties",
+    "phone": "520-622-0580",
+    "website": "https://www.communityfoodbank.org/",
+    "address": "3003 S Country Club Rd",
+    "city": "Tucson",
+    "state": "AZ",
+    "zip": "85713",
+    "eligibility": {
+      "veteran_status_required": false,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Varies by location",
+      "quantity_limit": "Varies",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "520-622-0580",
+      "hours": "Business hours",
+      "notes": "Serves 150,000 people yearly"
+    },
+    "source_url": "https://www.communityfoodbank.org/",
+    "confidence": 0.8
+  },
+  {
+    "name": "Seattle Central College Polack Food Bank",
+    "organization": "Seattle Central College",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Student food pantry accessible with college ID",
+    "phone": "206-934-4007",
+    "website": "https://seattlecentral.edu/campus-life/student-support-and-services/food-and-stability-resources",
+    "address": "E Madison St & 16th Ave",
+    "city": "Seattle",
+    "state": "WA",
+    "zip": "98102",
+    "eligibility": {
+      "veteran_status_required": false,
+      "docs_required": [
+        "Student ID"
+      ]
+    },
+    "food_details": {
+      "distribution_schedule": "Regular hours",
+      "quantity_limit": "As available",
+      "id_required": true
+    },
+    "intake": {
+      "phone": "206-934-4007",
+      "hours": "Regular distribution hours",
+      "notes": "Open to all SCC students"
+    },
+    "source_url": "https://seattlecentral.edu/campus-life/student-support-and-services/food-and-stability-resources",
+    "confidence": 0.75
+  },
+  {
+    "name": "OSL Open Meal Service",
+    "organization": "Operation: Sack Lunch",
+    "category": "food",
+    "subcategory": "meal-program",
+    "description": "Free meals served 7 days a week in Seattle",
+    "phone": "206-347-6629",
+    "website": "https://www.oslserves.org/",
+    "address": "Seattle",
+    "city": "Seattle",
+    "state": "WA",
+    "zip": "98101",
+    "eligibility": {
+      "veteran_status_required": false,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Daily breakfast, lunch, dinner",
+      "quantity_limit": "One meal per service",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "206-347-6629",
+      "hours": "Daily - breakfast, lunch, dinner",
+      "notes": "No-cost meals for homeless/hungry"
+    },
+    "source_url": "https://www.oslserves.org/",
+    "confidence": 0.8
+  },
+  {
+    "name": "Rainier Valley Food Bank",
+    "organization": "Rainier Valley Food Bank",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Primary emergency food resource for diverse Seattle neighborhood",
+    "phone": "206-723-4105",
+    "website": "https://www.rvfb.org/",
+    "address": "9021 Rainier Ave S",
+    "city": "Seattle",
+    "state": "WA",
+    "zip": "98118",
+    "eligibility": {
+      "veteran_status_required": false,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Tue-Sat 9am-2pm",
+      "quantity_limit": "Weekly",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "206-723-4105",
+      "hours": "Tue-Sat 9am-2pm",
+      "notes": "Home delivery available Wed/Fri 9am-2pm"
+    },
+    "source_url": "https://www.rvfb.org/",
+    "confidence": 0.8
+  },
+  {
+    "name": "Ballard Eagleson VFW Post 3063",
+    "organization": "Veterans of Foreign Wars Post 3063",
+    "category": "food",
+    "subcategory": "meal-program",
+    "description": "VFW post providing community services and meals",
+    "phone": "206-782-8618",
+    "website": "https://vfwseattle.org/",
+    "address": "2812 NW Market St",
+    "city": "Seattle",
+    "state": "WA",
+    "zip": "85107",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Post events",
+      "quantity_limit": "As available",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "206-782-8618",
+      "hours": "Mon/Thu/Sat 9am-1pm",
+      "notes": "Hall available for rent"
+    },
+    "source_url": "https://vfwseattle.org/",
+    "confidence": 0.75
+  },
+  {
+    "name": "Seattle VA Medical Center Canteen",
+    "organization": "VA Puget Sound",
+    "category": "food",
+    "subcategory": "meal-program",
+    "description": "On-site canteen for veteran patients and visitors",
+    "phone": "206-762-1010",
+    "website": "https://www.va.gov/puget-sound-health-care/",
+    "address": "1660 S Columbian Way",
+    "city": "Seattle",
+    "state": "WA",
+    "zip": "98108",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": [
+        "VA ID"
+      ]
+    },
+    "food_details": {
+      "distribution_schedule": "Varies by location",
+      "quantity_limit": "As purchased",
+      "id_required": true
+    },
+    "intake": {
+      "phone": "206-762-1010",
+      "hours": "Business hours",
+      "notes": "Buildings 1 and 100 locations"
+    },
+    "source_url": "https://www.va.gov/puget-sound-health-care/",
+    "confidence": 0.75
+  },
+  {
+    "name": "American Legion Post 160 - West Seattle",
+    "organization": "American Legion Post 160",
+    "category": "food",
+    "subcategory": "meal-program",
+    "description": "Legion post with veteran services and community support",
+    "phone": "206-932-9696",
+    "website": "https://walegion160.org/",
+    "address": "3618 SW Alaska St",
+    "city": "Seattle",
+    "state": "WA",
+    "zip": "98126",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Post meetings/events",
+      "quantity_limit": "Event based",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "206-932-9696",
+      "hours": "Varies",
+      "notes": "Veteran Service Officer on site weekdays 9am-4pm"
+    },
+    "source_url": "https://walegion160.org/",
+    "confidence": 0.75
+  },
+  {
+    "name": "Portland State University Veterans Resource Center Food Pantry",
+    "organization": "Portland State University",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Micro-food pantry for student veterans in need",
+    "phone": "503-725-6150",
+    "website": "https://www.pdx.edu/veterans-resource-center/",
+    "address": "Suite 018 Smith Memorial Student Union, 1825 SW Broadway",
+    "city": "Portland",
+    "state": "OR",
+    "zip": "97201",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Mon-Fri 9am-5pm",
+      "quantity_limit": "As available",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "503-725-6150",
+      "hours": "Mon-Fri 9am-5pm",
+      "notes": "Unmonitored, non-tracked resource"
+    },
+    "source_url": "https://www.pdx.edu/veterans-resource-center/",
+    "confidence": 0.8
+  },
+  {
+    "name": "Salvation Army Moore Street Food Pantry",
+    "organization": "The Salvation Army",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Walk-up or shopping-style food pantry service",
+    "phone": "971-340-4010",
+    "website": "https://moorestreet.salvationarmy.org/",
+    "address": "5325 N Williams Ave",
+    "city": "Portland",
+    "state": "OR",
+    "zip": "97217",
+    "eligibility": {
+      "veteran_status_required": false,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Wed/Fri 9am-1pm",
+      "quantity_limit": "Once per month",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "971-340-4010",
+      "hours": "Wed/Fri 9am-1pm (sign up by 12:30)",
+      "notes": "Pre-packaged or client selection"
+    },
+    "source_url": "https://moorestreet.salvationarmy.org/",
+    "confidence": 0.8
+  },
+  {
+    "name": "Oregon Food Bank",
+    "organization": "Oregon Food Bank",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Member of Feeding America serving entire Oregon",
+    "phone": "503-282-0555",
+    "website": "https://www.oregonfoodbank.org/",
+    "address": "7900 NE 33rd Dr",
+    "city": "Portland",
+    "state": "OR",
+    "zip": "97211",
+    "eligibility": {
+      "veteran_status_required": false,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Mon-Sat 8am-5pm",
+      "quantity_limit": "Varies",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "503-282-0555",
+      "hours": "Mon-Sat 8am-5pm",
+      "notes": "Statewide network of food banks"
+    },
+    "source_url": "https://www.oregonfoodbank.org/",
+    "confidence": 0.8
+  },
+  {
+    "name": "Food Bank of the Rockies",
+    "organization": "Food Bank of the Rockies",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Largest private hunger-relief organization in Colorado",
+    "phone": "303-371-9250",
+    "website": "https://www.foodbankrockies.org/",
+    "address": "10700 E 45th Ave",
+    "city": "Denver",
+    "state": "CO",
+    "zip": "80239",
+    "eligibility": {
+      "veteran_status_required": false,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Mon-Fri 8:30am-3:30pm",
+      "quantity_limit": "Varies",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "303-371-9250",
+      "hours": "Mon-Fri 8am-4:30pm (office)",
+      "notes": "Distributes 41.3M lbs food yearly"
+    },
+    "source_url": "https://www.foodbankrockies.org/",
+    "confidence": 0.8
+  },
+  {
+    "name": "Veteran's Village Food Pantry (SHARE)",
+    "organization": "SHARE Village Las Vegas",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Community pantry serving 4,900 people monthly",
+    "phone": "702-624-5792",
+    "website": "https://sharelasvegas.org/",
+    "address": "1150 S Las Vegas Blvd",
+    "city": "Las Vegas",
+    "state": "NV",
+    "zip": "89104",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "By appointment",
+      "quantity_limit": "As needed",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "702-624-5792",
+      "hours": "By appointment",
+      "notes": "Provides 1M+ meals yearly"
+    },
+    "source_url": "https://sharelasvegas.org/",
+    "confidence": 0.8
+  },
+  {
+    "name": "VFW Post 10054 Food Bank and Clothes Closet",
+    "organization": "VFW Post 10054",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Veterans-only food bank and clothes closet",
+    "phone": "775-727-6072",
+    "website": "https://vfwpost10054.com/",
+    "address": "4651 Homestead Rd",
+    "city": "Pahrump",
+    "state": "NV",
+    "zip": "89048",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": [
+        "Veteran ID",
+        "State ID"
+      ]
+    },
+    "food_details": {
+      "distribution_schedule": "Wed/Fri 10am-noon",
+      "quantity_limit": "As available",
+      "id_required": true
+    },
+    "intake": {
+      "phone": "775-727-6072",
+      "hours": "Wed/Fri 10am-noon",
+      "notes": "Non-members welcome"
+    },
+    "source_url": "https://vfwpost10054.com/",
+    "confidence": 0.8
+  },
+  {
+    "name": "VA Southern Nevada Emergency Food Pickup",
+    "organization": "VA Southern Nevada",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Emergency food pickup with Three Square partnership",
+    "phone": "702-791-9000",
+    "website": "https://www.va.gov/southern-nevada-health-care/",
+    "address": "North Las Vegas VA Medical Center, 6900 Pecos Rd",
+    "city": "Las Vegas",
+    "state": "NV",
+    "zip": "89086",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": [
+        "VA ID"
+      ]
+    },
+    "food_details": {
+      "distribution_schedule": "Event based",
+      "quantity_limit": "Varies",
+      "id_required": true
+    },
+    "intake": {
+      "phone": "702-791-9000",
+      "hours": "Business hours",
+      "notes": "Three Square partnership"
+    },
+    "source_url": "https://www.va.gov/southern-nevada-health-care/",
+    "confidence": 0.8
+  },
+  {
+    "name": "VA Southern Nevada Nutrition Services",
+    "organization": "VA Southern Nevada",
+    "category": "food",
+    "subcategory": "meal-program",
+    "description": "Nutrition counseling and dietary support for veterans",
+    "phone": "702-791-9000",
+    "website": "https://www.va.gov/southern-nevada-health-care/programs/nutrition-information-for-veterans/",
+    "address": "6900 Pecos Rd, North Las Vegas",
+    "city": "Las Vegas",
+    "state": "NV",
+    "zip": "89086",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": [
+        "VA ID"
+      ]
+    },
+    "food_details": {
+      "distribution_schedule": "Virtual classes",
+      "quantity_limit": "N/A",
+      "id_required": true
+    },
+    "intake": {
+      "phone": "702-791-9000",
+      "hours": "Business hours",
+      "notes": "Virtual nutrition classes available"
+    },
+    "source_url": "https://www.va.gov/southern-nevada-health-care/programs/nutrition-information-for-veterans/",
+    "confidence": 0.75
+  },
+  {
+    "name": "Minneapolis VA Pop-Up Veteran Food Pantry",
+    "organization": "VA Minneapolis",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Monthly pop-up food pantry addressing veteran food insecurity",
+    "phone": "612-725-2000",
+    "website": "https://www.va.gov/minneapolis-health-care/",
+    "address": "Minneapolis VA Medical Center Auditorium",
+    "city": "Minneapolis",
+    "state": "MN",
+    "zip": "55417",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": [
+        "VA ID"
+      ]
+    },
+    "food_details": {
+      "distribution_schedule": "3rd Tuesday 10am-2pm",
+      "quantity_limit": "Until supplies last",
+      "id_required": true
+    },
+    "intake": {
+      "phone": "612-725-2000",
+      "hours": "3rd Tuesday 10am-2pm",
+      "notes": "Shelf stable food, freezer items"
+    },
+    "source_url": "https://www.va.gov/minneapolis-health-care/",
+    "confidence": 0.85
+  },
+  {
+    "name": "Minnesota Veterans Food Pantry (MNVP)",
+    "organization": "Minnesota Veterans Food Pantry",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Community-supported pantry for veterans and families",
+    "phone": "763-231-4432",
+    "website": "https://mnvp.org/",
+    "address": "Golden Valley",
+    "city": "Golden Valley",
+    "state": "MN",
+    "zip": "55416",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Expanding model",
+      "quantity_limit": "As available",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "763-231-4432",
+      "hours": "Varies",
+      "notes": "Expanding to rural clinics 2026, served 3300+ vets"
+    },
+    "source_url": "https://mnvp.org/",
+    "confidence": 0.8
+  },
+  {
+    "name": "LinkVet Veterans Linkage Line",
+    "organization": "Minnesota Department of Veterans Affairs",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Information and referral service for Minnesota veterans",
+    "phone": "888-546-5838",
+    "website": "https://www.linkvet.org/",
+    "address": "Minnesota",
+    "city": "Minneapolis",
+    "state": "MN",
+    "zip": "55401",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "24/7 helpline",
+      "quantity_limit": "Information/referrals",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "888-546-5838",
+      "hours": "7 days a week",
+      "notes": "Web chat and email available"
+    },
+    "source_url": "https://www.linkvet.org/",
+    "confidence": 0.8
+  },
+  {
+    "name": "James Ballentine Uptown VFW Post 246",
+    "organization": "Veterans of Foreign Wars Post 246",
+    "category": "food",
+    "subcategory": "meal-program",
+    "description": "VFW post providing veteran support and community services",
+    "phone": "612-823-6233",
+    "website": "https://uptownvfw.org/",
+    "address": "2916 Lyndale Ave S",
+    "city": "Minneapolis",
+    "state": "MN",
+    "zip": "55408",
+    "eligibility": {
+      "veteran_status_required": false,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Post events",
+      "quantity_limit": "Event based",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "612-823-6233",
+      "hours": "Business hours",
+      "notes": "Est. 1919, 501(c)(3) nonprofit"
+    },
+    "source_url": "https://uptownvfw.org/",
+    "confidence": 0.75
+  },
+  {
+    "name": "Milwaukee Homeless Veterans Initiative Emergency Food Pantry",
+    "organization": "Milwaukee Homeless Veterans Initiative",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Emergency food and hygiene for homeless/at-risk veterans",
+    "phone": "414-257-4111",
+    "website": "https://www.wisconsinvets.org/",
+    "address": "6300 W National Ave",
+    "city": "West Allis",
+    "state": "WI",
+    "zip": "53214",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Mon/Wed/Thu/Fri 9am-3:30pm",
+      "quantity_limit": "Several days worth",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "414-257-4111",
+      "hours": "Mon/Wed/Thu/Fri 9am-3:30pm",
+      "notes": "Crisis and transition assistance"
+    },
+    "source_url": "https://www.wisconsinvets.org/",
+    "confidence": 0.85
+  },
+  {
+    "name": "Clement J. Zablocki VA Medical Center",
+    "organization": "VA Milwaukee",
+    "category": "food",
+    "subcategory": "meal-program",
+    "description": "On-site cafeteria and canteen services for veteran patients",
+    "phone": "414-384-2000",
+    "website": "https://www.va.gov/milwaukee-health-care/",
+    "address": "5000 West National Ave",
+    "city": "Milwaukee",
+    "state": "WI",
+    "zip": "53295",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": [
+        "VA ID"
+      ]
+    },
+    "food_details": {
+      "distribution_schedule": "7am-2:30pm cafeteria",
+      "quantity_limit": "As purchased",
+      "id_required": true
+    },
+    "intake": {
+      "phone": "414-384-2000",
+      "hours": "7am-2:30pm",
+      "notes": "Hot and cold entrees, local vendors"
+    },
+    "source_url": "https://www.va.gov/milwaukee-health-care/",
+    "confidence": 0.8
+  },
+  {
+    "name": "Hunger Task Force",
+    "organization": "Hunger Task Force",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Milwaukee's free food bank partnering with CVI for veteran support",
+    "phone": "414-777-0483",
+    "website": "https://www.hungertaskforce.org/",
+    "address": "201 South Hawley Ct",
+    "city": "Milwaukee",
+    "state": "WI",
+    "zip": "53214",
+    "eligibility": {
+      "veteran_status_required": false,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Varies",
+      "quantity_limit": "Varies",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "414-777-0483",
+      "hours": "Business hours",
+      "notes": "Serves homeless unhoused veterans with CVI"
+    },
+    "source_url": "https://www.hungertaskforce.org/",
+    "confidence": 0.8
+  },
+  {
+    "name": "Center for Veterans Issues Food Programs",
+    "organization": "Center for Veterans Issues",
+    "category": "food",
+    "subcategory": "meal-program",
+    "description": "Veteran housing and support with food services",
+    "phone": "414-345-3917",
+    "website": "https://www.cvivet.org/",
+    "address": "315 W Court St",
+    "city": "Milwaukee",
+    "state": "WI",
+    "zip": "53212",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "As part of housing",
+      "quantity_limit": "Varies",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "414-345-3917",
+      "hours": "Business hours",
+      "notes": "Wisconsin's largest veteran housing nonprofit"
+    },
+    "source_url": "https://www.cvivet.org/",
+    "confidence": 0.75
+  },
+  {
+    "name": "Salvation Army Milwaukee Citadel Corps Food Pantry",
+    "organization": "The Salvation Army",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Food pantry serving specific Milwaukee zip codes",
+    "phone": "414-463-3300",
+    "website": "https://www.salvationarmyusa.org/wi/milwaukee/w-villard-ave-corps/",
+    "address": "4129 W Villard Ave",
+    "city": "Milwaukee",
+    "state": "WI",
+    "zip": "53209",
+    "eligibility": {
+      "veteran_status_required": false,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Thu 10am-12pm, Fri 10am-2pm",
+      "quantity_limit": "Once per month",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "414-463-3300",
+      "hours": "Thu 10am-12pm, Fri 10am-2pm",
+      "notes": "Specific zip codes served"
+    },
+    "source_url": "https://www.salvationarmyusa.org/wi/milwaukee/w-villard-ave-corps/",
+    "confidence": 0.8
+  },
+  {
+    "name": "NourishMKE Community Food Centers",
+    "organization": "NourishMKE",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Milwaukee's largest network of food pantries",
+    "phone": "414-289-6030",
+    "website": "https://www.nourishmke.org/",
+    "address": "Multiple locations",
+    "city": "Milwaukee",
+    "state": "WI",
+    "zip": "53202",
+    "eligibility": {
+      "veteran_status_required": false,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Varies by location",
+      "quantity_limit": "Varies",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "414-289-6030",
+      "hours": "Varies",
+      "notes": "Home delivery available"
+    },
+    "source_url": "https://www.nourishmke.org/",
+    "confidence": 0.8
+  },
+  {
+    "name": "St. Louis Area Foodbank",
+    "organization": "St. Louis Area Foodbank",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Food bank serving Missouri and Illinois",
+    "phone": "314-292-6262",
+    "website": "https://stlfoodbank.org/",
+    "address": "70 Corporate Woods Dr",
+    "city": "Bridgeton",
+    "state": "MO",
+    "zip": "63044",
+    "eligibility": {
+      "veteran_status_required": false,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Mon-Fri 8am-4:30pm",
+      "quantity_limit": "Varies",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "314-292-6262",
+      "hours": "Mon-Fri 8am-4:30pm",
+      "notes": "Serves 26 counties"
+    },
+    "source_url": "https://stlfoodbank.org/",
+    "confidence": 0.8
+  },
+  {
+    "name": "St. Patrick Center",
+    "organization": "St. Patrick Center",
+    "category": "food",
+    "subcategory": "meal-program",
+    "description": "Veteran supportive services and meals for homeless",
+    "phone": "314-802-0700",
+    "website": "https://www.stpatrickcenter.org/",
+    "address": "800 N Tucker Blvd",
+    "city": "St. Louis",
+    "state": "MO",
+    "zip": "63101",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "As part of services",
+      "quantity_limit": "Varies",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "314-802-0700",
+      "hours": "Business hours",
+      "notes": "Housing, employment, recovery programs"
+    },
+    "source_url": "https://www.stpatrickcenter.org/",
+    "confidence": 0.8
+  },
+  {
+    "name": "Fisher House St. Louis",
+    "organization": "Fisher House Foundation",
+    "category": "food",
+    "subcategory": "meal-program",
+    "description": "Home away from home for families of veteran patients",
+    "phone": "314-894-6145",
+    "website": "https://www.fisherhouseinstl.org/",
+    "address": "1 Jefferson Barracks Dr",
+    "city": "St. Louis",
+    "state": "MO",
+    "zip": "63125",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "24/7 facility",
+      "quantity_limit": "Included in stay",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "314-894-6145",
+      "hours": "24/7",
+      "notes": "Free lodging for veteran families"
+    },
+    "source_url": "https://www.fisherhouseinstl.org/",
+    "confidence": 0.8
+  },
+  {
+    "name": "St. Michael's Veterans Center",
+    "organization": "St. Michael's Veterans Center",
+    "category": "food",
+    "subcategory": "meal-program",
+    "description": "Permanent housing and supportive services for veterans",
+    "phone": "314-367-5500",
+    "website": "https://smvets.org/",
+    "address": "St. Louis",
+    "city": "St. Louis",
+    "state": "MO",
+    "zip": "63101",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "As part of housing",
+      "quantity_limit": "Included in services",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "314-367-5500",
+      "hours": "Business hours",
+      "notes": "Permanent housing focus"
+    },
+    "source_url": "https://smvets.org/",
+    "confidence": 0.75
+  },
+  {
+    "name": "Harvesters Mobile Food Pantry - Kansas City VA",
+    "organization": "Harvesters",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Mobile food pantry serving VA Kansas City",
+    "phone": "816-590-3522",
+    "website": "https://www.harvesters.org/",
+    "address": "VA Honor Annex",
+    "city": "Kansas City",
+    "state": "MO",
+    "zip": "64128",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "4th Thursday 12:15-4:15pm",
+      "quantity_limit": "Varies",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "816-590-3522",
+      "hours": "4th Thursday 12:15-4:15pm",
+      "notes": "Volunteers needed"
+    },
+    "source_url": "https://www.harvesters.org/",
+    "confidence": 0.8
+  },
+  {
+    "name": "Kansas City VA Medical Center",
+    "organization": "VA Kansas City",
+    "category": "food",
+    "subcategory": "meal-program",
+    "description": "VA medical center with food services",
+    "phone": "816-861-4700",
+    "website": "https://www.va.gov/kansas-city-health-care/",
+    "address": "4801 Linwood Blvd",
+    "city": "Kansas City",
+    "state": "MO",
+    "zip": "64128",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": [
+        "VA ID"
+      ]
+    },
+    "food_details": {
+      "distribution_schedule": "Varies",
+      "quantity_limit": "As available",
+      "id_required": true
+    },
+    "intake": {
+      "phone": "816-861-4700",
+      "hours": "Business hours",
+      "notes": "Mobile food pantry partnership"
+    },
+    "source_url": "https://www.va.gov/kansas-city-health-care/",
+    "confidence": 0.8
+  },
+  {
+    "name": "American Legion Connecticut Soldiers, Sailors & Marines Fund",
+    "organization": "The American Legion",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Financial assistance to needy Connecticut veterans",
+    "phone": "860-296-0719",
+    "website": "http://www.alctssmf.org/",
+    "address": "864 Wethersfield Ave",
+    "city": "Hartford",
+    "state": "CT",
+    "zip": "06114",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Daily 8:30am-4:30pm",
+      "quantity_limit": "Temporary assistance",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "860-296-0719",
+      "hours": "Daily 8:30am-4:30pm",
+      "notes": "Established 1919, wartime veterans"
+    },
+    "source_url": "http://www.alctssmf.org/",
+    "confidence": 0.75
   }
 ]
