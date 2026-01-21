@@ -1,0 +1,256 @@
+[
+  {
+    "name": "Bronx Vet Center Food Pantry for Veterans",
+    "organization": "VA New York Harbor Healthcare System / Bob Woodruff Foundation",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Food pantry dedicated to serving veterans in the Bronx with grocery assistance",
+    "phone": "718-741-0693",
+    "website": "https://bobwoodrufffoundation.org/our-veterans-nyc/bronx-vet-center-food-pantry-for-veterans/",
+    "address": "2471 Morris Ave, Suite 1A",
+    "city": "Bronx",
+    "state": "NY",
+    "zip": "10468",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": ["DD214 or VA ID"]
+    },
+    "food_details": {
+      "distribution_schedule": "Check with facility for current hours",
+      "quantity_limit": "Not specified",
+      "id_required": true
+    },
+    "intake": {
+      "phone": "718-741-0693",
+      "hours": "Call for hours",
+      "notes": "Contact facility directly for intake information"
+    },
+    "source_url": "https://bobwoodrufffoundation.org/our-veterans-nyc/bronx-vet-center-food-pantry-for-veterans/",
+    "confidence": 0.92
+  },
+  {
+    "name": "Honor House Veterans Facility Food Pantry",
+    "organization": "NYC Veterans Services",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Food pantry for veterans with weekly distribution and grab-and-go soup kitchen services",
+    "phone": "311 or 866-888-8777",
+    "website": "https://www.nyc.gov/site/veterans/services/food-assistance.page",
+    "address": "Jamaica",
+    "city": "Jamaica",
+    "state": "NY",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": ["Proof of veteran status"]
+    },
+    "food_details": {
+      "distribution_schedule": "Every Friday 10:00 AM - 12:00 PM",
+      "quantity_limit": "Not specified",
+      "id_required": true
+    },
+    "intake": {
+      "phone": "311 or 866-888-8777",
+      "hours": "Friday 10 AM - 12 PM",
+      "notes": "Also offers Grab & Go Soup Kitchen during same hours"
+    },
+    "source_url": "https://www.nyc.gov/site/veterans/services/food-assistance.page",
+    "confidence": 0.88
+  },
+  {
+    "name": "God's Love We Deliver - CONNECTED Program",
+    "organization": "God's Love We Deliver",
+    "category": "food",
+    "subcategory": "meal-program",
+    "description": "Medically tailored meal delivery service for veterans and their families living with chronic illness, behavioral health conditions, or substance use challenges",
+    "phone": "Call NYC Veterans Services for referral",
+    "website": "https://www.godslovewedelivers.org/",
+    "address": "New York City",
+    "city": "New York",
+    "state": "NY",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": ["Proof of chronic illness or qualifying condition", "Proof of veteran status"]
+    },
+    "food_details": {
+      "distribution_schedule": "Regular delivery schedule",
+      "quantity_limit": "Based on medical needs",
+      "id_required": true
+    },
+    "intake": {
+      "phone": "Contact NYC Veterans Services",
+      "hours": "Regular business hours",
+      "notes": "Requires referral; serves veterans with qualifying health conditions"
+    },
+    "source_url": "https://www.nyc.gov/site/veterans/services/food-assistance.page",
+    "confidence": 0.85
+  },
+  {
+    "name": "Veteran Feeding Program",
+    "organization": "VetConnectNYC",
+    "category": "food",
+    "subcategory": "meal-program",
+    "description": "Coordinates food pickups and deliveries to veterans and their families across NYC, with free meal kit options through HelloFresh",
+    "phone": "311 or 866-888-8777",
+    "website": "https://www.nyc.gov/site/veterans/services/food-assistance.page",
+    "address": "Citywide service",
+    "city": "New York",
+    "state": "NY",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": ["Proof of veteran status"]
+    },
+    "food_details": {
+      "distribution_schedule": "Flexible pickup and delivery",
+      "quantity_limit": "Regular meal kits",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "311 or 866-888-8777",
+      "hours": "24/7 hotline",
+      "notes": "HelloFresh meal kits available at no cost; citywide delivery"
+    },
+    "source_url": "https://www.nyc.gov/site/veterans/services/food-assistance.page",
+    "confidence": 0.87
+  },
+  {
+    "name": "Rosedale-Laurelton American Legion Post 483 - Queens",
+    "organization": "American Legion Department of New York",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "American Legion post operating food pantry and delivery service providing assistance to over 1,000 families weekly",
+    "phone": "518-463-2215",
+    "website": "https://nylegion.net/queens-post-483-helping-to-feed-hundreds/",
+    "address": "Queens",
+    "city": "Queens",
+    "state": "NY",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": ["Proof of veteran status"]
+    },
+    "food_details": {
+      "distribution_schedule": "Regular weekly distribution",
+      "quantity_limit": "Not specified",
+      "id_required": true
+    },
+    "intake": {
+      "phone": "518-463-2215",
+      "hours": "Call for hours",
+      "notes": "Includes delivery service for veterans and at-risk seniors/shut-ins; serves 1,000+ families weekly"
+    },
+    "source_url": "https://nylegion.net/queens-post-483-helping-to-feed-hundreds/",
+    "confidence": 0.90
+  },
+  {
+    "name": "Food Bank For NYC - Veteran Programs",
+    "organization": "Food Bank For NYC",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "NYC's largest hunger-relief organization with dedicated veteran food assistance initiatives",
+    "phone": "1-877-877 (text 'NYC FOOD' or 'NYC COMIDA')",
+    "website": "https://www.foodbanknyc.org/",
+    "address": "355 Food Center Drive",
+    "city": "Bronx",
+    "state": "NY",
+    "zip": "10474",
+    "eligibility": {
+      "veteran_status_required": false,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "Multiple distribution locations throughout NYC",
+      "quantity_limit": "Not specified",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "Text 'NYC FOOD' to 877-877",
+      "hours": "Call for specific pantry hours",
+      "notes": "Find nearest Meal Hub by texting; serves all income-eligible New Yorkers including veterans"
+    },
+    "source_url": "https://www.foodbanknyc.org/news-and-stories/food-bank-tackles-food-insecurity-among-veterans/",
+    "confidence": 0.88
+  },
+  {
+    "name": "St. Albans VA Medical Center",
+    "organization": "VA New York Harbor Healthcare System",
+    "category": "food",
+    "subcategory": "meal-program",
+    "description": "VA medical center providing patient meal services and immediate food and shelter assistance to veterans",
+    "phone": "718-526-4100",
+    "website": "https://www.va.gov/new-york-harbor-health-care/locations/st-albans-va-medical-center/",
+    "address": "St. Albans",
+    "city": "Queens",
+    "state": "NY",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": ["VA health enrollment"]
+    },
+    "food_details": {
+      "distribution_schedule": "Regular dining during facility hours; emergency assistance available",
+      "quantity_limit": "Not specified",
+      "id_required": true
+    },
+    "intake": {
+      "phone": "718-526-4100",
+      "hours": "Facility hours",
+      "notes": "Offers immediate food and shelter needs assistance; PatriotCafé dining services available"
+    },
+    "source_url": "https://www.va.gov/new-york-harbor-health-care/locations/st-albans-va-medical-center/",
+    "confidence": 0.86
+  },
+  {
+    "name": "Growing Up NYC Emergency Food Hotline",
+    "organization": "NYC Department of Health",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "Citywide hotline to locate food pantries, meal programs, and emergency food assistance throughout NYC",
+    "phone": "866-888-8777 or 311",
+    "website": "https://www.nyc.gov/site/veterans/services/food-assistance.page",
+    "address": "Citywide resource",
+    "city": "New York",
+    "state": "NY",
+    "eligibility": {
+      "veteran_status_required": false,
+      "docs_required": []
+    },
+    "food_details": {
+      "distribution_schedule": "24/7 access to referral service",
+      "quantity_limit": "Varies by location",
+      "id_required": false
+    },
+    "intake": {
+      "phone": "866-888-8777 or 311",
+      "hours": "24/7",
+      "notes": "Connect with local food pantries and meal programs by borough"
+    },
+    "source_url": "https://www.nyc.gov/site/veterans/services/food-assistance.page",
+    "confidence": 0.89
+  },
+  {
+    "name": "Feed Our Vets",
+    "organization": "Feed Our Vets (National Organization)",
+    "category": "food",
+    "subcategory": "food-pantry",
+    "description": "National nonprofit organization operating veteran-focused food pantries with locations in New York",
+    "phone": "Contact through website",
+    "website": "https://feedourvets.org/find-a-food-pantry",
+    "address": "Multiple NYC Metro locations",
+    "city": "New York Metro Area",
+    "state": "NY",
+    "eligibility": {
+      "veteran_status_required": true,
+      "docs_required": ["Proof of veteran status"]
+    },
+    "food_details": {
+      "distribution_schedule": "Varies by location",
+      "quantity_limit": "Not specified",
+      "id_required": true
+    },
+    "intake": {
+      "phone": "Contact through website",
+      "hours": "Varies by location",
+      "notes": "Find specific location through website pantry locator"
+    },
+    "source_url": "https://feedourvets.org/find-a-food-pantry",
+    "confidence": 0.83
+  }
+]
