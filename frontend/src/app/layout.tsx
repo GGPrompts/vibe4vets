@@ -3,6 +3,7 @@ import { Suspense } from "react";
 import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/header";
+import { Magnifier } from "@/components/Magnifier";
 import { Providers } from "@/components/providers";
 
 // Compact, highly readable body font
@@ -43,6 +44,9 @@ export default function RootLayout({
         <Providers>
           <Suspense>
             <Header />
+          </Suspense>
+          <Suspense>
+            <Magnifier />
           </Suspense>
           {children}
         </Providers>

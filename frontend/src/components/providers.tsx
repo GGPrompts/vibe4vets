@@ -4,6 +4,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useState } from "react";
 import { FilterProvider } from "@/context/filter-context";
 import { SavedResourcesProvider } from "@/context/saved-resources-context";
+import { MagnifierProvider } from "@/context/magnifier-context";
 
 export function Providers({ children }: { children: React.ReactNode }) {
   // Create QueryClient inside useState to ensure it's created once per client
@@ -21,9 +22,11 @@ export function Providers({ children }: { children: React.ReactNode }) {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <SavedResourcesProvider>
-        <FilterProvider>{children}</FilterProvider>
-      </SavedResourcesProvider>
+      <MagnifierProvider>
+        <SavedResourcesProvider>
+          <FilterProvider>{children}</FilterProvider>
+        </SavedResourcesProvider>
+      </MagnifierProvider>
     </QueryClientProvider>
   );
 }

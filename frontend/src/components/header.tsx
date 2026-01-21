@@ -10,6 +10,7 @@ import { cn } from '@/lib/utils';
 import { Input } from '@/components/ui/input';
 import { Search, Loader2, Bookmark } from 'lucide-react';
 import { SortDropdownHeader, type SortOption } from '@/components/sort-dropdown-header';
+import { MagnifierToggle } from '@/components/MagnifierToggle';
 import { useOptionalFilterContext } from '@/context/filter-context';
 import { useOptionalSavedResources } from '@/context/saved-resources-context';
 
@@ -151,6 +152,7 @@ export function Header() {
 
         {/* Navigation */}
         <nav className="flex shrink-0 items-center gap-6">
+          <MagnifierToggle />
           <Link
             href="/search"
             className={cn(
