@@ -519,39 +519,73 @@ export function FixedFiltersSidebar({
             transition={{ duration: 0.2 }}
             className="sidebar-gradient fixed left-0 top-16 z-30 hidden h-[calc(100vh-64px)] flex-shrink-0 flex-col items-center border-r py-3 shadow-sm backdrop-blur supports-[backdrop-filter]:bg-background/90 lg:flex"
           >
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  onClick={toggleCollapsed}
-                  className="h-9 w-9 text-muted-foreground hover:text-foreground"
-                >
-                  <PanelLeft className="h-5 w-5" />
-                </Button>
-              </TooltipTrigger>
-              <TooltipContent side="right">
-                <p className="text-xs">Expand filters</p>
-              </TooltipContent>
-            </Tooltip>
+            {/* Top row: Filters icon + Expand icon */}
+            <div className="flex flex-col items-center gap-1">
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    onClick={toggleCollapsed}
+                    className="h-8 w-8 rounded-lg bg-[hsl(var(--v4v-gold)/0.1)] text-[hsl(var(--v4v-gold))] hover:bg-[hsl(var(--v4v-gold)/0.2)]"
+                  >
+                    <Filter className="h-4 w-4" />
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent side="right">
+                  <p className="text-xs">Filters</p>
+                </TooltipContent>
+              </Tooltip>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    onClick={toggleCollapsed}
+                    className="h-8 w-8 text-muted-foreground hover:text-foreground"
+                  >
+                    <PanelLeft className="h-4 w-4" />
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent side="right">
+                  <p className="text-xs">Expand filters</p>
+                </TooltipContent>
+              </Tooltip>
+            </div>
+
+            {/* Clear all filters button */}
+            {activeFilterCount > 0 && (
+              <>
+                <div className="my-2 h-px w-6 bg-border" />
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      onClick={() => onFiltersChange({ categories: [], states: [], scope: 'all', minTrust: 0 })}
+                      className="h-8 w-8 rounded-lg text-muted-foreground hover:text-destructive hover:bg-destructive/10"
+                    >
+                      <X className="h-4 w-4" />
+                    </Button>
+                  </TooltipTrigger>
+                  <TooltipContent side="right">
+                    <p className="text-xs">Clear all filters ({activeFilterCount})</p>
+                  </TooltipContent>
+                </Tooltip>
+              </>
+            )}
 
             <div className="my-2 h-px w-6 bg-border" />
 
-            {FILTER_ICONS.map((item, index) => {
-              // Check if this category is currently active
-              const isActive = item.key !== 'filter' && filters.categories.includes(item.key);
+            {/* Category filter icons */}
+            {FILTER_ICONS.filter(item => item.key !== 'filter').map((item, index) => {
+              const isActive = filters.categories.includes(item.key);
 
               const handleClick = () => {
-                if (item.key === 'filter') {
-                  // Main filter icon just expands the sidebar
-                  toggleCollapsed();
-                } else {
-                  // Category icons toggle the filter directly
-                  const newCategories = isActive
-                    ? filters.categories.filter((c) => c !== item.key)
-                    : [...filters.categories, item.key];
-                  onFiltersChange({ ...filters, categories: newCategories });
-                }
+                const newCategories = isActive
+                  ? filters.categories.filter((c) => c !== item.key)
+                  : [...filters.categories, item.key];
+                onFiltersChange({ ...filters, categories: newCategories });
               };
 
               return (
@@ -579,35 +613,12 @@ export function FixedFiltersSidebar({
                       </Button>
                     </TooltipTrigger>
                     <TooltipContent side="right">
-                      <p className="text-xs">
-                        {item.key === 'filter' ? item.label : `${isActive ? 'Remove' : 'Add'} ${item.label}`}
-                      </p>
+                      <p className="text-xs">{isActive ? 'Remove' : 'Add'} {item.label}</p>
                     </TooltipContent>
                   </Tooltip>
                 </motion.div>
               );
             })}
-
-            {activeFilterCount > 0 && (
-              <>
-                <div className="my-2 h-px w-6 bg-border" />
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <Button
-                      variant="ghost"
-                      size="icon"
-                      onClick={() => onFiltersChange({ categories: [], states: [], scope: 'all', minTrust: 0 })}
-                      className="h-8 w-8 rounded-lg text-muted-foreground hover:text-destructive hover:bg-destructive/10"
-                    >
-                      <X className="h-4 w-4" />
-                    </Button>
-                  </TooltipTrigger>
-                  <TooltipContent side="right">
-                    <p className="text-xs">Clear all filters ({activeFilterCount})</p>
-                  </TooltipContent>
-                </Tooltip>
-              </>
-            )}
           </motion.div>
         ) : (
           <motion.aside
