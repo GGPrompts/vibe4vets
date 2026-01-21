@@ -15,7 +15,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from '@/components/ui/tooltip';
-import { Filter, X, Briefcase, GraduationCap, Home, Scale, ChevronDown, PanelLeft, PanelLeftClose, Search } from 'lucide-react';
+import { Filter, X, Briefcase, GraduationCap, Home, Scale, UtensilsCrossed, FileCheck, ChevronDown, PanelLeft, PanelLeftClose, Search } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { cn } from '@/lib/utils';
 
@@ -24,6 +24,8 @@ export const CATEGORIES = [
   { value: 'training', label: 'Training', icon: GraduationCap },
   { value: 'housing', label: 'Housing', icon: Home },
   { value: 'legal', label: 'Legal', icon: Scale },
+  { value: 'food', label: 'Food', icon: UtensilsCrossed },
+  { value: 'benefits', label: 'Benefits', icon: FileCheck },
 ] as const;
 
 export const STATES = [
@@ -110,6 +112,8 @@ const categoryColors: Record<string, string> = {
   training: 'text-[hsl(var(--v4v-training))]',
   housing: 'text-[hsl(var(--v4v-housing))]',
   legal: 'text-[hsl(var(--v4v-legal))]',
+  food: 'text-[hsl(var(--v4v-food))]',
+  benefits: 'text-[hsl(var(--v4v-benefits))]',
 };
 
 const categoryAccents: Record<string, string> = {
@@ -117,6 +121,8 @@ const categoryAccents: Record<string, string> = {
   training: 'border-l-[hsl(var(--v4v-training))] bg-[hsl(var(--v4v-training)/0.04)]',
   housing: 'border-l-[hsl(var(--v4v-housing))] bg-[hsl(var(--v4v-housing)/0.04)]',
   legal: 'border-l-[hsl(var(--v4v-legal))] bg-[hsl(var(--v4v-legal)/0.04)]',
+  food: 'border-l-[hsl(var(--v4v-food))] bg-[hsl(var(--v4v-food)/0.04)]',
+  benefits: 'border-l-[hsl(var(--v4v-benefits))] bg-[hsl(var(--v4v-benefits)/0.04)]',
 };
 
 const categoryIconBg: Record<string, string> = {
@@ -124,6 +130,8 @@ const categoryIconBg: Record<string, string> = {
   training: 'bg-[hsl(var(--v4v-training)/0.1)]',
   housing: 'bg-[hsl(var(--v4v-housing)/0.1)]',
   legal: 'bg-[hsl(var(--v4v-legal)/0.1)]',
+  food: 'bg-[hsl(var(--v4v-food)/0.1)]',
+  benefits: 'bg-[hsl(var(--v4v-benefits)/0.1)]',
 };
 
 interface CollapsibleSectionProps {
@@ -466,6 +474,20 @@ const FILTER_ICONS = [
     label: 'Legal',
     color: 'text-[hsl(var(--v4v-legal))]',
     bg: 'bg-[hsl(var(--v4v-legal)/0.1)]',
+  },
+  {
+    key: 'food',
+    icon: UtensilsCrossed,
+    label: 'Food',
+    color: 'text-[hsl(var(--v4v-food))]',
+    bg: 'bg-[hsl(var(--v4v-food)/0.1)]',
+  },
+  {
+    key: 'benefits',
+    icon: FileCheck,
+    label: 'Benefits',
+    color: 'text-[hsl(var(--v4v-benefits))]',
+    bg: 'bg-[hsl(var(--v4v-benefits)/0.1)]',
   },
 ] as const;
 
