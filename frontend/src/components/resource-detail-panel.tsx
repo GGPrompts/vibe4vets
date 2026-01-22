@@ -20,10 +20,12 @@ import {
 } from 'lucide-react';
 
 const categoryColors: Record<string, string> = {
-  employment: 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300',
-  training: 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-300',
-  housing: 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300',
-  legal: 'bg-amber-100 text-amber-800 dark:bg-amber-900 dark:text-amber-300',
+  employment: 'bg-[hsl(var(--v4v-employment)/0.12)] text-[hsl(var(--v4v-employment))]',
+  training: 'bg-[hsl(var(--v4v-training)/0.12)] text-[hsl(var(--v4v-training))]',
+  housing: 'bg-[hsl(var(--v4v-housing)/0.12)] text-[hsl(var(--v4v-housing))]',
+  legal: 'bg-[hsl(var(--v4v-legal)/0.12)] text-[hsl(var(--v4v-legal))]',
+  food: 'bg-[hsl(var(--v4v-food)/0.12)] text-[hsl(var(--v4v-food))]',
+  benefits: 'bg-[hsl(var(--v4v-benefits)/0.12)] text-[hsl(var(--v4v-benefits))]',
 };
 
 interface TrustIndicatorProps {

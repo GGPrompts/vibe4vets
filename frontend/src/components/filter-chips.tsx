@@ -1,6 +1,6 @@
 'use client';
 
-import { X, Briefcase, GraduationCap, Home, Scale, Globe, MapPin } from 'lucide-react';
+import { X, Briefcase, GraduationCap, Home, Scale, Globe, MapPin, UtensilsCrossed, Award } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
 import { CATEGORIES, STATES, SCOPES, type FilterState } from '@/components/filters-sidebar';
@@ -20,6 +20,8 @@ const categoryBadgeStyles: Record<string, string> = {
   training: 'bg-[hsl(var(--v4v-training))] text-white border-[hsl(var(--v4v-training))]',
   housing: 'bg-[hsl(var(--v4v-housing))] text-white border-[hsl(var(--v4v-housing))]',
   legal: 'bg-[hsl(var(--v4v-legal))] text-white border-[hsl(var(--v4v-legal))]',
+  food: 'bg-[hsl(var(--v4v-food))] text-white border-[hsl(var(--v4v-food))]',
+  benefits: 'bg-[hsl(var(--v4v-benefits))] text-white border-[hsl(var(--v4v-benefits))]',
 };
 
 const categoryIcons: Record<string, typeof Briefcase> = {
@@ -27,6 +29,8 @@ const categoryIcons: Record<string, typeof Briefcase> = {
   training: GraduationCap,
   housing: Home,
   legal: Scale,
+  food: UtensilsCrossed,
+  benefits: Award,
 };
 
 export function FilterChips({

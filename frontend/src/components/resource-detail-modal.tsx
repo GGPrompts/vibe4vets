@@ -21,6 +21,8 @@ import {
   Home,
   Scale,
   ChevronDown,
+  UtensilsCrossed,
+  Award,
 } from 'lucide-react';
 import { BookmarkButton } from '@/components/bookmark-button';
 import type { Resource, MatchExplanation } from '@/lib/api';
@@ -39,14 +41,18 @@ const categoryGradients: Record<string, string> = {
   training: 'bg-gradient-to-br from-[hsl(var(--v4v-training))] to-[hsl(165,55%,32%)]',
   housing: 'bg-gradient-to-br from-[hsl(var(--v4v-housing))] to-[hsl(24,75%,42%)]',
   legal: 'bg-gradient-to-br from-[hsl(var(--v4v-legal))] to-[hsl(265,50%,45%)]',
+  food: 'bg-gradient-to-br from-[hsl(var(--v4v-food))] to-[hsl(145,55%,32%)]',
+  benefits: 'bg-gradient-to-br from-[hsl(var(--v4v-benefits))] to-[hsl(340,55%,40%)]',
 };
 
-// Body background tints - subtle category colors (white throughout for readability)
+// Body background tints - solid white for readability (no gradient transparency)
 const bodyBackgrounds: Record<string, string> = {
   employment: 'bg-white',
   training: 'bg-white',
   housing: 'bg-white',
   legal: 'bg-white',
+  food: 'bg-white',
+  benefits: 'bg-white',
 };
 
 // Decorative orb colors
@@ -55,6 +61,8 @@ const decorativeOrbs: Record<string, string> = {
   training: 'bg-[hsl(var(--v4v-training))]',
   housing: 'bg-[hsl(var(--v4v-housing))]',
   legal: 'bg-[hsl(var(--v4v-legal))]',
+  food: 'bg-[hsl(var(--v4v-food))]',
+  benefits: 'bg-[hsl(var(--v4v-benefits))]',
 };
 
 const categoryIcons: Record<string, typeof Briefcase> = {
@@ -62,6 +70,8 @@ const categoryIcons: Record<string, typeof Briefcase> = {
   training: BookOpen,
   housing: Home,
   legal: Scale,
+  food: UtensilsCrossed,
+  benefits: Award,
 };
 
 // Match card badge styles using CSS variables
@@ -70,6 +80,8 @@ const categoryBadgeStyles: Record<string, string> = {
   training: 'bg-[hsl(var(--v4v-training)/0.2)] text-white',
   housing: 'bg-[hsl(var(--v4v-housing)/0.2)] text-white',
   legal: 'bg-[hsl(var(--v4v-legal)/0.2)] text-white',
+  food: 'bg-[hsl(var(--v4v-food)/0.2)] text-white',
+  benefits: 'bg-[hsl(var(--v4v-benefits)/0.2)] text-white',
 };
 
 // Section card styling

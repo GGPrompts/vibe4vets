@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Briefcase, BookOpen, Home, Scale, MapPin, Globe, CheckCircle2, Tag, Phone, Clock } from 'lucide-react';
+import { Briefcase, BookOpen, Home, Scale, MapPin, Globe, CheckCircle2, Tag, Phone, Clock, UtensilsCrossed, Award } from 'lucide-react';
 import type { Resource, MatchExplanation } from '@/lib/api';
 import { BookmarkButton } from '@/components/bookmark-button';
 
@@ -26,6 +26,8 @@ const accentBarColors: Record<string, string> = {
   training: 'bg-[hsl(var(--v4v-training))]',
   housing: 'bg-[hsl(var(--v4v-housing))]',
   legal: 'bg-[hsl(var(--v4v-legal))]',
+  food: 'bg-[hsl(var(--v4v-food))]',
+  benefits: 'bg-[hsl(var(--v4v-benefits))]',
 };
 
 // Card background gradients - subtle category tints
@@ -34,6 +36,8 @@ const cardBackgrounds: Record<string, string> = {
   training: 'bg-gradient-to-br from-[hsl(var(--v4v-training)/0.03)] via-white to-[hsl(var(--v4v-training)/0.06)]',
   housing: 'bg-gradient-to-br from-[hsl(var(--v4v-housing)/0.03)] via-white to-[hsl(var(--v4v-housing)/0.06)]',
   legal: 'bg-gradient-to-br from-[hsl(var(--v4v-legal)/0.03)] via-white to-[hsl(var(--v4v-legal)/0.06)]',
+  food: 'bg-gradient-to-br from-[hsl(var(--v4v-food)/0.03)] via-white to-[hsl(var(--v4v-food)/0.06)]',
+  benefits: 'bg-gradient-to-br from-[hsl(var(--v4v-benefits)/0.03)] via-white to-[hsl(var(--v4v-benefits)/0.06)]',
 };
 
 // Card border colors on hover
@@ -42,6 +46,8 @@ const cardHoverBorders: Record<string, string> = {
   training: 'hover:border-[hsl(var(--v4v-training)/0.3)]',
   housing: 'hover:border-[hsl(var(--v4v-housing)/0.3)]',
   legal: 'hover:border-[hsl(var(--v4v-legal)/0.3)]',
+  food: 'hover:border-[hsl(var(--v4v-food)/0.3)]',
+  benefits: 'hover:border-[hsl(var(--v4v-benefits)/0.3)]',
 };
 
 // Badge styling using design system
@@ -50,6 +56,8 @@ const categoryBadgeStyles: Record<string, string> = {
   training: 'bg-[hsl(var(--v4v-training)/0.12)] text-[hsl(var(--v4v-training))] border-[hsl(var(--v4v-training)/0.25)]',
   housing: 'bg-[hsl(var(--v4v-housing)/0.12)] text-[hsl(var(--v4v-housing))] border-[hsl(var(--v4v-housing)/0.25)]',
   legal: 'bg-[hsl(var(--v4v-legal)/0.12)] text-[hsl(var(--v4v-legal))] border-[hsl(var(--v4v-legal)/0.25)]',
+  food: 'bg-[hsl(var(--v4v-food)/0.12)] text-[hsl(var(--v4v-food))] border-[hsl(var(--v4v-food)/0.25)]',
+  benefits: 'bg-[hsl(var(--v4v-benefits)/0.12)] text-[hsl(var(--v4v-benefits))] border-[hsl(var(--v4v-benefits)/0.25)]',
 };
 
 // Category icons
@@ -58,6 +66,8 @@ const categoryIcons: Record<string, typeof Briefcase> = {
   training: BookOpen,
   housing: Home,
   legal: Scale,
+  food: UtensilsCrossed,
+  benefits: Award,
 };
 
 // Export for use in other components

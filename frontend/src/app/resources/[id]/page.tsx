@@ -21,6 +21,8 @@ import {
   BookOpen,
   Home,
   Scale,
+  UtensilsCrossed,
+  Award,
 } from 'lucide-react';
 import api, { type Resource } from '@/lib/api';
 import { useAnalytics } from '@/lib/useAnalytics';
@@ -29,17 +31,21 @@ import { ReportFeedbackModal } from '@/components/ReportFeedbackModal';
 import { BookmarkButton } from '@/components/bookmark-button';
 
 const categoryColors: Record<string, string> = {
-  employment: 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300',
-  training: 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-300',
-  housing: 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300',
-  legal: 'bg-amber-100 text-amber-800 dark:bg-amber-900 dark:text-amber-300',
+  employment: 'bg-[hsl(var(--v4v-employment)/0.12)] text-[hsl(var(--v4v-employment))]',
+  training: 'bg-[hsl(var(--v4v-training)/0.12)] text-[hsl(var(--v4v-training))]',
+  housing: 'bg-[hsl(var(--v4v-housing)/0.12)] text-[hsl(var(--v4v-housing))]',
+  legal: 'bg-[hsl(var(--v4v-legal)/0.12)] text-[hsl(var(--v4v-legal))]',
+  food: 'bg-[hsl(var(--v4v-food)/0.12)] text-[hsl(var(--v4v-food))]',
+  benefits: 'bg-[hsl(var(--v4v-benefits)/0.12)] text-[hsl(var(--v4v-benefits))]',
 };
 
 const categoryGradients: Record<string, string> = {
-  employment: 'from-blue-600 to-blue-800',
-  training: 'from-purple-600 to-purple-800',
-  housing: 'from-green-600 to-green-800',
-  legal: 'from-amber-600 to-amber-800',
+  employment: 'from-[hsl(var(--v4v-employment))] to-[hsl(215,70%,40%)]',
+  training: 'from-[hsl(var(--v4v-training))] to-[hsl(165,55%,32%)]',
+  housing: 'from-[hsl(var(--v4v-housing))] to-[hsl(24,75%,42%)]',
+  legal: 'from-[hsl(var(--v4v-legal))] to-[hsl(265,50%,45%)]',
+  food: 'from-[hsl(var(--v4v-food))] to-[hsl(145,55%,32%)]',
+  benefits: 'from-[hsl(var(--v4v-benefits))] to-[hsl(340,55%,40%)]',
 };
 
 const categoryIcons: Record<string, typeof Briefcase> = {
@@ -47,6 +53,8 @@ const categoryIcons: Record<string, typeof Briefcase> = {
   training: BookOpen,
   housing: Home,
   legal: Scale,
+  food: UtensilsCrossed,
+  benefits: Award,
 };
 
 function IntakeCard({ resource }: { resource: Resource }) {
