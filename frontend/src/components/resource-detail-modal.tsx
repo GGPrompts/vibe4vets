@@ -232,6 +232,25 @@ export function ResourceDetailModal({
     return () => window.removeEventListener('keydown', handleEscape);
   }, [isOpen, onClose]);
 
+  // Lock body scroll when modal is open
+  useEffect(() => {
+    if (isOpen) {
+      // Save current scroll position
+      const scrollY = window.scrollY;
+      const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+
+      // Apply styles to lock scroll while maintaining position
+      document.body.style.overflow = 'hidden';
+      document.body.style.paddingRight = `${scrollbarWidth}px`;
+
+      return () => {
+        document.body.style.overflow = '';
+        document.body.style.paddingRight = '';
+        // Scroll position is preserved since we didn't change position
+      };
+    }
+  }, [isOpen]);
+
   // Handle mobile swipe to close
   const handleDragEnd = useCallback(
     (_: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
@@ -376,7 +395,7 @@ export function ResourceDetailModal({
                 </div>
 
                 {/* Scrollable content */}
-                <div className="relative max-h-[calc(90vh-280px)] overflow-x-hidden overflow-y-auto p-6 sm:max-h-[calc(85vh-280px)]">
+                <div className="relative max-h-[calc(90vh-280px)] overflow-x-hidden overflow-y-auto overscroll-contain p-6 sm:max-h-[calc(85vh-280px)]">
                   {/* Decorative orbs */}
                   <div
                     className={cn(
