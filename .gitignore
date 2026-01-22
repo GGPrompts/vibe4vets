@@ -40,7 +40,28 @@ npm-debug.log*
 
 # Claude Code (machine-specific)
 .mcp.json
-.claude/
+.claude/*
+!.claude/skills/
 
 # Git worktrees
 .worktrees/
+# bd worktree
+.worktrees/V4V-0bhu/
+# bd worktree
+.worktrees/V4V-h3vt/
+# bd worktree
+.worktrees/V4V-8qyl/
+# bd worktree
+.worktrees/V4V-4t2c/
+# bd worktree
+.worktrees/V4V-3yxr/
+# bd worktree
+.worktrees/V4V-q0kn/
+# bd worktree
+.worktrees/V4V-nf8y/
+# bd worktree
+.worktrees/V4V-hsgx/
+# bd worktree
+.worktrees/V4V-2arh/
+# bd worktree
+.worktrees/V4V-9evu/
