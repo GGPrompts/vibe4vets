@@ -30,6 +30,8 @@ from app.models.program import Program, ProgramStatus, ProgramType
 from app.models.resource import Resource, ResourceScope, ResourceStatus
 from app.models.review import ChangeLog, ChangeType, ReviewState, ReviewStatus
 from app.models.source import (
+    ETLJobRun,
+    ETLJobStatus,
     HealthStatus,
     Source,
     SourceError,
@@ -43,6 +45,8 @@ __all__ = [
     "AnalyticsDailyAggregate",
     "AnalyticsEvent",
     "AnalyticsEventType",
+    "ETLJobRun",
+    "ETLJobStatus",
     "Feedback",
     "FeedbackIssueType",
     "FeedbackStatus",

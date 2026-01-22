@@ -116,3 +116,75 @@ class SourceError(SQLModel, table=True):
 
     # Relationships
     source: "Source" = Relationship(back_populates="errors")
+
+
+class ETLJobStatus(str, Enum):
+    """Status of an ETL job run."""
+
+    PENDING = "pending"
+    RUNNING = "running"
+    COMPLETED = "completed"
+    FAILED = "failed"
+    PARTIALLY_COMPLETED = "partially_completed"
+
+
+class ETLJobRun(SQLModel, table=True):
+    """Track ETL job runs for checkpointing and resume capability.
+
+    This model enables idempotent ETL jobs by:
+    1. Recording processed source URLs to skip on retry
+    2. Checkpointing progress between batches
+    3. Enabling resume from failure
+    """
+
+    __tablename__ = "etl_job_runs"
+
+    id: uuid.UUID = Field(default_factory=uuid.uuid4, primary_key=True)
+
+    # Job identification
+    job_name: str = Field(max_length=100, index=True)  # e.g., "full_refresh", "va_gov_refresh"
+    connector_names: list[str] = Field(
+        default_factory=list, sa_column=Column(JSONB, nullable=False)
+    )  # List of connector names in this run
+
+    # Status tracking
+    status: ETLJobStatus = Field(default=ETLJobStatus.PENDING, index=True)
+    started_at: datetime = Field(default_factory=_utc_now)
+    completed_at: datetime | None = None
+
+    # Progress tracking
+    total_extracted: int = Field(default=0)
+    total_processed: int = Field(default=0)
+    total_created: int = Field(default=0)
+    total_updated: int = Field(default=0)
+    total_skipped: int = Field(default=0)
+    total_failed: int = Field(default=0)
+
+    # Checkpointing: track processed source URLs to skip on retry
+    processed_urls: list[str] = Field(
+        default_factory=list, sa_column=Column(JSONB, nullable=False)
+    )
+
+    # Current position for resume (connector index + resource index)
+    checkpoint_connector_idx: int = Field(default=0)
+    checkpoint_resource_idx: int = Field(default=0)
+
+    # Error details if failed
+    error_message: str | None = None
+    error_details: dict[str, Any] | None = Field(
+        default=None, sa_column=Column(JSONB, nullable=True)
+    )
+
+    def mark_url_processed(self, url: str) -> None:
+        """Mark a source URL as processed for idempotency."""
+        if url not in self.processed_urls:
+            self.processed_urls = [*self.processed_urls, url]
+
+    def is_url_processed(self, url: str) -> bool:
+        """Check if a source URL was already processed in this job run."""
+        return url in self.processed_urls
+
+    def update_checkpoint(self, connector_idx: int, resource_idx: int) -> None:
+        """Update checkpoint position for resume capability."""
+        self.checkpoint_connector_idx = connector_idx
+        self.checkpoint_resource_idx = resource_idx

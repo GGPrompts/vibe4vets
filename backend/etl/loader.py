@@ -2,6 +2,11 @@
 
 Handles creation and updates of Organization, Location, Resource,
 and SourceRecord entities with conflict resolution.
+
+Supports idempotent batch loading via:
+- Batch transactions instead of per-resource commits
+- Skip already-processed URLs when job_run provided
+- Content hash-based duplicate detection
 """
 
 import hashlib
@@ -13,6 +18,7 @@ from sqlmodel import Session, select
 from app.models import (
     ChangeLog,
     ChangeType,
+    ETLJobRun,
     HealthStatus,
     Location,
     Organization,
@@ -30,36 +36,60 @@ from etl.models import ETLError, LoadResult, NormalizedResource
 
 
 class Loader:
-    """Loads normalized resources into the database."""
+    """Loads normalized resources into the database.
+
+    Supports two modes:
+    1. Single-resource mode (load): Commits per resource, used for simple loads
+    2. Batch mode (load_batch): Commits entire batch atomically, supports checkpointing
+
+    For idempotent ETL, use load_batch with a job_run to:
+    - Skip already-processed URLs on retry
+    - Record processed URLs for checkpointing
+    - Enable resume from failure
+    """
 
     # Fields that trigger review when changed
     RISKY_FIELDS = {"phone", "website", "address", "eligibility", "how_to_apply", "cost"}
 
-    def __init__(self, session: Session):
+    # Default batch size for checkpointing
+    DEFAULT_CHECKPOINT_BATCH_SIZE = 50
+
+    def __init__(self, session: Session, job_run: ETLJobRun | None = None):
         """Initialize loader.
 
         Args:
             session: SQLModel database session.
+            job_run: Optional ETLJobRun for checkpointing and idempotency.
+                     When provided, processed URLs are tracked and skipped on retry.
         """
         self.session = session
+        self.job_run = job_run
         self.trust_service = TrustService(session)
 
         # Cache for organizations and sources to avoid repeated lookups
         self._org_cache: dict[str, Organization] = {}
         self._source_cache: dict[str, Source] = {}
 
-    def load(self, resource: NormalizedResource) -> LoadResult:
+    def load(self, resource: NormalizedResource, commit: bool = True) -> LoadResult:
         """Load a single resource into the database.
 
         Creates or updates Organization, Location, and Resource as needed.
 
         Args:
             resource: Normalized resource to load.
+            commit: Whether to commit after loading. Set to False for batch operations.
 
         Returns:
             LoadResult with action taken and IDs.
         """
         try:
+            # Skip if already processed in this job run (idempotency)
+            if self.job_run and self.job_run.is_url_processed(resource.source_url):
+                return LoadResult(
+                    action="skipped",
+                    error="Already processed in this job run",
+                )
+
             # 1. Find or create organization
             org = self._get_or_create_organization(resource)
 
@@ -83,7 +113,12 @@ class Loader:
                 # Create new resource
                 result = self._create_resource(resource, org, location, source)
 
-            self.session.commit()
+            # Mark as processed for idempotency
+            if self.job_run:
+                self.job_run.mark_url_processed(resource.source_url)
+
+            if commit:
+                self.session.commit()
             return result
 
         except Exception as e:
@@ -93,23 +128,38 @@ class Loader:
                 error=f"Database error: {str(e)}",
             )
 
-    def load_batch(self, resources: list[NormalizedResource]) -> tuple[list[LoadResult], list[ETLError]]:
-        """Load a batch of resources.
+    def load_batch(
+        self,
+        resources: list[NormalizedResource],
+        checkpoint_batch_size: int | None = None,
+    ) -> tuple[list[LoadResult], list[ETLError]]:
+        """Load a batch of resources with atomic transactions and checkpointing.
 
-        Commits after each successful load to avoid losing all
-        progress on failure.
+        This method is idempotent when used with a job_run:
+        - Resources with URLs already in job_run.processed_urls are skipped
+        - Processed URLs are recorded in job_run for retry safety
+        - Progress is checkpointed every checkpoint_batch_size resources
+
+        Commits in batches rather than per-resource to balance:
+        - Atomicity (smaller batches = less work lost on failure)
+        - Performance (larger batches = fewer commits)
 
         Args:
             resources: List of normalized resources.
+            checkpoint_batch_size: Number of resources to process before
+                                   checkpointing. Defaults to DEFAULT_CHECKPOINT_BATCH_SIZE.
 
         Returns:
             Tuple of (load results, errors).
         """
+        batch_size = checkpoint_batch_size or self.DEFAULT_CHECKPOINT_BATCH_SIZE
         results: list[LoadResult] = []
         errors: list[ETLError] = []
+        pending_count = 0
 
-        for resource in resources:
-            result = self.load(resource)
+        for i, resource in enumerate(resources):
+            # Load without committing - we'll batch commits
+            result = self.load(resource, commit=False)
             results.append(result)
 
             if result.action == "failed":
@@ -121,6 +171,40 @@ class Loader:
                         source_url=resource.source_url,
                     )
                 )
+            elif result.action != "skipped":
+                pending_count += 1
+
+            # Checkpoint: commit batch and update job_run progress
+            if pending_count >= batch_size or i == len(resources) - 1:
+                try:
+                    # Update job_run checkpoint before committing
+                    if self.job_run:
+                        self.job_run.update_checkpoint(
+                            connector_idx=0,  # Set by pipeline
+                            resource_idx=i + 1,
+                        )
+                        self.session.add(self.job_run)
+
+                    self.session.commit()
+                    pending_count = 0
+                except Exception as e:
+                    # Rollback the failed batch
+                    self.session.rollback()
+                    # Mark remaining resources in this batch as failed
+                    for j in range(max(0, i - batch_size + 1), i + 1):
+                        if results[j].action not in ("failed", "skipped"):
+                            results[j] = LoadResult(
+                                action="failed",
+                                error=f"Batch commit failed: {str(e)}",
+                            )
+                            errors.append(
+                                ETLError(
+                                    stage="load",
+                                    message=f"Batch commit failed: {str(e)}",
+                                    resource_title=resources[j].title,
+                                    source_url=resources[j].source_url,
+                                )
+                            )
 
         return results, errors
 
