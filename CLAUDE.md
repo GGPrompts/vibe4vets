@@ -11,7 +11,7 @@ Vibe4Vets is an AI-powered veteran resource database focusing on **Employment & 
 | **Frontend** | Next.js 15 + TypeScript + Tailwind + shadcn/ui |
 | **Database** | PostgreSQL (Supabase/Railway) |
 | **ORM** | SQLModel (unified SQLAlchemy + Pydantic) |
-| **Search** | Postgres FTS → OpenSearch (Phase 3) |
+| **Search** | Postgres FTS + pgvector semantic search |
 | **AI** | Claude API (extraction, search, chat) |
 
 ---
@@ -82,6 +82,8 @@ CATEGORIES = [
     "training",      # Vocational rehab, certifications
     "housing",       # HUD-VASH, SSVF, shelters
     "legal",         # Legal aid, VA appeals
+    "benefits",      # VA benefits, disability claims
+    "food",          # Food assistance, food banks
 ]
 ```
 
@@ -184,10 +186,23 @@ docker-compose up -d
 |--------|------|-------------|
 | GET | `/api/v1/resources` | List resources with pagination (limit, offset) and filters (categories, states, scope) |
 | GET | `/api/v1/resources/{id}` | Resource detail |
-| GET | `/api/v1/search` | Advanced search with filters |
+| GET | `/api/v1/search` | Full-text search with filters |
 | GET | `/api/v1/search/eligibility` | Eligibility-filtered search with match reasons |
-| POST | `/api/v1/chat` | AI chat endpoint |
+| POST | `/api/v1/search/semantic` | AI-powered semantic/hybrid search using pgvector |
+| POST | `/api/v1/chat` | AI chat endpoint with Claude Haiku |
+| POST | `/api/v1/feedback` | Submit anonymous feedback about a resource |
+| POST | `/api/v1/email` | Email resources to user (background task) |
+| GET | `/api/v1/stats/ai` | AI transparency stats for About page |
 | POST | `/api/v1/analytics/events` | Record anonymous analytics event |
+
+### Partner Endpoints (API key auth)
+
+| Method | Path | Description |
+|--------|------|-------------|
+| POST | `/api/v1/partner/resources` | Submit new resource for review |
+| PUT | `/api/v1/partner/resources/{id}` | Update submitted resource |
+| GET | `/api/v1/partner/resources` | List partner's submitted resources |
+| GET | `/api/v1/partner/resources/{id}` | Get specific submitted resource |
 
 ### Admin Endpoints
 
@@ -203,6 +218,10 @@ docker-compose up -d
 | POST | `/api/v1/admin/jobs/{name}/run` | Trigger job manually |
 | GET | `/api/v1/admin/jobs/history` | Job run history |
 | GET | `/api/v1/admin/jobs/connectors` | Available connectors |
+| GET | `/api/v1/feedback/admin` | List feedback items for review |
+| GET | `/api/v1/feedback/admin/{id}` | Get single feedback item |
+| PATCH | `/api/v1/feedback/admin/{id}` | Review feedback (approve/dismiss) |
+| GET | `/api/v1/feedback/admin/stats/summary` | Feedback summary statistics |
 | GET | `/api/v1/analytics/admin/dashboard` | Full analytics dashboard data |
 | GET | `/api/v1/analytics/admin/summary` | Summary statistics |
 | GET | `/api/v1/analytics/admin/popular-searches` | Popular search queries |
@@ -237,18 +256,18 @@ docker-compose up -d
 - [x] Scheduled refresh (`backend/jobs/`)
 - [x] Source health dashboard (`backend/app/services/health.py`)
 
-### Phase 3: AI + Scale
-- [ ] Claude extraction
-- [ ] pgvector semantic search
-- [ ] AI chatbot
-- [ ] Guided questionnaire
-- [ ] OpenSearch (if needed)
+### Phase 3: AI + Scale (COMPLETE)
+- [x] pgvector semantic search (`backend/app/services/embedding.py`)
+- [x] AI chatbot (`backend/app/api/v1/chat.py` with Claude Haiku)
+- [x] Eligibility wizard (`frontend/src/app/wizard/page.tsx`)
+- [ ] Claude extraction (planned)
+- [ ] OpenSearch (if needed for scale)
 
 ### Phase 4: Production
 - [ ] Public API docs
-- [x] Feedback loop
+- [x] Feedback loop (`backend/app/api/v1/feedback.py`)
 - [x] Analytics (privacy-respecting usage tracking)
-- [ ] Partner contributions
+- [x] Partner API (`backend/app/api/v1/partner.py`)
 
 ---
 
@@ -259,12 +278,23 @@ docker-compose up -d
 |------|---------|
 | `backend/app/main.py` | FastAPI app entry point |
 | `backend/app/api/v1/resources.py` | Resource CRUD endpoints |
-| `backend/app/api/v1/search.py` | Full-text search endpoint |
+| `backend/app/api/v1/search.py` | Full-text, eligibility, and semantic search |
 | `backend/app/api/v1/admin.py` | Admin endpoints (review, jobs, dashboard) |
+| `backend/app/api/v1/chat.py` | AI chatbot with Claude Haiku |
+| `backend/app/api/v1/feedback.py` | Anonymous feedback submission and admin review |
+| `backend/app/api/v1/partner.py` | Partner API for resource submissions |
+| `backend/app/api/v1/email.py` | Email resources to users |
+| `backend/app/api/v1/stats.py` | AI transparency stats for About page |
+| `backend/app/api/v1/analytics.py` | Analytics API endpoints |
 | `backend/app/models/resource.py` | Resource SQLModel |
+| `backend/app/models/partner.py` | Partner, PartnerSubmission, PartnerAPILog models |
+| `backend/app/models/analytics.py` | Anonymous analytics models |
 | `backend/app/services/trust.py` | Trust scoring logic |
-| `backend/app/services/search.py` | PostgreSQL FTS service |
+| `backend/app/services/search.py` | PostgreSQL FTS + pgvector search |
+| `backend/app/services/embedding.py` | OpenAI embedding generation for semantic search |
 | `backend/app/services/health.py` | Source health monitoring |
+| `backend/app/services/discovery.py` | AI-powered resource discovery service |
+| `backend/app/services/analytics.py` | Analytics tracking service |
 | `backend/app/core/taxonomy.py` | Categories and subcategories |
 | `backend/alembic/versions/` | Database migrations |
 | `backend/connectors/base.py` | Connector protocol interface |
@@ -277,33 +307,39 @@ docker-compose up -d
 | `backend/jobs/scheduler.py` | APScheduler integration |
 | `backend/jobs/refresh.py` | Full refresh job |
 | `backend/jobs/freshness.py` | Freshness update job |
-| `backend/app/services/discovery.py` | AI-powered resource discovery service |
-| `backend/app/models/analytics.py` | Anonymous analytics models |
-| `backend/app/services/analytics.py` | Analytics tracking service |
-| `backend/app/api/v1/analytics.py` | Analytics API endpoints |
 | `backend/scripts/seed_hubs.py` | Hub data seeding script |
-| `backend/scripts/seed_dmv_housing.py` | DC/MD/VA housing seed data with eligibility |
+| `backend/scripts/seed_dmv_housing.py` | DC/MD/VA housing seed data |
+| `backend/scripts/seed_dmv_benefits.py` | DC/MD/VA benefits seed data |
+| `backend/scripts/seed_national_food.py` | National food assistance resources |
+| `backend/scripts/import_ssvf_providers.py` | SSVF grantee data importer |
+| `backend/scripts/import_discoveries.py` | AI discovery results importer |
 | `backend/.claude/commands/scan-resources.md` | Discovery slash command |
 
 ### Frontend
 | File | Purpose |
 |------|---------|
-| `frontend/src/app/page.tsx` | Landing page |
-| `frontend/src/app/search/page.tsx` | Search UI with filters |
+| `frontend/src/app/page.tsx` | Landing page with filters-first layout |
+| `frontend/src/app/search/page.tsx` | Search UI with sidebar filters |
 | `frontend/src/app/discover/page.tsx` | Discovery feed with date-grouped resources |
+| `frontend/src/app/wizard/page.tsx` | Eligibility wizard for guided resource finding |
+| `frontend/src/app/saved/page.tsx` | Saved/bookmarked resources with export options |
+| `frontend/src/app/about/page.tsx` | About page with AI transparency stats |
+| `frontend/src/app/map/page.tsx` | Interactive US map for geographic browsing |
 | `frontend/src/app/resources/[id]/page.tsx` | Resource detail page |
 | `frontend/src/app/admin/page.tsx` | Admin review queue |
+| `frontend/src/app/admin/sources/page.tsx` | Source health monitoring dashboard |
+| `frontend/src/app/admin/jobs/page.tsx` | Job management and triggering |
+| `frontend/src/app/admin/analytics/page.tsx` | Admin analytics dashboard |
+| `frontend/src/app/hubs/*/page.tsx` | Static hub pages (employment, housing, legal, training) |
 | `frontend/src/lib/api.ts` | API client with TypeScript types |
 | `frontend/src/lib/hooks/useResourcesInfinite.ts` | TanStack Query hook for paginated resource fetching |
+| `frontend/src/lib/useAnalytics.ts` | Analytics tracking React hook |
 | `frontend/src/components/providers.tsx` | QueryClientProvider wrapper for TanStack Query |
 | `frontend/src/components/DiscoveryFeed.tsx` | Date-grouped resource feed component |
 | `frontend/src/components/EligibilityWizard.tsx` | Eligibility wizard with URL state persistence |
 | `frontend/src/components/MatchReasonChips.tsx` | Match reason chips for search results |
-| `frontend/src/app/hubs/*/page.tsx` | Static resource hub pages (employment, housing, legal, training) |
 | `frontend/src/components/HubCard.tsx` | Hub resource card component |
 | `frontend/src/components/ui/` | shadcn/ui components |
-| `frontend/src/lib/useAnalytics.ts` | Analytics tracking React hook |
-| `frontend/src/app/admin/analytics/page.tsx` | Admin analytics dashboard |
 
 ### Infrastructure
 | File | Purpose |

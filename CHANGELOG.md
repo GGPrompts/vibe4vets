@@ -6,6 +6,39 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 
+#### Accessibility & Export Features (2026-01-22)
+- **Magnifying glass accessibility** - Screen magnification feature for vision accessibility (V4V-9awr)
+- **Resource export** - html2canvas integration for exporting resource cards as images
+
+#### Saved Resources & Bookmarks (2026-01-21)
+- **Bookmark feature** - Save resources with gold star button on cards and detail modal (bd-gmzx)
+- **Saved resources page** - `/saved` page with localStorage persistence, export and email options (V4V-gt0)
+- **Partner API** - API key authenticated endpoints for VSO/nonprofit resource submissions (V4V-bp7)
+
+#### AI Transparency & Wizard (2026-01-20)
+- **AI transparency page** - About page section showing data sources, connectors, trust scores (bd-db3x)
+- **Wizard preview** - `/wizard` page for eligibility-based resource filtering (5a677de)
+- **Benefits discovery** - Discovered veteran benefits resources for Jacksonville, Nashville, Midwest regions
+
+#### Food Assistance Resources (2026-01-19)
+- **National food database** - Comprehensive food assistance resources for veterans nationwide
+- **Food enrichment** - Scripts to enrich ~140 food resources from markdown collection (bd-okg4)
+- **Benefits + Food categories** - Expanded taxonomy from 4 to 6 categories
+
+### Fixed
+
+#### Recent Fixes (2026-01-22)
+- **CI migrations** - Run Alembic migrations before tests in GitHub Actions
+- **Datetime deprecation** - Replace `datetime.utcnow()` with `datetime.now(UTC)` codebase-wide (V4V-hgte)
+- **HTTP client leaks** - Close HTTP clients in connectors to prevent resource leaks (V4V-pn0j)
+- **React error boundaries** - Add error boundaries to frontend for graceful error handling (V4V-650r)
+- **Admin API auth** - Add API key authentication to all admin endpoints (V4V-cq4h)
+- **Job rescheduling** - Reset next_run time after manual job trigger
+- **Nested anchor tags** - Prevent nested anchor tags in link variant cards
+- **Bookmark animations** - Bookmark button animates with cards in virtualized grid (V4V-vrj)
+
+---
+
 #### Infinite Scroll & Data Fetching (2026-01-18)
 - **Infinite scroll pagination** - Load More with useInfiniteQuery, shows "X of Y resources" (V4V-rqr)
 - **Server-side filtering** - API supports categories, states, scope params with correct totals (V4V-8mn)
