@@ -10,6 +10,9 @@ interface MagnifierContextValue {
   toggleEnabled: () => void;
   setZoomLevel: (level: number) => void;
   isHydrated: boolean;
+  /** Temporarily suppress magnifier (e.g., when modal is open) */
+  suppressed: boolean;
+  setSuppressed: (suppressed: boolean) => void;
 }
 
 const MagnifierContext = createContext<MagnifierContextValue | null>(null);
@@ -18,6 +21,7 @@ export function MagnifierProvider({ children }: { children: ReactNode }) {
   const [enabled, setEnabled] = useState(false);
   const [zoomLevel, setZoomLevel] = useState(2.0);
   const [isHydrated, setIsHydrated] = useState(false);
+  const [suppressed, setSuppressed] = useState(false);
 
   // Hydrate from localStorage on mount (client-side only)
   useEffect(() => {
@@ -58,6 +62,10 @@ export function MagnifierProvider({ children }: { children: ReactNode }) {
     setZoomLevel(Math.max(1.5, Math.min(4, level)));
   }, []);
 
+  const handleSetSuppressed = useCallback((value: boolean) => {
+    setSuppressed(value);
+  }, []);
+
   return (
     <MagnifierContext.Provider
       value={{
@@ -66,6 +74,8 @@ export function MagnifierProvider({ children }: { children: ReactNode }) {
         toggleEnabled,
         setZoomLevel: handleSetZoomLevel,
         isHydrated,
+        suppressed,
+        setSuppressed: handleSetSuppressed,
       }}
     >
       {children}

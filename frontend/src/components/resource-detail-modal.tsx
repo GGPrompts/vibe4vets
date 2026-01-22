@@ -6,6 +6,7 @@ import { motion, AnimatePresence, useDragControls, PanInfo } from 'framer-motion
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
+import { useOptionalMagnifier } from '@/context/magnifier-context';
 import {
   Phone,
   Globe,
@@ -232,6 +233,17 @@ export function ResourceDetailModal({
 }: ResourceDetailModalProps) {
   const dragControls = useDragControls();
   const constraintsRef = useRef<HTMLDivElement>(null);
+  const magnifierContext = useOptionalMagnifier();
+
+  // Suppress magnifier when modal is open
+  useEffect(() => {
+    if (isOpen) {
+      magnifierContext?.setSuppressed(true);
+      return () => {
+        magnifierContext?.setSuppressed(false);
+      };
+    }
+  }, [isOpen, magnifierContext]);
 
   // Handle escape key
   useEffect(() => {

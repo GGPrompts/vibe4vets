@@ -19,6 +19,7 @@ export function Magnifier() {
   const enabled = magnifierContext?.enabled ?? false;
   const isHydrated = magnifierContext?.isHydrated ?? false;
   const zoomLevel = magnifierContext?.zoomLevel ?? 2;
+  const suppressed = magnifierContext?.suppressed ?? false;
 
   // Hide on resource detail pages or when resource modal is open
   const isResourceDetailPage = pathname?.startsWith('/resources/');
@@ -107,7 +108,7 @@ export function Magnifier() {
     };
   }, [mounted, enabled, isMobile]);
 
-  if (!mounted || !enabled || !isHydrated || isMobile || isResourceDetailPage || isResourceModalOpen || pos.x < 0) {
+  if (!mounted || !enabled || !isHydrated || isMobile || isResourceDetailPage || isResourceModalOpen || suppressed || pos.x < 0) {
     return null;
   }
 
