@@ -120,17 +120,72 @@ class HealthService:
     def get_all_sources_health(self) -> list[SourceHealthDetail]:
         """Get health details for all sources.
 
+        Uses batch queries to avoid N+1 query pattern.
+        Query count is constant (5 queries) regardless of source count.
+
         Returns:
             List of SourceHealthDetail for each registered source.
         """
+        # Query 1: Get all sources with resource count and avg freshness
         stmt = select(Source).order_by(Source.tier, Source.name)
         sources = self.session.exec(stmt).all()
 
+        if not sources:
+            return []
+
+        source_ids = [s.id for s in sources]
+
+        # Query 2: Batch get resource counts per source
+        resource_counts = self._batch_count_resources_by_source(source_ids)
+
+        # Query 3: Batch get resources by status per source
+        resources_by_status_map = self._batch_count_resources_by_status_per_source(source_ids)
+
+        # Query 4: Batch get average freshness per source
+        freshness_map = self._batch_calculate_average_freshness(source_ids)
+
+        # Query 5: Batch get recent error counts per source (for success rate)
+        error_counts_map = self._batch_count_recent_errors(source_ids)
+
+        # Query 6: Batch get recent errors for all sources
+        errors_map = self._batch_get_recent_errors(source_ids, limit_per_source=10)
+
         result = []
         for source in sources:
-            health = self.get_source_health(source.id)
-            if health:
-                result.append(health)
+            sid = source.id
+            resource_count = resource_counts.get(sid, 0)
+            resources_by_status = resources_by_status_map.get(
+                sid, {status.value: 0 for status in ResourceStatus}
+            )
+            average_freshness = freshness_map.get(sid, 1.0)
+
+            # Calculate success rate from error count
+            recent_error_count = error_counts_map.get(sid, 0)
+            success_rate = self._calculate_success_rate_from_count(
+                source.error_count, recent_error_count
+            )
+
+            errors = errors_map.get(sid, [])
+
+            result.append(
+                SourceHealthDetail(
+                    source_id=str(source.id),
+                    name=source.name,
+                    url=source.url,
+                    tier=source.tier,
+                    source_type=source.source_type.value,
+                    frequency=source.frequency,
+                    status=source.health_status.value,
+                    resource_count=resource_count,
+                    resources_by_status=resources_by_status,
+                    average_freshness=average_freshness,
+                    last_run=source.last_run,
+                    last_success=source.last_success,
+                    error_count=source.error_count,
+                    success_rate=success_rate,
+                    errors=errors,
+                )
+            )
 
         return result
 
@@ -427,6 +482,24 @@ class HealthService:
         )
         recent_error_count = self.session.exec(stmt).one() or 0
 
+        return self._calculate_success_rate_from_count(source.error_count, recent_error_count)
+
+    def _calculate_success_rate_from_count(
+        self, error_count: int, recent_error_count: int
+    ) -> float:
+        """Calculate success rate from error counts.
+
+        Args:
+            error_count: Current consecutive error count for the source.
+            recent_error_count: Number of errors in the last 7 days.
+
+        Returns:
+            Success rate between 0.0 and 1.0.
+        """
+        # If no errors, 100% success
+        if error_count == 0:
+            return 1.0
+
         # Estimate: assume one run per day on average
         estimated_runs = min(7, SUCCESS_RATE_WINDOW)
         if estimated_runs == 0:
@@ -434,6 +507,131 @@ class HealthService:
 
         success_rate = max(0.0, (estimated_runs - recent_error_count) / estimated_runs)
         return round(success_rate, 2)
+
+    def _batch_count_resources_by_source(self, source_ids: list[UUID]) -> dict[UUID, int]:
+        """Batch count resources for multiple sources in a single query."""
+        if not source_ids:
+            return {}
+
+        stmt = (
+            select(Resource.source_id, func.count(Resource.id))
+            .where(Resource.source_id.in_(source_ids))
+            .group_by(Resource.source_id)
+        )
+        counts = self.session.exec(stmt).all()
+        return {source_id: count for source_id, count in counts}
+
+    def _batch_count_resources_by_status_per_source(
+        self, source_ids: list[UUID]
+    ) -> dict[UUID, dict[str, int]]:
+        """Batch count resources by status for multiple sources in a single query."""
+        if not source_ids:
+            return {}
+
+        # Initialize result with zero counts for all statuses
+        result: dict[UUID, dict[str, int]] = {
+            sid: {status.value: 0 for status in ResourceStatus} for sid in source_ids
+        }
+
+        stmt = (
+            select(Resource.source_id, Resource.status, func.count(Resource.id))
+            .where(Resource.source_id.in_(source_ids))
+            .group_by(Resource.source_id, Resource.status)
+        )
+        counts = self.session.exec(stmt).all()
+
+        for source_id, status, count in counts:
+            if source_id in result:
+                result[source_id][status.value] = count
+
+        return result
+
+    def _batch_calculate_average_freshness(self, source_ids: list[UUID]) -> dict[UUID, float]:
+        """Batch calculate average freshness for multiple sources in a single query."""
+        if not source_ids:
+            return {}
+
+        stmt = (
+            select(Resource.source_id, func.avg(Resource.freshness_score))
+            .where(Resource.source_id.in_(source_ids))
+            .group_by(Resource.source_id)
+        )
+        averages = self.session.exec(stmt).all()
+
+        result = {}
+        for source_id, avg in averages:
+            result[source_id] = float(avg) if avg is not None else 1.0
+
+        return result
+
+    def _batch_count_recent_errors(self, source_ids: list[UUID]) -> dict[UUID, int]:
+        """Batch count recent errors (last 7 days) for multiple sources in a single query."""
+        if not source_ids:
+            return {}
+
+        week_ago = datetime.now(UTC) - timedelta(days=7)
+        stmt = (
+            select(SourceError.source_id, func.count(SourceError.id))
+            .where(
+                SourceError.source_id.in_(source_ids),
+                SourceError.occurred_at >= week_ago,
+            )
+            .group_by(SourceError.source_id)
+        )
+        counts = self.session.exec(stmt).all()
+        return {source_id: count for source_id, count in counts}
+
+    def _batch_get_recent_errors(
+        self, source_ids: list[UUID], limit_per_source: int = 10
+    ) -> dict[UUID, list[ErrorRecord]]:
+        """Batch get recent errors for multiple sources.
+
+        Uses a window function to limit errors per source efficiently.
+        """
+        if not source_ids:
+            return {}
+
+        # Build source name lookup from previously loaded sources
+        stmt = select(Source.id, Source.name).where(Source.id.in_(source_ids))
+        source_names = {sid: name for sid, name in self.session.exec(stmt).all()}
+
+        # Get errors with row number partitioned by source
+        # Using subquery with row_number to limit per source
+        from sqlalchemy import over, and_
+        from sqlalchemy.sql import func as sa_func
+
+        row_num = sa_func.row_number().over(
+            partition_by=SourceError.source_id,
+            order_by=SourceError.occurred_at.desc(),
+        ).label("row_num")
+
+        subquery = (
+            select(SourceError, row_num)
+            .where(SourceError.source_id.in_(source_ids))
+            .subquery()
+        )
+
+        stmt = select(subquery).where(subquery.c.row_num <= limit_per_source)
+        rows = self.session.exec(stmt).all()
+
+        result: dict[UUID, list[ErrorRecord]] = {sid: [] for sid in source_ids}
+
+        for row in rows:
+            source_id = row.source_id
+            source_name = source_names.get(source_id, "Unknown")
+            result[source_id].append(
+                ErrorRecord(
+                    id=row.id,
+                    source_id=source_id,
+                    source_name=source_name,
+                    error_type=row.error_type.value if hasattr(row.error_type, 'value') else row.error_type,
+                    message=row.message,
+                    occurred_at=row.occurred_at,
+                    job_run_id=row.job_run_id,
+                )
+            )
+
+        return result
 
     def _get_recent_job_runs(self, limit: int = 5) -> list[JobRunSummary]:
         """Get recent job runs from the scheduler.
