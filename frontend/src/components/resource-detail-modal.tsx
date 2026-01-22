@@ -41,12 +41,12 @@ const categoryGradients: Record<string, string> = {
   legal: 'bg-gradient-to-br from-[hsl(var(--v4v-legal))] to-[hsl(265,50%,45%)]',
 };
 
-// Body background tints - subtle category colors
+// Body background tints - subtle category colors (white throughout for readability)
 const bodyBackgrounds: Record<string, string> = {
-  employment: 'bg-gradient-to-b from-white via-white to-[hsl(var(--v4v-employment)/0.04)]',
-  training: 'bg-gradient-to-b from-white via-white to-[hsl(var(--v4v-training)/0.04)]',
-  housing: 'bg-gradient-to-b from-white via-white to-[hsl(var(--v4v-housing)/0.04)]',
-  legal: 'bg-gradient-to-b from-white via-white to-[hsl(var(--v4v-legal)/0.04)]',
+  employment: 'bg-white',
+  training: 'bg-white',
+  housing: 'bg-white',
+  legal: 'bg-white',
 };
 
 // Decorative orb colors
@@ -73,7 +73,7 @@ const categoryBadgeStyles: Record<string, string> = {
 };
 
 // Section card styling
-const sectionCardStyle = 'rounded-xl border bg-white/80 p-4 shadow-sm backdrop-blur-sm';
+const sectionCardStyle = 'rounded-xl border bg-white p-4 shadow-sm';
 
 function IntakeSection({ resource }: { resource: Resource }) {
   const location = resource.location;
@@ -235,8 +235,6 @@ export function ResourceDetailModal({
   // Lock body scroll when modal is open
   useEffect(() => {
     if (isOpen) {
-      // Save current scroll position
-      const scrollY = window.scrollY;
       const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
 
       // Apply styles to lock scroll while maintaining position
@@ -246,7 +244,6 @@ export function ResourceDetailModal({
       return () => {
         document.body.style.overflow = '';
         document.body.style.paddingRight = '';
-        // Scroll position is preserved since we didn't change position
       };
     }
   }, [isOpen]);
