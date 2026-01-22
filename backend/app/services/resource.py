@@ -1,10 +1,13 @@
 """Resource service for CRUD operations."""
 
+import logging
 from datetime import UTC, datetime
 from uuid import UUID
 
 from sqlalchemy import String, func, or_
 from sqlmodel import Session, col, select
+
+logger = logging.getLogger(__name__)
 
 from app.models import Location, Organization, Program, Resource, Source
 from app.models.resource import ResourceScope, ResourceStatus
@@ -258,11 +261,24 @@ class ResourceService:
         """Convert Resource model to read schema."""
         # Get organization
         organization = self.session.get(Organization, resource.organization_id)
-        org_nested = OrganizationNested(
-            id=organization.id,
-            name=organization.name,
-            website=organization.website,
-        )
+        if not organization:
+            # Orphaned resource - organization was deleted
+            logger.warning(
+                "Resource %s has orphaned organization_id %s",
+                resource.id,
+                resource.organization_id,
+            )
+            org_nested = OrganizationNested(
+                id=resource.organization_id,
+                name="Unknown Organization",
+                website=None,
+            )
+        else:
+            org_nested = OrganizationNested(
+                id=organization.id,
+                name=organization.name,
+                website=organization.website,
+            )
 
         # Get location if exists
         location_nested = None
