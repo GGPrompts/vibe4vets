@@ -9,8 +9,30 @@ from datetime import UTC, datetime
 from typing import Any
 
 import httpx
+from tenacity import (
+    retry,
+    retry_if_exception,
+    stop_after_attempt,
+    wait_exponential,
+)
 
 from connectors.base import BaseConnector, ResourceCandidate, SourceMetadata
+
+
+def _is_retryable_error(exc: BaseException) -> bool:
+    """Check if an exception is retryable.
+
+    Returns True for transient errors (timeouts, 429, 503).
+    Returns False for permanent errors (400, 404).
+    """
+    if isinstance(exc, httpx.TimeoutException):
+        return True
+    if isinstance(exc, httpx.HTTPStatusError):
+        # Retry on rate limit (429), server errors (5xx)
+        return exc.response.status_code in (429, 500, 502, 503, 504)
+    if isinstance(exc, httpx.ConnectError | httpx.ReadError):
+        return True
+    return False
 
 
 class CareerOneStopConnector(BaseConnector):
@@ -158,22 +180,7 @@ class CareerOneStopConnector(BaseConnector):
         resources: list[ResourceCandidate] = []
 
         try:
-            # CareerOneStop API uses location-based search
-            # Using state capital area with large radius to get all state results
-            url = f"{self.BASE_URL}/{self.user_id}/{state}/{self.DEFAULT_RADIUS}"
-
-            response = client.get(
-                url,
-                params={
-                    "sortColumns": "Location",
-                    "sortOrder": "ASC",
-                    "startRecord": 0,
-                    "limitRecord": self.MAX_RESULTS,
-                    "format": "json",
-                },
-            )
-            response.raise_for_status()
-            data = response.json()
+            data = self._fetch_state_data(client, state)
 
             # Extract centers from response
             centers = data.get("OneStopCenterList", [])
@@ -194,6 +201,41 @@ class CareerOneStopConnector(BaseConnector):
             print(f"Error fetching AJCs for {state}: {e}")
 
         return resources
+
+    @retry(
+        stop=stop_after_attempt(3),
+        wait=wait_exponential(multiplier=1, min=1, max=10),
+        retry=retry_if_exception(_is_retryable_error),
+        reraise=True,
+    )
+    def _fetch_state_data(self, client: httpx.Client, state: str) -> dict[str, Any]:
+        """Fetch AJC data for a state with retry logic.
+
+        Args:
+            client: HTTP client
+            state: Two-letter state code
+
+        Returns:
+            Parsed JSON response.
+
+        Raises:
+            httpx.HTTPStatusError: On non-retryable HTTP errors.
+            httpx.TimeoutException: After all retries exhausted.
+        """
+        url = f"{self.BASE_URL}/{self.user_id}/{state}/{self.DEFAULT_RADIUS}"
+
+        response = client.get(
+            url,
+            params={
+                "sortColumns": "Location",
+                "sortOrder": "ASC",
+                "startRecord": 0,
+                "limitRecord": self.MAX_RESULTS,
+                "format": "json",
+            },
+        )
+        response.raise_for_status()
+        return response.json()
 
     def _create_center_id(self, center: dict[str, Any]) -> str:
         """Create a unique identifier for a center.

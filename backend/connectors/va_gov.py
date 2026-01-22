@@ -9,8 +9,30 @@ from datetime import UTC, datetime
 from typing import Any
 
 import httpx
+from tenacity import (
+    retry,
+    retry_if_exception,
+    stop_after_attempt,
+    wait_exponential,
+)
 
 from connectors.base import BaseConnector, ResourceCandidate, SourceMetadata
+
+
+def _is_retryable_error(exc: BaseException) -> bool:
+    """Check if an exception is retryable.
+
+    Returns True for transient errors (timeouts, 429, 503).
+    Returns False for permanent errors (400, 404).
+    """
+    if isinstance(exc, httpx.TimeoutException):
+        return True
+    if isinstance(exc, httpx.HTTPStatusError):
+        # Retry on rate limit (429), server errors (5xx)
+        return exc.response.status_code in (429, 500, 502, 503, 504)
+    if isinstance(exc, httpx.ConnectError | httpx.ReadError):
+        return True
+    return False
 
 
 class VAGovConnector(BaseConnector):
@@ -102,16 +124,7 @@ class VAGovConnector(BaseConnector):
 
         while page <= self.MAX_PAGES:
             try:
-                response = client.get(
-                    self.BASE_URL,
-                    params={
-                        "type": facility_type,
-                        "page": page,
-                        "per_page": self.DEFAULT_PAGE_SIZE,
-                    },
-                )
-                response.raise_for_status()
-                data = response.json()
+                data = self._fetch_page(client, facility_type, page)
 
                 facilities = data.get("data", [])
                 if not facilities:
@@ -138,6 +151,38 @@ class VAGovConnector(BaseConnector):
                 break
 
         return resources
+
+    @retry(
+        stop=stop_after_attempt(3),
+        wait=wait_exponential(multiplier=1, min=1, max=10),
+        retry=retry_if_exception(_is_retryable_error),
+        reraise=True,
+    )
+    def _fetch_page(self, client: httpx.Client, facility_type: str, page: int) -> dict[str, Any]:
+        """Fetch a single page of facilities with retry logic.
+
+        Args:
+            client: HTTP client
+            facility_type: Type of facility to fetch
+            page: Page number
+
+        Returns:
+            Parsed JSON response.
+
+        Raises:
+            httpx.HTTPStatusError: On non-retryable HTTP errors.
+            httpx.TimeoutException: After all retries exhausted.
+        """
+        response = client.get(
+            self.BASE_URL,
+            params={
+                "type": facility_type,
+                "page": page,
+                "per_page": self.DEFAULT_PAGE_SIZE,
+            },
+        )
+        response.raise_for_status()
+        return response.json()
 
     def _parse_facility(self, facility: dict[str, Any], facility_type: str) -> ResourceCandidate | None:
         """Parse a facility object into a ResourceCandidate.
