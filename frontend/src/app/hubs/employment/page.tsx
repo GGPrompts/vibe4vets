@@ -5,37 +5,37 @@ import { HubCard, type HubResource } from '@/components/HubCard';
 const employmentResources: HubResource[] = [
   {
     name: 'VA Careers & Employment',
-    description: 'Official VA employment resources including career counseling, job training, and resume help for transitioning service members and veterans.',
+    description: 'Official VA employment resources including career counseling, job training, and resume help for transitioning service members and Veterans.',
     url: 'https://www.va.gov/careers-employment/',
     icon: Briefcase,
   },
   {
     name: 'DOL Veterans\' Employment & Training',
-    description: 'Department of Labor programs providing employment resources, job training, and placement services specifically for veterans.',
+    description: 'Department of Labor programs providing employment resources, job training, and placement services specifically for Veterans.',
     url: 'https://www.dol.gov/agencies/vets',
     icon: Building2,
   },
   {
     name: 'CareerOneStop',
-    description: 'Sponsored by DOL, offering career exploration, training, and job search resources including veteran-specific pathways.',
+    description: 'Sponsored by DOL, offering career exploration, training, and job search resources including Veteran-specific pathways.',
     url: 'https://www.careeronestop.org/Veterans/default.aspx',
     icon: Target,
   },
   {
     name: 'Hire Heroes USA',
-    description: 'Free career services for transitioning military, veterans, and military spouses including coaching and job placement.',
+    description: 'Free career services for transitioning military, Veterans, and military spouses including coaching and job placement.',
     url: 'https://www.hireheroesusa.org/',
     icon: Users,
   },
   {
     name: 'American Corporate Partners',
-    description: 'Free mentoring program connecting veterans with corporate professionals for career guidance and networking.',
+    description: 'Free mentoring program connecting Veterans with corporate professionals for career guidance and networking.',
     url: 'https://www.acp-usa.org/',
     icon: Award,
   },
   {
     name: 'USAJobs',
-    description: 'Official federal government job board with veterans\' preference hiring and dedicated veteran job listings.',
+    description: 'Official federal government job board with Veterans\' preference hiring and dedicated Veteran job listings.',
     url: 'https://www.usajobs.gov/Help/working-in-government/unique-hiring-paths/veterans/',
     icon: Building2,
   },
@@ -68,7 +68,7 @@ export default function EmploymentHubPage() {
                 Employment Resources
               </h1>
               <p className="mt-2 text-lg text-white/80">
-                Job placement, career services, and veteran-friendly employers
+                Job placement, career services, and Veteran-friendly employers
               </p>
             </div>
           </div>
@@ -86,7 +86,7 @@ export default function EmploymentHubPage() {
               Trusted Employment Resources
             </h2>
             <p className="mt-2 text-[hsl(var(--muted-foreground))]">
-              Official government programs and established nonprofits helping veterans find careers
+              Official government programs and established nonprofits helping Veterans find careers
             </p>
           </div>
 
@@ -107,7 +107,7 @@ export default function EmploymentHubPage() {
             </h3>
             <p className="mt-2 text-sm text-[hsl(var(--muted-foreground))]">
               Search our full database for employment resources in your area, including local
-              veteran service organizations and state-specific programs.
+              Veteran service organizations and state-specific programs.
             </p>
             <Link
               href="/search?category=employment"

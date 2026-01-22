@@ -170,7 +170,7 @@ export default function Home() {
 
             {/* Transparency statement */}
             <p className="mt-4 max-w-lg text-base leading-relaxed text-white/70">
-              Built with transparency. We aggregate veteran resources from VA.gov,
+              Built with transparency. We aggregate Veteran resources from VA.gov,
               DOL, nonprofits, and community organizations—all in one searchable
               directory powered by AI.
             </p>
@@ -201,7 +201,7 @@ export default function Home() {
 
             {/* Copyright */}
             <p className="mt-4 text-sm text-white/50">
-              Helping veterans find resources, one search at a time
+              Helping Veterans find resources, one search at a time
             </p>
           </div>
         </div>

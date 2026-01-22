@@ -169,7 +169,7 @@ export function AIStatsWidget() {
               Meet Vibe, Your AI Assistant
             </h3>
             <p className="text-sm text-muted-foreground">
-              I help discover and verify veteran resources 24/7. Here&apos;s what I&apos;ve been up to:
+              I help discover and verify Veteran resources 24/7. Here&apos;s what I&apos;ve been up to:
             </p>
           </div>
         </div>

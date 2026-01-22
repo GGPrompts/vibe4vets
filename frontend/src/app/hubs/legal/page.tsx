@@ -17,25 +17,25 @@ const legalResources: HubResource[] = [
   },
   {
     name: 'Legal Services Corporation',
-    description: 'Find free civil legal aid providers in your area, many with programs specifically serving veterans.',
+    description: 'Find free civil legal aid providers in your area, many with programs specifically serving Veterans.',
     url: 'https://www.lsc.gov/about-lsc/what-legal-aid/get-legal-help',
     icon: Gavel,
   },
   {
     name: 'National Veterans Legal Services Program',
-    description: 'Nonprofit providing free legal assistance to veterans on VA claims, discharge upgrades, and military records corrections.',
+    description: 'Nonprofit providing free legal assistance to Veterans on VA claims, discharge upgrades, and military records corrections.',
     url: 'https://www.nvlsp.org/',
     icon: Shield,
   },
   {
     name: 'American Bar Association Veterans Legal',
-    description: 'ABA initiative connecting veterans with pro bono legal services for military-related issues and civil legal needs.',
+    description: 'ABA initiative connecting Veterans with pro bono legal services for military-related issues and civil legal needs.',
     url: 'https://www.americanbar.org/groups/legal_services/milvets/',
     icon: Users,
   },
   {
     name: 'Stateside Legal',
-    description: 'Free legal information and resources for military members, veterans, and their families on common legal issues.',
+    description: 'Free legal information and resources for military members, Veterans, and their families on common legal issues.',
     url: 'https://statesidelegal.org/',
     icon: FileText,
   },
@@ -86,7 +86,7 @@ export default function LegalHubPage() {
               Trusted Legal Resources
             </h2>
             <p className="mt-2 text-[hsl(var(--muted-foreground))]">
-              Official programs and organizations providing legal assistance to veterans
+              Official programs and organizations providing legal assistance to Veterans
             </p>
           </div>
 
@@ -118,7 +118,7 @@ export default function LegalHubPage() {
               Find Local Legal Aid
             </h3>
             <p className="mt-2 text-sm text-[hsl(var(--muted-foreground))]">
-              Search our database for legal resources in your area, including veteran legal clinics,
+              Search our database for legal resources in your area, including Veteran legal clinics,
               pro bono attorneys, and legal aid organizations.
             </p>
             <Link

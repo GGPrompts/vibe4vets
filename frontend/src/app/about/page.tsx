@@ -68,13 +68,13 @@ const sourceTiers = [
     tier: 2,
     score: '80%',
     examples: 'DAV, VFW, American Legion',
-    description: 'Major veteran service organizations',
+    description: 'Major Veteran service organizations',
     color: 'bg-blue-500',
   },
   {
     tier: 3,
     score: '60%',
-    examples: 'State veteran agencies',
+    examples: 'State Veteran agencies',
     description: 'State-level official resources',
     color: 'bg-yellow-500',
   },
@@ -147,7 +147,7 @@ export default function AboutPage() {
               <span className="text-[hsl(var(--v4v-gold-dark))]">Vibe4Vets</span>
             </h1>
             <p className="animate-fade-in-up delay-100 mt-6 max-w-2xl mx-auto text-lg text-muted-foreground sm:text-xl" style={{ opacity: 0 }}>
-              We believe veterans deserve a transparent, easy-to-use directory of resources.
+              We believe Veterans deserve a transparent, easy-to-use directory of resources.
               Here&apos;s how we build and maintain it.
             </p>
           </div>
@@ -167,9 +167,9 @@ export default function AboutPage() {
             <div className="h-px w-10 bg-gradient-to-l from-transparent to-[hsl(var(--v4v-gold)/0.5)]" />
           </div>
           <p className="text-xl leading-relaxed text-white/90 sm:text-2xl">
-            Vibe4Vets aggregates veteran resources from VA.gov, the Department of Labor,
+            Vibe4Vets aggregates Veteran resources from VA.gov, the Department of Labor,
             nonprofits, and community organizations into one searchable directory.
-            We&apos;re transparent about using web scraping and AI to help veterans find
+            We&apos;re transparent about using web scraping and AI to help Veterans find
             resources that go <span className="text-[hsl(var(--v4v-gold))]">beyond VA.gov</span>.
           </p>
         </div>
@@ -191,7 +191,7 @@ export default function AboutPage() {
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               We believe in radical transparency. Here&apos;s real-time data on how our AI-powered
-              system discovers and verifies veteran resources.
+              system discovers and verifies Veteran resources.
             </p>
           </div>
           <AIStatsWidget />
@@ -383,7 +383,7 @@ export default function AboutPage() {
                 <h4 className="font-medium text-foreground mb-2">Search Enhancement</h4>
                 <p className="text-sm text-muted-foreground">
                   Semantic search understands the intent behind your queries, not just keywords.
-                  Ask natural questions like &quot;housing help for homeless veterans in Texas.&quot;
+                  Ask natural questions like &quot;housing help for homeless Veterans in Texas.&quot;
                 </p>
               </div>
               <div className="rounded-xl border border-border/50 bg-[hsl(var(--v4v-bg-elevated))] p-4">
@@ -416,7 +416,7 @@ export default function AboutPage() {
                 </li>
                 <li className="flex items-center gap-2">
                   <span className="h-1.5 w-1.5 rounded-full bg-green-500" />
-                  No veteran personal information stored
+                  No Veteran personal information stored
                 </li>
                 <li className="flex items-center gap-2">
                   <span className="h-1.5 w-1.5 rounded-full bg-green-500" />
@@ -443,7 +443,7 @@ export default function AboutPage() {
             Ready to find resources?
           </h2>
           <p className="mt-3 text-muted-foreground">
-            Start searching our directory of veteran resources today.
+            Start searching our directory of Veteran resources today.
           </p>
           <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <Button asChild size="lg" className="btn-gold gap-2 rounded-xl px-8">
@@ -474,7 +474,7 @@ export default function AboutPage() {
             <h2 className="font-display text-2xl font-semibold text-[hsl(var(--v4v-gold))]">Vibe4Vets</h2>
 
             <p className="mt-4 max-w-lg text-base leading-relaxed text-white/70">
-              Built with transparency. We aggregate veteran resources from VA.gov,
+              Built with transparency. We aggregate Veteran resources from VA.gov,
               DOL, nonprofits, and community organizations—all in one searchable
               directory powered by AI.
             </p>
@@ -502,7 +502,7 @@ export default function AboutPage() {
             </div>
 
             <p className="mt-4 text-sm text-white/50">
-              Helping veterans find resources, one search at a time
+              Helping Veterans find resources, one search at a time
             </p>
           </div>
         </div>
