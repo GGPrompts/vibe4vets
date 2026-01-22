@@ -24,9 +24,7 @@ def upgrade() -> None:
     op.add_column("resources", sa.Column("link_checked_at", sa.DateTime(), nullable=True))
     op.add_column("resources", sa.Column("link_http_status", sa.Integer(), nullable=True))
     op.add_column("resources", sa.Column("link_health_score", sa.Float(), nullable=True))
-    op.add_column(
-        "resources", sa.Column("link_flagged_reason", sa.String(length=500), nullable=True)
-    )
+    op.add_column("resources", sa.Column("link_flagged_reason", sa.String(length=500), nullable=True))
 
 
 def downgrade() -> None:
