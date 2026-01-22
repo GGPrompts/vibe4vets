@@ -1,10 +1,9 @@
 """Pytest fixtures for ETL tests."""
 
 from datetime import UTC, datetime
+from typing import Any, Self
 
 import pytest
-
-from typing import Any, Self
 
 from connectors.base import ResourceCandidate, SourceMetadata
 

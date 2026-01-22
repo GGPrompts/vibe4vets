@@ -6,13 +6,14 @@ from enum import Enum
 from typing import TYPE_CHECKING, Any, Optional
 
 from pgvector.sqlalchemy import Vector
-from sqlalchemy import Column, Text
+from sqlalchemy import Column, FetchedValue, Text
 from sqlalchemy.dialects.postgresql import ARRAY, TSVECTOR
 from sqlmodel import Field, Relationship, SQLModel
 
 
 def _utc_now() -> datetime:
     return datetime.now(UTC)
+
 
 # Embedding dimension for text-embedding-3-small (OpenAI) or equivalent
 EMBEDDING_DIMENSION = 1536
@@ -100,8 +101,12 @@ class Resource(SQLModel, table=True):
     created_at: datetime = Field(default_factory=_utc_now)
     updated_at: datetime = Field(default_factory=_utc_now)
 
-    # Full-text search vector (auto-populated by trigger or manually)
-    search_vector: str | None = Field(default=None, sa_column=Column(TSVECTOR))
+    # Full-text search vector (auto-populated by database trigger)
+    # FetchedValue tells SQLAlchemy this column is server-generated, so don't include in INSERT
+    search_vector: str | None = Field(
+        default=None,
+        sa_column=Column(TSVECTOR, FetchedValue(), nullable=True),
+    )
 
     # Vector embedding for semantic search (pgvector)
     embedding: Any = Field(

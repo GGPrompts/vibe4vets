@@ -13,6 +13,7 @@ from sqlmodel import Field, Relationship, SQLModel
 def _utc_now() -> datetime:
     return datetime.now(UTC)
 
+
 if TYPE_CHECKING:
     from app.models.resource import Resource
 

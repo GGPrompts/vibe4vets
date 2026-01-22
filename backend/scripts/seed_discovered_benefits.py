@@ -13,7 +13,7 @@ Usage:
 import json
 import os
 import sys
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 from uuid import uuid4
 
@@ -28,29 +28,67 @@ from app.models.source import HealthStatus, SourceType
 
 # Trust score mapping based on source type
 CONFIDENCE_TIERS = {
-    (0.9, 1.0): 1,   # Very high confidence = Tier 1
-    (0.7, 0.9): 2,   # High confidence = Tier 2
-    (0.5, 0.7): 3,   # Medium confidence = Tier 3
-    (0.0, 0.5): 4,   # Low confidence = Tier 4
+    (0.9, 1.0): 1,  # Very high confidence = Tier 1
+    (0.7, 0.9): 2,  # High confidence = Tier 2
+    (0.5, 0.7): 3,  # Medium confidence = Tier 3
+    (0.0, 0.5): 4,  # Low confidence = Tier 4
 }
 
 TIER_SCORES = {1: 1.0, 2: 0.8, 3: 0.6, 4: 0.4}
 
 # State abbreviation mapping
 STATE_ABBREV = {
-    "Alabama": "AL", "Alaska": "AK", "Arizona": "AZ", "Arkansas": "AR",
-    "California": "CA", "Colorado": "CO", "Connecticut": "CT", "Delaware": "DE",
-    "Florida": "FL", "Georgia": "GA", "Hawaii": "HI", "Idaho": "ID",
-    "Illinois": "IL", "Indiana": "IN", "Iowa": "IA", "Kansas": "KS",
-    "Kentucky": "KY", "Louisiana": "LA", "Maine": "ME", "Maryland": "MD",
-    "Massachusetts": "MA", "Michigan": "MI", "Minnesota": "MN", "Mississippi": "MS",
-    "Missouri": "MO", "Montana": "MT", "Nebraska": "NE", "Nevada": "NV",
-    "New Hampshire": "NH", "New Jersey": "NJ", "New Mexico": "NM", "New York": "NY",
-    "North Carolina": "NC", "North Dakota": "ND", "Ohio": "OH", "Oklahoma": "OK",
-    "Oregon": "OR", "Pennsylvania": "PA", "Rhode Island": "RI", "South Carolina": "SC",
-    "South Dakota": "SD", "Tennessee": "TN", "Texas": "TX", "Utah": "UT",
-    "Vermont": "VT", "Virginia": "VA", "Washington": "WA", "West Virginia": "WV",
-    "Wisconsin": "WI", "Wyoming": "WY", "District of Columbia": "DC",
+    "Alabama": "AL",
+    "Alaska": "AK",
+    "Arizona": "AZ",
+    "Arkansas": "AR",
+    "California": "CA",
+    "Colorado": "CO",
+    "Connecticut": "CT",
+    "Delaware": "DE",
+    "Florida": "FL",
+    "Georgia": "GA",
+    "Hawaii": "HI",
+    "Idaho": "ID",
+    "Illinois": "IL",
+    "Indiana": "IN",
+    "Iowa": "IA",
+    "Kansas": "KS",
+    "Kentucky": "KY",
+    "Louisiana": "LA",
+    "Maine": "ME",
+    "Maryland": "MD",
+    "Massachusetts": "MA",
+    "Michigan": "MI",
+    "Minnesota": "MN",
+    "Mississippi": "MS",
+    "Missouri": "MO",
+    "Montana": "MT",
+    "Nebraska": "NE",
+    "Nevada": "NV",
+    "New Hampshire": "NH",
+    "New Jersey": "NJ",
+    "New Mexico": "NM",
+    "New York": "NY",
+    "North Carolina": "NC",
+    "North Dakota": "ND",
+    "Ohio": "OH",
+    "Oklahoma": "OK",
+    "Oregon": "OR",
+    "Pennsylvania": "PA",
+    "Rhode Island": "RI",
+    "South Carolina": "SC",
+    "South Dakota": "SD",
+    "Tennessee": "TN",
+    "Texas": "TX",
+    "Utah": "UT",
+    "Vermont": "VT",
+    "Virginia": "VA",
+    "Washington": "WA",
+    "West Virginia": "WV",
+    "Wisconsin": "WI",
+    "Wyoming": "WY",
+    "District of Columbia": "DC",
 }
 
 
@@ -75,7 +113,8 @@ def parse_address(address: str, city: str, state: str) -> dict:
 
     # Try to extract zip from address
     import re
-    zip_match = re.search(r'\b(\d{5}(?:-\d{4})?)\b', address)
+
+    zip_match = re.search(r"\b(\d{5}(?:-\d{4})?)\b", address)
     if zip_match:
         zip_code = zip_match.group(1)
 
@@ -151,16 +190,14 @@ def get_or_create_source(session: Session, region: str) -> Source:
         source_type=SourceType.SCRAPE,  # AI-discovered via web scraping
         tier=3,  # AI-discovered data starts at tier 3
         health_status=HealthStatus.HEALTHY,
-        last_success=datetime.now(timezone.utc),
+        last_success=datetime.now(UTC),
     )
     session.add(source)
     session.flush()
     return source
 
 
-def get_or_create_organization(
-    session: Session, name: str, website: str | None = None
-) -> Organization:
+def get_or_create_organization(session: Session, name: str, website: str | None = None) -> Organization:
     """Get existing organization or create new one."""
     statement = select(Organization).where(Organization.name == name)
     existing = session.exec(statement).first()
@@ -239,11 +276,7 @@ def seed_discovered_benefits(database_url: str, dry_run: bool = False) -> None:
                     continue
 
                 # Get or create organization
-                org = get_or_create_organization(
-                    session,
-                    org_name,
-                    res_data.get("website")
-                )
+                org = get_or_create_organization(session, org_name, res_data.get("website"))
 
                 # Check if resource already exists
                 if resource_exists(session, name, org.id, city, state):
@@ -252,17 +285,10 @@ def seed_discovered_benefits(database_url: str, dry_run: bool = False) -> None:
                     continue
 
                 # Parse address
-                addr_info = parse_address(
-                    res_data.get("address", ""),
-                    city,
-                    state
-                )
+                addr_info = parse_address(res_data.get("address", ""), city, state)
 
                 # Determine scope
-                scope, states = determine_scope(
-                    res_data.get("coverage_area", ""),
-                    state
-                )
+                scope, states = determine_scope(res_data.get("coverage_area", ""), state)
 
                 # Map eligibility
                 eligibility = res_data.get("eligibility", {})
@@ -309,7 +335,7 @@ def seed_discovered_benefits(database_url: str, dry_run: bool = False) -> None:
                     intake_hours=res_data.get("hours"),
                     intake_notes=res_data.get("notes"),
                     # Verification
-                    last_verified_at=datetime.now(timezone.utc),
+                    last_verified_at=datetime.now(UTC),
                     verified_by="ai_discovery",
                 )
                 session.add(location)
@@ -321,11 +347,7 @@ def seed_discovered_benefits(database_url: str, dry_run: bool = False) -> None:
                 reliability = TIER_SCORES.get(tier, 0.6)
 
                 # Map subcategories
-                subcategories = [
-                    map_subcategory(s)
-                    for s in res_data.get("subcategory", "").split("|")
-                    if s
-                ]
+                subcategories = [map_subcategory(s) for s in res_data.get("subcategory", "").split("|") if s]
                 if not subcategories:
                     subcategories = ["vso-services"]
 
@@ -346,7 +368,7 @@ def seed_discovered_benefits(database_url: str, dry_run: bool = False) -> None:
                     status=ResourceStatus.ACTIVE,
                     freshness_score=1.0,
                     reliability_score=reliability,
-                    last_verified=datetime.now(timezone.utc),
+                    last_verified=datetime.now(UTC),
                 )
                 session.add(resource)
                 created += 1

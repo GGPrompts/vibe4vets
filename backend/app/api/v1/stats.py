@@ -29,30 +29,19 @@ class AIStats(BaseModel):
     # Resource counts
     total_resources: int = Field(description="Total resources in database")
     resources_verified: int = Field(description="Resources that have been human-verified")
-    resources_by_category: dict[str, int] = Field(
-        description="Resource count by category"
-    )
+    resources_by_category: dict[str, int] = Field(description="Resource count by category")
 
     # Source/connector info
     total_sources: int = Field(description="Number of data sources")
-    connectors_active: list[ConnectorInfo] = Field(
-        description="Active data connectors"
-    )
+    connectors_active: list[ConnectorInfo] = Field(description="Active data connectors")
 
     # Freshness info
-    last_refresh: datetime | None = Field(
-        default=None,
-        description="When the last connector refresh ran"
-    )
-    average_trust_score: float = Field(
-        ge=0.0, le=1.0, description="Average trust score across all resources"
-    )
+    last_refresh: datetime | None = Field(default=None, description="When the last connector refresh ran")
+    average_trust_score: float = Field(ge=0.0, le=1.0, description="Average trust score across all resources")
 
     # System info
     scheduler_status: str = Field(description="Whether the job scheduler is running")
-    jobs_completed_today: int = Field(
-        description="Number of jobs completed in last 24 hours"
-    )
+    jobs_completed_today: int = Field(description="Number of jobs completed in last 24 hours")
 
 
 @router.get("/ai", response_model=AIStats)
@@ -69,16 +58,15 @@ def get_ai_stats(session: SessionDep) -> AIStats:
     about how the AI-powered resource aggregation works.
     """
     # Count total resources
-    total_resources = session.exec(
-        select(func.count(Resource.id))
-    ).one() or 0
+    total_resources = session.exec(select(func.count()).select_from(Resource)).one() or 0
 
     # Count verified resources (those that have been reviewed)
-    resources_verified = session.exec(
-        select(func.count(Resource.id)).where(
-            Resource.last_verified != None  # noqa: E711
-        )
-    ).one() or 0
+    resources_verified = (
+        session.exec(
+            select(func.count()).select_from(Resource).where(Resource.last_verified != None)  # noqa: E711
+        ).one()
+        or 0
+    )
 
     # Count resources by category
     all_resources = session.exec(select(Resource.categories)).all()
@@ -89,9 +77,7 @@ def get_ai_stats(session: SessionDep) -> AIStats:
                 resources_by_category[cat] = resources_by_category.get(cat, 0) + 1
 
     # Count sources
-    total_sources = session.exec(
-        select(func.count(Source.id))
-    ).one() or 0
+    total_sources = session.exec(select(func.count()).select_from(Source)).one() or 0
 
     # Get active connectors
     connectors_raw = get_available_connectors()

@@ -103,7 +103,7 @@ class BaseConnector(ABC):
         """Return source metadata."""
         pass
 
-    def close(self) -> None:
+    def close(self) -> None:  # noqa: B027
         """Close any open resources. Override in subclasses with resources to clean up."""
         pass
 
