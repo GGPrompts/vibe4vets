@@ -5,19 +5,19 @@ import { HubCard, type HubResource } from '@/components/HubCard';
 const housingResources: HubResource[] = [
   {
     name: 'HUD-VASH Program',
-    description: 'HUD-VA Supportive Housing combines rental assistance vouchers with VA case management and clinical services for veterans experiencing homelessness.',
+    description: 'HUD-VA Supportive Housing combines rental assistance vouchers with VA case management and clinical services for Veterans experiencing homelessness.',
     url: 'https://www.va.gov/homeless/hud-vash.asp',
     icon: HomeIcon,
   },
   {
     name: 'SSVF Provider Directory',
-    description: 'Supportive Services for Veteran Families helps prevent housing instability and provides rapid re-housing for veterans and their families.',
+    description: 'Supportive Services for Veteran Families helps prevent housing instability and provides rapid re-housing for Veterans and their families.',
     url: 'https://www.va.gov/homeless/ssvf/',
     icon: Users,
   },
   {
     name: 'National Coalition for Homeless Veterans',
-    description: 'Advocacy organization connecting veterans experiencing homelessness with local service providers and emergency resources nationwide.',
+    description: 'Advocacy organization connecting Veterans experiencing homelessness with local service providers and emergency resources nationwide.',
     url: 'https://nchv.org/',
     icon: Shield,
   },
@@ -29,13 +29,13 @@ const housingResources: HubResource[] = [
   },
   {
     name: 'Veterans Inc.',
-    description: 'New England\'s largest provider of support services for veterans, offering housing, employment, and comprehensive assistance.',
+    description: 'New England\'s largest provider of support services for Veterans, offering housing, employment, and comprehensive assistance.',
     url: 'https://www.veteransinc.org/',
     icon: Heart,
   },
   {
     name: 'VA Home Loan Guarantee',
-    description: 'VA-backed home loans with no down payment requirement, competitive rates, and no private mortgage insurance for eligible veterans.',
+    description: 'VA-backed home loans with no down payment requirement, competitive rates, and no private mortgage insurance for eligible Veterans.',
     url: 'https://www.va.gov/housing-assistance/home-loans/',
     icon: HomeIcon,
   },
@@ -86,7 +86,7 @@ export default function HousingHubPage() {
               Trusted Housing Resources
             </h2>
             <p className="mt-2 text-[hsl(var(--muted-foreground))]">
-              Official programs and organizations helping veterans find stable housing
+              Official programs and organizations helping Veterans find stable housing
             </p>
           </div>
 
@@ -106,7 +106,7 @@ export default function HousingHubPage() {
               Need Immediate Help?
             </h3>
             <p className="mt-2 text-sm text-[hsl(var(--muted-foreground))]">
-              If you&apos;re a veteran experiencing homelessness or a housing crisis, call the National Call
+              If you&apos;re a Veteran experiencing homelessness or a housing crisis, call the National Call
               Center for Homeless Veterans at <strong className="text-[hsl(var(--v4v-navy))]">1-877-4AID-VET (1-877-424-3838)</strong>.
               Available 24/7.
             </p>
@@ -119,7 +119,7 @@ export default function HousingHubPage() {
             </h3>
             <p className="mt-2 text-sm text-[hsl(var(--muted-foreground))]">
               Search our database for housing resources in your area, including local shelters,
-              transitional housing, and veteran-specific programs.
+              transitional housing, and Veteran-specific programs.
             </p>
             <Link
               href="/search?category=housing"

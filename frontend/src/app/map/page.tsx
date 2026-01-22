@@ -5,7 +5,7 @@ import { USMap } from '@/components/us-map';
 export const metadata = {
   title: 'Find Resources by State | Vibe4Vets',
   description:
-    'Explore veteran resources across the United States. Click on a state to discover employment, training, housing, and legal resources available in your area.',
+    'Explore Veteran resources across the United States. Click on a state to discover employment, training, housing, and legal resources available in your area.',
 };
 
 export default function MapPage() {
@@ -26,7 +26,7 @@ export default function MapPage() {
               </h1>
             </div>
             <p className="mt-4 max-w-2xl text-lg text-[hsl(var(--muted-foreground))]">
-              Click on any state to discover veteran resources available in that
+              Click on any state to discover Veteran resources available in that
               area. We aggregate employment, training, housing, and legal
               resources from trusted sources nationwide.
             </p>

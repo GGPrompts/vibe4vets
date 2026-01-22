@@ -1,6 +1,6 @@
 # Vibe4Vets Frontend
 
-Next.js 15 + React 18 + TypeScript + Tailwind + shadcn/ui frontend for the veteran resource directory.
+Next.js 15 + React 18 + TypeScript + Tailwind + shadcn/ui frontend for the Veteran resource directory.
 
 ## Setup
 

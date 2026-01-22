@@ -1,6 +1,6 @@
 # Vibe4Vets Backend
 
-FastAPI + SQLModel + PostgreSQL backend for the veteran resource directory.
+FastAPI + SQLModel + PostgreSQL backend for the Veteran resource directory.
 
 ## Setup
 

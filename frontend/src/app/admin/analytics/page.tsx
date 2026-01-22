@@ -410,7 +410,7 @@ export default function AnalyticsPage() {
         <p className="text-sm text-green-800 dark:text-green-200">
           <strong>Privacy Notice:</strong> All analytics data is anonymous. No personal
           information, IP addresses, or user identifiers are collected or stored. This helps us
-          understand aggregate usage patterns to improve the service for veterans.
+          understand aggregate usage patterns to improve the service for Veterans.
         </p>
       </div>
       </div>

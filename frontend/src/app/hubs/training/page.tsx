@@ -5,7 +5,7 @@ import { HubCard, type HubResource } from '@/components/HubCard';
 const trainingResources: HubResource[] = [
   {
     name: 'VR&E Program (Chapter 31)',
-    description: 'Veteran Readiness and Employment helps veterans with service-connected disabilities prepare for, find, and maintain suitable careers.',
+    description: 'Veteran Readiness and Employment helps Veterans with service-connected disabilities prepare for, find, and maintain suitable careers.',
     url: 'https://www.va.gov/careers-employment/vocational-rehabilitation/',
     icon: GraduationCap,
   },
@@ -86,7 +86,7 @@ export default function TrainingHubPage() {
               Trusted Training Resources
             </h2>
             <p className="mt-2 text-[hsl(var(--muted-foreground))]">
-              Official programs helping veterans build skills and advance their careers
+              Official programs helping Veterans build skills and advance their careers
             </p>
           </div>
 

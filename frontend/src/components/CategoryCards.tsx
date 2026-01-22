@@ -6,7 +6,7 @@ const categories = [
   {
     name: 'Employment',
     slug: 'employment',
-    description: 'Job placement, career services, and veteran-friendly employers',
+    description: 'Job placement, career services, and Veteran-friendly employers',
     icon: Briefcase,
     colorClass: 'bg-v4v-employment',
     mutedBgClass: 'bg-v4v-employment-muted',
