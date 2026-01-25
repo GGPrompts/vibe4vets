@@ -1,0 +1,192 @@
+{
+  "state": "IA",
+  "state_name": "Iowa",
+  "fetched_at": "2026-01-25T18:00:00Z",
+  "source": "Iowa Department of Veterans Affairs, Iowa Workforce Development, Military.com, Scott County Veterans Services",
+  "resources": [
+    {
+      "name": "Iowa Department of Veterans Affairs (IDVA)",
+      "phone": "515-242-5331",
+      "address": "2900 Grand Avenue, Des Moines, IA 50312",
+      "city": "Des Moines",
+      "description": "State agency providing comprehensive veteran benefits, housing assistance, employment services, and support programs",
+      "services": [
+        "benefits assistance",
+        "housing",
+        "emergency housing repairs",
+        "employment",
+        "financial assistance",
+        "health services",
+        "education",
+        "counseling",
+        "substance abuse services"
+      ],
+      "website": "https://dva.iowa.gov/",
+      "source_url": "https://dva.iowa.gov/"
+    },
+    {
+      "name": "Iowa 211",
+      "phone": "211",
+      "address": "Statewide hotline",
+      "city": "Statewide",
+      "description": "Free, confidential information and referrals for community resources including housing, food, health, employment, and veteran services",
+      "services": [
+        "resource referrals",
+        "housing",
+        "food",
+        "employment",
+        "health",
+        "veteran services"
+      ],
+      "website": "https://www.211.org/",
+      "source_url": "https://www.211.org/"
+    },
+    {
+      "name": "Iowa County Veterans Services Offices",
+      "phone": "Contact through IDVA",
+      "address": "Multiple locations - 99 county offices statewide",
+      "city": "Statewide",
+      "description": "99 County Veterans Services offices with accredited County Veteran Services Officers providing local veteran support and benefits assistance",
+      "services": [
+        "benefits assistance",
+        "veteran services",
+        "local support",
+        "benefits counseling"
+      ],
+      "website": "https://dva.iowa.gov/",
+      "source_url": "https://dva.iowa.gov/"
+    },
+    {
+      "name": "Home Base Iowa - Iowa Workforce Development",
+      "phone": "515-242-5331",
+      "address": "Multiple regional offices (15 centers statewide)",
+      "city": "Statewide",
+      "description": "Program bringing together Iowa businesses with qualified veterans looking for career opportunities and employment services",
+      "services": [
+        "employment",
+        "job placement",
+        "career development",
+        "skills training",
+        "workforce development"
+      ],
+      "website": "https://dva.iowa.gov/benefits",
+      "source_url": "https://dva.iowa.gov/benefits"
+    },
+    {
+      "name": "Iowa Workforce Development - Veteran Employment Services",
+      "phone": "515-242-5331",
+      "address": "15 regional offices throughout Iowa",
+      "city": "Statewide",
+      "description": "15 regional workforce centers with staff coordinating veteran-specific employment and career services",
+      "services": [
+        "employment",
+        "job training",
+        "career counseling",
+        "skills development",
+        "job placement"
+      ],
+      "website": "https://www.iowaworks.gov/",
+      "source_url": "https://www.iowaworks.gov/"
+    },
+    {
+      "name": "Scott County Veterans Services",
+      "phone": "563-326-8713",
+      "address": "Scott County, IA",
+      "city": "Davenport",
+      "description": "County veterans services office providing local veteran support and benefits assistance",
+      "services": [
+        "veteran services",
+        "benefits assistance",
+        "local support"
+      ],
+      "website": "https://www.scottcountyiowa.gov/community/veteran-services",
+      "source_url": "https://www.scottcountyiowa.gov/community/veteran-services"
+    },
+    {
+      "name": "Military Homeownership Assistance Grant",
+      "phone": "515-242-5331",
+      "address": "State program",
+      "city": "Statewide",
+      "description": "$5,000 grant available to veterans purchasing a home in Iowa, administered by IDVA",
+      "services": [
+        "housing assistance",
+        "homeownership",
+        "down payment assistance"
+      ],
+      "website": "https://dva.iowa.gov/benefits/state-benefits",
+      "source_url": "https://dva.iowa.gov/benefits/state-benefits"
+    },
+    {
+      "name": "Emergency Housing Repairs Program",
+      "phone": "515-242-5331",
+      "address": "State program",
+      "city": "Statewide",
+      "description": "Iowa funds emergency housing repairs up to $3,000 in a 12-month period for qualifying veterans",
+      "services": [
+        "housing repairs",
+        "home maintenance",
+        "emergency assistance"
+      ],
+      "website": "https://dva.iowa.gov/benefits/state-benefits",
+      "source_url": "https://dva.iowa.gov/benefits/state-benefits"
+    },
+    {
+      "name": "Iowa Veterans Unemployment Assistance",
+      "phone": "515-242-5331",
+      "address": "State program",
+      "city": "Statewide",
+      "description": "Assistance for unemployment or underemployment due to service-related causes, providing up to $3,000 per 12 months ($6,000 lifetime max)",
+      "services": [
+        "financial assistance",
+        "unemployment support",
+        "underemployment assistance"
+      ],
+      "website": "https://dva.iowa.gov/benefits/state-benefits",
+      "source_url": "https://dva.iowa.gov/benefits/state-benefits"
+    },
+    {
+      "name": "Veterans Crisis Line",
+      "phone": "988 (then press 1)",
+      "phone_alt": "Text 838255",
+      "address": "National hotline - 24/7",
+      "city": "National",
+      "description": "24/7 free confidential crisis support for veterans and families experiencing mental health crises, PTSD, suicidal thoughts",
+      "services": [
+        "mental health crisis support",
+        "PTSD support",
+        "suicide prevention",
+        "chat support",
+        "text support"
+      ],
+      "website": "https://www.veteranscrisisline.net/",
+      "source_url": "https://www.veteranscrisisline.net/"
+    },
+    {
+      "name": "Iowa Health & Wellness Services for Veterans",
+      "phone": "515-242-5331",
+      "address": "Statewide program",
+      "city": "Statewide",
+      "description": "Assistance with vision, hearing, dental care, durable medical equipment, and prescription drugs for qualifying veterans",
+      "services": [
+        "healthcare",
+        "vision care",
+        "dental care",
+        "hearing services",
+        "medical equipment",
+        "prescription assistance"
+      ],
+      "website": "https://dva.iowa.gov/",
+      "source_url": "https://dva.iowa.gov/"
+    }
+  ],
+  "additional_resources": {
+    "911_crisis_emergency": "Call 911 for emergencies",
+    "988_suicide_crisis": "988 (then press 1) - Veterans Crisis Line - 24/7",
+    "home_base_iowa": "https://dva.iowa.gov/ - Jobs and business connections for veterans",
+    "emergency_housing_repairs": "Up to $3,000 in 12-month period",
+    "homeownership_assistance": "$5,000 grant for home purchase",
+    "unemployment_assistance": "Up to $3,000 per 12 months, $6,000 lifetime maximum",
+    "va_benefits": "https://www.va.gov/ - Comprehensive VA benefits and healthcare"
+  },
+  "notes": "Iowa has 99 County Veterans Services offices providing local access to support. Call your local county office or contact IDVA for state-specific benefits. Home Base Iowa program connects veterans with employment opportunities."
+}

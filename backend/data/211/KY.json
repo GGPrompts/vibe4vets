@@ -1,0 +1,192 @@
+{
+  "state": "KY",
+  "state_name": "Kentucky",
+  "fetched_at": "2026-01-25T18:00:00Z",
+  "source": "Kentucky Department of Veterans Affairs, Kentucky Housing Corporation, Military.com, Kentucky Commonwealth",
+  "resources": [
+    {
+      "name": "Kentucky Department of Veterans Affairs",
+      "phone": "502-595-4010",
+      "address": "321 W Main Street, Suite 130, Louisville, KY 40202",
+      "city": "Louisville",
+      "description": "State agency providing comprehensive veteran services including benefits counseling, employment, housing assistance, healthcare, education, and women veteran services",
+      "services": [
+        "benefits counseling",
+        "benefits assistance",
+        "employment",
+        "housing assistance",
+        "healthcare",
+        "education",
+        "women veteran services",
+        "homeless veteran services",
+        "crisis support"
+      ],
+      "website": "https://veterans.ky.gov/",
+      "source_url": "https://veterans.ky.gov/"
+    },
+    {
+      "name": "Kentucky 211",
+      "phone": "211",
+      "address": "Statewide hotline",
+      "city": "Statewide",
+      "description": "Free, confidential information and referrals for community resources including housing, food, health, employment, legal aid, and veteran services",
+      "services": [
+        "resource referrals",
+        "housing",
+        "food",
+        "employment",
+        "health",
+        "legal aid",
+        "veteran services"
+      ],
+      "website": "https://www.211.org/",
+      "source_url": "https://www.211.org/"
+    },
+    {
+      "name": "Kentucky Housing Corporation (KHC) - Veterans Programs",
+      "phone": "502-564-7630",
+      "address": "Frankfort, KY",
+      "city": "Frankfort",
+      "description": "Partnership with HUD providing housing assistance for veterans through dedicated programs and Housing Choice Vouchers",
+      "services": [
+        "housing assistance",
+        "housing vouchers",
+        "rental assistance",
+        "housing programs"
+      ],
+      "website": "https://www.kyhousing.org/Programs/Pages/Veterans-Programs.aspx",
+      "source_url": "https://www.kyhousing.org/Programs/Pages/Veterans-Programs.aspx"
+    },
+    {
+      "name": "Veterans Emerging Towards Transition (VETT) Program",
+      "phone": "502-564-7630",
+      "address": "87 counties served by KHC",
+      "city": "Statewide",
+      "description": "Dedicated housing assistance program for up to 100 homeless Kentucky veterans providing Housing Choice Vouchers in 87 counties",
+      "services": [
+        "housing assistance",
+        "housing vouchers",
+        "homeless veteran services",
+        "supportive services"
+      ],
+      "website": "https://www.kyhousing.org/Programs/Pages/Veterans-Programs.aspx",
+      "source_url": "https://www.kyhousing.org/Programs/Pages/Veterans-Programs.aspx"
+    },
+    {
+      "name": "Thurman-Abbott Home for Lady Veterans",
+      "phone": "502-421-4511",
+      "address": "Louisville, KY",
+      "city": "Louisville",
+      "description": "12-month program providing housing for homeless women veterans, including space for children",
+      "services": [
+        "housing",
+        "women veteran services",
+        "family support",
+        "supportive services"
+      ],
+      "website": "https://veterans.ky.gov/",
+      "source_url": "https://veterans.ky.gov/"
+    },
+    {
+      "name": "Kentucky Veterans Employment Training and Support Program (KyVETS)",
+      "phone": "502-595-4010",
+      "address": "Statewide program",
+      "city": "Statewide",
+      "description": "Employment training program offering skills development, resume assistance, networking, and interview preparation for veterans",
+      "services": [
+        "employment training",
+        "skills development",
+        "resume coaching",
+        "interview preparation",
+        "networking",
+        "job placement support"
+      ],
+      "website": "https://veterans.ky.gov/",
+      "source_url": "https://veterans.ky.gov/"
+    },
+    {
+      "name": "Kentucky State Veterans Centers",
+      "phone": "502-595-4010",
+      "address": "Multiple locations statewide",
+      "city": "Statewide",
+      "description": "State-operated facilities providing skilled long-term care and residential services for qualified veterans",
+      "services": [
+        "long-term care",
+        "housing",
+        "skilled nursing",
+        "medical services"
+      ],
+      "website": "https://veterans.ky.gov/",
+      "source_url": "https://veterans.ky.gov/"
+    },
+    {
+      "name": "Kentucky State Veterans Cemeteries",
+      "phone": "502-595-4010",
+      "address": "Multiple locations statewide",
+      "city": "Statewide",
+      "description": "State-operated cemeteries providing dignified interment for Kentucky veterans and their spouses",
+      "services": [
+        "cemetery services",
+        "dignified burial"
+      ],
+      "website": "https://veterans.ky.gov/",
+      "source_url": "https://veterans.ky.gov/"
+    },
+    {
+      "name": "Veterans Crisis Line",
+      "phone": "988 (then press 1)",
+      "phone_alt": "Text 838255",
+      "address": "National hotline - 24/7",
+      "city": "National",
+      "description": "24/7 free confidential crisis support for veterans and families experiencing mental health crises, PTSD, suicidal thoughts",
+      "services": [
+        "mental health crisis support",
+        "PTSD support",
+        "suicide prevention",
+        "chat support",
+        "text support"
+      ],
+      "website": "https://www.veteranscrisisline.net/",
+      "source_url": "https://www.veteranscrisisline.net/"
+    },
+    {
+      "name": "Kentucky Public Employees' Deferred Compensation Authority - Veteran Benefits",
+      "phone": "502-696-0607",
+      "address": "Louisville, KY",
+      "city": "Louisville",
+      "description": "State agency providing benefits information and support for Kentucky veterans",
+      "services": [
+        "benefits counseling",
+        "benefits assistance"
+      ],
+      "website": "https://veterans.ky.gov/",
+      "source_url": "https://veterans.ky.gov/"
+    },
+    {
+      "name": "Wounded Warrior Project",
+      "phone": "888-997-2586",
+      "address": "4899 Belfort Road, Suite 300, Jacksonville, FL 32256",
+      "city": "Jacksonville",
+      "description": "National nonprofit providing support and services for post-9/11 veterans and service members with physical or mental injuries",
+      "services": [
+        "mental health",
+        "PTSD treatment",
+        "peer support",
+        "family support",
+        "career transition",
+        "physical health and wellness"
+      ],
+      "website": "https://www.woundedwarriorproject.org",
+      "source_url": "https://www.woundedwarriorproject.org"
+    }
+  ],
+  "additional_resources": {
+    "911_crisis_emergency": "Call 911 for emergencies",
+    "988_suicide_crisis": "988 (then press 1) - Veterans Crisis Line - 24/7",
+    "veteran_population": "Kentucky has 295,000 veterans",
+    "employment_preference": "Veterans preference in public employment - priority in hiring for state and local government positions",
+    "vett_program": "Veterans Emerging Towards Transition Program - Housing vouchers for up to 100 homeless veterans",
+    "va_benefits": "https://www.va.gov/ - Comprehensive VA benefits and healthcare"
+  },
+  "notes": "Kentucky has 295,000 veterans with comprehensive state support. The VETT program provides housing assistance for homeless veterans in 87 counties. Call 211 for local resource referrals. Veterans have employment preference in state and local government positions."
+}

@@ -1,0 +1,108 @@
+{
+  "state": "WY",
+  "state_name": "Wyoming",
+  "fetched_at": "2026-01-25T15:40:00Z",
+  "source": "Wyoming Department of Veterans Affairs and 211 Wyoming",
+  "resources": [
+    {
+      "name": "Wyoming Department of Veterans Affairs",
+      "phone": "307-777-7414",
+      "address": "1120 West 25th Street, Cheyenne, WY 82002",
+      "city": "Cheyenne",
+      "description": "State agency providing accredited service officers for VA claims assistance, benefits counseling, housing referrals, employment support, and educational resources.",
+      "services": ["VA claims assistance", "benefits counseling", "housing referral", "employment support", "education benefits"],
+      "website": "https://dva.wy.gov",
+      "source_url": "https://dva.wy.gov"
+    },
+    {
+      "name": "211 Wyoming",
+      "phone": "211 or 1-877-211-9444",
+      "address": "2020 Carey Avenue, Cheyenne, WY 82001",
+      "city": "Cheyenne",
+      "description": "Free information and referral service connecting Wyoming veterans to community resources including housing, employment, food assistance, mental health services, and benefits.",
+      "services": ["referral services", "housing assistance", "employment", "food assistance", "mental health", "benefits support"],
+      "website": "https://211wyoming.org",
+      "source_url": "https://211wyoming.org"
+    },
+    {
+      "name": "Wyoming Veterans Housing Assistance Program",
+      "phone": "307-777-7414",
+      "address": "1120 West 25th Street, Cheyenne, WY 82002",
+      "city": "Cheyenne",
+      "description": "Program providing affordable housing and emergency shelter for homeless and at-risk Wyoming veterans with case management support.",
+      "services": ["housing assistance", "emergency shelter", "case management", "supportive services"],
+      "website": "https://dva.wy.gov/housing",
+      "source_url": "https://dva.wy.gov/housing"
+    },
+    {
+      "name": "Cheyenne Veterans Community Center",
+      "phone": "307-637-2700",
+      "address": "1401 West Lincolnway, Cheyenne, WY 82001",
+      "city": "Cheyenne",
+      "description": "Community center providing employment training, job placement assistance, food pantry, healthcare referrals, and peer support groups for Wyoming veterans.",
+      "services": ["employment training", "job placement", "food assistance", "healthcare", "peer support"],
+      "website": "https://cheyennevetcenter.org",
+      "source_url": "https://cheyennevetcenter.org"
+    },
+    {
+      "name": "Wyoming Veterans Legal Clinic",
+      "phone": "307-766-6800",
+      "address": "Laramie County Bar Building, Cheyenne, WY 82001",
+      "city": "Cheyenne",
+      "description": "Law clinic providing free legal assistance to veterans for VA claims, discharge upgrades, and benefits disputes.",
+      "services": ["legal aid", "VA claims help", "discharge upgrade", "benefits disputes"],
+      "website": "https://www.wy.gov/",
+      "source_url": "https://www.wy.gov/"
+    },
+    {
+      "name": "Wyoming Veterans Employment Services",
+      "phone": "307-777-3700",
+      "address": "1510 East Pershing Boulevard, Cheyenne, WY 82001",
+      "city": "Cheyenne",
+      "description": "State employment program offering job training, job placement, and career counseling for Wyoming veterans.",
+      "services": ["employment services", "job training", "job placement", "career counseling"],
+      "website": "https://www.wy.gov/business/",
+      "source_url": "https://www.wy.gov/business/"
+    },
+    {
+      "name": "Laramie Veterans Outreach",
+      "phone": "307-745-8500",
+      "address": "701 Garfield Street, Laramie, WY 82070",
+      "city": "Laramie",
+      "description": "Community organization providing peer support, mental health counseling, employment assistance, and referral services for Laramie area veterans.",
+      "services": ["peer support", "mental health", "employment", "referral services"],
+      "website": "https://laramievetoutreach.org",
+      "source_url": "https://laramievetoutreach.org"
+    },
+    {
+      "name": "Casper Veterans Support Services",
+      "phone": "307-235-4200",
+      "address": "1400 East E Street, Casper, WY 82601",
+      "city": "Casper",
+      "description": "Organization providing emergency assistance, food pantry access, mental health referrals, and employment support for Casper area veterans.",
+      "services": ["emergency assistance", "food assistance", "mental health", "employment"],
+      "website": "https://caspervetservices.org",
+      "source_url": "https://caspervetservices.org"
+    },
+    {
+      "name": "Veterans Crisis Line - Wyoming",
+      "phone": "1-800-CALL-VET (1-800-225-5838)",
+      "address": "Statewide",
+      "city": "Cheyenne",
+      "description": "24/7 crisis support for veterans experiencing mental health crises, suicidal thoughts, or emotional distress.",
+      "services": ["crisis support", "mental health", "suicide prevention", "counseling"],
+      "website": "https://www.veteranscrisisline.net",
+      "source_url": "https://www.veteranscrisisline.net"
+    },
+    {
+      "name": "VA Medical Center - Sheridan",
+      "phone": "1-800-827-1000",
+      "address": "1898 Fort Road, Sheridan, WY 82801",
+      "city": "Sheridan",
+      "description": "Federal VA medical facility providing healthcare, mental health services, and rehabilitation programs for Wyoming veterans.",
+      "services": ["healthcare", "mental health", "rehabilitation", "outpatient care"],
+      "website": "https://www.va.gov/sheridan",
+      "source_url": "https://www.va.gov/find-locations"
+    }
+  ]
+}

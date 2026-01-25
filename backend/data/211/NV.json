@@ -1,0 +1,172 @@
+{
+  "state": "NV",
+  "state_name": "Nevada",
+  "fetched_at": "2026-01-25T12:00:00Z",
+  "source": "Nevada 211, Nevada Department of Veterans Services, U.S.VETS, Veteran Services Resources of Nevada",
+  "resources": [
+    {
+      "name": "Nevada 211",
+      "phone": "2-1-1 or (866) 535-5654",
+      "address": "Statewide Service",
+      "city": "Nevada",
+      "description": "Free 24/7 resource line connecting veterans to housing, employment, mental health, compensation, pension, and health services",
+      "services": [
+        "veteran services navigation",
+        "housing assistance",
+        "employment services",
+        "mental health services",
+        "benefits assistance",
+        "health services"
+      ],
+      "website": "https://www.nevada211.org/",
+      "source_url": "https://www.nevada211.org/veteran-services/"
+    },
+    {
+      "name": "Nevada Department of Veterans Services",
+      "phone": "(702) 486-9130",
+      "address": "Downtown Las Vegas",
+      "city": "Las Vegas",
+      "state": "NV",
+      "description": "State agency providing benefits, services, and support for Nevada veterans",
+      "services": [
+        "benefits assistance",
+        "housing assistance",
+        "employment support",
+        "healthcare coordination",
+        "claims processing"
+      ],
+      "website": "https://veterans.nv.gov/",
+      "source_url": "https://veterans.nv.gov/benefits-and-services/housing-assistance/"
+    },
+    {
+      "name": "U.S.VETS Las Vegas",
+      "phone": "(702) 731-9050",
+      "address": "Las Vegas locations",
+      "city": "Las Vegas",
+      "state": "NV",
+      "description": "Operates three residential facilities providing transitional and permanent housing with employment services to homeless veterans",
+      "services": [
+        "transitional housing",
+        "permanent housing",
+        "employment services",
+        "crisis intervention",
+        "mental health referrals",
+        "case management"
+      ],
+      "website": "https://usvets.org/locations/las-vegas/",
+      "source_url": "https://usvets.org/locations/las-vegas/"
+    },
+    {
+      "name": "HELP USA Nevada - Veteran Apartments",
+      "phone": "Contact via website",
+      "address": "Las Vegas",
+      "city": "Las Vegas",
+      "state": "NV",
+      "description": "Provides 75 units of transitional housing with supportive services for homeless veterans with multiple barriers",
+      "services": [
+        "transitional housing",
+        "supportive services",
+        "case management",
+        "mental health support"
+      ],
+      "website": "https://helplasvegas.org/",
+      "source_url": "https://www.findhelp.org/HELP-USA-Nevada-----Transitional-and-Permanent-Housing-/5730751190401024"
+    },
+    {
+      "name": "Veterans Village of Las Vegas",
+      "phone": "Contact via website",
+      "address": "Las Vegas",
+      "city": "Las Vegas",
+      "state": "NV",
+      "description": "Provides transitional housing, mental health services, crisis intervention, and employment support to homeless veterans",
+      "services": [
+        "transitional housing",
+        "mental health services",
+        "24/7 crisis intervention",
+        "employment services",
+        "transportation",
+        "nutritional support"
+      ],
+      "website": "Contact Nevada 211",
+      "source_url": "https://usvets.org/locations/las-vegas/"
+    },
+    {
+      "name": "Salvation Army Southern Nevada - Veteran Services",
+      "phone": "Contact via website",
+      "address": "Las Vegas Area",
+      "city": "Las Vegas",
+      "state": "NV",
+      "description": "Provides emergency assistance, housing support, and social services to veterans in Las Vegas area",
+      "services": [
+        "emergency assistance",
+        "housing support",
+        "food assistance",
+        "financial assistance"
+      ],
+      "website": "https://www.salvationarmysouthernnevada.org/veteran-services",
+      "source_url": "https://www.salvationarmysouthernnevada.org/veteran-services"
+    },
+    {
+      "name": "Veterans Resource Centers of America - Reno/Northern Nevada",
+      "phone": "Contact via website",
+      "address": "Reno Area",
+      "city": "Reno",
+      "state": "NV",
+      "description": "Provides temporary financial assistance, VA benefits support, behavioral health services, and homelessness prevention",
+      "services": [
+        "financial assistance",
+        "VA benefits support",
+        "mental health services",
+        "behavioral health",
+        "homelessness prevention"
+      ],
+      "website": "Contact Nevada 211",
+      "source_url": "https://usvets.org/locations/las-vegas/"
+    },
+    {
+      "name": "Northern Nevada Veterans Resource Center",
+      "phone": "Contact via website",
+      "address": "Washoe County",
+      "city": "Reno",
+      "state": "NV",
+      "description": "Provides homelessness prevention and rapid re-housing assistance for low and extremely low-income veterans",
+      "services": [
+        "housing assistance",
+        "rapid re-housing",
+        "homelessness prevention",
+        "case management"
+      ],
+      "website": "Contact Nevada 211",
+      "source_url": "https://usvets.org/locations/las-vegas/"
+    },
+    {
+      "name": "Hospitality House - Veterans Housing",
+      "phone": "Contact via website",
+      "address": "Las Vegas Area",
+      "city": "Las Vegas",
+      "state": "NV",
+      "description": "Provides housing programs and supportive services for veterans",
+      "services": [
+        "housing programs",
+        "supportive services",
+        "case management"
+      ],
+      "website": "https://hhshelter.org/programs-services/veterans-housing/",
+      "source_url": "https://hhshelter.org/programs-services/veterans-housing/"
+    },
+    {
+      "name": "Veterans Affairs Emergency Housing Hotline",
+      "phone": "(877) 424-3838",
+      "address": "National Service",
+      "city": "Nevada",
+      "description": "24/7 emergency housing assistance for homeless veterans",
+      "services": [
+        "emergency housing",
+        "crisis support",
+        "housing referrals"
+      ],
+      "website": "https://www.va.gov/",
+      "source_url": "https://www.va.gov/"
+    }
+  ]
+}

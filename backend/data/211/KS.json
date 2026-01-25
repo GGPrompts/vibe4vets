@@ -1,0 +1,199 @@
+{
+  "state": "KS",
+  "state_name": "Kansas",
+  "fetched_at": "2026-01-25T18:00:00Z",
+  "source": "Kansas Office of Veterans Services, VA Kansas City Health Care, VA Eastern Kansas Health Care, Catholic Charities, St Michael's Veterans Center",
+  "resources": [
+    {
+      "name": "Kansas Office of Veterans Services",
+      "phone": "785-296-3976",
+      "address": "700 SW Jackson Street, Suite 701, Topeka, KS 66603",
+      "city": "Topeka",
+      "description": "State office providing veteran services, housing assistance, employment support, and mental health resources with $12M budget for fiscal 2026",
+      "services": [
+        "veteran services",
+        "benefits assistance",
+        "housing assistance",
+        "employment",
+        "mental health resources",
+        "crisis support"
+      ],
+      "website": "https://www.kovs.ks.gov/",
+      "source_url": "https://www.kovs.ks.gov/"
+    },
+    {
+      "name": "Kansas 211",
+      "phone": "211",
+      "address": "Statewide hotline",
+      "city": "Statewide",
+      "description": "Free, confidential information and referrals for community resources including housing, food, health, employment, and veteran services",
+      "services": [
+        "resource referrals",
+        "housing",
+        "food",
+        "employment",
+        "health",
+        "veteran services"
+      ],
+      "website": "https://www.211.org/",
+      "source_url": "https://www.211.org/"
+    },
+    {
+      "name": "VA Kansas City Health Care - Homeless Veteran Care",
+      "phone": "816-861-4700",
+      "address": "Kansas City, MO area (serves Kansas veterans)",
+      "city": "Kansas City",
+      "description": "VA center providing homeless veteran care including emergency food and shelter, transitional and permanent housing, job training, life skills, and education",
+      "services": [
+        "housing",
+        "emergency shelter",
+        "food assistance",
+        "transitional housing",
+        "permanent housing",
+        "employment training",
+        "life skills development",
+        "education",
+        "mental health care"
+      ],
+      "website": "https://www.va.gov/kansas-city-health-care/health-services/homeless-veteran-care/",
+      "source_url": "https://www.va.gov/kansas-city-health-care/health-services/homeless-veteran-care/"
+    },
+    {
+      "name": "VA Eastern Kansas Health Care - Homeless Veteran Care",
+      "phone": "913-682-2000",
+      "address": "Leavenworth, KS area",
+      "city": "Leavenworth",
+      "description": "VA center providing homeless veteran care including emergency food and shelter, transitional and permanent housing, job training, and support services",
+      "services": [
+        "housing",
+        "emergency shelter",
+        "food assistance",
+        "transitional housing",
+        "permanent housing",
+        "employment training",
+        "mental health care",
+        "crisis support"
+      ],
+      "website": "https://www.va.gov/eastern-kansas-health-care/health-services/homeless-veteran-care/",
+      "source_url": "https://www.va.gov/eastern-kansas-health-care/health-services/homeless-veteran-care/"
+    },
+    {
+      "name": "Catholic Charities - Veteran Services",
+      "phone": "816-960-2900",
+      "address": "Kansas City, KS area",
+      "city": "Kansas City",
+      "description": "Housing First model providing permanent housing as foundation for addressing employment, financial, substance abuse, and mental health challenges; SSVF program",
+      "services": [
+        "housing",
+        "permanent housing",
+        "employment assistance",
+        "workforce development",
+        "financial counseling",
+        "mental health services",
+        "substance use treatment"
+      ],
+      "website": "https://catholiccharities-kcsj.org/veteran-services/",
+      "source_url": "https://catholiccharities-kcsj.org/veteran-services/"
+    },
+    {
+      "name": "St Michael's Veterans Center",
+      "phone": "913-722-5500",
+      "address": "Kansas City, KS",
+      "city": "Kansas City",
+      "description": "Veterans services center with professional and licensed staff providing employment services and veteran support",
+      "services": [
+        "veteran services",
+        "employment assistance",
+        "case management",
+        "counseling"
+      ],
+      "website": "https://smvets.org/",
+      "source_url": "https://smvets.org/"
+    },
+    {
+      "name": "Benilde Hall - Safe Haven for Veterans",
+      "phone": "913-371-2229",
+      "address": "Kansas City, KS",
+      "city": "Kansas City",
+      "description": "Supportive housing for homeless veterans providing safe haven services and wraparound support",
+      "services": [
+        "housing",
+        "homeless veteran services",
+        "supportive services",
+        "case management"
+      ],
+      "website": "https://www.benildehall.org/our-services/safe_haven.html",
+      "source_url": "https://www.benildehall.org/our-services/safe_haven.html"
+    },
+    {
+      "name": "Kansas Veterans' Home - Winfield",
+      "phone": "620-221-2300",
+      "address": "2221 E 16th Avenue, Winfield, KS 67156",
+      "city": "Winfield",
+      "description": "State-operated long-term care facility for aged and disabled veterans",
+      "services": [
+        "long-term care",
+        "housing",
+        "medical services",
+        "skilled nursing"
+      ],
+      "website": "https://www.kovs.ks.gov/veteran-homes/kansas-veterans-home-winfield",
+      "source_url": "https://www.kovs.ks.gov/veteran-homes/kansas-veterans-home-winfield"
+    },
+    {
+      "name": "Veterans Crisis Line",
+      "phone": "988 (then press 1)",
+      "phone_alt": "Text 838255",
+      "address": "National hotline - 24/7",
+      "city": "National",
+      "description": "24/7 free confidential crisis support for veterans and families experiencing mental health crises, PTSD, suicidal thoughts",
+      "services": [
+        "mental health crisis support",
+        "PTSD support",
+        "suicide prevention",
+        "chat support",
+        "text support"
+      ],
+      "website": "https://www.veteranscrisisline.net/",
+      "source_url": "https://www.veteranscrisisline.net/"
+    },
+    {
+      "name": "Vet Centers - Combat Veteran Counseling",
+      "phone": "800-273-8255 (press 1)",
+      "address": "Multiple locations in Kansas",
+      "city": "Statewide",
+      "description": "Combat Veterans eligible for free individual and group counseling at VA Vet Centers",
+      "services": [
+        "mental health",
+        "PTSD counseling",
+        "combat veteran support",
+        "family counseling"
+      ],
+      "website": "https://www.mentalhealth.va.gov/",
+      "source_url": "https://www.kovs.ks.gov/veteran-services/mental-health-resources-for-veterans"
+    },
+    {
+      "name": "Kansas Veteran Support - KanVet.org",
+      "phone": "Contact through organization",
+      "address": "Online resource",
+      "city": "Statewide",
+      "description": "Online resource for veteran support and services information in Kansas",
+      "services": [
+        "veteran support",
+        "resource information",
+        "services directory"
+      ],
+      "website": "https://kanvet.org/support/",
+      "source_url": "https://kanvet.org/support/"
+    }
+  ],
+  "additional_resources": {
+    "911_crisis_emergency": "Call 911 for emergencies",
+    "988_suicide_crisis": "988 (then press 1) - Veterans Crisis Line - 24/7",
+    "mental_health_resources": "https://www.kovs.ks.gov/veteran-services/mental-health-resources-for-veterans",
+    "housing_first_model": "Permanent housing is foundational - once achieved, helps overcome other obstacles",
+    "house_bill_2007": "2026 budget enhancement for Kansas veteran services",
+    "va_benefits": "https://www.va.gov/ - Comprehensive VA benefits and healthcare"
+  },
+  "notes": "Kansas has two VA health care regions serving the state (Kansas City and Eastern Kansas). Kansas Office of Veterans Services received $12M budget for fiscal 2026. Call 211 for local resource referrals. Combat veterans eligible for free Vet Center counseling."
+}

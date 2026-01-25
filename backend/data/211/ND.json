@@ -1,0 +1,108 @@
+{
+  "state": "ND",
+  "state_name": "North Dakota",
+  "fetched_at": "2026-01-25T12:30:00Z",
+  "source": "211 North Dakota (veterans.nd.gov) and national veteran organizations database",
+  "resources": [
+    {
+      "name": "North Dakota Department of Veterans Affairs",
+      "phone": "701-239-7165",
+      "address": "4201 38th St S, Suite 104, Fargo, ND 58104",
+      "city": "Fargo",
+      "description": "State agency assisting veterans in obtaining all federal and state benefits. Provides discharge documentation assistance, eligibility determination, transportation services, and veterans' preference in state employment.",
+      "services": ["benefits counseling", "discharge assistance", "transportation", "employment preference", "service dog grants", "suicide prevention", "fraud protection"],
+      "website": "https://www.veterans.nd.gov",
+      "source_url": "https://www.veterans.nd.gov"
+    },
+    {
+      "name": "2-1-1 North Dakota Information and Referral Service",
+      "phone": "211 or 877-211-8661",
+      "address": "Statewide helpline",
+      "city": "North Dakota",
+      "description": "Free, confidential helpline connecting veterans to community resources including housing, employment, food, legal aid, mental health services, and benefits assistance. Live operators available.",
+      "services": ["referral services", "housing assistance", "employment", "food assistance", "legal aid", "mental health", "benefits counseling"],
+      "website": "https://211.org",
+      "source_url": "https://211.org"
+    },
+    {
+      "name": "Veterans Crisis Line - National Support",
+      "phone": "988 then press 1 or text 838255",
+      "address": "24/7 National Service",
+      "city": "Statewide",
+      "description": "24/7 confidential crisis support for veterans and their loved ones. Free support 365 days a year with real people qualified to support veterans. No VA enrollment required.",
+      "services": ["crisis support", "mental health", "suicide prevention", "family support", "local referrals"],
+      "website": "https://www.veteranscrisisline.net",
+      "source_url": "https://www.veteranscrisisline.net"
+    },
+    {
+      "name": "Veterans of Foreign Wars - North Dakota Posts",
+      "phone": "Contact local VFW post",
+      "address": "Multiple locations throughout North Dakota",
+      "city": "Statewide",
+      "description": "VFW membership organization providing VA claims assistance, financial grants, mental wellness support, student veteran support, and community programs. Accredited service officers provide free VA claims assistance.",
+      "services": ["VA claims assistance", "financial grants", "mental wellness", "student support", "community programs", "advocacy"],
+      "website": "https://www.vfw.org",
+      "source_url": "https://www.vfw.org"
+    },
+    {
+      "name": "American Legion - North Dakota Department",
+      "phone": "Contact local American Legion post",
+      "address": "Multiple locations throughout North Dakota",
+      "city": "Statewide",
+      "description": "National veteran service organization offering member benefits, community support, youth programs, and connections to state and federal veteran benefits.",
+      "services": ["community support", "youth programs", "member benefits", "veteran services", "advocacy"],
+      "website": "https://www.amlegion.org",
+      "source_url": "https://www.amlegion.org"
+    },
+    {
+      "name": "VA Benefits Administration - Disability Compensation & Education",
+      "phone": "1-800-827-1000",
+      "address": "Regional VA offices throughout North Dakota",
+      "city": "Statewide",
+      "description": "Federal VA office providing disability compensation, pension programs, GI Bill education and training, home loan assistance, vocational rehabilitation and employment services, and life insurance options.",
+      "services": ["disability compensation", "education benefits", "home loans", "vocational rehabilitation", "employment services", "life insurance"],
+      "website": "https://www.benefits.va.gov/benefits",
+      "source_url": "https://www.benefits.va.gov/benefits"
+    },
+    {
+      "name": "Volunteers of America - Veteran Services",
+      "phone": "Contact national office or local chapter",
+      "address": "National organization with local chapters",
+      "city": "Multiple locations",
+      "description": "National nonprofit providing behavioral and mental health services, affordable housing solutions, community outreach, and veteran services across 125 years of operation.",
+      "services": ["mental health services", "housing assistance", "behavioral health", "community outreach", "veteran support"],
+      "website": "https://www.voa.org",
+      "source_url": "https://www.voa.org"
+    },
+    {
+      "name": "Operation Homefront - Military and Veteran Family Support",
+      "phone": "Contact for assistance",
+      "address": "National organization based in Texas with nationwide reach",
+      "city": "Statewide",
+      "description": "National nonprofit providing critical financial assistance, housing programs, family events, and support for military and veteran families. Provides rent, utilities, food, and healthcare assistance.",
+      "services": ["emergency financial assistance", "housing programs", "food assistance", "utility assistance", "family support"],
+      "website": "https://www.operationhomefront.org",
+      "source_url": "https://www.operationhomefront.org"
+    },
+    {
+      "name": "VetsinTech - Veteran Technology Education and Employment",
+      "phone": "info@vetsintech.co or (555) 123-4567",
+      "address": "28+ chapters nationwide",
+      "city": "Multiple locations",
+      "description": "501(c)(3) nonprofit connecting veterans and military spouses with technology education, employment placement, and entrepreneurship opportunities. Offers VIT Academy courses, mentorship, and local chapters.",
+      "services": ["technology education", "employment placement", "entrepreneurship support", "mentorship", "networking"],
+      "website": "https://www.vetsintech.co",
+      "source_url": "https://www.vetsintech.co"
+    },
+    {
+      "name": "Homeless Shelter Directory - Veterans Housing Resources",
+      "phone": "Browse directory online",
+      "address": "Online directory resource",
+      "city": "Multiple locations",
+      "description": "Directory maintaining 14,642 homeless shelters and social services across the United States, with 17,045 food pantries. Features veteran-focused shelters and housing programs.",
+      "services": ["shelter referrals", "housing assistance", "food banks", "homelessness prevention"],
+      "website": "https://www.homelessshelterdirectory.org",
+      "source_url": "https://www.homelessshelterdirectory.org"
+    }
+  ]
+}

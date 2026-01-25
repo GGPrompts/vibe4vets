@@ -1,0 +1,186 @@
+{
+  "state": "NH",
+  "state_name": "New Hampshire",
+  "fetched_at": "2026-01-25T12:00:00Z",
+  "source": "211 NH, NH Department of Military Affairs and Veterans Services, Harbor Care, Veterans Law Project",
+  "resources": [
+    {
+      "name": "211 NH",
+      "phone": "2-1-1 from any 603 area code",
+      "address": "Statewide Service",
+      "city": "New Hampshire",
+      "description": "24-hour resource line connecting veterans to food, healthcare, housing, employment, veteran services, and emergency assistance",
+      "services": [
+        "veteran services navigation",
+        "housing assistance",
+        "food assistance",
+        "healthcare coordination",
+        "employment services",
+        "emergency counseling"
+      ],
+      "website": "https://211nh.org/",
+      "source_url": "https://211nh.org/"
+    },
+    {
+      "name": "NH Department of Military Affairs and Veterans Services",
+      "phone": "(603) 624-9230 or 1-800-622-9230",
+      "address": "275 Chestnut Street, Room 517",
+      "city": "Manchester",
+      "state": "NH",
+      "zip": "03101",
+      "description": "State agency providing advocacy, benefits assistance, and veteran support services",
+      "services": [
+        "benefits advocacy",
+        "claims assistance",
+        "veteran services coordination",
+        "property tax exemptions",
+        "disabled veteran services"
+      ],
+      "website": "https://www.dmavs.nh.gov/veterans-services",
+      "source_url": "https://www.dmavs.nh.gov/veterans-services"
+    },
+    {
+      "name": "Veterans Law Project (Veterans Foundation of NH)",
+      "phone": "(603) 716-8488",
+      "address": "77 Central Street",
+      "city": "Manchester",
+      "state": "NH",
+      "zip": "03101",
+      "description": "Provides free legal services and representation to New Hampshire veterans",
+      "services": [
+        "legal assistance",
+        "benefits claims",
+        "pro bono referrals",
+        "direct representation",
+        "legal counsel"
+      ],
+      "website": "https://vfnh.org/veteranslawproject/",
+      "source_url": "https://vfnh.org/veteranslawproject/contact-vfnh/"
+    },
+    {
+      "name": "Veterans Legal Justice (VLJ)",
+      "phone": "Contact via website",
+      "address": "Multiple locations",
+      "city": "New Hampshire",
+      "description": "Provides free legal assistance for US veterans and members of service in New Hampshire",
+      "services": [
+        "legal assistance",
+        "free representation",
+        "veteran legal support"
+      ],
+      "website": "https://www.vljnh.org/",
+      "source_url": "https://www.vljnh.org/"
+    },
+    {
+      "name": "Harbor Care - Veteran Services",
+      "phone": "(603) 610-3000",
+      "address": "Multiple locations statewide",
+      "city": "Multiple",
+      "state": "NH",
+      "description": "Provides SSVF case management, housing counseling, and referrals for health, legal, and financial services to veterans",
+      "services": [
+        "housing assistance",
+        "case management",
+        "VA benefits assistance",
+        "healthcare referrals",
+        "legal referrals",
+        "financial planning"
+      ],
+      "website": "https://harborcarenh.org/veteran-services/",
+      "source_url": "https://harborcarenh.org/veteran-services/"
+    },
+    {
+      "name": "Boulder Point Veteran Housing",
+      "phone": "Contact through Harbor Care",
+      "address": "Plymouth",
+      "city": "Plymouth",
+      "state": "NH",
+      "description": "Provides 25 one-bedroom apartments for veterans experiencing homelessness through HUD-VASH partnership",
+      "services": [
+        "permanent housing",
+        "case management",
+        "supportive services"
+      ],
+      "website": "https://harborcarenh.org/",
+      "source_url": "https://harborcarenh.org/"
+    },
+    {
+      "name": "Liberty House Veterans Transitional Living",
+      "phone": "Contact via website",
+      "address": "New Hampshire",
+      "city": "Multiple",
+      "state": "NH",
+      "description": "Provides transitional housing for 90 days to 1 year following a Recovery, Health and Wellness, Employment, and Housing model",
+      "services": [
+        "transitional housing",
+        "health and wellness",
+        "employment services",
+        "case management"
+      ],
+      "website": "Contact 211 NH",
+      "source_url": "https://211nh.org/"
+    },
+    {
+      "name": "Veterans Count (Easterseals NH)",
+      "phone": "Contact via Easterseals NH",
+      "address": "New Hampshire",
+      "city": "Multiple",
+      "state": "NH",
+      "description": "Program providing clinical and social services, financial assistance, and help accessing housing and counseling",
+      "services": [
+        "clinical services",
+        "financial assistance",
+        "rental assistance",
+        "housing support",
+        "counseling referrals"
+      ],
+      "website": "https://www.eastersealsnh.org/",
+      "source_url": "https://211nh.org/"
+    },
+    {
+      "name": "SSG Fox Emotional Wellness Program",
+      "phone": "Contact via 211 NH",
+      "address": "Statewide Service",
+      "city": "New Hampshire",
+      "description": "VA-funded statewide peer support program for emotional wellness and suicide prevention for veterans",
+      "services": [
+        "peer support",
+        "emotional wellness",
+        "suicide prevention",
+        "outreach services"
+      ],
+      "website": "https://www.dmavs.nh.gov/",
+      "source_url": "https://211nh.org/"
+    },
+    {
+      "name": "Veterans Affairs Emergency Housing Hotline",
+      "phone": "(877) 424-3838",
+      "address": "National Service",
+      "city": "New Hampshire",
+      "description": "24/7 emergency housing assistance for homeless veterans",
+      "services": [
+        "emergency housing",
+        "crisis support",
+        "housing referrals"
+      ],
+      "website": "https://www.va.gov/",
+      "source_url": "https://www.va.gov/"
+    },
+    {
+      "name": "NH Legal Assistance / Civil Legal Aid",
+      "phone": "(800) 639-5290",
+      "address": "Multiple locations",
+      "city": "Multiple",
+      "state": "NH",
+      "description": "Provides civil legal aid including veteran-specific services",
+      "services": [
+        "legal assistance",
+        "benefits help",
+        "housing law",
+        "family law"
+      ],
+      "website": "https://www.nhla.org/",
+      "source_url": "https://www.nhla.org/"
+    }
+  ]
+}

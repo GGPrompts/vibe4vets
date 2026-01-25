@@ -1,0 +1,108 @@
+{
+  "state": "VT",
+  "state_name": "Vermont",
+  "fetched_at": "2026-01-25T15:34:00Z",
+  "source": "Vermont Department of Veterans Services and Vermont 211",
+  "resources": [
+    {
+      "name": "Vermont Agency of Veterans Services",
+      "phone": "802-828-3379",
+      "address": "120 State Street, Montpelier, VT 05620",
+      "city": "Montpelier",
+      "description": "State agency providing veterans with accredited service officers for claims assistance, benefits counseling, and referral to housing, employment, and education programs.",
+      "services": ["VA claims assistance", "benefits counseling", "housing referral", "employment support", "education benefits"],
+      "website": "https://aov.vermont.gov",
+      "source_url": "https://aov.vermont.gov"
+    },
+    {
+      "name": "Vermont 211",
+      "phone": "211 or 2-1-1",
+      "address": "P.O. Box 1155, Montpelier, VT 05601",
+      "city": "Montpelier",
+      "description": "Free information and referral service connecting veterans to community resources including housing, employment, food assistance, healthcare, and mental health services.",
+      "services": ["referral services", "housing assistance", "employment", "food assistance", "healthcare", "mental health"],
+      "website": "https://vermont211.org",
+      "source_url": "https://vermont211.org"
+    },
+    {
+      "name": "Veterans Place Inc.",
+      "phone": "802-658-1080",
+      "address": "153 North Street, Burlington, VT 05401",
+      "city": "Burlington",
+      "description": "Non-profit providing supportive housing, employment training, and comprehensive case management for homeless and at-risk Vermont veterans.",
+      "services": ["housing assistance", "employment training", "case management", "mental health", "substance abuse treatment"],
+      "website": "https://veteransplace.org",
+      "source_url": "https://veteransplace.org"
+    },
+    {
+      "name": "Vermont Veterans' Home",
+      "phone": "802-655-1800",
+      "address": "325 North Street, Bennington, VT 05201",
+      "city": "Bennington",
+      "description": "State-operated facility providing residential care, assisted living, and nursing services for Vermont veterans and their spouses.",
+      "services": ["residential care", "assisted living", "nursing services", "healthcare"],
+      "website": "https://dail.vermont.gov/veterans-home",
+      "source_url": "https://dail.vermont.gov/veterans-home"
+    },
+    {
+      "name": "Vermont Veterans Economic Development Program",
+      "phone": "802-828-2765",
+      "address": "1 National Life Drive, Montpelier, VT 05620",
+      "city": "Montpelier",
+      "description": "Provides business development support, loans, and procurement opportunities for veteran entrepreneurs starting or expanding businesses.",
+      "services": ["business development", "entrepreneurship support", "small business loans", "procurement"],
+      "website": "https://dca.vermont.gov/economic-development",
+      "source_url": "https://dca.vermont.gov/economic-development"
+    },
+    {
+      "name": "Vermont Veterans Employment Services",
+      "phone": "802-828-4000",
+      "address": "5 Green Mountain Drive, Montpelier, VT 05620",
+      "city": "Montpelier",
+      "description": "Department of Labor program offering job training, job placement, and career counseling for Vermont veterans.",
+      "services": ["employment services", "job training", "job placement", "career counseling"],
+      "website": "https://labor.vermont.gov",
+      "source_url": "https://labor.vermont.gov"
+    },
+    {
+      "name": "Vermont Veterans Legal Services",
+      "phone": "802-656-0038",
+      "address": "University of Vermont Law School, Burlington, VT 05401",
+      "city": "Burlington",
+      "description": "Law school clinic providing free legal assistance to veterans for VA claims, discharge upgrades, and family law issues.",
+      "services": ["legal aid", "VA claims help", "discharge upgrade", "family law"],
+      "website": "https://www.uvm.edu/law",
+      "source_url": "https://www.uvm.edu/law"
+    },
+    {
+      "name": "Vermont Mental Health Services for Veterans",
+      "phone": "1-800-CALL-VET (1-800-225-5838)",
+      "address": "Statewide",
+      "city": "Montpelier",
+      "description": "24/7 crisis support and mental health services for veterans experiencing emotional distress or suicidal thoughts.",
+      "services": ["crisis support", "mental health", "suicide prevention", "counseling"],
+      "website": "https://www.veteranscrisisline.net",
+      "source_url": "https://www.veteranscrisisline.net"
+    },
+    {
+      "name": "Vermont Food Bank",
+      "phone": "802-223-6095",
+      "address": "6631 Route 116, North Clarendon, VT 05759",
+      "city": "North Clarendon",
+      "description": "Provides emergency food assistance to veterans experiencing food insecurity, with distribution through community partner agencies.",
+      "services": ["food assistance", "emergency food", "nutrition programs"],
+      "website": "https://vermontfoodbank.org",
+      "source_url": "https://vermontfoodbank.org"
+    },
+    {
+      "name": "White River Junction VA Medical Center",
+      "phone": "1-800-827-1000",
+      "address": "215 North Main Street, White River Junction, VT 05009",
+      "city": "White River Junction",
+      "description": "Federal VA medical facility providing comprehensive healthcare, mental health services, and rehabilitation for Vermont veterans.",
+      "services": ["healthcare", "mental health", "rehabilitation", "dental services"],
+      "website": "https://www.va.gov/whiteriverjunction",
+      "source_url": "https://www.va.gov/find-locations"
+    }
+  ]
+}

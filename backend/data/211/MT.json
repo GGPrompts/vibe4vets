@@ -1,0 +1,174 @@
+{
+  "state": "MT",
+  "state_name": "Montana",
+  "fetched_at": "2026-01-25T12:00:00Z",
+  "source": "211 Montana, VA Montana Health Care, Veteran Support Network, Montana Department of Labor & Industry",
+  "resources": [
+    {
+      "name": "211 Montana",
+      "phone": "2-1-1",
+      "address": "Statewide Service",
+      "city": "Montana",
+      "description": "Free 24/7 resource line connecting individuals to local services including veteran support, housing, food, employment, and mental health services",
+      "services": [
+        "veteran services navigation",
+        "housing assistance",
+        "employment services",
+        "food assistance",
+        "mental health services",
+        "emergency resources"
+      ],
+      "website": "https://www.211.org/",
+      "source_url": "https://www.211.org/"
+    },
+    {
+      "name": "VA Montana Health Care System",
+      "phone": "(406) 447-7000",
+      "address": "Fort Harrison, Helena",
+      "city": "Helena",
+      "state": "MT",
+      "description": "Comprehensive VA medical facility providing healthcare, mental health services, and homeless veteran support",
+      "services": [
+        "primary care",
+        "mental health care",
+        "PTSD treatment",
+        "homeless veteran services",
+        "emergency housing hotline",
+        "vocational rehabilitation"
+      ],
+      "website": "https://www.va.gov/montana-health-care/",
+      "source_url": "https://www.va.gov/montana-health-care/"
+    },
+    {
+      "name": "Western Montana Mental Health Center (WMMHC) - Veterans Services",
+      "phone": "(406) 728-6500",
+      "address": "Multiple locations",
+      "city": "Missoula",
+      "state": "MT",
+      "description": "Provides community-based mental health, addiction recovery, and housing options for veterans in collaboration with VA",
+      "services": [
+        "mental health counseling",
+        "addiction recovery services",
+        "housing support",
+        "outpatient services",
+        "community-based care"
+      ],
+      "website": "https://www.wmmhc.org/help-for-veterans",
+      "source_url": "https://www.wmmhc.org/help-for-veterans"
+    },
+    {
+      "name": "Veteran Support Network (VSN) - Missoula",
+      "phone": "Contact via website",
+      "address": "Missoula Area",
+      "city": "Missoula",
+      "state": "MT",
+      "description": "Veteran-led organization providing housing, employment, legal assistance, and financial support to veterans",
+      "services": [
+        "housing assistance",
+        "employment support",
+        "legal assistance",
+        "financial assistance",
+        "benefits advocacy"
+      ],
+      "website": "https://www.vsnmontana.org/",
+      "source_url": "https://www.vsnmontana.org/"
+    },
+    {
+      "name": "NW Montana Veterans Stand Down & Food Pantry",
+      "phone": "Contact via website or local chamber",
+      "address": "Kalispell Area",
+      "city": "Kalispell",
+      "state": "MT",
+      "description": "Provides wraparound veteran services including food boxes, housing referrals, job assistance, and mental health connections",
+      "services": [
+        "food assistance",
+        "housing referrals",
+        "employment services",
+        "mental health referrals",
+        "VA medical clinic referrals"
+      ],
+      "website": "https://www.kalispellchamber.com/",
+      "source_url": "https://business.kalispellchamber.com/list/Details/nw-montana-veteran-s-stand-down-food-pantry-1908756"
+    },
+    {
+      "name": "Montana Food Bank Network",
+      "phone": "(406) 721-3825",
+      "address": "5625 Expressway",
+      "city": "Missoula",
+      "state": "MT",
+      "zip": "59808",
+      "description": "Provides food assistance to eligible individuals including low-income veterans across Montana",
+      "services": [
+        "food assistance",
+        "emergency food",
+        "pantry services"
+      ],
+      "website": "https://montanafoodbank.org/",
+      "source_url": "https://abundantmontana.com/amt-lister/n-w-mt-veterans-stand-down/"
+    },
+    {
+      "name": "Montana Legal Services Association (MLSA)",
+      "phone": "Contact via website",
+      "address": "Multiple offices statewide",
+      "city": "Multiple",
+      "state": "MT",
+      "description": "Provides free civil legal help to eligible veterans including benefits appeals, housing, and family law services",
+      "services": [
+        "legal assistance",
+        "benefits appeals",
+        "housing law",
+        "family law",
+        "consumer protection"
+      ],
+      "website": "https://www.montanalawhelp.org/",
+      "source_url": "https://www.fvcc.edu/wp-content/uploads/2022/02/Montana-Veterans-Resource-Guide.pdf"
+    },
+    {
+      "name": "Montana Department of Labor & Industry - Veterans Employment",
+      "phone": "Contact: Justin.Toth@mt.gov",
+      "address": "State office",
+      "city": "Helena",
+      "state": "MT",
+      "description": "Provides veteran employment services, job placement, and housing assistance support",
+      "services": [
+        "employment services",
+        "job placement",
+        "career counseling",
+        "housing support"
+      ],
+      "website": "https://www.dol.mt.gov/",
+      "source_url": "https://applymontana.mus.edu/resources/for-veterans/veterans-benefits.html"
+    },
+    {
+      "name": "Veterans Crisis Line",
+      "phone": "988 (then press 1) or text 838255",
+      "address": "National Service",
+      "city": "Montana",
+      "description": "24/7 confidential support for veterans, service members, and their loved ones",
+      "services": [
+        "crisis intervention",
+        "mental health support",
+        "suicide prevention",
+        "emotional support"
+      ],
+      "website": "https://veteranscrisisline.net/",
+      "source_url": "https://www.va.gov/montana-health-care/"
+    },
+    {
+      "name": "HUD-VASH Program (Montana Housing)",
+      "phone": "(406) 444-3040",
+      "address": "Montana Housing",
+      "city": "Helena",
+      "state": "MT",
+      "description": "Provides rental assistance combined with VA case management for homeless veterans",
+      "services": [
+        "housing vouchers",
+        "rental assistance",
+        "case management",
+        "supportive services"
+      ],
+      "website": "https://housing.mt.gov/Rental-Assistance/Veterans-Affairs-Supportive-Housing",
+      "source_url": "https://housing.mt.gov/Rental-Assistance/Veterans-Affairs-Supportive-Housing"
+    }
+  ]
+}

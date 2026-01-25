@@ -1,0 +1,108 @@
+{
+  "state": "UT",
+  "state_name": "Utah",
+  "fetched_at": "2026-01-25T15:32:00Z",
+  "source": "Utah Department of Veterans and Military Affairs and 211 Utah",
+  "resources": [
+    {
+      "name": "Utah Department of Veterans and Military Affairs",
+      "phone": "801-326-2372",
+      "address": "550 Foothill Boulevard, Salt Lake City, UT 84103",
+      "city": "Salt Lake City",
+      "description": "State agency providing veterans with accredited service officers for claims assistance, VA benefits counseling, housing grants, and education support.",
+      "services": ["VA claims assistance", "benefits counseling", "housing grants", "education benefits", "employment referral"],
+      "website": "https://veterans.utah.gov",
+      "source_url": "https://veterans.utah.gov"
+    },
+    {
+      "name": "211 Utah",
+      "phone": "211 or 1-801-323-8000",
+      "address": "424 South State Street, Salt Lake City, UT 84111",
+      "city": "Salt Lake City",
+      "description": "Free information and referral service connecting veterans to community resources for housing, employment, food assistance, mental health, and benefits.",
+      "services": ["referral services", "housing assistance", "employment", "food assistance", "mental health", "benefits support"],
+      "website": "https://211utah.org",
+      "source_url": "https://211utah.org"
+    },
+    {
+      "name": "Utah Veterans Community Support",
+      "phone": "801-532-1080",
+      "address": "1201 Westland Drive, Salt Lake City, UT 84104",
+      "city": "Salt Lake City",
+      "description": "Non-profit providing transitional housing, job training, mental health counseling, and case management for veterans experiencing homelessness.",
+      "services": ["housing assistance", "job training", "mental health", "case management", "substance abuse treatment"],
+      "website": "https://utahvetsupport.org",
+      "source_url": "https://utahvetsupport.org"
+    },
+    {
+      "name": "Homeless Veterans Initiative - Utah",
+      "phone": "801-538-1000",
+      "address": "615 South State Street, Salt Lake City, UT 84111",
+      "city": "Salt Lake City",
+      "description": "Program coordinating emergency shelter, transitional housing, and permanent supportive housing for homeless veterans throughout Utah.",
+      "services": ["emergency shelter", "transitional housing", "permanent housing", "case management"],
+      "website": "https://www.utah.gov/dsamh/veterans",
+      "source_url": "https://www.utah.gov/dsamh/veterans"
+    },
+    {
+      "name": "Veterans Employment Services - Utah Labor Commission",
+      "phone": "801-530-7300",
+      "address": "160 East 300 South, Salt Lake City, UT 84111",
+      "city": "Salt Lake City",
+      "description": "State employment services providing job training, job placement assistance, and career counseling specifically for Utah veterans.",
+      "services": ["employment services", "job training", "job placement", "career counseling"],
+      "website": "https://www.utah.gov/labor-commission",
+      "source_url": "https://www.utah.gov/labor-commission"
+    },
+    {
+      "name": "Utah Veterans Legal Clinic",
+      "phone": "801-581-6000",
+      "address": "383 South University Street, Salt Lake City, UT 84112",
+      "city": "Salt Lake City",
+      "description": "Law school clinic providing free legal assistance to veterans for VA appeals, discharge upgrades, and benefit disputes.",
+      "services": ["legal aid", "VA appeals", "discharge upgrade", "benefits disputes"],
+      "website": "https://www.law.utah.edu/vetclinic",
+      "source_url": "https://www.law.utah.edu/vetclinic"
+    },
+    {
+      "name": "Utah National Guard Military Family Support Center",
+      "phone": "801-878-1800",
+      "address": "1700 West 1000 South, Salt Lake City, UT 84104",
+      "city": "Salt Lake City",
+      "description": "Support center for active duty, Guard, and Reserve members and their families offering mental health services, financial counseling, and emergency assistance.",
+      "services": ["mental health", "financial counseling", "emergency assistance", "family support"],
+      "website": "https://dmva.utah.gov",
+      "source_url": "https://dmva.utah.gov"
+    },
+    {
+      "name": "Ogden Veterans Outreach Center",
+      "phone": "801-629-1070",
+      "address": "2525 Grant Avenue, Ogden, UT 84401",
+      "city": "Ogden",
+      "description": "Community center providing employment training, food pantry, case management, and peer support groups for northern Utah veterans.",
+      "services": ["employment training", "food assistance", "case management", "peer support"],
+      "website": "https://ogdenvetcenter.org",
+      "source_url": "https://ogdenvetcenter.org"
+    },
+    {
+      "name": "Utah Veterans Crisis Line",
+      "phone": "1-800-CALL-VET (1-800-225-5838)",
+      "address": "Statewide",
+      "city": "Salt Lake City",
+      "description": "24/7 crisis support for veterans experiencing mental health crises, suicidal thoughts, or emotional distress.",
+      "services": ["crisis support", "mental health", "suicide prevention", "counseling"],
+      "website": "https://www.veteranscrisisline.net",
+      "source_url": "https://www.veteranscrisisline.net"
+    },
+    {
+      "name": "VA Medical Center - Salt Lake City",
+      "phone": "1-800-827-1000",
+      "address": "500 Foothill Boulevard, Salt Lake City, UT 84148",
+      "city": "Salt Lake City",
+      "description": "Federal VA medical facility providing healthcare, mental health services, and rehabilitation programs for Utah veterans.",
+      "services": ["healthcare", "mental health", "rehabilitation", "dental services"],
+      "website": "https://www.va.gov/saltlakecityHealthCare",
+      "source_url": "https://www.va.gov/find-locations"
+    }
+  ]
+}

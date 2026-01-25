@@ -1,0 +1,227 @@
+{
+  "state": "MN",
+  "state_name": "Minnesota",
+  "fetched_at": "2026-01-25T00:00:00Z",
+  "source": "Minnesota Department of Veterans Affairs, Lutheran Social Service of Minnesota, NAMI Minnesota, VA Minneapolis Health Care",
+  "resources": [
+    {
+      "name": "Minneapolis VA Health Care System",
+      "phone": "612-348-3300",
+      "phone_alt": "612-313-3240",
+      "address": "1 Veterans Drive, Minneapolis, MN 55417",
+      "city": "Minneapolis",
+      "description": "Center for excellence for Veteran-focused mental health care providing comprehensive medical care, mental health services, homeless veteran care, and community resource referrals",
+      "services": [
+        "healthcare",
+        "mental health",
+        "PTSD treatment",
+        "homeless veteran services",
+        "counseling",
+        "medical care",
+        "employment services",
+        "housing referrals"
+      ],
+      "website": "https://www.minneapolis.va.gov/",
+      "source_url": "https://mn.gov/adresources/search/b5bf6060-5457-5a78-af59-7ebea4dc48e5/"
+    },
+    {
+      "name": "Lutheran Social Service of Minnesota - Veterans Housing",
+      "phone": "1-800-582-5260",
+      "phone_alt": "651-642-5990",
+      "address": "2485 Como Avenue, Saint Paul, MN 55108",
+      "city": "Saint Paul",
+      "description": "Provides supportive housing for veterans in Twin Cities metro area with rent subsidies and case management services addressing housing stability and individual needs",
+      "services": [
+        "housing",
+        "supportive housing",
+        "case management",
+        "rent subsidies",
+        "behavioral health assessment"
+      ],
+      "website": "https://www.lssmn.org/services/military-and-veterans/housing",
+      "source_url": "https://www.lssmn.org/services/military-and-veterans/housing"
+    },
+    {
+      "name": "LINKVET - Minnesota Veterans Resource",
+      "phone": "1-888-546-5838",
+      "address": "Minnesota statewide service",
+      "city": "Statewide",
+      "description": "Resource for Minnesota veterans providing referrals and information about available veteran services",
+      "services": [
+        "resource referrals",
+        "veteran services",
+        "information and assistance"
+      ],
+      "website": "Contact by phone",
+      "source_url": "https://www.lssmn.org/services/military-and-veterans/housing"
+    },
+    {
+      "name": "Veterans Crisis Line",
+      "phone": "1-800-273-8255 (press 1)",
+      "phone_alt": "Text 838255",
+      "address": "National hotline",
+      "city": "National",
+      "description": "24/7 free confidential crisis support for veterans and families experiencing mental health crises, PTSD, suicidal thoughts",
+      "services": [
+        "mental health crisis support",
+        "PTSD support",
+        "suicide prevention",
+        "chat support",
+        "text support"
+      ],
+      "website": "https://www.veteranscrisisline.net/",
+      "source_url": "https://www.veteranscrisisline.net/"
+    },
+    {
+      "name": "NAMI Minnesota - Programs and Services for Veterans",
+      "phone": "651-645-2948",
+      "phone_alt": "1-888-626-4435",
+      "email": "namihelps@namimn.org",
+      "address": "1919 University Ave W, Suite 400, St. Paul, MN 55104",
+      "city": "Saint Paul",
+      "description": "National Alliance on Mental Illness provides mental health support, peer groups, and educational programs for veterans and military families",
+      "services": [
+        "mental health",
+        "peer support groups",
+        "NAMI Homefront (military family education)",
+        "Vet Connection (peer support groups)",
+        "mental health resources"
+      ],
+      "website": "https://namimn.org/programs/programs-and-services-for-veterans/",
+      "source_url": "https://namimn.org/programs/programs-and-services-for-veterans/"
+    },
+    {
+      "name": "Minnesota Department of Veteran Affairs",
+      "phone": "612-313-3240",
+      "address": "State office",
+      "city": "Minneapolis",
+      "description": "State agency providing benefits, resources, and referrals for Minnesota veterans",
+      "services": [
+        "benefits assistance",
+        "temporary subsistence assistance",
+        "financial assistance",
+        "information and referrals"
+      ],
+      "website": "https://mn.gov/mdva/resources/",
+      "source_url": "https://mn.gov/mdva/resources/"
+    },
+    {
+      "name": "Minnesota Veterans One Stop",
+      "phone": "Contact via website",
+      "address": "Minnesota statewide service",
+      "city": "Statewide",
+      "description": "Comprehensive veteran resources and information portal",
+      "services": [
+        "resource referrals",
+        "veteran services",
+        "benefits information"
+      ],
+      "website": "https://minnesotaveteran.org/",
+      "source_url": "https://namimn.org/programs/programs-and-services-for-veterans/"
+    },
+    {
+      "name": "Military Self-Assessment Helpline",
+      "phone": "1-877-877-3647",
+      "address": "National hotline",
+      "city": "National",
+      "description": "24/7 toll-free line with counselor transfer available for those experiencing post-traumatic stress",
+      "services": [
+        "mental health support",
+        "PTSD support",
+        "counseling referrals"
+      ],
+      "website": "Contact by phone",
+      "source_url": "https://namimn.org/programs/programs-and-services-for-veterans/"
+    },
+    {
+      "name": "County Veterans Service Officer (CVSO)",
+      "phone": "Contact local county office",
+      "address": "Multiple locations throughout Minnesota",
+      "city": "Statewide",
+      "description": "Local county offices providing veterans services, benefits assistance, and resource referrals. Every county in Minnesota has a CVSO.",
+      "services": [
+        "benefits assistance",
+        "resource referrals",
+        "local veteran services",
+        "information and support"
+      ],
+      "website": "https://mn.gov/mdva/",
+      "source_url": "https://mn.gov/mdva/resources/"
+    },
+    {
+      "name": "Transitional Residence Program",
+      "phone": "612-348-3300",
+      "address": "Minneapolis VA area",
+      "city": "Minneapolis",
+      "description": "Rehabilitation-focused residential program for veterans recovering from mental illness, drug or alcohol dependency, and homelessness",
+      "services": [
+        "housing",
+        "mental health treatment",
+        "substance abuse treatment",
+        "homelessness support",
+        "rehabilitation"
+      ],
+      "website": "https://www.minneapolis.va.gov/",
+      "source_url": "https://www.minneapolis.va.gov/"
+    },
+    {
+      "name": "Hire Heroes USA",
+      "phone": "844-884-3573",
+      "phone_alt": "866-915-4376",
+      "address": "National organization",
+      "city": "National",
+      "description": "Employment assistance and job placement services for veterans overcoming employment barriers",
+      "services": [
+        "employment",
+        "job placement",
+        "career counseling"
+      ],
+      "website": "https://www.hireheroesusa.org/",
+      "source_url": "https://www.hireheroesusa.org/"
+    },
+    {
+      "name": "Wounded Warrior Project",
+      "phone": "888-997-2586",
+      "phone_alt": "904-405-1213",
+      "address": "4899 Belfort Road, Suite 300, Jacksonville, FL 32256",
+      "city": "Jacksonville",
+      "description": "Support and services for post-9/11 veterans and service members with physical or mental injuries",
+      "services": [
+        "mental health",
+        "PTSD treatment",
+        "peer support",
+        "family support",
+        "career transition",
+        "physical health and wellness"
+      ],
+      "website": "https://www.woundedwarriorproject.org",
+      "source_url": "https://www.woundedwarriorproject.org"
+    },
+    {
+      "name": "U.S. Department of Veterans Affairs",
+      "phone": "1-800-827-1000",
+      "address": "National organization",
+      "city": "National",
+      "description": "Nationwide services and resources for veterans and families including healthcare, benefits, homeless services, and women veterans programs",
+      "services": [
+        "healthcare",
+        "benefits assistance",
+        "homeless veteran services",
+        "women veterans healthcare",
+        "mental health"
+      ],
+      "website": "https://www.va.gov/",
+      "source_url": "https://www.va.gov/"
+    }
+  ],
+  "additional_resources": {
+    "911_crisis_emergency": "Call 911 for emergencies",
+    "988_suicide_crisis": "988 (then press 1) - Veterans Crisis Line - 24/7",
+    "va_mental_health": "https://www.mentalhealth.va.gov/",
+    "samhsa_resources": "https://www.samhsa.gov/smvf-ta-center - Behavioral health resources",
+    "soldier_support_foundation": "https://www.soldiersupportfoundation.org/",
+    "real_warriors": "https://www.realwarriors.net/ - Mental health and resilience resources",
+    "homeless_veteran_hotline": "1-877-424-3838 - National Call Center for Homeless Veterans"
+  },
+  "notes": "This directory includes major state and federal veteran resources in Minnesota. Contact your local County Veterans Service Officer (CVSO) for county-specific services. Many services are free and confidential."
+}

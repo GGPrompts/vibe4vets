@@ -1,0 +1,213 @@
+{
+  "state": "MS",
+  "state_name": "Mississippi",
+  "fetched_at": "2026-01-25T00:00:00Z",
+  "source": "Mississippi 211, MDES Veterans Services, SSVF Mississippi, HUD.gov, Military.com",
+  "resources": [
+    {
+      "name": "Supportive Services for Veteran Families (SSVF)",
+      "phone": "601-545-3668",
+      "address": "Oak Arbor, 4507 Hwy 49 South, Hattiesburg, MS 39401",
+      "city": "Hattiesburg",
+      "description": "Promotes housing stability among very low-income Veteran families who reside in or are transitioning to permanent housing from Jackson, MS south to the coast",
+      "services": [
+        "housing",
+        "rental assistance",
+        "utility assistance",
+        "security and utility deposits",
+        "moving costs",
+        "emergency supplies",
+        "transportation assistance",
+        "case management",
+        "benefits assistance",
+        "VA benefits navigation"
+      ],
+      "website": "https://southmsveteransresources.com/?page_id=9",
+      "source_url": "https://southmsveteransresources.com/?page_id=9"
+    },
+    {
+      "name": "Veterans Crisis Line",
+      "phone": "988 (then press 1)",
+      "phone_alt": "Text 838255",
+      "address": "National hotline",
+      "city": "National",
+      "description": "24/7 free confidential crisis support for veterans and families experiencing mental health crises, PTSD, suicidal thoughts",
+      "services": [
+        "mental health crisis support",
+        "PTSD support",
+        "suicide prevention",
+        "chat support",
+        "text support"
+      ],
+      "website": "https://www.veteranscrisisline.net/",
+      "source_url": "https://www.veteranscrisisline.net/"
+    },
+    {
+      "name": "Mississippi 211 (2-1-1)",
+      "phone": "211",
+      "phone_alt": "Dial 211 and press 6 for homeless services",
+      "address": "Call center in Jackson, available statewide",
+      "city": "Statewide",
+      "description": "Free, confidential information and referral service connecting to health, human, and social services. Available 24/7. Dial 2-1-1 and press 6 for homeless veteran services.",
+      "services": [
+        "resource referrals",
+        "housing",
+        "homeless services",
+        "food",
+        "employment",
+        "health",
+        "veteran services"
+      ],
+      "website": "https://211.org/",
+      "source_url": "https://211.org/"
+    },
+    {
+      "name": "Mississippi Department of Employment Security (MDES) - Veterans Services",
+      "phone": "Contact via website",
+      "address": "Statewide program",
+      "city": "Statewide",
+      "description": "Specialized benefits for veterans with information about housing, employment assistance, and job services. Veterans receive priority services from MDES.",
+      "services": [
+        "employment",
+        "job search",
+        "job training",
+        "education programs",
+        "employment rights",
+        "rehabilitation services"
+      ],
+      "website": "https://www.mdes.ms.gov/i-need-a-job/veterans-services/",
+      "source_url": "https://www.mdes.ms.gov/i-need-a-job/veterans-services/rehabilitation-services-for-veterans/"
+    },
+    {
+      "name": "National Call Center for Homeless Veterans",
+      "phone": "1-877-424-3838",
+      "address": "National hotline",
+      "city": "National",
+      "description": "Emergency assistance and housing referrals for veterans experiencing homelessness or at imminent risk",
+      "services": [
+        "emergency housing",
+        "housing assistance",
+        "crisis support",
+        "referrals"
+      ],
+      "website": "https://www.va.gov/HOMELESS/NationalCallCenter.asp",
+      "source_url": "https://southmsveteransresources.com/?page_id=9"
+    },
+    {
+      "name": "U.S. Department of Veterans Affairs - Mississippi",
+      "phone": "1-800-827-1000",
+      "address": "National organization with facilities in Mississippi",
+      "city": "Mississippi",
+      "description": "Nationwide services and resources for veterans including healthcare, benefits, homeless services, and women veterans programs",
+      "services": [
+        "healthcare",
+        "benefits assistance",
+        "homeless veteran services",
+        "women veterans healthcare",
+        "mental health",
+        "VA home loans"
+      ],
+      "website": "https://www.va.gov/",
+      "source_url": "https://www.va.gov/"
+    },
+    {
+      "name": "HUD-VASH Program (Mississippi)",
+      "phone": "1-877-424-3838",
+      "address": "Statewide program",
+      "city": "Statewide",
+      "description": "HUD-Veterans Affairs Supportive Housing vouchers combining rental assistance with VA case management and services for homeless veterans",
+      "services": [
+        "housing",
+        "housing vouchers",
+        "case management",
+        "supportive services"
+      ],
+      "website": "https://www.va.gov/homeless/hud-vash.asp",
+      "source_url": "https://www.va.gov/homeless/hud-vash.asp"
+    },
+    {
+      "name": "VA Home Loan Guaranty Services",
+      "phone": "1-800-827-1000",
+      "address": "National program",
+      "city": "National",
+      "description": "VA home loan guarantee program helping veterans purchase or refinance homes",
+      "services": [
+        "home loans",
+        "housing assistance",
+        "mortgage guaranty"
+      ],
+      "website": "https://www.benefits.va.gov/homeloans/",
+      "source_url": "https://www.benefits.va.gov/homeloans/"
+    },
+    {
+      "name": "Hire Heroes USA",
+      "phone": "844-884-3573",
+      "phone_alt": "866-915-4376",
+      "address": "National organization",
+      "city": "National",
+      "description": "Employment assistance and job placement services for veterans overcoming employment barriers",
+      "services": [
+        "employment",
+        "job placement",
+        "career counseling"
+      ],
+      "website": "https://www.hireheroesusa.org/",
+      "source_url": "https://www.hireheroesusa.org/"
+    },
+    {
+      "name": "Wounded Warrior Project",
+      "phone": "888-997-2586",
+      "phone_alt": "904-405-1213",
+      "address": "4899 Belfort Road, Suite 300, Jacksonville, FL 32256",
+      "city": "Jacksonville",
+      "description": "Support and services for post-9/11 veterans and service members with physical or mental injuries",
+      "services": [
+        "mental health",
+        "PTSD treatment",
+        "peer support",
+        "family support",
+        "career transition",
+        "physical health and wellness"
+      ],
+      "website": "https://www.woundedwarriorproject.org",
+      "source_url": "https://www.woundedwarriorproject.org"
+    },
+    {
+      "name": "988 Suicide & Crisis Lifeline",
+      "phone": "988",
+      "address": "National hotline",
+      "city": "National",
+      "description": "24/7 free and confidential support for people in distress with crisis support and prevention resources",
+      "services": [
+        "crisis support",
+        "suicide prevention",
+        "mental health support"
+      ],
+      "website": "https://988lifeline.org/",
+      "source_url": "https://988lifeline.org/"
+    },
+    {
+      "name": "SAMHSA Service Members, Veterans, and Families Technical Assistance Center",
+      "phone": "Contact via website",
+      "address": "National organization",
+      "city": "National",
+      "description": "Assists in finding behavioral health resources and services with provider training and webinars",
+      "services": [
+        "mental health",
+        "behavioral health",
+        "substance use disorder treatment"
+      ],
+      "website": "https://www.samhsa.gov/smvf-ta-center",
+      "source_url": "https://www.samhsa.gov/smvf-ta-center"
+    }
+  ],
+  "additional_resources": {
+    "911_crisis_emergency": "Call 911 for emergencies",
+    "988_suicide_crisis": "988 (then press 1) - Veterans Crisis Line - 24/7",
+    "va_mental_health": "https://www.mentalhealth.va.gov/",
+    "mdes_job_portal": "https://wings.mdes.ms.gov - Mississippi job search portal",
+    "homeless_veteran_hotline": "1-877-424-3838 - National Call Center for Homeless Veterans",
+    "mississippi_grants": "https://mississippi.grantwatch.com/cat/38/veterans-grants.html - Veteran grant opportunities"
+  },
+  "notes": "This directory includes major state and federal veteran resources in Mississippi. For county-specific services, contact your local 211 or MDES office. Many services are free and confidential."
+}

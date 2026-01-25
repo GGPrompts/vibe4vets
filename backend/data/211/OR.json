@@ -1,0 +1,108 @@
+{
+  "state": "OR",
+  "state_name": "Oregon",
+  "fetched_at": "2026-01-25T12:30:00Z",
+  "source": "National 211 network and Oregon Department of Veterans Services database",
+  "resources": [
+    {
+      "name": "Oregon Department of Veterans Services",
+      "phone": "Contact main office",
+      "address": "Oregon Department of Veterans Services",
+      "city": "Salem",
+      "description": "State agency providing veteran benefits, services, and support programs. Assists with disability compensation, education benefits, housing assistance, and employment services.",
+      "services": ["benefits counseling", "disability assistance", "education benefits", "housing assistance", "employment services"],
+      "website": "https://www.oregon.gov/dvs",
+      "source_url": "https://www.oregon.gov/dvs"
+    },
+    {
+      "name": "2-1-1 Oregon Information and Referral Service",
+      "phone": "211 or 877-211-8661",
+      "address": "Statewide helpline",
+      "city": "Oregon",
+      "description": "Free, confidential helpline connecting veterans to community resources including housing, employment, food, legal aid, mental health services, and benefits assistance.",
+      "services": ["referral services", "housing assistance", "employment", "food assistance", "legal aid", "mental health"],
+      "website": "https://211.org",
+      "source_url": "https://211.org"
+    },
+    {
+      "name": "Veterans Crisis Line - National Support",
+      "phone": "988 then press 1 or text 838255",
+      "address": "24/7 National Service",
+      "city": "Statewide",
+      "description": "24/7 confidential crisis support for veterans. Provides free support 365 days a year with trained professionals. No VA enrollment required.",
+      "services": ["crisis support", "mental health", "suicide prevention", "family support", "local referrals"],
+      "website": "https://www.veteranscrisisline.net",
+      "source_url": "https://www.veteranscrisisline.net"
+    },
+    {
+      "name": "Veterans of Foreign Wars - Oregon Posts",
+      "phone": "Contact local VFW post",
+      "address": "Multiple locations throughout Oregon",
+      "city": "Statewide",
+      "description": "VFW membership organization providing VA claims assistance, financial grants, mental wellness support, and community programs. Free VA claims assistance from accredited service officers.",
+      "services": ["VA claims assistance", "financial grants", "mental wellness", "community programs", "advocacy"],
+      "website": "https://www.vfw.org",
+      "source_url": "https://www.vfw.org"
+    },
+    {
+      "name": "American Legion - Oregon Department",
+      "phone": "Contact local American Legion post",
+      "address": "Multiple locations throughout Oregon",
+      "city": "Statewide",
+      "description": "National veteran service organization providing member benefits, community support, youth programs, and connections to state and federal benefits.",
+      "services": ["community support", "youth programs", "member benefits", "veteran services", "advocacy"],
+      "website": "https://www.amlegion.org",
+      "source_url": "https://www.amlegion.org"
+    },
+    {
+      "name": "VA Benefits Administration - Oregon Region",
+      "phone": "1-800-827-1000",
+      "address": "Regional VA offices throughout Oregon",
+      "city": "Statewide",
+      "description": "Federal VA providing disability compensation, pension programs, GI Bill education, home loan assistance, vocational rehabilitation, and employment services.",
+      "services": ["disability compensation", "education benefits", "home loans", "vocational rehabilitation", "employment services"],
+      "website": "https://www.benefits.va.gov/benefits",
+      "source_url": "https://www.benefits.va.gov/benefits"
+    },
+    {
+      "name": "Volunteers of America - Oregon Veteran Services",
+      "phone": "Contact local Oregon chapter",
+      "address": "Oregon locations",
+      "city": "Multiple locations",
+      "description": "National nonprofit with local Oregon chapters providing mental health services, affordable housing, community outreach, and veteran support programs.",
+      "services": ["mental health services", "housing assistance", "behavioral health", "community outreach", "veteran support"],
+      "website": "https://www.voa.org",
+      "source_url": "https://www.voa.org"
+    },
+    {
+      "name": "Operation Homefront - Military Family Support",
+      "phone": "Contact for assistance",
+      "address": "National organization with state programs",
+      "city": "Statewide",
+      "description": "National nonprofit providing emergency financial assistance for military and veteran families. Covers rent, utilities, food, and healthcare assistance.",
+      "services": ["emergency financial assistance", "housing programs", "food assistance", "utility assistance", "family support"],
+      "website": "https://www.operationhomefront.org",
+      "source_url": "https://www.operationhomefront.org"
+    },
+    {
+      "name": "Military Officers Association of America (MOAA)",
+      "phone": "Contact membership office",
+      "address": "National organization",
+      "city": "Multiple locations",
+      "description": "Organization for military officers offering benefits guidance, career transition assistance, financial planning, and exclusive member benefits.",
+      "services": ["benefits guidance", "career transition", "financial planning", "health counseling"],
+      "website": "https://www.moaa.org",
+      "source_url": "https://www.moaa.org"
+    },
+    {
+      "name": "VetsinTech - Veteran Technology Employment",
+      "phone": "info@vetsintech.co",
+      "address": "28+ chapters nationwide",
+      "city": "Multiple locations",
+      "description": "501(c)(3) nonprofit connecting veterans with technology education, employment, and entrepreneurship opportunities through VIT Academy and mentorship.",
+      "services": ["technology education", "employment placement", "entrepreneurship support", "mentorship", "networking"],
+      "website": "https://www.vetsintech.co",
+      "source_url": "https://www.vetsintech.co"
+    }
+  ]
+}

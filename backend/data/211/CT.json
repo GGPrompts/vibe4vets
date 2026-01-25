@@ -1,0 +1,167 @@
+{
+  "state": "CT",
+  "state_name": "Connecticut",
+  "fetched_at": "2026-01-25T16:30:00Z",
+  "source": "211 Connecticut, Connecticut Department of Veterans Affairs, Community Renewal Team",
+  "resources": [
+    {
+      "name": "211 Connecticut",
+      "phone": "211",
+      "phone_alt": "1-800-203-1234",
+      "address": "Statewide service",
+      "city": "Statewide",
+      "description": "Connecticut's free information and referral service providing 24/7 access to knowledgeable multilingual staff connecting veterans and families to community resources including housing, employment, mental health, and benefits support",
+      "services": [
+        "benefits assistance",
+        "housing",
+        "employment",
+        "mental health",
+        "food services",
+        "legal assistance",
+        "healthcare"
+      ],
+      "website": "https://www.211ct.org",
+      "source_url": "https://uwc.211ct.org/veterans-benefits-and-organizations"
+    },
+    {
+      "name": "Connecticut Department of Veterans Affairs (CT DVA)",
+      "phone": "860-616-3766",
+      "address": "196 West Street, Rocky Hill, CT 06067",
+      "city": "Rocky Hill",
+      "description": "State department providing advocacy and claims assistance for federal VA and state VA benefits. Multiple district offices throughout Connecticut.",
+      "services": [
+        "benefits assistance",
+        "disability compensation",
+        "pension",
+        "burial assistance",
+        "motor vehicle exemptions",
+        "property tax exemptions",
+        "tuition waivers"
+      ],
+      "website": "https://portal.ct.gov/dva",
+      "source_url": "https://portal.ct.gov/dva"
+    },
+    {
+      "name": "CT DVA Veteran Services Support Center",
+      "phone": "860-616-3769",
+      "phone_alt": "860-616-3768",
+      "address": "196 West Street, Rocky Hill, CT 06067",
+      "city": "Rocky Hill",
+      "description": "Central support center for veteran services and advocacy assistance",
+      "services": [
+        "benefits assistance",
+        "advocacy",
+        "claims assistance"
+      ],
+      "website": "https://portal.ct.gov/dva",
+      "source_url": "https://portal.ct.gov/dva/advocacy-and-assistance"
+    },
+    {
+      "name": "Community Renewal Team - Supportive Services for Veteran Families",
+      "phone": "860-778-4775",
+      "address": "1921 Park Street, Hartford, CT 06106",
+      "city": "Hartford",
+      "description": "Provides supportive services, case management, and financial assistance including rent, utilities, and security deposits for veterans and families",
+      "services": [
+        "housing",
+        "financial assistance",
+        "case management",
+        "utility assistance"
+      ],
+      "website": "https://www.crtct.org",
+      "source_url": "https://www.crtct.org/programs/veterans/supportive-services-for-veteran-families"
+    },
+    {
+      "name": "Connecticut Veterans Home and Hospital",
+      "phone": "860-616-3600",
+      "address": "287 West Street, Rocky Hill, CT 06067",
+      "city": "Rocky Hill",
+      "description": "State facility providing medical and rehabilitative care, substance abuse treatment, transitional living, and educational and employment services for eligible wartime veterans",
+      "services": [
+        "housing",
+        "healthcare",
+        "mental health",
+        "substance abuse treatment",
+        "education",
+        "employment"
+      ],
+      "website": "https://portal.ct.gov/dva",
+      "source_url": "https://portal.ct.gov/dva"
+    },
+    {
+      "name": "Columbus House - Veterans Services New Haven",
+      "phone": "203-498-6262",
+      "address": "400 Crown Street, New Haven, CT 06510",
+      "city": "New Haven",
+      "description": "Provides housing and support services for 14 homeless male veterans, connecting them to services and expanding their social and employment skills",
+      "services": [
+        "housing",
+        "employment",
+        "case management",
+        "mental health"
+      ],
+      "website": "https://www.columbushouse.org",
+      "source_url": "https://www.columbushouse.org/programs/veterans-services"
+    },
+    {
+      "name": "Anne Mosher - Veterans Service Officer (Third District)",
+      "phone": "203-874-6711",
+      "address": "70 West River Street, Milford, CT 06460",
+      "city": "Milford",
+      "description": "Municipal Veterans Service Officer providing advocacy and benefits assistance for third district veterans (includes New Haven area)",
+      "services": [
+        "benefits assistance",
+        "advocacy",
+        "claims assistance"
+      ],
+      "website": "https://portal.ct.gov/dva",
+      "source_url": "https://portal.ct.gov/dva/advocacy-and-assistance"
+    },
+    {
+      "name": "VFW New Haven Post 12150 - Veteran Resources",
+      "phone": "Contact through website",
+      "address": "New Haven, CT",
+      "city": "New Haven",
+      "description": "Veterans of Foreign Wars post providing veteran resources, programs, and community support",
+      "services": [
+        "benefits assistance",
+        "employment",
+        "community support"
+      ],
+      "website": "https://vfwnewhaven.org",
+      "source_url": "https://vfwnewhaven.org/programs/veteran-resources"
+    },
+    {
+      "name": "Hartford VA Regional Benefit Office",
+      "phone": "1-800-827-1000",
+      "address": "555 Main Street, East Hartford, CT 06108",
+      "city": "East Hartford",
+      "description": "Federal VA office administering compensation, pension, education, and housing benefits for Connecticut veterans",
+      "services": [
+        "benefits assistance",
+        "disability compensation",
+        "pension",
+        "education",
+        "home loans",
+        "housing grants"
+      ],
+      "website": "https://www.benefits.va.gov/Hartford",
+      "source_url": "https://www.va.gov/hartford-va-regional-benefit-office-at-newington-va-clinic"
+    },
+    {
+      "name": "Veterans Crisis Line",
+      "phone": "988 (then press 1)",
+      "phone_alt": "Text 838255",
+      "address": "National hotline",
+      "city": "National",
+      "description": "24/7 free confidential crisis support for veterans and families experiencing mental health crises, PTSD, suicidal thoughts",
+      "services": [
+        "mental health",
+        "crisis intervention",
+        "suicide prevention"
+      ],
+      "website": "https://www.veteranscrisisline.net",
+      "source_url": "https://www.veteranscrisisline.net"
+    }
+  ]
+}

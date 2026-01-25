@@ -1,0 +1,164 @@
+{
+  "state": "DC",
+  "state_name": "District of Columbia",
+  "fetched_at": "2026-01-25T16:30:00Z",
+  "source": "DC 211, U.S.VETS DC, Pathways to Housing DC, Friendship Place",
+  "resources": [
+    {
+      "name": "DC 211 Answers, Please",
+      "phone": "211",
+      "address": "District of Columbia",
+      "city": "Washington",
+      "description": "Free, confidential information and referral service available 24 hours a day connecting DC residents with available social services including veteran-specific programs",
+      "services": [
+        "benefits assistance",
+        "housing",
+        "employment",
+        "mental health",
+        "food services",
+        "legal assistance",
+        "healthcare"
+      ],
+      "website": "https://washington.dc.networkofcare.org",
+      "source_url": "https://washington.dc.networkofcare.org/veterans/services"
+    },
+    {
+      "name": "U.S.VETS Washington D.C.",
+      "phone": "877-548-7838",
+      "address": "Washington, DC location",
+      "city": "Washington",
+      "description": "Provides permanent housing with supportive services including employment assistance, mental health and substance use counseling, individualized veteran plans, and suicide prevention",
+      "services": [
+        "housing",
+        "employment",
+        "mental health",
+        "substance abuse treatment",
+        "crisis intervention"
+      ],
+      "website": "https://usvets.org/locations/washington-dc",
+      "source_url": "https://usvets.org/locations/washington-dc"
+    },
+    {
+      "name": "DC Department of Human Services - Veteran Affairs Supportive Housing (VASH)",
+      "phone": "202-671-4200",
+      "address": "64 New York Avenue, NE, 6th Floor, Washington, DC 20002",
+      "city": "Washington",
+      "description": "DC government VASH program providing housing and supportive services for eligible veterans. Hours: Monday to Friday, 8:15 am to 4:45 pm",
+      "services": [
+        "housing",
+        "case management",
+        "supportive services"
+      ],
+      "website": "https://dhs.dc.gov/service/veteran-affairs-supportive-housing-vash",
+      "source_url": "https://dhs.dc.gov/service/veteran-affairs-supportive-housing-vash"
+    },
+    {
+      "name": "Pathways to Housing DC",
+      "phone": "Contact through website",
+      "address": "Washington, DC",
+      "city": "Washington",
+      "description": "Provides stable housing for veterans experiencing homelessness with tailored support for mental health, recovery support, employment, and healthcare to help veterans regain independence and thrive",
+      "services": [
+        "housing",
+        "mental health",
+        "employment",
+        "healthcare",
+        "recovery support"
+      ],
+      "website": "https://pathwaystohousingdc.org",
+      "source_url": "https://pathwaystohousingdc.org"
+    },
+    {
+      "name": "Friendship Place - Veterans First",
+      "phone": "202-658-9599",
+      "address": "Washington, DC metropolitan area",
+      "city": "Washington",
+      "description": "Leading provider of rapid rehousing and homeless prevention services for veterans and families. Case management services include housing assistance, benefits connection, employment assistance, and mental health care",
+      "services": [
+        "housing",
+        "employment",
+        "mental health",
+        "benefits assistance",
+        "homeless services"
+      ],
+      "website": "https://friendshipplace.org",
+      "source_url": "https://friendshipplace.org/programs-outreach/veterans-first"
+    },
+    {
+      "name": "HUD-VASH Program - National",
+      "phone": "877-424-3838",
+      "address": "National service",
+      "city": "National",
+      "description": "HUD-VASH is a collaborative program pairing HUD's Housing Choice Voucher rental assistance with VA case management and supportive services for homeless veterans and their families. Free, confidential, 24/7 staffed service.",
+      "services": [
+        "housing",
+        "case management",
+        "benefits assistance",
+        "healthcare",
+        "mental health"
+      ],
+      "website": "https://www.va.gov/homeless/hud-vash.asp",
+      "source_url": "https://www.va.gov/homeless/hud-vash.asp"
+    },
+    {
+      "name": "VA Washington DC Health Care - Homeless Veteran Care",
+      "phone": "202-745-8000",
+      "address": "50 Irving Street, NW, Washington, DC 20422",
+      "city": "Washington",
+      "description": "Provides comprehensive behavioral health program with veteran-focused mental health care, substance abuse treatment, and support services for homeless and at-risk veterans",
+      "services": [
+        "mental health",
+        "substance abuse treatment",
+        "healthcare",
+        "homeless services",
+        "case management"
+      ],
+      "website": "https://www.va.gov/washington-dc-health-care",
+      "source_url": "https://www.va.gov/washington-dc-health-care/health-services/homeless-veteran-care"
+    },
+    {
+      "name": "DC Department of Employment Services - Veteran Services",
+      "phone": "202-724-7500",
+      "address": "Washington, DC",
+      "city": "Washington",
+      "description": "Provides employment support, job training, resume assistance, and job placement and career coaching for DC veterans",
+      "services": [
+        "employment",
+        "job training",
+        "career counseling",
+        "resume assistance"
+      ],
+      "website": "https://does.dc.gov",
+      "source_url": "https://does.dc.gov"
+    },
+    {
+      "name": "Veterans Crisis Line",
+      "phone": "988 (then press 1)",
+      "phone_alt": "Text 838255",
+      "address": "National hotline",
+      "city": "National",
+      "description": "24/7 free confidential crisis support for veterans and families experiencing mental health crises, PTSD, suicidal thoughts",
+      "services": [
+        "mental health",
+        "crisis intervention",
+        "suicide prevention"
+      ],
+      "website": "https://www.veteranscrisisline.net",
+      "source_url": "https://www.veteranscrisisline.net"
+    },
+    {
+      "name": "Annie B's Serenity Center - Housing & Support for Veterans",
+      "phone": "Contact through website",
+      "address": "DC and Maryland area",
+      "city": "Washington",
+      "description": "Provides housing and support resources for veterans in DC and Maryland area",
+      "services": [
+        "housing",
+        "support services",
+        "resources"
+      ],
+      "website": "https://anniebsserenitycenter.org",
+      "source_url": "https://anniebsserenitycenter.org/resources"
+    }
+  ]
+}

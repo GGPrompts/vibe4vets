@@ -1,0 +1,161 @@
+{
+  "state": "AK",
+  "state_name": "Alaska",
+  "fetched_at": "2026-01-25T16:30:00Z",
+  "source": "Alaska 211, Alaska Office of Veterans Affairs, Alaska Warrior Partnership",
+  "resources": [
+    {
+      "name": "Alaska 211",
+      "phone": "211",
+      "phone_alt": "1-800-478-2221",
+      "address": "Statewide service",
+      "city": "Statewide",
+      "description": "Comprehensive resource database with over 1.2 million visits to date. Helps residents locate social services including military and veteran services across Alaska.",
+      "services": [
+        "benefits assistance",
+        "housing",
+        "employment",
+        "mental health",
+        "food services",
+        "legal assistance"
+      ],
+      "website": "https://search.alaska211.org",
+      "source_url": "https://search.alaska211.org"
+    },
+    {
+      "name": "Alaska Office of Veterans Affairs",
+      "phone": "907-465-6762",
+      "address": "Department of Military and Veterans Affairs, Juneau, AK",
+      "city": "Juneau",
+      "description": "State agency serving as primary advocate for Alaska's veterans. Helps veterans file claims for education, medical or other benefits and assists in obtaining earned military awards.",
+      "services": [
+        "benefits assistance",
+        "education benefits",
+        "employment assistance",
+        "disability compensation",
+        "housing grants"
+      ],
+      "website": "https://veterans.alaska.gov",
+      "source_url": "https://veterans.alaska.gov"
+    },
+    {
+      "name": "Alaska Warrior Partnership (AKWP)",
+      "phone": "Contact through website",
+      "address": "Statewide, Anchorage-based",
+      "city": "Anchorage",
+      "description": "Veteran-focused, community-led initiative to proactively connect with all veterans and ensure access to quality resources and opportunities. Uses Community Integration Model for holistic veteran support.",
+      "services": [
+        "housing",
+        "employment",
+        "healthcare",
+        "education",
+        "recreational activities",
+        "volunteer opportunities"
+      ],
+      "website": "https://www.alaskawarriorpartnership.org",
+      "source_url": "https://www.alaskawarriorpartnership.org"
+    },
+    {
+      "name": "Alaska Coalition For Veterans and Military Families",
+      "phone": "Contact through website",
+      "address": "Statewide network",
+      "city": "Multiple locations",
+      "description": "Network of organizations throughout Alaska who work together to assess and meet the needs of service members, veterans and their families",
+      "services": [
+        "benefits assistance",
+        "housing",
+        "employment",
+        "family support"
+      ],
+      "website": "https://akcvmf.org",
+      "source_url": "https://akcvmf.org"
+    },
+    {
+      "name": "Alaska Housing Finance Corporation - Veterans Mortgage Program",
+      "phone": "907-330-8400",
+      "address": "Alaska Housing Finance Corporation",
+      "city": "Anchorage",
+      "description": "Home financing program for service members and veterans at lower interest rates with little to no down payment required and 1% interest rate reduction",
+      "services": [
+        "housing",
+        "home loans",
+        "financial assistance"
+      ],
+      "website": "https://www.ahfc.us",
+      "source_url": "https://www.ahfc.us"
+    },
+    {
+      "name": "Alaska Department of Labor - Veteran Employment Services",
+      "phone": "907-465-2787",
+      "address": "Multiple Alaska Job Centers statewide",
+      "city": "Multiple locations",
+      "description": "Provides specialized employment services for veterans including job counseling, job search workshops, resume assistance, and DVOP specialist support",
+      "services": [
+        "employment",
+        "job training",
+        "career counseling"
+      ],
+      "website": "https://jobs.alaska.gov/veterans",
+      "source_url": "https://jobs.alaska.gov/veterans"
+    },
+    {
+      "name": "Veterans Readiness and Employment (VR&E)",
+      "phone": "1-800-827-1000",
+      "address": "VA regional offices statewide",
+      "city": "Multiple locations",
+      "description": "Federal program assisting veterans with service-connected disabilities to prepare for, find, and keep suitable jobs through job training and employment accommodations",
+      "services": [
+        "employment",
+        "job training",
+        "disability compensation"
+      ],
+      "website": "https://www.va.gov/careers-employment",
+      "source_url": "https://www.va.gov/careers-employment"
+    },
+    {
+      "name": "Alaska Veterans and Pioneers Home",
+      "phone": "907-745-4400",
+      "address": "2601 Wildwood Park Drive, Palmer, AK 99645",
+      "city": "Palmer",
+      "description": "Provides assisted living for veterans with 75% of 79 beds reserved for veterans. Offers comprehensive care and support services.",
+      "services": [
+        "housing",
+        "assisted living",
+        "healthcare",
+        "meal services"
+      ],
+      "website": "https://veterans.alaska.gov",
+      "source_url": "https://veterans.alaska.gov"
+    },
+    {
+      "name": "Anchorage VA Regional Office",
+      "phone": "907-257-5900",
+      "address": "2925 DeBarr Road, Anchorage, AK 99508",
+      "city": "Anchorage",
+      "description": "VA regional office providing comprehensive benefits administration services for Alaska veterans",
+      "services": [
+        "benefits assistance",
+        "disability compensation",
+        "pension",
+        "education"
+      ],
+      "website": "https://www.benefits.va.gov/ROANCHORAGE",
+      "source_url": "https://www.benefits.va.gov/ROANCHORAGE"
+    },
+    {
+      "name": "Veterans Crisis Line",
+      "phone": "988 (then press 1)",
+      "phone_alt": "Text 838255",
+      "address": "National hotline",
+      "city": "National",
+      "description": "24/7 free confidential crisis support for veterans and families experiencing mental health crises, PTSD, suicidal thoughts",
+      "services": [
+        "mental health",
+        "crisis intervention",
+        "suicide prevention"
+      ],
+      "website": "https://www.veteranscrisisline.net",
+      "source_url": "https://www.veteranscrisisline.net"
+    }
+  ]
+}

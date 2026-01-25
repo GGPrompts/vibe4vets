@@ -1,0 +1,168 @@
+{
+  "state": "DE",
+  "state_name": "Delaware",
+  "fetched_at": "2026-01-25T16:30:00Z",
+  "source": "Delaware 211, Delaware Department of Veterans Affairs, Delaware Joining Forces",
+  "resources": [
+    {
+      "name": "Delaware 211",
+      "phone": "211",
+      "phone_alt": "Text 211",
+      "address": "Statewide service",
+      "city": "Statewide",
+      "description": "Delaware's 24-hour free and confidential helpline available in multiple languages. Connects residents to critical local resources including veteran services, housing, employment, and benefits assistance.",
+      "services": [
+        "benefits assistance",
+        "housing",
+        "employment",
+        "food services",
+        "mental health",
+        "legal assistance",
+        "healthcare"
+      ],
+      "website": "https://delaware211.org",
+      "source_url": "https://delaware211.org"
+    },
+    {
+      "name": "Delaware Department of Veterans Affairs",
+      "phone": "302-739-2792",
+      "phone_alt": "1-800-344-9900",
+      "address": "122 William Penn Street, Dover, DE 19903",
+      "city": "Dover",
+      "description": "State agency supporting veterans and their families with access to federal and state benefits including disability compensation, employment, housing, and more",
+      "services": [
+        "benefits assistance",
+        "disability compensation",
+        "employment",
+        "housing",
+        "education"
+      ],
+      "website": "https://vets.delaware.gov",
+      "source_url": "https://vets.delaware.gov"
+    },
+    {
+      "name": "People's Place Veterans Outreach",
+      "phone": "Contact through Delaware 211",
+      "address": "Delaware statewide",
+      "city": "Multiple locations",
+      "description": "Offers referrals for counseling, Department of Labor employment counseling, assistance with military discharge form DD-214, and identifies and places homeless veterans in shelters with referrals to VA HUD-VASH coordinators",
+      "services": [
+        "housing",
+        "employment",
+        "counseling",
+        "homeless services",
+        "benefits assistance"
+      ],
+      "website": "https://delaware211.org",
+      "source_url": "https://delaware211.org/iresource/peoples-place-veterans-outreach"
+    },
+    {
+      "name": "Victory Village Veteran's Center",
+      "phone": "302-668-7331",
+      "address": "Delaware statewide",
+      "city": "Multiple locations",
+      "description": "Provides comprehensive support services for veterans, service members, and their families to ease transition from military to civilian life",
+      "services": [
+        "housing",
+        "employment",
+        "benefits assistance",
+        "wellness programs",
+        "case management"
+      ],
+      "website": "https://delaware211.org",
+      "source_url": "https://delaware211.org"
+    },
+    {
+      "name": "Delaware Supportive Services for Veteran Families (SSVF)",
+      "phone": "302-668-7331",
+      "address": "Delaware statewide",
+      "city": "Multiple locations",
+      "description": "Provides case management, benefit application assistance, and financial assistance for rental, security deposit, and utility costs to veterans experiencing housing instability or homelessness",
+      "services": [
+        "housing",
+        "financial assistance",
+        "case management",
+        "benefits assistance"
+      ],
+      "website": "https://delaware211.org",
+      "source_url": "https://delaware211.org/resources/housing"
+    },
+    {
+      "name": "Delaware Veterans Trust Fund",
+      "phone": "1-800-344-9900",
+      "address": "Dover, DE",
+      "city": "Dover",
+      "description": "Assists Delaware veterans in financial crisis with healthcare requirements, housing assistance, and educational or training programs",
+      "services": [
+        "financial assistance",
+        "housing",
+        "healthcare",
+        "education"
+      ],
+      "website": "https://vets.delaware.gov",
+      "source_url": "https://vets.delaware.gov"
+    },
+    {
+      "name": "Delaware Center for Homeless Veterans, Inc. (DCHV)",
+      "phone": "Contact through Delaware 211",
+      "address": "Delaware statewide",
+      "city": "Multiple locations",
+      "description": "Provides safe and affordable permanent housing coupled with supportive services using the Housing First Model, offering services from emergency shelter to permanent housing with intensive case management",
+      "services": [
+        "housing",
+        "emergency shelter",
+        "case management",
+        "support services"
+      ],
+      "website": "https://delaware211.org",
+      "source_url": "https://delaware211.org"
+    },
+    {
+      "name": "Wilmington VA Regional Benefit Office",
+      "phone": "1-800-827-1000",
+      "address": "2821 Centerville Road, Wilmington, DE 19808",
+      "city": "Wilmington",
+      "description": "Federal VA office administering compensation, pension, education, and other benefits for Delaware veterans and their families",
+      "services": [
+        "benefits assistance",
+        "disability compensation",
+        "pension",
+        "education",
+        "home loans"
+      ],
+      "website": "https://www.benefits.va.gov/wilmington",
+      "source_url": "https://www.benefits.va.gov/wilmington"
+    },
+    {
+      "name": "Delaware Joining Forces",
+      "phone": "Contact through state website",
+      "address": "State of Delaware",
+      "city": "Statewide",
+      "description": "Network of state agencies and external service providers providing solutions for military members, veterans and families. Maintains comprehensive directory of community groups, service providers, hospitals, centers, and businesses",
+      "services": [
+        "benefits assistance",
+        "housing",
+        "employment",
+        "education",
+        "healthcare"
+      ],
+      "website": "https://delaware.gov/djf",
+      "source_url": "https://delaware.gov/djf"
+    },
+    {
+      "name": "Veterans Crisis Line",
+      "phone": "988 (then press 1)",
+      "phone_alt": "Text 838255",
+      "address": "National hotline",
+      "city": "National",
+      "description": "24/7 free confidential crisis support for veterans and families experiencing mental health crises, PTSD, suicidal thoughts",
+      "services": [
+        "mental health",
+        "crisis intervention",
+        "suicide prevention"
+      ],
+      "website": "https://www.veteranscrisisline.net",
+      "source_url": "https://www.veteranscrisisline.net"
+    }
+  ]
+}

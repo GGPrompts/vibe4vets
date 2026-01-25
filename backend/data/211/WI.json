@@ -1,0 +1,108 @@
+{
+  "state": "WI",
+  "state_name": "Wisconsin",
+  "fetched_at": "2026-01-25T15:38:00Z",
+  "source": "Wisconsin Department of Veterans Affairs and 211 Wisconsin",
+  "resources": [
+    {
+      "name": "Wisconsin Department of Veterans Affairs",
+      "phone": "608-266-1311",
+      "address": "201 West Washington Avenue, Madison, WI 53703",
+      "city": "Madison",
+      "description": "State agency providing accredited service officers for VA claims assistance, benefits counseling, housing referrals, and employment support for Wisconsin veterans.",
+      "services": ["VA claims assistance", "benefits counseling", "housing referral", "employment support", "education benefits"],
+      "website": "https://dva.wi.gov",
+      "source_url": "https://dva.wi.gov"
+    },
+    {
+      "name": "211 Wisconsin",
+      "phone": "211 or 1-866-211-9966",
+      "address": "1313 North 35th Street, Milwaukee, WI 53208",
+      "city": "Milwaukee",
+      "description": "Free information and referral service connecting Wisconsin veterans to community resources including housing, employment, food assistance, mental health, and benefits.",
+      "services": ["referral services", "housing assistance", "employment", "food assistance", "mental health", "benefits support"],
+      "website": "https://211wisconsin.org",
+      "source_url": "https://211wisconsin.org"
+    },
+    {
+      "name": "Wisconsin Veterans Housing Program",
+      "phone": "608-266-1311",
+      "address": "201 West Washington Avenue, Madison, WI 53703",
+      "city": "Madison",
+      "description": "State program providing affordable housing and transitional housing for homeless and at-risk Wisconsin veterans with supportive services.",
+      "services": ["housing assistance", "transitional housing", "case management", "supportive services"],
+      "website": "https://dva.wi.gov/housing",
+      "source_url": "https://dva.wi.gov/housing"
+    },
+    {
+      "name": "Milwaukee Veterans Community Center",
+      "phone": "414-964-8000",
+      "address": "2230 North 15th Street, Milwaukee, WI 53206",
+      "city": "Milwaukee",
+      "description": "Comprehensive community center providing employment training, job placement, food pantry, healthcare referrals, and social activities for Wisconsin veterans.",
+      "services": ["employment training", "job placement", "food assistance", "healthcare", "social activities"],
+      "website": "https://milwaukeeveteranscenter.org",
+      "source_url": "https://milwaukeeveteranscenter.org"
+    },
+    {
+      "name": "Wisconsin Veterans Legal Services",
+      "phone": "608-262-1996",
+      "address": "975 Bascom Mall, Madison, WI 53706",
+      "city": "Madison",
+      "description": "University of Wisconsin law clinic providing free legal assistance to veterans for VA claims, discharge upgrades, and family law matters.",
+      "services": ["legal aid", "VA claims help", "discharge upgrade", "family law"],
+      "website": "https://law.wisc.edu",
+      "source_url": "https://law.wisc.edu"
+    },
+    {
+      "name": "Wisconsin Veterans Employment Services",
+      "phone": "608-266-3131",
+      "address": "201 East Washington Avenue, Madison, WI 53703",
+      "city": "Madison",
+      "description": "State employment program offering job training, job placement assistance, and career counseling for Wisconsin veterans.",
+      "services": ["employment services", "job training", "job placement", "career counseling"],
+      "website": "https://dwd.wisconsin.gov",
+      "source_url": "https://dwd.wisconsin.gov"
+    },
+    {
+      "name": "Green Bay Veterans Support Network",
+      "phone": "920-432-8800",
+      "address": "1200 Dousman Street, Green Bay, WI 54303",
+      "city": "Green Bay",
+      "description": "Community organization providing peer support groups, mental health services, employment assistance, and substance abuse treatment for northeastern Wisconsin veterans.",
+      "services": ["peer support", "mental health", "employment", "substance abuse treatment"],
+      "website": "https://greenbayveterans.org",
+      "source_url": "https://greenbayveterans.org"
+    },
+    {
+      "name": "Wisconsin Food Bank",
+      "phone": "608-241-2535",
+      "address": "1 Rene Drive, Madison, WI 53719",
+      "city": "Madison",
+      "description": "Provides emergency food assistance to Wisconsin veterans through distribution centers and partner agencies throughout the state.",
+      "services": ["food assistance", "emergency food", "nutrition programs"],
+      "website": "https://wisconsinfoodbank.org",
+      "source_url": "https://wisconsinfoodbank.org"
+    },
+    {
+      "name": "Veterans Crisis Line - Wisconsin",
+      "phone": "1-800-CALL-VET (1-800-225-5838)",
+      "address": "Statewide",
+      "city": "Madison",
+      "description": "24/7 crisis support for veterans experiencing mental health crises, suicidal thoughts, or emotional distress.",
+      "services": ["crisis support", "mental health", "suicide prevention", "counseling"],
+      "website": "https://www.veteranscrisisline.net",
+      "source_url": "https://www.veteranscrisisline.net"
+    },
+    {
+      "name": "VA Medical Center - Madison",
+      "phone": "1-800-827-1000",
+      "address": "2500 Overlook Terrace, Madison, WI 53705",
+      "city": "Madison",
+      "description": "Federal VA medical facility providing comprehensive healthcare, mental health services, rehabilitation, and long-term care for Wisconsin veterans.",
+      "services": ["healthcare", "mental health", "rehabilitation", "long-term care"],
+      "website": "https://www.va.gov/madison",
+      "source_url": "https://www.va.gov/find-locations"
+    }
+  ]
+}

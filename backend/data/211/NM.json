@@ -1,0 +1,177 @@
+{
+  "state": "NM",
+  "state_name": "New Mexico",
+  "fetched_at": "2026-01-25T12:00:00Z",
+  "source": "VA New Mexico Health Care, New Mexico Department of Veterans Services, New Mexico Veterans Integration Center, New Mexico Legal Aid",
+  "resources": [
+    {
+      "name": "VA New Mexico Health Care System",
+      "phone": "(505) 265-1711 or toll free 1-800-465-8262",
+      "address": "1501 San Pedro SE, Building 96",
+      "city": "Albuquerque",
+      "state": "NM",
+      "zip": "87108",
+      "description": "VA medical facility providing comprehensive healthcare, mental health services, and homeless veteran support",
+      "services": [
+        "healthcare services",
+        "mental health care",
+        "PTSD treatment",
+        "homeless veteran services",
+        "job training",
+        "life skills development"
+      ],
+      "website": "https://www.va.gov/new-mexico-health-care/",
+      "source_url": "https://www.va.gov/new-mexico-health-care/health-services/homeless-veteran-care/"
+    },
+    {
+      "name": "National Call Center for Homeless Veterans",
+      "phone": "(877) 424-3838 (24/7) or 877-4AID-VET",
+      "address": "National Service",
+      "city": "New Mexico",
+      "description": "24/7 national hotline providing referrals to shelters, transitional housing, and permanent housing for homeless veterans",
+      "services": [
+        "emergency housing",
+        "housing referrals",
+        "shelter placement",
+        "crisis support"
+      ],
+      "website": "https://www.va.gov/homeless/",
+      "source_url": "https://www.va.gov/new-mexico-health-care/health-services/homeless-veteran-care/"
+    },
+    {
+      "name": "New Mexico Veterans Integration Center (NMVIC)",
+      "phone": "(505) 296-0800",
+      "address": "13032 Central Ave SE",
+      "city": "Albuquerque",
+      "state": "NM",
+      "zip": "87123",
+      "description": "Comprehensive veteran services provider offering housing, employment, mental health, and substance use disorder services",
+      "services": [
+        "transitional housing",
+        "permanent housing",
+        "employment services",
+        "mental health counseling",
+        "substance abuse treatment",
+        "case management",
+        "food assistance",
+        "educational support"
+      ],
+      "website": "https://www.nmvic.org/",
+      "source_url": "https://www.nmvic.org/services"
+    },
+    {
+      "name": "New Mexico Department of Veterans Services",
+      "phone": "Contact via website",
+      "address": "Santa Fe",
+      "city": "Santa Fe",
+      "state": "NM",
+      "description": "State agency providing veteran benefits, services, and support including housing assistance and transition services",
+      "services": [
+        "benefits assistance",
+        "housing assistance",
+        "transition services",
+        "employment support",
+        "advocacy"
+      ],
+      "website": "https://www.nmdvs.org/",
+      "source_url": "https://www.nmdvs.org/state-services/"
+    },
+    {
+      "name": "Mesilla Valley Community of Hope",
+      "phone": "Contact via NMDVS",
+      "address": "Las Cruces Area",
+      "city": "Las Cruces",
+      "state": "NM",
+      "description": "Provides transition services and support for homeless and at-risk veterans in southern New Mexico",
+      "services": [
+        "housing assistance",
+        "transition services",
+        "case management",
+        "community support"
+      ],
+      "website": "Contact NMDVS",
+      "source_url": "https://www.nmdvs.org/"
+    },
+    {
+      "name": "Mountain Road Vet Center",
+      "phone": "(505) 346-3215",
+      "address": "2001 Mountain Road NW",
+      "city": "Albuquerque",
+      "state": "NM",
+      "description": "VA Vet Center providing free services including PTSD screening, treatment, and readjustment counseling to veterans with combat records",
+      "services": [
+        "free counseling",
+        "PTSD screening and treatment",
+        "readjustment counseling",
+        "legal advice",
+        "crisis support"
+      ],
+      "website": "https://www.va.gov/",
+      "source_url": "https://www.va.gov/new-mexico-health-care/"
+    },
+    {
+      "name": "New Mexico Legal Aid - Veterans Services",
+      "phone": "(505) 814-6719 or veterans@nmlegalaid.org",
+      "address": "Multiple locations statewide",
+      "city": "Multiple",
+      "state": "NM",
+      "description": "Provides free legal help to low-income veterans including benefits, discharge upgrades, housing, and family law",
+      "services": [
+        "legal assistance",
+        "benefits claims",
+        "discharge upgrades",
+        "housing law",
+        "family law",
+        "consumer protection"
+      ],
+      "website": "https://newmexicolegalaid.org/what-we-do/programs-services/veterans-law.html",
+      "source_url": "https://newmexicolegalaid.org/information/new-mexico-legal-aids-commitment-to-veteran-legal-services"
+    },
+    {
+      "name": "City of Albuquerque - Office of Military and Veterans Affairs",
+      "phone": "Contact via website",
+      "address": "Albuquerque",
+      "city": "Albuquerque",
+      "state": "NM",
+      "description": "City office providing veteran housing, mental health assistance, and coordination of veteran services",
+      "services": [
+        "housing assistance",
+        "mental health referrals",
+        "veteran services coordination",
+        "emergency assistance"
+      ],
+      "website": "https://www.cabq.gov/office-of-military-and-veterans-affairs/",
+      "source_url": "https://www.cabq.gov/office-of-military-and-veterans-affairs/"
+    },
+    {
+      "name": "New Mexico Veteran and Family Support Services (VFSS)",
+      "phone": "(505) 222-2255 (24-hour Crisis Hotline)",
+      "address": "Statewide Service",
+      "city": "New Mexico",
+      "description": "Provides 24/7 crisis support and behavioral/mental health services for veterans, active-duty personnel, and families",
+      "services": [
+        "behavioral health services",
+        "mental health support",
+        "24-hour crisis hotline",
+        "suicide prevention",
+        "family support"
+      ],
+      "website": "https://www.nmhealth.org/",
+      "source_url": "https://www.cabq.gov/veterans-resource-center/mental-health-assistance"
+    },
+    {
+      "name": "Veterans Affairs Emergency Housing Hotline",
+      "phone": "(877) 424-3838",
+      "address": "National Service",
+      "city": "New Mexico",
+      "description": "24/7 emergency housing assistance for homeless veterans",
+      "services": [
+        "emergency housing",
+        "housing referrals",
+        "crisis support"
+      ],
+      "website": "https://www.va.gov/",
+      "source_url": "https://www.va.gov/"
+    }
+  ]
+}

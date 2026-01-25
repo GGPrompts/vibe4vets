@@ -1,0 +1,170 @@
+{
+  "state": "NE",
+  "state_name": "Nebraska",
+  "fetched_at": "2026-01-25T12:00:00Z",
+  "source": "Nebraska Department of Veterans' Affairs, Nebraska 211, VA Nebraska, Nebraska Department of Labor",
+  "resources": [
+    {
+      "name": "Nebraska 211",
+      "phone": "2-1-1 or Contact via website",
+      "address": "Statewide Service",
+      "city": "Nebraska",
+      "description": "24/7/365 helpline available to veterans, military members and their families connecting to support services for housing, mental health, financial concerns, and more",
+      "services": [
+        "veteran services navigation",
+        "housing assistance",
+        "mental health services",
+        "employment services",
+        "financial assistance",
+        "crisis intervention"
+      ],
+      "website": "https://search.ne211.org/",
+      "source_url": "https://search.ne211.org/"
+    },
+    {
+      "name": "Nebraska Department of Veterans' Affairs",
+      "phone": "Main: (402) 471-2458",
+      "address": "301 Centennial Mall South",
+      "city": "Lincoln",
+      "state": "NE",
+      "zip": "68509",
+      "description": "State agency providing comprehensive benefits, housing, employment, mental health, and support services to Nebraska veterans",
+      "services": [
+        "benefits advocacy",
+        "claims assistance",
+        "housing assistance",
+        "employment services",
+        "mental health services",
+        "substance abuse treatment",
+        "case management"
+      ],
+      "website": "https://veterans.nebraska.gov/",
+      "source_url": "https://veterans.nebraska.gov/"
+    },
+    {
+      "name": "Omaha VA Community Resource and Referral Center (CRRC)",
+      "phone": "(402) 977-4444",
+      "address": "Omaha VA Medical Center",
+      "city": "Omaha",
+      "state": "NE",
+      "description": "VA facility providing referrals and connections to community resources for veterans",
+      "services": [
+        "resource referrals",
+        "community connections",
+        "benefits information",
+        "healthcare coordination"
+      ],
+      "website": "https://www.va.gov/omaha-health-care/",
+      "source_url": "https://www.va.gov/omaha-health-care/"
+    },
+    {
+      "name": "Veterans Affairs Emergency Housing Hotline",
+      "phone": "(877) 424-3838",
+      "address": "National Service",
+      "city": "Nebraska",
+      "description": "24/7 emergency housing assistance hotline for veterans",
+      "services": [
+        "emergency housing",
+        "housing referrals",
+        "crisis support"
+      ],
+      "website": "https://www.va.gov/",
+      "source_url": "https://www.va.gov/"
+    },
+    {
+      "name": "HUD-VASH Program (Nebraska)",
+      "phone": "Contact through VA or Housing Authority",
+      "address": "Multiple locations",
+      "city": "Multiple",
+      "state": "NE",
+      "description": "Provides housing vouchers to low income, disabled and chronically homeless veterans and their families",
+      "services": [
+        "housing vouchers",
+        "rental assistance",
+        "case management",
+        "supportive services"
+      ],
+      "website": "https://www.va.gov/",
+      "source_url": "https://veterans.nebraska.gov/behavioral-health-category/housing-assistance"
+    },
+    {
+      "name": "Supportive Services For Veteran Families (SSVF) Program",
+      "phone": "Contact through VA",
+      "address": "Multiple locations",
+      "city": "Multiple",
+      "state": "NE",
+      "description": "Provides case management, financial assistance, and emergency housing support to very low-income veterans and families",
+      "services": [
+        "case management",
+        "rent/utility assistance",
+        "emergency housing",
+        "moving assistance",
+        "transportation support"
+      ],
+      "website": "https://www.va.gov/",
+      "source_url": "https://veterans.nebraska.gov/behavioral-health-category/housing-assistance"
+    },
+    {
+      "name": "Nebraska Veterans' Gateway",
+      "phone": "Contact via website",
+      "address": "Online platform",
+      "city": "Nebraska",
+      "description": "Online resource platform with veteran employment tools, job conversion database, and training resources",
+      "services": [
+        "employment services",
+        "job training",
+        "career resources",
+        "job conversion tools"
+      ],
+      "website": "https://veterans.nebraska.gov/",
+      "source_url": "https://veterans.nebraska.gov/"
+    },
+    {
+      "name": "Nebraska Department of Labor - Veterans Employment Services",
+      "phone": "(402) 471-2600 or NDOL.VeteranServices@nebraska.gov",
+      "address": "Multiple job centers statewide",
+      "city": "Multiple",
+      "state": "NE",
+      "description": "State employment services with priority hiring preference for eligible Nebraska veterans",
+      "services": [
+        "employment services",
+        "job search",
+        "skills training",
+        "job placement",
+        "hiring preference"
+      ],
+      "website": "https://www.nol.org/",
+      "source_url": "https://veterans.nebraska.gov/"
+    },
+    {
+      "name": "Omaha Military & Family Helpline",
+      "phone": "Contact via 211",
+      "address": "United Way of the Midlands",
+      "city": "Omaha",
+      "state": "NE",
+      "description": "Dedicated support service for veterans, active duty personnel and families powered by United Way 211",
+      "services": [
+        "veteran services",
+        "family support",
+        "mental health referrals",
+        "financial counseling"
+      ],
+      "website": "https://www.unitedwayomaha.org/",
+      "source_url": "https://veterans.nebraska.gov/"
+    },
+    {
+      "name": "Mental Health Crisis Lines (Nebraska)",
+      "phone": "Western: (1-877-492-7001), Substance Abuse: (1-308-762-7177)",
+      "address": "Statewide Service",
+      "city": "Nebraska",
+      "description": "24/7 crisis support for mental health and substance abuse issues",
+      "services": [
+        "crisis intervention",
+        "mental health support",
+        "substance abuse support"
+      ],
+      "website": "https://veterans.nebraska.gov/",
+      "source_url": "https://veterans.nebraska.gov/"
+    }
+  ]
+}

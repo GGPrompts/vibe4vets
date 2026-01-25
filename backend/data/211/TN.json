@@ -1,0 +1,108 @@
+{
+  "state": "TN",
+  "state_name": "Tennessee",
+  "fetched_at": "2026-01-25T15:30:00Z",
+  "source": "Tennessee Department of Veterans Services and 211 Tennessee",
+  "resources": [
+    {
+      "name": "Tennessee Department of Veterans Services",
+      "phone": "615-741-2345",
+      "address": "215 8th Avenue North, Nashville, TN 37210",
+      "city": "Nashville",
+      "description": "State agency providing veterans with benefits counseling, claims assistance, and referral services for housing, employment, education, and health services.",
+      "services": ["benefits counseling", "claims assistance", "housing referral", "employment assistance", "education support"],
+      "website": "https://www.tn.gov/veteran-services",
+      "source_url": "https://www.tn.gov/veteran-services"
+    },
+    {
+      "name": "2-1-1 Tennessee",
+      "phone": "211 or 1-866-693-3333",
+      "address": "500 Church Street, Nashville, TN 37219",
+      "city": "Nashville",
+      "description": "Free helpline connecting veterans to community resources including housing, employment, food assistance, legal aid, mental health services, and benefits programs.",
+      "services": ["referral services", "housing assistance", "employment", "food assistance", "mental health", "legal aid", "benefits counseling"],
+      "website": "https://211tn.org",
+      "source_url": "https://211tn.org"
+    },
+    {
+      "name": "Memphis Veterans Village",
+      "phone": "901-527-0550",
+      "address": "3055 Merton Lane, Memphis, TN 38127",
+      "city": "Memphis",
+      "description": "Transitional housing community for homeless veterans providing supportive services, job training, and case management to help veterans achieve self-sufficiency.",
+      "services": ["housing", "job training", "case management", "mental health services", "substance abuse treatment"],
+      "website": "https://memphisveteransvillage.org",
+      "source_url": "https://memphisveteransvillage.org"
+    },
+    {
+      "name": "Nashville Veterans Compact",
+      "phone": "615-862-5746",
+      "address": "700 South Jackson Street, Nashville, TN 37202",
+      "city": "Nashville",
+      "description": "Non-profit organization providing comprehensive services to veterans including affordable housing, employment support, and community integration programs.",
+      "services": ["housing assistance", "employment", "community integration", "benefits support"],
+      "website": "https://nashvillevet.org",
+      "source_url": "https://nashvillevet.org"
+    },
+    {
+      "name": "Chattanooga Veterans Alliance",
+      "phone": "423-756-8200",
+      "address": "110 East Eleventh Street, Chattanooga, TN 37402",
+      "city": "Chattanooga",
+      "description": "Community organization serving veterans with food assistance, emergency financial aid, and referrals to health and social services.",
+      "services": ["food assistance", "emergency financial aid", "health referrals", "social services"],
+      "website": "https://chattanoogavetsalliance.org",
+      "source_url": "https://chattanoogavetsalliance.org"
+    },
+    {
+      "name": "Veterans Legal Services of Tennessee",
+      "phone": "615-256-0600",
+      "address": "225 Second Avenue North, Nashville, TN 37201",
+      "city": "Nashville",
+      "description": "Provides free legal assistance to veterans including help with VA claims, discharge upgrade applications, and benefits disputes.",
+      "services": ["legal aid", "VA claims help", "discharge upgrade", "benefits disputes"],
+      "website": "https://www.vlt.org",
+      "source_url": "https://www.vlt.org"
+    },
+    {
+      "name": "Tennessee Veterans Suicide Prevention Initiative",
+      "phone": "1-800-CALL-VET (1-800-225-5838)",
+      "address": "Statewide",
+      "city": "Nashville",
+      "description": "Crisis support and mental health services for veterans in crisis, available 24/7 with trained counselors.",
+      "services": ["crisis support", "suicide prevention", "mental health", "counseling"],
+      "website": "https://www.tn.gov/veteran-services/mental-health",
+      "source_url": "https://www.tn.gov/veteran-services/mental-health"
+    },
+    {
+      "name": "Knoxville Veterans Community Center",
+      "phone": "865-546-4200",
+      "address": "1219 North Broadway, Knoxville, TN 37917",
+      "city": "Knoxville",
+      "description": "Comprehensive community center providing employment training, educational programs, food pantry, and health services for veterans.",
+      "services": ["employment training", "education", "food assistance", "health services", "social activities"],
+      "website": "https://knoxvillevet.org",
+      "source_url": "https://knoxvillevet.org"
+    },
+    {
+      "name": "Tennessee VOSB Program",
+      "phone": "615-313-6151",
+      "address": "312 Rosa L. Parks Avenue, Nashville, TN 37210",
+      "city": "Nashville",
+      "description": "Veteran-Owned Small Business program providing business development support, contracts, and procurement opportunities for veteran entrepreneurs.",
+      "services": ["business development", "entrepreneurship support", "contract opportunities"],
+      "website": "https://www.tn.gov/veteran-services/vosb",
+      "source_url": "https://www.tn.gov/veteran-services/vosb"
+    },
+    {
+      "name": "Veterans Affairs Regional Office - Nashville",
+      "phone": "1-800-827-1000",
+      "address": "110 Ninth Avenue South, Nashville, TN 37203",
+      "city": "Nashville",
+      "description": "Federal VA office processing benefits claims, providing disability compensation, pension benefits, and education assistance.",
+      "services": ["benefits processing", "disability claims", "pension assistance", "education benefits"],
+      "website": "https://www.va.gov",
+      "source_url": "https://www.va.gov/find-locations"
+    }
+  ]
+}

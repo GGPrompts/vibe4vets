@@ -1,0 +1,158 @@
+{
+  "state": "AL",
+  "state_name": "Alabama",
+  "fetched_at": "2026-01-25T16:30:00Z",
+  "source": "211 Connects Alabama, Alabama Department of Veterans Affairs, Priority Veteran, United Way of Central Alabama",
+  "resources": [
+    {
+      "name": "211 Connects Alabama",
+      "phone": "888-421-1266",
+      "phone_alt": "Text 898-211",
+      "address": "State of Alabama",
+      "city": "Statewide",
+      "description": "Searchable database of resources specifically for Veterans, Service Members and their families. Available 24/7 with trained operators.",
+      "services": [
+        "benefits assistance",
+        "housing",
+        "employment",
+        "food services",
+        "legal assistance",
+        "healthcare",
+        "mental health",
+        "disaster relief"
+      ],
+      "website": "https://www.211connectsalabama.org",
+      "source_url": "https://www.211connectsalabama.org"
+    },
+    {
+      "name": "Priority Veteran",
+      "phone": "866-460-3827",
+      "address": "Service coordination program throughout Alabama",
+      "city": "Multiple locations",
+      "description": "Service-coordination program for homeless veterans helping them secure permanent, sustainable housing. Serves all Alabama except Baldwin and Mobile counties.",
+      "services": [
+        "housing",
+        "homeless services",
+        "case management"
+      ],
+      "website": "https://www.priorityveteran.org",
+      "source_url": "https://www.priorityveteran.org"
+    },
+    {
+      "name": "Alabama Department of Veterans Affairs",
+      "phone": "1-800-952-5626",
+      "address": "Veterans Affairs Complex, Montgomery, AL",
+      "city": "Montgomery",
+      "description": "State department providing comprehensive veteran services including benefits, housing assistance, and homeless veterans programs",
+      "services": [
+        "benefits assistance",
+        "housing",
+        "disability compensation",
+        "education",
+        "employment",
+        "homeless services"
+      ],
+      "website": "https://va.alabama.gov",
+      "source_url": "https://va.alabama.gov/veteransresources/"
+    },
+    {
+      "name": "Veterans Crisis Line",
+      "phone": "988 (then press 1)",
+      "phone_alt": "Text 838255",
+      "address": "National hotline",
+      "city": "National",
+      "description": "24/7 free confidential crisis support for veterans and families experiencing mental health crises, PTSD, suicidal thoughts",
+      "services": [
+        "mental health",
+        "crisis intervention",
+        "suicide prevention"
+      ],
+      "website": "https://www.veteranscrisisline.net",
+      "source_url": "https://www.veteranscrisisline.net"
+    },
+    {
+      "name": "Homeless Veterans Initiative of Alabama",
+      "phone": "205-300-8406",
+      "address": "Birmingham area",
+      "city": "Birmingham",
+      "description": "Organization serving homeless veterans in Birmingham and Tuscaloosa areas with housing and support services",
+      "services": [
+        "housing",
+        "homeless services",
+        "case management"
+      ],
+      "website": "https://alabamaveteransresourceguide.com",
+      "source_url": "https://alabamaveteransresourceguide.com/organizations"
+    },
+    {
+      "name": "Three Hots And A Cot",
+      "phone": "205-520-2356",
+      "address": "Birmingham area",
+      "city": "Birmingham",
+      "description": "Provides housing and meals for homeless veterans",
+      "services": [
+        "housing",
+        "food services",
+        "homeless services"
+      ],
+      "website": "https://www.cotsforvets.org",
+      "source_url": "https://www.cotsforvets.org"
+    },
+    {
+      "name": "Aletheia House of Birmingham",
+      "phone": "205-324-6502",
+      "address": "Birmingham, AL",
+      "city": "Birmingham",
+      "description": "Offers job training and placement assistance, transitional housing with meals for veterans",
+      "services": [
+        "housing",
+        "employment",
+        "job training",
+        "food services"
+      ],
+      "website": "https://alabamaveteransresourceguide.com",
+      "source_url": "https://alabamaveteransresourceguide.com/organizations"
+    },
+    {
+      "name": "One Roof",
+      "phone": "205-254-8833",
+      "address": "Birmingham area",
+      "city": "Birmingham",
+      "description": "Veteran support services in Birmingham area",
+      "services": [
+        "housing",
+        "support services"
+      ],
+      "website": "https://alabamaveteransresourceguide.com",
+      "source_url": "https://alabamaveteransresourceguide.com/organizations"
+    },
+    {
+      "name": "Catholic Center of Concern",
+      "phone": "205-786-4388",
+      "address": "Birmingham, AL",
+      "city": "Birmingham",
+      "description": "Provides food boxes and emergency assistance for veterans",
+      "services": [
+        "food services",
+        "emergency assistance"
+      ],
+      "website": "https://alabamaveteransresourceguide.com",
+      "source_url": "https://alabamaveteransresourceguide.com/organizations"
+    },
+    {
+      "name": "United Way of Central Alabama - Veteran Services",
+      "phone": "211",
+      "address": "Central Alabama region",
+      "city": "Multiple locations",
+      "description": "United Way veteran services providing referrals and support for veterans needing housing, employment, benefits assistance",
+      "services": [
+        "benefits assistance",
+        "housing",
+        "employment",
+        "case management"
+      ],
+      "website": "https://www.uwca.org/need-help/veteran-services",
+      "source_url": "https://www.uwca.org/need-help/veteran-services"
+    }
+  ]
+}

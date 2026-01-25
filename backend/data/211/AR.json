@@ -1,0 +1,163 @@
+{
+  "state": "AR",
+  "state_name": "Arkansas",
+  "fetched_at": "2026-01-25T16:30:00Z",
+  "source": "Arkansas 211, Arkansas Department of Veterans Affairs, Little Rock VA Healthcare System",
+  "resources": [
+    {
+      "name": "Arkansas 211",
+      "phone": "211",
+      "phone_alt": "866-489-6983",
+      "address": "Statewide service",
+      "city": "Statewide",
+      "description": "Free information and referral service with database of over 19,000 resources. Available 24 hours a day connecting residents to local services including veteran resources.",
+      "services": [
+        "benefits assistance",
+        "housing",
+        "employment",
+        "food services",
+        "mental health",
+        "legal assistance"
+      ],
+      "website": "https://arkansas211.org",
+      "source_url": "https://arkansas211.org"
+    },
+    {
+      "name": "Arkansas Department of Veterans Affairs",
+      "phone": "501-682-2231",
+      "address": "Winthrop Rockefeller Building, 501 Woodlane Street, Suite 401N, Little Rock, AR 72201",
+      "city": "Little Rock",
+      "description": "State agency providing comprehensive veteran services including benefits assistance, housing, employment services, and veteran homes",
+      "services": [
+        "benefits assistance",
+        "housing",
+        "employment",
+        "disability compensation",
+        "education"
+      ],
+      "website": "https://www.veterans.arkansas.gov",
+      "source_url": "https://www.veterans.arkansas.gov"
+    },
+    {
+      "name": "Arkansas State Veterans Home - North Little Rock",
+      "phone": "501-683-1406",
+      "address": "2401 John Ashley Drive, North Little Rock, AR 72214",
+      "city": "North Little Rock",
+      "description": "State veterans home providing residential care and support services for eligible veterans",
+      "services": [
+        "housing",
+        "assisted living",
+        "healthcare",
+        "meal services"
+      ],
+      "website": "https://humanservices.arkansas.gov/facilities",
+      "source_url": "https://humanservices.arkansas.gov/facilities/arkansas-state-veterans-home-at-north-little-rock/"
+    },
+    {
+      "name": "Arkansas State Veterans Home - Fayetteville",
+      "phone": "Contact through ADVA",
+      "address": "Fayetteville, AR",
+      "city": "Fayetteville",
+      "description": "State veterans home providing residential care and support services for eligible veterans",
+      "services": [
+        "housing",
+        "assisted living",
+        "healthcare"
+      ],
+      "website": "https://www.veterans.arkansas.gov",
+      "source_url": "https://www.veterans.arkansas.gov/veteran-homes-1"
+    },
+    {
+      "name": "Little Rock VA Regional Benefit Office",
+      "phone": "1-800-827-1000",
+      "address": "Eugene J. Towbin Healthcare Center, 2200 Fort Roots Drive, North Little Rock, AR 72114",
+      "city": "North Little Rock",
+      "description": "Federal VA office administering compensation, pension, and educational benefits for Arkansas veterans and their families",
+      "services": [
+        "benefits assistance",
+        "disability compensation",
+        "pension",
+        "education",
+        "home loans"
+      ],
+      "website": "https://www.benefits.va.gov/littlerock",
+      "source_url": "https://benefits.va.gov/littlerock"
+    },
+    {
+      "name": "VA Central Arkansas Healthcare System - Homeless Veteran Care",
+      "phone": "501-257-1412",
+      "address": "2200 Fort Roots Drive, North Little Rock, AR 72114",
+      "city": "North Little Rock",
+      "description": "Comprehensive homeless veteran services including housing, mental health, substance abuse treatment, and support services",
+      "services": [
+        "housing",
+        "mental health",
+        "substance abuse treatment",
+        "healthcare",
+        "case management"
+      ],
+      "website": "https://www.va.gov/central-arkansas-health-care",
+      "source_url": "https://www.va.gov/central-arkansas-health-care/health-services/homeless-veteran-care/"
+    },
+    {
+      "name": "Arkansas Division of Workforce Services - Veteran Employment",
+      "phone": "501-682-3579",
+      "address": "Multiple locations statewide",
+      "city": "Multiple locations",
+      "description": "Provides special employment counseling and referral services for veterans. DVOP specialists serve disabled veterans and those with employment barriers.",
+      "services": [
+        "employment",
+        "job training",
+        "career counseling",
+        "benefits assistance"
+      ],
+      "website": "https://dws.arkansas.gov/workforce-services/job-seekers/veterans-services",
+      "source_url": "https://dws.arkansas.gov/workforce-services/job-seekers/veterans-services"
+    },
+    {
+      "name": "Rally Point - Non-Profit Center for Excellence",
+      "phone": "Contact through website",
+      "address": "The Tower Building, downtown Little Rock, AR",
+      "city": "Little Rock",
+      "description": "New non-profit center opened January 1, 2026 with furnished offices, podcast studio, meeting rooms, classrooms for veteran support and community services",
+      "services": [
+        "employment",
+        "education",
+        "community support",
+        "mental health"
+      ],
+      "website": "Contact through Arkansas 211",
+      "source_url": "https://arkansas211.org"
+    },
+    {
+      "name": "Veterans Crisis Line",
+      "phone": "988 (then press 1)",
+      "phone_alt": "Text 838255",
+      "address": "National hotline",
+      "city": "National",
+      "description": "24/7 free confidential crisis support for veterans and families experiencing mental health crises, PTSD, suicidal thoughts",
+      "services": [
+        "mental health",
+        "crisis intervention",
+        "suicide prevention"
+      ],
+      "website": "https://www.veteranscrisisline.net",
+      "source_url": "https://www.veteranscrisisline.net"
+    },
+    {
+      "name": "Homeless to Independence - Veterans Services Arkansas",
+      "phone": "Contact through website",
+      "address": "Arkansas statewide",
+      "city": "Multiple locations",
+      "description": "Organization providing services to help homeless veterans transition to independent living",
+      "services": [
+        "housing",
+        "employment",
+        "case management",
+        "support services"
+      ],
+      "website": "https://www.homelesstoindependence.org/veteransservices/for-veterans-arkansas",
+      "source_url": "https://www.homelesstoindependence.org/veteransservices/for-veterans-arkansas"
+    }
+  ]
+}

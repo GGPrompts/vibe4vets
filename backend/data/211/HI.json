@@ -1,0 +1,170 @@
+{
+  "state": "HI",
+  "state_name": "Hawaii",
+  "fetched_at": "2026-01-25T18:00:00Z",
+  "source": "211.org, Hawaii DoD Office of Veterans' Services, U.S.VETS, VA Hawaii, Hope Services Hawaii",
+  "resources": [
+    {
+      "name": "Hawaii 211 - United Way 211",
+      "phone": "211",
+      "phone_alt": "1-800-399-6993",
+      "address": "Statewide hotline",
+      "city": "Statewide",
+      "description": "Free, confidential information and referrals to 4,000+ community resources including housing, employment, food, health, mental health, and veteran services",
+      "services": [
+        "resource referrals",
+        "housing",
+        "food",
+        "employment",
+        "health",
+        "mental health",
+        "veteran services"
+      ],
+      "website": "https://www.211.org/",
+      "source_url": "https://www.211.org/"
+    },
+    {
+      "name": "Office of Veterans' Services - Hawaii DoD",
+      "phone": "808-733-4410",
+      "address": "3949 Diamond Head Road, Honolulu, HI 96816",
+      "city": "Honolulu",
+      "description": "State office providing links to veteran resources, benefits information, and support services",
+      "services": [
+        "veteran services",
+        "benefits assistance",
+        "resource referrals"
+      ],
+      "website": "https://dod.hawaii.gov/ovs/links-for-veterans/",
+      "source_url": "https://dod.hawaii.gov/ovs/links-for-veterans/"
+    },
+    {
+      "name": "Matsunaga VA Medical Center",
+      "phone": "1-800-214-1306",
+      "phone_alt": "808-433-0600",
+      "address": "459 Patterson Road, Honolulu, HI 96819",
+      "city": "Honolulu",
+      "description": "VA medical center providing comprehensive healthcare, emergency housing, transitional housing, permanent housing (HUD-VASH), and benefits assistance",
+      "services": [
+        "healthcare",
+        "mental health",
+        "housing",
+        "emergency housing",
+        "transitional housing",
+        "permanent housing",
+        "benefits assistance",
+        "crisis support"
+      ],
+      "website": "https://www.va.gov/hawaii-health-care/",
+      "source_url": "https://www.va.gov/hawaii-health-care/"
+    },
+    {
+      "name": "U.S.VETS Barber's Point",
+      "phone": "808-330-5566",
+      "address": "Kalaeloa, Kaena Point, HI 96862",
+      "city": "Kalaeloa",
+      "description": "On-site transitional, long-term and permanent housing for homeless veterans with employment services through Veterans in Progress program",
+      "services": [
+        "housing",
+        "transitional housing",
+        "permanent housing",
+        "employment",
+        "career counseling",
+        "case management"
+      ],
+      "website": "https://usvets.org/locations/barbers-point/",
+      "source_url": "https://usvets.org/locations/barbers-point/"
+    },
+    {
+      "name": "U.S.VETS Wai'anae",
+      "phone": "808-330-5566",
+      "address": "Wai'anae, Leeward Coast, HI",
+      "city": "Wai'anae",
+      "description": "Only U.S.VETS site providing comprehensive services to both veteran and civilian families, serving nearly 200 men, women and children daily with housing and support",
+      "services": [
+        "housing",
+        "transitional housing",
+        "permanent housing",
+        "mental health counseling",
+        "substance use treatment",
+        "employment support",
+        "family services"
+      ],
+      "website": "https://usvets.org/locations/waianae/",
+      "source_url": "https://usvets.org/locations/waianae/"
+    },
+    {
+      "name": "Hope Services Hawaii - Veterans Services",
+      "phone": "808-536-0701",
+      "address": "Honolulu, HI",
+      "city": "Honolulu",
+      "description": "Community-based organization providing comprehensive support services for veterans including housing assistance, case management, and supportive services",
+      "services": [
+        "housing",
+        "case management",
+        "supportive services",
+        "crisis support"
+      ],
+      "website": "https://hopeserviceshawaii.org/services/veterans/",
+      "source_url": "https://hopeserviceshawaii.org/services/veterans/"
+    },
+    {
+      "name": "Veterans Crisis Line",
+      "phone": "988 (then press 1)",
+      "phone_alt": "Text 838255",
+      "address": "National hotline - 24/7",
+      "city": "National",
+      "description": "24/7 free confidential crisis support for veterans and families experiencing mental health crises, PTSD, suicidal thoughts",
+      "services": [
+        "mental health crisis support",
+        "PTSD support",
+        "suicide prevention",
+        "chat support",
+        "text support"
+      ],
+      "website": "https://www.veteranscrisisline.net/",
+      "source_url": "https://www.veteranscrisisline.net/"
+    },
+    {
+      "name": "Wounded Warrior Project",
+      "phone": "888-997-2586",
+      "address": "4899 Belfort Road, Suite 300, Jacksonville, FL 32256",
+      "city": "Jacksonville",
+      "description": "National nonprofit providing support and services for post-9/11 veterans and service members with physical or mental injuries",
+      "services": [
+        "mental health",
+        "PTSD treatment",
+        "peer support",
+        "family support",
+        "career transition",
+        "physical health and wellness"
+      ],
+      "website": "https://www.woundedwarriorproject.org",
+      "source_url": "https://www.woundedwarriorproject.org"
+    },
+    {
+      "name": "Hire Heroes USA",
+      "phone": "844-884-3573",
+      "address": "13010 Morris Rd, Suite 175, Alpharetta, GA 30004",
+      "city": "Alpharetta",
+      "description": "Nonprofit providing complimentary career assistance, job placement services, resume optimization, mentorship, and access to employment board (36K+ jobs)",
+      "services": [
+        "employment",
+        "job placement",
+        "resume coaching",
+        "career counseling",
+        "mentorship"
+      ],
+      "website": "https://www.hireheroesusa.org/",
+      "source_url": "https://www.hireheroesusa.org/"
+    }
+  ],
+  "additional_resources": {
+    "911_crisis_emergency": "Call 911 for emergencies",
+    "988_suicide_crisis": "988 (then press 1) - Veterans Crisis Line - 24/7",
+    "hud_vash_program": "https://www.va.gov/homeless/hud-vash.asp - Housing vouchers with VA services for homeless veterans",
+    "va_mental_health": "https://www.mentalhealth.va.gov/",
+    "kaiser_permanente_grant": "Kaiser Permanente offers $50,000 grants for homeless and at-risk veterans",
+    "va_benefits": "https://www.va.gov/ - Comprehensive VA benefits and healthcare"
+  },
+  "notes": "Hawaii has strong veteran support services through U.S.VETS locations and the VA medical center. Call 211 for local resource referrals or contact the Office of Veterans' Services for state-specific assistance. Many services are free and confidential."
+}

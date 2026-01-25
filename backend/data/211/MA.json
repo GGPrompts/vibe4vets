@@ -1,0 +1,238 @@
+{
+  "state": "MA",
+  "state_name": "Massachusetts",
+  "fetched_at": "2026-01-25T00:00:00Z",
+  "source": "Massachusetts Executive Office of Veterans' Services, Boston Public Library, Veterans Legal Services, VA Boston Healthcare",
+  "resources": [
+    {
+      "name": "Massachusetts Executive Office of Veterans' Services",
+      "phone": "617-210-5480",
+      "address": "15 New Chardon Street, Suite 400, One Bowdoin Square, Boston, MA 02114",
+      "city": "Boston",
+      "description": "State agency overseeing programs and services for Massachusetts veterans. Compiles many programs and benefits across the Commonwealth for all eligible veterans.",
+      "services": [
+        "benefits assistance",
+        "program oversight",
+        "veteran services",
+        "information and referrals"
+      ],
+      "website": "https://www.mass.gov/",
+      "source_url": "https://guides.bpl.org/guide4help/veterans"
+    },
+    {
+      "name": "Veterans Legal Services",
+      "phone": "857-317-4474",
+      "address": "Multiple locations serving New England",
+      "city": "Massachusetts",
+      "description": "Non-profit providing free and comprehensive civil legal aid services to economically disadvantaged military veterans. Services provided at multiple locations including New England Center for Homeless Veterans, Bedford VA Medical Center, Brockton VA Medical Center, and others.",
+      "services": [
+        "legal aid",
+        "civil legal services",
+        "veteran advocacy",
+        "disability appeals"
+      ],
+      "website": "https://www.veteranslegalservices.org/",
+      "source_url": "https://www.veteranslegalservices.org/help"
+    },
+    {
+      "name": "City of Boston Department of Veterans' Services",
+      "phone": "617-241-VETS (8387)",
+      "phone_alt": "617-635-3026",
+      "email": "veterans@boston.gov",
+      "address": "43 Hawkins Street, 3rd Floor, Boston, MA 02114",
+      "city": "Boston",
+      "description": "Local department providing assistance with benefits and connections to resources for veterans in Boston",
+      "services": [
+        "benefits assistance",
+        "resource referrals",
+        "veteran services"
+      ],
+      "website": "https://www.mass.gov/",
+      "source_url": "https://guides.bpl.org/guide4help/veterans"
+    },
+    {
+      "name": "Disabled American Veterans of Massachusetts",
+      "phone": "617-727-2974",
+      "address": "State House, Room 546, Boston, MA 02133",
+      "city": "Boston",
+      "description": "Organization that procures benefits for disabled veterans through advocacy and representation",
+      "services": [
+        "disability benefits",
+        "benefits assistance",
+        "advocacy"
+      ],
+      "website": "https://www.dav.org/",
+      "source_url": "https://guides.bpl.org/guide4help/veterans"
+    },
+    {
+      "name": "Home Base Veteran and Family Care",
+      "phone": "617-724-5202",
+      "address": "Massachusetts General Hospital, Boston, MA",
+      "city": "Boston",
+      "description": "Provides treatment for traumatic brain injury and PTSD for post-9/11 veterans and their families",
+      "services": [
+        "mental health",
+        "PTSD treatment",
+        "traumatic brain injury treatment",
+        "family support"
+      ],
+      "website": "https://www.homebase.org/",
+      "source_url": "https://guides.bpl.org/guide4help/veterans"
+    },
+    {
+      "name": "New England Center for Homeless Veterans",
+      "phone": "617-371-1800",
+      "address": "17 Court Street, Boston, MA 02108",
+      "city": "Boston",
+      "description": "Provides housing, meals, healthcare, and job training services for homeless veterans",
+      "services": [
+        "housing",
+        "meals",
+        "healthcare",
+        "job training",
+        "case management"
+      ],
+      "website": "https://www.nechv.org/",
+      "source_url": "https://guides.bpl.org/guide4help/veterans"
+    },
+    {
+      "name": "Veterans Inc.",
+      "phone": "800-482-5651",
+      "address": "69 Grove Street, Worcester, MA 01605",
+      "city": "Worcester",
+      "email": "info@veteransinc.org",
+      "description": "Provides case management, housing assistance, employment services, and substance abuse support for veterans",
+      "services": [
+        "housing",
+        "employment",
+        "case management",
+        "substance abuse support",
+        "supportive services"
+      ],
+      "website": "https://www.veteransinc.org/",
+      "source_url": "https://guides.bpl.org/guide4help/veterans"
+    },
+    {
+      "name": "VA Boston Healthcare System",
+      "phone": "617-232-4200",
+      "address": "Multiple locations (Jamaica Plain, Brockton, Worcester, plus community clinics)",
+      "city": "Boston",
+      "description": "VA medical facility providing comprehensive healthcare, mental health services, homeless veteran care, and benefits counseling",
+      "services": [
+        "healthcare",
+        "mental health",
+        "PTSD treatment",
+        "homeless veteran services",
+        "benefits counseling"
+      ],
+      "website": "https://www.boston.va.gov/",
+      "source_url": "https://www.boston.va.gov/"
+    },
+    {
+      "name": "Veterans Crisis Line",
+      "phone": "988 (then press 1)",
+      "phone_alt": "Text 838255",
+      "address": "National hotline",
+      "city": "National",
+      "description": "24/7 free confidential crisis support for veterans and families experiencing mental health crises, PTSD, suicidal thoughts",
+      "services": [
+        "mental health crisis support",
+        "PTSD support",
+        "suicide prevention",
+        "chat support",
+        "text support"
+      ],
+      "website": "https://www.veteranscrisisline.net/",
+      "source_url": "https://www.veteranscrisisline.net/"
+    },
+    {
+      "name": "NVF Lifeline for Vets",
+      "phone": "1-888-777-4443",
+      "address": "National hotline staffed by veterans",
+      "city": "National",
+      "description": "Confidential toll-free hotline staffed by veterans providing support and referrals",
+      "services": [
+        "mental health support",
+        "peer support",
+        "referrals",
+        "crisis support"
+      ],
+      "website": "https://www.nvf.org/",
+      "source_url": "https://guides.bpl.org/guide4help/veterans"
+    },
+    {
+      "name": "Chapter 115 Benefits (Massachusetts State Benefits)",
+      "phone": "Contact your local Veterans Service Officer",
+      "address": "Every town or district in Massachusetts",
+      "city": "Statewide",
+      "description": "Massachusetts General Laws Chapter 115 provides financial assistance for qualifying low-income veterans for food, shelter, clothing, housing supplies, and medical care. Every town or district has a Veterans' Service Officer (VSO).",
+      "services": [
+        "financial assistance",
+        "food",
+        "shelter",
+        "clothing",
+        "housing supplies",
+        "medical care"
+      ],
+      "website": "https://www.mass.gov/",
+      "source_url": "https://legalservicescenter.org/chapter-115-self-help-guide/"
+    },
+    {
+      "name": "Housing Resources for Veterans",
+      "phone": "Contact your local housing authority",
+      "address": "Multiple locations statewide",
+      "city": "Statewide",
+      "description": "Veterans may qualify for preference or priority on public housing waitlists with Local Housing Authorities or private subsidized housing developments",
+      "services": [
+        "housing",
+        "housing assistance",
+        "public housing"
+      ],
+      "website": "https://www.mass.gov/info-details/housing-resources-for-elders-and-veterans",
+      "source_url": "https://www.mass.gov/info-details/housing-resources-for-elders-and-veterans"
+    },
+    {
+      "name": "Hire Heroes USA",
+      "phone": "844-884-3573",
+      "phone_alt": "866-915-4376",
+      "address": "National organization",
+      "city": "National",
+      "description": "Employment assistance and job placement services for veterans overcoming employment barriers",
+      "services": [
+        "employment",
+        "job placement",
+        "career counseling"
+      ],
+      "website": "https://www.hireheroesusa.org/",
+      "source_url": "https://www.hireheroesusa.org/"
+    },
+    {
+      "name": "Wounded Warrior Project",
+      "phone": "888-997-2586",
+      "phone_alt": "904-405-1213",
+      "address": "4899 Belfort Road, Suite 300, Jacksonville, FL 32256",
+      "city": "Jacksonville",
+      "description": "Support and services for post-9/11 veterans and service members with physical or mental injuries",
+      "services": [
+        "mental health",
+        "PTSD treatment",
+        "peer support",
+        "family support",
+        "career transition",
+        "physical health and wellness"
+      ],
+      "website": "https://www.woundedwarriorproject.org",
+      "source_url": "https://www.woundedwarriorproject.org"
+    }
+  ],
+  "additional_resources": {
+    "911_crisis_emergency": "Call 911 for emergencies",
+    "988_suicide_crisis": "988 (then press 1) - Veterans Crisis Line - 24/7",
+    "state_bar_legal_aid": "https://www.mass.gov/lists/legal-resources-for-veterans",
+    "va_mental_health": "https://www.mentalhealth.va.gov/",
+    "veteran_legal_services": "https://www.veteranslegalservices.org/ - Free legal aid for veterans",
+    "veterans_collaborative": "https://www.collaborate.vet/housing - Housing resources network",
+    "homeless_veteran_hotline": "1-877-424-3838 - National Call Center for Homeless Veterans"
+  },
+  "notes": "This directory includes major state and federal veteran resources in Massachusetts. Every town and city has a Veterans Service Officer available to assist. Many services are free and confidential."
+}

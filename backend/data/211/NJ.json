@@ -1,0 +1,167 @@
+{
+  "state": "NJ",
+  "state_name": "New Jersey",
+  "fetched_at": "2026-01-25T12:00:00Z",
+  "source": "NJ 211, VA New Jersey Health Care, Community Hope, New Jersey Department of Military and Veterans Services",
+  "resources": [
+    {
+      "name": "NJ 211",
+      "phone": "2-1-1 or (898) 211-0899",
+      "address": "Statewide Service",
+      "city": "New Jersey",
+      "description": "24/7 information and referral service offering services via phone, chat, text and web connecting to housing, food, healthcare, mental health, and legal aid",
+      "services": [
+        "veteran services navigation",
+        "housing assistance",
+        "food assistance",
+        "healthcare referrals",
+        "mental health services",
+        "legal aid referrals"
+      ],
+      "website": "https://nj211.org/",
+      "source_url": "https://nj211.org/"
+    },
+    {
+      "name": "Veterans Crisis Line",
+      "phone": "1-866-VETS-NJ-4 (1-866-838-7654)",
+      "address": "Statewide Service",
+      "city": "New Jersey",
+      "description": "Free, confidential helpline providing mental health support to New Jersey veterans and their families",
+      "services": [
+        "mental health support",
+        "crisis intervention",
+        "confidential counseling",
+        "family support"
+      ],
+      "website": "Contact via helpline",
+      "source_url": "https://nj211.org/"
+    },
+    {
+      "name": "VA New Jersey Health Care System",
+      "phone": "Contact via website",
+      "address": "Multiple VA Medical Centers statewide",
+      "city": "Multiple",
+      "state": "NJ",
+      "description": "Veterans Affairs system providing comprehensive healthcare, mental health services, and homeless veteran support",
+      "services": [
+        "primary healthcare",
+        "mental health care",
+        "homeless veteran services",
+        "emergency housing",
+        "job training",
+        "life skills development"
+      ],
+      "website": "https://www.va.gov/new-jersey-health-care/",
+      "source_url": "https://www.va.gov/new-jersey-health-care/health-services/homeless-veteran-care/"
+    },
+    {
+      "name": "Community Hope - Hope for Veterans",
+      "phone": "Contact via website",
+      "address": "Multiple locations",
+      "city": "Multiple",
+      "state": "NJ",
+      "description": "Provides transitional housing, permanent supportive housing, rapid re-housing, and homelessness prevention with wraparound services",
+      "services": [
+        "transitional housing",
+        "permanent supportive housing",
+        "rapid re-housing",
+        "homelessness prevention",
+        "mental health counseling",
+        "employment counseling",
+        "transportation"
+      ],
+      "website": "https://www.communityhope-nj.org/what-we-do/hope-for-veterans/",
+      "source_url": "https://www.communityhope-nj.org/what-we-do/hope-for-veterans/"
+    },
+    {
+      "name": "Foundation for Sustainable Veterans Housing (NJ)",
+      "phone": "Contact via website",
+      "address": "Statewide Initiative",
+      "city": "New Jersey",
+      "description": "Leading initiative to build veteran housing facility in each of New Jersey's 21 counties and end veterans homelessness",
+      "services": [
+        "housing development",
+        "homelessness prevention",
+        "housing support"
+      ],
+      "website": "Contact via NJ 211",
+      "source_url": "https://nj211.org/"
+    },
+    {
+      "name": "New Jersey Department of Military and Veterans Services",
+      "phone": "Contact via website",
+      "address": "Multiple locations",
+      "city": "Multiple",
+      "state": "NJ",
+      "description": "State agency providing veteran benefits, services, and advocacy",
+      "services": [
+        "benefits assistance",
+        "housing support",
+        "employment services",
+        "veterans affairs"
+      ],
+      "website": "https://www.nj.gov/military/",
+      "source_url": "https://nj211.org/"
+    },
+    {
+      "name": "New Jersey VFW - Homeless Assistance",
+      "phone": "(908) 241-2300",
+      "address": "New Jersey",
+      "city": "Multiple",
+      "state": "NJ",
+      "description": "Provides homeless assistance and veteran support services",
+      "services": [
+        "homeless assistance",
+        "veteran support",
+        "emergency services"
+      ],
+      "website": "https://vfwnj.org/",
+      "source_url": "https://vfwnj.org/di/vfw/v2/default.asp?pid=96745"
+    },
+    {
+      "name": "Veterans Justice Outreach Initiative - NJ Reentry Corporation",
+      "phone": "Contact via website",
+      "address": "New Jersey",
+      "city": "Multiple",
+      "state": "NJ",
+      "description": "Provides legal services and court-involved veteran support including training for career employment",
+      "services": [
+        "legal services",
+        "court support",
+        "career training",
+        "employment services"
+      ],
+      "website": "https://njreentry.org/veterans_justice_outreach_initiative/",
+      "source_url": "https://njreentry.org/veterans_justice_outreach_initiative/"
+    },
+    {
+      "name": "New Jersey Veterans Veteran Support Alliance",
+      "phone": "Contact via website",
+      "address": "New Jersey",
+      "city": "Multiple",
+      "state": "NJ",
+      "description": "Organization supporting and empowering New Jersey veterans through advocacy and resources",
+      "services": [
+        "veteran support",
+        "advocacy",
+        "resource navigation"
+      ],
+      "website": "https://njvsa.org/",
+      "source_url": "https://njvsa.org/"
+    },
+    {
+      "name": "Veterans Affairs Emergency Housing Hotline",
+      "phone": "(877) 424-3838",
+      "address": "National Service",
+      "city": "New Jersey",
+      "description": "24/7 emergency housing assistance for homeless veterans",
+      "services": [
+        "emergency housing",
+        "crisis support",
+        "housing referrals"
+      ],
+      "website": "https://www.va.gov/",
+      "source_url": "https://www.va.gov/"
+    }
+  ]
+}

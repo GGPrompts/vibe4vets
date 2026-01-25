@@ -1,0 +1,221 @@
+{
+  "state": "ME",
+  "state_name": "Maine",
+  "fetched_at": "2026-01-25T00:00:00Z",
+  "source": "211 Maine, Maine Bureau of Veterans' Services, Maine Department of Veterans Affairs",
+  "resources": [
+    {
+      "name": "Maine Bureau of Veterans' Services - Central Office",
+      "phone": "207-287-7020",
+      "phone_alt": "207-287-7019 (Homeless Veterans Coordination)",
+      "address": "117 State House Station, Augusta, ME 04333-0117",
+      "city": "Augusta",
+      "description": "State agency providing comprehensive support and resources for Maine's veterans including disability benefits, education, housing, employment, and memorial services",
+      "services": [
+        "benefits assistance",
+        "disability benefits",
+        "VA claims processing",
+        "education benefits",
+        "GI Bill benefits",
+        "housing assistance",
+        "employment support",
+        "healthcare enrollment",
+        "dental care",
+        "tax exemptions",
+        "military discharge records"
+      ],
+      "website": "https://www.maine.gov/veterans/",
+      "source_url": "https://www.maine.gov/veterans/"
+    },
+    {
+      "name": "Veterans Crisis Line",
+      "phone": "988 (then press 1)",
+      "phone_alt": "Text 838255",
+      "address": "National hotline",
+      "city": "National",
+      "description": "24/7 free confidential crisis support for veterans and families experiencing mental health crises, PTSD, suicidal thoughts",
+      "services": [
+        "mental health crisis support",
+        "PTSD support",
+        "suicide prevention",
+        "chat support",
+        "text support"
+      ],
+      "website": "https://www.veteranscrisisline.net/",
+      "source_url": "https://www.veteranscrisisline.net/"
+    },
+    {
+      "name": "211 Maine",
+      "phone": "211",
+      "phone_alt": "866-811-5695 (if having trouble)",
+      "address": "Statewide hotline",
+      "city": "Statewide",
+      "description": "Free, confidential information and referral service connecting veterans to local resources for housing, food, health, employment, legal aid, and other community services. Available 24/7 in all languages.",
+      "services": [
+        "resource referrals",
+        "housing",
+        "food",
+        "employment",
+        "job training",
+        "career counseling",
+        "health",
+        "mental health",
+        "legal aid",
+        "support groups",
+        "PTSD support",
+        "substance abuse support"
+      ],
+      "website": "https://211maine.org/",
+      "source_url": "https://211maine.org/transitions/"
+    },
+    {
+      "name": "Maine Veterans' Memorial Cemetery System",
+      "phone": "207-287-3481",
+      "address": "Augusta, ME (main office)",
+      "city": "Augusta",
+      "description": "State cemetery operations providing burial coordination, headstones, and military funeral honors for Maine veterans",
+      "services": [
+        "burial services",
+        "cemetery",
+        "headstones",
+        "military funeral honors"
+      ],
+      "website": "https://www.maine.gov/veterans/",
+      "source_url": "https://www.maine.gov/veterans/"
+    },
+    {
+      "name": "MaineHousing Veterans Housing Program",
+      "phone": "207-287-7020",
+      "address": "Multiple locations statewide",
+      "city": "Statewide",
+      "description": "Provides affordable housing options and assistance to homeless and at-risk veterans, including rental assistance and supportive services",
+      "services": [
+        "housing",
+        "rental assistance",
+        "homelessness prevention",
+        "transitional housing"
+      ],
+      "website": "https://www.maine.gov/veterans/benefits/housing",
+      "source_url": "https://www.maine.gov/veterans/benefits/housing"
+    },
+    {
+      "name": "Maine Veterans' Emergency Financial Assistance Program (VEFAP)",
+      "phone": "207-287-7020",
+      "address": "Statewide program",
+      "city": "Statewide",
+      "description": "Helps eligible veterans cover essential expenses such as rent or mortgage payments, utilities, vehicle repairs, and other urgent needs to prevent financial instability",
+      "services": [
+        "financial assistance",
+        "rental assistance",
+        "utility assistance",
+        "emergency housing assistance"
+      ],
+      "website": "https://www.maine.gov/veterans/",
+      "source_url": "https://www.maine.gov/veterans/maine-veterans-assistance"
+    },
+    {
+      "name": "Maine Department of Labor Veterans' Employment Services",
+      "phone": "207-287-7020",
+      "address": "Statewide",
+      "city": "Statewide",
+      "description": "Offers employment assistance and resources to veterans seeking civilian employment including job placement, training programs, and resume assistance",
+      "services": [
+        "employment",
+        "job placement",
+        "job training",
+        "resume assistance",
+        "career development"
+      ],
+      "website": "https://www.maine.gov/veterans/",
+      "source_url": "https://www.maine.gov/veterans/"
+    },
+    {
+      "name": "Maine Homeless Veterans Coordination Team",
+      "phone": "207-287-7019",
+      "email": "HVC.maineBVS@maine.gov",
+      "address": "Augusta, ME (statewide coordination)",
+      "city": "Augusta",
+      "description": "Coordinates efforts to reduce homeless veterans through transitional housing programs and partnerships with community agencies",
+      "services": [
+        "housing",
+        "homelessness prevention",
+        "case management",
+        "transitional housing"
+      ],
+      "website": "https://www.maine.gov/veterans/homeless-at-risk-maine-veterans",
+      "source_url": "https://www.maine.gov/veterans/homeless-at-risk-maine-veterans"
+    },
+    {
+      "name": "Hire Heroes USA",
+      "phone": "844-884-3573",
+      "phone_alt": "866-915-4376",
+      "address": "National organization",
+      "city": "National",
+      "description": "Employment assistance and job placement services for veterans overcoming employment barriers",
+      "services": [
+        "employment",
+        "job placement",
+        "career counseling"
+      ],
+      "website": "https://www.hireheroesusa.org/",
+      "source_url": "https://www.hireheroesusa.org/"
+    },
+    {
+      "name": "Wounded Warrior Project",
+      "phone": "888-997-2586",
+      "phone_alt": "904-405-1213",
+      "address": "4899 Belfort Road, Suite 300, Jacksonville, FL 32256",
+      "city": "Jacksonville",
+      "description": "Support and services for post-9/11 veterans and service members with physical or mental injuries",
+      "services": [
+        "mental health",
+        "PTSD treatment",
+        "peer support",
+        "family support",
+        "career transition",
+        "physical health and wellness"
+      ],
+      "website": "https://www.woundedwarriorproject.org",
+      "source_url": "https://www.woundedwarriorproject.org"
+    },
+    {
+      "name": "U.S. Department of Veterans Affairs",
+      "phone": "1-800-827-1000",
+      "address": "National organization",
+      "city": "National",
+      "description": "Nationwide services and resources for veterans and families including healthcare, benefits, homeless services, and women veterans programs",
+      "services": [
+        "healthcare",
+        "benefits assistance",
+        "homeless veteran services",
+        "women veterans healthcare",
+        "mental health"
+      ],
+      "website": "https://www.va.gov/",
+      "source_url": "https://www.va.gov/"
+    },
+    {
+      "name": "988 Suicide & Crisis Lifeline",
+      "phone": "988",
+      "address": "National hotline",
+      "city": "National",
+      "description": "24/7 free and confidential support for people in distress with crisis support and prevention resources",
+      "services": [
+        "crisis support",
+        "suicide prevention",
+        "mental health support"
+      ],
+      "website": "https://988lifeline.org/",
+      "source_url": "https://988lifeline.org/"
+    }
+  ],
+  "additional_resources": {
+    "911_crisis_emergency": "Call 911 for emergencies",
+    "988_suicide_crisis": "988 (then press 1) - Veterans Crisis Line - 24/7",
+    "state_bar_legal_aid": "https://www.maine.gov/veterans/ - Legal resources for veterans",
+    "va_mental_health": "https://www.mentalhealth.va.gov/",
+    "maine_veterans_guide": "https://www.maine.gov/veterans/docs/Resourceguide2024.pdf - Comprehensive veteran benefits guide",
+    "homeless_veteran_hotline": "1-877-424-3838 - National Call Center for Homeless Veterans"
+  },
+  "notes": "This directory includes major state and federal veteran resources in Maine. For county-specific services and local Veterans Service Officers, contact the Maine Bureau of Veterans' Services at 207-287-7020. Many services are free and confidential."
+}

@@ -1,0 +1,108 @@
+{
+  "state": "SD",
+  "state_name": "South Dakota",
+  "fetched_at": "2026-01-25T12:30:00Z",
+  "source": "South Dakota Department of Veterans Affairs and national 211 network",
+  "resources": [
+    {
+      "name": "South Dakota Department of Veterans Affairs",
+      "phone": "605-773-3269 or 1-877-579-0015",
+      "address": "South Dakota Department of Veterans Affairs",
+      "city": "Pierre",
+      "description": "State agency providing comprehensive veteran services including state and federal benefits, compensation, education, healthcare, burial services, home loan guaranties, and the Michael J. Fitzmaurice State Veterans Home.",
+      "services": ["benefits counseling", "disability compensation", "education benefits", "healthcare", "burial services", "home loans", "housing"],
+      "website": "https://vetaffairs.sd.gov",
+      "source_url": "https://vetaffairs.sd.gov"
+    },
+    {
+      "name": "2-1-1 South Dakota Information and Referral Service",
+      "phone": "211 or 877-211-8661",
+      "address": "Statewide helpline",
+      "city": "South Dakota",
+      "description": "Free, confidential helpline connecting veterans to community resources including housing, employment, food, legal aid, mental health services, and benefits assistance.",
+      "services": ["referral services", "housing assistance", "employment", "food assistance", "legal aid", "mental health"],
+      "website": "https://211.org",
+      "source_url": "https://211.org"
+    },
+    {
+      "name": "Veterans Crisis Line - National Support",
+      "phone": "988 then press 1 or text 838255",
+      "address": "24/7 National Service",
+      "city": "Statewide",
+      "description": "24/7 confidential crisis support for veterans. Free support 365 days a year from trained professionals. No VA enrollment required.",
+      "services": ["crisis support", "mental health", "suicide prevention", "family support", "local referrals"],
+      "website": "https://www.veteranscrisisline.net",
+      "source_url": "https://www.veteranscrisisline.net"
+    },
+    {
+      "name": "Michael J. Fitzmaurice State Veterans Home",
+      "phone": "Contact for admission information",
+      "address": "South Dakota Veterans Home",
+      "city": "Hot Springs",
+      "description": "State-operated residential facility providing housing and care for eligible South Dakota veterans. Features various activities and comprehensive veteran support services.",
+      "services": ["residential housing", "veteran care", "meals", "healthcare", "community activities"],
+      "website": "https://vetaffairs.sd.gov",
+      "source_url": "https://vetaffairs.sd.gov"
+    },
+    {
+      "name": "Fallen Heroes Bridge Dedication Program",
+      "phone": "Contact SD Department of Veterans Affairs",
+      "address": "South Dakota",
+      "city": "Statewide",
+      "description": "Program honoring South Dakota service members killed or missing in action through bridge dedications. Over 72 bridges dedicated to 78 service members.",
+      "services": ["memorial services", "community recognition", "veteran honor"],
+      "website": "https://vetaffairs.sd.gov",
+      "source_url": "https://vetaffairs.sd.gov"
+    },
+    {
+      "name": "Veterans of Foreign Wars - South Dakota Posts",
+      "phone": "Contact local VFW post",
+      "address": "Multiple locations throughout South Dakota",
+      "city": "Statewide",
+      "description": "VFW membership organization providing VA claims assistance, financial grants, mental wellness support, and community programs. Free assistance from accredited service officers.",
+      "services": ["VA claims assistance", "financial grants", "mental wellness", "community programs", "advocacy"],
+      "website": "https://www.vfw.org",
+      "source_url": "https://www.vfw.org"
+    },
+    {
+      "name": "American Legion - South Dakota Department",
+      "phone": "Contact local American Legion post",
+      "address": "Multiple locations throughout South Dakota",
+      "city": "Statewide",
+      "description": "National veteran service organization offering member benefits, community support, youth programs, and connections to state and federal benefits.",
+      "services": ["community support", "youth programs", "member benefits", "veteran services"],
+      "website": "https://www.amlegion.org",
+      "source_url": "https://www.amlegion.org"
+    },
+    {
+      "name": "VA Benefits Administration - South Dakota Region",
+      "phone": "1-800-827-1000",
+      "address": "Regional VA offices throughout South Dakota",
+      "city": "Statewide",
+      "description": "Federal VA providing disability compensation, pension programs, GI Bill education, home loan assistance, vocational rehabilitation, and employment services.",
+      "services": ["disability compensation", "education benefits", "home loans", "vocational rehabilitation", "employment services"],
+      "website": "https://www.benefits.va.gov/benefits",
+      "source_url": "https://www.benefits.va.gov/benefits"
+    },
+    {
+      "name": "Operation Homefront - Military and Veteran Family Support",
+      "phone": "Contact for assistance",
+      "address": "National organization with state programs",
+      "city": "Statewide",
+      "description": "National nonprofit providing emergency financial assistance for military and veteran families. Assistance with rent, utilities, food, and healthcare.",
+      "services": ["emergency financial assistance", "housing programs", "food assistance", "utility assistance"],
+      "website": "https://www.operationhomefront.org",
+      "source_url": "https://www.operationhomefront.org"
+    },
+    {
+      "name": "VetsinTech - Veteran Technology Education and Employment",
+      "phone": "info@vetsintech.co",
+      "address": "28+ chapters nationwide",
+      "city": "Multiple locations",
+      "description": "501(c)(3) nonprofit connecting veterans with technology education, employment, and entrepreneurship opportunities.",
+      "services": ["technology education", "employment placement", "entrepreneurship support", "mentorship"],
+      "website": "https://www.vetsintech.co",
+      "source_url": "https://www.vetsintech.co"
+    }
+  ]
+}

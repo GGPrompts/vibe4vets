@@ -1,0 +1,384 @@
+{
+  "state": "MO",
+  "state_name": "Missouri",
+  "fetched_at": "2026-01-25T00:00:00Z",
+  "source": "Missouri Veterans Commission, St. Patrick Center, VA St. Louis, Start Here STL, Missouri Department of Veterans Affairs",
+  "resources": [
+    {
+      "name": "Missouri Veterans Commission (MVC)",
+      "phone": "573-751-3779",
+      "email": "movets@mvc.dps.mo.gov",
+      "address": "205 Jefferson Street, 12th Floor, P.O. Drawer 147, Jefferson City, MO 65102-0147",
+      "city": "Jefferson City",
+      "description": "State agency providing comprehensive information and assistance regarding benefits through State and Federal Government for all veterans, dependents, and legal representatives",
+      "services": [
+        "benefits assistance",
+        "mental health resources",
+        "business support",
+        "caregiver support",
+        "clothing assistance",
+        "education benefits",
+        "employment services",
+        "financial assistance",
+        "food programs",
+        "healthcare",
+        "homeless assistance",
+        "home loans",
+        "legal help",
+        "recreation",
+        "state benefits"
+      ],
+      "website": "https://mvc.dps.mo.gov",
+      "source_url": "https://veteranbenefits.mo.gov/"
+    },
+    {
+      "name": "St. Patrick Center - Project HERO (Housing, Employment, Recovery, Opportunities)",
+      "phone": "314-802-0700",
+      "address": "800 North Tucker Blvd., St. Louis, MO 63101",
+      "city": "St. Louis",
+      "description": "Downtown housing, employment, and recovery services with furnished downtown apartments for veterans transitioning from homelessness",
+      "services": [
+        "housing",
+        "employment",
+        "recovery services",
+        "case management",
+        "supportive housing"
+      ],
+      "website": "https://www.stpatrickcenter.org",
+      "source_url": "https://www.startherestl.org/for-veterans.html"
+    },
+    {
+      "name": "St. Patrick Center - Supportive Services for Veteran Families (SSVF)",
+      "phone": "314-802-0700",
+      "address": "800 N. Tucker Blvd., St. Louis, MO 63101",
+      "city": "St. Louis",
+      "description": "Rapid re-housing assistance and case management for veteran families in St. Louis City, County, and surrounding counties",
+      "services": [
+        "housing",
+        "rapid re-housing",
+        "case management",
+        "rental assistance",
+        "supportive services"
+      ],
+      "website": "https://www.stpatrickcenter.org",
+      "source_url": "https://www.startherestl.org/for-veterans.html"
+    },
+    {
+      "name": "St. Patrick Center - Homeless Veterans Reintegration Program",
+      "phone": "314-802-0700",
+      "address": "800 N. Tucker Blvd., St. Louis, MO 63101",
+      "city": "St. Louis",
+      "description": "Job readiness training with resume building, interview skills, computer training, and job placement assistance for veterans",
+      "services": [
+        "employment",
+        "job training",
+        "resume building",
+        "interview skills",
+        "job placement",
+        "computer training"
+      ],
+      "website": "https://www.stpatrickcenter.org",
+      "source_url": "https://www.startherestl.org/for-veterans.html"
+    },
+    {
+      "name": "VA Medical Center - John Cochran Division",
+      "phone": "314-289-6300",
+      "address": "915 North Grand Blvd., St. Louis, MO 63106",
+      "city": "St. Louis",
+      "description": "VA healthcare facility providing medical care, mental health services, and benefits counseling",
+      "services": [
+        "healthcare",
+        "mental health",
+        "benefits counseling",
+        "PTSD treatment",
+        "substance use disorder treatment"
+      ],
+      "website": "https://www.stlouis.va.gov",
+      "source_url": "https://www.startherestl.org/for-veterans.html"
+    },
+    {
+      "name": "VA Medical Center - Jefferson Barracks Division",
+      "phone": "314-652-4100",
+      "address": "1 Jefferson Barracks Dr., St. Louis, MO 63125",
+      "city": "St. Louis",
+      "description": "VA healthcare facility with medical care, mental health services, and homeless veteran programs",
+      "services": [
+        "healthcare",
+        "mental health",
+        "PTSD treatment",
+        "homeless veteran services"
+      ],
+      "website": "https://www.stlouis.va.gov",
+      "source_url": "https://www.startherestl.org/for-veterans.html"
+    },
+    {
+      "name": "Hope Recovery Center/Homeless Veterans Program",
+      "phone": "314-652-4100",
+      "phone_alt": "314-652-4100 x66653 (Mental Health)",
+      "address": "515 North Jefferson Ave, St. Louis, MO 63103",
+      "city": "St. Louis",
+      "description": "Transitional, outpatient center with mental health and work programs for homeless veterans",
+      "services": [
+        "mental health",
+        "transitional housing",
+        "work programs",
+        "recovery support"
+      ],
+      "website": "https://www.stlouis.va.gov",
+      "source_url": "https://www.startherestl.org/for-veterans.html"
+    },
+    {
+      "name": "Veterans Crisis Line",
+      "phone": "988 (then press 1)",
+      "phone_alt": "Text 838255",
+      "address": "National hotline",
+      "city": "National",
+      "description": "24/7 free confidential crisis support for veterans and families experiencing mental health crises, PTSD, suicidal thoughts",
+      "services": [
+        "mental health crisis support",
+        "PTSD support",
+        "suicide prevention",
+        "chat support",
+        "text support"
+      ],
+      "website": "https://www.veteranscrisisline.net/",
+      "source_url": "https://www.veteranscrisisline.net/"
+    },
+    {
+      "name": "MOVE: Missouri Veterans Endeavor",
+      "phone": "314-449-0200",
+      "address": "8410 Engler Park Ct., St. John, MO 63114",
+      "city": "St. John",
+      "description": "Long-term supportive housing for veterans and families addressing homelessness",
+      "services": [
+        "housing",
+        "supportive housing",
+        "family support"
+      ],
+      "website": "https://www.move-stl.org",
+      "source_url": "https://www.startherestl.org/for-veterans.html"
+    },
+    {
+      "name": "Freedom Place Apartments",
+      "phone": "314-534-9226",
+      "address": "4011 Delmar Blvd., St. Louis, MO 63108",
+      "city": "St. Louis",
+      "description": "Furnished apartments in rehabilitated building with veteran services for formerly homeless veterans",
+      "services": [
+        "housing",
+        "supportive services",
+        "veteran services"
+      ],
+      "website": "https://www.freedomplaceapts.com",
+      "source_url": "https://www.startherestl.org/for-veterans.html"
+    },
+    {
+      "name": "Release to Rent for Veterans (Criminal Justice Ministries)",
+      "phone": "314-652-8062",
+      "address": "2342 LaSalle St., St. Louis, MO 63104",
+      "city": "St. Louis",
+      "description": "Scattered supportive housing for veterans experiencing homelessness with criminal records",
+      "services": [
+        "housing",
+        "supportive housing",
+        "reintegration support"
+      ],
+      "website": "https://www.cjmstlouis.org",
+      "source_url": "https://www.startherestl.org/for-veterans.html"
+    },
+    {
+      "name": "Employment Connection",
+      "phone": "314-333-5627",
+      "address": "2838 Market St., St. Louis, MO 63103",
+      "city": "St. Louis",
+      "description": "Job placement, housing, rental assistance, utilities, and Project Homecoming services",
+      "services": [
+        "employment",
+        "job placement",
+        "housing",
+        "rental assistance",
+        "utility assistance"
+      ],
+      "website": "https://www.employmentstl.org",
+      "source_url": "https://www.startherestl.org/for-veterans.html"
+    },
+    {
+      "name": "The Veterans Consortium Pro Bono Program",
+      "phone": "202-628-8169",
+      "phone_alt": "888-838-7727",
+      "address": "2101 L Street NW, Suite 225, Washington, DC 20037",
+      "city": "Washington",
+      "description": "Free legal representation for Veterans with Other Than Honorable (OTH) discharges and PTSD/TBI appeals",
+      "services": [
+        "legal aid",
+        "discharge appeals",
+        "PTSD advocacy",
+        "TBI advocacy"
+      ],
+      "website": "https://www.vetsprobono.org",
+      "source_url": "https://www.startherestl.org/for-veterans.html"
+    },
+    {
+      "name": "Paralyzed Veterans of America - Gateway Chapter",
+      "phone": "314-427-0393",
+      "address": "1311 Lindbergh Plaza Center, St. Louis, MO 63101",
+      "city": "St. Louis",
+      "description": "Medical benefits advocacy and appeals assistance for disabled veterans",
+      "services": [
+        "disability advocacy",
+        "benefits assistance",
+        "medical benefits",
+        "appeals support"
+      ],
+      "website": "https://www.pva.org",
+      "source_url": "https://www.startherestl.org/for-veterans.html"
+    },
+    {
+      "name": "The Mission Continues",
+      "phone": "314-588-8805",
+      "address": "1141 South 7th St., St. Louis, MO 63104",
+      "city": "St. Louis",
+      "description": "Community service engagement and volunteer opportunities for veterans",
+      "services": [
+        "community service",
+        "volunteer opportunities",
+        "community engagement",
+        "peer support"
+      ],
+      "website": "https://www.missioncontinues.org",
+      "source_url": "https://www.startherestl.org/for-veterans.html"
+    },
+    {
+      "name": "H.E.R.O.E.S. Care",
+      "phone": "636-600-0096",
+      "address": "4558 Gravois Village Center, High Ridge, MO 63049",
+      "city": "High Ridge",
+      "description": "Program partners providing support to military families and veterans",
+      "services": [
+        "family support",
+        "military family services"
+      ],
+      "website": "https://www.heroescare.org",
+      "source_url": "https://www.startherestl.org/for-veterans.html"
+    },
+    {
+      "name": "Veterans for Peace",
+      "phone": "314-725-6005",
+      "address": "3407 S. Jefferson Ave., #219, St. Louis, MO 63118",
+      "city": "St. Louis",
+      "description": "International advocacy organization with 120+ chapters addressing peace and war costs",
+      "services": [
+        "advocacy",
+        "community organizing",
+        "peace activism"
+      ],
+      "website": "https://www.veteransforpeace.org",
+      "source_url": "https://www.startherestl.org/for-veterans.html"
+    },
+    {
+      "name": "Veterans Center St. Louis",
+      "phone": "314-894-5739",
+      "address": "287 N. Lindbergh Blvd., Creve Coeur, MO 63141",
+      "city": "Creve Coeur",
+      "description": "VA counseling and readjustment services with jobs, benefits, healthcare information",
+      "services": [
+        "counseling",
+        "readjustment services",
+        "job information",
+        "benefits information",
+        "healthcare information"
+      ],
+      "website": "https://www.va.gov/directory",
+      "source_url": "https://www.startherestl.org/for-veterans.html"
+    },
+    {
+      "name": "National Call Center for Homeless Veterans",
+      "phone": "1-877-424-3838",
+      "address": "National hotline",
+      "city": "National",
+      "description": "Emergency housing assistance and referrals for veterans experiencing homelessness",
+      "services": [
+        "emergency housing",
+        "housing referrals",
+        "crisis support"
+      ],
+      "website": "https://www.va.gov/HOMELESS/NationalCallCenter.asp",
+      "source_url": "https://www.startherestl.org/for-veterans.html"
+    },
+    {
+      "name": "Hire Heroes USA",
+      "phone": "844-884-3573",
+      "phone_alt": "866-915-4376",
+      "address": "National organization",
+      "city": "National",
+      "description": "Employment assistance and job placement services for veterans overcoming employment barriers",
+      "services": [
+        "employment",
+        "job placement",
+        "career counseling"
+      ],
+      "website": "https://www.hireheroesusa.org/",
+      "source_url": "https://www.hireheroesusa.org/"
+    },
+    {
+      "name": "Wounded Warrior Project",
+      "phone": "888-997-2586",
+      "phone_alt": "904-405-1213",
+      "address": "4899 Belfort Road, Suite 300, Jacksonville, FL 32256",
+      "city": "Jacksonville",
+      "description": "Support and services for post-9/11 veterans and service members with physical or mental injuries",
+      "services": [
+        "mental health",
+        "PTSD treatment",
+        "peer support",
+        "family support",
+        "career transition",
+        "physical health and wellness"
+      ],
+      "website": "https://www.woundedwarriorproject.org",
+      "source_url": "https://www.woundedwarriorproject.org"
+    },
+    {
+      "name": "Start Your Recovery",
+      "phone": "Contact via website",
+      "address": "Online resource",
+      "city": "National",
+      "description": "Chemical dependency assistance developed with clinicians and people in recovery",
+      "services": [
+        "substance abuse treatment",
+        "recovery support",
+        "mental health"
+      ],
+      "website": "https://www.startyourrecovery.org",
+      "source_url": "https://www.startherestl.org/for-veterans.html"
+    },
+    {
+      "name": "St. Louis County Veterans Program",
+      "phone": "314-615-4038",
+      "address": "St. Louis County Human Services Department",
+      "city": "St. Louis",
+      "description": "Case management, benefits referral, and assistance with legal, medical, employment, and housing needs",
+      "services": [
+        "case management",
+        "benefits referral",
+        "legal assistance",
+        "medical assistance",
+        "employment assistance",
+        "housing assistance"
+      ],
+      "website": "https://www.stlouiscountymo.gov/st-louis-county-departments/human-services/county-veterans-program",
+      "source_url": "https://www.startherestl.org/for-veterans.html"
+    }
+  ],
+  "additional_resources": {
+    "911_crisis_emergency": "Call 911 for emergencies",
+    "988_suicide_crisis": "988 (then press 1) - Veterans Crisis Line - 24/7",
+    "va_st_louis_main": "800-228-5459 or 314-652-4100 - VA St. Louis Medical Center main line",
+    "va_benefits": "https://benefits.va.gov/stlouis - VA Benefits Administration St. Louis",
+    "va_mental_health": "https://www.mentalhealth.va.gov/",
+    "ptsd_resources": "https://ptsd.va.gov/gethelp/index.asp - PTSD National Center",
+    "veterans_dental": "https://www.va.gov/dental - VA Dental Health",
+    "homeless_veteran_hotline": "1-877-424-3838 - National Call Center for Homeless Veterans"
+  },
+  "notes": "This directory includes major state and federal veteran resources in Missouri. Contact the Missouri Veterans Commission at 573-751-3779 for statewide services. Many resources are located in the St. Louis area, but services extend statewide. Many services are free and confidential."
+}

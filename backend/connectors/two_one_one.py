@@ -101,10 +101,14 @@ class TwoOneOneConnector(BaseConnector):
         "information": "support_services",
     }
 
-    # States with data files
+    # States with data files (all 50 states + DC)
     AVAILABLE_STATES = [
-        "AZ", "CA", "CO", "FL", "GA", "IL", "MD", "MI",
-        "NC", "NY", "OH", "PA", "TX", "VA", "WA",
+        "AK", "AL", "AR", "AZ", "CA", "CO", "CT", "DC", "DE", "FL",
+        "GA", "HI", "IA", "ID", "IL", "IN", "KS", "KY", "LA", "MA",
+        "MD", "ME", "MI", "MN", "MO", "MS", "MT", "NC", "ND", "NE",
+        "NH", "NJ", "NM", "NV", "NY", "OH", "OK", "OR", "PA", "RI",
+        "SC", "SD", "TN", "TX", "UT", "VA", "VT", "WA", "WI", "WV",
+        "WY",
     ]
 
     def __init__(

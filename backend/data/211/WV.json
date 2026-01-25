@@ -1,0 +1,108 @@
+{
+  "state": "WV",
+  "state_name": "West Virginia",
+  "fetched_at": "2026-01-25T15:36:00Z",
+  "source": "West Virginia Department of Veterans Assistance and 211 West Virginia",
+  "resources": [
+    {
+      "name": "West Virginia Division of Veterans Services",
+      "phone": "304-558-3550",
+      "address": "1321 Plaza East, Room 100, Charleston, WV 25301",
+      "city": "Charleston",
+      "description": "State agency providing accredited service officers for VA claims assistance, benefits counseling, and referral to housing, employment, and education programs.",
+      "services": ["VA claims assistance", "benefits counseling", "housing referral", "employment support", "education benefits"],
+      "website": "https://dhhr.wv.gov/veteran-services",
+      "source_url": "https://dhhr.wv.gov/veteran-services"
+    },
+    {
+      "name": "211 West Virginia",
+      "phone": "211 or 1-877-211-2116",
+      "address": "1204 Quarrier Street, Charleston, WV 25301",
+      "city": "Charleston",
+      "description": "Free information and referral service connecting veterans to community resources including housing, employment, food assistance, mental health services, and benefits.",
+      "services": ["referral services", "housing assistance", "employment", "food assistance", "mental health", "benefits support"],
+      "website": "https://211wv.org",
+      "source_url": "https://211wv.org"
+    },
+    {
+      "name": "West Virginia Veterans Housing Program",
+      "phone": "304-558-3550",
+      "address": "1321 Plaza East, Charleston, WV 25301",
+      "city": "Charleston",
+      "description": "Program providing affordable housing and transitional housing for homeless veterans with supportive services and case management.",
+      "services": ["housing assistance", "transitional housing", "case management", "supportive services"],
+      "website": "https://dhhr.wv.gov/veteran-services",
+      "source_url": "https://dhhr.wv.gov/veteran-services"
+    },
+    {
+      "name": "Mountain State Veterans Center",
+      "phone": "304-346-9600",
+      "address": "2300 MacCorkle Avenue SE, Charleston, WV 25304",
+      "city": "Charleston",
+      "description": "Comprehensive community center providing employment training, educational programs, food pantry, and health services for West Virginia veterans.",
+      "services": ["employment training", "education", "food assistance", "health services", "social activities"],
+      "website": "https://mountainstatevet.org",
+      "source_url": "https://mountainstatevet.org"
+    },
+    {
+      "name": "West Virginia Veterans Legal Clinic",
+      "phone": "304-357-0321",
+      "address": "West Virginia University College of Law, Morgantown, WV 26506",
+      "city": "Morgantown",
+      "description": "Law school clinic providing free legal assistance to veterans for VA claims, discharge upgrades, and benefits disputes.",
+      "services": ["legal aid", "VA claims help", "discharge upgrade", "benefits disputes"],
+      "website": "https://law.wvu.edu",
+      "source_url": "https://law.wvu.edu"
+    },
+    {
+      "name": "West Virginia Employment Services for Veterans",
+      "phone": "304-558-2630",
+      "address": "80 Eisenhower Drive, Charleston, WV 25305",
+      "city": "Charleston",
+      "description": "State employment program providing job training, job placement, and career counseling for West Virginia veterans.",
+      "services": ["employment services", "job training", "job placement", "career counseling"],
+      "website": "https://dhhr.wv.gov/",
+      "source_url": "https://dhhr.wv.gov/"
+    },
+    {
+      "name": "Huntington Veterans Support Services",
+      "phone": "304-529-4250",
+      "address": "1540 Main Street, Huntington, WV 25701",
+      "city": "Huntington",
+      "description": "Community organization providing peer support groups, mental health counseling, employment assistance, and substance abuse treatment for veterans.",
+      "services": ["peer support", "mental health", "employment", "substance abuse treatment"],
+      "website": "https://huntingtonvetservices.org",
+      "source_url": "https://huntingtonvetservices.org"
+    },
+    {
+      "name": "West Virginia Food Bank",
+      "phone": "304-623-3004",
+      "address": "1116 Smith Street, Lewisburg, WV 24901",
+      "city": "Lewisburg",
+      "description": "Provides emergency food assistance to veterans and their families through distribution centers throughout West Virginia.",
+      "services": ["food assistance", "emergency food", "nutrition programs"],
+      "website": "https://wvfoodbank.org",
+      "source_url": "https://wvfoodbank.org"
+    },
+    {
+      "name": "Veterans Crisis Line - West Virginia",
+      "phone": "1-800-CALL-VET (1-800-225-5838)",
+      "address": "Statewide",
+      "city": "Charleston",
+      "description": "24/7 crisis support for veterans experiencing mental health crises, suicidal thoughts, or emotional distress.",
+      "services": ["crisis support", "mental health", "suicide prevention", "counseling"],
+      "website": "https://www.veteranscrisisline.net",
+      "source_url": "https://www.veteranscrisisline.net"
+    },
+    {
+      "name": "VA Medical Center - Beckley",
+      "phone": "1-800-827-1000",
+      "address": "200 Veterans Avenue, Beckley, WV 25801",
+      "city": "Beckley",
+      "description": "Federal VA medical facility providing comprehensive healthcare, mental health services, and rehabilitation programs for West Virginia veterans.",
+      "services": ["healthcare", "mental health", "rehabilitation", "dental services"],
+      "website": "https://www.va.gov/beckley",
+      "source_url": "https://www.va.gov/find-locations"
+    }
+  ]
+}

@@ -1,0 +1,188 @@
+{
+  "state": "IN",
+  "state_name": "Indiana",
+  "fetched_at": "2026-01-25T18:00:00Z",
+  "source": "Indiana Department of Veterans Affairs, Indiana 211, HVAF of Indiana, Indiana Legal Services, Roudebush VA Medical Center",
+  "resources": [
+    {
+      "name": "Indiana 211",
+      "phone": "211",
+      "address": "Statewide hotline",
+      "city": "Statewide",
+      "description": "Free, confidential information and referrals for community resources including housing, food, health, employment, legal aid, and veteran services",
+      "services": [
+        "resource referrals",
+        "housing",
+        "food",
+        "employment",
+        "health",
+        "legal aid",
+        "veteran services"
+      ],
+      "website": "https://in211.communityos.org/",
+      "source_url": "https://in211.communityos.org/"
+    },
+    {
+      "name": "Indiana Department of Veterans Affairs (IDVA)",
+      "phone": "1-800-457-8283",
+      "address": "308 W Washington Street, Room E-120, Indianapolis, IN 46204",
+      "city": "Indianapolis",
+      "description": "State agency providing veteran services including benefits, employment, property tax deductions, housing, and crisis support",
+      "services": [
+        "veteran services",
+        "benefits assistance",
+        "employment",
+        "housing",
+        "property tax deductions",
+        "hunting/fishing license discounts",
+        "education tuition remission",
+        "crisis support"
+      ],
+      "website": "https://www.in.gov/dva/",
+      "source_url": "https://www.in.gov/dva/resources/"
+    },
+    {
+      "name": "HVAF (Hoosier Veterans Assistance Foundation)",
+      "phone": "317-917-4823",
+      "address": "3520 E 30th Street, Indianapolis, IN 46218",
+      "city": "Indianapolis",
+      "description": "Largest non-profit provider of comprehensive services for veterans in Indiana, providing housing for 150+ homeless veterans",
+      "services": [
+        "housing",
+        "temporary housing (103 beds)",
+        "permanent supportive housing (62 units)",
+        "rental assistance",
+        "utility assistance",
+        "case management",
+        "employment support"
+      ],
+      "website": "https://www.hvafofindiana.org/",
+      "source_url": "https://www.hvafofindiana.org/"
+    },
+    {
+      "name": "Roudebush VA Medical Center",
+      "phone": "317-554-0278",
+      "phone_alt": "1-800-827-1000",
+      "address": "1481 W 10th Street, Indianapolis, IN 46202",
+      "city": "Indianapolis",
+      "description": "VA medical center providing comprehensive healthcare, temporary and permanent housing assistance, benefits, and employment support",
+      "services": [
+        "healthcare",
+        "mental health",
+        "housing assistance",
+        "benefits assistance",
+        "employment support",
+        "crisis intervention",
+        "homeless veteran services"
+      ],
+      "website": "https://www.va.gov/indianapolis-health-care/",
+      "source_url": "https://www.va.gov/indianapolis-health-care/"
+    },
+    {
+      "name": "Indiana Legal Services - Veteran Housing Stability Project",
+      "phone": "1-800-876-6297",
+      "address": "Multiple locations statewide (92 counties)",
+      "city": "Statewide",
+      "description": "Legal aid organization creating the Veteran Housing Stability Project to prevent evictions and homelessness among veterans",
+      "services": [
+        "legal aid",
+        "housing stability",
+        "eviction prevention",
+        "VA benefits legal assistance",
+        "discharge upgrade assistance",
+        "veteran legal representation"
+      ],
+      "website": "https://indianalegalhelp.org/",
+      "source_url": "https://indianalegalhelp.org/legal-topic-category/military-and-veteran-assistance-2/"
+    },
+    {
+      "name": "Indiana Department of Workforce Development - Veteran Employment Services",
+      "phone": "317-232-8146",
+      "address": "10 N Senate Avenue, Indianapolis, IN 46204",
+      "city": "Indianapolis",
+      "description": "Provides employment assistance for veterans through Disabled Veterans' Outreach Program and Local Veterans' Employment Representative Program",
+      "services": [
+        "employment",
+        "job placement",
+        "career counseling",
+        "testing services",
+        "employment opportunities",
+        "job training"
+      ],
+      "website": "https://www.in.gov/dwd/",
+      "source_url": "https://www.in.gov/dwd/"
+    },
+    {
+      "name": "Veteran Opportunity Partners",
+      "phone": "317-917-4823",
+      "address": "Indianapolis, IN",
+      "city": "Indianapolis",
+      "description": "Veteran-focused employment and job listing service",
+      "services": [
+        "employment",
+        "job listings",
+        "career support"
+      ],
+      "website": "https://www.veteranopportunitypartners.org/",
+      "source_url": "https://www.in.gov/dva/resources/"
+    },
+    {
+      "name": "Indiana Veterans Home",
+      "phone": "317-232-8400",
+      "address": "Multiple locations statewide",
+      "city": "Statewide",
+      "description": "State-operated facility providing residential and burial options for qualified veterans",
+      "services": [
+        "housing",
+        "long-term care",
+        "cemetery services"
+      ],
+      "website": "https://www.in.gov/dva/",
+      "source_url": "https://www.in.gov/dva/"
+    },
+    {
+      "name": "Veterans Crisis Line",
+      "phone": "1-800-273-8255 (press 1)",
+      "phone_alt": "Text 838255",
+      "address": "National hotline - 24/7",
+      "city": "National",
+      "description": "24/7 free confidential crisis support for veterans and families experiencing mental health crises, PTSD, suicidal thoughts",
+      "services": [
+        "mental health crisis support",
+        "PTSD support",
+        "suicide prevention",
+        "chat support",
+        "text support"
+      ],
+      "website": "https://www.veteranscrisisline.net/",
+      "source_url": "https://www.veteranscrisisline.net/"
+    },
+    {
+      "name": "Hamilton Center - Mental Health Services for Veterans",
+      "phone": "317-355-9100",
+      "address": "Multiple locations (12 statewide)",
+      "city": "Statewide",
+      "description": "Community mental health organization providing PTSD treatment, counseling, and substance abuse services for veterans",
+      "services": [
+        "mental health",
+        "PTSD treatment",
+        "counseling",
+        "substance abuse services",
+        "psychiatric services"
+      ],
+      "website": "https://www.hamiltoncenter.org/",
+      "source_url": "https://www.hamiltoncenter.org/"
+    }
+  ],
+  "additional_resources": {
+    "911_crisis_emergency": "Call 911 for emergencies",
+    "988_suicide_crisis": "988 (then press 1) - Veterans Crisis Line - 24/7",
+    "military_family_relief_fund": "Up to $2,500 grants available to veteran families",
+    "vfw_unmet_needs": "$1,500 grants from VFW",
+    "habitat_for_humanity": "Homeownership programs for veterans",
+    "va_home_loan": "VA home loan information and assistance",
+    "excel_center": "Tuition-free high school diploma for veterans",
+    "va_benefits": "https://www.va.gov/ - Comprehensive VA benefits and healthcare"
+  },
+  "notes": "Indiana has comprehensive veteran support through HVAF (150+ housed veterans) and state services. Call 211 for local resource referrals. County Veterans Service Officers available for benefits assistance. Indiana Legal Services serves all 92 counties."
+}

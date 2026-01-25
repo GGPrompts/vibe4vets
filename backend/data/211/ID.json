@@ -1,0 +1,174 @@
+{
+  "state": "ID",
+  "state_name": "Idaho",
+  "fetched_at": "2026-01-25T18:00:00Z",
+  "source": "Idaho Division of Veterans Services, healthandwelfare.idaho.gov, Disabled American Veterans of Idaho, El-Ada Community Action Partnership",
+  "resources": [
+    {
+      "name": "Idaho Division of Veterans Services",
+      "phone": "208-780-1300",
+      "address": "351 Collins Road, Boise, ID 83702",
+      "city": "Boise",
+      "description": "State division providing comprehensive veteran services including benefits, education, advocacy, cemetery operations, and veterans homes",
+      "services": [
+        "benefits assistance",
+        "advocacy services",
+        "education programs",
+        "cemetery services",
+        "long-term care",
+        "homeless veteran services"
+      ],
+      "website": "https://veterans.idaho.gov/",
+      "source_url": "https://veterans.idaho.gov/"
+    },
+    {
+      "name": "211 Idaho CareLine",
+      "phone": "211",
+      "phone_alt": "1-800-926-2588",
+      "address": "Statewide hotline",
+      "city": "Statewide",
+      "description": "Free, statewide community information and referral service with comprehensive database including veteran/military member resources",
+      "services": [
+        "resource referrals",
+        "housing",
+        "food",
+        "health services",
+        "employment",
+        "veteran services"
+      ],
+      "website": "https://healthandwelfare.idaho.gov/services-programs/211",
+      "source_url": "https://healthandwelfare.idaho.gov/services-programs/211"
+    },
+    {
+      "name": "Idaho Veteran Resource Directory",
+      "phone": "208-780-1300",
+      "address": "Multiple locations statewide",
+      "city": "Statewide",
+      "description": "Comprehensive online directory connecting veterans to state and federal benefits, services, and advocacy",
+      "services": [
+        "resource directory",
+        "benefits information",
+        "service officer referrals",
+        "DD 214 records assistance"
+      ],
+      "website": "https://idahoveteransguide.org/",
+      "source_url": "https://idahoveteransguide.org/"
+    },
+    {
+      "name": "El-Ada Community Action Partnership - Veteran Services",
+      "phone": "208-343-4050",
+      "address": "8 West Bannock Street, Boise, ID 83702",
+      "city": "Boise",
+      "description": "Community action organization providing employment assistance and supportive services for veterans",
+      "services": [
+        "veteran services",
+        "employment assistance",
+        "support services"
+      ],
+      "website": "https://www.eladacap.org/veteran-services",
+      "source_url": "https://www.eladacap.org/veteran-services"
+    },
+    {
+      "name": "Disabled American Veterans of Idaho (DAV Idaho)",
+      "phone": "208-336-0401",
+      "address": "Boise, ID",
+      "city": "Boise",
+      "description": "Veterans service organization providing disability benefits assistance and veteran housing assistance information",
+      "services": [
+        "disability benefits assistance",
+        "housing assistance information",
+        "veteran support"
+      ],
+      "website": "https://dav-idaho.org/",
+      "source_url": "https://dav-idaho.org/"
+    },
+    {
+      "name": "Idaho Veterans Homes Network",
+      "phone": "208-780-1300",
+      "address": "Multiple locations: Post Falls, Boise, Lewiston, Pocatello",
+      "city": "Statewide",
+      "description": "State-operated long-term care facilities for aged and disabled veterans with residential services",
+      "services": [
+        "long-term care",
+        "housing",
+        "medical services",
+        "skilled nursing care"
+      ],
+      "website": "https://veterans.idaho.gov/",
+      "source_url": "https://veterans.idaho.gov/"
+    },
+    {
+      "name": "Supportive Services for Veteran Families (SSVF)",
+      "phone": "208-780-1300",
+      "address": "Statewide program",
+      "city": "Statewide",
+      "description": "Program providing guidance, resources, and financial assistance to help veterans secure and maintain safe housing",
+      "services": [
+        "housing assistance",
+        "financial assistance",
+        "case management",
+        "utility assistance",
+        "rental assistance"
+      ],
+      "website": "https://veterans.idaho.gov/",
+      "source_url": "https://veterans.idaho.gov/"
+    },
+    {
+      "name": "Idaho Housing and Finance Association (IHFA) - Veteran Resources",
+      "phone": "208-331-4882",
+      "address": "565 W. Jefferson St., Boise, ID 83702",
+      "city": "Boise",
+      "description": "Provides rental assistance, homebuyer education, down payment assistance, and housing support for veterans",
+      "services": [
+        "housing",
+        "rental assistance",
+        "homebuyer education",
+        "down payment assistance",
+        "home loans"
+      ],
+      "website": "https://www.ihfa.org/",
+      "source_url": "https://www.ihfa.org/"
+    },
+    {
+      "name": "Veterans Crisis Line",
+      "phone": "988 (then press 1)",
+      "phone_alt": "Text 838255",
+      "address": "National hotline - 24/7",
+      "city": "National",
+      "description": "24/7 free confidential crisis support for veterans and families experiencing mental health crises, PTSD, suicidal thoughts",
+      "services": [
+        "mental health crisis support",
+        "PTSD support",
+        "suicide prevention",
+        "chat support",
+        "text support"
+      ],
+      "website": "https://www.veteranscrisisline.net/",
+      "source_url": "https://www.veteranscrisisline.net/"
+    },
+    {
+      "name": "Blue Mountain Action Council - Veteran Housing Assistance",
+      "phone": "541-523-5321",
+      "address": "Ontario, OR (serves Eastern Oregon and Idaho)",
+      "city": "Ontario",
+      "description": "Organization receiving $11M federal grant to help homeless veterans find housing and essential services",
+      "services": [
+        "housing assistance",
+        "homeless veteran services",
+        "health care",
+        "financial planning",
+        "childcare assistance"
+      ],
+      "website": "https://www.bmac.org/",
+      "source_url": "https://www.ktvb.com/article/news/local/11-million-awarded-idaho-groups-combat-veteran-homelessness/"
+    }
+  ],
+  "additional_resources": {
+    "911_crisis_emergency": "Call 911 for emergencies",
+    "988_suicide_crisis": "988 (then press 1) - Veterans Crisis Line - 24/7",
+    "state_employment_preference": "Honorably discharged veterans receive 5 preference points for state employment; disabled veterans receive 10 points",
+    "occupational_licenses": "Military members and families receive expedited processing for occupational licenses with military training credit",
+    "va_benefits": "https://www.va.gov/ - Comprehensive VA benefits and healthcare"
+  },
+  "notes": "Idaho has secured $11 million in federal grants (2026) to help homeless veterans find housing. Call 211 for local resource referrals or contact the Division of Veterans Services. County Veterans Service Officers available statewide for benefits assistance."
+}
