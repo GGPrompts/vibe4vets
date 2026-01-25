@@ -8,11 +8,10 @@ import { USMap } from '@/components/us-map';
 import { CategoryCards } from '@/components/CategoryCards';
 import { SortChips } from '@/components/SortChips';
 import { Button } from '@/components/ui/button';
-import { Search, Loader2, MapPin } from 'lucide-react';
+import { Search, Loader2 } from 'lucide-react';
 import { useFilterContext } from '@/context/filter-context';
 import type { SortOption } from '@/components/sort-dropdown-header';
 import { BackToTop } from '@/components/BackToTop';
-import { Input } from '@/components/ui/input';
 
 export default function Home() {
   const { filters, toggleCategory, toggleState, setEnabled, resourceCount, isLoadingCount } = useFilterContext();
@@ -55,9 +54,12 @@ export default function Home() {
     return queryString ? `/search?${queryString}` : '/search';
   };
 
-  const handleZipChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value.replace(/\D/g, '').slice(0, 5);
-    setZipCode(value);
+  const handleZipChange = (zip: string) => {
+    setZipCode(zip);
+    // Auto-select distance sort when user enters a zip
+    if (zip.length > 0 && selectedSort !== 'distance') {
+      setSelectedSort('distance');
+    }
   };
 
   const handleSearch = () => {
@@ -103,32 +105,6 @@ export default function Home() {
                 Selected: {filters.states.join(', ')}
               </p>
             )}
-
-            {/* Zip Code Input - alternative/additional location filter */}
-            <div className="mt-6">
-              <p className="mb-3 text-center text-sm text-white/60">
-                or enter your zip code to sort by distance
-              </p>
-              <div className="mx-auto max-w-[200px]">
-                <div className="relative">
-                  <MapPin className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-white/40" />
-                  <Input
-                    type="text"
-                    inputMode="numeric"
-                    pattern="[0-9]*"
-                    value={zipCode}
-                    onChange={handleZipChange}
-                    placeholder="ZIP code"
-                    className="h-10 rounded-xl bg-white/10 pl-9 text-center text-white placeholder:text-white/40 border-white/20 focus:border-[hsl(var(--v4v-gold))] focus:ring-[hsl(var(--v4v-gold)/0.3)]"
-                  />
-                </div>
-                {zipCode.length === 5 && (
-                  <p className="mt-2 text-center text-xs text-[hsl(var(--v4v-gold))]">
-                    Results will be sorted by distance
-                  </p>
-                )}
-              </div>
-            </div>
           </div>
         </div>
       </section>
@@ -156,11 +132,12 @@ export default function Home() {
           />
 
           {/* Sort preferences */}
-          <div className="mt-10 text-center">
-            <p className="text-base text-muted-foreground mb-3">How should we sort your results?</p>
+          <div className="mt-10">
             <SortChips
               selectedSort={selectedSort}
               onSortChange={setSelectedSort}
+              zipCode={zipCode}
+              onZipChange={handleZipChange}
             />
           </div>
 
