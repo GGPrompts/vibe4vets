@@ -36,6 +36,7 @@ class TwoOneOneConnector(BaseConnector):
         "shelter": "housing",
         "HUD-VASH": "housing",
         "SSVF": "housing",
+        "residential care": "housing",
         # Employment
         "employment": "employment",
         "employment services": "employment",
@@ -55,6 +56,9 @@ class TwoOneOneConnector(BaseConnector):
         "medical": "healthcare",
         "health services": "healthcare",
         "VA healthcare": "healthcare",
+        "skilled nursing care": "healthcare",
+        "long-term care": "healthcare",
+        "nursing home": "healthcare",
         # Mental Health
         "mental health": "mental_health",
         "mental_health": "mental_health",
@@ -99,6 +103,21 @@ class TwoOneOneConnector(BaseConnector):
         "community_support": "support_services",
         "referral": "support_services",
         "information": "support_services",
+        "veteran support services": "support_services",
+        "advocacy": "support_services",
+        "member services": "support_services",
+        "community support": "support_services",
+        "disability support": "benefits",
+        # Memorial/Cemetery
+        "cemetery services": "support_services",
+        "burial services": "support_services",
+        "cemetery": "support_services",
+        "memorial services": "support_services",
+        # Business/Entrepreneurship
+        "business development": "employment",
+        "entrepreneurship support": "employment",
+        "contract opportunities": "employment",
+        "small business loans": "financial",
     }
 
     # States with data files (all 50 states + DC)
