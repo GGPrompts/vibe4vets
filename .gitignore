@@ -65,3 +65,10 @@ npm-debug.log*
 .worktrees/V4V-2arh/
 # bd worktree
 .worktrees/V4V-9evu/
+
+# Database backups
+backups/*.sql.gz
+
+# Census data cache
+backend/.cache/
+backend/.cache/
