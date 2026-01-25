@@ -3,7 +3,7 @@
 from datetime import UTC, datetime
 from uuid import UUID
 
-from sqlalchemy import String, func, or_
+from sqlalchemy import String, func, or_, text
 from sqlmodel import Session, col, select
 
 from app.models import Location, Organization, Program, Resource, Source
@@ -15,11 +15,16 @@ from app.schemas.resource import (
     OrganizationNested,
     ProgramNested,
     ResourceCreate,
+    ResourceNearbyList,
+    ResourceNearbyResult,
     ResourceRead,
     ResourceUpdate,
     TrustSignals,
     VerificationInfo,
 )
+
+# Meters per mile for distance calculations
+METERS_PER_MILE = 1609.34
 
 
 class ResourceService:
@@ -157,6 +162,102 @@ class ResourceService:
 
         resources = self.session.exec(query).all()
         return [self._to_read_schema(r) for r in resources], total
+
+    def list_nearby(
+        self,
+        zip_code: str,
+        radius_miles: int = 25,
+        categories: list[str] | None = None,
+        limit: int = 20,
+        offset: int = 0,
+    ) -> ResourceNearbyList | None:
+        """List resources near a zip code, sorted by distance.
+
+        Args:
+            zip_code: 5-digit zip code for center point
+            radius_miles: Search radius in miles (default 25)
+            categories: Filter by categories (optional)
+            limit: Maximum results to return
+            offset: Number of results to skip for pagination
+
+        Returns:
+            ResourceNearbyList with resources sorted by distance, or None if zip not found
+        """
+        # Look up zip code center point
+        zip_result = self.session.execute(
+            text("SELECT latitude, longitude, geog FROM zip_codes WHERE zip_code = :zip"),
+            {"zip": zip_code},
+        ).fetchone()
+
+        if not zip_result:
+            return None
+
+        center_lat, center_lng = zip_result.latitude, zip_result.longitude
+        radius_meters = radius_miles * METERS_PER_MILE
+
+        # Build spatial query using PostGIS
+        # ST_DWithin is efficient (uses GIST index), then calculate exact distance
+        base_sql = """
+            SELECT r.id as resource_id,
+                   ST_Distance(l.geog, z.geog) / :meters_per_mile as distance_miles
+            FROM resources r
+            JOIN locations l ON r.location_id = l.id
+            CROSS JOIN zip_codes z
+            WHERE z.zip_code = :zip
+            AND l.geog IS NOT NULL
+            AND ST_DWithin(l.geog, z.geog, :radius_meters)
+            AND r.status::text != 'inactive'
+        """
+
+        # Add category filter if provided
+        params = {
+            "zip": zip_code,
+            "radius_meters": radius_meters,
+            "meters_per_mile": METERS_PER_MILE,
+        }
+
+        if categories:
+            # Build category conditions
+            category_conditions = " OR ".join(
+                [f"r.categories @> ARRAY['{cat}']::text[]" for cat in categories]
+            )
+            base_sql += f" AND ({category_conditions})"
+
+        # Get total count
+        count_sql = f"SELECT COUNT(*) FROM ({base_sql}) as subquery"
+        total = self.session.execute(text(count_sql), params).scalar()
+
+        # Get paginated results sorted by distance
+        results_sql = f"""
+            {base_sql}
+            ORDER BY distance_miles ASC
+            LIMIT :limit OFFSET :offset
+        """
+        params["limit"] = limit
+        params["offset"] = offset
+
+        results = self.session.execute(text(results_sql), params).fetchall()
+
+        # Fetch full resource data for each result
+        nearby_resources = []
+        for row in results:
+            resource = self.session.get(Resource, row.resource_id)
+            if resource:
+                nearby_resources.append(
+                    ResourceNearbyResult(
+                        resource=self._to_read_schema(resource),
+                        distance_miles=round(row.distance_miles, 1),
+                    )
+                )
+
+        return ResourceNearbyList(
+            resources=nearby_resources,
+            total=total,
+            zip_code=zip_code,
+            radius_miles=radius_miles,
+            center_lat=center_lat,
+            center_lng=center_lng,
+        )
 
     def get_resource(self, resource_id: UUID) -> ResourceRead | None:
         """Get a single resource by ID."""

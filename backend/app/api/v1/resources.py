@@ -14,6 +14,7 @@ from app.schemas.resource import (
     ResourceCount,
     ResourceCreate,
     ResourceList,
+    ResourceNearbyList,
     ResourceRead,
     ResourceUpdate,
 )
@@ -199,6 +200,95 @@ def list_resources(
         offset=offset,
     )
     return ResourceList(resources=resources, total=total, limit=limit, offset=offset)
+
+
+@router.get(
+    "/nearby",
+    response_model=ResourceNearbyList,
+    summary="Find nearby resources",
+    response_description="Resources near a zip code sorted by distance",
+    responses={
+        200: {
+            "description": "Successful response with nearby resources",
+            "content": {
+                "application/json": {
+                    "example": {
+                        "resources": [
+                            {
+                                "resource": {"id": "...", "title": "Local VA Clinic"},
+                                "distance_miles": 2.3,
+                            }
+                        ],
+                        "total": 15,
+                        "zip_code": "22201",
+                        "radius_miles": 25,
+                        "center_lat": 38.88,
+                        "center_lng": -77.09,
+                    }
+                }
+            },
+        },
+        404: {
+            "description": "Zip code not found",
+            "content": {"application/json": {"example": {"detail": "Zip code not found"}}},
+        },
+    },
+)
+def list_nearby_resources(
+    session: SessionDep,
+    zip: str = Query(
+        ...,
+        description="5-digit zip code to search near",
+        min_length=5,
+        max_length=5,
+        examples=["22201", "90210"],
+    ),
+    radius: int = Query(
+        default=25,
+        ge=1,
+        le=100,
+        description="Search radius in miles (1-100)",
+    ),
+    categories: str | None = Query(
+        default=None,
+        description="Filter by categories (comma-separated, e.g., 'housing,legal')",
+        examples=["housing,legal", "employment,training"],
+    ),
+    limit: int = Query(default=20, ge=1, le=100, description="Maximum results to return"),
+    offset: int = Query(default=0, ge=0, description="Number of results to skip for pagination"),
+) -> ResourceNearbyList:
+    """Find veteran resources near a zip code.
+
+    Returns resources sorted by distance from the zip code center.
+    Uses PostGIS spatial queries for efficient nearest-neighbor lookup.
+
+    **Use cases:**
+    - Veterans with limited transportation needing closest resources
+    - Case managers finding local services for clients
+    - Mobile app location-based search
+
+    **Query Parameters:**
+    - `zip` - 5-digit zip code (required)
+    - `radius` - Search radius in miles (default 25, max 100)
+    - `categories` - Optional category filter (housing, legal, employment, training)
+    """
+    category_list: list[str] | None = None
+    if categories:
+        category_list = [c.strip() for c in categories.split(",") if c.strip()]
+
+    service = ResourceService(session)
+    result = service.list_nearby(
+        zip_code=zip,
+        radius_miles=radius,
+        categories=category_list,
+        limit=limit,
+        offset=offset,
+    )
+
+    if result is None:
+        raise HTTPException(status_code=404, detail="Zip code not found")
+
+    return result
 
 
 @router.get(

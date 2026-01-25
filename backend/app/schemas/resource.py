@@ -306,3 +306,21 @@ class ResourceSearchResult(BaseModel):
         default_factory=list,
         description="Eligibility match reasons (for eligibility search)",
     )
+
+
+class ResourceNearbyResult(BaseModel):
+    """Resource with distance information for nearby searches."""
+
+    resource: ResourceRead = Field(..., description="The matched resource")
+    distance_miles: float = Field(..., ge=0.0, description="Distance from search location in miles")
+
+
+class ResourceNearbyList(BaseModel):
+    """Paginated list of nearby resources."""
+
+    resources: list[ResourceNearbyResult] = Field(..., description="Resources sorted by distance")
+    total: int = Field(..., description="Total number of resources within radius")
+    zip_code: str = Field(..., description="Search zip code")
+    radius_miles: int = Field(..., description="Search radius in miles")
+    center_lat: float = Field(..., description="Search center latitude")
+    center_lng: float = Field(..., description="Search center longitude")
