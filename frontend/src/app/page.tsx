@@ -8,14 +8,16 @@ import { USMap } from '@/components/us-map';
 import { CategoryCards } from '@/components/CategoryCards';
 import { SortChips } from '@/components/SortChips';
 import { Button } from '@/components/ui/button';
-import { Search, Loader2 } from 'lucide-react';
+import { Search, Loader2, MapPin } from 'lucide-react';
 import { useFilterContext } from '@/context/filter-context';
 import type { SortOption } from '@/components/sort-dropdown-header';
 import { BackToTop } from '@/components/BackToTop';
+import { Input } from '@/components/ui/input';
 
 export default function Home() {
   const { filters, toggleCategory, toggleState, setEnabled, resourceCount, isLoadingCount } = useFilterContext();
   const [selectedSort, setSelectedSort] = useState<SortOption>('shuffle');
+  const [zipCode, setZipCode] = useState('');
   const router = useRouter();
 
   // Enable resource count fetching when on the home page
@@ -25,13 +27,18 @@ export default function Home() {
   }, [setEnabled]);
 
   // Build search URL with all selected filters
-  const buildSearchUrl = () => {
+  const buildSearchUrl = (useZip = false) => {
     const params = new URLSearchParams();
 
-    // Add states (multiple values)
-    filters.states.forEach((state) => {
-      params.append('state', state);
-    });
+    // Add zip code if provided (takes precedence over states)
+    if (useZip && zipCode.length === 5) {
+      params.set('zip', zipCode);
+    } else {
+      // Add states (multiple values) - only if not using zip
+      filters.states.forEach((state) => {
+        params.append('state', state);
+      });
+    }
 
     // Add categories (multiple values)
     filters.categories.forEach((category) => {
@@ -45,6 +52,23 @@ export default function Home() {
 
     const queryString = params.toString();
     return queryString ? `/search?${queryString}` : '/search';
+  };
+
+  const handleZipChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value.replace(/\D/g, '').slice(0, 5);
+    setZipCode(value);
+  };
+
+  const handleZipSearch = () => {
+    if (zipCode.length === 5) {
+      router.push(buildSearchUrl(true));
+    }
+  };
+
+  const handleZipKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter' && zipCode.length === 5) {
+      handleZipSearch();
+    }
   };
 
   const handleSearch = () => {
@@ -90,6 +114,47 @@ export default function Home() {
                 Selected: {filters.states.join(', ')}
               </p>
             )}
+
+            {/* OR Divider */}
+            <div className="mt-6 flex items-center gap-4">
+              <div className="h-px flex-1 bg-gradient-to-r from-transparent to-white/20" />
+              <span className="text-sm font-medium text-white/60">OR</span>
+              <div className="h-px flex-1 bg-gradient-to-l from-transparent to-white/20" />
+            </div>
+
+            {/* Zip Code Search */}
+            <div className="mt-4">
+              <p className="mb-3 text-center text-base text-white/80">
+                Search near your zip code
+              </p>
+              <div className="mx-auto flex max-w-xs gap-2">
+                <div className="relative flex-1">
+                  <MapPin className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+                  <Input
+                    type="text"
+                    inputMode="numeric"
+                    pattern="[0-9]*"
+                    value={zipCode}
+                    onChange={handleZipChange}
+                    onKeyDown={handleZipKeyDown}
+                    placeholder="Enter ZIP"
+                    className="h-11 rounded-xl bg-white/10 pl-9 text-white placeholder:text-white/50 border-white/20 focus:border-[hsl(var(--v4v-gold))] focus:ring-[hsl(var(--v4v-gold)/0.3)]"
+                  />
+                </div>
+                <Button
+                  onClick={handleZipSearch}
+                  disabled={zipCode.length !== 5}
+                  className="h-11 rounded-xl bg-[hsl(var(--v4v-gold))] text-[hsl(var(--v4v-navy))] hover:bg-[hsl(var(--v4v-gold-dark))] disabled:opacity-50"
+                >
+                  <Search className="h-4 w-4" />
+                </Button>
+              </div>
+              {zipCode.length > 0 && zipCode.length < 5 && (
+                <p className="mt-2 text-center text-xs text-white/50">
+                  Enter a 5-digit ZIP code
+                </p>
+              )}
+            </div>
           </div>
         </div>
       </section>

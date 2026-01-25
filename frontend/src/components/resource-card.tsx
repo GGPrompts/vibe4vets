@@ -18,6 +18,8 @@ interface ResourceCardProps {
   searchParams?: string;
   /** Enable layoutId for shared element transitions */
   enableLayoutId?: boolean;
+  /** Distance in miles from search location (for nearby search) */
+  distance?: number;
 }
 
 // Design system colors for accent bars
@@ -80,6 +82,8 @@ function CardInner({
   renderBookmark = false,
   /** When true, phone numbers render as plain text (to avoid nested <a> in <Link>) */
   disablePhoneLinks = false,
+  /** Distance in miles from search location */
+  distance,
 }: {
   resource: Resource;
   explanations?: MatchExplanation[];
@@ -88,6 +92,8 @@ function CardInner({
   renderBookmark?: boolean;
   /** When true, phone numbers render as plain text (to avoid nested <a> in <Link>) */
   disablePhoneLinks?: boolean;
+  /** Distance in miles from search location */
+  distance?: number;
 }) {
   const primaryCategory = resource.categories[0] || 'employment';
   const CategoryIcon = categoryIcons[primaryCategory] || Briefcase;
@@ -179,6 +185,15 @@ function CardInner({
             >
               <Globe className="h-3 w-3" />
               Nationwide
+            </Badge>
+          )}
+          {distance !== undefined && (
+            <Badge
+              variant="outline"
+              className="gap-1 border-emerald-500/40 bg-emerald-50 text-emerald-700 font-semibold dark:bg-emerald-950 dark:text-emerald-300"
+            >
+              <MapPin className="h-3 w-3" />
+              {distance < 1 ? '<1' : distance.toFixed(1)} mi
             </Badge>
           )}
         </div>
@@ -283,6 +298,7 @@ export function ResourceCard({
   onClick,
   searchParams,
   enableLayoutId = false,
+  distance,
 }: ResourceCardProps) {
   const primaryCategory = resource.categories[0] || 'employment';
 
@@ -306,6 +322,7 @@ export function ResourceCard({
         showBookmark={isLinkVariant}
         renderBookmark={renderBookmarkInside}
         disablePhoneLinks={isLinkVariant}
+        distance={distance}
       />
     </Card>
   );

@@ -100,6 +100,21 @@ export interface ResourceList {
   offset: number;
 }
 
+// Nearby search types
+export interface ResourceNearbyResult {
+  resource: Resource;
+  distance_miles: number;
+}
+
+export interface ResourceNearbyList {
+  resources: ResourceNearbyResult[];
+  total: number;
+  zip_code: string;
+  radius_miles: number;
+  center_lat: number;
+  center_lng: number;
+}
+
 export interface MatchExplanation {
   reason: string;
   field: string | null;
@@ -565,6 +580,23 @@ export const api = {
 
       const query = searchParams.toString();
       return fetchAPI(`/api/v1/resources/count${query ? `?${query}` : ''}`);
+    },
+
+    nearby: (params: {
+      zip: string;
+      radius?: number;
+      categories?: string;
+      limit?: number;
+      offset?: number;
+    }): Promise<ResourceNearbyList> => {
+      const searchParams = new URLSearchParams();
+      searchParams.set('zip', params.zip);
+      if (params.radius) searchParams.set('radius', String(params.radius));
+      if (params.categories) searchParams.set('categories', params.categories);
+      if (params.limit) searchParams.set('limit', String(params.limit));
+      if (params.offset) searchParams.set('offset', String(params.offset));
+
+      return fetchAPI(`/api/v1/resources/nearby?${searchParams.toString()}`);
     },
   },
 

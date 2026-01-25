@@ -13,6 +13,7 @@ interface ProgramCardProps {
   program: Program;
   resources: Resource[];
   explanationsMap?: Map<string, MatchExplanation[]>;
+  distanceMap?: Map<string, number>;
   defaultExpanded?: boolean;
   onResourceClick?: (resource: Resource, explanations?: MatchExplanation[]) => void;
 }
@@ -41,6 +42,7 @@ export function ProgramCard({
   program,
   resources,
   explanationsMap,
+  distanceMap,
   defaultExpanded = false,
   onResourceClick,
 }: ProgramCardProps) {
@@ -196,6 +198,7 @@ export function ProgramCard({
                   explanations={explanationsMap?.get(resource.id)}
                   variant="modal"
                   onClick={() => onResourceClick?.(resource, explanationsMap?.get(resource.id))}
+                  distance={distanceMap?.get(resource.id)}
                 />
               ))}
             </div>

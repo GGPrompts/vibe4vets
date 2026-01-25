@@ -10,6 +10,7 @@ interface FilterChipsProps {
   onRemoveCategory: (category: string) => void;
   onRemoveState: (state: string) => void;
   onClearScope: () => void;
+  onClearZip?: () => void;
   onClearAll: () => void;
   className?: string;
 }
@@ -38,13 +39,15 @@ export function FilterChips({
   onRemoveCategory,
   onRemoveState,
   onClearScope,
+  onClearZip,
   onClearAll,
   className,
 }: FilterChipsProps) {
   const hasFilters =
     filters.categories.length > 0 ||
     filters.states.length > 0 ||
-    filters.scope !== 'all';
+    filters.scope !== 'all' ||
+    !!filters.zip;
 
   if (!hasFilters) return null;
 
@@ -60,7 +63,8 @@ export function FilterChips({
   const totalChips =
     filters.categories.length +
     filters.states.length +
-    (filters.scope !== 'all' ? 1 : 0);
+    (filters.scope !== 'all' ? 1 : 0) +
+    (filters.zip ? 1 : 0);
 
   return (
     <div className={cn('flex flex-wrap items-center gap-2', className)}>
@@ -107,6 +111,19 @@ export function FilterChips({
         >
           <Globe className="h-3 w-3" />
           {getScopeLabel(filters.scope)}
+          <X className="h-3 w-3 ml-0.5" />
+        </Badge>
+      )}
+
+      {/* Zip code chip - emerald styling for proximity search */}
+      {filters.zip && onClearZip && (
+        <Badge
+          variant="outline"
+          className="cursor-pointer gap-1 border-emerald-600 bg-emerald-500 text-white font-medium transition-opacity hover:opacity-80"
+          onClick={onClearZip}
+        >
+          <MapPin className="h-3 w-3" />
+          Near {filters.zip} ({filters.radius || 25} mi)
           <X className="h-3 w-3 ml-0.5" />
         </Badge>
       )}

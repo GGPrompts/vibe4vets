@@ -21,6 +21,8 @@ interface VirtualizedResourceGridProps {
   newResourceIds?: Set<string>;
   /** Map of new resource ID to its index within the new batch */
   newResourceIndexById?: Map<string, number>;
+  /** Map of resource ID to distance in miles (for nearby search) */
+  distanceMap?: Map<string, number>;
 }
 
 // Responsive breakpoints (matches Tailwind)
@@ -94,6 +96,7 @@ export function VirtualizedResourceGrid({
   disableAnimation = false,
   newResourceIds,
   newResourceIndexById,
+  distanceMap,
 }: VirtualizedResourceGridProps) {
   const parentRef = useRef<HTMLDivElement>(null);
   const { columns, isResizing } = useResponsiveColumns();
@@ -249,6 +252,7 @@ export function VirtualizedResourceGrid({
                             )
                           }
                           enableLayoutId
+                          distance={distanceMap?.get(resource.id)}
                         />
                       </motion.div>
                     );

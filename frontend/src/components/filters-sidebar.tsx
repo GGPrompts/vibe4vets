@@ -15,9 +15,10 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from '@/components/ui/tooltip';
-import { Filter, X, Briefcase, GraduationCap, Home, Scale, UtensilsCrossed, FileCheck, ChevronDown, PanelLeft, PanelLeftClose, Search } from 'lucide-react';
+import { Filter, X, Briefcase, GraduationCap, Home, Scale, UtensilsCrossed, FileCheck, ChevronDown, PanelLeft, PanelLeftClose, Search, MapPin } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { cn } from '@/lib/utils';
+import { ZipCodeInput } from '@/components/ZipCodeInput';
 
 export const CATEGORIES = [
   { value: 'employment', label: 'Employment', icon: Briefcase },
@@ -98,6 +99,8 @@ export interface FilterState {
   states: string[];
   scope: string;
   minTrust: number;
+  zip?: string;
+  radius?: number;
 }
 
 interface FiltersSidebarProps {
@@ -189,6 +192,7 @@ export function FiltersSidebar({
   // Collapsible section state - categories and scope open by default
   const [categoriesOpen, setCategoriesOpen] = useState(true);
   const [scopeOpen, setScopeOpen] = useState(true);
+  const [zipOpen, setZipOpen] = useState(filters.zip ? true : false);
   const [statesOpen, setStatesOpen] = useState(false);
   const [stateSearch, setStateSearch] = useState('');
 
@@ -209,7 +213,8 @@ export function FiltersSidebar({
   const activeFilterCount =
     filters.categories.length +
     filters.states.length +
-    (filters.scope !== 'all' ? 1 : 0);
+    (filters.scope !== 'all' ? 1 : 0) +
+    (filters.zip ? 1 : 0);
 
   const handleCategoryToggle = (category: string) => {
     const newCategories = filters.categories.includes(category)
@@ -229,12 +234,26 @@ export function FiltersSidebar({
     onFiltersChange({ ...filters, scope });
   };
 
+  const handleZipChange = (zip: string) => {
+    onFiltersChange({ ...filters, zip: zip || undefined });
+  };
+
+  const handleRadiusChange = (radius: number) => {
+    onFiltersChange({ ...filters, radius });
+  };
+
+  const handleClearZip = () => {
+    onFiltersChange({ ...filters, zip: undefined, radius: undefined });
+  };
+
   const clearAllFilters = () => {
     onFiltersChange({
       categories: [],
       states: [],
       scope: 'all',
       minTrust: 0, // Keep for API compatibility
+      zip: undefined,
+      radius: undefined,
     });
   };
 
@@ -366,6 +385,36 @@ export function FiltersSidebar({
             );
           })}
         </RadioGroup>
+      </CollapsibleSection>
+
+      <Separator />
+
+      {/* Near ZIP - location-based search */}
+      <CollapsibleSection
+        title="Near ZIP"
+        badge={
+          filters.zip && (
+            <Badge variant="outline" className="text-xs">
+              {filters.zip}
+            </Badge>
+          )
+        }
+        isOpen={zipOpen}
+        onToggle={() => setZipOpen(!zipOpen)}
+      >
+        <div className="space-y-3">
+          <ZipCodeInput
+            zip={filters.zip || ''}
+            radius={filters.radius || 25}
+            onZipChange={handleZipChange}
+            onRadiusChange={handleRadiusChange}
+            onClear={handleClearZip}
+            compact
+          />
+          <p className="text-xs text-muted-foreground">
+            Find resources closest to you. Results show distance and sort by proximity.
+          </p>
+        </div>
       </CollapsibleSection>
 
       <Separator />
@@ -523,7 +572,8 @@ export function FixedFiltersSidebar({
     filters.categories.length +
     filters.states.length +
     (filters.scope !== 'all' ? 1 : 0) +
-    (filters.minTrust > 0 ? 1 : 0);
+    (filters.minTrust > 0 ? 1 : 0) +
+    (filters.zip ? 1 : 0);
 
   return (
     <TooltipProvider>
@@ -584,7 +634,7 @@ export function FixedFiltersSidebar({
                     <Button
                       variant="ghost"
                       size="icon"
-                      onClick={() => onFiltersChange({ categories: [], states: [], scope: 'all', minTrust: 0 })}
+                      onClick={() => onFiltersChange({ categories: [], states: [], scope: 'all', minTrust: 0, zip: undefined, radius: undefined })}
                       className="h-8 w-8 rounded-lg text-muted-foreground hover:text-destructive hover:bg-destructive/10"
                     >
                       <X className="h-4 w-4" />
@@ -595,6 +645,31 @@ export function FixedFiltersSidebar({
                   </TooltipContent>
                 </Tooltip>
               </>
+            )}
+
+            {/* Zip code indicator */}
+            {filters.zip && (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="mt-2"
+              >
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      onClick={() => onFiltersChange({ ...filters, zip: undefined, radius: undefined })}
+                      className="h-8 w-8 rounded-lg bg-[hsl(var(--v4v-gold)/0.1)] text-[hsl(var(--v4v-gold))] shadow-sm border-2 border-current"
+                    >
+                      <MapPin className="h-4 w-4" />
+                    </Button>
+                  </TooltipTrigger>
+                  <TooltipContent side="right">
+                    <p className="text-xs">Near {filters.zip} ({filters.radius || 25} mi) - Click to clear</p>
+                  </TooltipContent>
+                </Tooltip>
+              </motion.div>
             )}
 
             <div className="my-2 h-px w-6 bg-border" />

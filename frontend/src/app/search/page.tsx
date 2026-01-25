@@ -133,12 +133,16 @@ function SearchResults() {
 
     const scopeParam = searchParams.get('scope');
     const minTrustParam = searchParams.get('minTrust');
+    const zipParam = searchParams.get('zip');
+    const radiusParam = searchParams.get('radius');
 
     return {
       categories,
       states,
       scope: scopeParam || 'all',
       minTrust: minTrustParam ? parseInt(minTrustParam, 10) : 0,
+      zip: zipParam || undefined,
+      radius: radiusParam ? parseInt(radiusParam, 10) : undefined,
     };
   });
 
@@ -162,6 +166,13 @@ function SearchResults() {
       }
       if (newFilters.scope !== 'all') {
         params.set('scope', newFilters.scope);
+      }
+      // Zip code location filter
+      if (newFilters.zip) {
+        params.set('zip', newFilters.zip);
+        if (newFilters.radius && newFilters.radius !== 25) {
+          params.set('radius', String(newFilters.radius));
+        }
       }
       // Preserve sort from URL (header controls this)
       const currentSort = searchParams.get('sort');
@@ -203,12 +214,19 @@ function SearchResults() {
     handleFiltersChange(newFilters);
   };
 
+  const handleClearZip = () => {
+    const newFilters = { ...filters, zip: undefined, radius: undefined };
+    handleFiltersChange(newFilters);
+  };
+
   const handleClearAll = () => {
     const newFilters = {
       categories: [],
       states: [],
       scope: 'all',
       minTrust: 0,
+      zip: undefined,
+      radius: undefined,
     };
     handleFiltersChange(newFilters);
   };
@@ -271,9 +289,25 @@ function SearchResults() {
     enabled: !!query,
   });
 
+  // Nearby mode: useQuery when zip code is active (no text search)
+  const nearbyQuery = useQuery({
+    queryKey: ['nearby', filters.zip, filters.radius, filters.categories],
+    queryFn: async () => {
+      return api.resources.nearby({
+        zip: filters.zip!,
+        radius: filters.radius || 25,
+        categories: filters.categories.length > 0 ? filters.categories.join(',') : undefined,
+        limit: 100,
+      });
+    },
+    enabled: !!filters.zip && !query,
+  });
+
   // Determine which data source to use
   const isSearchMode = !!query;
+  const isNearbyMode = !!filters.zip && !query;
   const searchResults = searchQuery.data;
+  const nearbyResults = nearbyQuery.data;
 
   // Flatten browse pages into single array
   const browseResources = useMemo(() => {
@@ -309,11 +343,31 @@ function SearchResults() {
     previousResourceIdsRef.current = currentBrowseResourceIds;
   }, [currentBrowseResourceIds]);
 
+  // Distance map for nearby results
+  const distanceMap = useMemo(() => {
+    if (!nearbyResults?.resources) return new Map<string, number>();
+    return new Map(
+      nearbyResults.resources.map((r) => [r.resource.id, r.distance_miles])
+    );
+  }, [nearbyResults]);
+
+  // Extract resources from nearby results
+  const nearbyResources = useMemo(() => {
+    if (!nearbyResults?.resources) return [];
+    return nearbyResults.resources.map((r) => r.resource);
+  }, [nearbyResults]);
+
   // Loading states
-  const initialLoading = isSearchMode ? searchQuery.isLoading : browseQuery.isLoading;
+  const initialLoading = isSearchMode
+    ? searchQuery.isLoading
+    : isNearbyMode
+      ? nearbyQuery.isLoading
+      : browseQuery.isLoading;
   const error = isSearchMode
     ? (searchQuery.error instanceof Error ? searchQuery.error.message : null)
-    : (browseQuery.error instanceof Error ? browseQuery.error.message : null);
+    : isNearbyMode
+      ? (nearbyQuery.error instanceof Error ? nearbyQuery.error.message : null)
+      : (browseQuery.error instanceof Error ? browseQuery.error.message : null);
 
   // Sync selected resource from URL on mount and when data loads
   useEffect(() => {
@@ -407,12 +461,16 @@ function SearchResults() {
       // Search mode: client-side filtering + sorting + trust filter
       const searchResources = searchResults?.results.map((r) => r.resource) ?? [];
       return sortResults(applyTrustFilter(filterSearchResults(searchResources)));
+    } else if (isNearbyMode) {
+      // Nearby mode: already sorted by distance from API, just apply trust filter
+      // Don't re-sort since distance ordering is what we want
+      return applyTrustFilter(nearbyResources);
     } else {
       // Browse mode: server-side filtering already applied, just trust + sort
       return sortResults(applyTrustFilter(browseResources));
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isSearchMode, searchResults, browseResources, filters, sort]);
+  }, [isSearchMode, isNearbyMode, searchResults, nearbyResources, browseResources, filters, sort]);
 
   const explanationsMap = useMemo(() => {
     if (!searchResults) return new Map<string, MatchExplanation[]>();
@@ -428,7 +486,11 @@ function SearchResults() {
   const hasProgramGroups = groupedItems.some((item) => item.type === 'program');
 
   // For browse mode, use server total; for search mode, use filtered count
-  const totalResults = isSearchMode ? resources.length : browseTotal;
+  const totalResults = isSearchMode
+    ? resources.length
+    : isNearbyMode
+      ? (nearbyResults?.total ?? 0)
+      : browseTotal;
   const displayedCount = resources.length;
   const hasResults = displayedCount > 0;
 
@@ -529,6 +591,10 @@ function SearchResults() {
                     <>
                       Found <strong>{totalResults}</strong> results for &quot;{query}&quot;
                     </>
+                  ) : isNearbyMode ? (
+                    <>
+                      <strong>{displayedCount}</strong> resources within <strong>{filters.radius || 25}</strong> miles of <strong>{filters.zip}</strong>
+                    </>
                   ) : (
                     <>
                       Showing <strong>{displayedCount}</strong> of <strong>{totalResults}</strong> resources
@@ -544,6 +610,7 @@ function SearchResults() {
               onRemoveCategory={handleRemoveCategory}
               onRemoveState={handleRemoveState}
               onClearScope={handleClearScope}
+              onClearZip={handleClearZip}
               onClearAll={handleClearAll}
             />
           </div>
@@ -622,6 +689,7 @@ function SearchResults() {
                           program={item.program}
                           resources={item.resources}
                           explanationsMap={explanationsMap}
+                          distanceMap={isNearbyMode ? distanceMap : undefined}
                           onResourceClick={openResourceModal}
                         />
                       );
@@ -638,6 +706,7 @@ function SearchResults() {
                               explanationsMap.get(item.resource.id)
                             )
                           }
+                          distance={isNearbyMode ? distanceMap.get(item.resource.id) : undefined}
                         />
                       );
                     }
@@ -651,12 +720,13 @@ function SearchResults() {
                   selectedResourceId={selectedResource?.id}
                   animatingResourceId={animatingResourceId}
                   onResourceClick={openResourceModal}
-                  hasNextPage={!isSearchMode && hasNextPage}
+                  hasNextPage={!isSearchMode && !isNearbyMode && hasNextPage}
                   isFetchingNextPage={isFetchingNextPage}
                   fetchNextPage={handleLoadMore}
                   disableAnimation={disableGridMotion}
                   newResourceIds={newResourceIds}
                   newResourceIndexById={newResourceIndexById}
+                  distanceMap={isNearbyMode ? distanceMap : undefined}
                 />
               )}
 
