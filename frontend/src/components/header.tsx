@@ -40,7 +40,14 @@ export function Header() {
 
   // Get current sort from URL
   const query = searchParams.get('q') || '';
-  const currentSort = (searchParams.get('sort') as SortOption) || (query ? 'relevance' : 'newest');
+  const zip = searchParams.get('zip') || '';
+  // Default sort: relevance when searching, distance when using zip, newest otherwise
+  const getDefaultSort = (): SortOption => {
+    if (query) return 'relevance';
+    if (zip) return 'distance';
+    return 'newest';
+  };
+  const currentSort = (searchParams.get('sort') as SortOption) || getDefaultSort();
 
   // Sync search query from URL params when on search page
   useEffect(() => {
@@ -85,7 +92,7 @@ export function Header() {
 
   const handleSortChange = useCallback((newSort: SortOption) => {
     const params = new URLSearchParams(searchParams.toString());
-    const defaultSort = query ? 'relevance' : 'newest';
+    const defaultSort = getDefaultSort();
 
     if (newSort !== defaultSort) {
       params.set('sort', newSort);
@@ -94,7 +101,8 @@ export function Header() {
     }
 
     router.push(`/search?${params.toString()}`, { scroll: false });
-  }, [router, searchParams, query]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [router, searchParams, query, zip]);
 
   // Don't render on admin pages (they have their own layout)
   if (pathname.startsWith('/admin')) {
@@ -145,6 +153,7 @@ export function Header() {
               value={currentSort}
               onChange={handleSortChange}
               hasQuery={!!query}
+              hasZip={!!zip}
               className="hidden md:block"
             />
           )}

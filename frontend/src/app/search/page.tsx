@@ -148,9 +148,14 @@ function SearchResults() {
 
   // Get sort from URL params (header controls this now)
   const sortParam = searchParams.get('sort') as SortOption;
-  const sort: SortOption = (sortParam && ['relevance', 'newest', 'alpha', 'shuffle'].includes(sortParam))
+  const getDefaultSort = (): SortOption => {
+    if (query) return 'relevance';
+    if (filters.zip) return 'distance';
+    return 'newest';
+  };
+  const sort: SortOption = (sortParam && ['relevance', 'newest', 'alpha', 'shuffle', 'distance'].includes(sortParam))
     ? sortParam
-    : (query ? 'relevance' : 'newest');
+    : getDefaultSort();
 
   // Sync filters to URL (preserves existing query and sort params)
   const updateURL = useCallback(
@@ -434,7 +439,7 @@ function SearchResults() {
   };
 
   // Sort results
-  const sortResults = <T extends Resource>(resources: T[]) => {
+  const sortResults = <T extends Resource>(resources: T[], distMap?: Map<string, number>) => {
     const sorted = [...resources];
     switch (sort) {
       case 'newest':
@@ -446,6 +451,16 @@ function SearchResults() {
         break;
       case 'alpha':
         sorted.sort((a, b) => a.title.localeCompare(b.title));
+        break;
+      case 'distance':
+        // Sort by distance if we have distance data
+        if (distMap && distMap.size > 0) {
+          sorted.sort((a, b) => {
+            const distA = distMap.get(a.id) ?? Infinity;
+            const distB = distMap.get(b.id) ?? Infinity;
+            return distA - distB;
+          });
+        }
         break;
       case 'relevance':
       default:
@@ -462,15 +477,20 @@ function SearchResults() {
       const searchResources = searchResults?.results.map((r) => r.resource) ?? [];
       return sortResults(applyTrustFilter(filterSearchResults(searchResources)));
     } else if (isNearbyMode) {
-      // Nearby mode: already sorted by distance from API, just apply trust filter
-      // Don't re-sort since distance ordering is what we want
-      return applyTrustFilter(nearbyResources);
+      // Nearby mode: apply trust filter, then sort
+      // If sort is 'distance', API already sorted - keep order
+      // Otherwise, apply the requested sort (alpha, newest, etc.)
+      const filtered = applyTrustFilter(nearbyResources);
+      if (sort === 'distance') {
+        return filtered; // Already sorted by distance from API
+      }
+      return sortResults(filtered, distanceMap);
     } else {
       // Browse mode: server-side filtering already applied, just trust + sort
       return sortResults(applyTrustFilter(browseResources));
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isSearchMode, isNearbyMode, searchResults, nearbyResources, browseResources, filters, sort]);
+  }, [isSearchMode, isNearbyMode, searchResults, nearbyResources, browseResources, filters, sort, distanceMap]);
 
   const explanationsMap = useMemo(() => {
     if (!searchResults) return new Map<string, MatchExplanation[]>();

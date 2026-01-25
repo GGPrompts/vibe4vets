@@ -10,10 +10,11 @@ import {
 } from '@/components/ui/select';
 import { cn } from '@/lib/utils';
 
-export type SortOption = 'relevance' | 'newest' | 'alpha' | 'shuffle';
+export type SortOption = 'relevance' | 'newest' | 'alpha' | 'shuffle' | 'distance';
 
 export const SORT_OPTIONS = [
   { value: 'relevance', label: 'Relevance' },
+  { value: 'distance', label: 'Distance' },
   { value: 'newest', label: 'Newest' },
   { value: 'alpha', label: 'A-Z' },
   { value: 'shuffle', label: 'Shuffle' },

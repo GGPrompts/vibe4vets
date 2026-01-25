@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { cn } from "@/lib/utils";
-import { ArrowUpDown, Clock, ArrowDownAZ, Sparkles, Shuffle, Check } from "lucide-react";
+import { ArrowUpDown, Clock, ArrowDownAZ, Sparkles, Shuffle, Check, MapPin } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -10,7 +10,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-export type SortOption = 'relevance' | 'newest' | 'alpha' | 'shuffle';
+export type SortOption = 'relevance' | 'newest' | 'alpha' | 'shuffle' | 'distance';
 
 interface SortItem {
   value: SortOption;
@@ -25,6 +25,12 @@ const SORT_ITEMS: SortItem[] = [
     label: 'Relevance',
     description: 'Best matches first',
     icon: <Sparkles className="w-4 h-4" />,
+  },
+  {
+    value: 'distance',
+    label: 'Distance',
+    description: 'Closest to you',
+    icon: <MapPin className="w-4 h-4" />,
   },
   {
     value: 'newest',
@@ -50,6 +56,7 @@ interface SortDropdownHeaderProps {
   value: SortOption;
   onChange: (value: SortOption) => void;
   hasQuery?: boolean;
+  hasZip?: boolean;
   className?: string;
 }
 
@@ -57,12 +64,17 @@ export function SortDropdownHeader({
   value,
   onChange,
   hasQuery = false,
+  hasZip = false,
   className,
 }: SortDropdownHeaderProps) {
-  // Filter out relevance when there's no search query
-  const items = hasQuery
-    ? SORT_ITEMS
-    : SORT_ITEMS.filter((item) => item.value !== 'relevance');
+  // Filter options based on context:
+  // - relevance: only when there's a search query
+  // - distance: only when there's a zip code
+  const items = SORT_ITEMS.filter((item) => {
+    if (item.value === 'relevance' && !hasQuery) return false;
+    if (item.value === 'distance' && !hasZip) return false;
+    return true;
+  });
 
   const currentItem = SORT_ITEMS.find((item) => item.value === value) || SORT_ITEMS[1];
 
