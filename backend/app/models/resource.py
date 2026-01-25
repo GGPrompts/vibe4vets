@@ -74,7 +74,7 @@ class Resource(SQLModel, table=True):
 
     # Contact
     website: str | None = Field(default=None, max_length=500)
-    phone: str | None = Field(default=None, max_length=50)
+    phone: str | None = Field(default=None, max_length=150)
     hours: str | None = Field(default=None, max_length=255)
     languages: list[str] = Field(
         default_factory=lambda: ["en"],

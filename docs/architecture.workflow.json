@@ -1,0 +1,125 @@
+{
+  "id": "vibe4vets-architecture",
+  "name": "Vibe4Vets Data Architecture",
+  "description": "How veteran resources flow from sources to users - APIs + AI Swarms",
+  "steps": [
+    {
+      "id": "api-sources",
+      "label": "Structured APIs",
+      "description": "Official government and nonprofit APIs:\n• CareerOneStop (DOL)\n• VA.gov\n• HUD-VASH\n• State VA offices",
+      "nodeType": "mcp"
+    },
+    {
+      "id": "haiku-swarm",
+      "label": "Haiku Swarms",
+      "description": "Parallel AI research agents:\n• 15-50 agents spawned\n• Each researches state/region\n• Extracts structured JSON\n• Enrichment passes for quality",
+      "nodeType": "agent"
+    },
+    {
+      "id": "api-connectors",
+      "label": "API Connectors",
+      "description": "Python classes that call APIs:\n• careeronestop.py\n• va_gov.py\n• hud_vash.py\n• legal_aid.py\n• ssvf.py",
+      "nodeType": "bash"
+    },
+    {
+      "id": "swarm-data",
+      "label": "Swarm JSON Files",
+      "description": "Haiku output saved to disk:\n• backend/data/211/*.json (51 states)\n• backend/data/food/*.json\n• Reusable across runs",
+      "nodeType": "bash"
+    },
+    {
+      "id": "file-connectors",
+      "label": "File Connectors",
+      "description": "Load swarm-collected JSON:\n• two_one_one.py\n• Map services → categories\n• Normalize phone/address",
+      "nodeType": "bash"
+    },
+    {
+      "id": "resource-candidate",
+      "label": "ResourceCandidate",
+      "description": "Unified data model:\n• title, description, source_url\n• org_name, phone, address\n• categories[], tags[]\n• scope (national/state/local)",
+      "nodeType": "decision"
+    },
+    {
+      "id": "etl-pipeline",
+      "label": "ETL Pipeline",
+      "description": "Import to database:\n• Deduplicate (name + state + phone)\n• Validate required fields\n• Track stats (new/updated/skipped)\n• --dry-run support",
+      "nodeType": "skill"
+    },
+    {
+      "id": "postgres",
+      "label": "PostgreSQL",
+      "description": "Persistent storage:\n• resources table\n• categories, tags (normalized)\n• Full-text search\n• Geo queries",
+      "nodeType": "complete"
+    },
+    {
+      "id": "api-layer",
+      "label": "FastAPI Backend",
+      "description": "REST endpoints:\n• /resources - search & filter\n• /categories - browse by type\n• /nearby - location-based\n• Authentication & rate limits",
+      "nodeType": "mcp"
+    },
+    {
+      "id": "frontend",
+      "label": "React Frontend",
+      "description": "User interface:\n• Search by location/category\n• Resource detail pages\n• Save favorites\n• Mobile-responsive",
+      "nodeType": "human-entry"
+    }
+  ],
+  "positions": {
+    "api-sources": { "x": 100, "y": 100 },
+    "haiku-swarm": { "x": 400, "y": 100 },
+    "api-connectors": { "x": 100, "y": 250 },
+    "swarm-data": { "x": 400, "y": 250 },
+    "file-connectors": { "x": 400, "y": 400 },
+    "resource-candidate": { "x": 250, "y": 500 },
+    "etl-pipeline": { "x": 250, "y": 650 },
+    "postgres": { "x": 250, "y": 800 },
+    "api-layer": { "x": 250, "y": 950 },
+    "frontend": { "x": 250, "y": 1100 }
+  },
+  "edges": [
+    { "source": "api-sources", "target": "api-connectors", "label": "HTTP calls" },
+    { "source": "haiku-swarm", "target": "swarm-data", "label": "Write JSON" },
+    { "source": "api-connectors", "target": "resource-candidate" },
+    { "source": "swarm-data", "target": "file-connectors", "label": "Load files" },
+    { "source": "file-connectors", "target": "resource-candidate" },
+    { "source": "resource-candidate", "target": "etl-pipeline", "label": "Normalize" },
+    { "source": "etl-pipeline", "target": "postgres", "label": "Insert/Update" },
+    { "source": "postgres", "target": "api-layer", "label": "Query" },
+    { "source": "api-layer", "target": "frontend", "label": "JSON responses" }
+  ],
+  "notes": [
+    {
+      "id": "note-apis",
+      "appearsWithStep": 0,
+      "position": { "x": 50, "y": 20 },
+      "color": { "bg": "#dbeafe", "border": "#3b82f6" },
+      "content": "**Traditional Path**\nStructured APIs with auth, rate limits, official data",
+      "width": 200
+    },
+    {
+      "id": "note-swarms",
+      "appearsWithStep": 1,
+      "position": { "x": 350, "y": 20 },
+      "color": { "bg": "#fef3c7", "border": "#f59e0b" },
+      "content": "**AI Research Path**\nParallel haiku agents scrape & structure web data",
+      "width": 200
+    },
+    {
+      "id": "note-unified",
+      "appearsWithStep": 5,
+      "position": { "x": 450, "y": 480 },
+      "color": { "bg": "#d1fae5", "border": "#10b981" },
+      "content": "**Unified Model**\nBoth paths produce the same ResourceCandidate format",
+      "width": 180
+    },
+    {
+      "id": "note-stats",
+      "appearsWithStep": 7,
+      "position": { "x": 450, "y": 780 },
+      "color": { "bg": "#ede9fe", "border": "#8b5cf6" },
+      "content": "**Current Stats**\n• 771 resources (211 alone)\n• 51 states covered\n• 8 category types",
+      "width": 180
+    }
+  ],
+  "createdAt": "2026-01-25T03:00:00Z"
+}

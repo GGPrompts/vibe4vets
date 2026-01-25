@@ -463,11 +463,23 @@ async function fetchAPI<T>(
 ): Promise<T> {
   let response: Response;
 
+  // Add admin key header for admin endpoints
+  const headers: Record<string, string> = {
+    'Content-Type': 'application/json',
+  };
+
+  if (endpoint.includes('/admin')) {
+    const adminKey = process.env.NEXT_PUBLIC_ADMIN_API_KEY;
+    if (adminKey) {
+      headers['X-Admin-Key'] = adminKey;
+    }
+  }
+
   try {
     response = await fetch(`${API_BASE}${endpoint}`, {
       ...options,
       headers: {
-        'Content-Type': 'application/json',
+        ...headers,
         ...options.headers,
       },
     });
