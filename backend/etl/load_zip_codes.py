@@ -25,10 +25,7 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 # Census Bureau ZCTA Gazetteer file URL
-CENSUS_ZCTA_URL = (
-    "https://www2.census.gov/geo/docs/maps-data/data/gazetteer/"
-    "2023_Gazetteer/2023_Gaz_zcta_national.zip"
-)
+CENSUS_ZCTA_URL = "https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2023_Gazetteer/2023_Gaz_zcta_national.zip"
 
 # Local cache path
 CACHE_DIR = Path(__file__).parent.parent / ".cache"
@@ -130,7 +127,7 @@ def load_zip_codes(df: pd.DataFrame) -> int:
 
             sql = f"""
                 INSERT INTO zip_codes (zip_code, latitude, longitude, geog)
-                VALUES {', '.join(values)}
+                VALUES {", ".join(values)}
                 ON CONFLICT (zip_code) DO UPDATE SET
                     latitude = EXCLUDED.latitude,
                     longitude = EXCLUDED.longitude,

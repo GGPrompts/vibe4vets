@@ -237,9 +237,7 @@ def geocode_batch_census(locations: list[LocationRecord]) -> dict[str, GeocodedR
 def get_zip_centroids() -> dict[str, tuple[float, float]]:
     """Load zip code centroids from database."""
     with Session(engine) as session:
-        result = session.execute(
-            text("SELECT zip_code, latitude, longitude FROM zip_codes")
-        )
+        result = session.execute(text("SELECT zip_code, latitude, longitude FROM zip_codes"))
         return {row.zip_code: (row.latitude, row.longitude) for row in result}
 
 
@@ -426,9 +424,7 @@ def geocode_with_fallbacks(
     census_results: dict[str, GeocodedResult] = {}
     for i in range(0, len(geocodable), batch_size):
         batch = geocodable[i : i + batch_size]
-        logger.info(
-            f"Processing Census batch {i // batch_size + 1} ({len(batch)} addresses)"
-        )
+        logger.info(f"Processing Census batch {i // batch_size + 1} ({len(batch)} addresses)")
 
         batch_results = geocode_batch_census(batch)
         census_results.update(batch_results)
@@ -507,9 +503,7 @@ def geocode_with_fallbacks(
             continue
 
         # No match available
-        logger.debug(
-            f"No geocode for: {loc.address}, {loc.city}, {loc.state} {loc.zip_code}"
-        )
+        logger.debug(f"No geocode for: {loc.address}, {loc.city}, {loc.state} {loc.zip_code}")
 
     return results
 
@@ -582,12 +576,8 @@ def verify_spatial_index() -> None:
 def main() -> None:
     """Main entry point."""
     parser = argparse.ArgumentParser(description="Geocode locations using Census API")
-    parser.add_argument(
-        "--dry-run", action="store_true", help="Show what would be done"
-    )
-    parser.add_argument(
-        "--limit", type=int, help="Process only first N locations"
-    )
+    parser.add_argument("--dry-run", action="store_true", help="Show what would be done")
+    parser.add_argument("--limit", type=int, help="Process only first N locations")
     parser.add_argument(
         "--batch-size",
         type=int,
@@ -611,9 +601,7 @@ def main() -> None:
     logger.info(f"Loaded {len(zip_centroids)} zip code centroids")
 
     # Geocode with fallbacks
-    results = geocode_with_fallbacks(
-        locations, zip_centroids, batch_size=args.batch_size
-    )
+    results = geocode_with_fallbacks(locations, zip_centroids, batch_size=args.batch_size)
 
     # Print stats
     print_stats(results)

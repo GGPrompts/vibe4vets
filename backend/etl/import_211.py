@@ -133,9 +133,7 @@ class TwoOneOneImporter:
 
             except Exception as e:
                 self.stats.errors += 1
-                self.stats.error_messages.append(
-                    f"{candidate.title}: {str(e)}"
-                )
+                self.stats.error_messages.append(f"{candidate.title}: {str(e)}")
 
         # Commit if not dry run
         if not self.dry_run:
@@ -199,9 +197,13 @@ class TwoOneOneImporter:
 
         # Query for potential duplicates
         # First try exact match on all three
-        stmt = select(Resource).join(Organization).where(
-            Organization.name.ilike(name),
-            Resource.states.contains([state]) if state else True,
+        stmt = (
+            select(Resource)
+            .join(Organization)
+            .where(
+                Organization.name.ilike(name),
+                Resource.states.contains([state]) if state else True,
+            )
         )
 
         results = self.session.exec(stmt).all()
@@ -241,9 +243,7 @@ class TwoOneOneImporter:
         # Check if categories expanded
         new_cats = set(candidate.categories or [])
         existing_cats = set(existing.categories or [])
-        if new_cats - existing_cats:  # New categories to add
-            return True
-        return False
+        return bool(new_cats - existing_cats)  # True if new categories to add
 
     def _get_or_create_organization(self, candidate: ResourceCandidate) -> Organization:
         """Find existing organization or create new one."""
@@ -278,9 +278,7 @@ class TwoOneOneImporter:
         self._org_cache[org_key] = org
         return org
 
-    def _get_or_create_location(
-        self, candidate: ResourceCandidate, org: Organization
-    ) -> Location | None:
+    def _get_or_create_location(self, candidate: ResourceCandidate, org: Organization) -> Location | None:
         """Find existing location or create new one."""
         if not (candidate.address and candidate.city and candidate.state):
             return None

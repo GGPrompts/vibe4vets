@@ -10,9 +10,9 @@ Uses PostGIS geography type for spatial queries.
 
 from collections.abc import Sequence
 
-from alembic import op
 import sqlalchemy as sa
 
+from alembic import op
 
 # revision identifiers, used by Alembic.
 revision: str = "ebc114bc5743"
@@ -37,14 +37,10 @@ def upgrade() -> None:
     )
 
     # Add geography column using raw SQL (PostGIS specific)
-    op.execute(
-        "ALTER TABLE zip_codes ADD COLUMN geog geography(POINT, 4326)"
-    )
+    op.execute("ALTER TABLE zip_codes ADD COLUMN geog geography(POINT, 4326)")
 
     # Create spatial index for fast nearby queries
-    op.execute(
-        "CREATE INDEX idx_zip_codes_geog ON zip_codes USING GIST (geog)"
-    )
+    op.execute("CREATE INDEX idx_zip_codes_geog ON zip_codes USING GIST (geog)")
 
     # Create index on state for filtering
     op.create_index("ix_zip_codes_state", "zip_codes", ["state"])

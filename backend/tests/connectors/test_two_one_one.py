@@ -3,7 +3,6 @@
 import json
 from datetime import UTC, datetime
 from pathlib import Path
-from textwrap import dedent
 
 import pytest
 
@@ -28,15 +27,10 @@ def sample_resource_data():
                 "zip_code": "90001",
                 "email": "info@testcenter.org",
                 "description": "Comprehensive veteran services including housing and mental health support",
-                "services": [
-                    "housing assistance",
-                    "mental health",
-                    "employment services",
-                    "benefits assistance"
-                ],
+                "services": ["housing assistance", "mental health", "employment services", "benefits assistance"],
                 "website": "https://testcenter.org",
                 "source_url": "https://211.org/services/test",
-                "hours": "Mon-Fri 9am-5pm"
+                "hours": "Mon-Fri 9am-5pm",
             },
             {
                 "name": "Veterans Crisis Support",
@@ -44,7 +38,7 @@ def sample_resource_data():
                 "description": "24/7 crisis support",
                 "services": ["crisis support", "PTSD support", "suicide prevention"],
                 "website": "https://crisis.va.gov",
-                "source_url": "https://crisis.va.gov"
+                "source_url": "https://crisis.va.gov",
             },
             {
                 "name": "Food Bank for Veterans",
@@ -53,9 +47,9 @@ def sample_resource_data():
                 "city": "San Diego",
                 "description": "Food assistance program",
                 "services": ["food pantry", "meals"],
-                "website": "https://foodbank.org"
-            }
-        ]
+                "website": "https://foodbank.org",
+            },
+        ],
     }
 
 
@@ -67,7 +61,7 @@ def test_data_dir(tmp_path, sample_resource_data):
 
     # Write CA.json
     ca_file = data_dir / "CA.json"
-    with open(ca_file, 'w') as f:
+    with open(ca_file, "w") as f:
         json.dump(sample_resource_data, f)
 
     # Write TX.json with different data
@@ -82,12 +76,12 @@ def test_data_dir(tmp_path, sample_resource_data):
                 "city": "Austin",
                 "description": "Housing services",
                 "services": ["housing", "rental assistance"],
-                "website": "https://txvet.org"
+                "website": "https://txvet.org",
             }
-        ]
+        ],
     }
     tx_file = data_dir / "TX.json"
-    with open(tx_file, 'w') as f:
+    with open(tx_file, "w") as f:
         json.dump(tx_data, f)
 
     return data_dir
@@ -184,11 +178,7 @@ class TestTwoOneOneConnector:
         assert "employment" in categories
 
         # Test multiple services
-        categories = connector._map_categories([
-            "mental health services",
-            "job training",
-            "food pantry"
-        ])
+        categories = connector._map_categories(["mental health services", "job training", "food pantry"])
         assert "mental_health" in categories
         assert "employment" in categories
         assert "food" in categories
@@ -305,7 +295,7 @@ class TestTwoOneOneConnector:
         # Request states that don't exist in test data
         connector = TwoOneOneConnector(
             data_dir=test_data_dir,
-            states=["CA", "FL", "NY"]  # Only CA exists
+            states=["CA", "FL", "NY"],  # Only CA exists
         )
 
         resources = connector.run()
@@ -318,13 +308,10 @@ class TestTwoOneOneConnector:
         """Test graceful handling of bad JSON."""
         # Create a malformed JSON file
         bad_file = test_data_dir / "FL.json"
-        with open(bad_file, 'w') as f:
+        with open(bad_file, "w") as f:
             f.write("{invalid json content")
 
-        connector = TwoOneOneConnector(
-            data_dir=test_data_dir,
-            states=["CA", "FL"]
-        )
+        connector = TwoOneOneConnector(data_dir=test_data_dir, states=["CA", "FL"])
 
         # Should load CA successfully and skip FL
         resources = connector.run()
@@ -335,13 +322,10 @@ class TestTwoOneOneConnector:
         """Test handling of empty/minimal JSON file."""
         # Create file with no resources
         empty_file = test_data_dir / "NY.json"
-        with open(empty_file, 'w') as f:
+        with open(empty_file, "w") as f:
             json.dump({"state": "NY", "resources": []}, f)
 
-        connector = TwoOneOneConnector(
-            data_dir=test_data_dir,
-            states=["NY"]
-        )
+        connector = TwoOneOneConnector(data_dir=test_data_dir, states=["NY"])
 
         resources = connector.run()
         assert len(resources) == 0
@@ -353,12 +337,12 @@ class TestTwoOneOneConnector:
             "resources": [
                 {"name": "", "services": ["housing"]},  # Empty name
                 {"services": ["food"]},  # Missing name
-                {"name": "Valid Resource", "services": ["mental health"]}
-            ]
+                {"name": "Valid Resource", "services": ["mental health"]},
+            ],
         }
 
         az_file = test_data_dir / "AZ.json"
-        with open(az_file, 'w') as f:
+        with open(az_file, "w") as f:
             json.dump(data, f)
 
         connector = TwoOneOneConnector(data_dir=test_data_dir, states=["AZ"])
@@ -373,12 +357,7 @@ class TestTwoOneOneConnector:
         resources = connector.run()
 
         test_center = [r for r in resources if r.title == "Test Veterans Center"][0]
-        assert test_center.tags == [
-            "housing assistance",
-            "mental health",
-            "employment services",
-            "benefits assistance"
-        ]
+        assert test_center.tags == ["housing assistance", "mental health", "employment services", "benefits assistance"]
 
     def test_fetched_at_timestamp(self, connector):
         """Test fetched_at timestamp is parsed correctly."""
@@ -418,14 +397,14 @@ class TestTwoOneOneConnector:
             "resources": [
                 {
                     "name": "Test Org",
-                    "services": ["housing", "food", "employment"]
+                    "services": ["housing", "food", "employment"],
                     # No description field
                 }
-            ]
+            ],
         }
 
         az_file = test_data_dir / "AZ.json"
-        with open(az_file, 'w') as f:
+        with open(az_file, "w") as f:
             json.dump(data, f)
 
         connector = TwoOneOneConnector(data_dir=test_data_dir, states=["AZ"])
@@ -438,16 +417,11 @@ class TestTwoOneOneConnector:
         """Test resources with no mapped categories get veteran_services."""
         data = {
             "state": "AZ",
-            "resources": [
-                {
-                    "name": "Test Org",
-                    "services": ["unknown service type", "another unknown"]
-                }
-            ]
+            "resources": [{"name": "Test Org", "services": ["unknown service type", "another unknown"]}],
         }
 
         az_file = test_data_dir / "AZ.json"
-        with open(az_file, 'w') as f:
+        with open(az_file, "w") as f:
             json.dump(data, f)
 
         connector = TwoOneOneConnector(data_dir=test_data_dir, states=["AZ"])
@@ -479,7 +453,7 @@ class TestTwoOneOneConnector:
             "housing assistance",
             "mental health",
             "employment services",
-            "benefits assistance"
+            "benefits assistance",
         ]
 
     def test_source_url_fallback(self, test_data_dir):
@@ -491,13 +465,13 @@ class TestTwoOneOneConnector:
                     "name": "Test Org",
                     "website": "https://example.org",
                     # No source_url
-                    "services": ["housing"]
+                    "services": ["housing"],
                 }
-            ]
+            ],
         }
 
         az_file = test_data_dir / "AZ.json"
-        with open(az_file, 'w') as f:
+        with open(az_file, "w") as f:
             json.dump(data, f)
 
         connector = TwoOneOneConnector(data_dir=test_data_dir, states=["AZ"])

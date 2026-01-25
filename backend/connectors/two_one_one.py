@@ -122,11 +122,56 @@ class TwoOneOneConnector(BaseConnector):
 
     # States with data files (all 50 states + DC)
     AVAILABLE_STATES = [
-        "AK", "AL", "AR", "AZ", "CA", "CO", "CT", "DC", "DE", "FL",
-        "GA", "HI", "IA", "ID", "IL", "IN", "KS", "KY", "LA", "MA",
-        "MD", "ME", "MI", "MN", "MO", "MS", "MT", "NC", "ND", "NE",
-        "NH", "NJ", "NM", "NV", "NY", "OH", "OK", "OR", "PA", "RI",
-        "SC", "SD", "TN", "TX", "UT", "VA", "VT", "WA", "WI", "WV",
+        "AK",
+        "AL",
+        "AR",
+        "AZ",
+        "CA",
+        "CO",
+        "CT",
+        "DC",
+        "DE",
+        "FL",
+        "GA",
+        "HI",
+        "IA",
+        "ID",
+        "IL",
+        "IN",
+        "KS",
+        "KY",
+        "LA",
+        "MA",
+        "MD",
+        "ME",
+        "MI",
+        "MN",
+        "MO",
+        "MS",
+        "MT",
+        "NC",
+        "ND",
+        "NE",
+        "NH",
+        "NJ",
+        "NM",
+        "NV",
+        "NY",
+        "OH",
+        "OK",
+        "OR",
+        "PA",
+        "RI",
+        "SC",
+        "SD",
+        "TN",
+        "TX",
+        "UT",
+        "VA",
+        "VT",
+        "WA",
+        "WI",
+        "WV",
         "WY",
     ]
 
@@ -281,10 +326,7 @@ class TwoOneOneConnector(BaseConnector):
         """Get resources matching a category."""
         if not self._resources:
             self.run()
-        return [
-            r for r in self._resources
-            if r.categories and category in r.categories
-        ]
+        return [r for r in self._resources if r.categories and category in r.categories]
 
     def stats(self) -> dict[str, Any]:
         """Return statistics about loaded resources."""

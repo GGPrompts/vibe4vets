@@ -218,9 +218,7 @@ class ResourceService:
 
         if categories:
             # Build category conditions
-            category_conditions = " OR ".join(
-                [f"r.categories @> ARRAY['{cat}']::text[]" for cat in categories]
-            )
+            category_conditions = " OR ".join([f"r.categories @> ARRAY['{cat}']::text[]" for cat in categories])
             base_sql += f" AND ({category_conditions})"
 
         # Get total count
