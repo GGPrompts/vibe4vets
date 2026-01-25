@@ -1,6 +1,8 @@
 services:
   db:
-    image: pgvector/pgvector:pg16
+    build:
+      context: ./docker/postgres
+      dockerfile: Dockerfile
     environment:
       POSTGRES_USER: vibe4vets
       POSTGRES_PASSWORD: localdev
