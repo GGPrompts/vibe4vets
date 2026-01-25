@@ -46,24 +46,34 @@ jobs:
     defaults:
       run:
         working-directory: backend
-    services:
-      postgres:
-        image: pgvector/pgvector:pg16
-        env:
-          POSTGRES_USER: test
-          POSTGRES_PASSWORD: test
-          POSTGRES_DB: test
-        ports:
-          - 5432:5432
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
     env:
       DATABASE_URL: postgresql+psycopg://test:test@localhost:5432/test
     steps:
       - uses: actions/checkout@v4
+
+      - name: Build PostgreSQL with PostGIS + pgvector
+        run: |
+          docker build -t vibe4vets-postgres ../docker/postgres
+          docker run -d \
+            --name postgres \
+            -e POSTGRES_USER=test \
+            -e POSTGRES_PASSWORD=test \
+            -e POSTGRES_DB=test \
+            -p 5432:5432 \
+            --health-cmd "pg_isready -U test" \
+            --health-interval 10s \
+            --health-timeout 5s \
+            --health-retries 5 \
+            vibe4vets-postgres
+          # Wait for postgres to be ready
+          for i in {1..30}; do
+            if docker exec postgres pg_isready -U test; then
+              echo "PostgreSQL is ready"
+              break
+            fi
+            echo "Waiting for PostgreSQL..."
+            sleep 1
+          done
 
       - name: Set up Python
         uses: actions/setup-python@v5
