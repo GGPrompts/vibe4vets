@@ -296,12 +296,13 @@ function SearchResults() {
 
   // Nearby mode: useQuery when zip code is active (no text search)
   const nearbyQuery = useQuery({
-    queryKey: ['nearby', filters.zip, filters.radius, filters.categories],
+    queryKey: ['nearby', filters.zip, filters.radius, filters.categories, filters.scope],
     queryFn: async () => {
       return api.resources.nearby({
         zip: filters.zip!,
         radius: filters.radius || 25,
         categories: filters.categories.length > 0 ? filters.categories.join(',') : undefined,
+        scope: filters.scope !== 'all' ? filters.scope : undefined,
         limit: 100,
       });
     },

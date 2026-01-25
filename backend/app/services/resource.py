@@ -168,6 +168,7 @@ class ResourceService:
         zip_code: str,
         radius_miles: int = 25,
         categories: list[str] | None = None,
+        scope: str | None = None,
         limit: int = 20,
         offset: int = 0,
     ) -> ResourceNearbyList | None:
@@ -177,6 +178,8 @@ class ResourceService:
             zip_code: 5-digit zip code for center point
             radius_miles: Search radius in miles (default 25)
             categories: Filter by categories (optional)
+            scope: Filter by scope - 'national' (only nationwide), 'state' (only local/state),
+                   or None (local/state + national)
             limit: Maximum results to return
             offset: Number of results to skip for pagination
 
@@ -195,58 +198,140 @@ class ResourceService:
         center_lat, center_lng = zip_result.latitude, zip_result.longitude
         radius_meters = radius_miles * METERS_PER_MILE
 
-        # Build spatial query using PostGIS
-        # ST_DWithin is efficient (uses GIST index), then calculate exact distance
-        base_sql = """
-            SELECT r.id as resource_id,
-                   ST_Distance(l.geog, z.geog) / :meters_per_mile as distance_miles
-            FROM resources r
-            JOIN locations l ON r.location_id = l.id
-            CROSS JOIN zip_codes z
-            WHERE z.zip_code = :zip
-            AND l.geog IS NOT NULL
-            AND ST_DWithin(l.geog, z.geog, :radius_meters)
-            AND r.status::text != 'inactive'
-        """
-
-        # Add category filter if provided
-        params = {
-            "zip": zip_code,
-            "radius_meters": radius_meters,
-            "meters_per_mile": METERS_PER_MILE,
-        }
-
-        if categories:
-            # Build category conditions
-            category_conditions = " OR ".join([f"r.categories @> ARRAY['{cat}']::text[]" for cat in categories])
-            base_sql += f" AND ({category_conditions})"
-
-        # Get total count
-        count_sql = f"SELECT COUNT(*) FROM ({base_sql}) as subquery"
-        total = self.session.execute(text(count_sql), params).scalar()
-
-        # Get paginated results sorted by distance
-        results_sql = f"""
-            {base_sql}
-            ORDER BY distance_miles ASC
-            LIMIT :limit OFFSET :offset
-        """
-        params["limit"] = limit
-        params["offset"] = offset
-
-        results = self.session.execute(text(results_sql), params).fetchall()
-
-        # Fetch full resource data for each result
         nearby_resources = []
-        for row in results:
-            resource = self.session.get(Resource, row.resource_id)
-            if resource:
-                nearby_resources.append(
-                    ResourceNearbyResult(
-                        resource=self._to_read_schema(resource),
-                        distance_miles=round(row.distance_miles, 1),
+        total = 0
+
+        # If scope is 'national', only return national resources (no spatial query)
+        if scope == "national":
+            national_sql = """
+                SELECT r.id as resource_id
+                FROM resources r
+                WHERE r.scope::text = 'national'
+                AND r.status::text != 'inactive'
+            """
+            params: dict = {}
+
+            if categories:
+                category_conditions = " OR ".join([f"r.categories @> ARRAY['{cat}']::text[]" for cat in categories])
+                national_sql += f" AND ({category_conditions})"
+
+            count_sql = f"SELECT COUNT(*) FROM ({national_sql}) as subquery"
+            total = self.session.execute(text(count_sql), params).scalar() or 0
+
+            results_sql = f"{national_sql} ORDER BY r.title ASC LIMIT :limit OFFSET :offset"
+            params["limit"] = limit
+            params["offset"] = offset
+
+            results = self.session.execute(text(results_sql), params).fetchall()
+            for row in results:
+                resource = self.session.get(Resource, row.resource_id)
+                if resource:
+                    nearby_resources.append(
+                        ResourceNearbyResult(
+                            resource=self._to_read_schema(resource),
+                            distance_miles=0,  # National = available everywhere
+                        )
                     )
-                )
+        else:
+            # Build spatial query for local/state resources
+            base_sql = """
+                SELECT r.id as resource_id,
+                       ST_Distance(l.geog, z.geog) / :meters_per_mile as distance_miles
+                FROM resources r
+                JOIN locations l ON r.location_id = l.id
+                CROSS JOIN zip_codes z
+                WHERE z.zip_code = :zip
+                AND l.geog IS NOT NULL
+                AND ST_DWithin(l.geog, z.geog, :radius_meters)
+                AND r.status::text != 'inactive'
+            """
+
+            params = {
+                "zip": zip_code,
+                "radius_meters": radius_meters,
+                "meters_per_mile": METERS_PER_MILE,
+            }
+
+            if categories:
+                category_conditions = " OR ".join([f"r.categories @> ARRAY['{cat}']::text[]" for cat in categories])
+                base_sql += f" AND ({category_conditions})"
+
+            # Get nearby resources count
+            count_sql = f"SELECT COUNT(*) FROM ({base_sql}) as subquery"
+            nearby_count = self.session.execute(text(count_sql), params).scalar() or 0
+
+            # Get national resources count (if not filtering to state-only)
+            national_count = 0
+            if scope != "state":
+                national_count_sql = """
+                    SELECT COUNT(*) FROM resources r
+                    WHERE r.scope::text = 'national'
+                    AND r.status::text != 'inactive'
+                """
+                if categories:
+                    category_conditions = " OR ".join([f"r.categories @> ARRAY['{cat}']::text[]" for cat in categories])
+                    national_count_sql += f" AND ({category_conditions})"
+                national_count = self.session.execute(text(national_count_sql)).scalar() or 0
+
+            total = nearby_count + national_count
+
+            # Pagination logic: fetch nearby first, then national
+            remaining_limit = limit
+            current_offset = offset
+
+            # Fetch nearby resources if we're within that range
+            if current_offset < nearby_count:
+                results_sql = f"""
+                    {base_sql}
+                    ORDER BY distance_miles ASC
+                    LIMIT :limit OFFSET :offset
+                """
+                params["limit"] = remaining_limit
+                params["offset"] = current_offset
+
+                results = self.session.execute(text(results_sql), params).fetchall()
+                for row in results:
+                    resource = self.session.get(Resource, row.resource_id)
+                    if resource:
+                        nearby_resources.append(
+                            ResourceNearbyResult(
+                                resource=self._to_read_schema(resource),
+                                distance_miles=round(row.distance_miles, 1),
+                            )
+                        )
+                remaining_limit -= len(nearby_resources)
+                current_offset = 0  # Reset for national query
+            else:
+                current_offset -= nearby_count
+
+            # Fetch national resources if we have room and not filtering to state-only
+            if remaining_limit > 0 and scope != "state":
+                national_sql = """
+                    SELECT r.id as resource_id
+                    FROM resources r
+                    WHERE r.scope::text = 'national'
+                    AND r.status::text != 'inactive'
+                """
+                if categories:
+                    category_conditions = " OR ".join([f"r.categories @> ARRAY['{cat}']::text[]" for cat in categories])
+                    national_sql += f" AND ({category_conditions})"
+
+                national_sql += " ORDER BY r.title ASC LIMIT :limit OFFSET :offset"
+
+                national_results = self.session.execute(
+                    text(national_sql),
+                    {"limit": remaining_limit, "offset": current_offset}
+                ).fetchall()
+
+                for row in national_results:
+                    resource = self.session.get(Resource, row.resource_id)
+                    if resource:
+                        nearby_resources.append(
+                            ResourceNearbyResult(
+                                resource=self._to_read_schema(resource),
+                                distance_miles=0,  # National = available everywhere
+                            )
+                        )
 
         return ResourceNearbyList(
             resources=nearby_resources,

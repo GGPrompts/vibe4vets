@@ -254,6 +254,11 @@ def list_nearby_resources(
         description="Filter by categories (comma-separated, e.g., 'housing,legal')",
         examples=["housing,legal", "employment,training"],
     ),
+    scope: str | None = Query(
+        default=None,
+        description="Filter by scope: 'national' (only nationwide), 'state' (only local/state), or omit for all",
+        examples=["national", "state"],
+    ),
     limit: int = Query(default=20, ge=1, le=100, description="Maximum results to return"),
     offset: int = Query(default=0, ge=0, description="Number of results to skip for pagination"),
 ) -> ResourceNearbyList:
@@ -271,6 +276,11 @@ def list_nearby_resources(
     - `zip` - 5-digit zip code (required)
     - `radius` - Search radius in miles (default 25, max 100)
     - `categories` - Optional category filter (housing, legal, employment, training)
+    - `scope` - Optional scope filter: 'national' (only nationwide programs), 'state' (only local/state)
+
+    **Note:** When scope is omitted (default), returns local/state resources sorted by distance
+    PLUS all national resources (which apply everywhere). National resources appear after
+    distance-sorted results with distance_miles=0.
     """
     category_list: list[str] | None = None
     if categories:
@@ -281,6 +291,7 @@ def list_nearby_resources(
         zip_code=zip,
         radius_miles=radius,
         categories=category_list,
+        scope=scope,
         limit=limit,
         offset=offset,
     )
