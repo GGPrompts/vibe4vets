@@ -1,0 +1,298 @@
+{
+  "state": "VA",
+  "state_name": "Virginia",
+  "fetched_at": "2026-01-25T00:00:00Z",
+  "source": "211 Virginia, Virginia Department of Veterans Services, and partner organizations",
+  "resources": [
+    {
+      "name": "211 Virginia",
+      "phone": "1-800-230-6977",
+      "address": "Statewide service",
+      "city": "Virginia",
+      "description": "Free, confidential 24/7 service connecting residents with community resources including housing, food, healthcare, employment, mental health, legal services, and veteran-specific support",
+      "services": ["information_and_referral", "housing", "food", "healthcare", "employment", "mental_health", "legal_aid", "utility_assistance"],
+      "website": "https://www.211virginia.org",
+      "source_url": "https://www.211virginia.org"
+    },
+    {
+      "name": "Virginia Department of Veterans Services",
+      "phone": "1-877-185-1299",
+      "address": "Statewide",
+      "city": "Virginia",
+      "description": "State agency serving nearly 700,000 veterans in Virginia, providing access to benefits, services, and a network of veteran-focused organizations",
+      "services": ["benefits_assistance", "housing", "employment", "education", "mental_health", "family_support"],
+      "website": "https://www.dvs.virginia.gov",
+      "source_url": "https://www.dvs.virginia.gov"
+    },
+    {
+      "name": "Virginia Veteran & Family Support Program (VVFS)",
+      "phone": "1-877-185-1299",
+      "address": "Statewide with regional offices",
+      "city": "Virginia",
+      "description": "Provides behavioral health, peer mentoring, family support, and coordinates access to financial services, transportation, housing, employment, and education assistance for veterans and their families",
+      "services": ["mental_health", "family_support", "housing", "employment", "benefits_assistance", "transportation"],
+      "website": "https://www.dvs.virginia.gov/benefits-services/veteran-and-family-support",
+      "source_url": "https://www.dvs.virginia.gov/benefits-services/veteran-and-family-support"
+    },
+    {
+      "name": "Disabled American Veterans (DAV) - Virginia Department",
+      "phone": "1-877-426-2838",
+      "address": "Multiple locations throughout Virginia",
+      "city": "Virginia",
+      "description": "Membership organization providing veteran services, advocacy, and community support with multiple chapters across Virginia",
+      "services": ["benefits_assistance", "housing", "legal_aid", "employment", "community_support"],
+      "website": "https://www.virginiadav.org",
+      "source_url": "https://www.virginiadav.org"
+    },
+    {
+      "name": "DAV Chapter #20 (Virginia Beach)",
+      "phone": "For details, contact main DAV line at 1-877-426-2838",
+      "address": "4896 Kempsville Greens Pkwy",
+      "city": "Virginia Beach",
+      "description": "Local DAV chapter providing veteran support and community resources, meets 3rd Tuesday of month at 7:00 PM",
+      "services": ["community_support", "benefits_assistance", "social_gatherings"],
+      "website": "https://davwebsites.dav.org/va/20/SystemPages/Home.aspx",
+      "source_url": "https://davwebsites.dav.org/va/20/SystemPages/Home.aspx"
+    },
+    {
+      "name": "VFW Department of Virginia",
+      "phone": "540-886-8112",
+      "address": "403 Lee Jackson HWY",
+      "city": "Staunton",
+      "description": "Veterans of Foreign Wars state headquarters coordinating 40+ posts across Virginia, providing veteran support and community services",
+      "services": ["community_support", "benefits_assistance", "veteran_advocacy"],
+      "website": "https://vfwva.org",
+      "source_url": "https://vfwva.org"
+    },
+    {
+      "name": "VFW Post 3103 (Fredericksburg)",
+      "phone": "540-373-3110",
+      "address": "2701 Princess Anne Street",
+      "city": "Fredericksburg",
+      "description": "Local VFW post providing community support and veteran services",
+      "services": ["community_support", "veteran_social_services"],
+      "website": "http://www.vfw3103.org",
+      "source_url": "http://www.vfw3103.org"
+    },
+    {
+      "name": "VFW Post 1264 (Roanoke)",
+      "phone": "540-366-3890",
+      "address": "4930 Grandview Ave N.W.",
+      "city": "Roanoke",
+      "description": "Local VFW post serving veterans in the Roanoke area",
+      "services": ["community_support", "veteran_services"],
+      "website": "https://vfw1264.org",
+      "source_url": "https://vfw1264.org"
+    },
+    {
+      "name": "American Legion Department of Virginia",
+      "phone": "804-353-6606",
+      "address": "PO Box 11025",
+      "city": "Richmond",
+      "description": "State headquarters for American Legion with 208 posts across 17 districts serving over 39,500 members, providing veteran community support and services",
+      "services": ["community_support", "veteran_advocacy", "benefits_assistance"],
+      "website": "https://valegion.org",
+      "source_url": "https://valegion.org"
+    },
+    {
+      "name": "American Legion Post 3 (Roanoke)",
+      "phone": "540-389-3773",
+      "address": "710 Apperson Drive, Salem",
+      "city": "Salem",
+      "description": "Local American Legion post providing veteran support and community services",
+      "services": ["community_support", "veteran_services"],
+      "website": "https://www.americanlegionpost3.com",
+      "source_url": "https://www.americanlegionpost3.com"
+    },
+    {
+      "name": "American Legion Post 16 (Lynchburg)",
+      "phone": "434-239-0316",
+      "address": "1301 Greenview Drive",
+      "city": "Lynchburg",
+      "description": "Local American Legion post serving the Lynchburg area",
+      "services": ["community_support", "veteran_services"],
+      "website": "https://americanlegionpost16.us",
+      "source_url": "https://americanlegionpost16.us"
+    },
+    {
+      "name": "American Legion Post 72 (Warrenton)",
+      "phone": "540-347-7740",
+      "address": "345 Legion Drive",
+      "city": "Warrenton",
+      "description": "Local American Legion post serving northern Virginia",
+      "services": ["community_support", "veteran_services"],
+      "website": "https://www.legionpost72.org",
+      "source_url": "https://www.legionpost72.org"
+    },
+    {
+      "name": "National Call Center for Homeless Veterans",
+      "phone": "1-877-424-3838",
+      "address": "National hotline",
+      "city": "National",
+      "description": "Free, confidential 24/7 service providing immediate assistance and connection to VA services for homeless or at-risk veterans",
+      "services": ["housing", "emergency_assistance", "benefits_assistance"],
+      "website": "https://www.va.gov/homeless/nationalcallcenter.asp",
+      "source_url": "https://www.va.gov/homeless/nationalcallcenter.asp"
+    },
+    {
+      "name": "LINK of Hampton Roads - Supportive Services for Veteran Families (SSVF)",
+      "phone": "Contact through LINK of Hampton Roads",
+      "address": "Peninsula region of Virginia",
+      "city": "Hampton Roads",
+      "description": "Program dedicated to enhancing housing stability and preventing homelessness for low-income veteran families in the Virginia Peninsula",
+      "services": ["housing", "family_support", "emergency_assistance"],
+      "website": "https://www.linkhr.org/veterans-emergency-shelter",
+      "source_url": "https://www.linkhr.org/veterans-emergency-shelter"
+    },
+    {
+      "name": "Tap Into Hope - Supportive Services for Veteran Families (Roanoke)",
+      "phone": "Contact through Tap Into Hope",
+      "address": "Roanoke area",
+      "city": "Roanoke",
+      "description": "Program providing housing stability assistance and support to help veterans find new homes or keep current housing",
+      "services": ["housing", "family_support", "employment"],
+      "website": "https://tapintohope.org/program/veteran-services",
+      "source_url": "https://tapintohope.org/program/veteran-services"
+    },
+    {
+      "name": "Armed Services YMCA (ASYMCA) - Virginia Beach Patriots Pantry",
+      "phone": "Email: TCrabb@asymca.org",
+      "address": "Virginia Beach Regional Office",
+      "city": "Virginia Beach",
+      "description": "Provides emergency food assistance and baby supplies to military families and veterans, serves Ft. Eustis and Ft. Langley every third Thursday",
+      "services": ["food_assistance", "emergency_supplies", "baby_supplies"],
+      "website": "https://hamptonroads.asymca.org/services/food-assistance",
+      "source_url": "https://hamptonroads.asymca.org/services/food-assistance"
+    },
+    {
+      "name": "Virginia Peninsula Foodbank",
+      "phone": "Contact through website",
+      "address": "Serves multiple localities",
+      "city": "Hampton Roads region",
+      "description": "Food bank serving individuals, families, children, seniors and veterans in Newport News, Hampton, Williamsburg, James City County, Gloucester, Mathews, York, Poquoson and Surry",
+      "services": ["food_assistance"],
+      "website": "https://hrfoodbank.org",
+      "source_url": "https://hrfoodbank.org"
+    },
+    {
+      "name": "Feed More (Richmond)",
+      "phone": "Contact through website",
+      "address": "Richmond area",
+      "city": "Richmond",
+      "description": "Major food bank serving central Virginia with resources for veterans and families in need",
+      "services": ["food_assistance"],
+      "website": "https://feedmore.org",
+      "source_url": "https://feedmore.org"
+    },
+    {
+      "name": "Feeding Southwest Virginia",
+      "phone": "Contact through website",
+      "address": "Southwest Virginia region",
+      "city": "Southwest Virginia",
+      "description": "Food bank serving southwest Virginia with food assistance programs for veterans and families",
+      "services": ["food_assistance"],
+      "website": "https://feedingswva.org",
+      "source_url": "https://feedingswva.org"
+    },
+    {
+      "name": "Fredericksburg Regional Food Bank",
+      "phone": "Contact through website",
+      "address": "Fredericksburg area",
+      "city": "Fredericksburg",
+      "description": "Food bank serving central Virginia with emergency food assistance for veterans",
+      "services": ["food_assistance"],
+      "website": "https://fredfood.org",
+      "source_url": "https://fredfood.org"
+    },
+    {
+      "name": "Federation of Virginia Food Banks",
+      "phone": "Contact through website",
+      "address": "Statewide network",
+      "city": "Virginia",
+      "description": "Network of food banks throughout Virginia with searchable directory for locating food banks and pantries by location",
+      "services": ["food_assistance", "emergency_support"],
+      "website": "https://vafoodbanks.org",
+      "source_url": "https://vafoodbanks.org/find-food"
+    },
+    {
+      "name": "Lewis B. Puller, Jr. Veterans Benefits Clinic - William & Mary Law School",
+      "phone": "Fax: 757.221.3131",
+      "address": "PO Box 8795",
+      "city": "Williamsburg",
+      "description": "Free legal clinic providing assistance with disability compensation claims and veteran benefits",
+      "services": ["legal_aid", "benefits_assistance"],
+      "website": "https://law.wm.edu/academics/clinics/vetclinic/",
+      "source_url": "https://law.wm.edu/academics/clinics/vetclinic/"
+    },
+    {
+      "name": "Mason Veterans and Servicemembers Legal Clinic - George Mason University Law School",
+      "phone": "Contact through law school",
+      "address": "Arlington, Virginia",
+      "city": "Arlington",
+      "description": "Free legal services for service members and veterans in litigation and non-litigation matters",
+      "services": ["legal_aid"],
+      "website": "Contact through George Mason University Law School",
+      "source_url": "Contact through George Mason University Law School"
+    },
+    {
+      "name": "Veterans Crisis Line",
+      "phone": "988 then press 1",
+      "address": "National hotline",
+      "city": "National",
+      "description": "Confidential mental health crisis support for veterans and their families available 24/7",
+      "services": ["mental_health", "crisis_support"],
+      "website": "https://www.veteranscrisisline.net",
+      "source_url": "https://www.veteranscrisisline.net"
+    },
+    {
+      "name": "Virginia Values Veterans (V3) Program",
+      "phone": "Contact through DVS at 1-877-185-1299",
+      "address": "Statewide",
+      "city": "Virginia",
+      "description": "Employment program connecting veterans to veteran-ready employers with resume review, career coaching, mentorship, and training opportunities",
+      "services": ["employment", "career_services", "training"],
+      "website": "https://dvsv3.com",
+      "source_url": "https://www.dvs.virginia.gov/employment-transition/virginia-values-veterans-v3-program"
+    },
+    {
+      "name": "Virginia Transition Assistance Program (VTAP)",
+      "phone": "Contact through DVS at 1-877-185-1299",
+      "address": "Statewide",
+      "city": "Virginia",
+      "description": "Career readiness and job placement assistance for transitioning service members and veterans",
+      "services": ["employment", "career_services", "transition_support"],
+      "website": "https://www.dvs.virginia.gov/employment-transition",
+      "source_url": "https://www.dvs.virginia.gov/employment-transition"
+    },
+    {
+      "name": "VA Veteran Readiness and Employment (VR&E)",
+      "phone": "Contact through VA.gov",
+      "address": "Available through VA Medical Centers",
+      "city": "Virginia (multiple locations)",
+      "description": "Federal program providing job training, education, employment accommodations, resume development, and job seeking skills coaching",
+      "services": ["employment", "training", "education", "accommodation_services"],
+      "website": "https://www.benefits.va.gov/vocrehab",
+      "source_url": "https://www.benefits.va.gov/vocrehab"
+    },
+    {
+      "name": "Operation Homefront - Permanent Homes for Veterans",
+      "phone": "Contact through main organization",
+      "address": "National organization",
+      "city": "National",
+      "description": "Provides mortgage-free homes to eligible veteran families with dedicated caseworkers and financial counseling support",
+      "services": ["housing", "financial_counseling"],
+      "website": "https://operationhomefront.org/permanent-homes-for-veterans",
+      "source_url": "https://operationhomefront.org/permanent-homes-for-veterans"
+    },
+    {
+      "name": "Wounded Warrior Project Resource Center",
+      "phone": "1-888-997-2586",
+      "address": "National organization",
+      "city": "National",
+      "description": "Provides support programs and resources for wounded warriors and their families with a resource center open M-F 9am-9pm ET",
+      "services": ["mental_health", "family_support", "community_support", "benefits_assistance"],
+      "website": "https://www.woundedwarriorproject.org",
+      "source_url": "https://www.woundedwarriorproject.org/contact-us"
+    }
+  ]
+}

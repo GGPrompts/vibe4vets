@@ -1,0 +1,362 @@
+{
+  "state": "OH",
+  "state_name": "Ohio",
+  "fetched_at": "2026-01-25T12:00:00Z",
+  "source": "211.org, United Way 2-1-1, Veterans Affairs, Salvation Army, VOA Ohio & Indiana, GLCAP, and county veteran service commissions",
+  "resources": [
+    {
+      "name": "United Way 2-1-1 Greater Cleveland",
+      "phone": "211",
+      "address": "Serving Cuyahoga, Geauga, and Ross counties",
+      "city": "Cleveland",
+      "description": "24/7 confidential helpline connecting veterans to community services including housing, food, employment, mental health, and emergency assistance",
+      "services": [
+        "housing and emergency shelter assistance",
+        "food assistance and SNAP resources",
+        "utility bill payment support",
+        "employment resources",
+        "mental health and counseling referrals",
+        "veteran services",
+        "legal and financial guidance",
+        "substance abuse recovery resources"
+      ],
+      "website": "https://www.211oh.org/",
+      "source_url": "https://www.211oh.org/"
+    },
+    {
+      "name": "Volunteers of America Ohio & Indiana - Cincinnati",
+      "phone": "(513) 322-5170",
+      "address": "7938 Hamilton Avenue, Cincinnati, OH 45231",
+      "city": "Cincinnati",
+      "description": "CARF accredited veteran housing program providing stable transitional living with case management and support programs",
+      "services": [
+        "veteran housing",
+        "case management",
+        "mental health services",
+        "employment services",
+        "supportive living programs"
+      ],
+      "website": "https://www.voaohin.org/services/veteran-housing/",
+      "source_url": "https://www.voaohin.org/services/veteran-housing/"
+    },
+    {
+      "name": "Volunteers of America Ohio & Indiana - Cleveland",
+      "phone": "(216) 541-9000",
+      "address": "775 E. 152 Street, Cleveland, OH 44110",
+      "city": "Cleveland",
+      "description": "CARF accredited veteran housing program providing stable transitional living with case management and support programs",
+      "services": [
+        "veteran housing",
+        "case management",
+        "mental health services",
+        "employment services"
+      ],
+      "website": "https://www.voaohin.org/services/veteran-housing/",
+      "source_url": "https://www.voaohin.org/services/veteran-housing/"
+    },
+    {
+      "name": "Volunteers of America Ohio & Indiana - Columbus",
+      "phone": "(614) 849-0145",
+      "address": "624 Harmon Avenue, Columbus, OH 43223",
+      "city": "Columbus",
+      "description": "CARF accredited veteran housing with emergency shelter beds for eligible veterans, certified by Ohio Department of Alcohol and Drug Addiction Services",
+      "services": [
+        "veteran housing",
+        "emergency shelter (15 beds)",
+        "case management",
+        "mental health services",
+        "employment services",
+        "substance abuse treatment"
+      ],
+      "website": "https://www.voaohin.org/services/veteran-housing/",
+      "source_url": "https://www.voaohin.org/services/veteran-housing/"
+    },
+    {
+      "name": "Volunteers of America Ohio & Indiana - Dayton",
+      "phone": "(937) 253-7042",
+      "address": "4100 W. Third Street, Building 400, Dayton, OH 45428",
+      "city": "Dayton",
+      "description": "CARF accredited veteran housing program located on Veterans Affairs Medical Center Campus with integrated VA services",
+      "services": [
+        "veteran housing",
+        "case management",
+        "mental health services",
+        "employment services",
+        "coordinated VA care"
+      ],
+      "website": "https://www.voaohin.org/services/veteran-housing/",
+      "source_url": "https://www.voaohin.org/services/veteran-housing/"
+    },
+    {
+      "name": "Volunteers of America Ohio & Indiana - Sandusky",
+      "phone": "(419) 626-6505",
+      "address": "1843 Superior Street, Sandusky, OH 44870",
+      "city": "Sandusky",
+      "description": "CARF accredited veteran housing program providing stable transitional living environment",
+      "services": [
+        "veteran housing",
+        "case management",
+        "mental health services",
+        "employment services"
+      ],
+      "website": "https://www.voaohin.org/services/veteran-housing/",
+      "source_url": "https://www.voaohin.org/services/veteran-housing/"
+    },
+    {
+      "name": "Great Lakes Community Action Partnership (GLCAP) - Supportive Services for Veteran Families",
+      "phone": "1-800-775-9767",
+      "address": "1946 N. 13th St., Suite 348, Toledo, OH 43604",
+      "city": "Toledo",
+      "description": "Provides housing assistance to veterans experiencing or at risk of homelessness in 10-county service area. Assists with rental arrearages, first-month rent, security deposits, utility assistance, moving costs, and budgeting",
+      "services": [
+        "rental arrearages assistance",
+        "first-month rent payment",
+        "security deposits",
+        "utility assistance",
+        "moving costs",
+        "budgeting counseling",
+        "housing stability programs"
+      ],
+      "website": "https://www.glcap.org/programs/housing-assistance/veteran-support/",
+      "source_url": "https://www.glcap.org/programs/housing-assistance/veteran-support/"
+    },
+    {
+      "name": "Salvation Army Central Ohio - SSVF Program",
+      "phone": "419-751-7229",
+      "address": "Central Ohio Area (11 counties)",
+      "city": "Central Ohio",
+      "description": "Supportive Services for Veteran Families program serving individual veterans and families experiencing housing crisis. Provides shallow subsidy with up to 2 years of rental assistance to eligible low-income veterans",
+      "services": [
+        "shallow subsidy rental assistance",
+        "housing placement",
+        "job training",
+        "medical and mental health service coordination",
+        "addiction services",
+        "education services",
+        "emergency utility aid",
+        "holiday programs"
+      ],
+      "website": "https://easternusa.salvationarmy.org/southwest-ohio/central-ohio/help-veterans/",
+      "source_url": "https://easternusa.salvationarmy.org/southwest-ohio/central-ohio/help-veterans/"
+    },
+    {
+      "name": "Veterans Service Commission of Summit County",
+      "phone": "Contact through website",
+      "address": "Summit County",
+      "city": "Summit County",
+      "description": "County-mandated service acting as liaison to help veterans navigate VA systems and maximize benefits. Funded by Summit County to serve local veterans",
+      "services": [
+        "VA benefits navigation",
+        "benefits counseling",
+        "liaison services",
+        "benefits maximization assistance"
+      ],
+      "website": "https://www.vscsummitoh.us/",
+      "source_url": "https://www.vscsummitoh.us/"
+    },
+    {
+      "name": "Veterans Service Commission of Ashtabula County",
+      "phone": "Contact through website",
+      "address": "Ashtabula County",
+      "city": "Ashtabula",
+      "description": "County government agency providing veteran services and benefits assistance to local veterans",
+      "services": [
+        "veteran services",
+        "benefits assistance",
+        "VA navigation"
+      ],
+      "website": "https://www.ashtabulaveterans.com/",
+      "source_url": "https://www.ashtabulaveterans.com/"
+    },
+    {
+      "name": "Veterans Service Commission of Franklin County",
+      "phone": "Contact through website",
+      "address": "280 E. Broad St., 1st Floor, Columbus, OH 43215",
+      "city": "Columbus",
+      "description": "County veteran services providing assistance to active and retired military personnel with benefits and support services",
+      "services": [
+        "veteran services",
+        "benefits assistance",
+        "financial assistance",
+        "VA navigation"
+      ],
+      "website": "https://www.bcvetsoh.gov/",
+      "source_url": "https://www.bcvetsoh.gov/"
+    },
+    {
+      "name": "Veteran Service Commission of Cleveland",
+      "phone": "(216) 698-2632",
+      "address": "1849 Prospect Ave E, Cleveland, OH",
+      "city": "Cleveland",
+      "description": "City-based veteran services providing financial assistance and comprehensive support to Cleveland veterans",
+      "services": [
+        "financial assistance",
+        "rent or mortgage payment assistance",
+        "emergency assistance",
+        "veteran benefits navigation"
+      ],
+      "website": "https://www.clevelandohio.gov/city-hall/departments/aging/services/resources-veterans",
+      "source_url": "https://www.clevelandohio.gov/city-hall/departments/aging/services/resources-veterans"
+    },
+    {
+      "name": "United States Vets - Toledo",
+      "phone": "Contact through website",
+      "address": "Toledo, OH",
+      "city": "Toledo",
+      "description": "Veteran housing organization providing Commons at Garden Lake with 75 apartments for homeless veterans and additional supportive services",
+      "services": [
+        "veteran housing (75 apartments)",
+        "Health Care for Homeless Veterans (HCHV)",
+        "outreach services",
+        "housing placement",
+        "supportive services"
+      ],
+      "website": "https://unitedstatesvets.org/resources/housing/",
+      "source_url": "https://unitedstatesvets.org/resources/housing/"
+    },
+    {
+      "name": "Veterans Crisis Line",
+      "phone": "988 then press 1, or text 838255",
+      "address": "National 24/7 service",
+      "city": "National",
+      "description": "Free, confidential crisis support available 24/7 for veterans and their loved ones facing mental health crises, suicidal thoughts, or emotional distress",
+      "services": [
+        "crisis counseling",
+        "mental health support",
+        "suicide prevention",
+        "emotional support",
+        "referral services"
+      ],
+      "website": "https://www.veteranscrisisline.net/",
+      "source_url": "https://www.veteranscrisisline.net/"
+    },
+    {
+      "name": "VA Central Ohio Health Care - Mental Health Services",
+      "phone": "Contact VA Central Ohio",
+      "address": "420 N. James Rd, Columbus, OH 43219",
+      "city": "Columbus",
+      "description": "VA medical center providing mental health care and suicide prevention services for Ohio veterans with hours 8AM-5PM daily",
+      "services": [
+        "mental health care",
+        "suicide prevention",
+        "psychiatric services",
+        "behavioral health support",
+        "crisis intervention"
+      ],
+      "website": "https://www.va.gov/central-ohio-health-care/health-services/mental-health-care/",
+      "source_url": "https://www.va.gov/central-ohio-health-care/health-services/mental-health-care/"
+    },
+    {
+      "name": "VA Cincinnati Health Care",
+      "phone": "Contact through website",
+      "address": "Cincinnati, OH",
+      "city": "Cincinnati",
+      "description": "VA medical center serving Cincinnati area veterans with comprehensive health care and mental health services",
+      "services": [
+        "health care",
+        "mental health services",
+        "emergency care",
+        "substance abuse treatment",
+        "veteran benefits"
+      ],
+      "website": "https://www.va.gov/cincinnati-health-care/contact-us/",
+      "source_url": "https://www.va.gov/cincinnati-health-care/contact-us/"
+    },
+    {
+      "name": "Legal Aid of Southeast and Central Ohio (LASCO)",
+      "phone": "1-866-LAW-OHIO (866-529-6446)",
+      "address": "Multiple locations in Southeast and Central Ohio",
+      "city": "Multiple",
+      "description": "Provides free legal aid to low-income veterans in 36 counties including assistance with military discharge upgrades, housing, family law, and health care access",
+      "services": [
+        "legal aid for veterans",
+        "housing law",
+        "family law (custody, divorce, child support)",
+        "military discharge upgrades",
+        "health care access assistance",
+        "income support appeals",
+        "disability benefits appeals"
+      ],
+      "website": "https://www.lasco.org/veterans",
+      "source_url": "https://www.lasco.org/veterans"
+    },
+    {
+      "name": "Ohio Legal Help - Veteran Resources Tool",
+      "phone": "1-866-LAW-OHIO (866-529-6446)",
+      "address": "Statewide resource",
+      "city": "Ohio",
+      "description": "Comprehensive tool to find legal assistance organizations and resources for veterans throughout Ohio. Access to six legal aid offices serving the state",
+      "services": [
+        "legal aid navigation",
+        "veteran resources locator",
+        "disability compensation assistance",
+        "benefits appeals support",
+        "disability rights resources"
+      ],
+      "website": "https://www.ohiolegalhelp.org/topic/veterans-benefits",
+      "source_url": "https://www.ohiolegalhelp.org/topic/veterans-benefits"
+    },
+    {
+      "name": "National Call Center for Homeless Veterans",
+      "phone": "(877) 424-3838",
+      "address": "National 24/7 service",
+      "city": "National",
+      "description": "24/7 national call center helping homeless veterans complete intake applications and connect to local housing and emergency resources",
+      "services": [
+        "intake application assistance",
+        "housing resource connection",
+        "emergency shelter assistance",
+        "homelessness support",
+        "local resource referrals"
+      ],
+      "website": "https://www.va.gov/",
+      "source_url": "https://www.clevelandohio.gov/city-hall/departments/aging/services/resources-veterans"
+    },
+    {
+      "name": "Clermont and Brown County Crisis Hotline and Mobile Crisis",
+      "phone": "(513) 528-SAVE (7283)",
+      "address": "Serving Clermont and Brown counties",
+      "city": "Cincinnati Area",
+      "description": "24/7 mental health crisis support with mobile crisis team staffed by trained and licensed mental health providers serving veteran and general populations",
+      "services": [
+        "crisis counseling",
+        "mobile crisis response",
+        "mental health assessment",
+        "emergency psychiatric support",
+        "referral services"
+      ],
+      "website": "Contact by phone",
+      "source_url": "https://www.va.gov/cincinnati-health-care/contact-us/"
+    },
+    {
+      "name": "Frontline Services - Cleveland",
+      "phone": "Contact through 211 or VA",
+      "address": "Cleveland, OH",
+      "city": "Cleveland",
+      "description": "Veterans re-housing and case management services helping homeless veterans transition to stable housing",
+      "services": [
+        "re-housing assistance",
+        "case management",
+        "housing stability support"
+      ],
+      "website": "https://www.clevelandohio.gov/city-hall/departments/aging/services/resources-veterans",
+      "source_url": "https://www.clevelandohio.gov/city-hall/departments/aging/services/resources-veterans"
+    },
+    {
+      "name": "Ohio Department of Veterans Services",
+      "phone": "877-OHIO-VET (877-644-8385)",
+      "address": "Statewide resource with county offices",
+      "city": "Ohio",
+      "description": "State agency providing benefits information, county veteran service officer network, and assistance with federal, state, and local veteran benefits",
+      "services": [
+        "veteran benefits information",
+        "county VSO network",
+        "disability compensation assistance",
+        "state veteran benefits",
+        "benefits counseling"
+      ],
+      "website": "https://dam.assets.ohio.gov/image/upload/dvs.ohio.gov/benefits/benefitsguide-0613edit.pdf",
+      "source_url": "https://dam.assets.ohio.gov/image/upload/dvs.ohio.gov/benefits/benefitsguide-0613edit.pdf"
+    }
+  ]
+}

@@ -1,0 +1,318 @@
+{
+  "state": "NY",
+  "state_name": "New York",
+  "fetched_at": "2026-01-25T12:00:00Z",
+  "source": "211.org, NYC Department of Veterans Services, New York State Department of Veterans Services, VA, and veteran service organizations",
+  "resources": [
+    {
+      "name": "New York State Department of Veterans' Services",
+      "phone": "1-888-838-7697",
+      "address": "2 Empire State Plaza, 17th Floor, Albany, NY 12223",
+      "city": "Albany",
+      "description": "State-level veterans benefits advising and advocacy services with a network of field offices across New York",
+      "services": ["benefits assistance", "housing", "employment", "mental health crisis support"],
+      "website": "https://veterans.ny.gov",
+      "source_url": "https://veterans.ny.gov/contact-department-veterans-services"
+    },
+    {
+      "name": "NYC Department of Veterans' Services",
+      "phone": "311 or VetConnectNYC form at nyc.gov/site/veterans",
+      "address": "201 Varick St Room 4W59.30, New York, NY 10014",
+      "city": "New York",
+      "description": "Comprehensive city-level veteran services coordinating housing, employment, mental health, food assistance, and legal support",
+      "services": ["housing", "employment", "mental health", "food assistance", "legal aid", "benefits assistance"],
+      "website": "https://www.nyc.gov/site/veterans",
+      "source_url": "https://www.nyc.gov/site/veterans/services/services.page"
+    },
+    {
+      "name": "VA Manhattan Vet Center - PTSD & Counseling",
+      "phone": "212-951-6866",
+      "address": "519 8th Avenue, Suite 2401, New York, NY 10018",
+      "city": "New York",
+      "description": "Free confidential PTSD and mental health counseling in non-medical setting with same-day crisis appointments available",
+      "services": ["mental health", "PTSD counseling", "group therapy", "telehealth"],
+      "website": "https://www.va.gov/manhattan-ny-vet-center/",
+      "source_url": "https://www.va.gov/manhattan-ny-vet-center/"
+    },
+    {
+      "name": "Services for the Underserved (S:US) - SSVF Housing Program",
+      "phone": "646-790-2449",
+      "address": "17 Battery Place, Suite 732, New York, NY 10004",
+      "city": "New York",
+      "description": "Supportive Services for Veteran Families (SSVF) offering rapid re-housing, homelessness prevention, and housing stability assistance",
+      "services": ["housing assistance", "homelessness prevention", "rental assistance", "job placement"],
+      "website": "https://sus.org",
+      "source_url": "https://sus.org/our-services/veterans/"
+    },
+    {
+      "name": "Services for the Underserved (S:US) - SSVF Long Island",
+      "phone": "631-227-0777",
+      "address": "600 Albany Avenue, Suite 1, Amityville, NY 11701",
+      "city": "Amityville",
+      "description": "SSVF housing assistance and employment services for Long Island veterans and families",
+      "services": ["housing assistance", "rental assistance", "employment services"],
+      "website": "https://sus.org",
+      "source_url": "https://sus.org/our-services/veterans/"
+    },
+    {
+      "name": "Jericho Project - Veterans Initiative",
+      "phone": "646-970-7170",
+      "address": "245 West 29th Street, Suite 902, New York, NY 10001",
+      "city": "New York",
+      "description": "Comprehensive support for over 700 veterans including supportive housing, employment training, mental health services, and SSVF assistance",
+      "services": ["housing", "employment", "mental health", "SSVF assistance"],
+      "website": "https://jerichoproject.org",
+      "source_url": "https://jerichoproject.org/programs-services/veterans-initiative/"
+    },
+    {
+      "name": "Black Veterans for Social Justice (BVSJ) - Veterans Service Center",
+      "phone": "718-852-6004",
+      "address": "New York, NY (5 borough locations)",
+      "city": "New York",
+      "description": "Employment placement, VA benefits counseling, housing assistance, interview support, and food pantry for all veterans",
+      "services": ["employment", "housing", "benefits assistance", "food bank", "incarcerated veterans support"],
+      "website": "https://bvsj.org",
+      "source_url": "https://bvsj.org/veteran-services/"
+    },
+    {
+      "name": "Volunteers of America - SSVF Housing Program NYC",
+      "phone": "TBD (see website)",
+      "address": "135 W 50th St, New York, NY 10024",
+      "city": "New York",
+      "description": "SSVF provider offering housing assistance and supportive services for veteran families",
+      "services": ["housing assistance", "rental support", "family services"],
+      "website": "https://voa-gny.org",
+      "source_url": "https://sus.org/our-services/veterans/"
+    },
+    {
+      "name": "HelpUSA - SSVF Housing Program",
+      "phone": "646-619-3299",
+      "address": "15 Burke Ave, Bronx, NY 10467",
+      "city": "Bronx",
+      "description": "SSVF provider offering rapid re-housing and homelessness prevention services for veterans",
+      "services": ["housing assistance", "rental assistance"],
+      "website": "https://helpusa.org",
+      "source_url": "https://sus.org/our-services/veterans/"
+    },
+    {
+      "name": "Veteran Outreach Services Center (VOSC) - Buffalo SSVF",
+      "phone": "716-898-0110",
+      "address": "1255 Niagara Street Suite 230, Buffalo, NY 14213",
+      "city": "Buffalo",
+      "description": "Buffalo-area SSVF offering homelessness prevention and rapid re-housing with comprehensive support services",
+      "services": ["housing assistance", "homelessness prevention", "benefits assistance", "job placement"],
+      "website": "https://www.vocwny.org",
+      "source_url": "https://www.211wny.org/provider/10979/"
+    },
+    {
+      "name": "City Bar Justice Center - Veterans Assistance Project",
+      "phone": "877-564-3383",
+      "address": "42 West 44th Street, New York, NY 10036",
+      "city": "New York",
+      "description": "Legal support for VA disability benefits claims with pro bono attorney volunteers; recovered over $7.5M in benefits for 1,500+ veterans",
+      "services": ["legal aid", "benefits assistance", "VA claims"],
+      "website": "https://www.citybarjusticecenter.org",
+      "source_url": "https://www.citybarjusticecenter.org/projects/veterans-assistance-project/"
+    },
+    {
+      "name": "Legal Services NYC - Veterans Justice Project",
+      "phone": "917-661-4500",
+      "address": "New York, NY (multiple locations)",
+      "city": "New York",
+      "description": "Free legal services for veterans facing eviction, disability benefits issues, mental health challenges, and civilian reentry problems",
+      "services": ["legal aid", "eviction prevention", "benefits assistance"],
+      "website": "https://www.legalservicesnyc.org",
+      "source_url": "https://www.legalservicesnyc.org/resources/veterans-military-advocacy/"
+    },
+    {
+      "name": "New York Legal Assistance Group (NYLAG) - Veterans Rights",
+      "phone": "TBD (check website)",
+      "address": "New York, NY (TBD)",
+      "city": "New York",
+      "description": "Civil legal services addressing economic, racial, and social justice issues for veterans in poverty or crisis",
+      "services": ["legal aid", "eviction prevention", "benefits assistance"],
+      "website": "https://nylag.org",
+      "source_url": "https://nylag.org/veterans-rights/"
+    },
+    {
+      "name": "Volunteers of Legal Service (VOLS) - Veterans Initiative",
+      "phone": "347-521-5725",
+      "address": "New York, NY (TBD)",
+      "city": "New York",
+      "description": "Free legal services for senior veterans (60+) including wills, powers of attorney, and advance directives from pro bono lawyers",
+      "services": ["legal aid", "elder law"],
+      "website": "https://volsprobono.org",
+      "source_url": "https://volsprobono.org/projects/veterans-initiative/"
+    },
+    {
+      "name": "God's Love We Deliver - CONNECTED Program",
+      "phone": "TBD (check website)",
+      "address": "New York, NY (home delivery service)",
+      "city": "New York",
+      "description": "Free medically tailored meals and nutrition counseling for veterans with chronic illness or behavioral health conditions",
+      "services": ["food assistance", "nutrition counseling"],
+      "website": "https://www.godslovewedeliver.org",
+      "source_url": "https://www.nyc.gov/site/veterans/services/food-assistance.page"
+    },
+    {
+      "name": "Feed Our Vets Food Pantry",
+      "phone": "315-525-9206",
+      "address": "502 Broad St., Utica, NY 13501",
+      "city": "Utica",
+      "description": "Food pantry dedicated to serving veterans and low-income individuals with free groceries",
+      "services": ["food bank"],
+      "website": "https://feedourvets.org",
+      "source_url": "https://feedourvets.org/find-a-food-pantry"
+    },
+    {
+      "name": "Veterans Crisis Line",
+      "phone": "988 (Press 1) or 1-800-273-8255",
+      "address": "24/7 Hotline",
+      "city": "Statewide",
+      "description": "24/7 confidential support via call, chat, or text for veterans in crisis",
+      "services": ["mental health crisis support", "suicide prevention"],
+      "website": "https://www.veteranscrisisline.net",
+      "source_url": "https://www.nyc.gov/site/veterans/services/mental-and-behavioral-health.page"
+    },
+    {
+      "name": "New York-Presbyterian Military Family Wellness Center",
+      "phone": "TBD (see website)",
+      "address": "New York, NY (TBD)",
+      "city": "New York",
+      "description": "Telehealth, individual, group, and couples therapy for veterans and military families",
+      "services": ["mental health", "counseling", "telehealth"],
+      "website": "https://nyp.org/mfwc",
+      "source_url": "https://www.nyc.gov/site/veterans/services/mental-and-behavioral-health.page"
+    },
+    {
+      "name": "NYU Steven Cohen Family Center",
+      "phone": "TBD (see website)",
+      "address": "New York, NY (TBD)",
+      "city": "New York",
+      "description": "Free comprehensive care for veterans and military families including mental health services",
+      "services": ["mental health", "counseling"],
+      "website": "https://nyulangone.org",
+      "source_url": "https://www.nyc.gov/site/veterans/services/mental-and-behavioral-health.page"
+    },
+    {
+      "name": "Headstrong - Veteran Mental Health",
+      "phone": "TBD (see website)",
+      "address": "Online service",
+      "city": "Statewide",
+      "description": "Online mental health treatment for current and new veteran clients with telehealth appointments",
+      "services": ["mental health", "telehealth", "counseling"],
+      "website": "https://getheadstrong.org",
+      "source_url": "https://www.nyc.gov/site/veterans/services/mental-and-behavioral-health.page"
+    },
+    {
+      "name": "Trauma and Resiliency Resources (TRR)",
+      "phone": "TBD (see website)",
+      "address": "New York, NY (multiple locations)",
+      "city": "New York",
+      "description": "Free behavioral health services and residential programs for combat veterans of all eras",
+      "services": ["mental health", "PTSD treatment", "residential programs"],
+      "website": "https://trrhelp.org",
+      "source_url": "https://www.nyc.gov/site/veterans/services/mental-and-behavioral-health.page"
+    },
+    {
+      "name": "Vets4Warriors",
+      "phone": "1-888-838-4325",
+      "address": "24/7 Peer Support Line",
+      "city": "Statewide",
+      "description": "24/7 confidential peer support network for veterans",
+      "services": ["mental health", "peer support"],
+      "website": "https://vets4warriors.com",
+      "source_url": "https://www.nyc.gov/site/veterans/services/mental-and-behavioral-health.page"
+    },
+    {
+      "name": "IVMF Onward to Opportunity (O2O)",
+      "phone": "TBD (see website)",
+      "address": "Online program available statewide",
+      "city": "Statewide",
+      "description": "Free career training program providing professional certifications and support services for transitioning veterans",
+      "services": ["employment", "job training", "professional development"],
+      "website": "https://ivmf.syracuse.edu",
+      "source_url": "https://www.nyc.gov/site/veterans/services/employment.page"
+    },
+    {
+      "name": "NPower Tech Fundamentals",
+      "phone": "TBD (see website)",
+      "address": "Online program",
+      "city": "Statewide",
+      "description": "Free 6-month technology training program for veterans, reservists, and military spouses",
+      "services": ["employment", "job training", "technology certification"],
+      "website": "https://www.npower.org",
+      "source_url": "https://www.nyc.gov/site/veterans/services/employment.page"
+    },
+    {
+      "name": "Edge4Vets - Fordham University",
+      "phone": "TBD (see website)",
+      "address": "Online program",
+      "city": "Statewide",
+      "description": "Program helping veterans identify military skills and translate them to civilian employment",
+      "services": ["employment", "job training", "career development"],
+      "website": "https://edge4vets.org",
+      "source_url": "https://www.nyc.gov/site/veterans/services/employment.page"
+    },
+    {
+      "name": "New York State Department of Labor - Veteran Employment Services",
+      "phone": "TBD (regional contacts available on website)",
+      "address": "Multiple locations statewide",
+      "city": "Statewide",
+      "description": "Priority employment services including job training, disabled veterans outreach program (DVOP), and local veteran employment representatives (LVER)",
+      "services": ["employment", "job training", "job placement"],
+      "website": "https://dol.ny.gov",
+      "source_url": "https://dol.ny.gov/services-veterans"
+    },
+    {
+      "name": "VA Benefits Administration - New York Regional Office",
+      "phone": "1-800-827-1000",
+      "address": "Multiple locations statewide",
+      "city": "Statewide",
+      "description": "Federal VA services for benefits administration, disability compensation, education, home loans, and vocational rehabilitation",
+      "services": ["benefits assistance", "disability", "education", "home loans", "vocational training"],
+      "website": "https://www.benefits.va.gov/newyork/",
+      "source_url": "https://www.benefits.va.gov/newyork/"
+    },
+    {
+      "name": "VA Homeless Hotline",
+      "phone": "877-424-3838",
+      "address": "24/7 Hotline",
+      "city": "Statewide",
+      "description": "24/7 hotline for veterans experiencing homelessness to access shelter, housing, and support services",
+      "services": ["homelessness services", "housing"],
+      "website": "https://www.va.gov",
+      "source_url": "https://www.nyc.gov/site/veterans/services/veteran-housing-ladder.page"
+    },
+    {
+      "name": "HUD-VASH Housing Program",
+      "phone": "877-424-3838",
+      "address": "NYC and statewide through local housing authorities",
+      "city": "Statewide",
+      "description": "Federal housing voucher program for homeless veterans providing rental assistance",
+      "services": ["housing assistance", "rental support"],
+      "website": "https://www.hud.gov",
+      "source_url": "https://www.nyc.gov/site/veterans/services/veteran-housing-ladder.page"
+    },
+    {
+      "name": "NY Emergency Housing Assistance",
+      "phone": "TBD",
+      "address": "Statewide",
+      "city": "Statewide",
+      "description": "Emergency housing expense assistance for veterans in housing crisis",
+      "services": ["housing assistance", "emergency support"],
+      "website": "https://veterans.ny.gov",
+      "source_url": "https://www.nyc.gov/site/veterans/services/veteran-housing-ladder.page"
+    },
+    {
+      "name": "NYC Housing Connect",
+      "phone": "311",
+      "address": "Online portal at housingconnect.nyc.gov",
+      "city": "New York",
+      "description": "Affordable housing lottery portal with priority consideration for veterans",
+      "services": ["housing assistance", "affordable housing"],
+      "website": "https://housingconnect.nyc.gov",
+      "source_url": "https://www.nyc.gov/site/veterans/services/veteran-housing-ladder.page"
+    }
+  ]
+}

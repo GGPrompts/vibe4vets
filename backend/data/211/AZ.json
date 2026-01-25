@@ -1,0 +1,308 @@
+{
+  "state": "AZ",
+  "state_name": "Arizona",
+  "fetched_at": "2026-01-25T00:00:00Z",
+  "source": "211 Arizona (211arizona.org) and Arizona Department of Veterans Services",
+  "resources": [
+    {
+      "name": "2-1-1 Arizona Information and Referral Service",
+      "phone": "211 or 877-211-8661",
+      "address": "2200 N Central Ave #211, Phoenix, AZ 85004",
+      "city": "Phoenix",
+      "description": "Free, confidential helpline connecting veterans to community resources including housing, employment, food, legal aid, mental health services, and benefits assistance. Live operators available in English and Spanish.",
+      "services": ["referral services", "housing assistance", "employment", "food assistance", "legal aid", "mental health", "benefits counseling"],
+      "website": "https://211arizona.org",
+      "source_url": "https://211arizona.org"
+    },
+    {
+      "name": "Be Connected",
+      "phone": "866-429-8387 (866-4AZ-VETS)",
+      "address": "Contact via phone or website",
+      "city": "Statewide",
+      "description": "Statewide initiative connecting service members, veterans and their families to support and resources. Operates Monday-Friday 8 AM-5 PM MST. Serves all service members regardless of branch, component, length/era of service, and discharge status.",
+      "services": ["support line", "resource matching", "community navigators", "employment support", "housing assistance", "mental health", "crisis support", "suicide prevention"],
+      "website": "https://connectveterans.org",
+      "source_url": "https://connectveterans.org"
+    },
+    {
+      "name": "MANA House",
+      "phone": "855-316-2229",
+      "address": "2422 W Holly Street, Phoenix, AZ 85009",
+      "city": "Phoenix",
+      "description": "76-bed transitional housing facility for homeless and formerly homeless veterans. Provides housing, three meals a day, clothing, personal items, job placement, case management, and other services 365 days per year.",
+      "services": ["transitional housing", "permanent housing", "meals", "job placement", "case management", "clothing assistance"],
+      "website": "https://www.manahouseaz.org",
+      "source_url": "https://www.manahouseaz.org"
+    },
+    {
+      "name": "Housing for Heroes",
+      "phone": "888-281-6531",
+      "address": "Serves Maricopa, Yuma, and Pinal Counties",
+      "city": "Phoenix area",
+      "description": "Veteran-centered housing support program designed to assist veterans and their families experiencing homelessness or at risk of losing housing. Funded through VA's Supportive Services for Veteran Families (SSVF) program.",
+      "services": ["housing assistance", "homelessness prevention", "family support"],
+      "website": "https://www.nchponline.org/housingforheroes",
+      "source_url": "https://www.nchponline.org/housingforheroes"
+    },
+    {
+      "name": "U.S.VETS Phoenix",
+      "phone": "Contact through website",
+      "address": "Phoenix, Arizona",
+      "city": "Phoenix",
+      "description": "Has served more than 10,000 veterans since 2001. Provides transitional and permanent housing, mental health services, career development, case management, and supports over 300 veterans experiencing homelessness.",
+      "services": ["housing", "mental health services", "career counseling", "case management", "employment assistance"],
+      "website": "https://usvets.org/locations/phoenix",
+      "source_url": "https://usvets.org/locations/phoenix"
+    },
+    {
+      "name": "Arizona OIC (Opportunities Industrialization Center) - Sullivan's Place",
+      "phone": "Contact through website",
+      "address": "Phoenix, Arizona",
+      "city": "Phoenix",
+      "description": "Provides dignified housing and supportive services to assist veterans and their families in attaining self-sufficiency. Includes housing for single males, single females, and families.",
+      "services": ["housing", "mentoring programs", "skills training", "job placement"],
+      "website": "https://www.azoic.org/veteran-housing",
+      "source_url": "https://www.azoic.org/veteran-housing"
+    },
+    {
+      "name": "Arizona State Veteran Home - Phoenix",
+      "phone": "602-248-1550",
+      "address": "4141 N. 3rd St, Phoenix, AZ 85012",
+      "city": "Phoenix",
+      "description": "Skilled nursing and long-term care facility for Arizona veterans. One of four state veteran homes providing residential care.",
+      "services": ["skilled nursing care", "long-term care", "residential care"],
+      "website": "https://dvs.az.gov/services/arizona-state-veteran-homes/asvh-phoenix",
+      "source_url": "https://dvs.az.gov/services/arizona-state-veteran-homes/asvh-phoenix"
+    },
+    {
+      "name": "Arizona State Veteran Home - Tucson",
+      "phone": "520-780-0234",
+      "address": "Tucson, Arizona",
+      "city": "Tucson",
+      "description": "Skilled nursing and long-term care facility for Arizona veterans. Admission coordinator available at listed phone number.",
+      "services": ["skilled nursing care", "long-term care", "residential care"],
+      "website": "https://dvs.az.gov/services/arizona-state-veteran-homes/asvh-tucson",
+      "source_url": "https://dvs.az.gov/services/arizona-state-veteran-homes/asvh-tucson"
+    },
+    {
+      "name": "Arizona State Veteran Home - Flagstaff",
+      "phone": "928-637-0607",
+      "address": "Flagstaff, Arizona",
+      "city": "Flagstaff",
+      "description": "Skilled nursing and long-term care facility for Arizona veterans. Admission coordinator available at listed phone number.",
+      "services": ["skilled nursing care", "long-term care", "residential care"],
+      "website": "https://dvs.az.gov/services/arizona-state-veteran-homes/asvh-flagstaff",
+      "source_url": "https://dvs.az.gov/services/arizona-state-veteran-homes/asvh-flagstaff"
+    },
+    {
+      "name": "Arizona State Veteran Home - Yuma",
+      "phone": "602-234-5678 ext. 3",
+      "address": "Yuma, Arizona",
+      "city": "Yuma",
+      "description": "Skilled nursing and long-term care facility for Arizona veterans. Admissions hotline available. (Note: Facility and website under final construction)",
+      "services": ["skilled nursing care", "long-term care", "residential care"],
+      "website": "https://dvs.az.gov/yuma-veteran-home",
+      "source_url": "https://dvs.az.gov/yuma-veteran-home"
+    },
+    {
+      "name": "VA Phoenix Health Care System",
+      "phone": "650-650-5000",
+      "address": "650 East Indian School Road, Phoenix, AZ 85012-1839",
+      "city": "Phoenix",
+      "description": "Comprehensive VA healthcare system providing mental health services, homeless veteran care, behavioral health programs, and inpatient/outpatient services including telehealth.",
+      "services": ["mental health care", "PTSD counseling", "homeless veteran care", "housing assistance", "job training", "life skills", "education"],
+      "website": "https://www.va.gov/phoenix-health-care",
+      "source_url": "https://www.va.gov/phoenix-health-care"
+    },
+    {
+      "name": "VA Community Resource and Referral Center (CRRC) - Phoenix",
+      "phone": "Contact VA Phoenix main line",
+      "address": "1500 East Thomas Road, Suite 106, Phoenix, AZ 85014-5748",
+      "city": "Phoenix",
+      "description": "One-stop access center for homeless and at-risk veterans. Provides community-based multiagency services to promote permanent housing, health and mental health care, career development, and access to benefits.",
+      "services": ["housing assistance", "homelessness prevention", "mental health", "career development", "benefits access"],
+      "website": "https://www.va.gov/phoenix-health-care/health-services/homeless-veteran-care/",
+      "source_url": "https://www.va.gov/phoenix-health-care/health-services/homeless-veteran-care/"
+    },
+    {
+      "name": "Phoenix Vet Center",
+      "phone": "602-640-2981",
+      "address": "4020 North 20th Street, Suite 110, Phoenix, AZ 85016",
+      "city": "Phoenix",
+      "description": "Free, confidential counseling for veterans, service members, and families at no cost in a non-medical setting. Focuses on mental health, PTSD, depression, and military sexual trauma.",
+      "services": ["PTSD counseling", "mental health", "depression counseling", "military sexual trauma counseling", "family counseling"],
+      "website": "https://www.va.gov/phoenix-vet-center/",
+      "source_url": "https://www.va.gov/phoenix-vet-center/"
+    },
+    {
+      "name": "Tucson Vet Center",
+      "phone": "520-882-0333",
+      "address": "2525 E. Broadway Blvd., Tucson, AZ 85716",
+      "city": "Tucson",
+      "description": "Free, confidential counseling for veterans, service members, and families. Provides mental health services and PTSD counseling at no cost.",
+      "services": ["PTSD counseling", "mental health", "family counseling"],
+      "website": "https://www.va.gov",
+      "source_url": "https://www.va.gov/phoenix-vet-center/"
+    },
+    {
+      "name": "Prescott Vet Center",
+      "phone": "928-778-3469",
+      "address": "3180 Stillwater Drive, Prescott, AZ 86305",
+      "city": "Prescott",
+      "description": "Free, confidential counseling for veterans, service members, and families. Provides mental health services and PTSD counseling.",
+      "services": ["PTSD counseling", "mental health", "family counseling"],
+      "website": "https://www.va.gov",
+      "source_url": "https://www.va.gov/phoenix-vet-center/"
+    },
+    {
+      "name": "Mesa Vet Center",
+      "phone": "480-610-6727",
+      "address": "1303 South Longmore, Mesa, AZ 85202",
+      "city": "Mesa",
+      "description": "Free, confidential counseling for veterans, service members, and families. Provides mental health services.",
+      "services": ["mental health counseling", "PTSD counseling", "family counseling"],
+      "website": "https://www.va.gov",
+      "source_url": "https://www.va.gov/phoenix-vet-center/"
+    },
+    {
+      "name": "Peoria Vet Center",
+      "phone": "623-398-8854",
+      "address": "14050 North 83rd Avenue, Peoria, AZ 85381",
+      "city": "Peoria",
+      "description": "Free, confidential counseling for veterans, service members, and families. Provides mental health services.",
+      "services": ["mental health counseling", "PTSD counseling", "family counseling"],
+      "website": "https://www.va.gov",
+      "source_url": "https://www.va.gov/phoenix-vet-center/"
+    },
+    {
+      "name": "Veterans Crisis Line",
+      "phone": "988 then press 1 (or call 988-1)",
+      "address": "National service",
+      "city": "Statewide",
+      "description": "24/7, confidential crisis support for veterans and their loved ones. Private, free service available via phone, chat, or text.",
+      "services": ["crisis support", "suicide prevention", "mental health"],
+      "website": "https://www.veteranscrisisline.net/",
+      "source_url": "https://www.veteranscrisisline.net/"
+    },
+    {
+      "name": "Southern Arizona Legal Aid - Veterans Hope & Justice Project",
+      "phone": "520-623-9461 or 800-248-6789",
+      "address": "2343 E Broadway Blvd #200, Tucson, AZ",
+      "city": "Tucson",
+      "description": "Legal services for homeless or at-risk veterans. Provides assistance with consumer protection, family law, housing, public benefits, VA benefits, and restorative justice.",
+      "services": ["legal aid", "consumer protection", "family law", "housing assistance", "VA benefits advocacy", "public benefits"],
+      "website": "https://www.sazlegalaid.org/veterans/",
+      "source_url": "https://www.sazlegalaid.org/veterans/"
+    },
+    {
+      "name": "Arizona Department of Veterans' Services - Veteran Benefits Counselors",
+      "phone": "602-535-1215",
+      "address": "Multiple locations statewide",
+      "city": "Phoenix",
+      "description": "Accredited veteran benefits counselors providing free information and assistance regarding federal and state benefits. Operates remotely across Arizona and at state veteran homes.",
+      "services": ["benefits counseling", "VA benefits advocacy", "financial assistance", "benefits application assistance"],
+      "website": "https://dvs.az.gov/services/veteran-benefits-counselors-vbcs",
+      "source_url": "https://dvs.az.gov/services/veteran-benefits-counselors-vbcs"
+    },
+    {
+      "name": "Arizona Disabled Veteran Foundation",
+      "phone": "Contact via email",
+      "address": "PO Box 39487, Phoenix, AZ 85069",
+      "city": "Phoenix",
+      "description": "501(c)(3) organization providing emergency financial assistance to Arizona disabled and non-disabled veterans, National Guardsmen, and Reservists. Assists with rent, utilities, food, medical needs, legal aid, and more.",
+      "services": ["emergency financial assistance", "housing assistance", "food assistance", "utilities assistance", "medical assistance", "legal aid"],
+      "website": "https://advf.org/",
+      "source_url": "https://advf.org/"
+    },
+    {
+      "name": "Catholic Charities Arizona - Veteran Services",
+      "phone": "855-316-2229",
+      "address": "5151 N. 19th Avenue, Phoenix, AZ 85015-3224",
+      "city": "Phoenix",
+      "description": "Provides emergency, transitional, and permanent housing plus case management and connections to MANA House and regional programs for veterans in Maricopa, Coconino, Mohave, and Yavapai Counties.",
+      "services": ["housing assistance", "emergency housing", "transitional housing", "permanent housing", "case management"],
+      "website": "https://www.catholiccharitiesaz.org/",
+      "source_url": "https://www.catholiccharitiesaz.org/donation-to-veterans"
+    },
+    {
+      "name": "The Salvation Army - Phoenix Veteran Services",
+      "phone": "602-267-4100",
+      "address": "2707 E. Van Buren St, Phoenix, AZ 85008",
+      "city": "Phoenix",
+      "description": "Provides case management, homeless comfort kits with clothing and food, hygiene items, resume writing, job search assistance, emotional and spiritual support, and rent/utilities assistance.",
+      "services": ["housing assistance", "food assistance", "job placement", "case management", "clothing assistance", "utilities assistance"],
+      "website": "https://www.salvationarmyphoenix.org/veteran-services",
+      "source_url": "https://www.salvationarmyphoenix.org/veteran-services"
+    },
+    {
+      "name": "Arizona AHCCCS - Mental Health Resources",
+      "phone": "Contact through website or call 211",
+      "address": "Multiple locations statewide",
+      "city": "Statewide",
+      "description": "Arizona healthcare program providing mental health resources and advocacy for service members and veterans through healthcare system coordination.",
+      "services": ["mental health services", "healthcare access", "crisis services"],
+      "website": "https://www.azahcccs.gov/AHCCCS/HealthcareAdvocacy/veterans.html",
+      "source_url": "https://www.azahcccs.gov/AHCCCS/HealthcareAdvocacy/veterans.html"
+    },
+    {
+      "name": "Arizona Department of Economic Security - Veterans Employment Services",
+      "phone": "Contact through website",
+      "address": "Multiple locations statewide",
+      "city": "Statewide",
+      "description": "Provides employment services, job training, career counseling, and SNAP assistance for veterans. JVSG program offers individualized services with priority job referrals.",
+      "services": ["job training", "employment counseling", "job placement", "SNAP assistance", "career development"],
+      "website": "https://des.az.gov/services/employment/veterans",
+      "source_url": "https://des.az.gov/services/employment/veterans"
+    },
+    {
+      "name": "American Legion - Phoenix Regional Office",
+      "phone": "602-627-3281",
+      "address": "Phoenix Regional Office",
+      "city": "Phoenix",
+      "description": "Veterans service organization at Phoenix VA Regional Office providing advocacy and support services to veterans.",
+      "services": ["veterans advocacy", "benefits assistance", "support services"],
+      "website": "https://www.legion.org",
+      "source_url": "https://www.benefits.va.gov/phoenix/veterans-services-orgs.asp"
+    },
+    {
+      "name": "Disabled American Veterans - Phoenix Regional Office",
+      "phone": "602-627-3286",
+      "address": "Phoenix Regional Office",
+      "city": "Phoenix",
+      "description": "Veterans service organization providing advocacy and support for disabled veterans.",
+      "services": ["veterans advocacy", "disability benefits", "support services"],
+      "website": "https://www.dav.org",
+      "source_url": "https://www.benefits.va.gov/phoenix/veterans-services-orgs.asp"
+    },
+    {
+      "name": "Veterans of Foreign Wars (VFW) - Arizona",
+      "phone": "480-702-0680",
+      "address": "Arizona location",
+      "city": "Phoenix area",
+      "description": "Veterans service organization providing advocacy, community support, and benefits assistance to veterans.",
+      "services": ["veterans advocacy", "community support", "benefits assistance"],
+      "website": "https://www.vfw.org",
+      "source_url": "https://www.benefits.va.gov/phoenix/veterans-services-orgs.asp"
+    },
+    {
+      "name": "Vietnam Veterans of America - Arizona",
+      "phone": "602-627-3299",
+      "address": "Phoenix Regional Office",
+      "city": "Phoenix",
+      "description": "Veterans service organization focused on Vietnam-era veterans advocacy and support.",
+      "services": ["veterans advocacy", "benefits assistance", "support services"],
+      "website": "https://vva.org",
+      "source_url": "https://www.benefits.va.gov/phoenix/veterans-services-orgs.asp"
+    },
+    {
+      "name": "Arizona Food Bank Network - Military Hunger Program",
+      "phone": "Contact through website",
+      "address": "Statewide network",
+      "city": "Statewide",
+      "description": "Food bank network with directory of local food pantries available to veterans. Maintains resource database for food assistance.",
+      "services": ["food assistance", "food pantry access"],
+      "website": "https://azfoodbanks.org/military-hunger/",
+      "source_url": "https://azfoodbanks.org/military-hunger/"
+    }
+  ]
+}

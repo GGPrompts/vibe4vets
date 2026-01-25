@@ -1,0 +1,365 @@
+{
+  "state": "CO",
+  "state_name": "Colorado",
+  "fetched_at": "2026-01-25T00:00:00Z",
+  "source": "211 Colorado (211colorado.org), Colorado Division of Veterans Affairs, and verified veteran service organizations",
+  "resources": [
+    {
+      "name": "211 Colorado",
+      "phone": "2-1-1 or (866) 760-6489",
+      "address": "Statewide Service",
+      "city": "Colorado",
+      "description": "Free, 24/7 resource line connecting individuals to local housing, food, financial assistance, and veteran services",
+      "services": [
+        "housing assistance",
+        "food assistance",
+        "financial assistance",
+        "veteran services navigation",
+        "emergency resources"
+      ],
+      "website": "https://www.211colorado.org",
+      "source_url": "https://www.211colorado.org/search-resources/"
+    },
+    {
+      "name": "Rocky Mountain Human Services (RMHS) - Homes for All Veterans",
+      "phone": "(855) 838-7428",
+      "email": "HAVreferrals@rmhumanservices.org",
+      "address": "Denver & Colorado Springs offices",
+      "city": "Multiple",
+      "description": "Statewide program providing housing placement, rental assistance, and case management for veterans experiencing or at risk of homelessness",
+      "services": [
+        "housing assistance",
+        "rental assistance",
+        "case management",
+        "community resource navigation",
+        "homelessness prevention"
+      ],
+      "website": "https://www.rmhumanservices.org",
+      "source_url": "https://www.rmhumanservices.org/news/colorado-resources-for-veterans/"
+    },
+    {
+      "name": "Volunteers of America (VOA) - Veteran Services Denver Metro",
+      "phone": "(720) 501-3367",
+      "address": "1247 Santa Fe Drive",
+      "city": "Denver",
+      "state": "CO",
+      "zip": "80204",
+      "description": "Breaking the cycle of homelessness among Colorado's veteran population through housing, employment, and case management services",
+      "services": [
+        "emergency housing",
+        "transitional housing",
+        "female veterans program",
+        "employment services",
+        "benefits assistance",
+        "case management",
+        "supportive services for veteran families (SSVF)"
+      ],
+      "website": "https://www.voacolorado.org/veteran-services-denver-metro/",
+      "source_url": "https://www.voacolorado.org/veteran-services-denver-metro/"
+    },
+    {
+      "name": "Colorado Coalition for the Homeless - Veteran Services",
+      "phone": "(720) 501-3367",
+      "address": "1247 Santa Fe Drive",
+      "city": "Denver",
+      "state": "CO",
+      "zip": "80205",
+      "description": "Serves homeless veterans through transitional housing with case management support and employment services",
+      "services": [
+        "transitional housing",
+        "case management",
+        "employment services",
+        "job readiness training",
+        "housing programs",
+        "veterans reintegration program"
+      ],
+      "website": "https://www.coloradocoalition.org/veteran-services",
+      "source_url": "https://www.coloradocoalition.org/veteran-services"
+    },
+    {
+      "name": "Mt. Carmel Veterans Service Center",
+      "phone": "(719) 772-7000",
+      "address": "530 Communication Circle",
+      "city": "Colorado Springs",
+      "state": "CO",
+      "zip": "80905",
+      "description": "Comprehensive behavioral health and support services for veterans, service members, and their families",
+      "services": [
+        "behavioral health counseling",
+        "mental health services",
+        "crisis support",
+        "employment and transition support",
+        "job placement",
+        "benefits support",
+        "case management",
+        "housing assistance",
+        "financial coaching",
+        "legal assistance",
+        "education assistance",
+        "GI Bill guidance"
+      ],
+      "website": "https://www.veteranscenter.org",
+      "source_url": "https://www.veteranscenter.org"
+    },
+    {
+      "name": "Colorado Springs Vet Center",
+      "phone": "(719) 471-9992",
+      "address": "3920 N. Union Boulevard",
+      "city": "Colorado Springs",
+      "state": "CO",
+      "description": "Veterans Affairs facility providing free counseling, trauma recovery, and PTSD support",
+      "services": [
+        "free counseling",
+        "trauma recovery",
+        "PTSD support",
+        "mental health services",
+        "crisis support"
+      ],
+      "website": "https://www.va.gov/colorado-springs-vet-center/",
+      "source_url": "https://www.va.gov/colorado-springs-vet-center/"
+    },
+    {
+      "name": "UCCS HealthCircle Veterans Health and Trauma Clinic",
+      "phone": "(719) 255-8003",
+      "address": "4863 N. Nevada Avenue",
+      "city": "Colorado Springs",
+      "state": "CO",
+      "description": "University of Colorado Colorado Springs clinic providing individual and group therapy, expressive therapies, and trauma recovery",
+      "services": [
+        "individual therapy",
+        "group therapy",
+        "expressive therapies",
+        "trauma recovery",
+        "mental health support"
+      ],
+      "website": "https://healthcircle.uccs.edu/veterans-health-and-trauma-clinic",
+      "source_url": "https://www.rmhumanservices.org/news/colorado-resources-for-veterans/"
+    },
+    {
+      "name": "Home Front Military Network (HFMN)",
+      "phone": "(719) 434-1407 or (719) 577-7417",
+      "address": "1120 N. Circle Drive, Suite 230 (Current) / 1235 Lake Plaza Drive, Suite 127 (New)",
+      "city": "Colorado Springs",
+      "state": "CO",
+      "zip": "80909",
+      "description": "Connects military service members, veterans, and families to community resources and provides emergency financial assistance",
+      "services": [
+        "emergency financial assistance",
+        "housing support",
+        "rent/mortgage assistance",
+        "utilities assistance",
+        "transportation assistance",
+        "resource navigation",
+        "case coordination",
+        "community referrals"
+      ],
+      "website": "https://homefrontmilitarynetwork.org/",
+      "source_url": "https://homefrontmilitarynetwork.org/"
+    },
+    {
+      "name": "Next Chapter",
+      "phone": "(888) 719-8387",
+      "address": "530 Communication Circle",
+      "city": "Colorado Springs",
+      "state": "CO",
+      "description": "Single access point for veterans seeking assistance with mental health challenges, financial concerns, and housing",
+      "services": [
+        "mental health support",
+        "financial assistance",
+        "housing support",
+        "counseling",
+        "case management",
+        "food assistance",
+        "job coaching",
+        "legal support"
+      ],
+      "website": "https://nextchapterco.org/",
+      "source_url": "https://nextchapterco.org/"
+    },
+    {
+      "name": "Colorado Division of Veterans Affairs",
+      "phone": "(303) 914-5832",
+      "address": "6848 South Revere Parkway",
+      "city": "Centennial",
+      "state": "CO",
+      "zip": "80112",
+      "description": "State agency providing advocacy and information on veterans benefits, claims assistance, and veteran services",
+      "services": [
+        "benefits advocacy",
+        "claims assistance",
+        "county veteran service officer coordination",
+        "property tax exemptions",
+        "disabled veteran license plates",
+        "women veterans services",
+        "military funeral honors",
+        "crisis support (988 then press 1)"
+      ],
+      "website": "https://vets.colorado.gov/",
+      "source_url": "https://vets.colorado.gov/"
+    },
+    {
+      "name": "Veterans Crisis Line",
+      "phone": "988 (then press 1) or text 838255",
+      "address": "National Service",
+      "city": "Colorado",
+      "description": "24/7 confidential support for veterans, service members, and their loved ones - no VA enrollment required",
+      "services": [
+        "crisis intervention",
+        "mental health support",
+        "suicide prevention",
+        "emotional support"
+      ],
+      "website": "https://veteranscrisisline.net/",
+      "source_url": "https://www.rmhumanservices.org/news/colorado-resources-for-veterans/"
+    },
+    {
+      "name": "Colorado Veterans Project",
+      "phone": "Contact via email",
+      "email": "info@coloradoveteransproject.org",
+      "address": "8547 E. Arapahoe Road #J-547",
+      "city": "Greenwood Village",
+      "state": "CO",
+      "zip": "80112",
+      "description": "Empowers veterans and transitioning service members to achieve economic stability through employment and entrepreneurship support",
+      "services": [
+        "employment assistance",
+        "skills training",
+        "educational opportunities",
+        "career development",
+        "entrepreneurship support",
+        "job networking"
+      ],
+      "website": "https://www.coloradoveteransproject.org/",
+      "source_url": "https://www.coloradoveteransproject.org/"
+    },
+    {
+      "name": "Disabled American Veterans (DAV) Chapter 26",
+      "phone": "(719) 591-8787",
+      "email": "dav26admin@dav26.org",
+      "address": "6880 Palmer Park Boulevard",
+      "city": "Colorado Springs",
+      "state": "CO",
+      "zip": "80915",
+      "description": "Provides free VA benefits assistance to veterans and dependents, regardless of DAV membership",
+      "services": [
+        "benefits assistance",
+        "VA compensation claims",
+        "pension assistance",
+        "hospitalization benefits",
+        "survivor claims",
+        "document support",
+        "advocacy",
+        "community events"
+      ],
+      "website": "https://www.dav26.org/",
+      "source_url": "https://www.dav26.org/"
+    },
+    {
+      "name": "Veterans of Foreign Wars (VFW) Department of Colorado",
+      "phone": "(303) 914-5595 (Main) or (720) 840-1422 (Assistant Office)",
+      "address": "155 Van Gordon Street, Suite 205 (Lakewood) / 4715 Clearview Drive (Security)",
+      "city": "Lakewood/Security",
+      "state": "CO",
+      "zip": "80228/80931",
+      "description": "Benefits assistance and advocacy for veterans and troops with service offices throughout Colorado",
+      "services": [
+        "benefits assistance",
+        "VA claims support",
+        "advocacy",
+        "military transition guidance",
+        "claims consultation"
+      ],
+      "website": "https://vfwco.org/",
+      "source_url": "https://vfwco.org/"
+    },
+    {
+      "name": "American Legion - Colorado Department",
+      "phone": "(303) 914-5585",
+      "address": "155 Van Gordon Street, Lakewood",
+      "city": "Lakewood",
+      "state": "CO",
+      "zip": "80228",
+      "description": "Largest veterans organization providing benefits assistance and post service officer services",
+      "services": [
+        "veterans benefits assistance",
+        "advocacy",
+        "community programs",
+        "post services",
+        "support for service members and families"
+      ],
+      "website": "https://coloradolegion.org/",
+      "source_url": "https://coloradolegion.org/veterans-affairs--rehabilitation.html"
+    },
+    {
+      "name": "Rocky Mountain Regional VA Medical Center",
+      "phone": "(303) 399-8020",
+      "address": "1700 North Wheeling Street",
+      "city": "Aurora",
+      "state": "CO",
+      "zip": "80045",
+      "description": "Major VA medical facility providing comprehensive healthcare to eligible veterans",
+      "services": [
+        "primary care",
+        "specialty care",
+        "mental health",
+        "hospital services",
+        "outpatient services"
+      ],
+      "website": "https://www.va.gov/eastern-colorado-health-care/",
+      "source_url": "https://www.rmhumanservices.org/news/colorado-resources-for-veterans/"
+    },
+    {
+      "name": "Denver VA Community Resources and Referrals Center",
+      "phone": "(720) 501-3367",
+      "email": "mary.mish@va.gov",
+      "address": "1247 Santa Fe Drive",
+      "city": "Denver",
+      "state": "CO",
+      "zip": "80204",
+      "description": "VA resource center providing referrals and community resource connections for veterans",
+      "services": [
+        "resource referrals",
+        "community connections",
+        "benefits information",
+        "healthcare coordination"
+      ],
+      "website": "https://www.va.gov/",
+      "source_url": "https://www.coloradocoalition.org/veteran-services"
+    },
+    {
+      "name": "Colorado Workforce Centers - Veterans Employment Services",
+      "phone": "(720) 337-9675",
+      "address": "4685 Peoria Street, Suite 251",
+      "city": "Denver",
+      "state": "CO",
+      "zip": "80239",
+      "description": "State workforce centers providing employment specialists and job training opportunities for veterans",
+      "services": [
+        "employment services",
+        "job training",
+        "skills assessment",
+        "resume development",
+        "job interview coaching",
+        "job placement"
+      ],
+      "website": "https://cdle.colorado.gov/jobs-training/veterans",
+      "source_url": "https://cdle.colorado.gov/jobs-training/veterans"
+    },
+    {
+      "name": "Colorado Community College System - Veterans Education & Training",
+      "phone": "Contact via website",
+      "address": "State system of community colleges",
+      "city": "Colorado",
+      "description": "State approving agency overseeing approximately 275 approved education programs for veterans using GI Bill",
+      "services": [
+        "education programs",
+        "GI Bill assistance",
+        "training programs",
+        "apprenticeships",
+        "on-the-job training"
+      ],
+      "website": "https://cccs.edu/about/governance/veterans-education-and-training/",
+      "source_url": "https://cccs.edu/about/governance/veterans-education-and-training/"
+    }
+  ]
+}

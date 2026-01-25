@@ -1,0 +1,318 @@
+{
+  "state": "WA",
+  "state_name": "Washington",
+  "fetched_at": "2026-01-25T18:30:00Z",
+  "source": "211.org, Washington State Department of Veterans Affairs, and regional veteran organizations",
+  "resources": [
+    {
+      "name": "Washington State Department of Veterans Affairs",
+      "phone": "1-800-562-2308",
+      "address": "1102 Quince St. SE, PO Box 41150, Olympia, WA 98504-1150",
+      "city": "Olympia",
+      "description": "Main state agency providing comprehensive veteran benefits and services including housing, employment, education, mental health, legal assistance, and financial support",
+      "services": ["housing assistance", "employment services", "education benefits", "mental health", "PTSD counseling", "legal aid", "disability claims", "financial assistance"],
+      "website": "https://www.dva.wa.gov",
+      "source_url": "https://www.dva.wa.gov/veterans-service-members-and-their-families/veterans-benefits"
+    },
+    {
+      "name": "Washington 211 Information & Referral",
+      "phone": "211 or 1-877-211-9274",
+      "address": "Multiple local centers throughout Washington",
+      "city": "Statewide",
+      "description": "Community services directory connecting veterans to housing, food, employment, mental health, healthcare, childcare, and emergency assistance",
+      "services": ["information and referral", "housing assistance", "food banks", "employment services", "mental health", "healthcare"],
+      "website": "https://www.wa211.org",
+      "source_url": "https://www.wa211.org"
+    },
+    {
+      "name": "Supportive Services for Veteran Families (SSVF) - Western Washington",
+      "phone": "206-328-5696",
+      "address": "100 23rd Avenue S, Seattle, WA 98144",
+      "city": "Seattle",
+      "description": "Catholic Community Services program providing housing assistance and support to veteran families experiencing homelessness in Western Washington counties",
+      "services": ["housing assistance", "housing stability planning", "homeless prevention", "financial assistance", "supportive services"],
+      "website": "https://ccsww.org/services/supportive-services-for-veteran-families-ssvf/",
+      "source_url": "https://ccsww.org/services/supportive-services-for-veteran-families-ssvf/"
+    },
+    {
+      "name": "SSVF Pierce County Office",
+      "phone": "253-471-5340",
+      "address": "5050 South Tacoma Way, Tacoma, WA 98408",
+      "city": "Tacoma",
+      "description": "Pierce County regional office of SSVF providing housing and supportive services to veteran families",
+      "services": ["housing assistance", "housing stability planning", "homeless prevention"],
+      "website": "https://ccsww.org/services/supportive-services-for-veteran-families-ssvf/",
+      "source_url": "https://ccsww.org/services/supportive-services-for-veteran-families-ssvf/"
+    },
+    {
+      "name": "King County Veterans Program",
+      "phone": "206-263-8387",
+      "address": "Seattle, WA",
+      "city": "Seattle",
+      "description": "County program helping veterans navigate systems and access essentials including identification, healthcare, housing, employment, food, and transportation",
+      "services": ["case management", "housing assistance", "employment services", "food assistance", "healthcare", "transportation"],
+      "website": "https://kingcounty.gov/en/dept/dchs/human-social-services/king-county-veterans-program",
+      "source_url": "https://kingcounty.gov/en/dept/dchs/human-social-services/king-county-veterans-program"
+    },
+    {
+      "name": "Spokane County Veterans Services",
+      "phone": "509-477-3690",
+      "address": "1117 N Evergreen Rd, Spokane, WA 99216",
+      "city": "Spokane",
+      "description": "County agency providing emergency assistance, benefits assistance, and support services to Spokane County veterans",
+      "services": ["burial expenses", "claims assistance", "emergency financial assistance", "food assistance", "homeless supports", "rental assistance", "transportation assistance", "utility assistance"],
+      "website": "https://www.dva.wa.gov/resources/county/spokane",
+      "source_url": "https://www.dva.wa.gov/resources/county/spokane"
+    },
+    {
+      "name": "Veterans Crisis Line",
+      "phone": "988 (press 1) or 1-800-273-8255 (press 1)",
+      "address": "National",
+      "city": "National",
+      "description": "24/7 free and confidential crisis support for veterans and their families",
+      "services": ["crisis counseling", "mental health support", "suicide prevention"],
+      "website": "https://www.veteranscrisisline.net",
+      "source_url": "https://www.veteranscrisisline.net"
+    },
+    {
+      "name": "National Call Center for Homeless Veterans",
+      "phone": "877-424-3838",
+      "address": "National",
+      "city": "National",
+      "description": "24/7 free access to trained counselors for homeless veterans and at-risk veterans",
+      "services": ["housing assistance", "counseling", "emergency services"],
+      "website": "https://www.va.gov/housing-assistance/",
+      "source_url": "https://www.va.gov/housing-assistance/"
+    },
+    {
+      "name": "Columbia Basin Veterans Opportunity Center",
+      "phone": "509-545-6558",
+      "address": "1020 South 7th Avenue, Suite A, Pasco, WA 99301",
+      "city": "Pasco",
+      "description": "Veterans center providing housing, counseling, job search, mentoring, and benefits assistance in the Tri-Cities area",
+      "services": ["housing", "counseling", "job search", "mentoring", "benefits assistance"],
+      "website": "https://namitricities.org/benton-franklin-veteran-mental-health-resources/",
+      "source_url": "https://namitricities.org/benton-franklin-veteran-mental-health-resources/"
+    },
+    {
+      "name": "Veterans Assistance Fund (Benton County)",
+      "phone": "509-737-3987",
+      "address": "7102 West Okanogan Place, Suite 201, Kennewick, WA 99336",
+      "city": "Kennewick",
+      "description": "Financial assistance program for Benton County veterans with utility, rental, dental, burial, and childcare assistance",
+      "services": ["utility assistance", "rental assistance", "dental assistance", "burial assistance", "childcare assistance"],
+      "website": "https://namitricities.org/benton-franklin-veteran-mental-health-resources/",
+      "source_url": "https://namitricities.org/benton-franklin-veteran-mental-health-resources/"
+    },
+    {
+      "name": "First Avenue Center",
+      "phone": "509-545-3459",
+      "address": "505 North 1st Avenue, Pasco, WA 99301",
+      "city": "Pasco",
+      "description": "Provides benefits information, health care enrollment, and survivor benefits assistance for veterans",
+      "services": ["benefits information", "health care enrollment", "burial and survivor benefits"],
+      "website": "https://namitricities.org/benton-franklin-veteran-mental-health-resources/",
+      "source_url": "https://namitricities.org/benton-franklin-veteran-mental-health-resources/"
+    },
+    {
+      "name": "VA Puget Sound Health Care System - Seattle Division",
+      "phone": "206-762-1010 or 800-329-8387",
+      "address": "1660 South Columbian Way, Seattle, WA 98108",
+      "city": "Seattle",
+      "description": "Federal VA medical center providing comprehensive healthcare to enrolled veterans",
+      "services": ["healthcare", "mental health", "disability services", "rehabilitation"],
+      "website": "https://www.va.gov/seattle-health-care/",
+      "source_url": "https://www.benefits.va.gov/Seattle/veterans-services-orgs.asp"
+    },
+    {
+      "name": "VA Puget Sound Health Care System - American Lake Division (Tacoma)",
+      "phone": "253-582-8440 or 800-329-8387",
+      "address": "9600 Veterans Drive, Tacoma, WA 98493",
+      "city": "Tacoma",
+      "description": "Federal VA medical center serving Pierce County and surrounding areas with comprehensive healthcare",
+      "services": ["healthcare", "mental health", "disability services", "rehabilitation"],
+      "website": "https://www.va.gov/seattle-health-care/",
+      "source_url": "https://www.benefits.va.gov/Seattle/veterans-services-orgs.asp"
+    },
+    {
+      "name": "Spokane Vet Center",
+      "phone": "509-444-8387 or 877-927-8387",
+      "address": "13109 E Mirabeau Parkway, Spokane, WA 99216",
+      "city": "Spokane",
+      "description": "VA Vet Center providing readjustment counseling and mental health services to veterans",
+      "services": ["mental health counseling", "PTSD treatment", "readjustment counseling", "family counseling"],
+      "website": "https://www.va.gov/spokane-vet-center/",
+      "source_url": "https://www.va.gov/spokane-vet-center/"
+    },
+    {
+      "name": "Mann-Grandstaff VA Medical Center (Spokane)",
+      "phone": "509-434-7000",
+      "address": "4815 N Assembly St, Spokane, WA 99205",
+      "city": "Spokane",
+      "description": "Major federal VA medical center providing 24/7 healthcare to enrolled veterans in Eastern Washington",
+      "services": ["healthcare", "mental health", "emergency services", "disability services"],
+      "website": "https://www.va.gov/spokane-health-care/",
+      "source_url": "https://www.dva.wa.gov/resources/county/spokane"
+    },
+    {
+      "name": "Tacoma Rescue Mission - Veterans Program",
+      "phone": "253-383-4493",
+      "address": "425 South Tacoma Way, Tacoma, WA 98402",
+      "city": "Tacoma",
+      "description": "Specialized shelter and support services for homeless veterans in the Tacoma area",
+      "services": ["emergency shelter", "homeless services", "supportive services", "meals"],
+      "website": "https://www.trm.org/veterans/",
+      "source_url": "https://www.trm.org/veterans/"
+    },
+    {
+      "name": "DAV Chapter No. 1 (Tacoma)",
+      "phone": "253-752-2970",
+      "address": "1110 N Stevens St, Tacoma, WA 98406",
+      "city": "Tacoma",
+      "description": "Disabled American Veterans chapter providing service officer assistance and veteran advocacy",
+      "services": ["service officer claims assistance", "veteran advocacy", "benefits counseling"],
+      "website": "http://davtacoma.org/",
+      "source_url": "http://davtacoma.org/contact.htm"
+    },
+    {
+      "name": "VFW Service Division - Spokane",
+      "phone": "509-789-1832",
+      "address": "112 N University RD BLDG B, Spokane, WA 99206",
+      "city": "Spokane",
+      "description": "Veterans of Foreign Wars chapter providing service officer assistance and claims support",
+      "services": ["service officer claims assistance", "benefits counseling", "veteran advocacy"],
+      "website": "https://vfwwa.org/",
+      "source_url": "https://www.dva.wa.gov/resources/county/spokane"
+    },
+    {
+      "name": "American Legion - Spokane Service Office",
+      "phone": "509-434-7750",
+      "address": "VA Medical Center, 4815 N Assembly Bldg 6A, Spokane, WA 99205",
+      "city": "Spokane",
+      "description": "American Legion chapter providing service officer assistance and veteran services",
+      "services": ["service officer claims assistance", "benefits counseling", "veteran advocacy"],
+      "website": "https://walegion.org/",
+      "source_url": "https://www.dva.wa.gov/resources/county/spokane"
+    },
+    {
+      "name": "Spokane Tribe Veterans Program",
+      "phone": "509-258-7331",
+      "address": "Spokane Indian Reservation, WA",
+      "city": "Spokane",
+      "description": "Veteran services for Spokane Tribe members and veterans",
+      "services": ["veteran benefits", "cultural support", "community services"],
+      "website": "https://www.spoklanetribe.com/",
+      "source_url": "https://www.dva.wa.gov/resources/county/spokane"
+    },
+    {
+      "name": "Office of Military and Veteran Legal Assistance",
+      "phone": "206-464-6431",
+      "address": "Attorney General's Office, Olympia, WA",
+      "city": "Olympia",
+      "description": "State agency promoting civil legal assistance programs and pro bono services for veterans",
+      "services": ["legal assistance", "legal advice", "benefits representation"],
+      "website": "https://www.atg.wa.gov/legal-assistance-veterans-military-personnel",
+      "source_url": "https://www.atg.wa.gov/legal-assistance-veterans-military-personnel"
+    },
+    {
+      "name": "Northwest Justice Project Veterans Project",
+      "phone": "1-888-201-1014",
+      "address": "Multiple locations throughout Washington",
+      "city": "Statewide",
+      "description": "Free legal services to low-income and homeless veterans for civil legal problems affecting housing, employment, and self-sufficiency",
+      "services": ["legal aid", "benefits assistance", "housing legal services", "employment legal services"],
+      "website": "https://www.washingtonlawhelp.org/",
+      "source_url": "https://www.atg.wa.gov/legal-assistance-veterans-military-personnel"
+    },
+    {
+      "name": "Washington Veterans Bar Association",
+      "phone": "206-464-1426",
+      "address": "Seattle, WA",
+      "city": "Seattle",
+      "description": "Bar association providing legal assistance resources and pro bono services for veterans",
+      "services": ["legal assistance", "legal referrals", "pro bono services"],
+      "website": "https://www.wsvba.org/legal-assistance",
+      "source_url": "https://www.wsvba.org/legal-assistance"
+    },
+    {
+      "name": "UW Law - Veteran Civil Legal Clinic (King County)",
+      "phone": "206-543-2511",
+      "address": "University of Washington School of Law, Seattle, WA",
+      "city": "Seattle",
+      "description": "Law school clinic providing free legal services to veterans, service members, and families for VA benefits and civil matters",
+      "services": ["legal advice", "VA benefits representation", "civil legal services"],
+      "website": "https://www.law.uw.edu/",
+      "source_url": "https://www.law.uw.edu/news-events/news/2024/veteran-civil-legal-clinic"
+    },
+    {
+      "name": "Employment Security Department - Veteran Services",
+      "phone": "1-866-265-9968",
+      "address": "Multiple WorkSource centers statewide",
+      "city": "Statewide",
+      "description": "State employment services providing job listings, referrals, hiring events, resume assistance, and skill assessments for veterans",
+      "services": ["employment services", "job placement", "resume assistance", "training referrals", "interview preparation"],
+      "website": "https://esd.wa.gov/jobs-and-training/veteran-services",
+      "source_url": "https://esd.wa.gov/jobs-and-training/veteran-services"
+    },
+    {
+      "name": "Veteran Readiness and Employment (VRE) Program",
+      "phone": "1-800-827-1000",
+      "address": "VA regional offices statewide",
+      "city": "Statewide",
+      "description": "Federal VA program providing vocational rehabilitation and employment services to veterans with service-connected disabilities",
+      "services": ["vocational rehabilitation", "employment services", "education and training", "job placement"],
+      "website": "https://www.benefits.va.gov/vocrehab/",
+      "source_url": "https://www.benefits.va.gov/vocrehab/"
+    },
+    {
+      "name": "Transition Assistance Program (TAP)",
+      "phone": "1-800-827-1000",
+      "address": "Military installations statewide",
+      "city": "Statewide",
+      "description": "Federal program assisting service members transitioning to civilian employment with workshops and career planning",
+      "services": ["career planning", "employment workshops", "benefits counseling", "job search assistance"],
+      "website": "https://www.benefits.va.gov/tap/",
+      "source_url": "https://www.benefits.va.gov/tap/"
+    },
+    {
+      "name": "Washington Soldiers Home - Orting",
+      "phone": "1-877-VETS-R-US (1-877-838-7787)",
+      "address": "1301 Orting Kapowsin Hwy, Orting, WA 98360",
+      "city": "Orting",
+      "description": "State-operated long-term care facility for eligible Washington veterans",
+      "services": ["long-term care", "medical care", "mental health services"],
+      "website": "https://www.dva.wa.gov/veterans-service-members-and-their-families/veterans-homes/washington-soldiers-home-orting",
+      "source_url": "https://www.dva.wa.gov/veterans-service-members-and-their-families/veterans-homes/washington-soldiers-home-orting"
+    },
+    {
+      "name": "Washington Veterans Home - Port Orchard (Retsil)",
+      "phone": "1-877-VETS-R-US (1-877-838-7787)",
+      "address": "1141 Beach Dr. E., Port Orchard, WA 98366",
+      "city": "Port Orchard",
+      "description": "State-operated long-term care facility with Women Veterans Wing for eligible Washington veterans",
+      "services": ["long-term care", "medical care", "mental health services"],
+      "website": "https://www.dva.wa.gov/veterans-service-members-and-their-families/veterans-homes/washington-veterans-home-port-orchard",
+      "source_url": "https://www.dva.wa.gov/veterans-service-members-and-their-families/veterans-homes/washington-veterans-home-port-orchard"
+    },
+    {
+      "name": "Spokane Veterans Home",
+      "phone": "1-877-VETS-R-US (1-877-838-7787)",
+      "address": "222 E. 5th Ave, Spokane, WA 99202",
+      "city": "Spokane",
+      "description": "State-operated long-term care facility for eligible Washington veterans",
+      "services": ["long-term care", "medical care", "mental health services"],
+      "website": "https://www.dva.wa.gov/veterans-service-members-and-their-families/veterans-homes",
+      "source_url": "https://www.dva.wa.gov/veterans-service-members-and-their-families/veterans-homes"
+    },
+    {
+      "name": "Walla Walla Veterans Home",
+      "phone": "1-877-VETS-R-US (1-877-838-7787)",
+      "address": "92 Wainwright Dr, Walla Walla, WA 99362",
+      "city": "Walla Walla",
+      "description": "State-operated long-term care facility for eligible Washington veterans",
+      "services": ["long-term care", "medical care", "mental health services"],
+      "website": "https://www.dva.wa.gov/veterans-service-members-and-their-families/veterans-homes",
+      "source_url": "https://www.dva.wa.gov/veterans-service-members-and-their-families/veterans-homes"
+    }
+  ]
+}

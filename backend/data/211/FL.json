@@ -1,0 +1,420 @@
+{
+  "state": "FL",
+  "state_name": "Florida",
+  "fetched_at": "2026-01-25T00:00:00Z",
+  "source": "211.org Network, Florida Department of Veterans' Affairs, Bay Area Legal Services, VOA Florida",
+  "resources": [
+    {
+      "name": "Florida Veterans Support Line (MYFLVET)",
+      "phone": "1-844-693-5838",
+      "address": "Statewide Hotline",
+      "city": "Florida",
+      "description": "Free, confidential 24/7 support line providing emotional support and connections to VA and non-VA community resources for veterans in crisis or transitioning to civilian life",
+      "services": [
+        "mental health crisis support",
+        "emotional support",
+        "resource referrals",
+        "benefits assistance"
+      ],
+      "website": "https://floridavets.org",
+      "source_url": "https://floridavets.org"
+    },
+    {
+      "name": "Florida 211 Helpline",
+      "phone": "211",
+      "address": "Statewide Service",
+      "city": "Florida",
+      "description": "24/7 free resource connecting people to social services including food, housing, utilities, health care, mental health, employment, and disaster assistance with veteran-specific services available",
+      "services": [
+        "housing assistance",
+        "food programs",
+        "utility payment assistance",
+        "health care referrals",
+        "mental health services",
+        "employment opportunities",
+        "disaster assistance",
+        "veteran services"
+      ],
+      "website": "https://fl211.org",
+      "source_url": "https://fl211.org"
+    },
+    {
+      "name": "Volunteers of America Florida (VOA Florida)",
+      "phone": "(727) 369-8500",
+      "address": "850 5th Ave South Suite 1100, St. Petersburg, FL 33701",
+      "city": "St. Petersburg",
+      "description": "Largest provider of supportive housing for veterans in Florida, serving 19 communities from Pensacola to Key West. Operates veterans villages and provides comprehensive support services",
+      "services": [
+        "transitional housing",
+        "permanent supportive housing",
+        "substance use recovery treatment",
+        "residential treatment",
+        "case management",
+        "peer mentoring",
+        "benefits assistance",
+        "home repair assistance"
+      ],
+      "website": "https://www.voaflorida.org/services/veteran-services/",
+      "source_url": "https://www.voaflorida.org/services/veteran-services/"
+    },
+    {
+      "name": "Florida Department of Veterans' Affairs - State Veterans' Service Officers",
+      "phone": "(727) 319-7440",
+      "address": "Offices throughout Florida (approximately 100 officers statewide)",
+      "city": "Multiple Locations",
+      "description": "Network of ~100 State Veterans' Service Officers providing free benefits assistance, claims help, and access to FDVA programs. Officers stationed at VA Regional Office, VA Medical Centers, and VA Outpatient Clinics",
+      "services": [
+        "veterans benefits assistance",
+        "claims and appeals",
+        "discharge upgrades",
+        "benefits counseling",
+        "employment services",
+        "housing assistance",
+        "mental health referrals"
+      ],
+      "website": "https://floridavets.org",
+      "source_url": "https://floridavets.org/locations/"
+    },
+    {
+      "name": "Hope Navigators - Florida Department of Veterans' Affairs",
+      "phone": "833-438-4673 (833-GET-HOPE)",
+      "address": "Statewide Program",
+      "city": "Florida",
+      "description": "First-line contact program with trained navigators who are often veterans themselves, helping connect to state benefits and services",
+      "services": [
+        "mental health support",
+        "benefits navigation",
+        "resource connection",
+        "housing assistance",
+        "employment services"
+      ],
+      "website": "https://floridavets.org",
+      "source_url": "https://floridavets.org"
+    },
+    {
+      "name": "Florida Veterans Legal Helpline",
+      "phone": "(866) 486-6161",
+      "address": "Served by Bay Area Legal Services",
+      "city": "Statewide",
+      "description": "Free legal advice and representation for eligible Florida veterans. Operated by Major General Ernest A. and Marilyn Bedke Veterans Law Center through Bay Area Legal Services",
+      "services": [
+        "veterans benefits claims",
+        "discharge upgrades",
+        "family law",
+        "housing and foreclosure",
+        "driver's license suspension issues",
+        "social security claims",
+        "legal representation",
+        "criminal record expungement"
+      ],
+      "website": "https://bals.org/veterans-legal-helpline",
+      "source_url": "https://bals.org/veterans-legal-helpline"
+    },
+    {
+      "name": "First Contact - 211 Tampa Bay Cares (SSVF Program)",
+      "phone": "(727) 210-4211",
+      "address": "Serves 8 counties in Tampa Bay area",
+      "city": "Tampa Bay Region",
+      "description": "Supportive Services for Veteran Families (SSVF) program rapidly housing veterans and families experiencing homelessness and prevents homelessness for at-risk veterans",
+      "services": [
+        "emergency housing",
+        "transitional housing",
+        "case management",
+        "benefits assistance",
+        "mental health referrals",
+        "homelessness prevention",
+        "resource connection"
+      ],
+      "website": "https://www.firstcontact.org/veteran-services",
+      "source_url": "https://www.firstcontact.org/veteran-services"
+    },
+    {
+      "name": "211 Big Bend - Florida Veterans Support Line",
+      "phone": "1-844-693-5838",
+      "address": "Serves Big Bend Region (North Florida/Panhandle)",
+      "city": "Tallahassee Region",
+      "description": "Regional 211 center partnering with Florida Department of Veterans' Affairs and Crisis Center of Tampa Bay to provide emotional support and resource connections for veterans",
+      "services": [
+        "emotional support",
+        "crisis intervention",
+        "resource referrals",
+        "emergency financial assistance",
+        "food assistance",
+        "housing assistance",
+        "counseling",
+        "legal aid",
+        "employment resources"
+      ],
+      "website": "https://211bigbend.org",
+      "source_url": "https://211bigbend.org/florida-veterans-support-line/"
+    },
+    {
+      "name": "Employ Florida Vets",
+      "phone": "1-866-352-2345",
+      "address": "Statewide Online Portal",
+      "city": "Florida",
+      "description": "State's online jobs portal providing employment services to Florida veterans, matching service members to jobs and training opportunities suited to military skills and experience",
+      "services": [
+        "job matching",
+        "employment counseling",
+        "training opportunities",
+        "career development",
+        "employer connections"
+      ],
+      "website": "https://veteran.employflorida.com/vosnet/Default.aspx",
+      "source_url": "https://floridavets.org/benefits-services/employment/"
+    },
+    {
+      "name": "Veterans Florida",
+      "phone": "(904) 358-3838",
+      "address": "Statewide Non-Profit Organization",
+      "city": "Jacksonville",
+      "description": "Non-profit corporation created by State of Florida to attract and retain veterans and their families by connecting to employment, training, educational opportunities, and strengthening veteran recruitment",
+      "services": [
+        "employment services",
+        "job training",
+        "educational opportunities",
+        "employer education",
+        "workforce development"
+      ],
+      "website": "https://www.helpflvets.org",
+      "source_url": "https://www.helpflvets.org"
+    },
+    {
+      "name": "National Call Center for Homeless Veterans",
+      "phone": "1-877-424-3838 (1-877-4AID VET)",
+      "address": "24/7 National Service",
+      "city": "National",
+      "description": "VA-staffed 24/7 call center serving homeless veterans, at-risk veterans, and their families with linkages to VA and community-based resources",
+      "services": [
+        "homelessness assistance",
+        "emergency housing",
+        "resource linkage",
+        "crisis support",
+        "benefits information"
+      ],
+      "website": "https://www.va.gov",
+      "source_url": "https://www.va.gov"
+    },
+    {
+      "name": "Veterans Crisis Line",
+      "phone": "988 (press 1)",
+      "address": "24/7 National Service",
+      "city": "National",
+      "description": "Free, confidential service providing trained responders 24/7 for veterans in crisis, available via phone and text",
+      "services": [
+        "mental health crisis support",
+        "PTSD support",
+        "suicide prevention",
+        "substance abuse crisis",
+        "emotional support"
+      ],
+      "website": "https://www.veteranscrisisline.net",
+      "source_url": "https://floridavets.org/mental-health-and-substance-abuse/"
+    },
+    {
+      "name": "CareerSource Pasco Hernando (Veteran Employment Services)",
+      "phone": "(727) 484-3400",
+      "address": "4438 Grand Boulevard, New Port Richey, FL 34652",
+      "city": "New Port Richey",
+      "description": "Regional career center providing employment services specifically for veterans including job training, placement, and workforce development",
+      "services": [
+        "job training",
+        "employment placement",
+        "career counseling",
+        "workforce development",
+        "skills assessment"
+      ],
+      "website": "https://www.careersourcepascohernando.com",
+      "source_url": "https://www.careersourcepascohernando.com/veteran-employment-services"
+    },
+    {
+      "name": "Operation Sacred Trust (Broward & Miami-Dade Housing)",
+      "phone": "(855) 774-8341 (855-SSVF-411)",
+      "address": "Barbara Carey-Shuler Manor, 1400 NW 54th Street, Miami, FL 33142",
+      "city": "Miami",
+      "description": "Supportive housing and services for veterans and families experiencing homelessness in Miami-Dade and Broward counties. Part of SSVF program with transportation assistance available",
+      "services": [
+        "emergency housing",
+        "transitional housing",
+        "case management",
+        "transportation assistance",
+        "benefits assistance",
+        "homelessness prevention"
+      ],
+      "website": "http://411veterans.pairs.com/index.php",
+      "source_url": "http://411veterans.pairs.com/index.php"
+    },
+    {
+      "name": "Windmoor Healthcare - Veteran Mental Health Program",
+      "phone": "727-322-7222",
+      "address": "Inpatient facility serving Florida",
+      "city": "St. Petersburg Area",
+      "description": "Specialized inpatient mental health and substance abuse treatment for veterans. 24/7 admission assessments. Veteran liaison available",
+      "services": [
+        "inpatient mental health treatment",
+        "substance abuse treatment",
+        "PTSD treatment",
+        "dual diagnosis treatment",
+        "crisis stabilization"
+      ],
+      "website": "https://windmoor.com",
+      "source_url": "https://windmoor.com/treatment-services/military-program/"
+    },
+    {
+      "name": "Recovery First - Veteran Addiction Treatment",
+      "phone": "(954) 526-5776",
+      "address": "Hollywood, FL",
+      "city": "Hollywood",
+      "description": "Evidence-based addiction and co-occurring disorder treatment specifically for veterans and first responders struggling with substance abuse and PTSD",
+      "services": [
+        "addiction treatment",
+        "substance abuse recovery",
+        "PTSD treatment",
+        "dual diagnosis treatment",
+        "evidence-based therapy"
+      ],
+      "website": "https://recoveryfirst.org",
+      "source_url": "https://recoveryfirst.org/addiction-treatment-florida/veteran-program/"
+    },
+    {
+      "name": "Broward Legal Aid - Mission United Veterans Project",
+      "phone": "(954) 486-4833",
+      "address": "491 North State Road 7, Plantation, FL 33317",
+      "city": "Plantation",
+      "description": "Free legal services for eligible veterans in Broward County including benefits claims, family law, housing, and other legal issues",
+      "services": [
+        "veterans benefits legal aid",
+        "family law",
+        "housing and foreclosure",
+        "legal representation",
+        "benefits appeals"
+      ],
+      "website": "https://www.browardlegalaid.org",
+      "source_url": "https://www.browardlegalaid.org/what-we-do/areas-of-legal-service/mission-united-veterans-project/"
+    },
+    {
+      "name": "Legal Aid Society of Orange County - VALOR Project",
+      "phone": "(407) 841-8310",
+      "address": "100 E. Robinson Street, Orlando, FL 32801",
+      "city": "Orlando",
+      "description": "Free legal services for eligible veterans in Orange County through the VALOR veterans legal project",
+      "services": [
+        "veterans benefits legal aid",
+        "family law",
+        "housing law",
+        "legal representation",
+        "discharge upgrades"
+      ],
+      "website": "https://www.legalaidocfl.org",
+      "source_url": "https://www.causeiq.com/directory/law-firms-directory/florida-legal-aid-services/"
+    },
+    {
+      "name": "Three Rivers Legal Services (North Central Florida)",
+      "phone": "352-372-0519 or 1-866-256-8091",
+      "address": "1000 NE 16th Ave, Building I, Gainesville, FL 32601",
+      "city": "Gainesville",
+      "description": "Legal services for low-income residents including veterans in north central Florida region",
+      "services": [
+        "legal representation",
+        "benefits assistance",
+        "family law",
+        "housing law",
+        "general legal services"
+      ],
+      "website": "https://www.trls.org",
+      "source_url": "https://www.jaxlegalaid.org"
+    },
+    {
+      "name": "Legal Aid Society of Palm Beach County",
+      "phone": "(561) 655-8944",
+      "address": "Palm Beach County, FL",
+      "city": "Palm Beach County",
+      "description": "Free legal services for eligible veterans and low-income residents in Palm Beach County",
+      "services": [
+        "legal representation",
+        "veterans benefits",
+        "family law",
+        "housing law",
+        "employment law"
+      ],
+      "website": "https://www.legalaidpbc.org",
+      "source_url": "https://www.americanbar.org/groups/legal_services/milvets/aba_home_front/directory-programs/florida/"
+    },
+    {
+      "name": "Feeding South Florida",
+      "phone": "1-888-352-FOOD (3663)",
+      "address": "Serves South Florida",
+      "city": "South Florida Region",
+      "description": "Major food bank serving South Florida with network of food pantries available to veterans and low-income families",
+      "services": [
+        "food assistance",
+        "emergency food",
+        "food pantry services"
+      ],
+      "website": "https://www.feedingsouthflorida.org",
+      "source_url": "https://www.feedingflorida.org"
+    },
+    {
+      "name": "Feeding Tampa Bay",
+      "phone": "(813) 254-1000",
+      "address": "Serves Tampa Bay Area",
+      "city": "Tampa Bay Region",
+      "description": "Major food bank serving Tampa Bay area with extensive network of food pantries and meal programs",
+      "services": [
+        "food assistance",
+        "emergency food",
+        "meal programs",
+        "food pantry services"
+      ],
+      "website": "https://www.feedingtampabay.org",
+      "source_url": "https://www.feedingflorida.org"
+    },
+    {
+      "name": "Feeding Northeast Florida",
+      "phone": "(904) 461-3663",
+      "address": "Serves Northeast Florida",
+      "city": "Jacksonville Region",
+      "description": "Food bank serving Northeast Florida with multiple pantry locations throughout the region",
+      "services": [
+        "food assistance",
+        "emergency food",
+        "food pantry services",
+        "meal programs"
+      ],
+      "website": "https://www.feedingnef.org",
+      "source_url": "https://www.feedingflorida.org"
+    },
+    {
+      "name": "National Veterans Homeless Support (NVHS) - Central Florida",
+      "phone": "Central Florida operations",
+      "address": "Central Florida Service Area",
+      "city": "Central Florida Region",
+      "description": "Prevents homelessness for veterans in Central Florida through emergency assistance, housing support, and resource connections",
+      "services": [
+        "homelessness prevention",
+        "emergency housing",
+        "eviction prevention",
+        "job loss assistance",
+        "resource connection"
+      ],
+      "website": "https://nvhs.org",
+      "source_url": "https://nvhs.org/programs/housing-homelessness-prevention-for-veterans/"
+    },
+    {
+      "name": "Florida Veterans Foundation - Referral Services",
+      "phone": "(850) 488-4181",
+      "address": "Statewide Organization",
+      "city": "Florida",
+      "description": "Non-profit organization providing veteran referral services and resource center assistance for connecting veterans to appropriate programs",
+      "services": [
+        "resource referrals",
+        "benefits information",
+        "program connections",
+        "emergency assistance"
+      ],
+      "website": "https://www.helpflvets.org",
+      "source_url": "https://211bigbend.org/florida-veterans-support-line/"
+    }
+  ]
+}

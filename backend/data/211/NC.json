@@ -1,0 +1,366 @@
+{
+  "state": "NC",
+  "state_name": "North Carolina",
+  "fetched_at": "2026-01-25T00:00:00Z",
+  "source": "211 North Carolina (nc211.org), North Carolina Department of Military & Veterans Affairs (milvets.nc.gov), Legal Aid of North Carolina, NCServes, NC4Vets",
+  "resources": [
+    {
+      "name": "NC 211 Information & Referral Service",
+      "phone": "2-1-1 or 888-892-1162",
+      "address": "United Way of North Carolina",
+      "city": "North Carolina (Statewide)",
+      "description": "Free and confidential information and referral service for health and human services resources. Available 24/7/365 with multilingual support.",
+      "services": [
+        "housing",
+        "food",
+        "employment",
+        "mental health",
+        "utilities assistance",
+        "benefits assistance",
+        "legal services"
+      ],
+      "website": "https://www.211.org",
+      "source_url": "https://nc211.org"
+    },
+    {
+      "name": "NCServes - Coordinated Care Network for Veterans",
+      "phone": "855-962-8387",
+      "address": "1845 Brevard Rd.",
+      "city": "Arden",
+      "description": "First and only statewide coordinated care network in North Carolina created specifically for Veterans, service members, and their families. Connects to over 2,000 community providers. HIPAA-compliant, free services, response within one business day.",
+      "services": [
+        "housing",
+        "employment",
+        "education",
+        "legal aid",
+        "healthcare",
+        "VA benefits",
+        "food security",
+        "transportation",
+        "financial assistance",
+        "mental health"
+      ],
+      "website": "https://www.ncserves.org",
+      "source_url": "https://www.ncserves.org/for-veterans"
+    },
+    {
+      "name": "NC4Vets - Support Network for Military Veterans",
+      "phone": "844-624-8387",
+      "address": "North Carolina (Statewide)",
+      "city": "North Carolina",
+      "description": "Comprehensive resource for veterans offering guidance, support, and direct assistance in accessing benefits, healthcare, and services. Operated in partnership with NC Department of Military & Veterans Affairs.",
+      "services": [
+        "benefits and entitlements",
+        "education and training",
+        "employment opportunities",
+        "healthcare services",
+        "housing assistance",
+        "legal services",
+        "financial services",
+        "VA benefits",
+        "women's veteran programs"
+      ],
+      "website": "https://nc4vets.org",
+      "source_url": "https://nc4vets.org"
+    },
+    {
+      "name": "North Carolina Department of Military & Veterans Affairs (DMVA)",
+      "phone": "844-624-8387",
+      "address": "413 North Salisbury Street",
+      "city": "Raleigh",
+      "description": "State agency providing comprehensive support to military personnel and veterans. Operates 12 State Veterans Service Centers plus county partnerships. Staff includes qualified benefits specialists.",
+      "services": [
+        "benefits and claims",
+        "housing assistance",
+        "employment support",
+        "scholarships",
+        "property tax relief",
+        "military records",
+        "license plates",
+        "hunting and fishing licenses"
+      ],
+      "website": "https://www.milvets.nc.gov",
+      "source_url": "https://www.milvets.nc.gov"
+    },
+    {
+      "name": "National Call Center for Homeless Veterans",
+      "phone": "877-424-3838",
+      "address": "National Service",
+      "city": "United States",
+      "description": "Free national service helping veterans experiencing homelessness locate and maintain housing. Offers phone and online chat support. No VA enrollment required.",
+      "services": [
+        "housing",
+        "homeless veteran services"
+      ],
+      "website": "https://www.va.gov/homeless/nationalcallcenter.asp",
+      "source_url": "https://www.milvets.nc.gov/benefits-services/housing-assistance"
+    },
+    {
+      "name": "Veterans Restoration Quarters & Transitional Housing (ABCCM)",
+      "phone": "828-299-8701",
+      "address": "1329 Tunnel Rd.",
+      "city": "Asheville",
+      "description": "24-month transitional housing program for veterans. Converted motel facility providing temporary and transitional housing services.",
+      "services": [
+        "housing",
+        "transitional housing"
+      ],
+      "website": "Contact by phone",
+      "source_url": "https://www.milvets.nc.gov/benefits-services/housing-assistance"
+    },
+    {
+      "name": "Steadfast House (ABCCM)",
+      "phone": "828-259-5365",
+      "address": "30 Cumberland Avenue",
+      "city": "Asheville",
+      "description": "Women's transitional housing program with accommodations for young children. Provides supportive housing for female veterans and their families.",
+      "services": [
+        "housing",
+        "women's veteran services",
+        "family services"
+      ],
+      "website": "Contact by phone",
+      "source_url": "https://www.milvets.nc.gov/benefits-services/housing-assistance"
+    },
+    {
+      "name": "First at Blue Ridge (Vets First)",
+      "phone": "828-669-0011",
+      "address": "PO Box 40",
+      "city": "Ridgecrest",
+      "description": "Substance use disorder recovery services specifically for veterans. Provides treatment and recovery support.",
+      "services": [
+        "mental health",
+        "substance use disorder treatment",
+        "recovery services"
+      ],
+      "website": "Contact by phone",
+      "source_url": "https://www.milvets.nc.gov/benefits-services/housing-assistance"
+    },
+    {
+      "name": "Family Forum (Independence Place)",
+      "phone": "704-817-8049",
+      "address": "Charlotte area",
+      "city": "Charlotte",
+      "description": "Transitional housing and support services for veterans in the Charlotte metropolitan area.",
+      "services": [
+        "housing",
+        "transitional housing"
+      ],
+      "website": "Contact by phone",
+      "source_url": "https://www.milvets.nc.gov/benefits-services/housing-assistance"
+    },
+    {
+      "name": "Faith Farm (Lutheran Family Services)",
+      "phone": "800-435-7464",
+      "address": "Charlotte area",
+      "city": "Charlotte",
+      "description": "Women's transitional housing program for female veterans near Charlotte area.",
+      "services": [
+        "housing",
+        "women's veteran services"
+      ],
+      "website": "Contact by phone",
+      "source_url": "https://www.milvets.nc.gov/benefits-services/housing-assistance"
+    },
+    {
+      "name": "Healing Place of Wake County",
+      "phone": "919-838-9800",
+      "address": "Raleigh area",
+      "city": "Raleigh",
+      "description": "Transitional housing and support services for veterans in Wake County.",
+      "services": [
+        "housing",
+        "transitional housing",
+        "mental health"
+      ],
+      "website": "Contact by phone",
+      "source_url": "https://www.milvets.nc.gov/benefits-services/housing-assistance"
+    },
+    {
+      "name": "Healing with CAARE",
+      "phone": "919-687-0793",
+      "address": "Durham area",
+      "city": "Durham",
+      "description": "Transitional housing and support services for veterans in Durham area.",
+      "services": [
+        "housing",
+        "transitional housing"
+      ],
+      "website": "Contact by phone",
+      "source_url": "https://www.milvets.nc.gov/benefits-services/housing-assistance"
+    },
+    {
+      "name": "Maple Court (Volunteers of America)",
+      "phone": "919-477-0571",
+      "address": "Durham area",
+      "city": "Durham",
+      "description": "Transitional housing program operated by Volunteers of America for veterans in the Durham area.",
+      "services": [
+        "housing",
+        "transitional housing"
+      ],
+      "website": "Contact by phone",
+      "source_url": "https://www.milvets.nc.gov/benefits-services/housing-assistance"
+    },
+    {
+      "name": "Triangle Residential Options for Substance Abusers (TROSA)",
+      "phone": "919-419-1059",
+      "address": "Durham area",
+      "city": "Durham",
+      "description": "Substance use disorder recovery and transitional housing services for veterans in the Triangle area.",
+      "services": [
+        "housing",
+        "substance use disorder treatment",
+        "mental health",
+        "transitional housing"
+      ],
+      "website": "Contact by phone",
+      "source_url": "https://www.milvets.nc.gov/benefits-services/housing-assistance"
+    },
+    {
+      "name": "Servant Center",
+      "phone": "336-275-8585",
+      "address": "Greensboro area",
+      "city": "Greensboro",
+      "description": "Transitional housing and support services for veterans in the Greensboro/High Point area.",
+      "services": [
+        "housing",
+        "transitional housing"
+      ],
+      "website": "Contact by phone",
+      "source_url": "https://www.milvets.nc.gov/benefits-services/housing-assistance"
+    },
+    {
+      "name": "Caring Services Vet Safety Net",
+      "phone": "336-886-5594",
+      "address": "Greensboro area",
+      "city": "Greensboro",
+      "description": "Veteran-specific safety net and support services in the Greensboro/High Point area.",
+      "services": [
+        "housing",
+        "crisis support",
+        "veteran services"
+      ],
+      "website": "Contact by phone",
+      "source_url": "https://www.milvets.nc.gov/benefits-services/housing-assistance"
+    },
+    {
+      "name": "Arthur Cassell Transitional House",
+      "phone": "336-885-2166",
+      "address": "Greensboro area",
+      "city": "Greensboro",
+      "description": "Transitional housing facility for veterans in the Greensboro area.",
+      "services": [
+        "housing",
+        "transitional housing"
+      ],
+      "website": "Contact by phone",
+      "source_url": "https://www.milvets.nc.gov/benefits-services/housing-assistance"
+    },
+    {
+      "name": "Veteran's Helping Veterans Heal",
+      "phone": "336-744-1313",
+      "address": "Winston-Salem area",
+      "city": "Winston-Salem",
+      "description": "Peer-based support and transitional housing services for veterans in Winston-Salem area.",
+      "services": [
+        "housing",
+        "mental health",
+        "peer support",
+        "transitional housing"
+      ],
+      "website": "Contact by phone",
+      "source_url": "https://www.milvets.nc.gov/benefits-services/housing-assistance"
+    },
+    {
+      "name": "Good Shepard Ministries",
+      "phone": "910-763-4424",
+      "address": "Wilmington area",
+      "city": "Wilmington",
+      "description": "Faith-based transitional housing and support services for veterans in Wilmington area.",
+      "services": [
+        "housing",
+        "transitional housing",
+        "spiritual support"
+      ],
+      "website": "Contact by phone",
+      "source_url": "https://www.milvets.nc.gov/benefits-services/housing-assistance"
+    },
+    {
+      "name": "Legal Aid of North Carolina - Veterans Law Project",
+      "phone": "866-219-5262",
+      "address": "Multiple offices statewide",
+      "city": "North Carolina",
+      "description": "Specialized legal aid services for military veterans. Helps with disability compensation, discharge upgrades, VA overpayments, pension benefits, and government benefits representation.",
+      "services": [
+        "legal aid",
+        "disability compensation",
+        "discharge upgrades",
+        "VA benefits",
+        "pension benefits",
+        "health insurance enrollment"
+      ],
+      "website": "https://legalaidnc.org",
+      "source_url": "https://legalaidnc.org/our-services"
+    },
+    {
+      "name": "Veterans Crisis Line",
+      "phone": "988 then press 1",
+      "address": "National Service",
+      "city": "United States",
+      "description": "Crisis support hotline for veterans in mental health crisis or experiencing suicidal thoughts. Available 24/7. Can also text 838255.",
+      "services": [
+        "mental health",
+        "crisis support",
+        "suicide prevention"
+      ],
+      "website": "https://www.veteranscrisisline.net",
+      "source_url": "https://www.milvets.nc.gov/impactedworkers"
+    },
+    {
+      "name": "NC Works - Veterans Employment Services",
+      "phone": "Contact through local NCWorks offices",
+      "address": "Statewide through local offices",
+      "city": "North Carolina",
+      "description": "Part of the Division of Workforce Services providing specialized employment assistance for veterans, transitioning service members, and eligible spouses. Includes resume building, job search, and job placement services.",
+      "services": [
+        "employment",
+        "job training",
+        "career counseling",
+        "job placement"
+      ],
+      "website": "https://www.ncworks.gov",
+      "source_url": "https://www.milvets.nc.gov/impactedworkers"
+    },
+    {
+      "name": "VA Housing Assistance Program",
+      "phone": "Contact VA regional office",
+      "address": "Federal Program",
+      "city": "United States",
+      "description": "Federal program providing home purchase, refinancing, and homeownership-related services for eligible veterans.",
+      "services": [
+        "housing",
+        "home purchase assistance",
+        "refinancing",
+        "homeownership services"
+      ],
+      "website": "https://www.va.gov/housing-assistance/",
+      "source_url": "https://nc211.org/housing-for-veterans/"
+    },
+    {
+      "name": "North Carolina Housing Finance Agency",
+      "phone": "Contact through NCHFA",
+      "address": "Statewide",
+      "city": "North Carolina",
+      "description": "State agency offering housing assistance programs for veterans including down payment assistance, mortgage credit certificates, and affordable rental housing.",
+      "services": [
+        "housing",
+        "down payment assistance",
+        "mortgage credit certificates",
+        "affordable rental housing"
+      ],
+      "website": "https://www.nchfa.gov",
+      "source_url": "https://www.milvets.nc.gov/benefits-services/housing-assistance"
+    }
+  ]
+}

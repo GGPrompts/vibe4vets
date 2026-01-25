@@ -1,0 +1,268 @@
+{
+  "state": "IL",
+  "state_name": "Illinois",
+  "fetched_at": "2026-01-25T12:00:00Z",
+  "source": "211 Illinois, Illinois Department of Veterans Affairs, and related veteran service organizations",
+  "resources": [
+    {
+      "name": "211 Illinois",
+      "phone": "211",
+      "address": "Gurnee, IL (Administrative Office)",
+      "city": "Gurnee",
+      "description": "Statewide 211 service connecting Illinois residents to health and human services including housing, utilities, employment, food assistance, mental health, and healthcare referrals. Available 24/7 via phone, text, chat, and online search.",
+      "services": ["housing", "employment", "food", "mental health", "healthcare", "utilities", "benefits"],
+      "website": "https://www.211illinois.org",
+      "source_url": "https://www.211illinois.org"
+    },
+    {
+      "name": "211 Metro Chicago",
+      "phone": "(773) 362-4401 or 2-1-1",
+      "address": "Serves Cook County",
+      "city": "Chicago",
+      "description": "Free, comprehensive service connecting Cook County residents to health and social services 24/7/365. Connects to housing, food, employment, education, healthcare, mental health, crisis services, disability services, legal assistance, and reentry programs.",
+      "services": ["housing", "food", "employment", "mental health", "healthcare", "crisis services", "legal aid"],
+      "website": "https://211metrochicago.org",
+      "source_url": "https://211metrochicago.org"
+    },
+    {
+      "name": "Illinois Department of Veterans Affairs - Central Office",
+      "phone": "(217) 782-6641",
+      "address": "833 S Spring Street, Springfield, IL 62705",
+      "city": "Springfield",
+      "description": "State agency providing comprehensive veteran services including education, employment support, healthcare resources, housing, long-term care, financial assistance, and legal services. Operates five veterans' homes and manages statewide VSO network.",
+      "services": ["housing", "employment", "education", "benefits", "legal aid", "long-term care", "mental health"],
+      "website": "https://veterans.illinois.gov",
+      "source_url": "https://veterans.illinois.gov/services-benefits.html"
+    },
+    {
+      "name": "Veterans' Home at Anna",
+      "phone": "(618) 833-5394",
+      "address": "792 N. Main Street, Anna, IL 62906",
+      "city": "Anna",
+      "description": "One of five Illinois veterans' homes providing skilled and domiciliary long-term care. Offers quality skilled care and homelike environment to aging and disabled veterans.",
+      "services": ["long-term care", "skilled nursing", "housing"],
+      "website": "https://veterans.illinois.gov/services-benefits/homes/anna.html",
+      "source_url": "https://veterans.illinois.gov/services-benefits/homes/anna.html"
+    },
+    {
+      "name": "Veterans' Home at Chicago",
+      "phone": "(773) 794-3763",
+      "address": "4250 N. Oak Park Avenue, Chicago, IL 60634",
+      "city": "Chicago",
+      "description": "Illinois veterans' home providing skilled and domiciliary care. Offers quality long-term care services in a homelike environment for aging and disabled veterans.",
+      "services": ["long-term care", "skilled nursing", "housing"],
+      "website": "https://veterans.illinois.gov/services-benefits/homes/chicago-veterans-home.html",
+      "source_url": "https://veterans.illinois.gov/services-benefits/homes/chicago-veterans-home.html"
+    },
+    {
+      "name": "Veterans' Home at LaSalle",
+      "phone": "(815) 410-8375",
+      "address": "1015 O'Conor Avenue, LaSalle, IL 61301",
+      "city": "LaSalle",
+      "description": "One of five Illinois veterans' homes providing skilled and domiciliary long-term care with quality services and homelike environment.",
+      "services": ["long-term care", "skilled nursing", "housing"],
+      "website": "https://veterans.illinois.gov/services-benefits/homes/lasalle.html",
+      "source_url": "https://veterans.illinois.gov/services-benefits/homes/lasalle.html"
+    },
+    {
+      "name": "Veterans' Home at Manteno",
+      "phone": "(815) 907-3506",
+      "address": "1 Veterans Drive, Manteno, IL 60950",
+      "city": "Manteno",
+      "description": "Illinois veterans' home providing skilled and domiciliary care. Also houses the Prince Home program (temporarily closed for renovation to serve women veterans, expected to reopen early 2026).",
+      "services": ["long-term care", "skilled nursing", "housing"],
+      "website": "https://veterans.illinois.gov/services-benefits/homes/manteno.html",
+      "source_url": "https://veterans.illinois.gov/services-benefits/homes/manteno.html"
+    },
+    {
+      "name": "Veterans' Home at Quincy",
+      "phone": "(217) 640-2488",
+      "address": "1707 N. 12th Street, Quincy, IL 62301",
+      "city": "Quincy",
+      "description": "One of five Illinois veterans' homes providing skilled and domiciliary long-term care (established 1886). Offers quality care and homelike environment.",
+      "services": ["long-term care", "skilled nursing", "housing"],
+      "website": "https://veterans.illinois.gov/services-benefits/homes/quincy.html",
+      "source_url": "https://veterans.illinois.gov/services-benefits/homes/quincy.html"
+    },
+    {
+      "name": "Prince Home at Manteno",
+      "phone": "(815) 468-9737",
+      "address": "1 Veterans Drive, Manteno, IL 60950",
+      "city": "Manteno",
+      "description": "Residential facility for homeless and disabled veterans providing housing and supportive services for veterans coping with PTSD, substance abuse, and other challenges. Temporarily closed for renovation to serve unhoused women veterans (expected to reopen early 2026).",
+      "services": ["housing", "mental health", "substance abuse treatment", "supportive services"],
+      "website": "https://veterans.illinois.gov/programs/prince-home.html",
+      "source_url": "https://veterans.illinois.gov/programs/prince-home.html"
+    },
+    {
+      "name": "IL-AFLAN (Illinois Armed Forces Legal Aid Network)",
+      "phone": "(855) 452-3526 (855-IL-AFLAN)",
+      "address": "Statewide hotline",
+      "city": "Illinois",
+      "description": "Free statewide legal aid network for veterans, service members, National Guard, reservists, and families with low to moderate income. Provides legal advice, document preparation, discharge upgrades, VA benefits appeals, and civil legal assistance (family law, housing, consumer issues). Available 9am-4:30pm Monday-Friday.",
+      "services": ["legal aid", "benefits assistance", "discharge upgrades"],
+      "website": "https://ilaflan.org",
+      "source_url": "https://ilaflan.org/need-help/"
+    },
+    {
+      "name": "Veterans Assistance Commission of Cook County",
+      "phone": "(312) 433-6010",
+      "address": "Juvenile Temporary Detention Center, 1100 S. Hamilton C-O11 (Lower Level), Chicago, IL 60612",
+      "city": "Chicago",
+      "description": "Serves Cook County veterans with immediate crisis relief and benefits navigation. Provides emergency financial assistance, VA benefits and claims advocacy, information and referral services for housing, employment, mental health, education, and legal aid.",
+      "services": ["emergency financial assistance", "housing", "food", "utilities", "benefits", "employment", "mental health", "legal aid"],
+      "website": "https://vaccookcounty.org",
+      "source_url": "https://vaccookcounty.org"
+    },
+    {
+      "name": "Midwest Shelter for Homeless Veterans (MSHV)",
+      "phone": "(630) 871-8387",
+      "address": "433 S. Carlton Ave., Wheaton, IL 60187",
+      "city": "Wheaton",
+      "description": "Non-profit organization founded in 2007 ending veteran homelessness through housing, supportive services, and community outreach. Serves 500+ veteran households annually. Operates the Army Capt. Kevin C. Landeck Freedom Commissary providing clothing, household items, and basic needs.",
+      "services": ["housing", "food", "shelter", "case management", "financial literacy", "employment services", "transportation", "life skills"],
+      "website": "https://www.helpaveteran.org",
+      "source_url": "https://www.helpaveteran.org"
+    },
+    {
+      "name": "Volunteers of America Illinois - Veteran Services",
+      "phone": "(312) 564-2300",
+      "address": "Serves Chicago and Illinois statewide",
+      "city": "Chicago",
+      "description": "Founded in 1896, provides affordable housing for veterans who are homeless or in serious instability. Operates Hope Manor housing developments, Supportive Services for Veteran Families (SSVF), and Hope Hall Veterans Transitional Housing.",
+      "services": ["housing", "supportive services", "mental health", "employment", "substance abuse treatment"],
+      "website": "https://www.voaillinois.org",
+      "source_url": "https://www.voaillinois.org"
+    },
+    {
+      "name": "Veterans New Beginnings",
+      "phone": "Contact via Chicago Housing Authority or vnbchicago.org",
+      "address": "8140 S Racine Ave, Chicago, IL 60620",
+      "city": "Chicago",
+      "description": "54-unit supportive housing development in Auburn Gresham providing rental assistance to homeless veterans. Offers furnished studios, on-site supportive services, job training placement, life skill development, drug and alcohol counseling, and nutrition services.",
+      "services": ["housing", "job training", "employment", "mental health", "substance abuse treatment", "nutrition services"],
+      "website": "https://vnbchicago.org",
+      "source_url": "https://vnbchicago.org"
+    },
+    {
+      "name": "Greater Chicago Food Depository - Veteran Programs",
+      "phone": "Contact for veteran-specific programs",
+      "address": "Serves Chicago and surrounding areas",
+      "city": "Chicago",
+      "description": "Provides food assistance to veterans through veteran food pantries with fresh produce, dairy, meat, and nonperishable items. Veteran food pantries housed in Illinois VA facilities. Participates in Veterans Stand Down events twice yearly offering food, housing resources, medical care, and clothing.",
+      "services": ["food", "housing resources", "healthcare"],
+      "website": "https://www.chicagosfoodbank.org",
+      "source_url": "https://www.chicagosfoodbank.org"
+    },
+    {
+      "name": "Illinois JobLink (IJL)",
+      "phone": "Email: DES.MyVetRep@illinois.gov",
+      "address": "Online service - Illinois Department of Employment Security",
+      "city": "Illinois",
+      "description": "Free online job search platform with veterans receiving priority access. Connects veterans to job openings statewide and nationally. Highlights veteran status on resumes to help employers identify candidates. Includes support services locator (transportation, childcare).",
+      "services": ["employment", "job search"],
+      "website": "https://illinoisworknet.com",
+      "source_url": "https://veterans.illinois.gov/services-benefits/employment-resources.html"
+    },
+    {
+      "name": "Illinois Work Net",
+      "phone": "Contact local One-Stop Career Centers",
+      "address": "1,150+ partner sites statewide",
+      "city": "Illinois",
+      "description": "Workforce development system offering job-seeker tools through community colleges, libraries, and career centers. Provides resume assistance, career exploration guides, and support services locator.",
+      "services": ["employment", "training", "job search"],
+      "website": "https://illinoisworknet.com",
+      "source_url": "https://veterans.illinois.gov/services-benefits/employment-resources.html"
+    },
+    {
+      "name": "The American Legion - Illinois",
+      "phone": "(309) 663-0361",
+      "address": "2720 E. Lincoln, Bloomington, IL 61704",
+      "city": "Bloomington",
+      "description": "Statewide veteran organization providing member services and advocacy support to Illinois veterans.",
+      "services": ["advocacy", "member services", "community support"],
+      "website": "http://www.illegion.org",
+      "source_url": "https://veterans.illinois.gov/services-benefits/statewide-veteran-organizations.html"
+    },
+    {
+      "name": "AMVETS - Illinois",
+      "phone": "(217) 528-4713",
+      "address": "2200 S. Sixth St., Springfield, IL 62703",
+      "city": "Springfield",
+      "description": "National veteran organization providing member services and advocacy in Illinois.",
+      "services": ["advocacy", "member services", "community support"],
+      "website": "http://www.ilamvets.org",
+      "source_url": "https://veterans.illinois.gov/services-benefits/statewide-veteran-organizations.html"
+    },
+    {
+      "name": "Disabled American Veterans (DAV) - Illinois",
+      "phone": "(217) 793-8115",
+      "address": "809 S. Grand Ave. W, Springfield, IL 62704",
+      "city": "Springfield",
+      "description": "National organization supporting disabled veterans with services and advocacy in Illinois.",
+      "services": ["disability support", "advocacy", "member services"],
+      "website": "https://www.dav.org",
+      "source_url": "https://veterans.illinois.gov/services-benefits/statewide-veteran-organizations.html"
+    },
+    {
+      "name": "Veterans of Foreign Wars (VFW) - Illinois",
+      "phone": "(217) 529-6688",
+      "address": "3300 Constitution Dr., Springfield, IL 62711",
+      "city": "Springfield",
+      "description": "National veteran organization providing member services and advocacy support in Illinois.",
+      "services": ["advocacy", "member services", "community support"],
+      "website": "http://vfwil.org",
+      "source_url": "https://veterans.illinois.gov/services-benefits/statewide-veteran-organizations.html"
+    },
+    {
+      "name": "Marine Corps League - Illinois",
+      "phone": "(618) 420-6292",
+      "address": "Department of Illinois",
+      "city": "Illinois",
+      "description": "Organization supporting Marine Corps veterans in Illinois with member services and advocacy.",
+      "services": ["advocacy", "member services", "community support"],
+      "website": "https://theillinoismarine.com",
+      "source_url": "https://veterans.illinois.gov/services-benefits/statewide-veteran-organizations.html"
+    },
+    {
+      "name": "National Call Center for Homeless Veterans",
+      "phone": "(877) 4AID-VET (877-424-3838)",
+      "address": "National hotline",
+      "city": "USA",
+      "description": "National hotline connecting homeless or at-risk veterans to local services and assistance.",
+      "services": ["housing", "emergency assistance", "referrals"],
+      "website": "https://www.va.gov/homeless",
+      "source_url": "https://veterans.illinois.gov/programs/prince-home.html"
+    },
+    {
+      "name": "Veterans Crisis Line",
+      "phone": "1-800-273-8255",
+      "address": "National hotline",
+      "city": "USA",
+      "description": "Free, confidential crisis support for veterans and their families available 24/7.",
+      "services": ["mental health", "crisis support"],
+      "website": "https://www.veteranscrisisline.net",
+      "source_url": "https://ilaflan.org/need-help/"
+    },
+    {
+      "name": "Illinois Joining Forces",
+      "phone": "(833) 464-6335 (833-INFO-IJF)",
+      "address": "Statewide service",
+      "city": "Illinois",
+      "description": "Non-legal veteran support services providing information and referrals to programs and assistance.",
+      "services": ["information and referral", "supportive services"],
+      "website": "Contact via phone",
+      "source_url": "https://ilaflan.org/need-help/"
+    },
+    {
+      "name": "Illinois Attorney General's Military and Veterans Rights Bureau",
+      "phone": "(800) 382-3000",
+      "address": "State Attorney General Office",
+      "city": "Illinois",
+      "description": "Handles ISERRA violations, consumer scams targeting veterans, and benefits-related issues.",
+      "services": ["legal aid", "consumer protection", "benefits issues"],
+      "website": "Illinois Attorney General",
+      "source_url": "https://ilaflan.org/need-help/"
+    }
+  ]
+}

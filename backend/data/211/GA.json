@@ -1,0 +1,422 @@
+{
+  "state": "GA",
+  "state_name": "Georgia",
+  "fetched_at": "2026-01-25T00:00:00Z",
+  "source": "211.org, United Way of Georgia, Georgia Department of Veterans Service, and partner organizations",
+  "resources": [
+    {
+      "name": "Georgia Department of Veterans Service",
+      "phone": "404-656-2300",
+      "address": "2 MLK Jr Drive SE, Atlanta, GA 30334",
+      "city": "Atlanta",
+      "description": "State agency providing comprehensive veterans benefits, field services, education programs, healthcare, and support for veterans and their families. Operates state veterans homes and memorial cemeteries.",
+      "services": [
+        "benefits assistance",
+        "claims support",
+        "field services",
+        "education programs",
+        "mental health services",
+        "skilled nursing home care",
+        "veteran cemetery committal",
+        "driver's licenses for veterans",
+        "tax exemptions"
+      ],
+      "website": "https://veterans.georgia.gov/",
+      "source_url": "https://veterans.georgia.gov/",
+      "crisis_line": "988 (Press 1)"
+    },
+    {
+      "name": "211 Georgia (United Way)",
+      "phone": "211 or 1-833-DIAL211",
+      "address": "Various locations statewide",
+      "city": "Georgia",
+      "description": "24/7 free confidential helpline connecting individuals to community resources including housing, food, healthcare, employment, disaster relief, and veteran-specific services. Operates through local United Ways.",
+      "services": [
+        "housing assistance",
+        "food programs",
+        "healthcare referrals",
+        "employment services",
+        "utility bill assistance",
+        "disaster relief",
+        "veterans services"
+      ],
+      "website": "https://www.211.org/",
+      "source_url": "https://unitedwayga.org/ga211/",
+      "availability": "24/7, call text or online"
+    },
+    {
+      "name": "VA Atlanta Healthcare System",
+      "phone": "404-321-6111",
+      "address": "1670 Clairmont Road, Decatur, GA 30033-4004",
+      "city": "Decatur",
+      "description": "Major VA medical center serving Georgia veterans with 21+ clinics statewide. Specializes in health care teams experienced in veteran-focused medicine, mental health care, and services for homeless veterans.",
+      "services": [
+        "primary healthcare",
+        "mental health care",
+        "emergency services",
+        "homeless veteran care",
+        "job training",
+        "housing assistance",
+        "substance abuse treatment",
+        "whole health programs",
+        "toxic exposure support"
+      ],
+      "website": "https://www.va.gov/atlanta-health-care/",
+      "source_url": "https://www.va.gov/atlanta-health-care/",
+      "additional_phones": {
+        "mental_health": "404-321-6111 ext. 206026",
+        "va_health_connect": "855-679-0214",
+        "homeless_services": "877-424-3838"
+      },
+      "clinics": [
+        "Cobb County",
+        "Gwinnett County",
+        "Rome",
+        "Multiple other Georgia locations"
+      ]
+    },
+    {
+      "name": "Connecting Georgia Veterans",
+      "phone": "470-479-1551",
+      "address": "Cobb County (expanded statewide)",
+      "city": "Georgia",
+      "description": "Nonprofit providing rapid-response support to struggling veterans throughout Georgia. Services delivered within days, not weeks. Originally Connecting Cobb Veterans, expanded statewide in 2024.",
+      "services": [
+        "emergency shelter",
+        "housing assistance",
+        "employment support",
+        "job placement",
+        "education connections",
+        "medical care referrals",
+        "mental health services",
+        "substance abuse treatment",
+        "emergency assistance hotline"
+      ],
+      "website": "https://www.connectinggeorgiaveterans.org/",
+      "source_url": "https://www.connectinggeorgiaveterans.org/",
+      "leadership": "Tyler Bowser (Program Director), Irene Barton (Executive Director)"
+    },
+    {
+      "name": "VETLANTA",
+      "phone": "Contact via website",
+      "address": "Atlanta, GA",
+      "city": "Atlanta",
+      "description": "Premier destination for Atlanta veterans to live, work, play and pray. Connects veterans with each other and assembles resources while driving collaboration across nonprofits, companies, government agencies, academia, and community.",
+      "services": [
+        "veteran community connections",
+        "employment resources",
+        "social and recreational events",
+        "spiritual community",
+        "resource networking",
+        "community advocacy"
+      ],
+      "website": "https://vetlanta.org/",
+      "source_url": "https://vetlanta.org/",
+      "contact": "calendly.com/zackaknight/discoverycall",
+      "social_media": [
+        "Facebook",
+        "Instagram",
+        "LinkedIn",
+        "YouTube",
+        "Twitter",
+        "EventBrite"
+      ]
+    },
+    {
+      "name": "GA VECTR (Georgia Veterans Education Career Transition Resource Center)",
+      "phone": "478-218-3900",
+      "address": "1001 S. Armed Forces Blvd, Warner Robins, GA 31088",
+      "city": "Warner Robins",
+      "description": "Resource center dedicated to helping veterans transition from military to civilian careers through education, training, and support services. Access to Georgia's 28 public universities and 22 technical colleges.",
+      "services": [
+        "education programs",
+        "career training",
+        "job placement",
+        "financial aid guidance",
+        "VA benefits counseling",
+        "state benefits assistance",
+        "housing referrals",
+        "healthcare connections",
+        "legal assistance referrals",
+        "testing center",
+        "business entrepreneurship training"
+      ],
+      "website": "https://gavectr.org/",
+      "source_url": "https://gavectr.org/",
+      "email": "info@gavectr.org",
+      "programs": [
+        "Veterans Business Outreach Center (VBOC)",
+        "CareerOneStop",
+        "Georgia tech college pathways"
+      ]
+    },
+    {
+      "name": "Catholic Charities Atlanta - Veterans Services",
+      "phone": "404-920-7725",
+      "address": "2305 Parklake Drive, Suite 150, Building 9, Atlanta, GA 30345",
+      "city": "Atlanta",
+      "description": "Catholic Charities provides comprehensive case management and benefits assistance to veterans and their families, with staff who are veterans or have extensive military experience. 200 veteran families assisted annually.",
+      "services": [
+        "case management",
+        "veterans benefits assistance",
+        "employment opportunities",
+        "education connections",
+        "mental health counseling",
+        "financial assistance (rent, mortgage, utilities)",
+        "financial literacy education",
+        "community resource connections"
+      ],
+      "website": "https://catholiccharitiesatlanta.org/",
+      "source_url": "https://catholiccharitiesatlanta.org/services/veteran-services/",
+      "mailing_address": "2401 Lake Park Drive, SE, Smyrna, GA 30080",
+      "alt_phone": "770-429-2369",
+      "north_peachtree_location": {
+        "address": "3669 North Peachtree Road, Suite 100, Atlanta, GA 30334",
+        "phone": "770-790-3101"
+      },
+      "impact": {
+        "veterans_served_annually": "200 families",
+        "employment_rate_90_days": "67%",
+        "benefits_eligibility_understanding": "94%"
+      }
+    },
+    {
+      "name": "HOPE Atlanta (Supportive Services for Veteran Families)",
+      "phone": "404-817-7070",
+      "address": "458 Ponce de Leon Ave. NE, Building B, Terrace Level, Atlanta, GA 30308",
+      "city": "Atlanta",
+      "description": "SSVF provider serving 30+ counties in Georgia. Provides rapid re-housing and wraparound services to veterans and families experiencing or at-risk of homelessness.",
+      "services": [
+        "housing assistance",
+        "rapid re-housing",
+        "eviction prevention",
+        "landlord engagement",
+        "healthcare navigation",
+        "VA benefits assistance",
+        "SSI/SSA benefits assistance",
+        "legal services",
+        "rent assistance",
+        "utility assistance",
+        "food assistance",
+        "transportation",
+        "furniture support",
+        "workforce development",
+        "financial literacy"
+      ],
+      "website": "https://hopeatlanta.org/",
+      "source_url": "https://hopeatlanta.org/veterans/",
+      "email": "info@hopeatlanta.org",
+      "coverage_area": [
+        "City of Atlanta",
+        "30+ Georgia counties"
+      ],
+      "eligibility": [
+        "Honorable discharge or general discharge",
+        "Currently homeless or at imminent risk",
+        "Active military service",
+        "Income requirements apply"
+      ]
+    },
+    {
+      "name": "Project Community Connections, Inc. (PCCI) - Veteran Services",
+      "phone": "404-215-9991",
+      "address": "302 Decatur St. SE, Suite 101, Atlanta, GA 30312",
+      "city": "Atlanta",
+      "description": "Provides Supportive Services for Veteran Families (SSVF) to help veterans and families experiencing homelessness achieve rapid re-housing and self-sufficiency.",
+      "services": [
+        "rapid re-housing",
+        "case management",
+        "housing stability support",
+        "VA benefits navigation",
+        "employment assistance",
+        "childcare referrals",
+        "legal aid",
+        "housing locator services",
+        "move-in cost assistance"
+      ],
+      "website": "https://www.pccihome.org/",
+      "source_url": "https://www.pccihome.org/gethelp/veterans/",
+      "hours": "Monday-Friday, 8:30am-4:30pm",
+      "cost": "No charge",
+      "coverage_area": [
+        "City of Atlanta",
+        "Fulton County",
+        "DeKalb County",
+        "Clayton County",
+        "Henry County",
+        "Rockdale County",
+        "Gwinnett County",
+        "Douglas County"
+      ],
+      "crrc_location": {
+        "name": "Community Resource & Referral Center (CRRC)",
+        "address": "Fort McPherson, Building 129, 1701 Hardee Ave SW, Atlanta, GA 30310",
+        "phone": "404-321-6111 ext. 397436"
+      }
+    },
+    {
+      "name": "Cherokee County Homeless Veterans Program",
+      "phone": "770-479-4405",
+      "address": "Canton Post 45, 160 McClure Street, Canton, GA 30114",
+      "city": "Canton",
+      "description": "Registered 501(c)(19) nonprofit providing support to homeless veterans in Cherokee County. Offers emergency assistance with housing, food, and creative programs to help veterans rebuild their lives.",
+      "services": [
+        "food assistance",
+        "short-term housing",
+        "clothing",
+        "VA disability claims assistance",
+        "furniture assistance",
+        "rent assistance",
+        "utility bill assistance",
+        "medical services referrals",
+        "car donations",
+        "coat drives",
+        "thrift store access",
+        "food pantry",
+        "recreational activities (fly fishing, aquarium visits, photography club)"
+      ],
+      "website": "https://www.cherokeehomelessvets.com/",
+      "source_url": "https://www.cherokeehomelessvets.com/",
+      "contact_person": "Jim Lindenmayer, Director",
+      "email": "JLindenmayer80@gmail.com",
+      "ein": "58-6067723",
+      "alt_website": "https://cherokeehomelessveterans.com/"
+    },
+    {
+      "name": "Operation Appreciation",
+      "phone": "Contact via website",
+      "address": "6053 Mountain Top Ridge, Hiawassee, GA 30546",
+      "city": "Hiawassee",
+      "description": "501(c)(3) nonprofit providing emergency humanitarian support and recreational programs for Georgia soldiers, veterans, and their families. Operates Red, White, and Bear Cabin retreat for disabled veterans.",
+      "services": [
+        "emergency housing support",
+        "food insecurity assistance",
+        "health services support",
+        "disaster relief",
+        "care packages for military units",
+        "family readiness support",
+        "children's programs",
+        "mentorship programs",
+        "retreat facilities for disabled veterans"
+      ],
+      "website": "https://operationappreciationga.org",
+      "source_url": "https://operationappreciationga.org",
+      "ein": "45-4886626",
+      "partnerships": [
+        "Children's Healthcare of Atlanta (event sponsors)"
+      ]
+    },
+    {
+      "name": "Veterans Empowerment Organization (VEO)",
+      "phone": "Not specified",
+      "address": "Atlanta, GA",
+      "city": "Atlanta",
+      "description": "Provides housing solutions, medical care, and job readiness support to veterans. Offers both temporary and permanent housing programs for low-income and homeless veterans.",
+      "services": [
+        "housing (temporary and permanent)",
+        "medical care",
+        "job readiness training",
+        "employment support",
+        "optimal wellness programs"
+      ],
+      "website": "https://www.veohero.org/",
+      "source_url": "https://www.veohero.org/"
+    },
+    {
+      "name": "Georgia Veterans Service Foundation",
+      "phone": "Contact via website",
+      "address": "Georgia",
+      "city": "Georgia",
+      "description": "Nonprofit organization with mission 'Serving Those Who Have Served' providing support to Georgia veterans.",
+      "services": [
+        "veteran support services"
+      ],
+      "website": "https://gaveteransfoundation.org/",
+      "source_url": "https://gaveteransfoundation.org/"
+    },
+    {
+      "name": "211 Connecting Point",
+      "phone": "211 or 1-833-DIAL211",
+      "address": "Multiple locations statewide",
+      "city": "Georgia",
+      "description": "Community Connection Specialists connect veterans and families with resources they need for food, housing, employment, healthcare, and emergency services. Available 24/7, free and confidential.",
+      "services": [
+        "housing assistance",
+        "food programs",
+        "employment services",
+        "healthcare referrals",
+        "emergency assistance",
+        "veteran-specific services"
+      ],
+      "website": "https://211connectingpoint.org/",
+      "source_url": "https://cde.211connectingpoint.org/",
+      "availability": "24/7",
+      "languages": "Bilingual services available"
+    },
+    {
+      "name": "Veterans Crisis Line - National",
+      "phone": "988 (Press 1) or 1-800-273-8255 (Press 1)",
+      "address": "National service",
+      "city": "National",
+      "description": "Free, confidential 24/7 crisis support for veterans experiencing suicidal thoughts, substance abuse, homelessness, or other emotional crises.",
+      "services": [
+        "crisis counseling",
+        "suicide prevention",
+        "mental health support",
+        "emergency guidance"
+      ],
+      "website": "https://www.veteranscrisisline.net/",
+      "source_url": "https://www.veteranscrisisline.net/",
+      "contact_methods": [
+        "Call 988 Press 1",
+        "Text 838255",
+        "Chat online at veteranscrisisline.net"
+      ]
+    },
+    {
+      "name": "National Call Center for Homeless Veterans",
+      "phone": "877-424-3838",
+      "address": "National service",
+      "city": "National",
+      "description": "Nationwide hotline for veterans who are homeless or at imminent risk of becoming homeless. Connects to local VA resources and support services.",
+      "services": [
+        "housing assistance",
+        "emergency shelter",
+        "homeless prevention",
+        "local resource referrals"
+      ],
+      "website": "https://www.va.gov/homeless/",
+      "source_url": "https://www.va.gov/homeless/"
+    },
+    {
+      "name": "United Way of Greater Atlanta - 211",
+      "phone": "211 or 898-211 (text)",
+      "address": "Atlanta, GA",
+      "city": "Atlanta",
+      "description": "Local United Way providing searchable database of services and trained specialists for veteran referrals in Atlanta and surrounding areas.",
+      "services": [
+        "resource referrals",
+        "housing assistance",
+        "food programs",
+        "employment services",
+        "veteran-specific support"
+      ],
+      "website": "https://unitedwayatlanta.org/",
+      "source_url": "https://unitedwayatlanta.org/about-211/",
+      "hours": "Monday-Friday 8:00am-5:00pm",
+      "contact_methods": [
+        "Call 211",
+        "Text ZIP code to 898211"
+      ]
+    }
+  ],
+  "notes": "This resource list includes state government agencies, federal VA services, nonprofits, and community organizations serving Georgia veterans. Services include housing assistance, mental health care, employment support, food assistance, and veterans benefits navigation. Most services are free or low-cost. Veterans experiencing housing insecurity or crisis should contact 211, their local VA center, or the Veterans Crisis Line (988 Press 1) for immediate assistance.",
+  "total_resources": 17,
+  "key_contact_numbers": {
+    "general_211": "211 or 1-833-DIAL211",
+    "veterans_crisis_line": "988 (Press 1)",
+    "homeless_veterans_hotline": "877-424-3838",
+    "va_health_connect": "855-679-0214",
+    "georgia_veterans_service": "404-656-2300"
+  }
+}

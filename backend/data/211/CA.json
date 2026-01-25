@@ -1,0 +1,315 @@
+{
+  "state": "CA",
+  "state_name": "California",
+  "fetched_at": "2026-01-25T00:00:00Z",
+  "source": "211.org, CalVet, 211 Connecting Point, US Vets, and California veteran service organizations",
+  "resources": [
+    {
+      "name": "California Department of Veterans Affairs (CalVet)",
+      "phone": "1-800-952-5626",
+      "phone_alt": "1-844-7378-838",
+      "address": "1227 O Street, Room 404, Sacramento, CA 95814",
+      "city": "Sacramento",
+      "description": "State department providing benefits assistance, housing, education, healthcare, and veteran services",
+      "services": [
+        "benefits assistance",
+        "disability compensation",
+        "pension",
+        "education",
+        "home loans",
+        "life insurance",
+        "housing",
+        "mental health",
+        "crisis intervention"
+      ],
+      "website": "https://www.calvet.ca.gov",
+      "source_url": "https://www.calvet.ca.gov"
+    },
+    {
+      "name": "U.S. Vets Los Angeles",
+      "phone": "877-548-7838",
+      "address": "11401 Vandergrift Avenue, West Los Angeles, CA 90025",
+      "city": "Los Angeles",
+      "description": "Housing, counseling, career development, and comprehensive support for homeless and at-risk veterans",
+      "services": [
+        "housing",
+        "employment",
+        "counseling",
+        "mental health",
+        "career development"
+      ],
+      "website": "https://usvets.org",
+      "source_url": "https://usvets.org/locations/los-angeles/"
+    },
+    {
+      "name": "Veterans Crisis Line",
+      "phone": "988 (then press 1)",
+      "phone_alt": "Text 838255",
+      "address": "National hotline",
+      "city": "National",
+      "description": "24/7 free confidential crisis support for veterans and families experiencing mental health crises, PTSD, suicidal thoughts",
+      "services": [
+        "mental health crisis support",
+        "PTSD support",
+        "suicide prevention",
+        "chat support",
+        "text support"
+      ],
+      "website": "https://www.veteranscrisisline.net/",
+      "source_url": "https://www.veteranscrisisline.net/"
+    },
+    {
+      "name": "CalVet Los Angeles District Office",
+      "phone": "213-620-2755",
+      "phone_alt": "310-235-7155",
+      "address": "11000 Wilshire Blvd., Los Angeles, CA 90024",
+      "city": "Los Angeles",
+      "description": "State benefits assistance office helping veterans apply for state and federal benefits",
+      "services": [
+        "benefits assistance",
+        "disability compensation",
+        "pension",
+        "education benefits",
+        "home loans"
+      ],
+      "website": "https://www.calvet.ca.gov",
+      "source_url": "https://locator.lacounty.gov/lac/Location/3176345/"
+    },
+    {
+      "name": "CalVet Los Angeles - Patriotic Hall",
+      "phone": "877-452-8387",
+      "address": "1816 S. Figueroa St., Los Angeles, CA 90015",
+      "city": "Los Angeles",
+      "description": "One-stop veteran service center providing benefits assistance and supportive services",
+      "services": [
+        "benefits assistance",
+        "disability compensation",
+        "pension",
+        "education",
+        "home loans",
+        "dependents college fee waiver"
+      ],
+      "website": "https://www.calvet.ca.gov",
+      "source_url": "https://211la.org/services/HxBd7qdg4cDq0GlwTAnNempTw9oqXK/"
+    },
+    {
+      "name": "Salvation Army Community Integration Services (C.I.S.)",
+      "phone": "562-330-7765",
+      "phone_alt": "323-482-3305",
+      "address": "832 James M. Wood Blvd., Los Angeles, CA 90015",
+      "city": "Los Angeles",
+      "description": "Employment services, case management, and supportive services for homeless veterans",
+      "services": [
+        "employment",
+        "case management",
+        "job preparation",
+        "vocational counseling",
+        "resume coaching",
+        "housing assistance"
+      ],
+      "website": "https://www.cis.salvationarmy.org/",
+      "source_url": "https://211la.org/services/Hxb94rPl4CzGxXN3UAOXmyWHO7A48D/"
+    },
+    {
+      "name": "Victory Village Veterans Center",
+      "phone": "530-900-1717",
+      "address": "11990 Heritage Oaks Place, Suite 1-B, Auburn, CA 95602",
+      "city": "Auburn",
+      "description": "Support services for veterans, service members, and families to ease transition from military to civilian life",
+      "services": [
+        "VA benefits navigation",
+        "employment support",
+        "housing search",
+        "emergency assistance",
+        "financial assistance",
+        "support groups",
+        "landlord liaison"
+      ],
+      "website": "https://www.vvvets.org",
+      "source_url": "http://211connectingpoint.org/resources/veteran-services/"
+    },
+    {
+      "name": "Placentia Veterans Village",
+      "phone": "844-838-8300",
+      "address": "Placentia, CA 92870",
+      "city": "Placentia",
+      "description": "Service-enriched affordable housing development for homeless and disabled veterans",
+      "services": [
+        "housing",
+        "supportive services"
+      ],
+      "website": "https://www.mercyhousing.org/california/placentia-veterans-village/",
+      "source_url": "https://www.mercyhousing.org/california/placentia-veterans-village/"
+    },
+    {
+      "name": "Veterans Village of Carson",
+      "phone": "310-212-3041",
+      "address": "Carson, CA 90810",
+      "city": "Carson",
+      "description": "Affordable housing development (51 units) for homeless veterans",
+      "services": [
+        "housing"
+      ],
+      "website": "https://www.tsahousing.com/property/veteransvillageofcarson",
+      "source_url": "https://www.tsahousing.com/property/veteransvillageofcarson"
+    },
+    {
+      "name": "El Monte Veterans Village",
+      "phone": "626-377-9901",
+      "address": "11240 Ramona Boulevard, El Monte, CA 91731",
+      "city": "El Monte",
+      "description": "Affordable housing for veterans with supportive services",
+      "services": [
+        "housing",
+        "supportive services"
+      ],
+      "website": "https://www.mercyhousing.org/california/el-monte-veterans-village/",
+      "source_url": "https://www.mercyhousing.org/california/el-monte-veterans-village/"
+    },
+    {
+      "name": "Mather Veterans Village",
+      "phone": "916-273-8944",
+      "address": "3615 Bleckley Street, Rancho Cordova, CA 95655",
+      "city": "Rancho Cordova",
+      "description": "Affordable housing for disabled veterans with supportive services",
+      "services": [
+        "housing",
+        "supportive services"
+      ],
+      "website": "https://www.mercyhousing.org/california/mather-veterans-village/",
+      "source_url": "https://www.mercyhousing.org/california/mather-veterans-village/"
+    },
+    {
+      "name": "Veterans Village of San Diego",
+      "phone": "619-508-8866",
+      "address": "San Diego, CA",
+      "city": "San Diego",
+      "description": "Housing and support services for veterans in San Diego County",
+      "services": [
+        "housing",
+        "supportive services"
+      ],
+      "website": "https://vvsd.net/vvsd-programs/housing/",
+      "source_url": "https://vvsd.net/vvsd-programs/housing/"
+    },
+    {
+      "name": "Wounded Warrior Project",
+      "phone": "888-997-2586",
+      "phone_alt": "904-405-1213",
+      "address": "4899 Belfort Road, Suite 300, Jacksonville, FL 32256",
+      "city": "Jacksonville",
+      "description": "Support and services for post-9/11 veterans and service members with physical or mental injuries",
+      "services": [
+        "mental health",
+        "PTSD treatment",
+        "peer support",
+        "family support",
+        "career transition",
+        "physical health and wellness"
+      ],
+      "website": "https://www.woundedwarriorproject.org",
+      "source_url": "https://www.woundedwarriorproject.org"
+    },
+    {
+      "name": "Sacramento Veterans Resource Center",
+      "phone": "916-393-8387",
+      "address": "7270 East Southgate Drive, Sacramento, CA 95823",
+      "city": "Sacramento",
+      "description": "Employment counseling and training services for veterans",
+      "services": [
+        "employment",
+        "job training",
+        "counseling"
+      ],
+      "website": "https://www.calvet.ca.gov",
+      "source_url": "Search results for California 211 veteran resources"
+    },
+    {
+      "name": "California Association of County Veterans Service Officers (CACVSO)",
+      "phone": "844-737-8838",
+      "address": "Multiple locations statewide",
+      "city": "Statewide",
+      "description": "Network of county veteran service offices providing benefits assistance and referrals. Call with zip code to find local office.",
+      "services": [
+        "benefits assistance",
+        "referrals",
+        "local veteran services"
+      ],
+      "website": "https://www.cacvso.org/",
+      "source_url": "https://www.cacvso.org/county-contacts/"
+    },
+    {
+      "name": "211 California (2-1-1)",
+      "phone": "211",
+      "phone_alt": "1-800-399-6993",
+      "address": "Statewide hotline",
+      "city": "Statewide",
+      "description": "Free, confidential information and referrals for community resources including housing, food, health, employment, legal aid, and veteran services",
+      "services": [
+        "resource referrals",
+        "housing",
+        "food",
+        "employment",
+        "health",
+        "legal aid",
+        "veteran services"
+      ],
+      "website": "https://211ca.org/",
+      "source_url": "https://211ca.org/"
+    },
+    {
+      "name": "Hire Heroes USA",
+      "phone": "844-884-3573",
+      "phone_alt": "866-915-4376",
+      "address": "National organization",
+      "city": "National",
+      "description": "Employment assistance and job placement services for veterans overcoming employment barriers",
+      "services": [
+        "employment",
+        "job placement",
+        "career counseling"
+      ],
+      "website": "https://www.hireheroesusa.org/",
+      "source_url": "Search results for California 211 veteran resources"
+    },
+    {
+      "name": "VA Greater Los Angeles Health Care System",
+      "phone": "310-268-3350",
+      "address": "Los Angeles, CA",
+      "city": "Los Angeles",
+      "description": "Comprehensive medical care, mental health services, homeless veteran care, and benefits",
+      "services": [
+        "healthcare",
+        "mental health",
+        "PTSD treatment",
+        "homeless veteran services"
+      ],
+      "website": "https://www.va.gov/greater-los-angeles-health-care/",
+      "source_url": "https://www.va.gov/greater-los-angeles-health-care/"
+    },
+    {
+      "name": "West Los Angeles Veterans Home (CalVet)",
+      "phone": "310-478-3711",
+      "address": "11401 Wilshire Blvd., Los Angeles, CA 90073",
+      "city": "Los Angeles",
+      "description": "State-operated long-term care facility for aged and disabled veterans",
+      "services": [
+        "housing",
+        "long-term care",
+        "medical services"
+      ],
+      "website": "https://www.calvet.ca.gov/VetHomes/Pages/West-Los-Angeles.aspx",
+      "source_url": "https://www.calvet.ca.gov/VetHomes/Pages/West-Los-Angeles.aspx"
+    }
+  ],
+  "additional_resources": {
+    "911_crisis_emergency": "Call 911 for emergencies",
+    "988_suicide_crisis": "988 (then press 1) - Veterans Crisis Line - 24/7",
+    "state_bar_legal_aid": "https://www.calbar.ca.gov/public/legal-resources/resources-veterans-and-service-members",
+    "va_mental_health": "https://www.mentalhealth.va.gov/",
+    "cal_fresh_food_benefits": "https://www.getcalfresh.org/ - Food assistance for veterans",
+    "hud_vash_program": "https://www.va.gov/homeless/hud-vash.asp - Housing vouchers with VA services",
+    "california_veterans_resource_book": "https://www.calvet.ca.gov - Comprehensive guide to benefits and services"
+  },
+  "notes": "This directory includes major state and federal veteran resources in California. For county-specific services, call 211 or 844-SERV-VET and enter your zip code. Many services are free and confidential."
+}

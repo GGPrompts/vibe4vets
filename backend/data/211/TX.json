@@ -1,0 +1,298 @@
+{
+  "state": "TX",
+  "state_name": "Texas",
+  "fetched_at": "2026-01-25T00:00:00Z",
+  "source": "211.org, Texas Veterans Commission, TexVet.org",
+  "resources": [
+    {
+      "name": "2-1-1 Texas",
+      "phone": "(877) 541-7905",
+      "address": "Statewide hotline",
+      "city": "Multiple locations",
+      "description": "Free, anonymous 24/7 social service hotline connecting Texans to local resources including veteran services, housing, food, health, emergency assistance",
+      "services": [
+        "information and referral",
+        "housing assistance",
+        "food assistance",
+        "health services",
+        "mental health services",
+        "crisis services",
+        "employment resources"
+      ],
+      "website": "https://www.211texas.org",
+      "source_url": "https://www.211texas.org"
+    },
+    {
+      "name": "Texas Veterans Commission (TVC)",
+      "phone": "1-800-252-8387 (toll-free) or (512) 463-6564",
+      "address": "1801 Congress Ave., Suite 14.100, Austin, TX 78701",
+      "city": "Austin",
+      "description": "State agency providing comprehensive veteran support including claims representation, employment services, benefits assistance, health advocacy, and grants to veteran organizations",
+      "services": [
+        "claims representation and counseling",
+        "disability benefits advocacy",
+        "employment services",
+        "education benefits guidance",
+        "health care advocacy",
+        "mental health connections",
+        "entrepreneur consultation",
+        "homelessness assistance"
+      ],
+      "website": "https://tvc.texas.gov",
+      "source_url": "https://tvc.texas.gov/contact/"
+    },
+    {
+      "name": "TexVet (Texas Veterans Portal)",
+      "phone": "(512) 341-4924",
+      "address": "3950 North A.W. Grimes Blvd, 2nd Floor, Round Rock, TX 78665",
+      "city": "Round Rock",
+      "description": "Information and referral services with peer support specialists providing centralized access to veteran benefits and local resources",
+      "services": [
+        "information and referral",
+        "peer support",
+        "benefits guidance",
+        "resource directory",
+        "veteran advocacy"
+      ],
+      "website": "https://texvet.org",
+      "source_url": "https://texvet.org"
+    },
+    {
+      "name": "Veterans Crisis Line",
+      "phone": "988 (press 1 for Veterans) or text 838255",
+      "address": "National hotline",
+      "city": "Multiple locations",
+      "description": "24/7 confidential crisis support for veterans and their loved ones",
+      "services": [
+        "crisis counseling",
+        "mental health support",
+        "suicide prevention",
+        "emergency assistance"
+      ],
+      "website": "https://www.veteranscrisisline.net",
+      "source_url": "https://www.veteranscrisisline.net/chat"
+    },
+    {
+      "name": "Texas Veterans Land Board (VLB)",
+      "phone": "(512) 463-5060",
+      "address": "Available via phone and email",
+      "city": "Austin",
+      "description": "Provides veteran housing loans, nursing homes, cemetery services, and property assistance programs",
+      "services": [
+        "home purchase loans",
+        "property tax exemptions",
+        "nursing home services",
+        "burial assistance",
+        "cemetery services"
+      ],
+      "website": "https://www.glo.texas.gov",
+      "source_url": "https://tvc.texas.gov/resources/"
+    },
+    {
+      "name": "U.S. VETS Houston",
+      "phone": "832-203-1626",
+      "address": "18818 Tomball Parkway, Houston, TX 77070",
+      "city": "Houston",
+      "description": "Major veteran services organization since 1997 serving thousands of veterans with transitional, emergency and permanent supportive housing, mental health and substance use treatment, case management, and career services",
+      "services": [
+        "transitional housing",
+        "emergency housing",
+        "permanent supportive housing",
+        "mental health treatment",
+        "substance use treatment",
+        "case management",
+        "career services",
+        "job training",
+        "supportive services for veteran families (SSVF)"
+      ],
+      "website": "https://usvets.org/locations/houston/",
+      "source_url": "https://usvets.org/locations/houston/"
+    },
+    {
+      "name": "The Salvation Army - Carr P. Collins Social Services Center (Veteran Programs)",
+      "phone": "214-424-7050",
+      "address": "5302 Harry Hines Blvd, Dallas, TX 75235",
+      "city": "Dallas",
+      "description": "Salvation Army Veterans Enrichment (SAVE) program provides permanent housing, comprehensive case management, and support services for chronically homeless disabled veterans",
+      "services": [
+        "permanent housing",
+        "case management",
+        "job training",
+        "job placement services",
+        "mental health support",
+        "substance abuse treatment",
+        "financial assistance",
+        "supportive services"
+      ],
+      "website": "https://salvationarmyntx.org/north-texas/veteran-programs/",
+      "source_url": "https://salvationarmyntx.org/north-texas/veteran-programs/"
+    },
+    {
+      "name": "Tunnel to Towers Foundation - Houston Veterans Village",
+      "phone": "Available through main organization",
+      "address": "Houston area (specific address varies by program)",
+      "city": "Houston",
+      "description": "National program providing permanent and transitional housing to homeless veterans with comprehensive supportive services",
+      "services": [
+        "permanent housing",
+        "transitional housing",
+        "employment assistance",
+        "job training",
+        "benefits assistance",
+        "education assistance",
+        "financial management",
+        "legal advocacy",
+        "mental health support",
+        "medical care coordination"
+      ],
+      "website": "https://t2t.org/homeless-veteran-program/",
+      "source_url": "https://t2t.org/homeless-veteran-program/"
+    },
+    {
+      "name": "Care Connection Aging & Disability Resource Center",
+      "phone": "1-855-937-2372 (toll-free) or 832-393-5500 (local)",
+      "address": "Service area: Houston-Galveston region",
+      "city": "Houston area",
+      "description": "Free resource center specializing in locating public and private services for older adults, individuals with disabilities, and veterans",
+      "services": [
+        "information and referral",
+        "case management",
+        "basic needs assistance",
+        "emergency housing",
+        "food assistance",
+        "rental assistance",
+        "utility assistance",
+        "transportation",
+        "veteran services coordination"
+      ],
+      "website": "https://www.careconnection.org",
+      "source_url": "https://www.careconnection.org/resources-to-assist-veterans"
+    },
+    {
+      "name": "Meals for Vets",
+      "phone": "(830) 992-3375",
+      "address": "Fredericksburg, TX (serves entire state)",
+      "city": "Fredericksburg",
+      "description": "Provides consistent access to healthy, nutritious meals for veterans under age 60 who served honorably and are struggling financially. Meals delivered to veteran locations or shipped to residence",
+      "services": [
+        "meal delivery",
+        "food assistance",
+        "student veteran meals",
+        "nutritional support"
+      ],
+      "website": "https://mealsforvets.org",
+      "source_url": "https://mealsforvets.org"
+    },
+    {
+      "name": "Central Texas Aging, Disability & Veterans Resource Center",
+      "phone": "Available through website",
+      "address": "Central Texas region",
+      "city": "Austin area",
+      "description": "Resource center for aging adults, individuals with disabilities, and veterans in Central Texas region",
+      "services": [
+        "information and referral",
+        "veteran resources",
+        "aging services",
+        "disability services"
+      ],
+      "website": "https://ctadvrc.org",
+      "source_url": "https://ctadvrc.org"
+    },
+    {
+      "name": "National Call Center for Homeless Veterans",
+      "phone": "877-424-3838 (877-4AID-VET)",
+      "address": "National hotline",
+      "city": "Multiple locations",
+      "description": "24/7 hotline providing immediate assistance to veterans at risk of or experiencing homelessness",
+      "services": [
+        "emergency housing assistance",
+        "homelessness prevention",
+        "resource referral",
+        "crisis support"
+      ],
+      "website": "https://www.va.gov/homeless",
+      "source_url": "https://texaslawhelp.org/article/homeless-veterans-resource-guide"
+    },
+    {
+      "name": "Texas Health and Human Services (HHS) - Homelessness Assistance",
+      "phone": "211 (dial 211 for housing assistance)",
+      "address": "Statewide program",
+      "city": "Multiple locations",
+      "description": "Provides homelessness assistance programs and direct grants to help Texans avoid homelessness and secure stable housing",
+      "services": [
+        "homelessness prevention",
+        "emergency rental assistance",
+        "utility assistance",
+        "housing search assistance",
+        "case management"
+      ],
+      "website": "https://www.hhs.texas.gov",
+      "source_url": "https://www.hhs.texas.gov"
+    },
+    {
+      "name": "Texas Workforce Commission - Veterans Services",
+      "phone": "Available through local offices",
+      "address": "Multiple locations statewide",
+      "city": "Multiple locations",
+      "description": "Provides career development, job search resources, training programs, and employment support for Texas veterans",
+      "services": [
+        "job training",
+        "career development",
+        "job placement",
+        "unemployment benefits",
+        "employment counseling",
+        "skills assessment"
+      ],
+      "website": "https://www.twc.texas.gov/services/veterans",
+      "source_url": "https://www.twc.texas.gov/services/veterans/contact-directory"
+    },
+    {
+      "name": "VA Houston Health Care System - Homeless Veteran Care",
+      "phone": "Available through VA",
+      "address": "Multiple locations in Houston area",
+      "city": "Houston",
+      "description": "Federal VA program providing comprehensive care to homeless and at-risk veterans including housing, mental health, medical services, and case management",
+      "services": [
+        "immediate food and shelter",
+        "transitional housing",
+        "permanent housing",
+        "mental health treatment",
+        "medical care",
+        "job training",
+        "life skills development",
+        "education services"
+      ],
+      "website": "https://www.va.gov/houston-health-care",
+      "source_url": "https://www.va.gov/houston-health-care/health-services/homeless-veteran-care/"
+    },
+    {
+      "name": "Meals On Wheels of Tarrant County - Veterans Program",
+      "phone": "Available through organization",
+      "address": "Tarrant County area",
+      "city": "Fort Worth area",
+      "description": "Provides freshly-prepared meals, frozen meals, and congregate meals to eligible veterans",
+      "services": [
+        "meal delivery",
+        "food assistance",
+        "nutritional support",
+        "senior veteran services"
+      ],
+      "website": "https://mealsonwheels.org/veteran/",
+      "source_url": "https://mealsonwheels.org/veteran/"
+    },
+    {
+      "name": "Combined Arms - Veterans Mobile Food Pantry",
+      "phone": "Available through organization",
+      "address": "Multiple locations (Galveston, Ellington Field, Montgomery County)",
+      "city": "Multiple locations",
+      "description": "Mobile food pantries launched in 2022 to provide food assistance to veterans in the Greater Houston area",
+      "services": [
+        "food assistance",
+        "mobile pantry services",
+        "emergency food"
+      ],
+      "website": "https://www.combinedarms.us/foodpantry",
+      "source_url": "https://www.combinedarms.us/foodpantry"
+    }
+  ]
+}

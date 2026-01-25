@@ -1,0 +1,328 @@
+{
+  "state": "PA",
+  "state_name": "Pennsylvania",
+  "fetched_at": "2026-01-25T00:00:00Z",
+  "source": "PA 211, DMVA, individual organization websites",
+  "resources": [
+    {
+      "name": "Pennsylvania Department of Military and Veterans Affairs (DMVA)",
+      "phone": "800-547-2838",
+      "address": "Building 0-47, Fort Indiantown Gap, Annville, PA 17003-5002",
+      "city": "Annville",
+      "description": "State agency providing quality care for aging and disabled veterans, administering benefits programs and veterans services across all 67 Pennsylvania counties",
+      "services": ["benefits assistance", "housing assistance", "healthcare", "temporary financial assistance"],
+      "website": "https://www.pa.gov/agencies/dmva/",
+      "source_url": "https://www.pa.gov/agencies/dmva/"
+    },
+    {
+      "name": "PA 211 - Resource and Referral Service",
+      "phone": "211",
+      "address": "Statewide Service (Multi-location)",
+      "city": "Pennsylvania",
+      "description": "Free and confidential referral service providing 24/7 access to crisis counseling, food, healthcare, housing, employment, and veteran services",
+      "services": ["crisis counseling", "food assistance", "housing", "employment", "benefits assistance", "veteran services", "health care"],
+      "website": "https://www.pa211.org/",
+      "source_url": "https://www.pa211.org/"
+    },
+    {
+      "name": "Veterans Leadership Program of Western PA",
+      "phone": "844-VLP-VETS (844-857-8387)",
+      "address": "2934 Smallman St, Pittsburgh, PA 15201",
+      "city": "Pittsburgh",
+      "description": "Non-profit serving 8,000+ veterans annually across 30 counties in PA, NY, and OH. Provides comprehensive support for housing, career development, wellness, and mental health services since 1982.",
+      "services": ["housing assistance", "career development", "mental health", "wellness programs", "supportive services"],
+      "website": "https://www.veteransleadershipprogram.org/",
+      "source_url": "https://www.veteransleadershipprogram.org/"
+    },
+    {
+      "name": "Veterans Leadership Program - Johnstown Office",
+      "phone": "844-VLP-VETS (844-857-8387)",
+      "address": "727 Goucher Street, Johnstown, PA 15905",
+      "city": "Johnstown",
+      "description": "Regional office of Veterans Leadership Program providing housing, career development, wellness and mental health services",
+      "services": ["housing assistance", "career development", "mental health", "wellness programs"],
+      "website": "https://www.veteransleadershipprogram.org/",
+      "source_url": "https://www.veteransleadershipprogram.org/"
+    },
+    {
+      "name": "Veterans Leadership Program - Erie Office",
+      "phone": "844-VLP-VETS (844-857-8387)",
+      "address": "406 West 8th Street, Erie, PA 16502",
+      "city": "Erie",
+      "description": "Regional office of Veterans Leadership Program providing housing, career development, wellness and mental health services",
+      "services": ["housing assistance", "career development", "mental health", "wellness programs"],
+      "website": "https://www.veteransleadershipprogram.org/",
+      "source_url": "https://www.veteransleadershipprogram.org/"
+    },
+    {
+      "name": "Veterans Multi-Service Center (VMC)",
+      "phone": "215-923-2600",
+      "address": "213-217 N. 4th Street, Philadelphia, PA 19106",
+      "city": "Philadelphia",
+      "description": "Comprehensive multi-service center providing employment, housing, education, and benefits support for veterans in Philadelphia",
+      "services": ["employment assistance", "housing", "education", "benefits assistance"],
+      "website": "Unknown",
+      "source_url": "https://healthymindsphilly.org/veteran-resources/"
+    },
+    {
+      "name": "YWCA of Greater Harrisburg - Veterans Services",
+      "phone": "717-234-7931",
+      "address": "1101 Market Street, Harrisburg, PA 17103",
+      "city": "Harrisburg",
+      "description": "YWCA providing comprehensive veteran support including employment readiness, housing assistance, and preventive services for homelessness across South Central PA counties",
+      "services": ["employment assistance", "housing", "homelessness prevention", "case management", "benefits assistance", "emergency financial aid"],
+      "website": "https://www.ywcahbg.org/programs/veterans-services/",
+      "source_url": "https://www.ywcahbg.org/programs/veterans-services/"
+    },
+    {
+      "name": "Capital Area Coalition on Homelessness - Veterans Services",
+      "phone": "717-255-6587",
+      "address": "10 North Second Street, Suite 405, Harrisburg, PA 17105-2157",
+      "city": "Harrisburg",
+      "description": "Coalition focused on preventing and reducing homelessness in the Capital region with dedicated veterans programs including Robert M. Jackson Veterans Center and VALOR housing projects",
+      "services": ["housing", "homelessness prevention", "case management", "transitional housing"],
+      "website": "https://cachpa.org/",
+      "source_url": "https://cachpa.org/get-help/veterans/"
+    },
+    {
+      "name": "Robert M. Jackson Veterans Center (CACH)",
+      "phone": "717-319-1991",
+      "address": "Harrisburg, PA",
+      "city": "Harrisburg",
+      "description": "Veterans-specific facility providing comprehensive services and support under Capital Area Coalition on Homelessness",
+      "services": ["housing", "case management", "veterans support"],
+      "website": "Unknown",
+      "source_url": "https://cachpa.org/get-help/veterans/"
+    },
+    {
+      "name": "Shalom House Veterans Housing (CACH)",
+      "phone": "717-232-3482",
+      "address": "2138 & 2140 7th Street, Harrisburg, PA 17110",
+      "city": "Harrisburg",
+      "description": "Transitional and supportive housing facility for veterans under Capital Area Coalition on Homelessness",
+      "services": ["housing", "transitional housing"],
+      "website": "Unknown",
+      "source_url": "https://cachpa.org/get-help/veterans/"
+    },
+    {
+      "name": "Housing Authority of the City of Pittsburgh - Veterans Program",
+      "phone": "412-456-5000",
+      "address": "200 Ross St., Pittsburgh, PA 15219",
+      "city": "Pittsburgh",
+      "description": "Municipal housing authority providing HUD-VASH program and affordable housing assistance for veterans and their families",
+      "services": ["housing assistance", "Section 8 housing", "HUD-VASH program"],
+      "website": "https://hacp.org/programs-services/assistance/veterans/",
+      "source_url": "https://hacp.org/programs-services/assistance/veterans/"
+    },
+    {
+      "name": "Project Journey Women Veterans Only",
+      "phone": "412-481-8200, ext. 216",
+      "address": "Pittsburgh, PA",
+      "city": "Pittsburgh",
+      "description": "Specialized program providing immediate shelter and intensive case management for women veterans for 30-90 days",
+      "services": ["housing", "emergency shelter", "case management"],
+      "website": "Unknown",
+      "source_url": "https://hacp.org/programs-services/assistance/veterans/"
+    },
+    {
+      "name": "VA Philadelphia Health Care System - Homeless Veteran Care",
+      "phone": "Unknown",
+      "address": "Philadelphia, PA",
+      "city": "Philadelphia",
+      "description": "Federal Veterans Affairs facility providing housing support, employment training, legal navigation, mental health treatment, and healthcare for homeless veterans",
+      "services": ["housing", "employment training", "mental health", "substance abuse treatment", "legal services", "healthcare"],
+      "website": "https://www.va.gov/philadelphia-health-care/health-services/homeless-veteran-care/",
+      "source_url": "https://www.va.gov/philadelphia-health-care/health-services/homeless-veteran-care/"
+    },
+    {
+      "name": "Veterans Multi-Service Center Women Veterans Center",
+      "phone": "Unknown",
+      "address": "Philadelphia, PA",
+      "city": "Philadelphia",
+      "description": "Specialized center for women veterans offering employment, housing, education, and benefits support",
+      "services": ["employment assistance", "housing", "education", "benefits assistance"],
+      "website": "Unknown",
+      "source_url": "https://www.pa211.org/"
+    },
+    {
+      "name": "The Steven A. Cohen Military Family Clinic",
+      "phone": "844-573-3146",
+      "address": "3535 Market Street, Philadelphia, PA 19104",
+      "city": "Philadelphia",
+      "description": "High-quality mental health care facility providing free counseling services at no cost with no long wait times for military members and families",
+      "services": ["mental health", "counseling", "psychiatric care"],
+      "website": "Unknown",
+      "source_url": "https://healthymindsphilly.org/veteran-resources/"
+    },
+    {
+      "name": "Restore Valor Project",
+      "phone": "609-504-1049",
+      "address": "221 37th St., Pennsauken, NJ 08110",
+      "city": "Pennsauken, NJ (serves PA region)",
+      "description": "Alternative counseling and trauma-focused treatment for combat PTSD and service-related trauma",
+      "services": ["mental health", "PTSD treatment", "trauma counseling"],
+      "website": "Unknown",
+      "source_url": "https://healthymindsphilly.org/veteran-resources/"
+    },
+    {
+      "name": "Menergy.org",
+      "phone": "215-242-2235",
+      "address": "2000 Hamilton St #304, Philadelphia, PA 19130",
+      "city": "Philadelphia",
+      "description": "Therapy services specializing in intimate partner violence and harmful behavior issues for military members",
+      "services": ["mental health", "therapy", "domestic violence support"],
+      "website": "Unknown",
+      "source_url": "https://healthymindsphilly.org/veteran-resources/"
+    },
+    {
+      "name": "The Veterans Group",
+      "phone": "215-222-4379",
+      "address": "3209 Baring St., Philadelphia, PA 19104",
+      "city": "Philadelphia",
+      "description": "Community organization providing basic needs assistance, education, and employment training for veterans",
+      "services": ["food assistance", "education", "employment training"],
+      "website": "Unknown",
+      "source_url": "https://healthymindsphilly.org/veteran-resources/"
+    },
+    {
+      "name": "Delaware Valley Veterans Home",
+      "phone": "Unknown",
+      "address": "2701 Southampton Rd., Philadelphia, PA 19154",
+      "city": "Philadelphia",
+      "description": "Residential care facility providing clinical and social support services for veterans",
+      "services": ["housing", "healthcare", "residential care"],
+      "website": "Unknown",
+      "source_url": "https://healthymindsphilly.org/veteran-resources/"
+    },
+    {
+      "name": "Ahari Homes",
+      "phone": "Unknown",
+      "address": "Philadelphia, PA",
+      "city": "Philadelphia",
+      "description": "Non-profit providing permanent and supportive housing for homeless veterans and families",
+      "services": ["housing", "supportive housing"],
+      "website": "https://aharihomes.org/",
+      "source_url": "https://healthymindsphilly.org/veteran-resources/"
+    },
+    {
+      "name": "Veterans Outreach of Pennsylvania",
+      "phone": "Unknown",
+      "address": "Pennsylvania",
+      "city": "Pennsylvania",
+      "description": "Statewide organization providing comprehensive support including housing, healthcare, employment, legal services, mental health, and substance abuse treatment",
+      "services": ["housing assistance", "employment", "mental health", "legal services", "substance abuse treatment", "healthcare"],
+      "website": "https://www.veteransoutreachofpa.org/",
+      "source_url": "https://www.veteransoutreachofpa.org/services"
+    },
+    {
+      "name": "Stop Soldier Suicide",
+      "phone": "Unknown",
+      "address": "Pennsylvania",
+      "city": "Pennsylvania",
+      "description": "Veteran-founded and veteran-led organization providing personalized mental health care and case management for suicide prevention",
+      "services": ["mental health", "case management", "housing assistance", "suicide prevention"],
+      "website": "https://www.stopsoldiersuicide.org/",
+      "source_url": "https://healthymindsphilly.org/veteran-resources/"
+    },
+    {
+      "name": "Pennsylvania Wounded Warriors, Inc.",
+      "phone": "Unknown",
+      "address": "Pennsylvania",
+      "city": "Pennsylvania",
+      "description": "Non-profit providing emergency financial assistance for wounded warriors with housing, utilities, and medical expenses",
+      "services": ["emergency financial assistance", "housing", "medical assistance"],
+      "website": "https://www.pawoundedwarriors.org/",
+      "source_url": "https://healthymindsphilly.org/veteran-resources/"
+    },
+    {
+      "name": "Disabled Veterans of America (DAV)",
+      "phone": "Unknown",
+      "address": "Multiple Pennsylvania Locations",
+      "city": "Pennsylvania",
+      "description": "National organization providing free assistance filing disability claims and accessing veteran benefits",
+      "services": ["benefits assistance", "disability claims"],
+      "website": "https://www.dav.org/veterans/find-your-local-office/",
+      "source_url": "https://healthymindsphilly.org/veteran-resources/"
+    },
+    {
+      "name": "Boots to Health Foundation",
+      "phone": "Unknown",
+      "address": "Pennsylvania",
+      "city": "Pennsylvania",
+      "description": "Non-profit providing free fitness training, nutrition coaching, and spiritual counseling for wellness",
+      "services": ["wellness programs", "fitness training", "nutrition coaching", "spiritual counseling"],
+      "website": "https://www.bootstohealthfoundation.org/",
+      "source_url": "https://healthymindsphilly.org/veteran-resources/"
+    },
+    {
+      "name": "Veterans Crisis Line",
+      "phone": "1-800-273-8255 (Press 1)",
+      "address": "National Service",
+      "city": "National",
+      "description": "24/7/365 crisis support for active service members and veterans, also available via text at 838255",
+      "services": ["mental health", "crisis support", "suicide prevention"],
+      "website": "https://www.veteranscrisisline.net/",
+      "source_url": "https://healthymindsphilly.org/veteran-resources/"
+    },
+    {
+      "name": "Military OneSource",
+      "phone": "800-342-9647",
+      "address": "National Service",
+      "city": "National",
+      "description": "Confidential counseling and financial guidance service for service members and families available 24/7 with online chat",
+      "services": ["mental health", "counseling", "financial guidance"],
+      "website": "Unknown",
+      "source_url": "https://healthymindsphilly.org/veteran-resources/"
+    },
+    {
+      "name": "In Transition",
+      "phone": "800-424-7877",
+      "address": "National Service",
+      "city": "National",
+      "description": "Free coaching and mental health provider assistance for all military members",
+      "services": ["mental health", "coaching", "career guidance"],
+      "website": "Unknown",
+      "source_url": "https://healthymindsphilly.org/veteran-resources/"
+    },
+    {
+      "name": "T*A*P*S* (Tragedy Assistance Program for Survivors)",
+      "phone": "800-959-TAPS (800-959-8277)",
+      "address": "National Service",
+      "city": "National",
+      "description": "24/7 peer support program for families grieving fallen service members",
+      "services": ["grief support", "mental health", "peer support"],
+      "website": "Unknown",
+      "source_url": "https://healthymindsphilly.org/veteran-resources/"
+    },
+    {
+      "name": "National Call Center for Homeless Veterans",
+      "phone": "877-4AID VET (877-424-3838)",
+      "address": "National Service",
+      "city": "National",
+      "description": "Free 24/7 service connecting homeless veterans or veterans at-risk for homelessness to trained counselors and resources",
+      "services": ["homelessness prevention", "housing assistance", "crisis support"],
+      "website": "Unknown",
+      "source_url": "https://www.pa.gov/en/agencies/dmva/pennsylvania-veterans/special-initiatives/homeless-veterans.html"
+    },
+    {
+      "name": "Pennsylvania Department of Drug and Alcohol Programs",
+      "phone": "1-800-622-4357 (1-800-622-HELP)",
+      "address": "Statewide Service",
+      "city": "Pennsylvania",
+      "description": "State service providing treatment referrals for alcohol and drug addiction",
+      "services": ["substance abuse treatment", "addiction services"],
+      "website": "https://apps.ddap.pa.gov/gethelpnow/",
+      "source_url": "https://healthymindsphilly.org/veteran-resources/"
+    },
+    {
+      "name": "Greater Philadelphia Region of Narcotics Anonymous",
+      "phone": "215-627-6475 (215-NA-WORKS)",
+      "address": "Philadelphia, PA",
+      "city": "Philadelphia",
+      "description": "Peer-led recovery meetings for substance abuse with meeting locations throughout the region",
+      "services": ["substance abuse treatment", "peer support"],
+      "website": "https://www.naworks.org/find-a-meeting/",
+      "source_url": "https://healthymindsphilly.org/veteran-resources/"
+    }
+  ]
+}

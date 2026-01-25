@@ -1,0 +1,358 @@
+{
+  "state": "MD",
+  "state_name": "Maryland",
+  "fetched_at": "2026-01-25T00:00:00Z",
+  "source": "211md.org - Maryland's Information and Referral System",
+  "resources": [
+    {
+      "name": "211 Maryland (Main Resource Line)",
+      "phone": "211 or 866-411-6803",
+      "address": "9770 Patuxent Woods Dr Suite 334, Columbia, MD 21046",
+      "city": "Columbia",
+      "description": "24/7 Information and Referral System connecting veterans to community resources including housing, employment, benefits, food, and healthcare services",
+      "services": ["housing", "employment", "benefits", "food", "healthcare", "mental_health", "legal_aid"],
+      "website": "https://211md.org",
+      "source_url": "https://211md.org/resources/veterans/"
+    },
+    {
+      "name": "Maryland Department of Veterans Affairs",
+      "phone": "800-446-4926 ext. 6450",
+      "address": "Multiple locations throughout Maryland",
+      "city": "Maryland",
+      "description": "Local Service Officers helping veterans and eligible dependents obtain VA benefits",
+      "services": ["benefits", "counseling"],
+      "website": "https://veterans.maryland.gov",
+      "source_url": "https://211md.org/resources/veterans/"
+    },
+    {
+      "name": "Maryland's Commitment to Veterans (MCV)",
+      "phone": "877-770-4801",
+      "address": "Multiple locations throughout Maryland",
+      "city": "Maryland",
+      "description": "Provides crisis intervention, emergency services, substance misuse treatment, behavioral health support, peer support, and suicide prevention",
+      "services": ["mental_health", "crisis", "substance_abuse", "referral"],
+      "website": "https://211md.org",
+      "source_url": "https://211md.org/resources/veterans/mental-health-for-veterans/"
+    },
+    {
+      "name": "Veterans Crisis Line",
+      "phone": "988 (press 1)",
+      "address": "National Service",
+      "city": "National",
+      "description": "24/7 confidential crisis support for veterans in suicidal crisis or emotional distress",
+      "services": ["mental_health", "crisis", "suicide_prevention"],
+      "website": "https://veteranscrisisline.net/Chat",
+      "source_url": "https://211md.org/resources/veterans/"
+    },
+    {
+      "name": "Combat Call Line",
+      "phone": "877-927-8387",
+      "address": "National Service",
+      "city": "National",
+      "description": "Combat veterans and family members answering phone lines to discuss military concerns and civilian life adjustment",
+      "services": ["mental_health", "peer_support", "counseling"],
+      "website": "National Service",
+      "source_url": "https://211md.org/resources/veterans/mental-health-for-veterans/"
+    },
+    {
+      "name": "Caregiver Support Line",
+      "phone": "855-260-3274",
+      "address": "National Service",
+      "city": "National",
+      "description": "Support services for family members caring for veterans",
+      "services": ["mental_health", "caregiver_support"],
+      "website": "National Service",
+      "source_url": "https://211md.org/resources/veterans/mental-health-for-veterans/"
+    },
+    {
+      "name": "National Call Center for Homeless Veterans",
+      "phone": "877-424-3838",
+      "address": "National Service",
+      "city": "National",
+      "description": "24/7/365 trained responders connecting homeless veterans to resources and VA programs",
+      "services": ["housing", "homelessness", "benefits"],
+      "website": "National Service",
+      "source_url": "https://211md.org/resources/veterans/housing-help-for-veterans/"
+    },
+    {
+      "name": "National Coalition for Homeless Veterans",
+      "phone": "800-435-7838",
+      "address": "National Service",
+      "city": "National",
+      "description": "Provides information and connects veterans to local community organizations for housing and homelessness services",
+      "services": ["housing", "homelessness"],
+      "website": "http://www.nchv.org/",
+      "source_url": "https://211md.org/resources/veterans/housing-help-for-veterans/"
+    },
+    {
+      "name": "Maryland Center for Veterans Education and Training (MCVET)",
+      "phone": "Not provided",
+      "address": "Multiple locations in Maryland",
+      "city": "Maryland",
+      "description": "Provides day drop-in facilities, case management during first 60 days, recovery classes, counseling, and VA benefits assistance",
+      "services": ["housing", "counseling", "benefits", "education"],
+      "website": "https://www.mcvet.org/index.php/services/housing",
+      "source_url": "https://211md.org/resources/veterans/housing-help-for-veterans/"
+    },
+    {
+      "name": "MD HOPE Hotline",
+      "phone": "877-462-7555",
+      "address": "Maryland Service",
+      "city": "Maryland",
+      "description": "Mortgage assistance and foreclosure prevention counseling for homeowners",
+      "services": ["housing", "financial_aid"],
+      "website": "http://dhcd.maryland.gov/Residents/Pages/HOPE/MDHope.aspx",
+      "source_url": "https://211md.org/resources/veterans/housing-help-for-veterans/"
+    },
+    {
+      "name": "VA Maryland Health Care System",
+      "phone": "800-463-6295 ext. 7324",
+      "address": "Baltimore, Perry Point, Loch Raven (Central Maryland/Eastern Shore)",
+      "city": "Baltimore",
+      "description": "VA medical center providing inpatient care, emergency services, outpatient care, mental health, preventive care, and prescription medications",
+      "services": ["healthcare", "mental_health", "medical_benefits"],
+      "website": "https://www.maryland.va.gov",
+      "source_url": "https://211md.org/resources/veterans/va-medical-benefits/"
+    },
+    {
+      "name": "Martinsburg VA Medical Center",
+      "phone": "304-263-0811 ext. 3758 or 800-817-3807",
+      "address": "Martinsburg, West Virginia (serves Western Maryland)",
+      "city": "Martinsburg, WV",
+      "description": "VA medical center serving Western Maryland veterans with comprehensive healthcare services",
+      "services": ["healthcare", "mental_health", "medical_benefits"],
+      "website": "https://www.martinsburg.va.gov",
+      "source_url": "https://211md.org/resources/veterans/va-medical-benefits/"
+    },
+    {
+      "name": "Washington DC VA Medical Center",
+      "phone": "202-745-8251",
+      "address": "Washington, DC (serves Montgomery & Prince George's Counties and Southern Maryland)",
+      "city": "Washington, DC",
+      "description": "VA medical center serving DC metro area veterans",
+      "services": ["healthcare", "mental_health", "medical_benefits"],
+      "website": "https://www.washingtondc.va.gov",
+      "source_url": "https://211md.org/resources/veterans/va-medical-benefits/"
+    },
+    {
+      "name": "Sheppard Pratt Suicide Prevention Program",
+      "phone": "410-938-4357",
+      "address": "Maryland Service",
+      "city": "Maryland",
+      "description": "Mental health screenings, clinical emergency treatment, case management, and VA benefit assistance",
+      "services": ["mental_health", "suicide_prevention", "crisis"],
+      "website": "https://www.sheppardpratt.org",
+      "source_url": "https://211md.org/resources/veterans/mental-health-for-veterans/"
+    },
+    {
+      "name": "Veterans Affairs Employment Programs",
+      "phone": "877-424-3838",
+      "address": "Multiple VA locations nationwide",
+      "city": "National",
+      "description": "Homeless Veterans Community Employment Services (HVCES), Compensated Work Therapy (CWT), and Vocational Rehabilitation and Employment (VR&E) programs",
+      "services": ["employment", "job_training", "vocational_rehab"],
+      "website": "https://www.vacareers.va.gov/",
+      "source_url": "https://211md.org/resources/veterans/veterans-employment/"
+    },
+    {
+      "name": "Maryland American Job Centers",
+      "phone": "211 or 866-411-6803",
+      "address": "Multiple locations throughout Maryland",
+      "city": "Maryland",
+      "description": "Career counseling, job search assistance, training programs, and referrals specifically for transitioning veterans",
+      "services": ["employment", "job_training", "career_counseling"],
+      "website": "https://211md.org",
+      "source_url": "https://211md.org/resources/veterans/veterans-employment/"
+    },
+    {
+      "name": "Maryland Workforce Exchange (MWE)",
+      "phone": "Not provided",
+      "address": "Online service",
+      "city": "Online",
+      "description": "Online job-seeking resource for all job seekers including unemployed veterans filing for benefits",
+      "services": ["employment", "job_search"],
+      "website": "https://mde.maryland.gov/",
+      "source_url": "https://211md.org/resources/veterans/veterans-employment/"
+    },
+    {
+      "name": "State of Maryland Veterans Jobs",
+      "phone": "Not provided",
+      "address": "Online service",
+      "city": "Online",
+      "description": "State government positions with military background preferences for veterans",
+      "services": ["employment"],
+      "website": "https://dbm.maryland.gov/jobseekers/pages/veteransjobs.aspx",
+      "source_url": "https://211md.org/resources/veterans/veterans-employment/"
+    },
+    {
+      "name": "Maryland Veterans Trust Fund",
+      "phone": "800-446-4926",
+      "address": "Maryland Service",
+      "city": "Maryland",
+      "description": "Provides grants and loans to struggling veterans with goal of achieving self-sufficiency",
+      "services": ["financial_aid"],
+      "website": "https://veterans.maryland.gov/maryland-department-of-veterans-affairs-veterans-trust-fund/",
+      "source_url": "https://211md.org/resources/veterans/veteran-financial-help/"
+    },
+    {
+      "name": "Veterans of Foreign Wars (VFW) - Unmet Needs",
+      "phone": "Not provided",
+      "address": "Multiple VFW posts throughout Maryland",
+      "city": "Maryland",
+      "description": "Grants up to $1,500 for basic life needs including rent, mortgage, utilities, and medical care with no repayment required",
+      "services": ["financial_aid", "housing", "utilities"],
+      "website": "https://www.vfw.org/assistance/financial-grants",
+      "source_url": "https://211md.org/resources/veterans/veteran-financial-help/"
+    },
+    {
+      "name": "American Legion - Temporary Financial Assistance",
+      "phone": "Contact local post",
+      "address": "Multiple posts throughout Maryland",
+      "city": "Maryland",
+      "description": "Temporary financial assistance for minor children of active duty and Legion members for shelter, food, utilities, and health expenses",
+      "services": ["financial_aid", "housing", "food", "utilities"],
+      "website": "http://www.mdlegion.org/",
+      "source_url": "https://211md.org/resources/veterans/veteran-financial-help/"
+    },
+    {
+      "name": "Operation Homefront - Critical Financial Assistance",
+      "phone": "Not provided",
+      "address": "National organization serving Maryland",
+      "city": "National",
+      "description": "Critical financial assistance for eligible service members and veterans",
+      "services": ["financial_aid"],
+      "website": "https://operationhomefront.org/critical-financial-assistance/",
+      "source_url": "https://211md.org/resources/veterans/veteran-financial-help/"
+    },
+    {
+      "name": "Army Emergency Relief",
+      "phone": "866-878-6378",
+      "address": "National service",
+      "city": "National",
+      "description": "Interest-free loans and grants for Army veterans and active duty for unforeseen emergencies",
+      "services": ["financial_aid", "emergency_assistance"],
+      "website": "https://www.aerhq.org",
+      "source_url": "https://211md.org/resources/veterans/veteran-financial-help/"
+    },
+    {
+      "name": "Navy-Marine Corps Relief Society",
+      "phone": "703-696-4904",
+      "address": "National service",
+      "city": "National",
+      "description": "Interest-free loans and grants for Navy and Marine Corps veterans for emergency assistance",
+      "services": ["financial_aid", "emergency_assistance"],
+      "website": "https://www.nmcrs.org",
+      "source_url": "https://211md.org/resources/veterans/veteran-financial-help/"
+    },
+    {
+      "name": "Coast Guard Mutual Assistance",
+      "phone": "410-636-4078",
+      "address": "National service",
+      "city": "National",
+      "description": "Interest-free loans and grants for Coast Guard veterans for emergency assistance",
+      "services": ["financial_aid", "emergency_assistance"],
+      "website": "https://www.cgmahq.org",
+      "source_url": "https://211md.org/resources/veterans/veteran-financial-help/"
+    },
+    {
+      "name": "Air Force Emergency Assistance",
+      "phone": "800-769-8951",
+      "address": "National service",
+      "city": "National",
+      "description": "Interest-free loans and grants for Air Force veterans for emergency assistance",
+      "services": ["financial_aid", "emergency_assistance"],
+      "website": "https://www.afef.org",
+      "source_url": "https://211md.org/resources/veterans/veteran-financial-help/"
+    },
+    {
+      "name": "Armed Forces Foundation",
+      "phone": "202-547-4713",
+      "address": "National service",
+      "city": "National",
+      "description": "Emergency assistance for service members and veterans across all branches",
+      "services": ["financial_aid", "emergency_assistance"],
+      "website": "https://www.armedforcesfoundation.org",
+      "source_url": "https://211md.org/resources/veterans/veteran-financial-help/"
+    },
+    {
+      "name": "Wounded Warrior Project",
+      "phone": "202-558-4301",
+      "address": "Washington, DC office",
+      "city": "Washington, DC",
+      "description": "Support services for wounded, ill, and injured veterans",
+      "services": ["counseling", "peer_support", "financial_aid"],
+      "website": "https://www.woundedwarriorproject.org",
+      "source_url": "https://211md.org/resources/veterans/"
+    },
+    {
+      "name": "Military OneSource",
+      "phone": "Not provided",
+      "address": "Online service",
+      "city": "Online",
+      "description": "Individualized consultations, coaching, and non-medical counseling for tax services, money management, parenting",
+      "services": ["counseling", "financial_counseling"],
+      "website": "https://www.militaryonesource.mil",
+      "source_url": "https://211md.org/resources/veterans/"
+    },
+    {
+      "name": "American Red Cross Military Families",
+      "phone": "Not provided",
+      "address": "Multiple locations",
+      "city": "National",
+      "description": "Services and support for military families and veterans",
+      "services": ["counseling", "emergency_assistance"],
+      "website": "https://www.redcross.org/get-help/military-families/services-for-veterans.html",
+      "source_url": "https://211md.org/resources/veterans/"
+    },
+    {
+      "name": "Federal VA Benefits Office",
+      "phone": "800-827-1000",
+      "address": "National service",
+      "city": "National",
+      "description": "Central hub for VA benefits information and applications",
+      "services": ["benefits"],
+      "website": "https://benefits.va.gov/benefits/offices.asp",
+      "source_url": "https://211md.org/resources/veterans/"
+    },
+    {
+      "name": "VA Veteran Centers",
+      "phone": "Locator available online",
+      "address": "Multiple locations throughout Maryland",
+      "city": "Maryland",
+      "description": "Free readjustment counseling, family and group counseling, sexual trauma counseling, and PTSD services (bring DD214)",
+      "services": ["mental_health", "ptsd", "counseling"],
+      "website": "https://www.va.gov/directory/guide/vetcenter.asp",
+      "source_url": "https://211md.org/resources/veterans/mental-health-for-veterans/"
+    },
+    {
+      "name": "Maryland Legal Aid",
+      "phone": "Varies by county",
+      "address": "Multiple locations throughout Maryland",
+      "city": "Maryland",
+      "description": "Free legal clinics and offices serving 15 counties with low-cost or free legal services",
+      "services": ["legal_aid"],
+      "website": "https://www.marylandlegalaid.org",
+      "source_url": "https://211md.org/resources/legal-services/"
+    },
+    {
+      "name": "Pro Bono Resource Center of Maryland",
+      "phone": "Not provided",
+      "address": "Maryland service",
+      "city": "Maryland",
+      "description": "Legal help and pro bono services for eligible individuals",
+      "services": ["legal_aid"],
+      "website": "https://probonomd.org/for-legal-help/",
+      "source_url": "https://probonomd.org/for-legal-help/"
+    },
+    {
+      "name": "MD Housing Search Locator",
+      "phone": "Online service",
+      "address": "Online service",
+      "city": "Online",
+      "description": "Online resource for finding affordable housing options",
+      "services": ["housing"],
+      "website": "https://mdhousingsearch.com/",
+      "source_url": "https://211md.org/resources/veterans/housing-help-for-veterans/"
+    }
+  ]
+}
