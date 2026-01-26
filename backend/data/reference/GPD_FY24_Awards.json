@@ -1,0 +1,4935 @@
+{
+  "source": "VA Grant and Per Diem (GPD) Program",
+  "source_url": "https://www.va.gov/homeless/gpd.asp",
+  "data_url": "https://www.va.gov/HOMELESS/docs/GPD/GPD_Award_List_Per_Diem_Only.pdf",
+  "fiscal_year": "2024",
+  "period": "10/1/2023-9/30/2026",
+  "total_grantees": 295,
+  "total_beds": 9685,
+  "awards": [
+    {
+      "visn": "1",
+      "station": "608",
+      "organization": "Harbor Homes, Inc.",
+      "grant_id": "HARB932-3381-608-PD-24",
+      "total_beds": 75,
+      "is_service_center": false,
+      "state": "NH",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 8,
+        "clinical_treatment": 28,
+        "intensive": 39,
+        "minor_dependents": 10
+      }
+    },
+    {
+      "visn": "1",
+      "station": "523",
+      "organization": "Vietnam Veterans Workshop, Inc.",
+      "grant_id": "VVWN211-3511-523-PD-24",
+      "total_beds": 65,
+      "is_service_center": false,
+      "state": "MA",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 20,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 45,
+        "intensive": 0,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "1",
+      "station": "523",
+      "organization": "Vietnam Veterans Workshop, Inc.",
+      "grant_id": "VVWN211-3545-523-PD-24",
+      "total_beds": 0,
+      "is_service_center": true,
+      "state": "MA",
+      "bed_types": {}
+    },
+    {
+      "visn": "1",
+      "station": "402",
+      "organization": "Volunteers of America, Northern New England",
+      "grant_id": "VOAE450-3561-402-PD-24",
+      "total_beds": 18,
+      "is_service_center": false,
+      "state": "ME",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 5,
+        "intensive": 13,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "1",
+      "station": "405",
+      "organization": "Veterans Place, Inc.",
+      "grant_id": "VPLA295-3657-405-PD-24",
+      "total_beds": 18,
+      "is_service_center": false,
+      "state": "NH",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 5,
+        "clinical_treatment": 0,
+        "intensive": 13,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "1",
+      "station": "631",
+      "organization": "Soldier On, Inc.",
+      "grant_id": "SOIP461-3826-631-PD-24",
+      "total_beds": 112,
+      "is_service_center": false,
+      "state": "MA",
+      "bed_types": {
+        "bridge_housing": 5,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 53,
+        "intensive": 54,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "1",
+      "station": "523",
+      "organization": "Volunteers of America of Massachusetts, Inc.",
+      "grant_id": "VOAM304-3888-523-PD-24",
+      "total_beds": 24,
+      "is_service_center": false,
+      "state": "MA",
+      "bed_types": {
+        "bridge_housing": 5,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 19,
+        "intensive": 0,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "1",
+      "station": "689",
+      "organization": "Applied Behavioral Rehabilitation Institute, Inc.",
+      "grant_id": "ABRI511-3949-689-PD-24",
+      "total_beds": 47,
+      "is_service_center": false,
+      "state": "CT",
+      "bed_types": {
+        "bridge_housing": 16,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 5,
+        "intensive": 26,
+        "minor_dependents": 4
+      }
+    },
+    {
+      "visn": "1",
+      "station": "402",
+      "organization": "Veterans Inc.",
+      "grant_id": "VETE024-4193-402-PD-24",
+      "total_beds": 24,
+      "is_service_center": false,
+      "state": "ME",
+      "bed_types": {
+        "bridge_housing": 6,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 18,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "1",
+      "station": "650",
+      "organization": "YWCA Rhode Island",
+      "grant_id": "YRIP596-4341-650-PD-24",
+      "total_beds": 50,
+      "is_service_center": false,
+      "state": "RI",
+      "bed_types": {
+        "bridge_housing": 5,
+        "low_demand": 0,
+        "hospital_to_housing": 16,
+        "clinical_treatment": 0,
+        "intensive": 29,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "1",
+      "station": "523",
+      "organization": "Pine Street Inn, Inc.",
+      "grant_id": "PSII093-4396-523-PD-24",
+      "total_beds": 15,
+      "is_service_center": false,
+      "state": "MA",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 15,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 0,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "1",
+      "station": "405",
+      "organization": "Veterans Inc.",
+      "grant_id": "VETE024-4526-405-PD-24",
+      "total_beds": 20,
+      "is_service_center": false,
+      "state": "NH",
+      "bed_types": {
+        "bridge_housing": 5,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 15,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "1",
+      "station": "689",
+      "organization": "Community Renewal Team, Inc.",
+      "grant_id": "CRTI640-4573-689-PD-24",
+      "total_beds": 12,
+      "is_service_center": false,
+      "state": "CT",
+      "bed_types": {
+        "bridge_housing": 6,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 6,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "1",
+      "station": "650",
+      "organization": "The Providence Center",
+      "grant_id": "PROC969-4652-650-PD-24",
+      "total_beds": 12,
+      "is_service_center": false,
+      "state": "RI",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 5,
+        "clinical_treatment": 0,
+        "intensive": 7,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "1",
+      "station": "631",
+      "organization": "Montachusett Veterans Outreach Center, Inc.",
+      "grant_id": "MVOC426-4769-631-PD-24",
+      "total_beds": 12,
+      "is_service_center": false,
+      "state": "MA",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 12,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "1",
+      "station": "650",
+      "organization": "Southeastern Massachusetts Veterans Housing Program, Inc.",
+      "grant_id": "SMVH035-4812-650-PD-24",
+      "total_beds": 19,
+      "is_service_center": false,
+      "state": "RI",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 7,
+        "intensive": 12,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "1",
+      "station": "689",
+      "organization": "Fish, Friends in Service to Humanity of Northwestern Connecticut Inc.",
+      "grant_id": "FISH637-4843-689-PD-24",
+      "total_beds": 5,
+      "is_service_center": false,
+      "state": "CT",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 5,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "1",
+      "station": "689",
+      "organization": "Veterans Inc.",
+      "grant_id": "VETE024-4856-689-PD-24",
+      "total_beds": 20,
+      "is_service_center": false,
+      "state": "CT",
+      "bed_types": {
+        "bridge_housing": 5,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 15,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "1",
+      "station": "689",
+      "organization": "Columbus House, Inc.",
+      "grant_id": "COLU873-4862-689-PD-24",
+      "total_beds": 14,
+      "is_service_center": false,
+      "state": "CT",
+      "bed_types": {
+        "bridge_housing": 7,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 7,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "1",
+      "station": "650",
+      "organization": "Operation Stand Down Rhode Island",
+      "grant_id": "OSDR772-4931-650-PD-24",
+      "total_beds": 26,
+      "is_service_center": false,
+      "state": "RI",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 10,
+        "intensive": 16,
+        "minor_dependents": 3
+      }
+    },
+    {
+      "visn": "1",
+      "station": "689",
+      "organization": "Area Congregations Together, Inc.",
+      "grant_id": "AREA859-5191-689-PD-24",
+      "total_beds": 5,
+      "is_service_center": false,
+      "state": "CT",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 5,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "1",
+      "station": "689",
+      "organization": "New London Homeless Hospitality Center, Inc.",
+      "grant_id": "NLHH908-5195-689-PD-24",
+      "total_beds": 12,
+      "is_service_center": false,
+      "state": "CT",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 5,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 7,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "1",
+      "station": "689",
+      "organization": "South Park Inn, Inc.",
+      "grant_id": "SPII735-5211-689-PD-24",
+      "total_beds": 15,
+      "is_service_center": false,
+      "state": "CT",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 15,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 0,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "2",
+      "station": "528A7",
+      "organization": "Altamont Program, Inc.",
+      "grant_id": "ALTA881-3395-528A7-PD-24",
+      "total_beds": 44,
+      "is_service_center": false,
+      "state": "NY",
+      "bed_types": {
+        "bridge_housing": 5,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 20,
+        "intensive": 19,
+        "minor_dependents": 5
+      }
+    },
+    {
+      "visn": "2",
+      "station": "528A8",
+      "organization": "Veterans & Community Housing Coalition Inc",
+      "grant_id": "VCHC839-3557-528A8-PD-24",
+      "total_beds": 13,
+      "is_service_center": false,
+      "state": "NY",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 13,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "2",
+      "station": "630",
+      "organization": "City of New York, Department of Homeless Services",
+      "grant_id": "CONY434-3674-630-PD-24",
+      "total_beds": 154,
+      "is_service_center": false,
+      "state": "NY",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 154,
+        "intensive": 0,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "2",
+      "station": "528A7",
+      "organization": "Volunteers of America of Western New York, Inc.",
+      "grant_id": "VOAU713-3846-528A7-PD-24",
+      "total_beds": 5,
+      "is_service_center": false,
+      "state": "NY",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 5,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "2",
+      "station": "561",
+      "organization": "County of Bergen, Human Services Dept.",
+      "grant_id": "BCDH426-4043-561-PD-24",
+      "total_beds": 8,
+      "is_service_center": false,
+      "state": "NJ",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 8,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "2",
+      "station": "632",
+      "organization": "United Veterans Beacon House, Inc.",
+      "grant_id": "UVBH402-4125-632-PD-24",
+      "total_beds": 80,
+      "is_service_center": false,
+      "state": "NY",
+      "bed_types": {
+        "bridge_housing": 19,
+        "low_demand": 20,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 41,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "2",
+      "station": "528A6",
+      "organization": "Veterans Outreach Center, Inc.",
+      "grant_id": "VOCI379-4279-528A6-PD-24",
+      "total_beds": 40,
+      "is_service_center": false,
+      "state": "NY",
+      "bed_types": {
+        "bridge_housing": 5,
+        "low_demand": 10,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 10,
+        "intensive": 15,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "2",
+      "station": "528",
+      "organization": "City Mission Society Inc.",
+      "grant_id": "CMSI965-4407-528-PD-24",
+      "total_beds": 30,
+      "is_service_center": false,
+      "state": "NY",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 16,
+        "intensive": 14,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "2",
+      "station": "561",
+      "organization": "Community Hope, Inc.",
+      "grant_id": "CHOP038-4472-561-PD-24",
+      "total_beds": 95,
+      "is_service_center": false,
+      "state": "NJ",
+      "bed_types": {
+        "bridge_housing": 15,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 42,
+        "intensive": 38,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "2",
+      "station": "561",
+      "organization": "VOICES OF OUR SISTERS INC",
+      "grant_id": "VOOS838-4662-561-PD-24",
+      "total_beds": 20,
+      "is_service_center": false,
+      "state": "NJ",
+      "bed_types": {
+        "bridge_housing": 5,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 15,
+        "minor_dependents": 10
+      }
+    },
+    {
+      "visn": "2",
+      "station": "528A8",
+      "organization": "Albany Housing Coalition, Inc.",
+      "grant_id": "AHCI606-4709-528A8-PD-24",
+      "total_beds": 28,
+      "is_service_center": false,
+      "state": "NY",
+      "bed_types": {
+        "bridge_housing": 8,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 20,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "2",
+      "station": "561",
+      "organization": "NJ Department of Military & Veterans Affairs, Veterans Haven",
+      "grant_id": "NJDM928-5276-561-PD-24",
+      "total_beds": 75,
+      "is_service_center": false,
+      "state": "NJ",
+      "bed_types": {
+        "bridge_housing": 5,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 31,
+        "intensive": 39,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "4",
+      "station": "595",
+      "organization": "Tenfold",
+      "grant_id": "TCSI792-3618-595-PD-24",
+      "total_beds": 17,
+      "is_service_center": false,
+      "state": "PA",
+      "bed_types": {
+        "bridge_housing": 5,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 12,
+        "minor_dependents": 6
+      }
+    },
+    {
+      "visn": "4",
+      "station": "642",
+      "organization": "Volunteers of America Delaware Valley",
+      "grant_id": "VOAD669-3634-642-PD-24",
+      "total_beds": 30,
+      "is_service_center": false,
+      "state": "PA",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 30,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 0,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "4",
+      "station": "460",
+      "organization": "Warriors Helping Warriors Inc.",
+      "grant_id": "WHWS705-3996-460-PD-24",
+      "total_beds": 12,
+      "is_service_center": false,
+      "state": "DE",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 6,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 6,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "4",
+      "station": "646",
+      "organization": "Shepherd's Heart Fellowship and Ministries",
+      "grant_id": "SHFC063-4200-646-PD-24",
+      "total_beds": 12,
+      "is_service_center": false,
+      "state": null,
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 5,
+        "clinical_treatment": 0,
+        "intensive": 7,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "4",
+      "station": "642",
+      "organization": "NJ Department of Military & Veterans Affairs, Veterans Haven",
+      "grant_id": "NJDM928-4209-642-PD-24",
+      "total_beds": 81,
+      "is_service_center": false,
+      "state": "PA",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 40,
+        "intensive": 41,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "4",
+      "station": "693",
+      "organization": "Catholic Social Services Diocese of Scranton, Inc.",
+      "grant_id": "CSSD341-4217-693-PD-24",
+      "total_beds": 30,
+      "is_service_center": false,
+      "state": "PA",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 7,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 15,
+        "intensive": 8,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "4",
+      "station": "646",
+      "organization": "Veterans Leadership Program of Western Pennsylvania, Inc.",
+      "grant_id": "VLPP643-4231-646-PD-24",
+      "total_beds": 25,
+      "is_service_center": false,
+      "state": null,
+      "bed_types": {
+        "bridge_housing": 15,
+        "low_demand": 10,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 0,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "4",
+      "station": "642",
+      "organization": "Fresh Start Foundation",
+      "grant_id": "FRES137-4647-642-PD-24",
+      "total_beds": 40,
+      "is_service_center": false,
+      "state": "PA",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 15,
+        "clinical_treatment": 0,
+        "intensive": 25,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "4",
+      "station": "646",
+      "organization": "Veterans Place of Washington Boulevard, Inc.",
+      "grant_id": "VPWB030-4744-646-PD-24",
+      "total_beds": 0,
+      "is_service_center": true,
+      "state": null,
+      "bed_types": {}
+    },
+    {
+      "visn": "4",
+      "station": "529",
+      "organization": "The Housing Authority of the County of Butler",
+      "grant_id": "HACB448-4757-529-PD-24",
+      "total_beds": 10,
+      "is_service_center": false,
+      "state": "PA",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 10,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "4",
+      "station": "642",
+      "organization": "Veterans Multi-Service Center, Inc.",
+      "grant_id": "VMSC079-4764-642-PD-24",
+      "total_beds": 0,
+      "is_service_center": true,
+      "state": "PA",
+      "bed_types": {}
+    },
+    {
+      "visn": "4",
+      "station": "646",
+      "organization": "Veterans Place of Washington Boulevard, Inc.",
+      "grant_id": "VPWB030-4789-646-PD-24",
+      "total_beds": 56,
+      "is_service_center": false,
+      "state": null,
+      "bed_types": {
+        "bridge_housing": 5,
+        "low_demand": 20,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 31,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "4",
+      "station": "562",
+      "organization": "Veterans Leadership Program of Western Pennsylvania, Inc.",
+      "grant_id": "VLPP643-4977-562-PD-24",
+      "total_beds": 10,
+      "is_service_center": false,
+      "state": "PA",
+      "bed_types": {
+        "bridge_housing": 10,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 0,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "4",
+      "station": "562",
+      "organization": "Erie United Methodist Alliance",
+      "grant_id": "EUMA750-5028-562-PD-24",
+      "total_beds": 10,
+      "is_service_center": false,
+      "state": "PA",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 10,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 0,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "4",
+      "station": "503",
+      "organization": "Veterans Leadership Program of Western Pennsylvania, Inc.",
+      "grant_id": "VLPP643-5052-503-PD-24",
+      "total_beds": 12,
+      "is_service_center": false,
+      "state": "PA",
+      "bed_types": {
+        "bridge_housing": 12,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 0,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "4",
+      "station": "529",
+      "organization": "Veterans Leadership Program of Western Pennsylvania, Inc.",
+      "grant_id": "VLPP643-5057-529-PD-24",
+      "total_beds": 10,
+      "is_service_center": false,
+      "state": "PA",
+      "bed_types": {}
+    },
+    {
+      "visn": "4",
+      "station": "646",
+      "organization": "Helping Heroes, Inc.",
+      "grant_id": "HHOS594-5063-646-PD-24",
+      "total_beds": 10,
+      "is_service_center": false,
+      "state": null,
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 10,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "4",
+      "station": "460",
+      "organization": "Home of the Brave",
+      "grant_id": "HOTB521-5125-460-PD-24",
+      "total_beds": 20,
+      "is_service_center": false,
+      "state": "DE",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 10,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 10,
+        "minor_dependents": 3
+      }
+    },
+    {
+      "visn": "4",
+      "station": "529",
+      "organization": "Robin's Home, Inc.",
+      "grant_id": "ROBN989-5175-529-PD-24",
+      "total_beds": 6,
+      "is_service_center": false,
+      "state": "PA",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 6,
+        "minor_dependents": 6
+      }
+    },
+    {
+      "visn": "4",
+      "station": "693",
+      "organization": "Victory House of Lehigh Valley",
+      "grant_id": "VHLV759-5227-693-PD-24",
+      "total_beds": 15,
+      "is_service_center": false,
+      "state": "PA",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 15,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "5",
+      "station": "581",
+      "organization": "Mountain Comprehensive Care Center, Inc",
+      "grant_id": "MCCC787-3601-581-PD-24",
+      "total_beds": 8,
+      "is_service_center": false,
+      "state": null,
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 8,
+        "intensive": 0,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "5",
+      "station": "512",
+      "organization": "Maryland Center for Veterans Education and Training, Inc.",
+      "grant_id": "MVET710-3914-512-PD-24",
+      "total_beds": 65,
+      "is_service_center": false,
+      "state": "MD",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 30,
+        "intensive": 35,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "5",
+      "station": "540",
+      "organization": "North Central West Virginia Community Action Association, Inc.",
+      "grant_id": "NCWV604-3948-540-PD-24",
+      "total_beds": 5,
+      "is_service_center": false,
+      "state": "VA",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 5,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 0,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "5",
+      "station": "512",
+      "organization": "Chesapeake Health Education Program, Inc.",
+      "grant_id": "CHEP309-4241-512-PD-24",
+      "total_beds": 29,
+      "is_service_center": false,
+      "state": "MD",
+      "bed_types": {
+        "bridge_housing": 8,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 21,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "5",
+      "station": "512",
+      "organization": "Cecil County Men's Shelter, Inc.",
+      "grant_id": "CCTY678-4561-512-PD-24",
+      "total_beds": 6,
+      "is_service_center": false,
+      "state": "MD",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 6,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "5",
+      "station": "613",
+      "organization": "Telamon Corporation",
+      "grant_id": "TELA483-4946-613-PD-24",
+      "total_beds": 11,
+      "is_service_center": false,
+      "state": "DC",
+      "bed_types": {
+        "bridge_housing": 5,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 6,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "5",
+      "station": "512",
+      "organization": "The Baltimore Station, Inc.",
+      "grant_id": "TBSI258-4947-512-PD-24",
+      "total_beds": 70,
+      "is_service_center": false,
+      "state": "MD",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 48,
+        "intensive": 22,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "5",
+      "station": "512",
+      "organization": "Project PLASE, Inc.",
+      "grant_id": "PLAS331-4954-512-PD-24",
+      "total_beds": 10,
+      "is_service_center": false,
+      "state": "MD",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 10,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 0,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "5",
+      "station": "688",
+      "organization": "ACCESS HOUSING INC DC",
+      "grant_id": "ACCE702-4975-688-PD-24",
+      "total_beds": 30,
+      "is_service_center": false,
+      "state": "DC",
+      "bed_types": {
+        "bridge_housing": 30,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 0,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "5",
+      "station": "613",
+      "organization": "Way Station, Inc.",
+      "grant_id": "WAYS749-5089-613-PD-24",
+      "total_beds": 25,
+      "is_service_center": false,
+      "state": "DC",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 25,
+        "intensive": 0,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "6",
+      "station": "637",
+      "organization": "FIRST at Blue Ridge, Inc.",
+      "grant_id": "FABR948-3588-637-PD-24",
+      "total_beds": 30,
+      "is_service_center": false,
+      "state": "NC",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 30,
+        "intensive": 0,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "6",
+      "station": "590",
+      "organization": "Judeo-Christian Outreach Center, Inc.",
+      "grant_id": "JCOC126-3877-590-PD-24",
+      "total_beds": 16,
+      "is_service_center": false,
+      "state": "VA",
+      "bed_types": {
+        "bridge_housing": 5,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 11,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "6",
+      "station": "558",
+      "organization": "Triangle Residential Options for Substance Abusers, Inc.",
+      "grant_id": "TROS158-3909-558-PD-24",
+      "total_beds": 15,
+      "is_service_center": false,
+      "state": "NC",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 15,
+        "intensive": 0,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "6",
+      "station": "659",
+      "organization": "Servant Center, Inc.",
+      "grant_id": "SCIP197-4599-659-PD-24",
+      "total_beds": 21,
+      "is_service_center": false,
+      "state": "NC",
+      "bed_types": {
+        "bridge_housing": 6,
+        "low_demand": 0,
+        "hospital_to_housing": 15,
+        "clinical_treatment": 0,
+        "intensive": 0,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "6",
+      "station": "659",
+      "organization": "Open Door Ministries of High Point, Inc.",
+      "grant_id": "ODMH543-4670-659-PD-24",
+      "total_beds": 24,
+      "is_service_center": false,
+      "state": "NC",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 10,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 8,
+        "intensive": 6,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "6",
+      "station": "565",
+      "organization": "Good Shepherd Ministries of Wilmington, Inc.",
+      "grant_id": "GSMI178-4799-565-PD-24",
+      "total_beds": 16,
+      "is_service_center": false,
+      "state": "NC",
+      "bed_types": {
+        "bridge_housing": 16,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 0,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "6",
+      "station": "659",
+      "organization": "Roof Above, Inc.",
+      "grant_id": "CCUM620-4857-659-PD-24",
+      "total_beds": 35,
+      "is_service_center": false,
+      "state": "NC",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 20,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 5,
+        "intensive": 10,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "6",
+      "station": "659",
+      "organization": "Diakonos, Inc.",
+      "grant_id": "DIAK225-4866-659-PD-24",
+      "total_beds": 10,
+      "is_service_center": false,
+      "state": "NC",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 5,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 5,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "6",
+      "station": "637",
+      "organization": "Asheville Buncombe Community Christian Ministry, Inc.",
+      "grant_id": "ABCC001-4914-637-PD-24",
+      "total_beds": 158,
+      "is_service_center": false,
+      "state": "NC",
+      "bed_types": {
+        "bridge_housing": 50,
+        "low_demand": 0,
+        "hospital_to_housing": 10,
+        "clinical_treatment": 26,
+        "intensive": 72,
+        "minor_dependents": 10
+      }
+    },
+    {
+      "visn": "6",
+      "station": "659",
+      "organization": "VHVH, Inc.",
+      "grant_id": "VHVH898-4948-659-PD-24",
+      "total_beds": 24,
+      "is_service_center": false,
+      "state": "NC",
+      "bed_types": {
+        "bridge_housing": 5,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 19,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "6",
+      "station": "659",
+      "organization": "Caring Services, Inc.",
+      "grant_id": "CARI296-5022-659-PD-24",
+      "total_beds": 12,
+      "is_service_center": false,
+      "state": "NC",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 12,
+        "intensive": 0,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "6",
+      "station": "652",
+      "organization": "Liberation Veteran Services, Inc.",
+      "grant_id": "LIBE340-5097-652-PD-24",
+      "total_beds": 38,
+      "is_service_center": false,
+      "state": "VA",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 38,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 0,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "6",
+      "station": "659",
+      "organization": "Rowan Helping Ministries",
+      "grant_id": "RHMN532-5130-659-PD-24",
+      "total_beds": 10,
+      "is_service_center": false,
+      "state": "NC",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 10,
+        "minor_dependents": 4
+      }
+    },
+    {
+      "visn": "7",
+      "station": "534",
+      "organization": "One-Eighty Place",
+      "grant_id": "ONEE483-3883-534-PD-24",
+      "total_beds": 45,
+      "is_service_center": false,
+      "state": "SC",
+      "bed_types": {
+        "bridge_housing": 45,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 0,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "7",
+      "station": "557",
+      "organization": "Genesis Joy House Homeless Shelter",
+      "grant_id": "GJHS437-3936-557-PD-24",
+      "total_beds": 8,
+      "is_service_center": false,
+      "state": "AL",
+      "bed_types": {
+        "bridge_housing": 8,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 0,
+        "minor_dependents": 8
+      }
+    },
+    {
+      "visn": "7",
+      "station": "508",
+      "organization": "The Salvation Army",
+      "grant_id": "SAGC607-3941-508-PD-24",
+      "total_beds": 68,
+      "is_service_center": false,
+      "state": "GA",
+      "bed_types": {
+        "bridge_housing": 17,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 23,
+        "intensive": 28,
+        "minor_dependents": 8
+      }
+    },
+    {
+      "visn": "7",
+      "station": "508",
+      "organization": "Veterans Empowerment Organization of Georgia Inc",
+      "grant_id": "VEOG022-3961-508-PD-24",
+      "total_beds": 20,
+      "is_service_center": false,
+      "state": "GA",
+      "bed_types": {
+        "bridge_housing": 5,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 15,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "7",
+      "station": "521",
+      "organization": "The Salvation Army",
+      "grant_id": "SAGC607-4025-521-PD-24",
+      "total_beds": 10,
+      "is_service_center": false,
+      "state": null,
+      "bed_types": {
+        "bridge_housing": 10,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 0,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "7",
+      "station": "544",
+      "organization": "Alston Wilkes Society",
+      "grant_id": "ALST907-4091-544-PD-24",
+      "total_beds": 55,
+      "is_service_center": false,
+      "state": "AL",
+      "bed_types": {
+        "bridge_housing": 9,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 34,
+        "intensive": 12,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "7",
+      "station": "544",
+      "organization": "Midlands Housing Alliance, Inc.",
+      "grant_id": "MHAI141-4238-544-PD-24",
+      "total_beds": 20,
+      "is_service_center": false,
+      "state": "AL",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 20,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 0,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "7",
+      "station": "534",
+      "organization": "Chesapeake Health Education Program, Inc.",
+      "grant_id": "CHEP309-4255-534-PD-24",
+      "total_beds": 35,
+      "is_service_center": false,
+      "state": "SC",
+      "bed_types": {
+        "bridge_housing": 12,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 23,
+        "minor_dependents": 2
+      }
+    },
+    {
+      "visn": "7",
+      "station": "557",
+      "organization": "The Salvation Army",
+      "grant_id": "SAGC607-4924-557-PD-24",
+      "total_beds": 30,
+      "is_service_center": false,
+      "state": "AL",
+      "bed_types": {
+        "bridge_housing": 10,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 20,
+        "intensive": 0,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "7",
+      "station": "534",
+      "organization": "Eastern Carolina Homelessness Organization, Inc.",
+      "grant_id": "ECHO712-4960-534-PD-24",
+      "total_beds": 20,
+      "is_service_center": false,
+      "state": "SC",
+      "bed_types": {
+        "bridge_housing": 20,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 0,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "7",
+      "station": "508",
+      "organization": "24/7 Gateway, LLC",
+      "grant_id": "GATE832-5214-508-PD-24",
+      "total_beds": 60,
+      "is_service_center": false,
+      "state": "GA",
+      "bed_types": {
+        "bridge_housing": 10,
+        "low_demand": 17,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 33,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "8",
+      "station": "516",
+      "organization": "Boley Centers, Inc.",
+      "grant_id": "BOLE089-3307-516-PD-24",
+      "total_beds": 13,
+      "is_service_center": false,
+      "state": "FL",
+      "bed_types": {
+        "bridge_housing": 5,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 8,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "8",
+      "station": "546",
+      "organization": "Volunteers of America of Florida, Inc.",
+      "grant_id": "VOAJ992-3359-546-PD-24",
+      "total_beds": 45,
+      "is_service_center": false,
+      "state": "FL",
+      "bed_types": {
+        "bridge_housing": 8,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 10,
+        "intensive": 27,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "8",
+      "station": "548",
+      "organization": "The Salvation Army",
+      "grant_id": "SAGC607-3439-548-PD-24",
+      "total_beds": 15,
+      "is_service_center": false,
+      "state": "FL",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 15,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "8",
+      "station": "673",
+      "organization": "Steps to Recovery, Inc.",
+      "grant_id": "STRI597-3445-673-PD-24",
+      "total_beds": 42,
+      "is_service_center": false,
+      "state": "FL",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 42,
+        "intensive": 0,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "8",
+      "station": "675",
+      "organization": "BRIDGES BTC",
+      "grant_id": "BRID505-3532-675-PD-24",
+      "total_beds": 6,
+      "is_service_center": false,
+      "state": "FL",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 6,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "8",
+      "station": "516",
+      "organization": "Volunteers of America of Florida, Inc.",
+      "grant_id": "VOAJ992-3540-516-PD-24",
+      "total_beds": 44,
+      "is_service_center": false,
+      "state": "FL",
+      "bed_types": {
+        "bridge_housing": 5,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 12,
+        "intensive": 27,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "8",
+      "station": "675",
+      "organization": "Volunteers of America of Florida, Inc.",
+      "grant_id": "VOAJ992-3542-675-PD-24",
+      "total_beds": 80,
+      "is_service_center": false,
+      "state": "FL",
+      "bed_types": {
+        "bridge_housing": 10,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 33,
+        "intensive": 37,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "8",
+      "station": "673",
+      "organization": "Volunteers of America of Florida, Inc.",
+      "grant_id": "VOAJ992-3543-673-PD-24",
+      "total_beds": 12,
+      "is_service_center": false,
+      "state": "FL",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 6,
+        "intensive": 6,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "8",
+      "station": "573",
+      "organization": "Volunteers of America of Florida, Inc.",
+      "grant_id": "VOAJ992-3546-573-PD-24",
+      "total_beds": 187,
+      "is_service_center": false,
+      "state": "FL",
+      "bed_types": {
+        "bridge_housing": 35,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 68,
+        "intensive": 84,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "8",
+      "station": "675",
+      "organization": "Halifax Urban Ministries",
+      "grant_id": "HUMS922-3837-675-PD-24",
+      "total_beds": 20,
+      "is_service_center": false,
+      "state": "FL",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 20,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 0,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "8",
+      "station": "672",
+      "organization": "Casa del Peregrino Aguadilla, Inc.",
+      "grant_id": "CDPA904-3882-672-PD-24",
+      "total_beds": 15,
+      "is_service_center": false,
+      "state": "FL",
+      "bed_types": {
+        "bridge_housing": 5,
+        "low_demand": 5,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 5,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "8",
+      "station": "546",
+      "organization": "Camillus House",
+      "grant_id": "CAMI862-3905-546-PD-24",
+      "total_beds": 38,
+      "is_service_center": false,
+      "state": "FL",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 20,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 18,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "8",
+      "station": "675",
+      "organization": "The Transition House, Inc.",
+      "grant_id": "THIP913-4552-675-PD-24",
+      "total_beds": 44,
+      "is_service_center": false,
+      "state": "FL",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 44,
+        "intensive": 0,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "8",
+      "station": "516",
+      "organization": "Homeless Emergency Project, Inc.",
+      "grant_id": "HEPI694-4584-516-PD-24",
+      "total_beds": 40,
+      "is_service_center": false,
+      "state": "FL",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 40,
+        "intensive": 0,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "8",
+      "station": "573",
+      "organization": "Clara White Mission, Inc.",
+      "grant_id": "CWMI104-4641-573-PD-24",
+      "total_beds": 31,
+      "is_service_center": false,
+      "state": "FL",
+      "bed_types": {
+        "bridge_housing": 10,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 21,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "8",
+      "station": "573",
+      "organization": "Clara White Mission, Inc.",
+      "grant_id": "CWMI104-4642-573-PD-24",
+      "total_beds": 0,
+      "is_service_center": true,
+      "state": "FL",
+      "bed_types": {}
+    },
+    {
+      "visn": "8",
+      "station": "675",
+      "organization": "Housing for Homeless, Inc.",
+      "grant_id": "HFHI409-4687-675-PD-24",
+      "total_beds": 34,
+      "is_service_center": false,
+      "state": "FL",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 21,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 13,
+        "minor_dependents": 10
+      }
+    },
+    {
+      "visn": "8",
+      "station": "546",
+      "organization": "New Hope CORPS Inc.",
+      "grant_id": "NHCO678-4816-546-PD-24",
+      "total_beds": 25,
+      "is_service_center": false,
+      "state": "FL",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 25,
+        "intensive": 0,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "8",
+      "station": "675",
+      "organization": "Vietnam and All Veterans of Brevard, Inc.",
+      "grant_id": "VVOB679-4831-675-PD-24",
+      "total_beds": 19,
+      "is_service_center": false,
+      "state": "FL",
+      "bed_types": {
+        "bridge_housing": 5,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 14,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "8",
+      "station": "516",
+      "organization": "Society of St. Vincent de Paul South Pinellas, Inc.",
+      "grant_id": "SSVA770-4832-516-PD-24",
+      "total_beds": 55,
+      "is_service_center": false,
+      "state": "FL",
+      "bed_types": {
+        "bridge_housing": 15,
+        "low_demand": 40,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 0,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "8",
+      "station": "675",
+      "organization": "Aspire Health Partners",
+      "grant_id": "ASPI233-4973-675-PD-24",
+      "total_beds": 54,
+      "is_service_center": false,
+      "state": "FL",
+      "bed_types": {
+        "bridge_housing": 5,
+        "low_demand": 19,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 30,
+        "minor_dependents": 4
+      }
+    },
+    {
+      "visn": "8",
+      "station": "546",
+      "organization": "Carrfour Supportive Housing, Inc.",
+      "grant_id": "CSHI766-5011-546-PD-24",
+      "total_beds": 20,
+      "is_service_center": false,
+      "state": "FL",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 10,
+        "intensive": 10,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "8",
+      "station": "573",
+      "organization": "FIVE S T A R VETERANS CENTER INC",
+      "grant_id": "FSVC974-5138-573-PD-24",
+      "total_beds": 20,
+      "is_service_center": false,
+      "state": "FL",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 20,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 0,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "8",
+      "station": "546",
+      "organization": "United Way of Broward County, Inc.",
+      "grant_id": "UWBC402-5226-546-PD-24",
+      "total_beds": 15,
+      "is_service_center": false,
+      "state": "FL",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 15,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "9",
+      "station": "603",
+      "organization": "Society of St. Vincent de Paul Council of Louisville",
+      "grant_id": "SSVD110-3430-603-PD-24",
+      "total_beds": 20,
+      "is_service_center": false,
+      "state": "KY",
+      "bed_types": {
+        "bridge_housing": 5,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 15,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "9",
+      "station": "614",
+      "organization": "Barron Heights Community Development Corporation",
+      "grant_id": "BHCD468-3454-614-PD-24",
+      "total_beds": 40,
+      "is_service_center": false,
+      "state": "TN",
+      "bed_types": {
+        "bridge_housing": 5,
+        "low_demand": 10,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 25,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "9",
+      "station": "596",
+      "organization": "Foundation for Affordable Housing",
+      "grant_id": "FFAH747-3556-596-PD-24",
+      "total_beds": 29,
+      "is_service_center": false,
+      "state": "KY",
+      "bed_types": {
+        "bridge_housing": 10,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 19,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "9",
+      "station": "614",
+      "organization": "Pearl With You Inc",
+      "grant_id": "PWYI781-3586-614-PD-24",
+      "total_beds": 30,
+      "is_service_center": false,
+      "state": "TN",
+      "bed_types": {
+        "bridge_housing": 10,
+        "low_demand": 10,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 10,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "9",
+      "station": "626",
+      "organization": "BUILDING LIVES FOUNDATION INC",
+      "grant_id": "BLFD526-3589-626-PD-24",
+      "total_beds": 10,
+      "is_service_center": false,
+      "state": "TN",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 10,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "9",
+      "station": "626",
+      "organization": "Operation Stand Down Tennessee",
+      "grant_id": "OSDT832-3622-626-PD-24",
+      "total_beds": 42,
+      "is_service_center": false,
+      "state": "TN",
+      "bed_types": {
+        "bridge_housing": 16,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 26,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "9",
+      "station": "626",
+      "organization": "LifeSkills Inc.",
+      "grant_id": "PNMH739-3677-626-PD-24",
+      "total_beds": 50,
+      "is_service_center": false,
+      "state": "TN",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 25,
+        "intensive": 25,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "9",
+      "station": "614",
+      "organization": "Alpha Omega Veteran Services, Inc.",
+      "grant_id": "AOVS468-3876-614-PD-24",
+      "total_beds": 10,
+      "is_service_center": false,
+      "state": "TN",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 10,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "9",
+      "station": "626",
+      "organization": "Room in the Inn, Inc.",
+      "grant_id": "RITI413-3901-626-PD-24",
+      "total_beds": 34,
+      "is_service_center": false,
+      "state": "TN",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 5,
+        "hospital_to_housing": 7,
+        "clinical_treatment": 0,
+        "intensive": 22,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "9",
+      "station": "626",
+      "organization": "Operation Stand Down Tennessee",
+      "grant_id": "OSDT832-4117-626-PD-24",
+      "total_beds": 0,
+      "is_service_center": true,
+      "state": "TN",
+      "bed_types": {}
+    },
+    {
+      "visn": "9",
+      "station": "596",
+      "organization": "Hope Center, Inc.",
+      "grant_id": "HOPE296-4468-596-PD-24",
+      "total_beds": 30,
+      "is_service_center": false,
+      "state": "KY",
+      "bed_types": {
+        "bridge_housing": 20,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 10,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "9",
+      "station": "626",
+      "organization": "Buffalo Valley, Inc.",
+      "grant_id": "BUFF964-4577-626-PD-24",
+      "total_beds": 45,
+      "is_service_center": false,
+      "state": "TN",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 18,
+        "intensive": 27,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "9",
+      "station": "621",
+      "organization": "The Salvation Army",
+      "grant_id": "SAGC607-4705-621-PD-24",
+      "total_beds": 15,
+      "is_service_center": false,
+      "state": "TN",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 15,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "9",
+      "station": "603",
+      "organization": "The Healing Place",
+      "grant_id": "THPL775-4817-603-PD-24",
+      "total_beds": 72,
+      "is_service_center": false,
+      "state": "KY",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 22,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 50,
+        "intensive": 0,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "9",
+      "station": "614",
+      "organization": "Cocaine and Alcohol Awareness Program, Inc.",
+      "grant_id": "CAAP699-5045-614-PD-24",
+      "total_beds": 53,
+      "is_service_center": false,
+      "state": "TN",
+      "bed_types": {
+        "bridge_housing": 6,
+        "low_demand": 13,
+        "hospital_to_housing": 9,
+        "clinical_treatment": 25,
+        "intensive": 0,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "9",
+      "station": "603",
+      "organization": "Wayside Christian Mission",
+      "grant_id": "WCMP139-5056-603-PD-24",
+      "total_beds": 61,
+      "is_service_center": false,
+      "state": "KY",
+      "bed_types": {
+        "bridge_housing": 28,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 33,
+        "minor_dependents": 5
+      }
+    },
+    {
+      "visn": "9",
+      "station": "626",
+      "organization": "Matthew 25, Inc.",
+      "grant_id": "MATT641-5108-626-PD-24",
+      "total_beds": 39,
+      "is_service_center": false,
+      "state": "TN",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 14,
+        "intensive": 25,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "9",
+      "station": "603",
+      "organization": "The Salvation Army",
+      "grant_id": "SAGC607-5197-603-PD-24",
+      "total_beds": 40,
+      "is_service_center": false,
+      "state": "KY",
+      "bed_types": {
+        "bridge_housing": 5,
+        "low_demand": 0,
+        "hospital_to_housing": 10,
+        "clinical_treatment": 0,
+        "intensive": 25,
+        "minor_dependents": 22
+      }
+    },
+    {
+      "visn": "9",
+      "station": "621",
+      "organization": "Steps House, Inc.",
+      "grant_id": "STEP038-5237-621-PD-24",
+      "total_beds": 45,
+      "is_service_center": false,
+      "state": "TN",
+      "bed_types": {
+        "bridge_housing": 5,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 13,
+        "intensive": 27,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "10",
+      "station": "539",
+      "organization": "Ohio Valley Goodwill Industries Rehabilitation Center, Inc.",
+      "grant_id": "OVGI062-3368-539-PD-24",
+      "total_beds": 15,
+      "is_service_center": false,
+      "state": "OH",
+      "bed_types": {
+        "bridge_housing": 15,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 0,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "10",
+      "station": "583",
+      "organization": "HVAF of Indiana, Inc.",
+      "grant_id": "HVAF547-3411-583-PD-24",
+      "total_beds": 103,
+      "is_service_center": false,
+      "state": "IN",
+      "bed_types": {
+        "bridge_housing": 20,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 33,
+        "intensive": 50,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "10",
+      "station": "553",
+      "organization": "Michigan Veterans Foundation, Inc.",
+      "grant_id": "MICH628-3424-553-PD-24",
+      "total_beds": 40,
+      "is_service_center": false,
+      "state": "MI",
+      "bed_types": {
+        "bridge_housing": 30,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 10,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "10",
+      "station": "541",
+      "organization": "Stella Maris, Inc.",
+      "grant_id": "STEL181-3440-541-PD-24",
+      "total_beds": 8,
+      "is_service_center": false,
+      "state": "OH",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 8,
+        "intensive": 0,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "10",
+      "station": "553",
+      "organization": "Volunteers of America of Michigan, Inc.",
+      "grant_id": "VOAG662-3594-553-PD-24",
+      "total_beds": 40,
+      "is_service_center": false,
+      "state": "MI",
+      "bed_types": {
+        "bridge_housing": 10,
+        "low_demand": 10,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 20,
+        "intensive": 0,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "10",
+      "station": "539",
+      "organization": "Welcome House of Northern Kentucky, Inc.",
+      "grant_id": "WHKY382-3598-539-PD-24",
+      "total_beds": 10,
+      "is_service_center": false,
+      "state": "OH",
+      "bed_types": {
+        "bridge_housing": 5,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 5,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "10",
+      "station": "539",
+      "organization": "Shelterhouse Volunteer Group dba Drop Inn Center",
+      "grant_id": "SVGI479-3644-539-PD-24",
+      "total_beds": 20,
+      "is_service_center": false,
+      "state": "OH",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 20,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 0,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "10",
+      "station": "538",
+      "organization": "Lutheran Social Services Of Central Ohio Inc",
+      "grant_id": "LSSO586-3793-538-PD-24",
+      "total_beds": 10,
+      "is_service_center": false,
+      "state": "OH",
+      "bed_types": {
+        "bridge_housing": 10,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 0,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "10",
+      "station": "541",
+      "organization": "AxessPointe Community Health Center, Inc.",
+      "grant_id": "FACS451-3880-541-PD-24",
+      "total_beds": 100,
+      "is_service_center": false,
+      "state": "OH",
+      "bed_types": {
+        "bridge_housing": 30,
+        "low_demand": 21,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 49,
+        "minor_dependents": 15
+      }
+    },
+    {
+      "visn": "10",
+      "station": "541",
+      "organization": "Volunteers of America of Greater Ohio, Inc.",
+      "grant_id": "VOAO121-4159-541-PD-24",
+      "total_beds": 48,
+      "is_service_center": false,
+      "state": "OH",
+      "bed_types": {
+        "bridge_housing": 33,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 5,
+        "intensive": 10,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "10",
+      "station": "515",
+      "organization": "Community Rebuilders",
+      "grant_id": "CREB108-4176-515-PD-24",
+      "total_beds": 30,
+      "is_service_center": false,
+      "state": "IN",
+      "bed_types": {
+        "bridge_housing": 30,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 0,
+        "minor_dependents": 5
+      }
+    },
+    {
+      "visn": "10",
+      "station": "541",
+      "organization": "West Side Catholic Center",
+      "grant_id": "WSCC687-4225-541-PD-24",
+      "total_beds": 7,
+      "is_service_center": false,
+      "state": "OH",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 7,
+        "minor_dependents": 3
+      }
+    },
+    {
+      "visn": "10",
+      "station": "541",
+      "organization": "Lutheran Metropolitan Ministry",
+      "grant_id": "LUTH756-4253-541-PD-24",
+      "total_beds": 31,
+      "is_service_center": false,
+      "state": "OH",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 31,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 0,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "10",
+      "station": "552",
+      "organization": "Volunteers of America of Greater Ohio, Inc.",
+      "grant_id": "VOAO121-4411-552-PD-24",
+      "total_beds": 25,
+      "is_service_center": false,
+      "state": null,
+      "bed_types": {
+        "bridge_housing": 15,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 10,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "10",
+      "station": "610",
+      "organization": "Center for the Homeless, Inc.",
+      "grant_id": "CFTH544-4421-610-PD-24",
+      "total_beds": 20,
+      "is_service_center": false,
+      "state": "OH",
+      "bed_types": {
+        "bridge_housing": 10,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 10,
+        "minor_dependents": 6
+      }
+    },
+    {
+      "visn": "10",
+      "station": "538",
+      "organization": "Pickaway County Community Action Organization",
+      "grant_id": "PCCA252-4476-538-PD-24",
+      "total_beds": 6,
+      "is_service_center": false,
+      "state": "OH",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 6,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "10",
+      "station": "539",
+      "organization": "Volunteers of America of Greater Ohio, Inc.",
+      "grant_id": "VOAO121-4529-539-PD-24",
+      "total_beds": 40,
+      "is_service_center": false,
+      "state": "OH",
+      "bed_types": {
+        "bridge_housing": 20,
+        "low_demand": 0,
+        "hospital_to_housing": 5,
+        "clinical_treatment": 0,
+        "intensive": 15,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "10",
+      "station": "757",
+      "organization": "Licking County Coalition For Housing",
+      "grant_id": "LCCH756-4575-757-PD-24",
+      "total_beds": 5,
+      "is_service_center": false,
+      "state": null,
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 5,
+        "minor_dependents": 2
+      }
+    },
+    {
+      "visn": "10",
+      "station": "583",
+      "organization": "HVAF of Indiana, Inc.",
+      "grant_id": "HVAF547-4596-583-PD-24",
+      "total_beds": 0,
+      "is_service_center": true,
+      "state": "IN",
+      "bed_types": {}
+    },
+    {
+      "visn": "10",
+      "station": "610",
+      "organization": "RANDOLPH COUNTY VETERANS SHELTER INC",
+      "grant_id": "RCTY028-4675-610-PD-24",
+      "total_beds": 5,
+      "is_service_center": false,
+      "state": "OH",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 5,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "10",
+      "station": "539",
+      "organization": "Joseph House, Inc.",
+      "grant_id": "JHIP835-4861-539-PD-24",
+      "total_beds": 48,
+      "is_service_center": false,
+      "state": "OH",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 43,
+        "intensive": 5,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "10",
+      "station": "541",
+      "organization": "Young Men's Christian Association of Cleveland Ohio, Inc.",
+      "grant_id": "YMGC728-4989-541-PD-24",
+      "total_beds": 10,
+      "is_service_center": false,
+      "state": "OH",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 10,
+        "intensive": 0,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "10",
+      "station": "515",
+      "organization": "Boysville of Michigan, Inc.",
+      "grant_id": "BOYM326-5204-515-PD-24",
+      "total_beds": 22,
+      "is_service_center": false,
+      "state": "IN",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 22,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 0,
+        "minor_dependents": 10
+      }
+    },
+    {
+      "visn": "10",
+      "station": "506",
+      "organization": "My Brother's Keeper of Genesee County, Inc.",
+      "grant_id": "MBKG247-5210-506-PD-24",
+      "total_beds": 10,
+      "is_service_center": false,
+      "state": "MI",
+      "bed_types": {
+        "bridge_housing": 10,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 0,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "12",
+      "station": "607",
+      "organization": "Porchlight, Inc.",
+      "grant_id": "PORC521-3442-607-PD-24",
+      "total_beds": 24,
+      "is_service_center": false,
+      "state": "WI",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 5,
+        "clinical_treatment": 0,
+        "intensive": 19,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "12",
+      "station": "556",
+      "organization": "Transitional Living Services",
+      "grant_id": "TLSI887-3842-556-PD-24",
+      "total_beds": 20,
+      "is_service_center": false,
+      "state": "IL",
+      "bed_types": {
+        "bridge_housing": 5,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 15,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "12",
+      "station": "695",
+      "organization": "Center for Veterans Issues, Ltd.",
+      "grant_id": "CFVI359-3849-695-PD-24",
+      "total_beds": 74,
+      "is_service_center": false,
+      "state": "WI",
+      "bed_types": {
+        "bridge_housing": 19,
+        "low_demand": 0,
+        "hospital_to_housing": 12,
+        "clinical_treatment": 5,
+        "intensive": 38,
+        "minor_dependents": 7
+      }
+    },
+    {
+      "visn": "12",
+      "station": "537",
+      "organization": "Volunteers of America of Illinois",
+      "grant_id": "VOAP047-3881-537-PD-24",
+      "total_beds": 30,
+      "is_service_center": false,
+      "state": "IL",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 20,
+        "intensive": 10,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "12",
+      "station": "550",
+      "organization": "Fifth Street Renaissance",
+      "grant_id": "FIFT379-4140-550-PD-24",
+      "total_beds": 15,
+      "is_service_center": false,
+      "state": "WI",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 15,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "12",
+      "station": "607",
+      "organization": "Rock Valley Community Programs, Inc.",
+      "grant_id": "RVCP843-4192-607-PD-24",
+      "total_beds": 48,
+      "is_service_center": false,
+      "state": "WI",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 33,
+        "intensive": 15,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "12",
+      "station": "578",
+      "organization": "Family & Friends Day Center, Inc.",
+      "grant_id": "FFDC662-4205-578-PD-24",
+      "total_beds": 8,
+      "is_service_center": false,
+      "state": "IL",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 8,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 0,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "12",
+      "station": "550",
+      "organization": "The Salvation Army",
+      "grant_id": "SANE910-4256-550-PD-24",
+      "total_beds": 31,
+      "is_service_center": false,
+      "state": "WI",
+      "bed_types": {
+        "bridge_housing": 31,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 0,
+        "minor_dependents": 5
+      }
+    },
+    {
+      "visn": "12",
+      "station": "695",
+      "organization": "Guest House of Milwaukee, Inc.",
+      "grant_id": "GHOM301-4685-695-PD-24",
+      "total_beds": 12,
+      "is_service_center": false,
+      "state": "WI",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 12,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "12",
+      "station": "537",
+      "organization": "Featherfist",
+      "grant_id": "FEAT583-4763-537-PD-24",
+      "total_beds": 15,
+      "is_service_center": false,
+      "state": "IL",
+      "bed_types": {
+        "bridge_housing": 5,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 10,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "12",
+      "station": "550",
+      "organization": "Home Sweet Home Ministries, Inc.",
+      "grant_id": "HSHM350-4782-550-PD-24",
+      "total_beds": 7,
+      "is_service_center": false,
+      "state": "WI",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 7,
+        "minor_dependents": 5
+      }
+    },
+    {
+      "visn": "12",
+      "station": "695",
+      "organization": "Wisconsin Department of Veterans Affairs",
+      "grant_id": "WDVA493-4919-695-PD-24",
+      "total_beds": 40,
+      "is_service_center": false,
+      "state": "WI",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 24,
+        "intensive": 16,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "12",
+      "station": "607",
+      "organization": "Rosecrance, Inc.",
+      "grant_id": "ROSE167-4943-607-PD-24",
+      "total_beds": 12,
+      "is_service_center": false,
+      "state": "WI",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 12,
+        "intensive": 0,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "15",
+      "station": "657",
+      "organization": "Missouri Department of Mental Health",
+      "grant_id": "MDMH987-3456-657-PD-24",
+      "total_beds": 50,
+      "is_service_center": false,
+      "state": "MO",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 50,
+        "intensive": 0,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "15",
+      "station": "657",
+      "organization": "The Salvation Army",
+      "grant_id": "SAMO910-4229-657-PD-24",
+      "total_beds": 35,
+      "is_service_center": false,
+      "state": "MO",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 12,
+        "intensive": 23,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "15",
+      "station": "589",
+      "organization": "Benilde Hall, Inc.",
+      "grant_id": "BENI790-4484-589-PD-24",
+      "total_beds": 15,
+      "is_service_center": false,
+      "state": "MO",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 15,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "15",
+      "station": "589",
+      "organization": "Salvation Army",
+      "grant_id": "SAKM998-4503-589-PD-24",
+      "total_beds": 28,
+      "is_service_center": false,
+      "state": "MO",
+      "bed_types": {
+        "bridge_housing": 5,
+        "low_demand": 0,
+        "hospital_to_housing": 5,
+        "clinical_treatment": 0,
+        "intensive": 18,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "15",
+      "station": "589",
+      "organization": "FOOTPRINTS INC",
+      "grant_id": "FPRI039-4888-589-PD-24",
+      "total_beds": 14,
+      "is_service_center": false,
+      "state": "MO",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 14,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "15",
+      "station": "657",
+      "organization": "The Eagles Nest of St Clair County",
+      "grant_id": "ENSC691-4916-657-PD-24",
+      "total_beds": 16,
+      "is_service_center": false,
+      "state": "MO",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 5,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 11,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "15",
+      "station": "657",
+      "organization": "St. Patrick Center",
+      "grant_id": "STPC499-4934-657-PD-24",
+      "total_beds": 7,
+      "is_service_center": false,
+      "state": "MO",
+      "bed_types": {
+        "bridge_housing": 7,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 0,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "15",
+      "station": "657",
+      "organization": "Criminal Justice Ministry",
+      "grant_id": "CRIM318-5121-657-PD-24",
+      "total_beds": 35,
+      "is_service_center": false,
+      "state": "MO",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 12,
+        "intensive": 23,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "16",
+      "station": "520",
+      "organization": "Volunteers of America of Florida, Inc.",
+      "grant_id": "VOAJ992-3544-520-PD-24",
+      "total_beds": 30,
+      "is_service_center": false,
+      "state": "MS",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 25,
+        "intensive": 5,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "16",
+      "station": "667",
+      "organization": "Volunteers of America of North Louisiana",
+      "grant_id": "VOAA820-3577-667-PD-24",
+      "total_beds": 46,
+      "is_service_center": false,
+      "state": "TX",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 20,
+        "intensive": 26,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "16",
+      "station": "520",
+      "organization": "The Salvation Army, A Georgia Corporation",
+      "grant_id": "SAGC607-3786-520-PD-24",
+      "total_beds": 15,
+      "is_service_center": false,
+      "state": "MS",
+      "bed_types": {
+        "bridge_housing": 5,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 5,
+        "intensive": 5,
+        "minor_dependents": 10
+      }
+    },
+    {
+      "visn": "16",
+      "station": "502",
+      "organization": "Catholic Charities of Acadiana, Inc.",
+      "grant_id": "CSAC497-3907-502-PD-24",
+      "total_beds": 16,
+      "is_service_center": false,
+      "state": "MS",
+      "bed_types": {
+        "bridge_housing": 5,
+        "low_demand": 11,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 0,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "16",
+      "station": "629",
+      "organization": "Start Corporation",
+      "grant_id": "STAR098-4062-629-PD-24",
+      "total_beds": 21,
+      "is_service_center": false,
+      "state": "LA",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 9,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 12,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "16",
+      "station": "580",
+      "organization": "Castle Cares Community Ministries",
+      "grant_id": "CCCM674-4071-580-PD-24",
+      "total_beds": 52,
+      "is_service_center": false,
+      "state": "TX",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 16,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 16,
+        "intensive": 20,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "16",
+      "station": "598",
+      "organization": "St. Francis House, Inc.",
+      "grant_id": "SFHI783-4404-598-PD-24",
+      "total_beds": 20,
+      "is_service_center": false,
+      "state": "AR",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 20,
+        "intensive": 0,
+        "minor_dependents": 3
+      }
+    },
+    {
+      "visn": "16",
+      "station": "580",
+      "organization": "The Salvation Army",
+      "grant_id": "SAGC607-4454-580-PD-24",
+      "total_beds": 30,
+      "is_service_center": false,
+      "state": "TX",
+      "bed_types": {
+        "bridge_housing": 30,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 0,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "16",
+      "station": "586",
+      "organization": "Region XII Commission on Mental Health & Retardation",
+      "grant_id": "RXII487-4559-586-PD-24",
+      "total_beds": 17,
+      "is_service_center": false,
+      "state": "MS",
+      "bed_types": {
+        "bridge_housing": 5,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 12,
+        "intensive": 0,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "16",
+      "station": "580",
+      "organization": "United States Veterans Initiative",
+      "grant_id": "USVI752-4664-580-PD-24",
+      "total_beds": 72,
+      "is_service_center": false,
+      "state": "TX",
+      "bed_types": {
+        "bridge_housing": 15,
+        "low_demand": 15,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 37,
+        "intensive": 5,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "16",
+      "station": "520",
+      "organization": "Volunteers of America Southeast, Inc.",
+      "grant_id": "VOAS329-4844-520-PD-24",
+      "total_beds": 38,
+      "is_service_center": false,
+      "state": "MS",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 23,
+        "intensive": 15,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "16",
+      "station": "580",
+      "organization": "United States Veterans Initiative",
+      "grant_id": "USVI752-4891-580-PD-24",
+      "total_beds": 0,
+      "is_service_center": true,
+      "state": "TX",
+      "bed_types": {}
+    },
+    {
+      "visn": "16",
+      "station": "629",
+      "organization": "CONCERNED CITIZENS FOR A BETTER ALGIERS INC",
+      "grant_id": "CCBA360-4972-629-PD-24",
+      "total_beds": 5,
+      "is_service_center": false,
+      "state": "LA",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 5,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "16",
+      "station": "564",
+      "organization": "HOUSE, Inc.",
+      "grant_id": "HOUS894-5040-564-PD-24",
+      "total_beds": 23,
+      "is_service_center": false,
+      "state": "AR",
+      "bed_types": {
+        "bridge_housing": 5,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 18,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "16",
+      "station": "629",
+      "organization": "Volunteers of America Southeast Louisiana, Inc.",
+      "grant_id": "VOAN750-5088-629-PD-24",
+      "total_beds": 59,
+      "is_service_center": false,
+      "state": "LA",
+      "bed_types": {
+        "bridge_housing": 6,
+        "low_demand": 20,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 33,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "17",
+      "station": "671",
+      "organization": "Haven for Hope of Bexar County",
+      "grant_id": "HHBC412-3600-671-PD-24",
+      "total_beds": 40,
+      "is_service_center": false,
+      "state": "TX",
+      "bed_types": {
+        "bridge_housing": 10,
+        "low_demand": 15,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 15,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "17",
+      "station": "549",
+      "organization": "Union Gospel Mission",
+      "grant_id": "UGMP612-4157-549-PD-24",
+      "total_beds": 36,
+      "is_service_center": false,
+      "state": "TX",
+      "bed_types": {
+        "bridge_housing": 10,
+        "low_demand": 26,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 0,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "17",
+      "station": "549",
+      "organization": "The Salvation Army, A Georgia Corporation",
+      "grant_id": "SAGC607-4345-549-PD-24",
+      "total_beds": 70,
+      "is_service_center": false,
+      "state": "TX",
+      "bed_types": {
+        "bridge_housing": 10,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 60,
+        "intensive": 0,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "17",
+      "station": "549",
+      "organization": "Presbyterian Night Shelter of Tarrant County",
+      "grant_id": "PNST591-4501-549-PD-24",
+      "total_beds": 30,
+      "is_service_center": false,
+      "state": "TX",
+      "bed_types": {
+        "bridge_housing": 10,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 20,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "17",
+      "station": "549",
+      "organization": "Mental Health Mental Retardation of Tarrant County",
+      "grant_id": "MHMR456-4534-549-PD-24",
+      "total_beds": 30,
+      "is_service_center": false,
+      "state": "TX",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 30,
+        "intensive": 0,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "17",
+      "station": "671",
+      "organization": "American GI Forum National Veterans Outreach Program, Inc.",
+      "grant_id": "AGFN203-4556-671-PD-24",
+      "total_beds": 80,
+      "is_service_center": false,
+      "state": "TX",
+      "bed_types": {
+        "bridge_housing": 9,
+        "low_demand": 15,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 15,
+        "intensive": 41,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "17",
+      "station": "674",
+      "organization": "Community Partnership for the Homeless, Inc.",
+      "grant_id": "CPFH369-4940-674-PD-24",
+      "total_beds": 32,
+      "is_service_center": false,
+      "state": "TX",
+      "bed_types": {
+        "bridge_housing": 10,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 22,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "17",
+      "station": "756",
+      "organization": "Opportunity Center for the Homeless",
+      "grant_id": "OCFH199-4997-756-PD-24",
+      "total_beds": 20,
+      "is_service_center": false,
+      "state": "TX",
+      "bed_types": {
+        "bridge_housing": 5,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 15,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "17",
+      "station": "674",
+      "organization": "CEN-TEX ALCOHOLIC REHABILITATION CENTER INC",
+      "grant_id": "CTAR250-5004-674-PD-24",
+      "total_beds": 12,
+      "is_service_center": false,
+      "state": "TX",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 12,
+        "minor_dependents": 4
+      }
+    },
+    {
+      "visn": "17",
+      "station": "674",
+      "organization": "Heart of Texas Region Mental Health Mental Retardation",
+      "grant_id": "HTRM958-5212-674-PD-24",
+      "total_beds": 5,
+      "is_service_center": false,
+      "state": "TX",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 5,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "19",
+      "station": "554",
+      "organization": "Colorado Coalition for the Homeless",
+      "grant_id": "COCH575-3384-554-PD-24",
+      "total_beds": 73,
+      "is_service_center": false,
+      "state": "CO",
+      "bed_types": {
+        "bridge_housing": 8,
+        "low_demand": 34,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 31,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "19",
+      "station": "442",
+      "organization": "Community Action of Laramie County, Inc.",
+      "grant_id": "CALC887-3492-442-PD-24",
+      "total_beds": 10,
+      "is_service_center": false,
+      "state": null,
+      "bed_types": {
+        "bridge_housing": 10,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 0,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "19",
+      "station": "554",
+      "organization": "The Salvation Army",
+      "grant_id": "SACA347-3575-554-PD-24",
+      "total_beds": 64,
+      "is_service_center": false,
+      "state": "CO",
+      "bed_types": {
+        "bridge_housing": 8,
+        "low_demand": 16,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 10,
+        "intensive": 30,
+        "minor_dependents": 10
+      }
+    },
+    {
+      "visn": "19",
+      "station": "660",
+      "organization": "Homeless Veterans Fellowship",
+      "grant_id": "HVFP014-4182-660-PD-24",
+      "total_beds": 20,
+      "is_service_center": false,
+      "state": "UT",
+      "bed_types": {
+        "bridge_housing": 10,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 10,
+        "intensive": 0,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "19",
+      "station": "436",
+      "organization": "North West Montana Veterans Stand Down",
+      "grant_id": "NMVS535-4507-436-PD-24",
+      "total_beds": 0,
+      "is_service_center": true,
+      "state": "MT",
+      "bed_types": {}
+    },
+    {
+      "visn": "19",
+      "station": "436",
+      "organization": "Volunteers of America, Northern Rockies",
+      "grant_id": "VOAR532-4560-436-PD-24",
+      "total_beds": 20,
+      "is_service_center": false,
+      "state": "MT",
+      "bed_types": {
+        "bridge_housing": 10,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 10,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "19",
+      "station": "554",
+      "organization": "Catholic Charities and Community Services of the Archdiocese of Denver",
+      "grant_id": "CCCO679-4822-554-PD-24",
+      "total_beds": 30,
+      "is_service_center": false,
+      "state": "CO",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 10,
+        "intensive": 20,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "19",
+      "station": "635",
+      "organization": "Phoenix Recovery Institute",
+      "grant_id": "PRIP155-4835-635-PD-24",
+      "total_beds": 18,
+      "is_service_center": false,
+      "state": "OK",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 18,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 0,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "19",
+      "station": "554",
+      "organization": "Volunteers of America Colorado Branch",
+      "grant_id": "VOAC995-4990-554-PD-24",
+      "total_beds": 22,
+      "is_service_center": false,
+      "state": "CO",
+      "bed_types": {
+        "bridge_housing": 7,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 15,
+        "minor_dependents": 8
+      }
+    },
+    {
+      "visn": "19",
+      "station": "666",
+      "organization": "Volunteers of America, Northern Rockies",
+      "grant_id": "VOAR532-5060-666-PD-24",
+      "total_beds": 11,
+      "is_service_center": false,
+      "state": "WY",
+      "bed_types": {
+        "bridge_housing": 5,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 6,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "19",
+      "station": "660",
+      "organization": "First Step House",
+      "grant_id": "FSHI963-5078-660-PD-24",
+      "total_beds": 62,
+      "is_service_center": false,
+      "state": "UT",
+      "bed_types": {
+        "bridge_housing": 8,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 20,
+        "intensive": 34,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "19",
+      "station": "554",
+      "organization": "Comitis Crisis Center",
+      "grant_id": "CCCI147-5080-554-PD-24",
+      "total_beds": 8,
+      "is_service_center": false,
+      "state": "CO",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 8,
+        "minor_dependents": 5
+      }
+    },
+    {
+      "visn": "19",
+      "station": "436",
+      "organization": "The Poverello Center, Inc.",
+      "grant_id": "TPCI391-5229-436-PD-24",
+      "total_beds": 20,
+      "is_service_center": false,
+      "state": "MT",
+      "bed_types": {
+        "bridge_housing": 5,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 15,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "19",
+      "station": "436",
+      "organization": "The Poverello Center, Inc.",
+      "grant_id": "TPCI391-5251-436-PD-24",
+      "total_beds": 0,
+      "is_service_center": true,
+      "state": "MT",
+      "bed_types": {}
+    },
+    {
+      "visn": "20",
+      "station": "463",
+      "organization": "Fairbanks Rescue Mission, Inc.",
+      "grant_id": "FAIR856-3560-463-PD-24",
+      "total_beds": 12,
+      "is_service_center": false,
+      "state": "AK",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 12,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "20",
+      "station": "531",
+      "organization": "Supportive Housing and Innovative Partnerships, Inc.",
+      "grant_id": "SHIP081-3855-531-PD-24",
+      "total_beds": 15,
+      "is_service_center": false,
+      "state": "ID",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 15,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "20",
+      "station": "653",
+      "organization": "REVEILLE FOUNDATION",
+      "grant_id": "REVF783-3991-653-PD-24",
+      "total_beds": 35,
+      "is_service_center": false,
+      "state": "WA",
+      "bed_types": {
+        "bridge_housing": 5,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 15,
+        "intensive": 15,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "20",
+      "station": "648",
+      "organization": "WestCare Oregon, Inc.",
+      "grant_id": "WCOI136-4032-648-PD-24",
+      "total_beds": 30,
+      "is_service_center": false,
+      "state": "OR",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 20,
+        "intensive": 10,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "20",
+      "station": "648",
+      "organization": "Mid-Willamette Valley Community Action Agency Inc",
+      "grant_id": "MWVC987-4093-648-PD-24",
+      "total_beds": 30,
+      "is_service_center": false,
+      "state": "OR",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 25,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 5,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "20",
+      "station": "692",
+      "organization": "Columbiacare Services, Inc.",
+      "grant_id": "CUMB831-4155-692-PD-24",
+      "total_beds": 36,
+      "is_service_center": false,
+      "state": null,
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 13,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 23,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "20",
+      "station": "663",
+      "organization": "Low Income Housing Institute",
+      "grant_id": "LIHI150-4189-663-PD-24",
+      "total_beds": 60,
+      "is_service_center": false,
+      "state": "WA",
+      "bed_types": {
+        "bridge_housing": 5,
+        "low_demand": 40,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 15,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "20",
+      "station": "653",
+      "organization": "St. Vincent de Paul Society of Lane County, Inc.",
+      "grant_id": "SSVC786-4199-653-PD-24",
+      "total_beds": 12,
+      "is_service_center": false,
+      "state": "WA",
+      "bed_types": {
+        "bridge_housing": 12,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 0,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "20",
+      "station": "653",
+      "organization": "Operation Rebuild Hope",
+      "grant_id": "ORBH001-4240-653-PD-24",
+      "total_beds": 22,
+      "is_service_center": false,
+      "state": "WA",
+      "bed_types": {
+        "bridge_housing": 8,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 14,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "20",
+      "station": "648",
+      "organization": "The Salvation Army",
+      "grant_id": "SACA347-4262-648-PD-24",
+      "total_beds": 48,
+      "is_service_center": false,
+      "state": "OR",
+      "bed_types": {
+        "bridge_housing": 10,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 10,
+        "intensive": 28,
+        "minor_dependents": 10
+      }
+    },
+    {
+      "visn": "20",
+      "station": "687",
+      "organization": "Valley Residential Services",
+      "grant_id": "VRSP446-4389-687-PD-24",
+      "total_beds": 13,
+      "is_service_center": false,
+      "state": null,
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 8,
+        "clinical_treatment": 5,
+        "intensive": 0,
+        "minor_dependents": 4
+      }
+    },
+    {
+      "visn": "20",
+      "station": "648",
+      "organization": "Central City Concern",
+      "grant_id": "CCCP816-4487-648-PD-24",
+      "total_beds": 65,
+      "is_service_center": false,
+      "state": "OR",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 25,
+        "hospital_to_housing": 10,
+        "clinical_treatment": 0,
+        "intensive": 30,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "20",
+      "station": "692",
+      "organization": "Columbiacare Services, Inc.",
+      "grant_id": "CUMB831-4540-692-PD-24",
+      "total_beds": 0,
+      "is_service_center": true,
+      "state": null,
+      "bed_types": {}
+    },
+    {
+      "visn": "20",
+      "station": "531",
+      "organization": "El-Ada, Inc.",
+      "grant_id": "ELAD682-4544-531-PD-24",
+      "total_beds": 12,
+      "is_service_center": false,
+      "state": "ID",
+      "bed_types": {
+        "bridge_housing": 12,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 0,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "20",
+      "station": "687",
+      "organization": "CBVC, Inc.",
+      "grant_id": "CBVC745-4618-687-PD-24",
+      "total_beds": 8,
+      "is_service_center": false,
+      "state": null,
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 8,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "20",
+      "station": "663",
+      "organization": "Washington State Department of Veterans Affairs",
+      "grant_id": "WSDV074-4648-663-PD-24",
+      "total_beds": 110,
+      "is_service_center": false,
+      "state": "WA",
+      "bed_types": {
+        "bridge_housing": 10,
+        "low_demand": 35,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 12,
+        "intensive": 53,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "20",
+      "station": "668",
+      "organization": "Volunteers of America of Eastern Washington and Northern Idaho",
+      "grant_id": "VOAT131-4827-668-PD-24",
+      "total_beds": 20,
+      "is_service_center": false,
+      "state": "WA",
+      "bed_types": {
+        "bridge_housing": 6,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 14,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "20",
+      "station": "648",
+      "organization": "Transition Projects, Inc.",
+      "grant_id": "TRPI582-4834-648-PD-24",
+      "total_beds": 12,
+      "is_service_center": false,
+      "state": "OR",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 12,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "20",
+      "station": "692",
+      "organization": "The Salvation Army",
+      "grant_id": "SACA347-4962-692-PD-24",
+      "total_beds": 12,
+      "is_service_center": false,
+      "state": null,
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 12,
+        "minor_dependents": 4
+      }
+    },
+    {
+      "visn": "20",
+      "station": "663",
+      "organization": "The Salvation Army",
+      "grant_id": "SACA347-4976-663-PD-24",
+      "total_beds": 38,
+      "is_service_center": false,
+      "state": "WA",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 31,
+        "hospital_to_housing": 7,
+        "clinical_treatment": 0,
+        "intensive": 0,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "20",
+      "station": "648",
+      "organization": "DO GOOD MULTNOMAH",
+      "grant_id": "DGMN102-5007-648-PD-24",
+      "total_beds": 40,
+      "is_service_center": false,
+      "state": "OR",
+      "bed_types": {
+        "bridge_housing": 20,
+        "low_demand": 20,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 0,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "20",
+      "station": "653",
+      "organization": "Housing Authority & Community Services Agency of Lane County",
+      "grant_id": "HACS480-5032-653-PD-24",
+      "total_beds": 10,
+      "is_service_center": false,
+      "state": "WA",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 10,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "20",
+      "station": "687",
+      "organization": "Housing Authority of the City of Walla Walla",
+      "grant_id": "HAOT250-5043-687-PD-24",
+      "total_beds": 24,
+      "is_service_center": false,
+      "state": null,
+      "bed_types": {
+        "bridge_housing": 5,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 19,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "20",
+      "station": "663",
+      "organization": "Archdiocesan Housing Authority",
+      "grant_id": "AHAD134-5081-663-PD-24",
+      "total_beds": 18,
+      "is_service_center": false,
+      "state": "WA",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 18,
+        "intensive": 0,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "20",
+      "station": "648",
+      "organization": "Housing Authority of the City of Longview",
+      "grant_id": "LONG000-5224-648-PD-24",
+      "total_beds": 35,
+      "is_service_center": false,
+      "state": "OR",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 12,
+        "intensive": 23,
+        "minor_dependents": 6
+      }
+    },
+    {
+      "visn": "21",
+      "station": "662",
+      "organization": "The Salvation Army",
+      "grant_id": "SACA347-3648-662-PD-24",
+      "total_beds": 15,
+      "is_service_center": false,
+      "state": "NV",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 15,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "21",
+      "station": "570",
+      "organization": "WestCare California, Inc.",
+      "grant_id": "WCCI450-3686-570-PD-24",
+      "total_beds": 36,
+      "is_service_center": false,
+      "state": "CA",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 13,
+        "intensive": 23,
+        "minor_dependents": 6
+      }
+    },
+    {
+      "visn": "21",
+      "station": "459",
+      "organization": "United States Veterans Initiative",
+      "grant_id": "USVI752-3866-459-PD-24",
+      "total_beds": 96,
+      "is_service_center": false,
+      "state": "HI",
+      "bed_types": {
+        "bridge_housing": 27,
+        "low_demand": 48,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 21,
+        "minor_dependents": 10
+      }
+    },
+    {
+      "visn": "21",
+      "station": "593",
+      "organization": "The Salvation Army",
+      "grant_id": "SACA347-3895-593-PD-24",
+      "total_beds": 42,
+      "is_service_center": false,
+      "state": "CA",
+      "bed_types": {
+        "bridge_housing": 5,
+        "low_demand": 0,
+        "hospital_to_housing": 11,
+        "clinical_treatment": 0,
+        "intensive": 26,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "21",
+      "station": "662",
+      "organization": "Insight Housing",
+      "grant_id": "BFHP073-3918-662-PD-24",
+      "total_beds": 38,
+      "is_service_center": false,
+      "state": "NV",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 38,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 0,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "21",
+      "station": "612",
+      "organization": "Victory Village, Inc.",
+      "grant_id": "VVIL137-4056-612-PD-24",
+      "total_beds": 20,
+      "is_service_center": false,
+      "state": "CA",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 5,
+        "intensive": 15,
+        "minor_dependents": 10
+      }
+    },
+    {
+      "visn": "21",
+      "station": "654",
+      "organization": "WestCare Nevada, Inc.",
+      "grant_id": "WCNI981-4090-654-PD-24",
+      "total_beds": 20,
+      "is_service_center": false,
+      "state": "CA",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 5,
+        "intensive": 15,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "21",
+      "station": "593",
+      "organization": "United States Veterans Initiative",
+      "grant_id": "USVI752-4405-593-PD-24",
+      "total_beds": 132,
+      "is_service_center": false,
+      "state": "CA",
+      "bed_types": {
+        "bridge_housing": 15,
+        "low_demand": 72,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 15,
+        "intensive": 30,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "21",
+      "station": "640",
+      "organization": "Veterans Transition Center of California",
+      "grant_id": "VTCM413-4414-640-PD-24",
+      "total_beds": 58,
+      "is_service_center": false,
+      "state": "CA",
+      "bed_types": {
+        "bridge_housing": 8,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 20,
+        "intensive": 30,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "21",
+      "station": "662",
+      "organization": "Nation's Finest",
+      "grant_id": "VRCA571-4548-662-PD-24",
+      "total_beds": 18,
+      "is_service_center": false,
+      "state": "NV",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 18,
+        "intensive": 0,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "21",
+      "station": "612",
+      "organization": "Volunteers of America of Greater Sacramento and Northern Nevada, Inc.",
+      "grant_id": "VOAW984-4616-612-PD-24",
+      "total_beds": 80,
+      "is_service_center": false,
+      "state": "CA",
+      "bed_types": {
+        "bridge_housing": 19,
+        "low_demand": 20,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 41,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "21",
+      "station": "662",
+      "organization": "Operation Dignity, Inc.",
+      "grant_id": "OPER007-4620-662-PD-24",
+      "total_beds": 88,
+      "is_service_center": false,
+      "state": "NV",
+      "bed_types": {
+        "bridge_housing": 24,
+        "low_demand": 20,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 44,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "21",
+      "station": "612",
+      "organization": "Nation's Finest",
+      "grant_id": "VRCA571-4649-612-PD-24",
+      "total_beds": 88,
+      "is_service_center": false,
+      "state": "CA",
+      "bed_types": {
+        "bridge_housing": 10,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 34,
+        "intensive": 44,
+        "minor_dependents": 5
+      }
+    },
+    {
+      "visn": "21",
+      "station": "612",
+      "organization": "Change and New Beginnings CANB",
+      "grant_id": "CANB385-4691-612-PD-24",
+      "total_beds": 12,
+      "is_service_center": false,
+      "state": "CA",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 12,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "21",
+      "station": "640",
+      "organization": "Homefirst Services Of Santa Clara County",
+      "grant_id": "HFSC272-5015-640-PD-24",
+      "total_beds": 20,
+      "is_service_center": false,
+      "state": "CA",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 20,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 0,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "21",
+      "station": "593",
+      "organization": "HELP Las Vegas Housing Corporation",
+      "grant_id": "HLVI866-5073-593-PD-24",
+      "total_beds": 75,
+      "is_service_center": false,
+      "state": "CA",
+      "bed_types": {
+        "bridge_housing": 16,
+        "low_demand": 20,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 39,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "21",
+      "station": "593",
+      "organization": "HELP Las Vegas Housing Corporation II",
+      "grant_id": "HLII813-5075-593-PD-24",
+      "total_beds": 68,
+      "is_service_center": false,
+      "state": "CA",
+      "bed_types": {
+        "bridge_housing": 12,
+        "low_demand": 20,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 36,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "21",
+      "station": "640",
+      "organization": "Lifemoves",
+      "grant_id": "LIVE469-5192-640-PD-24",
+      "total_beds": 12,
+      "is_service_center": false,
+      "state": "CA",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 12,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "22",
+      "station": "605",
+      "organization": "Life Community Development",
+      "grant_id": "LCDP011-3494-605-PD-24",
+      "total_beds": 12,
+      "is_service_center": false,
+      "state": null,
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 12,
+        "minor_dependents": 4
+      }
+    },
+    {
+      "visn": "22",
+      "station": "664",
+      "organization": "PATH",
+      "grant_id": "PATH196-3576-664-PD-24",
+      "total_beds": 40,
+      "is_service_center": false,
+      "state": "CA",
+      "bed_types": {
+        "bridge_housing": 20,
+        "low_demand": 20,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 0,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "22",
+      "station": "691",
+      "organization": "The Salvation Army",
+      "grant_id": "SACA347-3581-691-PD-24",
+      "total_beds": 120,
+      "is_service_center": false,
+      "state": "CA",
+      "bed_types": {
+        "bridge_housing": 5,
+        "low_demand": 28,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 30,
+        "intensive": 57,
+        "minor_dependents": 20
+      }
+    },
+    {
+      "visn": "22",
+      "station": "691",
+      "organization": "Good Samaritan Shelter",
+      "grant_id": "GOOD375-3910-691-PD-24",
+      "total_beds": 15,
+      "is_service_center": false,
+      "state": "CA",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 15,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "22",
+      "station": "605",
+      "organization": "Help for Future Leaders, Inc.",
+      "grant_id": "HFFL485-3923-605-PD-24",
+      "total_beds": 15,
+      "is_service_center": false,
+      "state": null,
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 15,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "22",
+      "station": "678",
+      "organization": "Esperanza En Escalante",
+      "grant_id": "ESPE588-3965-678-PD-24",
+      "total_beds": 72,
+      "is_service_center": false,
+      "state": "AZ",
+      "bed_types": {
+        "bridge_housing": 25,
+        "low_demand": 0,
+        "hospital_to_housing": 12,
+        "clinical_treatment": 0,
+        "intensive": 35,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "22",
+      "station": "644",
+      "organization": "Catholic Charities Community Services, Inc.",
+      "grant_id": "CCAZ999-3966-644-PD-24",
+      "total_beds": 76,
+      "is_service_center": false,
+      "state": "AZ",
+      "bed_types": {
+        "bridge_housing": 37,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 39,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "22",
+      "station": "600",
+      "organization": "United States Veterans Initiative",
+      "grant_id": "USVI752-3967-600-PD-24",
+      "total_beds": 129,
+      "is_service_center": false,
+      "state": "CA",
+      "bed_types": {
+        "bridge_housing": 5,
+        "low_demand": 45,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 38,
+        "intensive": 41,
+        "minor_dependents": 18
+      }
+    },
+    {
+      "visn": "22",
+      "station": "605",
+      "organization": "Lighthouse Social Service Centers",
+      "grant_id": "LHTC113-4181-605-PD-24",
+      "total_beds": 0,
+      "is_service_center": true,
+      "state": null,
+      "bed_types": {}
+    },
+    {
+      "visn": "22",
+      "station": "691",
+      "organization": "United States Veterans Initiative",
+      "grant_id": "USVI752-4600-691-PD-24",
+      "total_beds": 170,
+      "is_service_center": false,
+      "state": "CA",
+      "bed_types": {
+        "bridge_housing": 5,
+        "low_demand": 65,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 50,
+        "intensive": 50,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "22",
+      "station": "649",
+      "organization": "United States Veterans Initiative",
+      "grant_id": "USVI752-4606-649-PD-24",
+      "total_beds": 72,
+      "is_service_center": false,
+      "state": "AZ",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 22,
+        "hospital_to_housing": 5,
+        "clinical_treatment": 28,
+        "intensive": 17,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "22",
+      "station": "600",
+      "organization": "Safe Refuge",
+      "grant_id": "SAFE130-4729-600-PD-24",
+      "total_beds": 15,
+      "is_service_center": false,
+      "state": "CA",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 15,
+        "intensive": 0,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "22",
+      "station": "644",
+      "organization": "United States Veterans Initiative",
+      "grant_id": "USVI752-4792-644-PD-24",
+      "total_beds": 132,
+      "is_service_center": false,
+      "state": "AZ",
+      "bed_types": {
+        "bridge_housing": 49,
+        "low_demand": 45,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 14,
+        "intensive": 24,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "22",
+      "station": "678",
+      "organization": "Old Pueblo Community Services",
+      "grant_id": "OPCF556-4806-678-PD-24",
+      "total_beds": 23,
+      "is_service_center": false,
+      "state": "AZ",
+      "bed_types": {
+        "bridge_housing": 23,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 0,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "22",
+      "station": "691",
+      "organization": "COMMUNITY ACTION PARTNERSHIP OF KERN",
+      "grant_id": "CVAF044-4808-691-PD-24",
+      "total_beds": 40,
+      "is_service_center": false,
+      "state": "CA",
+      "bed_types": {
+        "bridge_housing": 20,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 20,
+        "minor_dependents": 10
+      }
+    },
+    {
+      "visn": "22",
+      "station": "605",
+      "organization": "AVECTOR COMMUNITY GROUP INC",
+      "grant_id": "AVCG643-4894-605-PD-24",
+      "total_beds": 39,
+      "is_service_center": false,
+      "state": null,
+      "bed_types": {
+        "bridge_housing": 6,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 8,
+        "intensive": 25,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "22",
+      "station": "664",
+      "organization": "Interfaith Community Services Inc",
+      "grant_id": "ICSI714-4996-664-PD-24",
+      "total_beds": 52,
+      "is_service_center": false,
+      "state": "CA",
+      "bed_types": {
+        "bridge_housing": 8,
+        "low_demand": 16,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 28,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "22",
+      "station": "605",
+      "organization": "St. Annes Retirement Community",
+      "grant_id": "SATH452-5001-605-PD-24",
+      "total_beds": 8,
+      "is_service_center": false,
+      "state": null,
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 8,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "22",
+      "station": "691",
+      "organization": "Single Room Occupancy Housing Corporation",
+      "grant_id": "SROH215-5009-691-PD-24",
+      "total_beds": 65,
+      "is_service_center": false,
+      "state": "CA",
+      "bed_types": {
+        "bridge_housing": 12,
+        "low_demand": 19,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 34,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "22",
+      "station": "664",
+      "organization": "Vietnam Veterans Of San Diego",
+      "grant_id": "VVSD525-5151-664-PD-24",
+      "total_beds": 96,
+      "is_service_center": false,
+      "state": "CA",
+      "bed_types": {
+        "bridge_housing": 42,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 54,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "22",
+      "station": "691",
+      "organization": "New Directions, Inc.",
+      "grant_id": "NEWD745-5187-691-PD-24",
+      "total_beds": 120,
+      "is_service_center": false,
+      "state": "CA",
+      "bed_types": {
+        "bridge_housing": 32,
+        "low_demand": 58,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 30,
+        "intensive": 0,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "22",
+      "station": "501",
+      "organization": "New Mexico Veterans Integration Centers",
+      "grant_id": "NMVI604-5263-501-PD-24",
+      "total_beds": 42,
+      "is_service_center": false,
+      "state": "NM",
+      "bed_types": {
+        "bridge_housing": 11,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 5,
+        "intensive": 26,
+        "minor_dependents": 10
+      }
+    },
+    {
+      "visn": "23",
+      "station": "636A8",
+      "organization": "Goodwill of the Heartland",
+      "grant_id": "GOTH563-3390-636A8-PD-24",
+      "total_beds": 0,
+      "is_service_center": true,
+      "state": null,
+      "bed_types": {}
+    },
+    {
+      "visn": "23",
+      "station": "636A8",
+      "organization": "Humility Homes and Services, Inc.",
+      "grant_id": "HOMS973-3447-636A8-PD-24",
+      "total_beds": 13,
+      "is_service_center": false,
+      "state": null,
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 13,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 0,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "23",
+      "station": "618",
+      "organization": "Minnesota Assistance Council For Veterans",
+      "grant_id": "MACV717-3818-618-PD-24",
+      "total_beds": 13,
+      "is_service_center": false,
+      "state": "MN",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 13,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "23",
+      "station": "636A8",
+      "organization": "Christian Care",
+      "grant_id": "CHRI523-3819-636A8-PD-24",
+      "total_beds": 6,
+      "is_service_center": false,
+      "state": null,
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 6,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "23",
+      "station": "636A8",
+      "organization": "Willis Dady Emergency Shelter, Inc.",
+      "grant_id": "WDES668-3920-636A8-PD-24",
+      "total_beds": 10,
+      "is_service_center": false,
+      "state": null,
+      "bed_types": {
+        "bridge_housing": 5,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 5,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "23",
+      "station": "437",
+      "organization": "FARGO UNION MISSION INC",
+      "grant_id": "FUMI056-4165-437-PD-24",
+      "total_beds": 12,
+      "is_service_center": false,
+      "state": null,
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 12,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 0,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "23",
+      "station": "636",
+      "organization": "Stephen Center, Inc.",
+      "grant_id": "SCTR994-4349-636-PD-24",
+      "total_beds": 5,
+      "is_service_center": false,
+      "state": "NE",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 5,
+        "intensive": 0,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "23",
+      "station": "618",
+      "organization": "Salvation Army, Harbor Light",
+      "grant_id": "SANM910-4479-618-PD-24",
+      "total_beds": 30,
+      "is_service_center": false,
+      "state": "MN",
+      "bed_types": {
+        "bridge_housing": 9,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 21,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "23",
+      "station": "636",
+      "organization": "The Salvation Army, Inc.",
+      "grant_id": "SANE910-4579-636-PD-24",
+      "total_beds": 15,
+      "is_service_center": false,
+      "state": "NE",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 10,
+        "clinical_treatment": 0,
+        "intensive": 5,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "23",
+      "station": "656",
+      "organization": "Salvation Army",
+      "grant_id": "SAMN597-4671-656-PD-24",
+      "total_beds": 7,
+      "is_service_center": false,
+      "state": "SD",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 7,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "23",
+      "station": "636",
+      "organization": "New Visions Homeless Services",
+      "grant_id": "NVHS778-4855-636-PD-24",
+      "total_beds": 10,
+      "is_service_center": false,
+      "state": "NE",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 10,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 0,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "23",
+      "station": "636A8",
+      "organization": "Shelter House Community Shelter and Transition Services",
+      "grant_id": "SHCS451-4907-636A8-PD-24",
+      "total_beds": 10,
+      "is_service_center": false,
+      "state": null,
+      "bed_types": {
+        "bridge_housing": 10,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 0,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "23",
+      "station": "636A6",
+      "organization": "Central Iowa Shelter & Services",
+      "grant_id": "CISS212-5059-636A6-PD-24",
+      "total_beds": 14,
+      "is_service_center": false,
+      "state": "IA",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 14,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 0,
+        "intensive": 0,
+        "minor_dependents": 0
+      }
+    },
+    {
+      "visn": "23",
+      "station": "636",
+      "organization": "Siena Francis House",
+      "grant_id": "SIEN005-5240-636-PD-24",
+      "total_beds": 10,
+      "is_service_center": false,
+      "state": "NE",
+      "bed_types": {
+        "bridge_housing": 0,
+        "low_demand": 0,
+        "hospital_to_housing": 0,
+        "clinical_treatment": 10,
+        "intensive": 0,
+        "minor_dependents": 0
+      }
+    }
+  ]
+}

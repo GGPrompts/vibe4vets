@@ -11,15 +11,16 @@ from typing import Any
 
 from sqlmodel import Session
 
-from connectors import CareerOneStopConnector, VAGovConnector
+from connectors import CareerOneStopConnector, GIBillSchoolsConnector, VAGovConnector
 from connectors.base import BaseConnector
 from etl import ETLPipeline
 from jobs.base import BaseJob
 
 # Registry of available connectors
 CONNECTOR_REGISTRY: dict[str, type[BaseConnector]] = {
-    "va_gov": VAGovConnector,
     "careeronestop": CareerOneStopConnector,
+    "gi_bill_schools": GIBillSchoolsConnector,
+    "va_gov": VAGovConnector,
 }
 
 

@@ -1,0 +1,393 @@
+# Veterans Treatment Courts Directory
+# Curated from state judicial branch websites and BJA resources
+#
+# Sources:
+# - Bureau of Justice Assistance (BJA): https://bja.ojp.gov/program/veterans-treatment-court-program/overview
+# - Texas Veterans Commission: https://tvc.texas.gov/mental-health/justice-involved-veterans/
+# - California Judicial Branch: https://courts.ca.gov/programs-initiatives/collaborative-justice-courts/adult-courts/veterans-treatment-courts
+# - Georgia CACJ: https://cacj.georgia.gov/veterans-treatment-courts
+# - Pennsylvania Courts: https://www.pacourts.us/judicial-administration/court-programs/veterans-courts
+# - North Carolina Courts: https://www.nccourts.gov/courts/recovery-courts/veterans-treatment-court
+#
+# Note: Veterans Treatment Courts vary significantly by jurisdiction.
+# This file focuses on state-level program pages with referral pathways.
+# Individual court contacts change frequently; state program pages are more stable.
+
+source:
+  name: Veterans Treatment Courts Directory
+  url: https://bja.ojp.gov/program/veterans-treatment-court-program/overview
+  last_updated: '2026-01-25'
+  notes: >
+    VTCs are administered locally with no centralized national database.
+    This directory aggregates state-level program information.
+    For specific court locations, contact your state's judicial branch
+    or the VA Veterans Justice Outreach (VJO) program.
+
+# National resources that help veterans find local VTCs
+national_resources:
+  - name: VA Veterans Justice Outreach (VJO) Program
+    url: https://www.va.gov/homeless/vjo.asp
+    description: >
+      Every VA Medical Center has at least one VJO Specialist who can connect
+      justice-involved veterans to local Veterans Treatment Courts and services.
+    how_to_access: Contact your local VA Medical Center and ask for the VJO Specialist.
+
+  - name: Justice for Vets (All Rise)
+    url: https://allrise.org/about/division/justice-for-vets/
+    description: >
+      National training and technical assistance provider for Veterans Treatment
+      Courts. Can provide guidance on finding local VTCs.
+    how_to_access: Visit website or contact for local court information.
+
+  - name: Bureau of Justice Assistance VTC Program
+    url: https://bja.ojp.gov/program/veterans-treatment-court-program/overview
+    description: >
+      Federal grant program supporting Veterans Treatment Courts nationwide.
+      Provides resources and program contact information.
+
+# State programs - these pages provide statewide VTC information and referrals
+state_programs:
+  # Alabama
+  - state: AL
+    name: Alabama Veterans Treatment Courts
+    program_url: https://judicial.alabama.gov/programs/veterans
+    notes: Contact state judicial system for local court information.
+    court_count_estimate: 5
+
+  # Alaska
+  - state: AK
+    name: Alaska Veterans Court
+    program_url: https://courts.alaska.gov/specialized/veteranscourt.htm
+    notes: Anchorage Veterans Court is the primary VTC in Alaska.
+    courts:
+      - name: Anchorage Veterans Court
+        jurisdiction: Anchorage
+        scope: local
+    court_count_estimate: 1
+
+  # Arizona
+  - state: AZ
+    name: Arizona Veterans Courts
+    program_url: https://www.azcourts.gov/cscommittees/Problem-Solving-Courts/Veterans-Courts
+    notes: Multiple counties have Veterans Courts.
+    court_count_estimate: 10
+
+  # California
+  - state: CA
+    name: California Veterans Treatment Courts
+    program_url: https://courts.ca.gov/programs-initiatives/collaborative-justice-courts/adult-courts/veterans-treatment-courts
+    notes: >
+      28+ counties have VTCs. Programs typically last 15-18 months.
+      Available to all military branches including reserves and National Guard.
+    eligibility: >
+      Must have military service history, plead guilty in a criminal case,
+      have diagnosed conditions such as PTSD, TBI, MST, or substance disorders,
+      and agree to complete the full program. Eligibility varies by county.
+    courts:
+      - name: Alameda County VTC
+        jurisdiction: Alameda County
+        contact_email: goneill@alameda.courts.ca.gov
+        scope: local
+      - name: Fresno County VTC
+        jurisdiction: Fresno County
+        contact_email: vfernandez@fresno.courts.ca.gov
+        scope: local
+      - name: Los Angeles County VTC
+        jurisdiction: Los Angeles County
+        scope: local
+      - name: Orange County VTC
+        jurisdiction: Orange County
+        scope: local
+      - name: Sacramento County VTC
+        jurisdiction: Sacramento County
+        contact_email: WoolfoY@saccourt.ca.gov
+        scope: local
+      - name: San Diego County VTC
+        jurisdiction: San Diego County
+        contact_email: Magdalena.Daszczuk@SDCourt.CA.Gov
+        scope: local
+      - name: San Francisco VTC
+        jurisdiction: San Francisco County
+        scope: local
+    court_count_estimate: 28
+
+  # Colorado
+  - state: CO
+    name: Colorado Veterans Treatment Courts
+    program_url: https://www.courts.state.co.us/Courts/Problem_Solving_Courts/Veterans.cfm
+    notes: Multiple judicial districts operate VTCs.
+    court_count_estimate: 8
+
+  # Connecticut
+  - state: CT
+    name: Connecticut Veterans Treatment Court
+    program_url: https://jud.ct.gov/veterans/
+    notes: Statewide Veterans Treatment Court program.
+    court_count_estimate: 3
+
+  # Florida
+  - state: FL
+    name: Florida Veterans Treatment Courts
+    program_url: https://www.flcourts.gov/Resources-Services/Court-Improvement/Problem-Solving-Courts/Veterans-Treatment-Courts
+    notes: Multiple circuits operate VTCs including Lee County.
+    court_count_estimate: 25
+
+  # Georgia
+  - state: GA
+    name: Georgia Veterans Treatment Courts
+    program_url: https://cacj.georgia.gov/veterans-treatment-courts
+    contact_name: Karen Alexander
+    contact_phone: (770) 990-8332
+    notes: >
+      Veterans Treatment Court Map available on website.
+      Program established with multiple circuits participating.
+    courts:
+      - name: Douglas Circuit VTC
+        jurisdiction: Douglas County
+        established: '2020-07'
+        scope: local
+      - name: Hall County VTC
+        jurisdiction: Hall County
+        established: '2014-10'
+        scope: local
+      - name: DeKalb County VTC
+        jurisdiction: DeKalb County
+        established: '2016-10'
+        scope: local
+      - name: Dublin Judicial Circuit VTC
+        jurisdiction: Johnson, Laurens, Truetlen, Twiggs Counties
+        established: '2016-01'
+        scope: local
+      - name: Fayette County VTC
+        jurisdiction: Fayette County
+        established: '2019-07'
+        scope: local
+      - name: Gwinnett County State Court VTC
+        jurisdiction: Gwinnett County
+        established: '2019-01'
+        scope: local
+      - name: Gwinnett County Superior Court VTC
+        jurisdiction: Gwinnett County
+        established: '2015-01'
+        scope: local
+      - name: Clayton County VTC
+        jurisdiction: Clayton County
+        established: '2018-07'
+        scope: local
+      - name: Augusta Judicial Circuit VTC
+        jurisdiction: Burke and Richmond Counties
+        established: '2014-09'
+        scope: local
+    court_count_estimate: 10
+
+  # Illinois
+  - state: IL
+    name: Illinois Veterans Treatment Courts
+    program_url: https://www.illinoiscourts.gov/courts/circuit-court/special-programs/problem-solving-courts/
+    notes: Multiple circuits including Cook County.
+    courts:
+      - name: Cook County Veterans Treatment Court
+        jurisdiction: Cook County
+        program_url: https://www.cookcountycourtil.gov/division/problem-solving-courts/veterans-treatment-court
+        notes: Specifically designed for individuals who have served in the US military.
+        scope: local
+    court_count_estimate: 15
+
+  # Maryland
+  - state: MD
+    name: Maryland Veterans Treatment Courts
+    program_url: https://www.mdcourts.gov/opsc/vtc
+    notes: Statewide information and local court contacts.
+    court_count_estimate: 5
+
+  # Massachusetts
+  - state: MA
+    name: Massachusetts Veterans Treatment Courts
+    program_url: https://www.mass.gov/info-details/veterans-treatment-courts
+    notes: >
+      Court-supervised, treatment-focused collaboratives for defendants
+      who have served in the United States Armed Forces.
+    court_count_estimate: 8
+
+  # Michigan
+  - state: MI
+    name: Michigan Veterans Treatment Courts
+    program_url: https://www.courts.michigan.gov/administration/court-programs/problem-solving-courts/veterans-treatment-courts/
+    notes: Statewide program with multiple local courts.
+    court_count_estimate: 20
+
+  # New York
+  - state: NY
+    name: New York Veterans Treatment Courts
+    program_url: https://www.nycourts.gov/COURTS/problem_solving/VTC/home.shtml
+    notes: >
+      First Veterans Treatment Court in the nation opened in Buffalo, NY
+      on January 4, 2008, by Judge Robert Russell.
+    courts:
+      - name: Buffalo Veterans Treatment Court
+        jurisdiction: Erie County
+        established: '2008-01-04'
+        notes: First Veterans Treatment Court in the nation.
+        scope: local
+    court_count_estimate: 30
+
+  # North Carolina
+  - state: NC
+    name: North Carolina Veterans Treatment Courts
+    program_url: https://www.nccourts.gov/courts/recovery-courts/veterans-treatment-court
+    notes: >
+      14 counties have operational VTCs. Courts work with military service
+      veterans with substance use, mental health, or co-occurring disorders.
+    courts:
+      - name: Buncombe County VTC
+        jurisdiction: Buncombe County (District 40)
+        scope: local
+      - name: Catawba County VTC
+        jurisdiction: Catawba County (District 36)
+        scope: local
+      - name: Cumberland County VTC
+        jurisdiction: Cumberland County (District 14)
+        scope: local
+      - name: Forsyth County VTC
+        jurisdiction: Forsyth County (District 31)
+        scope: local
+      - name: Gaston County VTC
+        jurisdiction: Gaston County (District 38)
+        scope: local
+      - name: Harnett County VTC
+        jurisdiction: Harnett County (District 12)
+        scope: local
+      - name: Iredell County VTC
+        jurisdiction: Iredell County (District 32)
+        scope: local
+      - name: Moore County VTC
+        jurisdiction: Moore County (District 29)
+        scope: local
+      - name: New Hanover County VTC
+        jurisdiction: New Hanover County (District 6)
+        scope: local
+      - name: Onslow County VTC
+        jurisdiction: Onslow County (District 5)
+        scope: local
+      - name: Pitt County VTC
+        jurisdiction: Pitt County (District 3)
+        scope: local
+      - name: Randolph County VTC
+        jurisdiction: Randolph County (District 37)
+        scope: local
+      - name: Rockingham County VTC
+        jurisdiction: Rockingham County (District 22)
+        scope: local
+      - name: Rowan County VTC
+        jurisdiction: Rowan County (District 27)
+        scope: local
+    court_count_estimate: 14
+
+  # Ohio
+  - state: OH
+    name: Ohio Veterans Treatment Courts
+    program_url: https://www.supremecourt.ohio.gov/JCS/specDockets/veterans/
+    notes: Multiple counties have Veterans Dockets.
+    court_count_estimate: 25
+
+  # Pennsylvania
+  - state: PA
+    name: Pennsylvania Veterans Treatment Courts
+    program_url: https://www.pacourts.us/judicial-administration/court-programs/veterans-courts
+    notes: >
+      Pennsylvania's first VTC opened in Lackawanna County in November 2009.
+      With over 800,000 veterans, PA has the fourth-largest veteran population.
+      Downloadable coordinators list and resources available.
+    eligibility: >
+      Veterans charged with crimes who are struggling with addiction,
+      mental illness, or co-occurring disorders.
+    courts:
+      - name: Lackawanna County VTC
+        jurisdiction: Lackawanna County
+        established: '2009-11'
+        notes: Pennsylvania's first Veterans Treatment Court.
+        scope: local
+    court_count_estimate: 20
+
+  # Texas
+  - state: TX
+    name: Texas Veterans Treatment Courts
+    program_url: https://tvc.texas.gov/mental-health/justice-involved-veterans/
+    notes: >
+      40+ Veterans Treatment Courts across Texas counties.
+      2025-2026 Referral Directory PDF available on website.
+      Justice Involved Veteran Program provides technical assistance.
+    courts:
+      - name: Dallas County VTC
+        jurisdiction: Dallas County
+        contact_email: janine.capetillo@dallascounty.org
+        scope: local
+      - name: Harris County Felony VTC
+        jurisdiction: Harris County
+        contact_email: mashala.dixon@csc.hctx.net
+        scope: local
+      - name: Bexar County VTC
+        jurisdiction: Bexar County (San Antonio)
+        scope: local
+      - name: Travis County VTC
+        jurisdiction: Travis County (Austin)
+        scope: local
+      - name: Tarrant County VTC
+        jurisdiction: Tarrant County (Fort Worth)
+        scope: local
+    court_count_estimate: 40
+
+  # Virginia
+  - state: VA
+    name: Virginia Veterans Treatment Courts
+    program_url: https://www.vacourts.gov/courtadmin/aoc/djs/programs/vtc/home.html
+    notes: Multiple judicial circuits operate VTCs.
+    court_count_estimate: 15
+
+  # Washington
+  - state: WA
+    name: Washington Veterans Treatment Courts
+    program_url: https://www.courts.wa.gov/court_rules/?fa=court_rules.list&group=vmtc
+    notes: Multiple counties have Veterans Courts.
+    court_count_estimate: 10
+
+# General eligibility information applicable to most VTCs
+general_eligibility:
+  military_status: >
+    Must be a veteran or current service member of the U.S. Armed Forces.
+    Some courts accept Reserve and National Guard members.
+    Eligibility based on military status varies by jurisdiction.
+
+  conditions: >
+    Most VTCs require a diagnosed condition related to military service such as:
+    - Post-Traumatic Stress Disorder (PTSD)
+    - Traumatic Brain Injury (TBI)
+    - Military Sexual Trauma (MST)
+    - Substance Use Disorder
+    - Mental health conditions
+
+  nexus_requirement: >
+    Many courts require a "nexus" or connection between the criminal behavior
+    and military service or service-connected conditions.
+
+  offense_types: >
+    Eligibility varies by offense type and severity. Some courts accept
+    only misdemeanors, others accept felonies. Violent offenses may be
+    excluded depending on jurisdiction.
+
+  discharge_status: >
+    Discharge characterization requirements vary. Some courts accept all
+    discharge types; others may restrict to honorable or general discharges.
+
+# Services typically provided by VTCs
+services_provided:
+  - Treatment for substance use disorders
+  - Mental health treatment and counseling
+  - PTSD and trauma-informed care
+  - VA benefits enrollment assistance
+  - Housing assistance and referrals
+  - Employment and vocational support
+  - Veteran peer mentorship programs
+  - Case management and monitoring
+  - Regular judicial supervision
+  - Graduated sanctions and incentives

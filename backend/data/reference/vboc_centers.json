@@ -1,0 +1,427 @@
+{
+  "source": "SBA Veterans Business Outreach Centers",
+  "source_url": "https://www.sba.gov/local-assistance/resource-partners/veterans-business-outreach-centers-vboc",
+  "last_updated": "2026-01-25",
+  "description": "31 SBA Veterans Business Outreach Centers providing entrepreneurship support nationwide",
+  "centers": [
+    {
+      "name": "Veterans Business Outreach Center of New England",
+      "host_org": "Center for Women & Enterprise",
+      "states_served": ["CT", "ME", "MA", "NH", "RI", "VT"],
+      "address": "69 Milk St. Suite 217",
+      "city": "Westborough",
+      "state": "MA",
+      "zip": "01581",
+      "phone": "844-582-2461",
+      "email": "info.vboc@vbocnewengland.org",
+      "website": "https://www.vbocnewengland.org"
+    },
+    {
+      "name": "McNulty Veteran Business Center",
+      "host_org": "McNulty Veteran Business Center",
+      "states_served": ["NJ", "NY"],
+      "address": "44 Dalliba Ave.",
+      "city": "Watervliet",
+      "state": "NY",
+      "zip": "12189",
+      "phone": "518-326-6328",
+      "email": "aamoroso@mcnultycenter.org",
+      "website": "https://www.vbocregion2.com"
+    },
+    {
+      "name": "VBOC for Puerto Rico & U.S. Virgin Islands",
+      "host_org": "Grupo Guayacan",
+      "states_served": ["PR", "VI"],
+      "address": "171 Carlos Chardon Ave., Suite 407",
+      "city": "San Juan",
+      "state": "PR",
+      "zip": "00918",
+      "phone": "787-705-7963",
+      "email": "rmarin@vbocpr.org",
+      "website": "https://vbocprandusvi.org"
+    },
+    {
+      "name": "Old Dominion University Veterans Business Outreach Center",
+      "host_org": "Old Dominion University",
+      "states_served": ["VA", "WV"],
+      "address": "112 Bank St.",
+      "city": "Norfolk",
+      "state": "VA",
+      "zip": "23510",
+      "phone": "757-683-5505",
+      "email": "vboc@odu.edu",
+      "website": "https://www.odu.edu/iie/vboc"
+    },
+    {
+      "name": "University of Maryland Veterans Business Outreach Center",
+      "host_org": "University of Maryland",
+      "states_served": ["DC", "MD", "DE"],
+      "address": "4600 River Rd., Suite 400",
+      "city": "Riverdale",
+      "state": "MD",
+      "zip": "20737",
+      "phone": "301-405-6071",
+      "email": "veteranbusiness@umd.edu",
+      "website": "https://www.midatlanticvboc.com"
+    },
+    {
+      "name": "VBOC at Pennsylvania State University",
+      "host_org": "Pennsylvania State University",
+      "states_served": ["PA"],
+      "address": "200 Innovation Blvd., Suite 113",
+      "city": "University Park",
+      "state": "PA",
+      "zip": "16802",
+      "phone": "814-863-9120",
+      "email": null,
+      "website": "https://vboc.psu.edu/"
+    },
+    {
+      "name": "Veterans Business Outreach Center at Gulf Coast State College",
+      "host_org": "Gulf Coast State College",
+      "states_served": ["FL"],
+      "address": "5230 US Hwy. 98, Student Union West, Rooms 326-330",
+      "city": "Panama City",
+      "state": "FL",
+      "zip": "32401",
+      "phone": "850-769-1551",
+      "email": "bpeacock@gulfcoast.edu",
+      "website": "https://www.vboc.org"
+    },
+    {
+      "name": "Veterans Business Outreach Center at Fayetteville State University",
+      "host_org": "Fayetteville State University",
+      "states_served": ["NC"],
+      "address": "1073 Murchison Rd.",
+      "city": "Fayetteville",
+      "state": "NC",
+      "zip": "28301",
+      "phone": "910-672-2683",
+      "email": "rlivings@uncfsu.edu",
+      "website": "https://www.fsuvboc.com"
+    },
+    {
+      "name": "Veterans Business Outreach Center at Pathway Lending",
+      "host_org": "Pathway Lending",
+      "states_served": ["TN", "KY"],
+      "address": "201 Venture Cir.",
+      "city": "Nashville",
+      "state": "TN",
+      "zip": "37228",
+      "phone": "615-425-7171",
+      "email": "rob.corrigan@pathwaylending.org",
+      "website": "https://www.pathwaylending.org/vboc"
+    },
+    {
+      "name": "Veterans Business Outreach Center at Mississippi State University",
+      "host_org": "Mississippi State University",
+      "states_served": ["AL", "LA", "MS"],
+      "address": "60 Technology Blvd., Suite 105C",
+      "city": "Starkville",
+      "state": "MS",
+      "zip": "39759",
+      "phone": "662-325-4990",
+      "email": "vboc@business.msstate.edu",
+      "website": "https://www.vboc.msstate.edu"
+    },
+    {
+      "name": "VECTR Center - Veterans Business Outreach Center",
+      "host_org": "VetBiz Central, Inc.",
+      "states_served": ["GA"],
+      "address": "1001 S. Armed Forces Blvd.",
+      "city": "Warner Robins",
+      "state": "GA",
+      "zip": "31088",
+      "phone": "833-448-3287",
+      "email": "reginald.thompson@gavectr.org",
+      "website": "https://www.gavectr.org/vboc"
+    },
+    {
+      "name": "South Carolina Veterans Business Outreach Center",
+      "host_org": "The Citadel",
+      "states_served": ["SC"],
+      "address": "89 Hagood Ave.",
+      "city": "Charleston",
+      "state": "SC",
+      "zip": "29409",
+      "phone": "843-953-5867",
+      "email": "scvboc@citadel.edu",
+      "website": "https://vboc.citadel.edu"
+    },
+    {
+      "name": "ECDI's Veterans Business Outreach Center of Ohio",
+      "host_org": "Economic and Community Development Institute (ECDI)",
+      "states_served": ["OH"],
+      "address": "Allyn Hall 131, 3640 Colonel Glenn Hwy.",
+      "city": "Dayton",
+      "state": "OH",
+      "zip": "45435",
+      "phone": "888-210-3039",
+      "email": "vboc@ecdi.org",
+      "website": "https://ecdi.org/vboc"
+    },
+    {
+      "name": "VetBiz Central Veterans Business Outreach Center",
+      "host_org": "VetBiz Central, Inc.",
+      "states_served": ["IN", "MI"],
+      "address": "1401 East Court St.",
+      "city": "Flint",
+      "state": "MI",
+      "zip": "48503",
+      "phone": "810-767-8387",
+      "email": "info@vetbizcentral.org",
+      "website": "https://www.vetbizcentral.org"
+    },
+    {
+      "name": "Wisconsin Women's Business Initiative Corporation VBOC",
+      "host_org": "Wisconsin Women's Business Initiative Corporation (WWBIC)",
+      "states_served": ["IL", "MN", "WI"],
+      "address": "1533 N Rivercenter Dr.",
+      "city": "Milwaukee",
+      "state": "WI",
+      "zip": "53212",
+      "phone": "414-395-4556",
+      "email": "vboc@wwbic.com",
+      "website": "https://www.wwbic.com/veterans"
+    },
+    {
+      "name": "Veterans Business Outreach Center at UTRGV",
+      "host_org": "University of Texas Rio Grande Valley",
+      "states_served": ["TX"],
+      "region_description": "Central, West & Southern Texas",
+      "address": "1407 E Freddy Gonzalez Dr., Ste 1200",
+      "city": "Edinburg",
+      "state": "TX",
+      "zip": "78539",
+      "phone": "956-665-8931",
+      "email": "juan.santosflores01@utrgv.edu",
+      "website": "https://www.utrgv.edu/vboc"
+    },
+    {
+      "name": "Veterans Business Outreach Center at UT Arlington",
+      "host_org": "University of Texas at Arlington",
+      "states_served": ["AR", "OK", "TX"],
+      "region_description": "Arkansas, Northern Texas, Oklahoma",
+      "address": "701 S West St., Ste 635",
+      "city": "Arlington",
+      "state": "TX",
+      "zip": "76019",
+      "phone": "817-272-6789",
+      "email": "utavboc@uta.edu",
+      "website": "https://www.uta.edu/vboc"
+    },
+    {
+      "name": "New Mexico Veterans Business Outreach Center",
+      "host_org": "New Mexico Department of Veterans Services",
+      "states_served": ["NM"],
+      "address": "4801 Indian School Rd. NE, Building 2, Second Floor",
+      "city": "Albuquerque",
+      "state": "NM",
+      "zip": "87110",
+      "phone": "505-469-8501",
+      "email": "johnny.martinez@dvs.nm.gov",
+      "website": "https://www.nmvboc.org"
+    },
+    {
+      "name": "VetBiz VBOC",
+      "host_org": "VetBiz",
+      "states_served": ["KS", "MO"],
+      "addresses": [
+        {
+          "address": "611 N 10th St., Ste 350",
+          "city": "St. Louis",
+          "state": "MO",
+          "zip": "63101"
+        },
+        {
+          "address": "1000 Walnut St., 5th Floor",
+          "city": "Kansas City",
+          "state": "MO",
+          "zip": "64101"
+        }
+      ],
+      "address": "611 N 10th St., Ste 350",
+      "city": "St. Louis",
+      "state": "MO",
+      "zip": "63101",
+      "phone": "314-531-8387",
+      "email": "Info@vetbiz.com",
+      "website": "https://www.vetbiz.com"
+    },
+    {
+      "name": "Nebraska Veterans Business Outreach Center",
+      "host_org": "Nebraska Enterprise Fund",
+      "states_served": ["NE", "IA"],
+      "address": "2112 N. 30th St., Suite 103",
+      "city": "Omaha",
+      "state": "NE",
+      "zip": "68111",
+      "phone": "402-685-5500",
+      "email": "nef@nebbiz.org",
+      "website": "https://nebbiz.org/vboc"
+    },
+    {
+      "name": "Big Sky Veterans Business Outreach Center",
+      "host_org": "Big Sky Economic Development Authority",
+      "states_served": ["MT", "UT", "WY"],
+      "address": "201 N. Broadway",
+      "city": "Billings",
+      "state": "MT",
+      "zip": "59101",
+      "phone": "406-869-8411",
+      "email": "info@vbocregion8.com",
+      "website": "https://bigskyvboc.org/"
+    },
+    {
+      "name": "VBOC of the Dakotas",
+      "host_org": "University of North Dakota",
+      "states_served": ["ND", "SD"],
+      "address": "4200 James Ray Dr.",
+      "city": "Grand Forks",
+      "state": "ND",
+      "zip": "58202",
+      "phone": "701-738-4850",
+      "email": "dakotas.vboc@und.edu",
+      "website": "https://www.und.edu/dakotasvboc"
+    },
+    {
+      "name": "Colorado Veterans Business Outreach Center",
+      "host_org": "Mt. Carmel Veterans Service Center",
+      "states_served": ["CO"],
+      "address": "530 Communication Cir.",
+      "city": "Colorado Springs",
+      "state": "CO",
+      "zip": "80905",
+      "phone": "719-772-7000",
+      "email": "vboc@mtcarmelcenter.org",
+      "website": "https://www.veteranscenter.org/vboc/"
+    },
+    {
+      "name": "NorCal Veterans Business Outreach Center",
+      "host_org": "Valley Sierra SBDC Network",
+      "states_served": ["CA"],
+      "region_description": "Northern California (counties north of Santa Barbara, Ventura, Los Angeles, and San Bernardino)",
+      "addresses": [
+        {
+          "address": "1792 Tribute Rd., Suite 400",
+          "city": "Sacramento",
+          "state": "CA",
+          "zip": "95815"
+        },
+        {
+          "address": "808 4th St.",
+          "city": "Clovis",
+          "state": "CA",
+          "zip": "93612"
+        }
+      ],
+      "address": "1792 Tribute Rd., Suite 400",
+      "city": "Sacramento",
+      "state": "CA",
+      "zip": "95815",
+      "phone": "916-527-8400",
+      "email": "info@norcalvboc.org",
+      "website": "https://norcalvboc.org"
+    },
+    {
+      "name": "SoCal Veterans Business Outreach Center",
+      "host_org": "MiraCosta College",
+      "states_served": ["CA"],
+      "region_description": "Southern California",
+      "address": "3333 Manchester Ave.",
+      "city": "Cardiff",
+      "state": "CA",
+      "zip": "92007",
+      "phone": "760-795-8739",
+      "email": "socalvboc@miracosta.edu",
+      "website": "https://socalvboc.org/"
+    },
+    {
+      "name": "Arizona Veterans Business Outreach Center",
+      "host_org": "A New Leaf, Inc. AWEEc",
+      "states_served": ["AZ"],
+      "address": "635 East Broadway Rd.",
+      "city": "Mesa",
+      "state": "AZ",
+      "zip": "85204",
+      "phone": "480-322-4634",
+      "email": "admin@arizonavboc.org",
+      "website": "https://www.arizonavboc.org"
+    },
+    {
+      "name": "Veterans Business Outreach Center of the Pacific",
+      "host_org": "University of Hawaii",
+      "states_served": ["AS", "GU", "HI"],
+      "address": "2800 Woodlawn Dr., Ste 292",
+      "city": "Honolulu",
+      "state": "HI",
+      "zip": "96822",
+      "phone": "808-988-1236",
+      "email": "vboc@hawaii.edu",
+      "website": "https://www.hilo.hawaii.edu/vboc"
+    },
+    {
+      "name": "Los Angeles Regional Veterans Business Outreach Center",
+      "host_org": "EWDD",
+      "states_served": ["CA"],
+      "region_description": "Los Angeles, Orange, Riverside, San Bernardino, Santa Barbara, and Ventura Counties",
+      "address": "4900 E. Conant St., Bldg. O2",
+      "city": "Long Beach",
+      "state": "CA",
+      "zip": "90808",
+      "phone": "844-595-8262",
+      "email": "info@lavboc.org",
+      "website": "https://lavboc.org"
+    },
+    {
+      "name": "Nevada Veterans Business Outreach Center",
+      "host_org": "Nevada SBDC",
+      "states_served": ["NV"],
+      "addresses": [
+        {
+          "address": "8400 W. Sunset Rd., Suite 300",
+          "city": "Las Vegas",
+          "state": "NV",
+          "zip": "89113"
+        },
+        {
+          "address": "1664 N. Virginia St.",
+          "city": "Reno",
+          "state": "NV",
+          "zip": "89557"
+        }
+      ],
+      "address": "8400 W. Sunset Rd., Suite 300",
+      "city": "Las Vegas",
+      "state": "NV",
+      "zip": "89113",
+      "phone": "833-880-7800",
+      "email": "lurdes.madrigal@nvvboc.org",
+      "website": "https://www.nvvboc.org"
+    },
+    {
+      "name": "Business Impact NW Veterans Business Outreach Center",
+      "host_org": "Business Impact NW",
+      "states_served": ["WA", "ID", "OR"],
+      "address": "12720 Gateway Dr. A, Suite 207",
+      "city": "Tukwila",
+      "state": "WA",
+      "zip": "98168",
+      "phone": "206-324-4330",
+      "email": "vboc@businessimpactnw.org",
+      "website": "https://businessimpactnw.org/vboc/"
+    },
+    {
+      "name": "Alaska Veterans Business Outreach Center",
+      "host_org": "Business Impact NW",
+      "states_served": ["AK"],
+      "address": "911 W 8th Ave.",
+      "city": "Anchorage",
+      "state": "AK",
+      "zip": "99501",
+      "phone": "907-891-7466",
+      "email": "vboc@businessimpactnw.org",
+      "website": "https://businessimpactnw.org/vboc/"
+    }
+  ]
+}

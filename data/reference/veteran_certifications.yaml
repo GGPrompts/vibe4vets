@@ -1,0 +1,662 @@
+# Veteran Certification Programs Reference Data
+# Curated list of industry certification programs specifically for veterans
+# Last updated: 2026-01-25
+source:
+  name: Veteran Certification Programs Directory
+  description: Curated list of tech industry certification programs offering veteran-specific benefits
+  last_updated: '2026-01-25'
+  total_programs: 18
+
+programs:
+  # Microsoft Programs
+  - id: mssa
+    name: Microsoft Software & Systems Academy (MSSA)
+    provider: Microsoft
+    website: https://military.microsoft.com/mssa/
+    description: >-
+      Full-time, 17-week technical training program leading to careers in cloud development,
+      cloud administration, and cybersecurity operations. Free for all veterans and military community.
+    certifications:
+      - Microsoft Azure certifications
+      - Cloud Administration
+      - Cloud Development
+      - Cybersecurity Operations
+    learning_tracks:
+      - Server & Cloud Administration (SCA)
+      - Cloud Application Development (CAD)
+      - Cybersecurity Operations (CSO)
+    duration: 17 weeks
+    format: online
+    cost: free
+    gi_bill_eligible: false
+    gi_bill_note: Free program - GI Bill not required
+    eligibility:
+      - Active-duty service members with scheduled discharge
+      - Veterans with honorable discharge
+      - Retirees
+      - Coast Guard members
+      - National Guard and Reserve members
+    career_outcomes:
+      - Interview opportunity with Microsoft
+      - Access to 600+ hiring partners including Fortune 500 companies
+      - 90%+ retention rate for graduates hired by Microsoft
+    application_process: Email MSSAOPS@Microsoft.com for weekly information session invite
+    contact_email: MSSAOPS@Microsoft.com
+    tier: 2
+    tags:
+      - cloud
+      - azure
+      - cybersecurity
+      - microsoft
+      - free
+
+  # AWS Programs
+  - id: aws-restart
+    name: AWS re/Start
+    provider: Amazon Web Services
+    website: https://aws.amazon.com/training/restart/
+    description: >-
+      Free 12-week program preparing unemployed and underemployed individuals for cloud careers.
+      Includes scenario-based exercises, hands-on labs, and AWS Certified Cloud Practitioner exam.
+    certifications:
+      - AWS Certified Cloud Practitioner
+    learning_tracks:
+      - Cloud Computing Fundamentals
+      - Linux
+      - Python
+      - Networking
+      - Security
+      - Relational Databases
+    duration: 12 weeks
+    format: online
+    cost: free
+    gi_bill_eligible: true
+    gi_bill_note: AWS certification exams eligible for VA reimbursement
+    eligibility:
+      - Unemployed or underemployed individuals
+      - Veterans
+      - Military spouses
+    career_outcomes:
+      - 90%+ graduates connected with job interview opportunities
+      - Direct connection to AWS hiring partners
+    application_process: Apply through AWS re/Start website
+    tier: 1
+    tags:
+      - cloud
+      - aws
+      - free
+      - certification
+
+  - id: amazon-apprentice
+    name: Amazon Technical Apprenticeship
+    provider: Amazon
+    website: https://www.amazon.jobs/en/landing_pages/mil-apprentice
+    description: >-
+      Paid training program for veterans and military spouses to transition to cloud computing careers.
+      No previous technical experience required.
+    certifications:
+      - AWS certifications
+    learning_tracks:
+      - Cloud Computing
+    duration: varies
+    format: hybrid
+    cost: free
+    gi_bill_eligible: false
+    gi_bill_note: Paid program - apprenticeship wages provided
+    eligibility:
+      - Military veterans
+      - Military spouses
+    career_outcomes:
+      - Placement at Amazon
+      - Industry certification
+    application_process: Apply through Amazon Jobs military landing page
+    tier: 1
+    tags:
+      - cloud
+      - aws
+      - apprenticeship
+      - paid
+
+  # Salesforce Programs
+  - id: salesforce-military
+    name: Salesforce Trailhead Military
+    provider: Salesforce
+    website: https://veterans.my.site.com/s/how-it-works
+    description: >-
+      Self-paced training program for Salesforce Administrator, Developer, or Business Analyst roles.
+      Free certification vouchers and job interview opportunities with corporate partners.
+    certifications:
+      - Salesforce Administrator
+      - Salesforce Developer
+      - Salesforce Business Analyst
+    learning_tracks:
+      - Salesforce Administrator
+      - Salesforce Developer
+      - Business Analyst
+    duration: self-paced (typically 4-6 months)
+    format: online
+    cost: free
+    gi_bill_eligible: false
+    gi_bill_note: Free program including certification vouchers
+    eligibility:
+      - Active-duty personnel
+      - Reserve and Guard members
+      - Veterans
+      - Military spouses
+    career_outcomes:
+      - Guaranteed interviews with 24+ Salesforce Alliance partners
+      - Average starting salary around $70,000
+      - Opportunities with Deloitte, PwC, Amazon, and Salesforce
+    application_process: Register at salesforce.com/military and verify with ID.me
+    tier: 2
+    tags:
+      - crm
+      - salesforce
+      - free
+      - certification
+
+  # Google Programs
+  - id: google-career-forward
+    name: Google Career Forward (Hiring Our Heroes)
+    provider: Google / Hiring Our Heroes
+    website: https://www.hiringourheroes.org/career-services/education-networking/career-forward/
+    description: >-
+      Access to Google Career Certificates in data analytics, IT support, project management,
+      or UX design, followed by 12-week paid fellowship opportunity.
+    certifications:
+      - Google Data Analytics Certificate
+      - Google IT Support Certificate
+      - Google Project Management Certificate
+      - Google UX Design Certificate
+    learning_tracks:
+      - Data Analytics
+      - IT Support
+      - Project Management
+      - UX Design
+    duration: self-paced certificates + 12-week fellowship
+    format: online
+    cost: free
+    gi_bill_eligible: false
+    gi_bill_note: Free through Google.org grant
+    eligibility:
+      - Veterans
+      - Transitioning service members (within 1 year of separation)
+      - Military spouses
+      - Military caregivers
+    career_outcomes:
+      - 12-week paid fellowship with 400+ employers
+      - Partners include Booz Allen Hamilton, Deloitte, Verizon, Google
+    application_process: Apply through Hiring Our Heroes Career Forward program
+    tier: 2
+    tags:
+      - google
+      - data-analytics
+      - it-support
+      - project-management
+      - ux
+      - free
+
+  - id: google-launchpad-veterans
+    name: Google Launchpad for Veterans
+    provider: Google Cloud
+    website: https://cloud.google.com/blog/topics/training-certifications/google-cloud-launchpad-veterans-to-cloud-careers/
+    description: >-
+      Three-week, no-cost virtual training program providing foundational generative AI skills.
+      Includes complimentary Gen AI Leader certification exam voucher.
+    certifications:
+      - Google Cloud Gen AI Leader
+    learning_tracks:
+      - Generative AI Fundamentals
+    duration: 3 weeks
+    format: online
+    cost: free
+    gi_bill_eligible: false
+    gi_bill_note: Free program
+    eligibility:
+      - US and Canada military veterans
+      - Service members
+    career_outcomes:
+      - Gen AI certification
+      - Foundation for cloud careers
+    application_process: Register through Google Cloud training portal
+    tier: 1
+    tags:
+      - google
+      - ai
+      - generative-ai
+      - free
+      - certification
+
+  # Cisco Programs
+  - id: cisco-cybervets
+    name: Cisco CyberVetsUSA
+    provider: Cisco Networking Academy
+    website: https://www.cisco.com/c/en/us/about/csr/impact/education/veterans-program.html
+    description: >-
+      Free online cybersecurity training and certification for veterans through the CyberVetsUSA consortium.
+      Self-paced courses in secure infrastructure and cybersecurity operations.
+    certifications:
+      - Cisco Certified (multiple tracks)
+      - Cybersecurity Operations
+      - Secure Infrastructure
+    learning_tracks:
+      - Secure Infrastructure
+      - Cybersecurity Operations
+    duration: 12-14 weeks (self-paced)
+    format: online
+    cost: free
+    gi_bill_eligible: false
+    gi_bill_note: Free program
+    eligibility:
+      - Veterans
+      - Transitioning service members
+      - National Guard members
+      - Reservists
+      - Military spouses
+    career_outcomes:
+      - Cisco certification
+      - Career in networking and cybersecurity
+    application_process: Take skills assessment and select career track
+    partners:
+      - AWS
+      - ISC2
+      - Fortinet
+      - Palo Alto Networks
+      - NetApp
+    tier: 2
+    tags:
+      - cisco
+      - cybersecurity
+      - networking
+      - free
+
+  - id: cisco-military-credentialing
+    name: Cisco Military Credentialing Assistance Program
+    provider: Cisco
+    website: https://www.cisco.com/site/us/en/learn/training-certifications/training/military-credentialing.html
+    description: >-
+      IT training and certifications qualifying for military tuition and credentialing assistance.
+      Comprehensive courses for networking and cybersecurity careers.
+    certifications:
+      - CCNA
+      - CCNP
+      - Various Cisco certifications
+    learning_tracks:
+      - Networking
+      - Cybersecurity
+    duration: varies
+    format: online
+    cost: covered by military TA/CA
+    gi_bill_eligible: true
+    gi_bill_note: Qualifies for military tuition and credentialing assistance
+    eligibility:
+      - Active-duty military personnel
+      - Veterans using GI Bill
+    career_outcomes:
+      - Cisco certification
+      - Enhanced job opportunities
+    application_process: Apply through military education office
+    tier: 2
+    tags:
+      - cisco
+      - networking
+      - ccna
+      - gi-bill
+
+  # CompTIA Programs
+  - id: comptia-vettec
+    name: CompTIA Certifications (VET TEC 2.0)
+    provider: CompTIA / VA
+    website: https://www.comptia.org/en-us/blog/how-to-use-the-gi-bill-for-it-certifications/
+    description: >-
+      Industry-standard IT certifications approved for VA education benefits.
+      Fundamental certifications for IT careers including A+, Network+, and Security+.
+    certifications:
+      - CompTIA A+
+      - CompTIA Network+
+      - CompTIA Security+
+      - CompTIA Project+
+      - CompTIA CySA+
+      - CompTIA PenTest+
+    learning_tracks:
+      - IT Fundamentals
+      - Networking
+      - Cybersecurity
+    duration: varies (typically 3-6 months per certification)
+    format: online or in-person
+    cost: GI Bill covers exam fees
+    gi_bill_eligible: true
+    gi_bill_note: Exam fees reimbursable through GI Bill
+    eligibility:
+      - Veterans with GI Bill benefits
+      - Active-duty using TA
+    career_outcomes:
+      - Entry to mid-level IT positions
+      - Federal government IT jobs (especially Security+)
+    application_process: Through GI Bill-approved training providers
+    tier: 2
+    tags:
+      - comptia
+      - security-plus
+      - network-plus
+      - a-plus
+      - gi-bill
+
+  # Syracuse IVMF Programs
+  - id: onward-to-opportunity
+    name: Onward to Opportunity (O2O)
+    provider: Syracuse University IVMF
+    website: https://ivmf.syracuse.edu/programs/career-training/
+    description: >-
+      Free career training program with 50+ IT certifications and business management tracks.
+      Virtual, asynchronous coursework available 24/7.
+    certifications:
+      - 50+ IT certifications
+      - Project Management (PMP, CompTIA Project+)
+      - Six Sigma
+      - HR certifications
+      - CISSP
+      - CCNA
+      - CompTIA Security+
+    learning_tracks:
+      - Information Technology
+      - Business Management
+      - Semiconductor Foundations
+    duration: self-paced
+    format: online
+    cost: free
+    gi_bill_eligible: false
+    gi_bill_note: Free program - does not use educational benefits
+    eligibility:
+      - Active-duty service members
+      - Selected reserve
+      - Veterans
+      - Military spouses
+    career_outcomes:
+      - Industry certification
+      - Connection to employer partners
+      - VSO networking
+    application_process: Submit interest form through IVMF website
+    sponsors:
+      - JPMorgan Chase
+      - Schultz Family Foundation
+      - Micron (semiconductor track)
+    tier: 2
+    tags:
+      - ivmf
+      - free
+      - it
+      - project-management
+      - semiconductor
+
+  # SkillBridge Programs
+  - id: dod-skillbridge
+    name: DoD SkillBridge Program
+    provider: Department of Defense
+    website: https://skillbridge.osd.mil/
+    description: >-
+      Opportunity for service members to gain civilian work experience through industry training,
+      apprenticeships, or internships during last 180 days of service.
+    certifications:
+      - Varies by industry partner
+    learning_tracks:
+      - All career fields
+    duration: up to 180 days
+    format: hybrid or in-person
+    cost: free (continue military pay)
+    gi_bill_eligible: false
+    gi_bill_note: Continue receiving military pay and benefits
+    eligibility:
+      - Active-duty service members within 180 days of separation
+    career_outcomes:
+      - 6,344+ partner organizations
+      - 9,224+ position announcements
+      - Partners include Amazon, John Deere, Lockheed Martin, UnitedHealth
+    application_process: Apply through installation transition office
+    tier: 1
+    tags:
+      - skillbridge
+      - apprenticeship
+      - internship
+      - dod
+
+  # VET TEC Program
+  - id: vet-tec-2
+    name: VET TEC 2.0 (High-Tech Veterans Education)
+    provider: Department of Veterans Affairs
+    website: https://www.va.gov/education/about-gi-bill-benefits/how-to-use-benefits/vettec-high-tech-program/
+    description: >-
+      Reauthorized program for veterans to enroll in high-tech training programs.
+      Covers tuition and provides housing allowance. Limited to 4,000 spots annually.
+    certifications:
+      - Various tech certifications through approved providers
+    learning_tracks:
+      - Coding bootcamps
+      - Data analytics
+      - Cybersecurity
+      - AI/Machine Learning
+    duration: varies by program (typically 12-22 weeks)
+    format: online or in-person
+    cost: free (partial GI Bill usage required)
+    gi_bill_eligible: true
+    gi_bill_note: Requires partial GI Bill entitlement
+    eligibility:
+      - Veterans with remaining GI Bill entitlement
+    career_outcomes:
+      - Employment-focused training
+      - Placement within 6 months of graduation
+    application_process: Apply through VA education benefits
+    status: Reauthorized January 2025, expected launch October 2025
+    tier: 1
+    tags:
+      - vet-tec
+      - va
+      - bootcamp
+      - coding
+      - gi-bill
+
+  # Hiring Our Heroes Programs
+  - id: hoh-corporate-fellowship
+    name: Hiring Our Heroes Corporate Fellowship Program
+    provider: U.S. Chamber of Commerce Foundation
+    website: https://www.hiringourheroes.org/career-services/fellowships/
+    description: >-
+      12-week fellowship program connecting transitioning service members with
+      host companies for hands-on experience and professional development.
+    certifications:
+      - Varies by fellowship track
+    learning_tracks:
+      - Corporate fellowships
+      - Professional development
+    duration: 12 weeks
+    format: hybrid
+    cost: free
+    gi_bill_eligible: false
+    gi_bill_note: Free program
+    eligibility:
+      - Active-duty service members within 180 days of separation
+      - Veterans within 1 year of separation
+      - Military spouses
+    career_outcomes:
+      - Direct hiring opportunities
+      - Professional network building
+    application_process: Apply through Hiring Our Heroes website
+    tier: 2
+    tags:
+      - fellowship
+      - hiring-our-heroes
+      - corporate
+
+  # IBM Programs
+  - id: ibm-skillsbuild
+    name: IBM SkillsBuild for Veterans
+    provider: IBM
+    website: https://skillsbuild.org/veterans
+    description: >-
+      Free digital learning platform offering tech and business skills training
+      with IBM credentials and certifications.
+    certifications:
+      - IBM Digital Badges
+      - AI Fundamentals
+      - Cybersecurity
+      - Cloud Computing
+    learning_tracks:
+      - AI and Data
+      - Cybersecurity
+      - Cloud Computing
+      - Professional Skills
+    duration: self-paced
+    format: online
+    cost: free
+    gi_bill_eligible: false
+    gi_bill_note: Free program
+    eligibility:
+      - Veterans
+      - Military spouses
+      - Transitioning service members
+    career_outcomes:
+      - IBM digital credentials
+      - Career pathways support
+    application_process: Register on IBM SkillsBuild platform
+    tier: 2
+    tags:
+      - ibm
+      - ai
+      - cloud
+      - free
+
+  # Palo Alto Networks
+  - id: palo-alto-cybersecurity
+    name: Palo Alto Networks Cybersecurity Academy
+    provider: Palo Alto Networks
+    website: https://www.paloaltonetworks.com/about-us/academy
+    description: >-
+      Cybersecurity education program offering courses and certifications
+      in network security, cloud security, and SOC operations.
+    certifications:
+      - Palo Alto Networks Certified Detection and Remediation Analyst (PCDRA)
+      - Palo Alto Networks Certified Network Security Engineer (PCNSE)
+    learning_tracks:
+      - Network Security
+      - Cloud Security
+      - SOC Operations
+    duration: varies
+    format: online
+    cost: varies (discounts for veterans)
+    gi_bill_eligible: true
+    gi_bill_note: Some programs GI Bill approved
+    eligibility:
+      - Veterans
+      - Active military
+      - All learners
+    career_outcomes:
+      - Industry-recognized certifications
+      - Cybersecurity career paths
+    application_process: Enroll through Palo Alto Networks Academy
+    tier: 2
+    tags:
+      - palo-alto
+      - cybersecurity
+      - network-security
+
+  # Project Management Institute
+  - id: pmi-veterans
+    name: PMI for Veterans
+    provider: Project Management Institute
+    website: https://www.pmi.org/membership/military
+    description: >-
+      Project management certifications with military benefits including
+      reduced exam fees and career resources for veterans.
+    certifications:
+      - Project Management Professional (PMP)
+      - Certified Associate in Project Management (CAPM)
+    learning_tracks:
+      - Project Management
+    duration: self-paced preparation
+    format: online
+    cost: reduced fees for veterans
+    gi_bill_eligible: true
+    gi_bill_note: PMP exam fees can be covered by GI Bill
+    eligibility:
+      - Veterans
+      - Active military
+      - Military spouses
+    career_outcomes:
+      - PMP certification (industry gold standard)
+      - Average salary increase of 25%
+    application_process: Apply through PMI with military verification
+    tier: 2
+    tags:
+      - pmp
+      - project-management
+      - pmi
+
+  # ISC2 Programs
+  - id: isc2-veterans
+    name: ISC2 Veteran Pathway Program
+    provider: ISC2
+    website: https://www.isc2.org/landing/veterans
+    description: >-
+      Cybersecurity certification pathways for veterans including CISSP and CC certifications
+      with free training and exam vouchers for qualifying veterans.
+    certifications:
+      - CISSP
+      - CC (Certified in Cybersecurity)
+      - SSCP
+      - CCSP
+    learning_tracks:
+      - Cybersecurity Management
+      - Cybersecurity Fundamentals
+    duration: self-paced
+    format: online
+    cost: free CC certification for veterans
+    gi_bill_eligible: true
+    gi_bill_note: CISSP exam fees covered by GI Bill
+    eligibility:
+      - Veterans
+      - Active-duty military
+      - Military spouses
+    career_outcomes:
+      - CISSP (gold standard for cybersecurity management)
+      - Federal cybersecurity positions
+    application_process: Register through ISC2 with military verification
+    tier: 2
+    tags:
+      - isc2
+      - cissp
+      - cybersecurity
+      - free
+
+  # Fortinet Programs
+  - id: fortinet-veterans
+    name: Fortinet Veterans Program
+    provider: Fortinet
+    website: https://www.fortinet.com/training/veterans
+    description: >-
+      Free cybersecurity training and certification program for veterans
+      as part of the FortiVet initiative.
+    certifications:
+      - Fortinet NSE certifications
+      - Network Security Expert (various levels)
+    learning_tracks:
+      - Network Security
+      - Cybersecurity Operations
+    duration: self-paced
+    format: online
+    cost: free
+    gi_bill_eligible: false
+    gi_bill_note: Free program
+    eligibility:
+      - Veterans
+      - Transitioning service members
+      - Military spouses
+    career_outcomes:
+      - Fortinet certification
+      - Cybersecurity career pathways
+    application_process: Register through Fortinet Veterans portal
+    tier: 2
+    tags:
+      - fortinet
+      - cybersecurity
+      - free
+      - network-security
