@@ -1,12 +1,16 @@
 """Tests for embedding service and semantic search."""
 
-# Check if sentence-transformers is available
-import importlib.util
 from unittest.mock import MagicMock, patch
 
 import pytest
 
-HAS_SENTENCE_TRANSFORMERS = importlib.util.find_spec("sentence_transformers") is not None
+# Check if sentence-transformers is available and working (including dependencies)
+try:
+    from sentence_transformers import SentenceTransformer  # noqa: F401
+
+    HAS_SENTENCE_TRANSFORMERS = True
+except (ImportError, ModuleNotFoundError):
+    HAS_SENTENCE_TRANSFORMERS = False
 
 
 class TestLocalEmbeddingService:

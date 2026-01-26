@@ -46,6 +46,7 @@ class LocalEmbeddingService:
         if LocalEmbeddingService._model is None:
             logger.info(f"Loading local embedding model: {LOCAL_MODEL_NAME}")
             from sentence_transformers import SentenceTransformer
+
             LocalEmbeddingService._model = SentenceTransformer(LOCAL_MODEL_NAME)
             logger.info("Local embedding model loaded")
 
@@ -229,7 +230,7 @@ def get_embedding_service() -> LocalEmbeddingService | OpenAIEmbeddingService:
     Returns:
         Configured embedding service instance.
     """
-    use_local = getattr(settings, 'use_local_embeddings', False)
+    use_local = getattr(settings, "use_local_embeddings", False)
 
     if use_local:
         logger.info("Using local embedding service (SentenceTransformers)")
@@ -241,5 +242,5 @@ def get_embedding_service() -> LocalEmbeddingService | OpenAIEmbeddingService:
 
 def get_embedding_dimension() -> int:
     """Get the embedding dimension for the configured service."""
-    use_local = getattr(settings, 'use_local_embeddings', False)
+    use_local = getattr(settings, "use_local_embeddings", False)
     return LOCAL_EMBEDDING_DIMENSION if use_local else OPENAI_EMBEDDING_DIMENSION

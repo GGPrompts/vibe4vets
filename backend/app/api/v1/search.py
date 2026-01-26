@@ -313,9 +313,7 @@ class SemanticSearchResponse(BaseModel):
         },
         500: {
             "description": "Failed to generate embedding",
-            "content": {
-                "application/json": {"example": {"detail": "Failed to generate embedding: error details"}}
-            },
+            "content": {"application/json": {"example": {"detail": "Failed to generate embedding: error details"}}},
         },
     },
 )
