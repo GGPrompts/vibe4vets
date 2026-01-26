@@ -53,7 +53,7 @@ class Resource(SQLModel, table=True):
     location_id: uuid.UUID | None = Field(default=None, foreign_key="locations.id")
 
     # Content
-    title: str = Field(max_length=255)
+    title: str = Field(max_length=500)
     description: str
     summary: str | None = None  # AI-generated
     eligibility: str | None = None
@@ -73,18 +73,18 @@ class Resource(SQLModel, table=True):
     )  # ['*'] for national
 
     # Contact
-    website: str | None = Field(default=None, max_length=500)
-    phone: str | None = Field(default=None, max_length=150)
-    hours: str | None = Field(default=None, max_length=255)
+    website: str | None = Field(default=None, max_length=1000)
+    phone: str | None = Field(default=None, max_length=255)
+    hours: str | None = Field(default=None, max_length=500)
     languages: list[str] = Field(
         default_factory=lambda: ["en"],
         sa_column=Column(ARRAY(Text), nullable=False, default=["en"]),
     )
-    cost: str | None = Field(default=None, max_length=100)  # free, sliding scale, etc.
+    cost: str | None = Field(default=None, max_length=255)  # free, sliding scale, etc.
 
     # Trust signals
     source_id: uuid.UUID | None = Field(default=None, foreign_key="sources.id")
-    source_url: str | None = Field(default=None, max_length=500)
+    source_url: str | None = Field(default=None, max_length=1000)
     last_scraped: datetime | None = None
     last_verified: datetime | None = None
     freshness_score: float = Field(default=1.0)  # 0-1
