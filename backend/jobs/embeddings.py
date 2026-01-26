@@ -1,7 +1,7 @@
 """Embedding generation job for semantic search.
 
 Generates vector embeddings for resources that don't have them yet.
-Uses OpenAI's text-embedding-3-small model via the EmbeddingService.
+Uses local SentenceTransformers (free) or OpenAI API based on config.
 """
 
 from typing import Any
@@ -40,16 +40,10 @@ class EmbeddingsJob(BaseJob):
         Returns:
             Statistics dictionary with processed, failed, skipped counts.
         """
-        from app.config import settings
-        from app.services.embedding import EmbeddingService
+        from app.services.embedding import get_embedding_service
 
         batch_size = kwargs.get("batch_size", 50)
         max_resources = kwargs.get("max_resources")
-
-        # Check if OpenAI API key is configured
-        if not settings.openai_api_key:
-            self._log("OPENAI_API_KEY not configured, skipping embedding generation", "warning")
-            return {"skipped": 0, "error": "OPENAI_API_KEY not configured"}
 
         # Get resources without embeddings
         stmt = (
@@ -71,8 +65,8 @@ class EmbeddingsJob(BaseJob):
 
         self._log(f"Found {total} resources without embeddings")
 
-        # Initialize embedding service
-        embedding_service = EmbeddingService()
+        # Initialize embedding service (uses local or OpenAI based on config)
+        embedding_service = get_embedding_service()
 
         processed = 0
         failed = 0

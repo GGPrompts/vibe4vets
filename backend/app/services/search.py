@@ -5,7 +5,7 @@ from dataclasses import dataclass
 from datetime import UTC, datetime
 from typing import TYPE_CHECKING
 
-from sqlalchemy import func, or_, text
+from sqlalchemy import Float, cast, func, or_, text
 from sqlmodel import Session, col, select
 
 from app.models import Location, Organization, Resource, Source
@@ -700,7 +700,8 @@ class SearchService:
         """
         # Use cosine distance for similarity (1 - cosine_distance = cosine_similarity)
         # pgvector uses <=> for cosine distance
-        distance_col = Resource.embedding.op("<=>")(query_embedding).label("distance")
+        # Cast to Float to prevent pgvector from trying to parse as vector
+        distance_col = cast(Resource.embedding.op("<=>")(query_embedding), Float).label("distance")
 
         # Base query with vector similarity
         stmt = (
@@ -814,7 +815,8 @@ class SearchService:
         search_query = func.to_tsquery("english", prefix_query)
 
         # Vector distance for semantic ranking
-        distance_col = Resource.embedding.op("<=>")(query_embedding).label("distance")
+        # Cast to Float to prevent pgvector from trying to parse as vector
+        distance_col = cast(Resource.embedding.op("<=>")(query_embedding), Float).label("distance")
 
         # FTS rank
         fts_rank = func.ts_rank(Resource.search_vector, search_query).label("fts_rank")

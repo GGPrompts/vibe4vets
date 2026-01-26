@@ -25,6 +25,7 @@ class Settings(BaseSettings):
     # AI
     anthropic_api_key: str = ""
     openai_api_key: str = ""  # For embeddings (text-embedding-3-small)
+    use_local_embeddings: bool = True  # Use SentenceTransformers (free) instead of OpenAI
 
     # Environment
     environment: str = "development"

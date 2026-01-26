@@ -15,8 +15,11 @@ def _utc_now() -> datetime:
     return datetime.now(UTC)
 
 
-# Embedding dimension for text-embedding-3-small (OpenAI) or equivalent
-EMBEDDING_DIMENSION = 1536
+# Embedding dimension
+# - Local (SentenceTransformers all-MiniLM-L6-v2): 384
+# - OpenAI (text-embedding-3-small): 1536
+# NOTE: Changing this requires a database migration to alter the vector column
+EMBEDDING_DIMENSION = 384  # Using local embeddings
 
 if TYPE_CHECKING:
     from app.models.location import Location

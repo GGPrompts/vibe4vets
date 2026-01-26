@@ -3,7 +3,7 @@
 Provides multiple search modes:
 - Full-text search with PostgreSQL tsvector
 - Eligibility-filtered search for veteran criteria matching
-- Semantic search using AI embeddings (requires OpenAI API key)
+- Semantic search using AI embeddings (local SentenceTransformers or OpenAI)
 """
 
 from fastapi import APIRouter, HTTPException, Query
@@ -311,10 +311,10 @@ class SemanticSearchResponse(BaseModel):
         200: {
             "description": "Semantic search completed",
         },
-        503: {
-            "description": "Service unavailable - OpenAI API key not configured",
+        500: {
+            "description": "Failed to generate embedding",
             "content": {
-                "application/json": {"example": {"detail": "Semantic search requires OPENAI_API_KEY to be configured"}}
+                "application/json": {"example": {"detail": "Failed to generate embedding: error details"}}
             },
         },
     },
@@ -350,7 +350,7 @@ def semantic_search(
 ) -> SemanticSearchResponse:
     """AI-powered semantic search using vector embeddings.
 
-    Uses OpenAI embeddings to understand the **meaning** of your query,
+    Uses embeddings to understand the **meaning** of your query,
     not just keywords. Great for natural language questions.
 
     **Search modes:**
@@ -363,23 +363,14 @@ def semantic_search(
     - "How can I get help with my resume?"
     - "Programs for veterans with PTSD"
 
-    **Note:** Requires `OPENAI_API_KEY` environment variable to be configured.
-    Returns 503 if not available.
+    Uses local SentenceTransformers model by default (free, fast).
+    Can be configured to use OpenAI embeddings via USE_LOCAL_EMBEDDINGS=false.
     """
-    from app.config import settings
-
-    # Check if OpenAI API key is configured
-    if not settings.openai_api_key:
-        raise HTTPException(
-            status_code=503,
-            detail="Semantic search requires OPENAI_API_KEY to be configured",
-        )
-
     # Generate embedding for query
     try:
-        from app.services.embedding import EmbeddingService
+        from app.services.embedding import get_embedding_service
 
-        embedding_service = EmbeddingService()
+        embedding_service = get_embedding_service()
         result = embedding_service.generate_embedding(q)
         query_embedding = result.embedding
     except Exception as e:
