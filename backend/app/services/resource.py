@@ -319,8 +319,7 @@ class ResourceService:
                 national_sql += " ORDER BY r.title ASC LIMIT :limit OFFSET :offset"
 
                 national_results = self.session.execute(
-                    text(national_sql),
-                    {"limit": remaining_limit, "offset": current_offset}
+                    text(national_sql), {"limit": remaining_limit, "offset": current_offset}
                 ).fetchall()
 
                 for row in national_results:

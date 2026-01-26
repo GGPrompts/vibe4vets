@@ -261,9 +261,7 @@ def import_united_way(
                     title = name  # Use resource name directly as title
 
                     # Get or create organization
-                    org = get_or_create_organization(
-                        session, org_name, resource.get("website"), dry_run=dry_run
-                    )
+                    org = get_or_create_organization(session, org_name, resource.get("website"), dry_run=dry_run)
 
                     # Check for existing resource
                     existing = find_existing_resource(session, title, org.id)

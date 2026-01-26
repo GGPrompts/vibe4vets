@@ -352,11 +352,7 @@ class UnitedWayConnector(BaseConnector):
         """Get resources for a specific region."""
         if not self._resources:
             self.run()
-        return [
-            r
-            for r in self._resources
-            if r.raw_data and r.raw_data.get("region") == region
-        ]
+        return [r for r in self._resources if r.raw_data and r.raw_data.get("region") == region]
 
     def get_resources_by_state(self, state: str) -> list[ResourceCandidate]:
         """Get resources for a specific state."""
@@ -369,11 +365,7 @@ class UnitedWayConnector(BaseConnector):
         """Get all Missions United program resources."""
         if not self._resources:
             self.run()
-        return [
-            r
-            for r in self._resources
-            if r.tags and "missions-united" in r.tags
-        ]
+        return [r for r in self._resources if r.tags and "missions-united" in r.tags]
 
     def get_resources_by_category(self, category: str) -> list[ResourceCandidate]:
         """Get resources matching a category."""
