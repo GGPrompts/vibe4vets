@@ -1,15 +1,12 @@
 """Tests for embedding service and semantic search."""
 
+# Check if sentence-transformers is available
+import importlib.util
 from unittest.mock import MagicMock, patch
 
 import pytest
 
-# Check if sentence-transformers is available
-try:
-    import sentence_transformers
-    HAS_SENTENCE_TRANSFORMERS = True
-except ImportError:
-    HAS_SENTENCE_TRANSFORMERS = False
+HAS_SENTENCE_TRANSFORMERS = importlib.util.find_spec("sentence_transformers") is not None
 
 
 class TestLocalEmbeddingService:
@@ -63,7 +60,7 @@ class TestLocalEmbeddingService:
     @pytest.mark.skipif(not HAS_SENTENCE_TRANSFORMERS, reason="sentence-transformers not available")
     def test_generate_embedding_returns_correct_dimension(self):
         """Test that local embeddings return 384 dimensions."""
-        from app.services.embedding import LocalEmbeddingService, LOCAL_EMBEDDING_DIMENSION
+        from app.services.embedding import LOCAL_EMBEDDING_DIMENSION, LocalEmbeddingService
 
         service = LocalEmbeddingService()
         result = service.generate_embedding("test text for embedding")
@@ -75,7 +72,7 @@ class TestLocalEmbeddingService:
     @pytest.mark.skipif(not HAS_SENTENCE_TRANSFORMERS, reason="sentence-transformers not available")
     def test_generate_batch_embeddings(self):
         """Test batch embedding generation."""
-        from app.services.embedding import LocalEmbeddingService, LOCAL_EMBEDDING_DIMENSION
+        from app.services.embedding import LOCAL_EMBEDDING_DIMENSION, LocalEmbeddingService
 
         service = LocalEmbeddingService()
         texts = ["first text", "second text", "third text"]
@@ -101,7 +98,7 @@ class TestOpenAIEmbeddingService:
     @patch("httpx.Client")
     def test_generate_embedding_success(self, mock_client_class):
         """Test successful embedding generation with OpenAI."""
-        from app.services.embedding import OpenAIEmbeddingService, OPENAI_EMBEDDING_DIMENSION
+        from app.services.embedding import OPENAI_EMBEDDING_DIMENSION, OpenAIEmbeddingService
 
         # Mock the HTTP response
         mock_response = MagicMock()
@@ -151,7 +148,7 @@ class TestGetEmbeddingService:
     @pytest.mark.skipif(not HAS_SENTENCE_TRANSFORMERS, reason="sentence-transformers not available")
     def test_returns_local_by_default(self):
         """Test that factory returns LocalEmbeddingService by default."""
-        from app.services.embedding import get_embedding_service, LocalEmbeddingService
+        from app.services.embedding import LocalEmbeddingService, get_embedding_service
 
         with patch("app.config.settings.use_local_embeddings", True):
             service = get_embedding_service()
@@ -159,7 +156,7 @@ class TestGetEmbeddingService:
 
     def test_returns_openai_when_configured(self):
         """Test that factory returns OpenAIEmbeddingService when configured."""
-        from app.services.embedding import get_embedding_service, OpenAIEmbeddingService
+        from app.services.embedding import OpenAIEmbeddingService, get_embedding_service
 
         with patch("app.config.settings.use_local_embeddings", False):
             with patch("app.config.settings.openai_api_key", "test-key"):
