@@ -4,10 +4,18 @@ from unittest.mock import MagicMock, patch
 
 import pytest
 
+# Check if sentence-transformers is available
+try:
+    import sentence_transformers
+    HAS_SENTENCE_TRANSFORMERS = True
+except ImportError:
+    HAS_SENTENCE_TRANSFORMERS = False
+
 
 class TestLocalEmbeddingService:
     """Tests for the LocalEmbeddingService class."""
 
+    @pytest.mark.skipif(not HAS_SENTENCE_TRANSFORMERS, reason="sentence-transformers not available")
     def test_prepare_text_basic(self):
         """Test that _prepare_text combines resource fields correctly."""
         from app.services.embedding import LocalEmbeddingService
@@ -31,6 +39,7 @@ class TestLocalEmbeddingService:
         assert "Categories: employment, training" in text
         assert "Tags: jobs, skills" in text
 
+    @pytest.mark.skipif(not HAS_SENTENCE_TRANSFORMERS, reason="sentence-transformers not available")
     def test_prepare_text_minimal(self):
         """Test _prepare_text with minimal fields."""
         from app.services.embedding import LocalEmbeddingService
@@ -51,6 +60,7 @@ class TestLocalEmbeddingService:
         assert "Categories:" not in text
         assert "Tags:" not in text
 
+    @pytest.mark.skipif(not HAS_SENTENCE_TRANSFORMERS, reason="sentence-transformers not available")
     def test_generate_embedding_returns_correct_dimension(self):
         """Test that local embeddings return 384 dimensions."""
         from app.services.embedding import LocalEmbeddingService, LOCAL_EMBEDDING_DIMENSION
@@ -62,6 +72,7 @@ class TestLocalEmbeddingService:
         assert result.tokens_used == 0  # Local model doesn't track tokens
         assert result.model == "all-MiniLM-L6-v2"
 
+    @pytest.mark.skipif(not HAS_SENTENCE_TRANSFORMERS, reason="sentence-transformers not available")
     def test_generate_batch_embeddings(self):
         """Test batch embedding generation."""
         from app.services.embedding import LocalEmbeddingService, LOCAL_EMBEDDING_DIMENSION
@@ -137,6 +148,7 @@ class TestOpenAIEmbeddingService:
 class TestGetEmbeddingService:
     """Tests for the get_embedding_service factory function."""
 
+    @pytest.mark.skipif(not HAS_SENTENCE_TRANSFORMERS, reason="sentence-transformers not available")
     def test_returns_local_by_default(self):
         """Test that factory returns LocalEmbeddingService by default."""
         from app.services.embedding import get_embedding_service, LocalEmbeddingService
