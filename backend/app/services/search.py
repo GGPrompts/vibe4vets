@@ -207,7 +207,10 @@ class SearchService:
 
         # Trust signal explanation
         if resource.last_verified:
-            days_ago = (datetime.now(UTC) - resource.last_verified).days
+            last_verified = resource.last_verified
+            if last_verified.tzinfo is None:
+                last_verified = last_verified.replace(tzinfo=UTC)
+            days_ago = (datetime.now(UTC) - last_verified).days
             if days_ago <= 7:
                 explanations.append(
                     MatchExplanation(
