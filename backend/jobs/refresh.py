@@ -11,16 +11,56 @@ from typing import Any
 
 from sqlmodel import Session
 
-from connectors import CareerOneStopConnector, GIBillSchoolsConnector, VAGovConnector
+from connectors import (
+    ApprenticeshipConnector,
+    CareerOneStopConnector,
+    CertificationsConnector,
+    CVSOConnector,
+    GIBillSchoolsConnector,
+    GPDConnector,
+    HUDVASHConnector,
+    LegalAidConnector,
+    SkillBridgeConnector,
+    SSVFConnector,
+    StateVAConnector,
+    TwoOneOneConnector,
+    UnitedWayConnector,
+    VAGovConnector,
+    VBOCConnector,
+    VetCentersConnector,
+    VeteranEmployersConnector,
+    VeteransCourtConnector,
+)
 from connectors.base import BaseConnector
 from etl import ETLPipeline
 from jobs.base import BaseJob
 
 # Registry of available connectors
+# Grouped by category for clarity
 CONNECTOR_REGISTRY: dict[str, type[BaseConnector]] = {
-    "careeronestop": CareerOneStopConnector,
-    "gi_bill_schools": GIBillSchoolsConnector,
-    "va_gov": VAGovConnector,
+    # Tier 1: Official Federal APIs
+    "va_gov": VAGovConnector,  # VA facilities
+    "vet_centers": VetCentersConnector,  # VA Vet Centers (readjustment counseling)
+    "careeronestop": CareerOneStopConnector,  # DOL American Job Centers
+    "gi_bill_schools": GIBillSchoolsConnector,  # VA GIDS (GI Bill schools)
+    "apprenticeship": ApprenticeshipConnector,  # DOL apprenticeship offices
+    # Tier 1: Official Federal Data (file-based)
+    "ssvf": SSVFConnector,  # SSVF grantees (housing)
+    "hud_vash": HUDVASHConnector,  # HUD-VASH awards (housing)
+    "gpd": GPDConnector,  # Grant and Per Diem (homeless shelters)
+    "vboc": VBOCConnector,  # SBA Veterans Business Outreach Centers
+    "skillbridge": SkillBridgeConnector,  # DOD SkillBridge partners
+    # Tier 2: Established Nonprofits/Directories
+    "legal_aid": LegalAidConnector,  # LSC-funded legal aid
+    "veterans_court": VeteransCourtConnector,  # Veterans Treatment Courts
+    "certifications": CertificationsConnector,  # Veteran certification programs
+    "veteran_employers": VeteranEmployersConnector,  # Veteran-friendly employers
+    # Tier 3: State/County Level
+    "state_va": StateVAConnector,  # State VA agencies
+    "cvso": CVSOConnector,  # County Veteran Service Officers
+    # Tier 4: Community Directories
+    "two_one_one": TwoOneOneConnector,  # 211 national database
+    "united_way": UnitedWayConnector,  # United Way/Missions United
 }
 
 

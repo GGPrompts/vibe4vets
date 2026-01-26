@@ -350,6 +350,159 @@ python backend/scripts/check_links.py
 
 ---
 
+## Connector → Database Pipeline
+
+### ETL Flow
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│ 1. CONNECTOR (backend/connectors/*.py)                          │
+│    connector.run() → list[ResourceCandidate]                    │
+│    - Fetches from APIs, files, or web scraping                  │
+│    - Returns normalized candidates with metadata                │
+└───────────────────────────────┬─────────────────────────────────┘
+                                ↓
+┌─────────────────────────────────────────────────────────────────┐
+│ 2. NORMALIZE (backend/etl/normalize.py)                         │
+│    - Validates required fields                                  │
+│    - Cleans and standardizes data                               │
+│    - Outputs NormalizedResource                                 │
+└───────────────────────────────┬─────────────────────────────────┘
+                                ↓
+┌─────────────────────────────────────────────────────────────────┐
+│ 3. DEDUPLICATE (backend/etl/dedupe.py)                          │
+│    - Removes duplicates across sources                          │
+│    - Uses title similarity (85% threshold)                      │
+│    - Keeps highest-tier source version                          │
+└───────────────────────────────┬─────────────────────────────────┘
+                                ↓
+┌─────────────────────────────────────────────────────────────────┐
+│ 4. ENRICH (backend/etl/enrich.py)                               │
+│    - Geocodes addresses (Census API)                            │
+│    - Calculates trust scores                                    │
+│    - Adds derived tags                                          │
+└───────────────────────────────┬─────────────────────────────────┘
+                                ↓
+┌─────────────────────────────────────────────────────────────────┐
+│ 5. LOAD (backend/etl/loader.py)                                 │
+│    - Upserts Resource, Location, SourceRecord                   │
+│    - Handles conflicts (update vs create)                       │
+│    - Triggers review for risky changes                          │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+### Running Connectors
+
+**Via Admin API (production):**
+```bash
+# Run all connectors
+POST /api/v1/admin/jobs/refresh/run
+
+# Run specific connector
+POST /api/v1/admin/jobs/refresh/run?connector_name=gpd
+
+# Dry run (no DB changes)
+POST /api/v1/admin/jobs/refresh/run?dry_run=true
+```
+
+**Via Python (development/testing):**
+```python
+from sqlmodel import Session
+from connectors import GPDConnector, VetCentersConnector
+from etl import ETLPipeline
+
+with Session(engine) as session:
+    pipeline = ETLPipeline(session=session)
+
+    # Dry run - see what would be created
+    result = pipeline.dry_run([GPDConnector()])
+    print(f"Would create: {result.stats.extracted} resources")
+
+    # Real run - commits to database
+    result = pipeline.run([GPDConnector(), VetCentersConnector()])
+    print(f"Created: {result.stats.created}, Updated: {result.stats.updated}")
+```
+
+**Via CLI script:**
+```bash
+cd backend
+python -c "
+from app.db import get_engine
+from sqlmodel import Session
+from connectors import GPDConnector
+from etl import ETLPipeline
+
+engine = get_engine()
+with Session(engine) as session:
+    result = ETLPipeline(session).run([GPDConnector()])
+    print(f'Created: {result.stats.created}')
+"
+```
+
+### Adding a New Connector
+
+1. **Create connector file** (`backend/connectors/my_connector.py`):
+   ```python
+   from connectors.base import BaseConnector, ResourceCandidate, SourceMetadata
+
+   class MyConnector(BaseConnector):
+       @property
+       def metadata(self) -> SourceMetadata:
+           return SourceMetadata(
+               name="My Data Source",
+               url="https://example.com",
+               tier=2,  # 1=federal, 2=nonprofit, 3=state, 4=community
+               frequency="weekly",
+           )
+
+       def run(self) -> list[ResourceCandidate]:
+           # Fetch and return resources
+           return [ResourceCandidate(...)]
+   ```
+
+2. **Register in exports** (`backend/connectors/__init__.py`):
+   ```python
+   from connectors.my_connector import MyConnector
+   __all__ = [..., "MyConnector"]
+   ```
+
+3. **Register in job system** (`backend/jobs/refresh.py`):
+   ```python
+   CONNECTOR_REGISTRY = {
+       ...,
+       "my_connector": MyConnector,
+   }
+   ```
+
+4. **Add reference data** (if file-based): `backend/data/reference/my_data.json`
+
+5. **Write tests**: `backend/tests/connectors/test_my_connector.py`
+
+### Registered Connectors
+
+| Name | Connector | Source | Tier |
+|------|-----------|--------|------|
+| `va_gov` | VAGovConnector | VA Lighthouse API | 1 |
+| `vet_centers` | VetCentersConnector | VA Lighthouse API | 1 |
+| `careeronestop` | CareerOneStopConnector | DOL API | 1 |
+| `gi_bill_schools` | GIBillSchoolsConnector | VA GIDS API | 1 |
+| `apprenticeship` | ApprenticeshipConnector | CareerOneStop API | 1 |
+| `ssvf` | SSVFConnector | VA SSVF Awards | 1 |
+| `hud_vash` | HUDVASHConnector | HUD-VASH Awards | 1 |
+| `gpd` | GPDConnector | VA GPD Awards | 1 |
+| `vboc` | VBOCConnector | SBA.gov | 1 |
+| `skillbridge` | SkillBridgeConnector | DOD SkillBridge | 1 |
+| `legal_aid` | LegalAidConnector | LSC Directory | 2 |
+| `veterans_court` | VeteransCourtConnector | Justice for Vets | 2 |
+| `certifications` | CertificationsConnector | Curated | 2 |
+| `veteran_employers` | VeteranEmployersConnector | Curated | 2 |
+| `state_va` | StateVAConnector | State Agencies | 3 |
+| `cvso` | CVSOConnector | NACVSO | 3 |
+| `two_one_one` | TwoOneOneConnector | 211.org | 4 |
+| `united_way` | UnitedWayConnector | United Way | 4 |
+
+---
+
 ## Beads Workflow
 
 Track work with beads (not markdown). Always use `--json` flag for structured output.
