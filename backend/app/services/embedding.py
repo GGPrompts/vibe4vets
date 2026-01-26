@@ -73,6 +73,7 @@ class LocalEmbeddingService:
 
     def generate_embedding(self, text: str) -> EmbeddingResult:
         """Generate an embedding for the given text."""
+        assert LocalEmbeddingService._model is not None, "Model not initialized"
         embedding = LocalEmbeddingService._model.encode(text).tolist()
         return EmbeddingResult(
             embedding=embedding,
@@ -87,6 +88,7 @@ class LocalEmbeddingService:
 
     def generate_batch_embeddings(self, texts: list[str], batch_size: int = 32) -> list[EmbeddingResult]:
         """Generate embeddings for multiple texts."""
+        assert LocalEmbeddingService._model is not None, "Model not initialized"
         embeddings = LocalEmbeddingService._model.encode(texts, batch_size=batch_size)
         return [
             EmbeddingResult(
