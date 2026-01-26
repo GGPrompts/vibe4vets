@@ -1,0 +1,32 @@
+{
+  "region": "long_island",
+  "region_name": "Long Island",
+  "fetched_at": "2026-01-25T00:00:00Z",
+  "source": "United Way of Long Island",
+  "resources": [
+    {
+      "name": "Mission United Long Island",
+      "org_name": "United Way of Long Island",
+      "phone": "631-940-3700",
+      "address": "819 Grand Blvd",
+      "city": "Deer Park",
+      "state": "NY",
+      "zip_code": "11729",
+      "email": "missionunited@unitedwayli.org",
+      "description": "Mission United Long Island connects veterans and military families to local resources and support services. The program provides employment assistance, housing support, financial stability programs, and connection to community resources to help veterans thrive after service.",
+      "services": [
+        "missions united",
+        "veteran employment",
+        "career transition",
+        "housing assistance",
+        "financial assistance",
+        "benefits counseling",
+        "resource navigation"
+      ],
+      "website": "https://unitedwayli.org/mission-united",
+      "source_url": "https://unitedwayli.org/mission-united",
+      "eligibility": "Veterans, active-duty service members, National Guard, Reservists, and their families on Long Island.",
+      "is_missions_united": true
+    }
+  ]
+}

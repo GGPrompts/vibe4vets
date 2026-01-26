@@ -1,0 +1,56 @@
+{
+  "region": "texas_houston",
+  "region_name": "Greater Houston",
+  "fetched_at": "2026-01-25T00:00:00Z",
+  "source": "United Way Greater Houston",
+  "resources": [
+    {
+      "name": "United Way Veterans & Active Duty Services",
+      "org_name": "United Way Greater Houston",
+      "phone": "713-685-2300",
+      "address": "50 Waugh Dr",
+      "city": "Houston",
+      "state": "TX",
+      "zip_code": "77007",
+      "description": "United Way Greater Houston's Veterans & Active Duty initiative supports service members, veterans, and their families through partnerships with Combined Arms and local veteran service organizations. Services include employment assistance, housing support, and connection to community resources.",
+      "services": [
+        "veteran employment",
+        "career transition",
+        "housing assistance",
+        "resource navigation",
+        "case management"
+      ],
+      "website": "https://unitedwayhouston.org/what-we-do/veterans-active-duty",
+      "source_url": "https://unitedwayhouston.org/what-we-do/veterans-active-duty",
+      "hours": "Mon-Fri 8am-5pm",
+      "eligibility": "Veterans, active-duty service members, and their families in the Greater Houston area.",
+      "is_missions_united": false
+    },
+    {
+      "name": "Combined Arms Houston",
+      "org_name": "Combined Arms",
+      "phone": "713-942-2935",
+      "address": "2929 Allen Pkwy Suite 200",
+      "city": "Houston",
+      "state": "TX",
+      "zip_code": "77019",
+      "email": "info@combinedarms.us",
+      "description": "Combined Arms is a Texas-founded nonprofit that connects veterans to a collaborative network of 140+ organizations providing employment, education, health, housing, and legal services. Their technology platform enables real-time referrals and tracks veteran outcomes.",
+      "services": [
+        "veteran employment",
+        "career transition",
+        "job placement",
+        "education assistance",
+        "housing assistance",
+        "healthcare navigation",
+        "legal assistance",
+        "resource navigation"
+      ],
+      "website": "https://combinedarms.us",
+      "source_url": "https://combinedarms.us",
+      "eligibility": "Veterans and military families in Texas, with primary focus on Houston metro area.",
+      "how_to_apply": "Call 713-942-2935 or visit combinedarms.us to create an account and connect with services.",
+      "is_missions_united": false
+    }
+  ]
+}

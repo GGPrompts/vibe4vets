@@ -1,0 +1,35 @@
+{
+  "region": "central_florida",
+  "region_name": "Central Florida",
+  "fetched_at": "2026-01-25T00:00:00Z",
+  "source": "Heart of Florida United Way",
+  "resources": [
+    {
+      "name": "Mission United Central Florida",
+      "org_name": "Heart of Florida United Way",
+      "phone": "407-835-0900",
+      "address": "1940 Traylor Blvd",
+      "city": "Orlando",
+      "state": "FL",
+      "zip_code": "32804",
+      "email": "missionunited@hfuw.org",
+      "description": "Mission United Central Florida connects veterans and military families to essential resources including employment services, housing assistance, financial stability programs, and healthcare navigation. The program provides personalized support to help veterans achieve self-sufficiency.",
+      "services": [
+        "missions united",
+        "veteran employment",
+        "career coaching",
+        "housing assistance",
+        "financial coaching",
+        "healthcare navigation",
+        "benefits navigation",
+        "case management"
+      ],
+      "website": "https://hfuw.org/get-help/veterans-assistance",
+      "source_url": "https://hfuw.org/get-help/veterans-assistance",
+      "hours": "Mon-Fri 8am-5pm",
+      "eligibility": "Veterans, active-duty service members, National Guard, Reservists, and their families in Orange, Osceola, and Seminole counties.",
+      "how_to_apply": "Call 407-835-0900 or dial 211 to connect with Mission United services.",
+      "is_missions_united": true
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "region": "texas_tarrant",
+  "region_name": "Tarrant County",
+  "fetched_at": "2026-01-25T00:00:00Z",
+  "source": "United Way of Tarrant County",
+  "resources": [
+    {
+      "name": "Mission United Tarrant County",
+      "org_name": "United Way of Tarrant County",
+      "phone": "817-258-8082",
+      "address": "1500 N Main St",
+      "city": "Fort Worth",
+      "state": "TX",
+      "zip_code": "76164",
+      "email": "missionunited@unitedwaytarrant.org",
+      "description": "Mission United Tarrant County uses innovative technology to connect active military, veterans, and their families to services, resources, and programming. The network partners with Combined Arms, veteran service organizations, community-based organizations, and government programs to provide comprehensive support.",
+      "services": [
+        "missions united",
+        "veteran employment",
+        "career transition",
+        "housing assistance",
+        "benefits navigation",
+        "resource navigation",
+        "peer support"
+      ],
+      "website": "https://unitedwaytarrant.org/what-we-do/programs-we-run/mission-united",
+      "source_url": "https://unitedwaytarrant.org/what-we-do/programs-we-run/mission-united",
+      "hours": "Mon-Fri 8am-5pm",
+      "eligibility": "Veterans, active-duty service members, National Guard, Reservists, and their families in Tarrant County and surrounding areas.",
+      "how_to_apply": "Call 817-258-8082 or visit the website to connect with a Mission United navigator. You can also access resources through the Combined Arms network.",
+      "is_missions_united": true
+    }
+  ]
+}

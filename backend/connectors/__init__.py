@@ -7,6 +7,7 @@ from connectors.legal_aid import LegalAidConnector
 from connectors.ssvf import SSVFConnector
 from connectors.state_va import StateVAConnector
 from connectors.two_one_one import TwoOneOneConnector
+from connectors.united_way import UnitedWayConnector
 from connectors.va_gov import VAGovConnector
 
 __all__ = [
@@ -20,5 +21,6 @@ __all__ = [
     "SSVFConnector",
     "StateVAConnector",
     "TwoOneOneConnector",
+    "UnitedWayConnector",
     "VAGovConnector",
 ]

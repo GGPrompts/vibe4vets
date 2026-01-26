@@ -1,0 +1,30 @@
+{
+  "region": "lake_sumter",
+  "region_name": "Lake and Sumter Counties",
+  "fetched_at": "2026-01-25T00:00:00Z",
+  "source": "United Way of Lake and Sumter Counties",
+  "resources": [
+    {
+      "name": "Mission United Lake & Sumter",
+      "org_name": "United Way of Lake and Sumter Counties",
+      "phone": "352-787-5843",
+      "address": "32644 Stokes Ferry Rd",
+      "city": "Leesburg",
+      "state": "FL",
+      "zip_code": "34748",
+      "email": "missionunited@uwls.org",
+      "description": "Mission United Lake & Sumter connects veterans and their families to supportive services and resources in Lake and Sumter Counties. Services include employment assistance, housing support, benefits navigation, and connection to community programs.",
+      "services": [
+        "missions united",
+        "veteran employment",
+        "housing assistance",
+        "benefits navigation",
+        "resource navigation"
+      ],
+      "website": "https://uwls.org/mission-united",
+      "source_url": "https://uwls.org/mission-united",
+      "eligibility": "Veterans, active-duty service members, and their families in Lake and Sumter Counties, Florida.",
+      "is_missions_united": true
+    }
+  ]
+}

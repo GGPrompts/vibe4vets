@@ -1,0 +1,32 @@
+{
+  "region": "georgia",
+  "region_name": "Metro Atlanta / Central Georgia",
+  "fetched_at": "2026-01-25T00:00:00Z",
+  "source": "United Way of Central Georgia",
+  "resources": [
+    {
+      "name": "Mission United Central Georgia",
+      "org_name": "United Way of Central Georgia",
+      "phone": "478-745-4732",
+      "address": "277 Martin Luther King Jr Blvd",
+      "city": "Macon",
+      "state": "GA",
+      "zip_code": "31201",
+      "email": "missionunited@unitedwaycg.org",
+      "description": "Mission United Central Georgia provides comprehensive support for veterans and military families including employment assistance, housing services, financial coaching, and connection to community resources. The program serves the Robins Air Force Base community and surrounding areas.",
+      "services": [
+        "missions united",
+        "veteran employment",
+        "career coaching",
+        "housing assistance",
+        "financial coaching",
+        "benefits navigation",
+        "resource navigation"
+      ],
+      "website": "https://unitedwaycg.org/MissionUnited",
+      "source_url": "https://unitedwaycg.org/MissionUnited",
+      "eligibility": "Veterans, active-duty service members, National Guard, Reservists, and their families in Central Georgia, including the Robins AFB community.",
+      "is_missions_united": true
+    }
+  ]
+}

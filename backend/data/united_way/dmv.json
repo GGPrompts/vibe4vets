@@ -1,0 +1,55 @@
+{
+  "region": "dmv",
+  "region_name": "National Capital Area",
+  "fetched_at": "2026-01-25T00:00:00Z",
+  "source": "United Way National Capital Area",
+  "source_url": "https://uwnca.org",
+  "resources": [
+    {
+      "name": "Mission United - National Capital Area",
+      "org_name": "United Way National Capital Area",
+      "phone": "703-246-8800",
+      "address": "8401 Greensboro Dr Suite 150",
+      "city": "McLean",
+      "state": "VA",
+      "zip_code": "22102",
+      "email": "missionunited@uwnca.org",
+      "description": "Mission United connects veterans, active-duty service members, National Guard, Reservists, and their families to local resources. Services include career coaching, employment support, financial stability programs, housing assistance, and benefits navigation. Veterans work with a dedicated navigator to identify goals and access community resources.",
+      "services": [
+        "missions united",
+        "veteran employment",
+        "career coaching",
+        "resume assistance",
+        "interview preparation",
+        "housing assistance",
+        "financial coaching",
+        "benefits navigation",
+        "case management"
+      ],
+      "website": "https://uwnca.org/mission-united",
+      "source_url": "https://uwnca.org/mission-united",
+      "hours": "Mon-Fri 9am-5pm",
+      "eligibility": "Veterans, active-duty service members, National Guard, Reservists, and their families in the DC/MD/VA region.",
+      "how_to_apply": "Call 703-246-8800 or visit the website to connect with a Mission United navigator.",
+      "is_missions_united": true
+    },
+    {
+      "name": "United Way NCA - Financial Stability Program",
+      "org_name": "United Way National Capital Area",
+      "phone": "703-246-8800",
+      "city": "McLean",
+      "state": "VA",
+      "description": "VITA (Volunteer Income Tax Assistance) free tax preparation, financial coaching, and emergency financial assistance for qualifying families including veteran households.",
+      "services": [
+        "VITA",
+        "tax preparation",
+        "financial coaching",
+        "emergency financial aid"
+      ],
+      "website": "https://uwnca.org/financial-stability",
+      "source_url": "https://uwnca.org/financial-stability",
+      "eligibility": "Low to moderate income individuals and families, including veterans.",
+      "is_missions_united": false
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "region": "south_florida",
+  "region_name": "South Florida",
+  "fetched_at": "2026-01-25T00:00:00Z",
+  "source": "United Way Miami / Broward / Palm Beach",
+  "resources": [
+    {
+      "name": "Mission United Miami",
+      "org_name": "United Way Miami",
+      "phone": "305-646-7051",
+      "address": "3250 SW 3rd Ave",
+      "city": "Miami",
+      "state": "FL",
+      "zip_code": "33129",
+      "email": "missionunited@unitedwaymiami.org",
+      "description": "Mission United connects military-connected individuals to services and resources. The program helps veterans identify goals and take meaningful steps toward long-term self-sufficiency, whether transitioning from military to civilian life, seeking financial stability, or navigating community resources.",
+      "services": [
+        "missions united",
+        "veteran employment",
+        "career transition",
+        "housing stability",
+        "benefits counseling",
+        "resource navigation"
+      ],
+      "website": "https://unitedwaymiami.org/mission-united",
+      "source_url": "https://unitedwaymiami.org/mission-united",
+      "hours": "Mon-Fri 8:30am-5pm",
+      "eligibility": "Veterans, active military, National Guard, Reservists, and their families in Miami-Dade County.",
+      "is_missions_united": true
+    },
+    {
+      "name": "Mission United Broward",
+      "org_name": "United Way Broward",
+      "phone": "954-462-4850",
+      "address": "1300 S Andrews Ave",
+      "city": "Fort Lauderdale",
+      "state": "FL",
+      "zip_code": "33316",
+      "email": "missionunited@unitedwaybroward.org",
+      "description": "Mission United Broward provides comprehensive support for veterans and military families including employment assistance, housing services, and connection to community resources.",
+      "services": [
+        "missions united",
+        "veteran employment",
+        "job placement",
+        "housing assistance",
+        "financial assistance",
+        "benefits navigation"
+      ],
+      "website": "https://unitedwaybroward.org/mission-united",
+      "source_url": "https://unitedwaybroward.org/mission-united",
+      "eligibility": "Veterans and military families in Broward County.",
+      "is_missions_united": true
+    },
+    {
+      "name": "Mission United Palm Beach County",
+      "org_name": "United Way Palm Beach County",
+      "phone": "561-375-6600",
+      "address": "2600 Quantum Blvd",
+      "city": "Boynton Beach",
+      "state": "FL",
+      "zip_code": "33426",
+      "description": "Mission United Palm Beach County connects veterans to career training, employment assistance, emergency financial aid, and community resources to support their transition and well-being.",
+      "services": [
+        "missions united",
+        "career training",
+        "veteran employment",
+        "emergency financial aid",
+        "resource navigation"
+      ],
+      "website": "https://unitedwaypbc.org/mission-united",
+      "source_url": "https://unitedwaypbc.org/mission-united",
+      "eligibility": "Veterans and military families in Palm Beach County.",
+      "is_missions_united": true
+    }
+  ]
+}
