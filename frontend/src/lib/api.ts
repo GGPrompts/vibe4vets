@@ -81,6 +81,7 @@ export interface Resource {
   scope: 'national' | 'state' | 'local';
   states: string[];
   website: string | null;
+  logo_url: string | null;
   phone: string | null;
   hours: string | null;
   languages: string[];

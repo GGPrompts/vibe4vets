@@ -5,9 +5,10 @@ and nested entity representations.
 """
 
 from datetime import datetime
+from urllib.parse import urlparse
 from uuid import UUID
 
-from pydantic import BaseModel, Field, HttpUrl
+from pydantic import BaseModel, Field, HttpUrl, computed_field
 
 from app.models.resource import ResourceScope, ResourceStatus
 
@@ -245,6 +246,21 @@ class ResourceRead(BaseModel):
     hours: str | None = Field(None, description="Operating hours")
     languages: list[str] = Field(..., description="Languages supported")
     cost: str | None = Field(None, description="Cost information (free, sliding scale, etc.)")
+
+    @computed_field  # type: ignore[prop-decorator]
+    @property
+    def logo_url(self) -> str | None:
+        """Compute logo URL from website domain using Google's favicon API."""
+        if not self.website:
+            return None
+        try:
+            parsed = urlparse(self.website)
+            domain = parsed.netloc or parsed.path.split("/")[0]
+            if domain:
+                return f"https://www.google.com/s2/favicons?domain={domain}&sz=128"
+        except Exception:
+            pass
+        return None
 
     status: ResourceStatus = Field(..., description="Resource status (active, inactive, pending)")
     created_at: datetime = Field(..., description="When the resource was added")

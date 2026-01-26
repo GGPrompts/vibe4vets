@@ -1,6 +1,7 @@
 'use client';
 
-import { useEffect, useCallback, useRef } from 'react';
+import { useEffect, useCallback, useRef, useState } from 'react';
+import Image from 'next/image';
 import { motion, AnimatePresence, useDragControls, PanInfo } from 'framer-motion';
 // Radix Dialog removed - using plain motion components for simpler state management
 import { Badge } from '@/components/ui/badge';
@@ -24,8 +25,10 @@ import {
   ChevronDown,
   UtensilsCrossed,
   Award,
+  Tag,
 } from 'lucide-react';
 import { BookmarkButton } from '@/components/bookmark-button';
+import { ReportFeedbackModal } from '@/components/ReportFeedbackModal';
 import type { Resource, MatchExplanation } from '@/lib/api';
 import { cn } from '@/lib/utils';
 
@@ -87,6 +90,34 @@ const categoryBadgeStyles: Record<string, string> = {
 
 // Section card styling
 const sectionCardStyle = 'rounded-xl border bg-white p-4 shadow-sm';
+
+function ResourceModalLogo({
+  logoUrl,
+  fallbackIcon: FallbackIcon,
+  size = 24,
+}: {
+  logoUrl: string | null;
+  fallbackIcon: typeof Briefcase;
+  size?: number;
+}) {
+  const [hasError, setHasError] = useState(false);
+
+  if (!logoUrl || hasError) {
+    return <FallbackIcon className="h-6 w-6" />;
+  }
+
+  return (
+    <Image
+      src={logoUrl}
+      alt=""
+      width={size}
+      height={size}
+      className="rounded-sm"
+      onError={() => setHasError(true)}
+      unoptimized
+    />
+  );
+}
 
 function IntakeSection({ resource }: { resource: Resource }) {
   const location = resource.location;
@@ -368,10 +399,14 @@ export function ResourceDetailModal({
                     <ChevronDown className="h-5 w-5 animate-bounce opacity-60" />
                   </div>
 
-                  {/* Category icon and badges */}
+                  {/* Logo/Category icon and badges */}
                   <div className="mb-4 flex items-center gap-3">
                     <div className="rounded-xl bg-white/20 p-3">
-                      <CategoryIcon className="h-6 w-6" />
+                      <ResourceModalLogo
+                        logoUrl={resource.logo_url}
+                        fallbackIcon={CategoryIcon}
+                        size={24}
+                      />
                     </div>
                     <div className="flex flex-wrap gap-2">
                       {resource.categories.map((cat) => (
@@ -623,6 +658,35 @@ export function ResourceDetailModal({
                         </div>
                       )}
                     </div>
+                  </div>
+
+                  {/* Tags - at bottom as metadata */}
+                  {resource.tags && resource.tags.length > 0 && (
+                    <div className={cn(sectionCardStyle, 'mt-6')}>
+                      <h3 className="mb-3 flex items-center gap-2 text-lg font-semibold text-[hsl(var(--v4v-navy))]">
+                        <Tag className="h-5 w-5 text-muted-foreground" />
+                        Tags
+                      </h3>
+                      <div className="flex flex-wrap gap-2">
+                        {resource.tags.map((tag) => (
+                          <Badge
+                            key={tag}
+                            variant="outline"
+                            className="gap-1 border-muted-foreground/20 bg-muted/50 text-muted-foreground"
+                          >
+                            <span className="capitalize">{tag.replace(/_/g, ' ')}</span>
+                          </Badge>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Report Issue */}
+                  <div className="mt-6 flex justify-center border-t pt-6">
+                    <ReportFeedbackModal
+                      resourceId={resource.id}
+                      resourceTitle={resource.title}
+                    />
                   </div>
                 </div>
           </motion.div>

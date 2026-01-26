@@ -1,6 +1,8 @@
 'use client';
 
+import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -75,6 +77,34 @@ const categoryIcons: Record<string, typeof Briefcase> = {
 // Export for use in other components
 export const categoryColors = categoryBadgeStyles;
 
+function ResourceLogo({
+  logoUrl,
+  fallbackIcon: FallbackIcon,
+  size = 20,
+}: {
+  logoUrl: string | null;
+  fallbackIcon: typeof Briefcase;
+  size?: number;
+}) {
+  const [hasError, setHasError] = useState(false);
+
+  if (!logoUrl || hasError) {
+    return <FallbackIcon className="h-5 w-5" />;
+  }
+
+  return (
+    <Image
+      src={logoUrl}
+      alt=""
+      width={size}
+      height={size}
+      className="rounded-sm"
+      onError={() => setHasError(true)}
+      unoptimized
+    />
+  );
+}
+
 function CardInner({
   resource,
   explanations,
@@ -119,7 +149,10 @@ function CardInner({
         {/* Title with icon and bookmark */}
         <div className="flex items-start gap-3">
           <div className={`shrink-0 rounded-lg p-2 ${accentBarColors[primaryCategory] || accentBarColors.employment} text-white transition-transform duration-300 group-hover:scale-110`}>
-            <CategoryIcon className="h-5 w-5" />
+            <ResourceLogo
+              logoUrl={resource.logo_url}
+              fallbackIcon={CategoryIcon}
+            />
           </div>
           <div className="min-w-0 flex-1">
             <div className="flex items-start justify-between gap-2">
@@ -198,10 +231,10 @@ function CardInner({
           )}
         </div>
 
-        {/* Tags badges */}
+        {/* Tags badges - limited to 2 on cards, full list in detail modal */}
         {resource.tags && resource.tags.length > 0 && (
           <div className="mb-3 flex flex-wrap gap-1.5">
-            {resource.tags.slice(0, 4).map((tag) => (
+            {resource.tags.slice(0, 2).map((tag) => (
               <Badge
                 key={tag}
                 variant="outline"
@@ -211,12 +244,12 @@ function CardInner({
                 <span className="capitalize">{tag.replace(/_/g, ' ')}</span>
               </Badge>
             ))}
-            {resource.tags.length > 4 && (
+            {resource.tags.length > 2 && (
               <Badge
                 variant="outline"
                 className="border-muted-foreground/20 bg-muted/50 text-muted-foreground text-xs py-0 h-5 font-normal"
               >
-                +{resource.tags.length - 4}
+                +{resource.tags.length - 2}
               </Badge>
             )}
           </div>
