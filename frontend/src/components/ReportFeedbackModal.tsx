@@ -99,7 +99,7 @@ export function ReportFeedbackModal({
           Report an issue
         </button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-md">
+      <DialogContent className="sm:max-w-md z-[200]" overlayClassName="z-[150]">
         {isSuccess ? (
           <>
             <DialogHeader>
@@ -145,7 +145,7 @@ export function ReportFeedbackModal({
                   <SelectTrigger id="issue-type" className="w-full">
                     <SelectValue placeholder="Select an issue type" />
                   </SelectTrigger>
-                  <SelectContent>
+                  <SelectContent className="z-[250]">
                     {issueTypes.map((type) => (
                       <SelectItem key={type.value} value={type.value}>
                         {type.label}

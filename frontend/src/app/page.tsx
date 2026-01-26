@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { USMap } from '@/components/us-map';
@@ -14,7 +13,7 @@ import type { SortOption } from '@/components/sort-dropdown-header';
 import { BackToTop } from '@/components/BackToTop';
 
 export default function Home() {
-  const { filters, toggleCategory, toggleState, setEnabled, resourceCount, isLoadingCount } = useFilterContext();
+  const { filters, toggleCategory, toggleState, setEnabled, resourceCount, isLoadingCount, totalCount, isLoadingTotal } = useFilterContext();
   const [selectedSort, setSelectedSort] = useState<SortOption>('shuffle');
   const [zipCode, setZipCode] = useState('');
   const router = useRouter();
@@ -79,16 +78,18 @@ export default function Home() {
         <div className="absolute right-1/4 top-1/3 h-64 w-64 rounded-full bg-[hsl(var(--v4v-employment)/0.08)] blur-3xl" />
 
         <div className="relative mx-auto max-w-6xl px-6 py-10 lg:py-14">
-          {/* Logo centered - light version for dark background */}
+          {/* Intro text */}
           <div className="flex flex-col items-center text-center mb-8">
-            <Image
-              src="/brand/vibe4vets-logo-light.png"
-              alt="Vibe4Vets - Veteran Resource Directory"
-              width={600}
-              height={150}
-              priority
-              className="h-auto w-auto max-w-[340px] sm:max-w-[450px] lg:max-w-[550px] drop-shadow-lg"
-            />
+            <h1 className="font-display text-2xl font-semibold text-white sm:text-3xl lg:text-4xl">
+              Veteran Resource Directory
+            </h1>
+            <p className="mt-3 text-base text-white/80 sm:text-lg max-w-xl">
+              We&apos;ve curated{' '}
+              <span className="font-semibold text-[hsl(var(--v4v-gold))]">
+                {isLoadingTotal ? '...' : (totalCount?.toLocaleString() ?? '1,500+')}
+              </span>{' '}
+              resources for Veterans. Select filters below to get started.
+            </p>
           </div>
 
           {/* Interactive US Map */}
@@ -100,11 +101,9 @@ export default function Home() {
                 onToggleState={toggleState}
               />
             </div>
-            {filters.states.length > 0 && (
-              <p className="mt-4 text-center text-base font-medium text-[hsl(var(--v4v-gold))]">
-                Selected: {filters.states.join(', ')}
-              </p>
-            )}
+            <p className={`mt-4 text-center text-base font-medium text-[hsl(var(--v4v-gold))] ${filters.states.length === 0 ? 'invisible' : ''}`}>
+              {filters.states.length > 0 ? `Selected: ${filters.states.join(', ')}` : 'Select states'}
+            </p>
           </div>
         </div>
       </section>
@@ -160,16 +159,20 @@ export default function Home() {
                 <span>Search Resources</span>
               )}
             </Button>
-            {(filters.states.length > 0 || filters.categories.length > 0 || zipCode.length === 5) && (
-              <p className="text-sm text-muted-foreground">
-                {zipCode.length === 5 && `Near ${zipCode}`}
-                {zipCode.length === 5 && (filters.states.length > 0 || filters.categories.length > 0) && ' · '}
-                {filters.states.length > 0 && `${filters.states.length} state${filters.states.length > 1 ? 's' : ''}`}
-                {filters.states.length > 0 && filters.categories.length > 0 && ' · '}
-                {filters.categories.length > 0 && `${filters.categories.length} categor${filters.categories.length > 1 ? 'ies' : 'y'}`}
-                {(filters.states.length > 0 || filters.categories.length > 0) && ' selected'}
-              </p>
-            )}
+            <p className={`text-sm text-muted-foreground ${!(filters.states.length > 0 || filters.categories.length > 0 || zipCode.length === 5) ? 'invisible' : ''}`}>
+              {filters.states.length > 0 || filters.categories.length > 0 || zipCode.length === 5 ? (
+                <>
+                  {zipCode.length === 5 && `Near ${zipCode}`}
+                  {zipCode.length === 5 && (filters.states.length > 0 || filters.categories.length > 0) && ' · '}
+                  {filters.states.length > 0 && `${filters.states.length} state${filters.states.length > 1 ? 's' : ''}`}
+                  {filters.states.length > 0 && filters.categories.length > 0 && ' · '}
+                  {filters.categories.length > 0 && `${filters.categories.length} categor${filters.categories.length > 1 ? 'ies' : 'y'}`}
+                  {(filters.states.length > 0 || filters.categories.length > 0) && ' selected'}
+                </>
+              ) : (
+                'No filters selected'
+              )}
+            </p>
           </div>
         </div>
       </section>

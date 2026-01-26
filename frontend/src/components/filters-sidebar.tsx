@@ -432,6 +432,26 @@ export function FiltersSidebar({
         isOpen={statesOpen}
         onToggle={handleStatesToggle}
       >
+        {/* Selected states as removable chips */}
+        {filters.states.length > 0 && (
+          <div className="mb-3 flex flex-wrap gap-1.5">
+            {filters.states.map((stateCode) => {
+              const stateInfo = STATES.find((s) => s.value === stateCode);
+              return (
+                <Badge
+                  key={stateCode}
+                  variant="secondary"
+                  className="gap-1 pl-2 pr-1 py-1 bg-[hsl(var(--v4v-navy)/0.1)] text-[hsl(var(--v4v-navy))] hover:bg-[hsl(var(--v4v-navy)/0.2)] cursor-pointer"
+                  onClick={() => handleStateToggle(stateCode)}
+                >
+                  {stateInfo?.label || stateCode}
+                  <X className="h-3 w-3 ml-0.5" />
+                </Badge>
+              );
+            })}
+          </div>
+        )}
+
         {/* State search input */}
         <div className="relative mb-2">
           <Search className="absolute left-2.5 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />

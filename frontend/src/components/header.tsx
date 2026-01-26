@@ -161,7 +161,6 @@ export function Header() {
 
         {/* Navigation */}
         <nav className="flex shrink-0 items-center gap-6">
-          <MagnifierToggle />
           <Link
             href="/search"
             className={cn(
@@ -206,12 +205,7 @@ export function Header() {
               </span>
             )}
           </Link>
-          <Link
-            href="/admin"
-            className="text-base font-medium text-white/80 transition-all duration-200 hover:text-[hsl(var(--v4v-gold))]"
-          >
-            Admin
-          </Link>
+          <MagnifierToggle />
         </nav>
       </div>
     </header>

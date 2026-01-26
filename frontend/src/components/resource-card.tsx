@@ -77,14 +77,26 @@ const categoryIcons: Record<string, typeof Briefcase> = {
 // Export for use in other components
 export const categoryColors = categoryBadgeStyles;
 
+// Border colors for logo container
+const logoBorderColors: Record<string, string> = {
+  employment: 'border-[hsl(var(--v4v-employment))]',
+  training: 'border-[hsl(var(--v4v-training))]',
+  housing: 'border-[hsl(var(--v4v-housing))]',
+  legal: 'border-[hsl(var(--v4v-legal))]',
+  food: 'border-[hsl(var(--v4v-food))]',
+  benefits: 'border-[hsl(var(--v4v-benefits))]',
+};
+
 function ResourceLogo({
   logoUrl,
   fallbackIcon: FallbackIcon,
-  size = 20,
+  size = 24,
+  category,
 }: {
   logoUrl: string | null;
   fallbackIcon: typeof Briefcase;
   size?: number;
+  category?: string;
 }) {
   const [hasError, setHasError] = useState(false);
 
@@ -92,16 +104,20 @@ function ResourceLogo({
     return <FallbackIcon className="h-5 w-5" />;
   }
 
+  const borderColor = category ? logoBorderColors[category] || 'border-gray-300' : 'border-gray-300';
+
   return (
-    <Image
-      src={logoUrl}
-      alt=""
-      width={size}
-      height={size}
-      className="rounded-sm"
-      onError={() => setHasError(true)}
-      unoptimized
-    />
+    <div className={`rounded-md border-2 ${borderColor} bg-slate-100 p-1 shadow-sm`}>
+      <Image
+        src={logoUrl}
+        alt=""
+        width={size}
+        height={size}
+        className="rounded-sm"
+        onError={() => setHasError(true)}
+        unoptimized
+      />
+    </div>
   );
 }
 
@@ -145,15 +161,26 @@ function CardInner({
         </div>
       )}
 
-      <CardHeader className="pb-3 pt-4">
+      {/* Floating logo in top-left corner */}
+      {resource.logo_url && (
+        <div className="absolute left-3 top-4 z-10 transition-transform duration-300 group-hover:scale-110">
+          <ResourceLogo
+            logoUrl={resource.logo_url}
+            fallbackIcon={CategoryIcon}
+            size={28}
+            category={primaryCategory}
+          />
+        </div>
+      )}
+
+      <CardHeader className={`pb-3 pt-4 ${resource.logo_url ? 'pl-16' : ''}`}>
         {/* Title with icon and bookmark */}
         <div className="flex items-start gap-3">
-          <div className={`shrink-0 rounded-lg p-2 ${accentBarColors[primaryCategory] || accentBarColors.employment} text-white transition-transform duration-300 group-hover:scale-110`}>
-            <ResourceLogo
-              logoUrl={resource.logo_url}
-              fallbackIcon={CategoryIcon}
-            />
-          </div>
+          {!resource.logo_url && (
+            <div className={`shrink-0 rounded-lg p-2 ${accentBarColors[primaryCategory] || accentBarColors.employment} text-white transition-transform duration-300 group-hover:scale-110`}>
+              <CategoryIcon className="h-5 w-5" />
+            </div>
+          )}
           <div className="min-w-0 flex-1">
             <div className="flex items-start justify-between gap-2">
               <CardTitle className="font-display line-clamp-2 text-lg text-[hsl(var(--v4v-navy))] dark:text-foreground">

@@ -40,7 +40,8 @@ export function BackToTop({ threshold = 400, className }: BackToTopProps) {
       className={cn(
         'fixed bottom-6 right-6 z-40 flex h-12 w-12 items-center justify-center rounded-full shadow-lg transition-all duration-300',
         'bg-[hsl(var(--v4v-navy))] text-white hover:bg-[hsl(var(--v4v-navy-light))] hover:shadow-xl',
-        'focus:outline-none focus:ring-2 focus:ring-[hsl(var(--v4v-gold))] focus:ring-offset-2',
+        'border-2 border-[hsl(var(--v4v-gold))]',
+        'focus:outline-none',
         isVisible
           ? 'translate-y-0 opacity-100'
           : 'translate-y-4 opacity-0 pointer-events-none',

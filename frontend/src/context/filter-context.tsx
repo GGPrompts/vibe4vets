@@ -1,7 +1,8 @@
 'use client';
 
-import { createContext, useContext, useState, useCallback, type ReactNode } from 'react';
+import { createContext, useContext, useState, useCallback, useEffect, type ReactNode } from 'react';
 import { useResourceCount, type FilterState } from '@/hooks/use-resource-count';
+import { api } from '@/lib/api';
 
 interface FilterContextValue {
   filters: FilterState;
@@ -11,6 +12,8 @@ interface FilterContextValue {
   toggleState: (state: string) => void;
   resourceCount: number | null;
   isLoadingCount: boolean;
+  totalCount: number | null;
+  isLoadingTotal: boolean;
   isEnabled: boolean;
   setEnabled: (enabled: boolean) => void;
 }
@@ -23,8 +26,26 @@ export function FilterProvider({ children }: { children: ReactNode }) {
     states: [],
   });
   const [isEnabled, setEnabled] = useState(false);
+  const [totalCount, setTotalCount] = useState<number | null>(null);
+  const [isLoadingTotal, setIsLoadingTotal] = useState(false);
 
   const { count, isLoading } = useResourceCount(filters, isEnabled);
+
+  // Fetch total count once on mount (unfiltered)
+  useEffect(() => {
+    const fetchTotal = async () => {
+      setIsLoadingTotal(true);
+      try {
+        const result = await api.resources.count({});
+        setTotalCount(result.count);
+      } catch {
+        setTotalCount(null);
+      } finally {
+        setIsLoadingTotal(false);
+      }
+    };
+    fetchTotal();
+  }, []);
 
   const setCategories = useCallback((categories: string[]) => {
     setFilters((prev) => ({ ...prev, categories }));
@@ -62,6 +83,8 @@ export function FilterProvider({ children }: { children: ReactNode }) {
         toggleState,
         resourceCount: count,
         isLoadingCount: isLoading,
+        totalCount,
+        isLoadingTotal,
         isEnabled,
         setEnabled,
       }}

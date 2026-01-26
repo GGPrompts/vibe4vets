@@ -34,7 +34,7 @@ export function MagnifierToggle() {
       onClick={toggleEnabled}
       aria-pressed={enabled}
       aria-label={enabled ? 'Disable magnifier' : 'Enable magnifier'}
-      title={enabled ? 'Disable magnifier (Alt+M)' : 'Enable magnifier (Alt+M)'}
+      title={enabled ? 'Disable magnifier (Alt+M or right-click)' : 'Enable magnifier (Alt+M) · Right-click to close'}
       className={cn(
         'hidden md:flex items-center justify-center w-9 h-9 rounded-full transition-all duration-200',
         'focus:outline-none focus:ring-2 focus:ring-[hsl(var(--v4v-gold))] focus:ring-offset-2 focus:ring-offset-[hsl(var(--v4v-navy))]',
