@@ -78,14 +78,14 @@ const categoryIcons: Record<string, typeof Briefcase> = {
   benefits: Award,
 };
 
-// Match card badge styles using CSS variables
+// Badge styles for header - white background with category color text for contrast
 const categoryBadgeStyles: Record<string, string> = {
-  employment: 'bg-[hsl(var(--v4v-employment)/0.2)] text-white',
-  training: 'bg-[hsl(var(--v4v-training)/0.2)] text-white',
-  housing: 'bg-[hsl(var(--v4v-housing)/0.2)] text-white',
-  legal: 'bg-[hsl(var(--v4v-legal)/0.2)] text-white',
-  food: 'bg-[hsl(var(--v4v-food)/0.2)] text-white',
-  benefits: 'bg-[hsl(var(--v4v-benefits)/0.2)] text-white',
+  employment: 'bg-white/90 text-[hsl(var(--v4v-employment))]',
+  training: 'bg-white/90 text-[hsl(var(--v4v-training))]',
+  housing: 'bg-white/90 text-[hsl(var(--v4v-housing))]',
+  legal: 'bg-white/90 text-[hsl(var(--v4v-legal))]',
+  food: 'bg-white/90 text-[hsl(var(--v4v-food))]',
+  benefits: 'bg-white/90 text-[hsl(var(--v4v-benefits))]',
 };
 
 // Section card styling

@@ -30,13 +30,14 @@ import { cn } from '@/lib/utils';
 import { ReportFeedbackModal } from '@/components/ReportFeedbackModal';
 import { BookmarkButton } from '@/components/bookmark-button';
 
+// Badge styles for header - white background with category color text for contrast on gradient
 const categoryColors: Record<string, string> = {
-  employment: 'bg-[hsl(var(--v4v-employment)/0.12)] text-[hsl(var(--v4v-employment))]',
-  training: 'bg-[hsl(var(--v4v-training)/0.12)] text-[hsl(var(--v4v-training))]',
-  housing: 'bg-[hsl(var(--v4v-housing)/0.12)] text-[hsl(var(--v4v-housing))]',
-  legal: 'bg-[hsl(var(--v4v-legal)/0.12)] text-[hsl(var(--v4v-legal))]',
-  food: 'bg-[hsl(var(--v4v-food)/0.12)] text-[hsl(var(--v4v-food))]',
-  benefits: 'bg-[hsl(var(--v4v-benefits)/0.12)] text-[hsl(var(--v4v-benefits))]',
+  employment: 'bg-white/90 text-[hsl(var(--v4v-employment))]',
+  training: 'bg-white/90 text-[hsl(var(--v4v-training))]',
+  housing: 'bg-white/90 text-[hsl(var(--v4v-housing))]',
+  legal: 'bg-white/90 text-[hsl(var(--v4v-legal))]',
+  food: 'bg-white/90 text-[hsl(var(--v4v-food))]',
+  benefits: 'bg-white/90 text-[hsl(var(--v4v-benefits))]',
 };
 
 const categoryGradients: Record<string, string> = {
