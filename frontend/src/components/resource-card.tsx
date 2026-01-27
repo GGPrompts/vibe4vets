@@ -163,7 +163,7 @@ function CardInner({
 
       {/* Floating logo in top-left corner */}
       {resource.logo_url && (
-        <div className="absolute left-3 top-4 z-10 transition-transform duration-300 group-hover:scale-110">
+        <div className="absolute left-3 top-3 z-10 transition-transform duration-300 group-hover:scale-110">
           <ResourceLogo
             logoUrl={resource.logo_url}
             fallbackIcon={CategoryIcon}
@@ -173,7 +173,7 @@ function CardInner({
         </div>
       )}
 
-      <CardHeader className={`pb-3 pt-4 ${resource.logo_url ? 'pl-16' : ''}`}>
+      <CardHeader className={`pb-3 ${resource.logo_url ? 'pl-16 pt-3' : 'pt-4'}`}>
         {/* Title with icon and bookmark */}
         <div className="flex items-start gap-3">
           {!resource.logo_url && (
