@@ -198,7 +198,7 @@ function CardInner({
 
       <CardContent className="pt-1">
         {/* Description - more prominent */}
-        <p className="mb-3 line-clamp-5 text-sm leading-relaxed text-muted-foreground">
+        <p className="mb-3 text-sm leading-relaxed text-muted-foreground">
           {resource.summary || resource.description}
         </p>
 
