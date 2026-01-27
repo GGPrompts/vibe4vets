@@ -19,7 +19,6 @@ Source: Curated from VA Community Care provider directories and registrations
 """
 
 import json
-import re
 from datetime import UTC, datetime
 from pathlib import Path
 
@@ -170,14 +169,12 @@ class VACommunityConnector(BaseConnector):
         provider_name = provider.get("provider_name", "Unknown Provider")
         org_name = provider.get("org_name", provider_name)
         specialty = provider.get("specialty", "primary_care")
-        specialties = provider.get("specialties", [specialty])
         state = provider.get("state")
         city = provider.get("city")
         address = provider.get("address")
         zip_code = provider.get("zip_code")
         phone = provider.get("phone")
         email = provider.get("email")
-        network_status = provider.get("network_status", "in_network")
         website = provider.get("website")
 
         title = self._build_title(provider_name, specialty, city, state)

@@ -1,12 +1,11 @@
 """Tests for VA Community Care Network connector."""
 
 import json
-from datetime import UTC, datetime
 from pathlib import Path
 
 import pytest
 
-from connectors.va_community_care import VACommunityConnector, CCN_REGIONS, TPA_CONTACTS
+from connectors.va_community_care import CCN_REGIONS, TPA_CONTACTS, VACommunityConnector
 
 
 class TestVACommunityConnector:

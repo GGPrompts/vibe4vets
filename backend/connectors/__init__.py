@@ -23,8 +23,8 @@ from connectors.va_gov import VAGovConnector
 from connectors.va_patient_advocate import VAPatientAdvocateConnector
 from connectors.vboc import VBOCConnector
 from connectors.vet_centers import VetCentersConnector
-from connectors.veteran_employers import VeteranEmployersConnector
 from connectors.veteran_emergency_assistance import VeteranEmergencyAssistanceConnector
+from connectors.veteran_employers import VeteranEmployersConnector
 from connectors.veteran_food_assistance import VeteranFoodAssistanceConnector
 from connectors.veterans_court import VeteransCourtConnector
 from connectors.vso_post_locator import VSOPostLocatorConnector

@@ -346,7 +346,10 @@ class VeteranEmergencyAssistanceConnector(BaseConnector):
         categories = set()
 
         # Housing-related assistance
-        housing_keywords = {"mortgage", "rent", "shelter", "home_repairs", "home_modifications", "security_deposits", "rental_deposits"}
+        housing_keywords = {
+            "mortgage", "rent", "shelter", "home_repairs",
+            "home_modifications", "security_deposits", "rental_deposits",
+        }
         if housing_keywords & set(assistance_types):
             categories.add("housing")
 

@@ -27,7 +27,6 @@ from pathlib import Path
 
 from connectors.base import BaseConnector, ResourceCandidate, SourceMetadata
 
-
 # VSO organization metadata
 VSO_ORGANIZATIONS = {
     "VFW": {
