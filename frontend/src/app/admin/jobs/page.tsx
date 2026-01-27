@@ -461,7 +461,9 @@ export default function JobsPage() {
           <DialogContent>
             <DialogHeader>
               <DialogTitle>Run Job: {selectedJob?.name}</DialogTitle>
-              <DialogDescription>{selectedJob?.description}</DialogDescription>
+              <DialogDescription>
+                {selectedJob?.description || 'Configure and run this scheduled job'}
+              </DialogDescription>
             </DialogHeader>
 
             <div className="space-y-4 py-4">

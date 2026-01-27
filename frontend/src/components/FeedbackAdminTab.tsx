@@ -263,7 +263,7 @@ export function FeedbackAdminTab() {
           <DialogHeader>
             <DialogTitle>Review Feedback</DialogTitle>
             <DialogDescription>
-              {selectedItem?.resource_title}
+              {selectedItem?.resource_title || 'Review feedback details'}
             </DialogDescription>
           </DialogHeader>
 
