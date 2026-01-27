@@ -32,8 +32,8 @@ const BREAKPOINTS = {
   xl: 1280,
 };
 
-// Card heights (approximate, cards are relatively fixed)
-const CARD_HEIGHT = 320; // Approximate card height in pixels
+// Card heights - fixed minimum for consistent rows
+const CARD_HEIGHT = 280; // Matches min-h-[280px] on ResourceCard
 const ROW_GAP = 16; // gap-4 = 1rem = 16px
 
 function useResponsiveColumns() {
