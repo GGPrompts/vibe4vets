@@ -183,7 +183,7 @@ function CardInner({
           )}
           <div className="min-w-0 flex-1">
             <div className="flex items-start justify-between gap-2">
-              {resource.website ? (
+              {resource.website && !disablePhoneLinks ? (
                 <a
                   href={resource.website}
                   target="_blank"
