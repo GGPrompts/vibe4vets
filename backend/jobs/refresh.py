@@ -28,12 +28,15 @@ from connectors import (
     StateVAConnector,
     TwoOneOneConnector,
     UnitedWayConnector,
+    VACommunityConnector,
     VAGovConnector,
     VBOCConnector,
     VetCentersConnector,
     VeteranEmergencyAssistanceConnector,
     VeteranEmployersConnector,
+    VeteranFoodAssistanceConnector,
     VeteransCourtConnector,
+    VSOPostLocatorConnector,
 )
 from connectors.base import BaseConnector
 from etl import ETLPipeline
@@ -55,6 +58,7 @@ CONNECTOR_REGISTRY: dict[str, type[BaseConnector]] = {
     "vboc": VBOCConnector,  # SBA Veterans Business Outreach Centers
     "skillbridge": SkillBridgeConnector,  # DOD SkillBridge partners
     "stand_down_events": StandDownEventsConnector,  # VA Stand Down outreach events
+    "va_community_care": VACommunityConnector,  # VA Community Care Network providers
     # Tier 2: Established Nonprofits/Directories
     "legal_aid": LegalAidConnector,  # LSC-funded legal aid
     "discharge_upgrade": DischargeUpgradeConnector,  # Discharge upgrade legal resources
@@ -62,7 +66,9 @@ CONNECTOR_REGISTRY: dict[str, type[BaseConnector]] = {
     "certifications": CertificationsConnector,  # Veteran certification programs
     "veteran_employers": VeteranEmployersConnector,  # Veteran-friendly employers
     "veteran_emergency_assistance": VeteranEmergencyAssistanceConnector,  # Emergency financial assistance
+    "veteran_food_assistance": VeteranFoodAssistanceConnector,  # Food pantries and distributions
     "mental_health": MentalHealthConnector,  # Mental health resources (crisis, therapy, peer support)
+    "vso_post_locator": VSOPostLocatorConnector,  # VFW, American Legion, DAV posts
     # Tier 3: State/County Level
     "state_va": StateVAConnector,  # State VA agencies
     "cvso": CVSOConnector,  # County Veteran Service Officers

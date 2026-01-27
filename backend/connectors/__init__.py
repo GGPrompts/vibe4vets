@@ -17,12 +17,15 @@ from connectors.stand_down_events import StandDownEventsConnector
 from connectors.state_va import StateVAConnector
 from connectors.two_one_one import TwoOneOneConnector
 from connectors.united_way import UnitedWayConnector
+from connectors.va_community_care import VACommunityConnector
 from connectors.va_gov import VAGovConnector
 from connectors.vboc import VBOCConnector
 from connectors.vet_centers import VetCentersConnector
 from connectors.veteran_employers import VeteranEmployersConnector
 from connectors.veteran_emergency_assistance import VeteranEmergencyAssistanceConnector
+from connectors.veteran_food_assistance import VeteranFoodAssistanceConnector
 from connectors.veterans_court import VeteransCourtConnector
+from connectors.vso_post_locator import VSOPostLocatorConnector
 
 __all__ = [
     "ApprenticeshipConnector",
@@ -45,10 +48,13 @@ __all__ = [
     "StateVAConnector",
     "TwoOneOneConnector",
     "UnitedWayConnector",
+    "VACommunityConnector",
     "VAGovConnector",
     "VBOCConnector",
     "VetCentersConnector",
     "VeteranEmergencyAssistanceConnector",
     "VeteranEmployersConnector",
+    "VeteranFoodAssistanceConnector",
     "VeteransCourtConnector",
+    "VSOPostLocatorConnector",
 ]
