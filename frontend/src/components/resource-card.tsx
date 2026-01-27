@@ -369,7 +369,7 @@ export function ResourceCard({
 
   const cardContent = (
     <Card
-      className={`category-card group relative h-full min-h-[280px] overflow-hidden border transition-all duration-300 ${
+      className={`category-card group relative h-[320px] overflow-hidden border transition-all duration-300 ${
         cardBackgrounds[primaryCategory] || cardBackgrounds.employment
       } ${cardHoverBorders[primaryCategory] || cardHoverBorders.employment} ${
         variant === 'selectable' && selected ? 'ring-2 ring-[hsl(var(--v4v-gold))]' : ''
