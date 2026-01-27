@@ -19,6 +19,7 @@ from connectors.two_one_one import TwoOneOneConnector
 from connectors.united_way import UnitedWayConnector
 from connectors.va_community_care import VACommunityConnector
 from connectors.va_gov import VAGovConnector
+from connectors.va_patient_advocate import VAPatientAdvocateConnector
 from connectors.vboc import VBOCConnector
 from connectors.vet_centers import VetCentersConnector
 from connectors.veteran_employers import VeteranEmployersConnector
@@ -50,6 +51,7 @@ __all__ = [
     "UnitedWayConnector",
     "VACommunityConnector",
     "VAGovConnector",
+    "VAPatientAdvocateConnector",
     "VBOCConnector",
     "VetCentersConnector",
     "VeteranEmergencyAssistanceConnector",

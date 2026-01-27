@@ -30,6 +30,7 @@ from connectors import (
     UnitedWayConnector,
     VACommunityConnector,
     VAGovConnector,
+    VAPatientAdvocateConnector,
     VBOCConnector,
     VetCentersConnector,
     VeteranEmergencyAssistanceConnector,
@@ -59,6 +60,7 @@ CONNECTOR_REGISTRY: dict[str, type[BaseConnector]] = {
     "skillbridge": SkillBridgeConnector,  # DOD SkillBridge partners
     "stand_down_events": StandDownEventsConnector,  # VA Stand Down outreach events
     "va_community_care": VACommunityConnector,  # VA Community Care Network providers
+    "va_patient_advocate": VAPatientAdvocateConnector,  # VAMC Patient Advocates
     # Tier 2: Established Nonprofits/Directories
     "legal_aid": LegalAidConnector,  # LSC-funded legal aid
     "discharge_upgrade": DischargeUpgradeConnector,  # Discharge upgrade legal resources
