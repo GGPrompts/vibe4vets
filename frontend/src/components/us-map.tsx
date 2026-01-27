@@ -255,8 +255,10 @@ function USMapComponent({
 
         {/* Dropdown to add states */}
         <Select key={selectedStates.length} onValueChange={handleDropdownChange}>
-          <SelectTrigger className="w-full border-[hsl(var(--v4v-navy)/0.3)] bg-white text-gray-700 [&>span]:data-[placeholder]:text-gray-500">
-            <SelectValue placeholder={selectedStates.length > 0 ? "Add another state" : "Select a state to explore resources"} />
+          <SelectTrigger className="w-full border-[hsl(var(--v4v-navy)/0.3)] bg-white text-gray-700">
+            <span className="text-gray-500">
+              {selectedStates.length > 0 ? "Add another state" : "Select a state to explore resources"}
+            </span>
           </SelectTrigger>
           <SelectContent className="max-h-[300px]">
             {STATES_LIST.map(([abbr, name]) => {
