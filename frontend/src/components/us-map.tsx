@@ -16,6 +16,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
+import { X } from 'lucide-react';
 
 const GEO_URL = 'https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json';
 
@@ -220,18 +221,59 @@ function USMapComponent({
 
   return (
     <div className={`relative ${className}`}>
-      {/* Mobile: Dropdown Select */}
-      <div className="md:hidden">
-        <Select onValueChange={handleDropdownChange}>
+      {/* Mobile: Dropdown Select with Selected Chips */}
+      <div className="md:hidden space-y-3">
+        {/* Selected states as removable chips */}
+        {selectedStates.length > 0 && (
+          <div className="flex flex-wrap gap-2">
+            {selectedStates.map((abbr) => (
+              <button
+                key={abbr}
+                type="button"
+                onClick={() => handleStateClick(abbr)}
+                className="inline-flex items-center gap-1.5 rounded-full bg-[hsl(45,70%,47%)] px-3 py-1.5 text-sm font-medium text-[hsl(222,60%,15%)] transition-colors hover:bg-[hsl(45,70%,55%)]"
+                aria-label={`Remove ${STATE_NAMES[abbr] || abbr}`}
+              >
+                {STATE_NAMES[abbr] || abbr}
+                <X className="h-3.5 w-3.5" />
+              </button>
+            ))}
+            {selectedStates.length > 1 && (
+              <button
+                type="button"
+                onClick={() => {
+                  // Clear all selected states
+                  selectedStates.forEach((abbr) => handleStateClick(abbr));
+                }}
+                className="inline-flex items-center gap-1 rounded-full border border-white/30 px-3 py-1.5 text-sm font-medium text-white/70 transition-colors hover:bg-white/10 hover:text-white"
+              >
+                Clear all
+              </button>
+            )}
+          </div>
+        )}
+
+        {/* Dropdown to add states */}
+        <Select onValueChange={handleDropdownChange} value="">
           <SelectTrigger className="w-full border-[hsl(var(--v4v-navy)/0.3)] bg-white">
-            <SelectValue placeholder="Select a state to explore resources" />
+            <SelectValue placeholder={selectedStates.length > 0 ? "Add another state" : "Select a state to explore resources"} />
           </SelectTrigger>
           <SelectContent className="max-h-[300px]">
-            {STATES_LIST.map(([abbr, name]) => (
-              <SelectItem key={abbr} value={abbr}>
-                {name}
-              </SelectItem>
-            ))}
+            {STATES_LIST.map(([abbr, name]) => {
+              const isSelected = selectedStates.includes(abbr);
+              return (
+                <SelectItem
+                  key={abbr}
+                  value={abbr}
+                  className={isSelected ? 'bg-[hsl(45,70%,47%)/0.2]' : ''}
+                >
+                  <span className="flex items-center gap-2">
+                    {name}
+                    {isSelected && <span className="text-xs text-muted-foreground">(selected)</span>}
+                  </span>
+                </SelectItem>
+              );
+            })}
           </SelectContent>
         </Select>
       </div>
