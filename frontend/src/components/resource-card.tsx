@@ -196,26 +196,14 @@ function CardInner({
         </div>
       </CardHeader>
 
-      <CardContent className="pt-0">
-        <p className="mb-4 line-clamp-2 text-sm leading-relaxed text-muted-foreground">
+      <CardContent className="pt-1">
+        {/* Description - more prominent */}
+        <p className="mb-3 line-clamp-4 text-sm leading-relaxed text-muted-foreground">
           {resource.summary || resource.description}
         </p>
 
-        {/* Category badges */}
-        <div className="mb-2 flex flex-wrap gap-2">
-          {resource.categories.map((cat) => {
-            const Icon = categoryIcons[cat] || Briefcase;
-            return (
-              <Badge
-                key={cat}
-                variant="outline"
-                className={`${categoryBadgeStyles[cat] || ''} gap-1 border font-medium`}
-              >
-                <Icon className="h-3 w-3" />
-                <span className="capitalize">{cat}</span>
-              </Badge>
-            );
-          })}
+        {/* Location badges only */}
+        <div className="mb-3 flex flex-wrap gap-2">
           {resource.location && (
             <Badge
               variant="outline"
@@ -257,62 +245,6 @@ function CardInner({
             </Badge>
           )}
         </div>
-
-        {/* Tags badges - limited to 2 on cards, full list in detail modal */}
-        {resource.tags && resource.tags.length > 0 && (
-          <div className="mb-3 flex flex-wrap gap-1.5">
-            {resource.tags.slice(0, 2).map((tag) => (
-              <Badge
-                key={tag}
-                variant="outline"
-                className="gap-1 border-muted-foreground/20 bg-muted/50 text-muted-foreground text-xs py-0 h-5 font-normal"
-              >
-                <Tag className="h-2.5 w-2.5" />
-                <span className="capitalize">{tag.replace(/_/g, ' ')}</span>
-              </Badge>
-            ))}
-            {resource.tags.length > 2 && (
-              <Badge
-                variant="outline"
-                className="border-muted-foreground/20 bg-muted/50 text-muted-foreground text-xs py-0 h-5 font-normal"
-              >
-                +{resource.tags.length - 2}
-              </Badge>
-            )}
-          </div>
-        )}
-
-        {/* Match explanation */}
-        {explanations && explanations.length > 0 && (
-          <div className="mt-3 rounded-lg border border-[hsl(var(--v4v-gold)/0.2)] bg-[hsl(var(--v4v-gold)/0.05)] p-3">
-            <p className="mb-2 flex items-center gap-1.5 text-xs font-semibold text-[hsl(var(--v4v-gold))]">
-              <CheckCircle2 className="h-3.5 w-3.5" />
-              Why this matched
-            </p>
-            <ul className="space-y-1">
-              {explanations.slice(0, 3).map((exp, i) => (
-                <li key={i} className="flex items-start gap-2 text-xs text-muted-foreground">
-                  <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-[hsl(var(--v4v-gold))]" />
-                  {exp.reason}
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
-
-        {/* Cost indicator */}
-        {resource.cost && (
-          <p className="mt-3 text-sm font-semibold text-green-600 dark:text-green-400">
-            {resource.cost}
-          </p>
-        )}
-
-        {/* Eligibility */}
-        {resource.eligibility && (
-          <p className="mt-3 text-sm text-green-600 dark:text-green-400">
-            {resource.eligibility}
-          </p>
-        )}
 
         {/* Local provider contact info */}
         {resource.location && (resource.location.intake?.phone || resource.location.intake?.hours) && (
