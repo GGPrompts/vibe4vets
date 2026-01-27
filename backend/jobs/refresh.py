@@ -16,10 +16,12 @@ from connectors import (
     CareerOneStopConnector,
     CertificationsConnector,
     CVSOConnector,
+    DischargeUpgradeConnector,
     GIBillSchoolsConnector,
     GPDConnector,
     HUDVASHConnector,
     LegalAidConnector,
+    MentalHealthConnector,
     SkillBridgeConnector,
     SSVFConnector,
     StandDownEventsConnector,
@@ -55,10 +57,12 @@ CONNECTOR_REGISTRY: dict[str, type[BaseConnector]] = {
     "stand_down_events": StandDownEventsConnector,  # VA Stand Down outreach events
     # Tier 2: Established Nonprofits/Directories
     "legal_aid": LegalAidConnector,  # LSC-funded legal aid
+    "discharge_upgrade": DischargeUpgradeConnector,  # Discharge upgrade legal resources
     "veterans_court": VeteransCourtConnector,  # Veterans Treatment Courts
     "certifications": CertificationsConnector,  # Veteran certification programs
     "veteran_employers": VeteranEmployersConnector,  # Veteran-friendly employers
     "veteran_emergency_assistance": VeteranEmergencyAssistanceConnector,  # Emergency financial assistance
+    "mental_health": MentalHealthConnector,  # Mental health resources (crisis, therapy, peer support)
     # Tier 3: State/County Level
     "state_va": StateVAConnector,  # State VA agencies
     "cvso": CVSOConnector,  # County Veteran Service Officers

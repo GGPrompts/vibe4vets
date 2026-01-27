@@ -5,10 +5,12 @@ from connectors.base import BaseConnector, Connector, ResourceCandidate, SourceM
 from connectors.careeronestop import CareerOneStopConnector
 from connectors.certifications import CertificationsConnector
 from connectors.cvso import CVSOConnector
+from connectors.discharge_upgrade import DischargeUpgradeConnector
 from connectors.gi_bill_schools import GIBillSchoolsConnector
 from connectors.gpd import GPDConnector
 from connectors.hud_vash import HUDVASHConnector
 from connectors.legal_aid import LegalAidConnector
+from connectors.mental_health import MentalHealthConnector
 from connectors.skillbridge import SkillBridgeConnector
 from connectors.ssvf import SSVFConnector
 from connectors.stand_down_events import StandDownEventsConnector
@@ -29,10 +31,12 @@ __all__ = [
     "CertificationsConnector",
     "Connector",
     "CVSOConnector",
+    "DischargeUpgradeConnector",
     "GIBillSchoolsConnector",
     "GPDConnector",
     "HUDVASHConnector",
     "LegalAidConnector",
+    "MentalHealthConnector",
     "ResourceCandidate",
     "SkillBridgeConnector",
     "SourceMetadata",
