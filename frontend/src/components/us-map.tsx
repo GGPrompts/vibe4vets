@@ -254,7 +254,7 @@ function USMapComponent({
         )}
 
         {/* Dropdown to add states */}
-        <Select onValueChange={handleDropdownChange} value="">
+        <Select onValueChange={handleDropdownChange} value={undefined}>
           <SelectTrigger className="w-full border-[hsl(var(--v4v-navy)/0.3)] bg-white">
             <SelectValue placeholder={selectedStates.length > 0 ? "Add another state" : "Select a state to explore resources"} />
           </SelectTrigger>
