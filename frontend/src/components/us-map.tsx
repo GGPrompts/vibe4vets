@@ -245,7 +245,7 @@ function USMapComponent({
                   // Clear all selected states
                   selectedStates.forEach((abbr) => handleStateClick(abbr));
                 }}
-                className="inline-flex items-center gap-1 rounded-full border border-white/30 px-3 py-1.5 text-sm font-medium text-white/70 transition-colors hover:bg-white/10 hover:text-white"
+                className="inline-flex items-center gap-1 rounded-full border border-gray-300 px-3 py-1.5 text-sm font-medium text-gray-600 transition-colors hover:bg-gray-100 hover:text-gray-800"
               >
                 Clear all
               </button>
