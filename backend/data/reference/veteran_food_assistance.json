@@ -1,0 +1,302 @@
+{
+  "metadata": {
+    "source": "Curated from official program websites and VA resources",
+    "last_updated": "2026-01",
+    "description": "Food assistance programs for veterans and military families - pantries, distributions, meal programs",
+    "total_programs": 10
+  },
+  "programs": [
+    {
+      "org_name": "Soldiers' Angels",
+      "program_name": "Military and Veteran Food Distribution",
+      "website": "https://soldiersangels.org/get-support/food/",
+      "phone": "210-629-0020",
+      "email": "info@soldiersangels.org",
+      "address": "2895 NE Loop 410, Suite 107",
+      "city": "San Antonio",
+      "state": "TX",
+      "zip_code": "78218",
+      "hours": "Monthly distributions; times vary by location",
+      "services": [
+        "monthly_food_distribution",
+        "fresh_produce",
+        "meat",
+        "non_perishables",
+        "holiday_meals"
+      ],
+      "distribution_cities": [
+        {"city": "Atlanta", "state": "GA"},
+        {"city": "Charleston", "state": "SC"},
+        {"city": "Cincinnati", "state": "OH"},
+        {"city": "Dallas", "state": "TX"},
+        {"city": "Denver", "state": "CO"},
+        {"city": "Orlando", "state": "FL"},
+        {"city": "San Antonio", "state": "TX"},
+        {"city": "Washington", "state": "DC"},
+        {"city": "Detroit", "state": "MI"}
+      ],
+      "eligibility": {
+        "summary": "Homeless, at-risk, or low-income veterans; veterans between jobs who need help bridging the gap",
+        "veteran_status_required": true,
+        "income_limit": "Low-income or at-risk",
+        "documentation_required": ["military_id", "dd214", "va_card"],
+        "notes": "Must register in advance at soldiersangels.org. Each participant receives approximately 75 pounds of food, enough for 2 weeks of meals for a family of four."
+      },
+      "scope": "national",
+      "states": ["GA", "SC", "OH", "TX", "CO", "FL", "DC", "MI"],
+      "tags": ["food-distribution", "fresh-produce", "meat", "non-perishables", "monthly", "drive-through"]
+    },
+    {
+      "org_name": "Disabled Veterans National Foundation (DVNF)",
+      "program_name": "Veterans Food Assistance Program (VFAP)",
+      "website": "https://www.dvnf.org/veteran-food-assistance-program/",
+      "phone": null,
+      "email": "programs@dvnf.org",
+      "address": "4601 Forbes Blvd, Suite 130",
+      "city": "Lanham",
+      "state": "MD",
+      "zip_code": "20706",
+      "hours": "Online application; delivery-based program",
+      "services": [
+        "grocery_delivery",
+        "non_perishables",
+        "household_supplies",
+        "one_time_grant"
+      ],
+      "eligibility": {
+        "summary": "All veterans and their families are eligible - you do not need to be a disabled veteran",
+        "veteran_status_required": true,
+        "income_limit": null,
+        "documentation_required": ["recommendation_letter"],
+        "notes": "One-time grant per fiscal year (October-September). DVNF handles shopping and delivery. Must describe current need and steps toward food security."
+      },
+      "scope": "national",
+      "states": null,
+      "tags": ["food-delivery", "grocery", "one-time-grant", "household-supplies", "all-veterans"]
+    },
+    {
+      "org_name": "Armed Services YMCA Hawaii",
+      "program_name": "Ohana Food Drops",
+      "website": "https://hawaii.asymca.org/services/food-assistance/",
+      "phone": "808-624-5645",
+      "email": null,
+      "address": "4589 Kolohala Street",
+      "city": "Honolulu",
+      "state": "HI",
+      "zip_code": "96818",
+      "hours": "Monthly distributions - MCBH: 2nd Sunday, WAAF: 4th Sunday",
+      "services": [
+        "fresh_produce",
+        "dried_goods",
+        "monthly_food_distribution",
+        "client_choice_pantry"
+      ],
+      "eligibility": {
+        "summary": "Open to all active, reserve, and veteran military families - all branches of service including National Guard",
+        "veteran_status_required": true,
+        "income_limit": null,
+        "documentation_required": [],
+        "notes": "No rank restrictions. Food provided through partnership with Hawaii Foodbank. MCBH and Wheeler AAF locations."
+      },
+      "scope": "state",
+      "states": ["HI"],
+      "tags": ["food-distribution", "fresh-produce", "military-families", "monthly", "hawaii"]
+    },
+    {
+      "org_name": "Central PA Food Bank",
+      "program_name": "MilitaryShare Program",
+      "website": "https://www.centralpafoodbank.org/who-we-are/our-programs/militaryshare/",
+      "phone": "717-564-1700",
+      "email": null,
+      "address": "3908 Corey Road",
+      "city": "Harrisburg",
+      "state": "PA",
+      "zip_code": "17109",
+      "hours": "Monthly distributions at National Guard Armories; check website for schedule",
+      "services": [
+        "fresh_produce",
+        "milk",
+        "eggs",
+        "cheese",
+        "pantry_staples",
+        "monthly_food_distribution"
+      ],
+      "eligibility": {
+        "summary": "All military branches, prior service, reservists, or inactive ready reserve",
+        "veteran_status_required": true,
+        "income_limit": null,
+        "documentation_required": ["military_id", "dd214"],
+        "notes": "Registered families receive fresh produce, milk, eggs, cheese, and pantry staples (soup, pasta, sauce, cereal). Distributions held at PA National Guard Armories."
+      },
+      "scope": "state",
+      "states": ["PA"],
+      "tags": ["food-distribution", "fresh-produce", "dairy", "monthly", "national-guard-armory"]
+    },
+    {
+      "org_name": "Community Harvest Food Bank",
+      "program_name": "Hope for Heroes",
+      "website": "https://www.communityharvest.org/about-us/programs/hope-for-heroes/",
+      "phone": "260-447-3696",
+      "email": null,
+      "address": "999 E Tillman Road",
+      "city": "Fort Wayne",
+      "state": "IN",
+      "zip_code": "46816",
+      "hours": "By appointment; 12-month program",
+      "services": [
+        "twelve_month_groceries",
+        "monthly_food_boxes",
+        "fresh_produce",
+        "case_management"
+      ],
+      "eligibility": {
+        "summary": "Veterans and military families in need residing in northeast Indiana",
+        "veteran_status_required": true,
+        "income_limit": "Based on need",
+        "documentation_required": ["military_id", "dd214"],
+        "notes": "Since 2016, Hope for Heroes has provided twelve months of groceries to eligible participants. Program includes ongoing support and case management."
+      },
+      "scope": "local",
+      "states": ["IN"],
+      "tags": ["food-boxes", "twelve-month-program", "case-management", "indiana"]
+    },
+    {
+      "org_name": "Feeding San Diego",
+      "program_name": "Feeding Heroes Mobile Pantry",
+      "website": "https://feedingsandiego.org/our-programs/feeding-heroes/",
+      "phone": "858-452-3663",
+      "email": null,
+      "address": "9850 Distribution Avenue",
+      "city": "San Diego",
+      "state": "CA",
+      "zip_code": "92121",
+      "hours": "Monthly or bi-monthly distributions; check website for schedule",
+      "services": [
+        "fresh_produce",
+        "dry_goods",
+        "mobile_pantry",
+        "monthly_food_distribution"
+      ],
+      "eligibility": {
+        "summary": "Military families and veterans across San Diego County - no paperwork or income requirements",
+        "veteran_status_required": true,
+        "income_limit": null,
+        "documentation_required": [],
+        "notes": "25 strategic sites near military bases and veteran communities. Each distribution provides 20-30 pounds of fresh produce and dry goods. No paperwork required."
+      },
+      "scope": "local",
+      "states": ["CA"],
+      "tags": ["mobile-pantry", "fresh-produce", "no-paperwork", "san-diego", "military-bases"]
+    },
+    {
+      "org_name": "VFW Post 10054",
+      "program_name": "Veterans Food Pantry",
+      "website": "https://vfw.org",
+      "phone": null,
+      "email": null,
+      "address": "4651 S Homestead Road",
+      "city": "Pahrump",
+      "state": "NV",
+      "zip_code": "89048",
+      "hours": "Wednesday 10:00 AM - 12:00 PM",
+      "services": [
+        "food_pantry",
+        "non_perishables",
+        "canned_goods"
+      ],
+      "eligibility": {
+        "summary": "Veterans with valid identification",
+        "veteran_status_required": true,
+        "income_limit": null,
+        "documentation_required": ["veteran_id", "state_id"],
+        "notes": "Bring veteran identification and state ID to sign up. Weekly access available."
+      },
+      "scope": "local",
+      "states": ["NV"],
+      "tags": ["food-pantry", "vfw", "weekly", "pahrump"]
+    },
+    {
+      "org_name": "VFW Department of Missouri",
+      "program_name": "Mid-Mo Military Family Pantry",
+      "website": "https://movfw.org",
+      "phone": "573-636-3268",
+      "email": null,
+      "address": "3401 Knipp Drive",
+      "city": "Jefferson City",
+      "state": "MO",
+      "zip_code": "65109",
+      "hours": "Thursday 4:00 PM - 6:00 PM",
+      "services": [
+        "food_pantry",
+        "military_family_support",
+        "non_perishables"
+      ],
+      "eligibility": {
+        "summary": "Military families and veterans in mid-Missouri",
+        "veteran_status_required": true,
+        "income_limit": null,
+        "documentation_required": ["military_id", "dd214"],
+        "notes": "Located at VFW Department Headquarters. Weekly hours on Thursdays."
+      },
+      "scope": "local",
+      "states": ["MO"],
+      "tags": ["food-pantry", "vfw", "weekly", "missouri", "military-families"]
+    },
+    {
+      "org_name": "ASYMCA Fort Bragg",
+      "program_name": "Food Assistance Program",
+      "website": "https://asymca.org/what-we-do/food-assistance/",
+      "phone": "910-483-0479",
+      "email": null,
+      "address": "1005 Gruber Road, Building 3-1430",
+      "city": "Fort Liberty",
+      "state": "NC",
+      "zip_code": "28310",
+      "hours": "Varies; contact for schedule",
+      "services": [
+        "client_choice_pantry",
+        "mobile_food_market",
+        "fresh_produce",
+        "non_perishables"
+      ],
+      "eligibility": {
+        "summary": "Active duty service members and their families at Fort Liberty (formerly Fort Bragg)",
+        "veteran_status_required": false,
+        "income_limit": "Based on need",
+        "documentation_required": ["military_id"],
+        "notes": "Both in-office client-choice pantry and mobile food market available. Mobile market helps families with transportation challenges."
+      },
+      "scope": "local",
+      "states": ["NC"],
+      "tags": ["food-pantry", "mobile-pantry", "asymca", "fort-liberty", "active-duty"]
+    },
+    {
+      "org_name": "VA Food Security Office",
+      "program_name": "VA Produce Prescription Program",
+      "website": "https://www.nutrition.va.gov/food_insecurity.asp",
+      "phone": null,
+      "email": null,
+      "address": null,
+      "city": null,
+      "state": null,
+      "zip_code": null,
+      "hours": "Through VA healthcare enrollment",
+      "services": [
+        "produce_prescriptions",
+        "snap_referrals",
+        "food_bank_referrals",
+        "nutrition_counseling"
+      ],
+      "eligibility": {
+        "summary": "Veterans enrolled in VA healthcare who screen positive for food insecurity",
+        "veteran_status_required": true,
+        "income_limit": null,
+        "documentation_required": ["va_enrollment"],
+        "notes": "VA screens for food insecurity and connects veterans with SNAP, local food banks, and other nutrition programs. Available at VA Medical Centers nationwide."
+      },
+      "scope": "national",
+      "states": null,
+      "tags": ["va", "produce-prescriptions", "snap", "food-bank-referrals", "nutrition"]
+    }
+  ]
+}
