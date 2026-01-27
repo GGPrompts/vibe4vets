@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Briefcase, BookOpen, Home, Scale, MapPin, Globe, CheckCircle2, Tag, Phone, Clock, UtensilsCrossed, Award } from 'lucide-react';
+import { Briefcase, BookOpen, Home, Scale, MapPin, Globe, CheckCircle2, Tag, Phone, Clock, UtensilsCrossed, Award, ExternalLink } from 'lucide-react';
 import type { Resource, MatchExplanation } from '@/lib/api';
 import { BookmarkButton } from '@/components/bookmark-button';
 
@@ -183,9 +183,24 @@ function CardInner({
           )}
           <div className="min-w-0 flex-1">
             <div className="flex items-start justify-between gap-2">
-              <CardTitle className="font-display line-clamp-2 text-lg text-[hsl(var(--v4v-navy))] dark:text-foreground">
-                {resource.title}
-              </CardTitle>
+              {resource.website ? (
+                <a
+                  href={resource.website}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={(e) => e.stopPropagation()}
+                  className="group/title flex items-start gap-1.5 hover:underline"
+                >
+                  <CardTitle className="font-display line-clamp-2 text-lg text-[hsl(var(--v4v-navy))] dark:text-foreground">
+                    {resource.title}
+                  </CardTitle>
+                  <ExternalLink className="h-4 w-4 mt-1 shrink-0 text-muted-foreground opacity-50 group-hover/title:opacity-100" />
+                </a>
+              ) : (
+                <CardTitle className="font-display line-clamp-2 text-lg text-[hsl(var(--v4v-navy))] dark:text-foreground">
+                  {resource.title}
+                </CardTitle>
+              )}
               {/* Placeholder for bookmark button spacing */}
               {(showBookmark || renderBookmark) && <div className="h-6 w-6 shrink-0" />}
             </div>
