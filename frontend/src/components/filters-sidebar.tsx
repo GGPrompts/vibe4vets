@@ -190,11 +190,19 @@ export function FiltersSidebar({
   hideHeader = false,
 }: FiltersSidebarProps) {
   // Collapsible section state - categories and scope open by default
+  // States section opens if states are pre-selected (e.g., from landing page URL)
   const [categoriesOpen, setCategoriesOpen] = useState(true);
   const [scopeOpen, setScopeOpen] = useState(true);
   const [zipOpen, setZipOpen] = useState(filters.zip ? true : false);
-  const [statesOpen, setStatesOpen] = useState(false);
+  const [statesOpen, setStatesOpen] = useState(filters.states.length > 0);
   const [stateSearch, setStateSearch] = useState('');
+
+  // Auto-expand states section when states are pre-selected (e.g., from URL navigation)
+  useEffect(() => {
+    if (filters.states.length > 0 && !statesOpen) {
+      setStatesOpen(true);
+    }
+  }, [filters.states.length]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Clear state search when section collapses
   const handleStatesToggle = () => {
