@@ -1,0 +1,479 @@
+{
+  "metadata": {
+    "source": "Curated from official program websites and VA resources",
+    "last_updated": "2026-01",
+    "description": "Mental health resources for veterans including crisis lines, therapy providers, peer support groups, and community programs",
+    "total_resources": 22
+  },
+  "resources": [
+    {
+      "org_name": "Veterans Crisis Line",
+      "program_name": "24/7 Crisis Support",
+      "service_type": "crisis",
+      "website": "https://www.veteranscrisisline.net/",
+      "phone": "988",
+      "phone_instructions": "Dial 988, then press 1",
+      "text": "838255",
+      "chat_url": "https://www.veteranscrisisline.net/get-help-now/chat/",
+      "tty": "711 then 988",
+      "description": "The Veterans Crisis Line connects veterans and service members in crisis with qualified, caring responders. Available 24/7, 365 days a year. Calls are free and confidential. Responders are specially trained to help veterans.",
+      "hours": "24/7/365",
+      "cost": "free",
+      "delivery": ["phone", "text", "chat"],
+      "specialties": ["suicide-prevention", "crisis-intervention", "emotional-distress"],
+      "eligibility": {
+        "summary": "All veterans, service members (including National Guard and Reserve), and their families - even if not enrolled in VA health care",
+        "enrollment_required": false,
+        "service_era": "any",
+        "discharge_status": "any"
+      },
+      "how_to_access": "Call 988 and press 1, text 838255, or chat online at VeteransCrisisLine.net. No registration required.",
+      "response_time": "Calls answered in less than 9 seconds on average",
+      "tags": ["crisis", "suicide-prevention", "24-7", "confidential", "immediate-help"]
+    },
+    {
+      "org_name": "VA Vet Centers",
+      "program_name": "Readjustment Counseling Services",
+      "service_type": "therapy",
+      "website": "https://www.vetcenter.va.gov/",
+      "phone": "1-877-927-8387",
+      "phone_instructions": "Call Center available 24/7",
+      "description": "Vet Centers provide free, confidential counseling for PTSD, military sexual trauma, and readjustment challenges in a relaxed, non-medical community setting. Services include individual, group, marriage and family counseling.",
+      "hours": "Flexible hours including evenings and weekends",
+      "cost": "free",
+      "delivery": ["in-person", "telehealth"],
+      "location_count": 300,
+      "location_notes": "300+ Vet Centers nationwide plus 83 Mobile Vet Centers",
+      "specialties": ["ptsd", "mst", "readjustment", "grief", "relationship-issues", "anger-management"],
+      "eligibility": {
+        "summary": "Combat veterans, veterans who experienced MST, veterans who provided mortuary services or direct emergent medical care, UAV crew members supporting combat operations, and their families",
+        "enrollment_required": false,
+        "service_era": "any",
+        "discharge_status": "any"
+      },
+      "privacy_note": "Vet Center records cannot be accessed by other VA offices, DoD, or military units without permission",
+      "how_to_access": "Call 1-877-927-8387 or visit vetcenter.va.gov to find your nearest Vet Center. Walk-ins welcome.",
+      "tags": ["therapy", "counseling", "ptsd", "mst", "confidential", "community-based", "family-counseling"]
+    },
+    {
+      "org_name": "Cohen Veterans Network",
+      "program_name": "Steven A. Cohen Military Family Clinics",
+      "service_type": "therapy",
+      "website": "https://www.cohenveteransnetwork.org/",
+      "description": "Network of 22 mental health clinics across 21 states providing specialized, evidence-based treatment for PTSD, anxiety, depression, and relationship issues. Offers individual, couples, and family therapy with telehealth options.",
+      "hours": "Varies by clinic; flexible scheduling available",
+      "cost": "sliding-scale",
+      "cost_notes": "Services provided at low or no cost based on ability to pay",
+      "delivery": ["in-person", "telehealth"],
+      "location_count": 22,
+      "location_notes": "22 clinics in 21 states; expanding to 5 clinics in Asia (Japan/South Korea) for military families abroad",
+      "specialties": ["ptsd", "anxiety", "depression", "relationship-issues", "transition-challenges", "grief", "tbi", "anger-management"],
+      "eligibility": {
+        "summary": "Post-9/11 veterans (including National Guard and Reserve) and military family members",
+        "enrollment_required": false,
+        "service_era": "post-9/11",
+        "discharge_status": "any"
+      },
+      "how_to_access": "Visit cohenveteransnetwork.org to find a clinic near you or request a telehealth appointment.",
+      "impact": "Over 93,000 clients treated; 845,000+ clinical sessions since 2016",
+      "tags": ["therapy", "counseling", "ptsd", "family-therapy", "couples-therapy", "telehealth", "evidence-based"]
+    },
+    {
+      "org_name": "Give an Hour",
+      "program_name": "Free Mental Health Services",
+      "service_type": "therapy",
+      "website": "https://giveanhour.org/military/",
+      "description": "Give an Hour connects veterans and military families with volunteer licensed mental health professionals who provide free, confidential counseling. Services address anxiety, depression, PTSD, substance abuse, grief, and other mental health concerns.",
+      "hours": "Varies by provider",
+      "cost": "free",
+      "delivery": ["in-person", "telehealth"],
+      "specialties": ["anxiety", "depression", "ptsd", "substance-abuse", "grief", "general-mental-health"],
+      "eligibility": {
+        "summary": "Active-duty military, reservists, National Guard, veterans, and in certain cases spouses and caregivers",
+        "enrollment_required": false,
+        "service_era": "any",
+        "discharge_status": "any"
+      },
+      "how_to_access": "Search the provider directory at giveanhour.org to find a local volunteer mental health professional. Schedule directly with the provider.",
+      "tags": ["therapy", "counseling", "free", "volunteer-providers", "confidential", "community-based"]
+    },
+    {
+      "org_name": "The Headstrong Project",
+      "program_name": "Veteran Mental Health Treatment",
+      "service_type": "therapy",
+      "website": "https://theheadstrongproject.org/",
+      "description": "Confidential, barrier-free, stigma-free PTSD treatment for veterans, service members, and family members. Provides evidence-based therapies including CPT, EMDR, and Prolonged Exposure. 30 free sessions per trauma type with quick matching to expert clinicians.",
+      "hours": "Varies by clinician",
+      "cost": "free",
+      "cost_notes": "30 cost-free sessions per trauma type; extended therapy available with client copay",
+      "delivery": ["in-person", "telehealth"],
+      "location_notes": "In-person in 15 states plus D.C.; nationwide via telehealth",
+      "states_in_person": ["AZ", "CA", "CO", "FL", "GA", "ID", "IL", "MD", "NJ", "NY", "NC", "OR", "PA", "TX", "DC"],
+      "specialties": ["ptsd", "depression", "anxiety", "trauma", "combat-trauma", "mst"],
+      "therapies_offered": ["CPT", "EMDR", "Prolonged Exposure"],
+      "eligibility": {
+        "summary": "Veterans of all eras regardless of discharge status, service members, and family members connected to their care",
+        "enrollment_required": false,
+        "service_era": "any",
+        "discharge_status": "any"
+      },
+      "how_to_access": "Fill out a simple form at theheadstrongproject.org. Hear back within 2 business days. First session within 2 weeks.",
+      "response_time": "Contact within 2 business days; first session within 2 weeks",
+      "impact": "44,000+ free sessions provided in 2024; 97% client return rate; 89% report treatment was effective",
+      "tags": ["therapy", "ptsd", "trauma", "evidence-based", "free", "no-waitlist", "telehealth"]
+    },
+    {
+      "org_name": "Wounded Warrior Project",
+      "program_name": "Project Odyssey",
+      "service_type": "therapy",
+      "website": "https://www.woundedwarriorproject.org/programs/project-odyssey",
+      "phone": "888-997-2586",
+      "email": "resourcecenter@woundedwarriorproject.org",
+      "description": "A 12-week mental health program using adventure-based learning to help veterans manage PTSD, anxiety, and depression. Includes a 5-day retreat with cohort-based activities. Programs available for individuals, couples, families, and gender-specific groups.",
+      "hours": "Program-based",
+      "cost": "free",
+      "delivery": ["in-person"],
+      "specialties": ["ptsd", "anxiety", "depression", "resilience", "coping-skills"],
+      "program_format": "12-week program with 5-day retreat",
+      "eligibility": {
+        "summary": "Post-9/11 veterans and service members who incurred a physical or mental injury, illness, or wound while serving. Family members and caregivers may also be eligible.",
+        "enrollment_required": false,
+        "service_era": "post-9/11",
+        "discharge_status": "any"
+      },
+      "how_to_access": "Contact WWP Resource Center at 888-997-2586 or resourcecenter@woundedwarriorproject.org to enroll.",
+      "tags": ["therapy", "ptsd", "retreat", "adventure-therapy", "resilience", "couples", "family"]
+    },
+    {
+      "org_name": "Wounded Warrior Project",
+      "program_name": "Warrior Care Network",
+      "service_type": "therapy",
+      "website": "https://www.woundedwarriorproject.org/programs/warrior-care-network",
+      "phone": "888-997-2586",
+      "email": "resourcecenter@woundedwarriorproject.org",
+      "description": "An accelerated 2-week intensive outpatient brain health program at four world-renowned academic medical centers. Provides 50+ hours of treatment for PTSD, TBI, MST, and other mental health issues using a cohort model. WWP covers 100% of treatment, travel, meals, and expenses.",
+      "hours": "2-week intensive program",
+      "cost": "free",
+      "cost_notes": "WWP covers 100% of treatment, travel, meals, and related expenses",
+      "delivery": ["in-person"],
+      "specialties": ["ptsd", "tbi", "mst", "brain-health"],
+      "program_format": "2-week intensive; 50+ hours of treatment",
+      "eligibility": {
+        "summary": "Post-9/11 veterans and service members dealing with PTSD, TBI, MST, or other mental health conditions",
+        "enrollment_required": false,
+        "service_era": "post-9/11",
+        "discharge_status": "any"
+      },
+      "how_to_access": "Contact WWP Resource Center at 888-997-2586 to apply. Clinical assessment determines program placement.",
+      "impact": "68,600+ hours of PTSD and TBI treatment provided",
+      "tags": ["therapy", "ptsd", "tbi", "mst", "intensive", "academic-medical-center", "all-expenses-paid"]
+    },
+    {
+      "org_name": "Wounded Warrior Project",
+      "program_name": "WWP Talk",
+      "service_type": "peer-support",
+      "website": "https://www.woundedwarriorproject.org/programs/wwp-talk",
+      "phone": "888-997-2586",
+      "email": "resourcecenter@woundedwarriorproject.org",
+      "description": "A non-clinical goal-setting program connecting veterans, spouses, and family members with a dedicated, empathetic listener through weekly phone calls. Helps plan individualized paths toward personal growth.",
+      "hours": "Weekly scheduled calls",
+      "cost": "free",
+      "delivery": ["phone"],
+      "specialties": ["emotional-support", "goal-setting", "personal-growth", "transition-support"],
+      "eligibility": {
+        "summary": "Post-9/11 wounded veterans, their spouses, and family members",
+        "enrollment_required": false,
+        "service_era": "post-9/11",
+        "discharge_status": "any"
+      },
+      "how_to_access": "Contact WWP Resource Center at 888-997-2586 to enroll in the program.",
+      "impact": "Nearly 13,000 emotional support calls provided to warriors and families",
+      "tags": ["peer-support", "emotional-support", "phone-support", "goal-setting", "family-support"]
+    },
+    {
+      "org_name": "Team Red, White & Blue",
+      "program_name": "Chapter and Community Program",
+      "service_type": "recreation",
+      "website": "https://teamrwb.org/",
+      "description": "Community of veterans, service members, military families, and supporters united through physical activity and social connection. Local chapters host weekly fitness activities (running, hiking, yoga, functional fitness) and monthly social events to combat isolation and build camaraderie.",
+      "hours": "Varies by chapter; weekly events",
+      "cost": "free",
+      "delivery": ["in-person"],
+      "location_count": 200,
+      "location_notes": "200+ chapters nationwide",
+      "specialties": ["fitness", "social-connection", "community", "isolation-prevention", "wellness"],
+      "activities": ["running", "hiking", "yoga", "functional-fitness", "cycling", "social-events", "volunteer-service"],
+      "eligibility": {
+        "summary": "Open to all veterans regardless of age, service members, military families, and community supporters",
+        "enrollment_required": false,
+        "service_era": "any",
+        "discharge_status": "any"
+      },
+      "how_to_access": "Download the Team RWB Member App or visit teamrwb.org to find local events. FREE to join.",
+      "tags": ["recreation", "fitness", "social", "community", "peer-support", "free-membership"]
+    },
+    {
+      "org_name": "Team Red, White & Blue",
+      "program_name": "Eagle Leadership Development Program",
+      "service_type": "peer-support",
+      "website": "https://teamrwb.org/programs",
+      "description": "Leadership development program that empowers veterans to lead community chapters and events. Develops skills in event planning, team building, and community engagement while providing purpose and connection.",
+      "hours": "Program-based",
+      "cost": "free",
+      "delivery": ["in-person", "virtual"],
+      "specialties": ["leadership", "personal-growth", "purpose", "community-building"],
+      "eligibility": {
+        "summary": "Team RWB members interested in leadership roles",
+        "enrollment_required": true,
+        "membership_notes": "Must be Team RWB member"
+      },
+      "how_to_access": "Join Team RWB and apply for leadership opportunities through the organization.",
+      "tags": ["peer-support", "leadership", "personal-development", "community"]
+    },
+    {
+      "org_name": "Travis Manion Foundation (formerly The Mission Continues)",
+      "program_name": "Service Platoons",
+      "service_type": "recreation",
+      "website": "https://www.missioncontinues.org/service-platoons/",
+      "description": "Veteran-led service platoons in 40+ cities where veterans and community members volunteer together on local projects. Activities include building community gardens, painting school murals, supporting food banks, and neighborhood revitalization. Provides purpose, camaraderie, and community connection.",
+      "hours": "Monthly service projects",
+      "cost": "free",
+      "delivery": ["in-person"],
+      "location_count": 40,
+      "location_notes": "40+ cities nationwide with monthly events",
+      "specialties": ["community-service", "purpose", "social-connection", "transition-support"],
+      "eligibility": {
+        "summary": "Open to all - veterans, service members, military families, and community members who want to serve",
+        "enrollment_required": false,
+        "service_era": "any",
+        "discharge_status": "any"
+      },
+      "how_to_access": "Visit missioncontinues.org to find a platoon in your city and sign up for upcoming service projects.",
+      "impact": "Note: In 2025, Travis Manion Foundation acquired The Mission Continues, uniting both organizations",
+      "tags": ["recreation", "community-service", "volunteer", "purpose", "social-connection", "veteran-led"]
+    },
+    {
+      "org_name": "VA Mental Health Services",
+      "program_name": "VA Outpatient Mental Health Care",
+      "service_type": "therapy",
+      "website": "https://www.va.gov/health-care/health-needs-conditions/mental-health/",
+      "phone": "1-800-698-2411",
+      "description": "Comprehensive mental health services through VA medical centers including individual therapy, group therapy, medication management, and specialized programs for PTSD, substance use, and more. First three outpatient visits per year are copay-free through 2027.",
+      "hours": "Varies by facility",
+      "cost": "copay",
+      "cost_notes": "First 3 outpatient mental health visits per year are copay-free through 2027",
+      "delivery": ["in-person", "telehealth"],
+      "specialties": ["ptsd", "depression", "anxiety", "substance-use", "bipolar", "schizophrenia", "general-mental-health"],
+      "eligibility": {
+        "summary": "Veterans enrolled in VA health care",
+        "enrollment_required": true,
+        "service_era": "any"
+      },
+      "how_to_access": "Enroll in VA health care at va.gov/health-care/apply. Contact your local VA medical center to schedule mental health appointments.",
+      "tags": ["therapy", "va", "comprehensive", "medication-management", "telehealth"]
+    },
+    {
+      "org_name": "VA Mental Health Services",
+      "program_name": "PTSD Treatment Programs",
+      "service_type": "therapy",
+      "website": "https://www.mentalhealth.va.gov/ptsd/next-step.asp",
+      "phone": "1-800-698-2411",
+      "description": "Specialized PTSD treatment at VA facilities including evidence-based therapies (CPT, PE, EMDR), residential treatment programs, and clinical trials. PTSD specialists available at every VA medical center.",
+      "hours": "Varies by facility and program",
+      "cost": "copay",
+      "cost_notes": "First 3 outpatient visits per year are copay-free through 2027",
+      "delivery": ["in-person", "telehealth", "residential"],
+      "specialties": ["ptsd", "combat-ptsd", "mst-ptsd"],
+      "therapies_offered": ["CPT", "Prolonged Exposure", "EMDR"],
+      "eligibility": {
+        "summary": "Veterans enrolled in VA health care with PTSD diagnosis or symptoms",
+        "enrollment_required": true,
+        "service_era": "any"
+      },
+      "how_to_access": "Talk to your VA primary care provider or mental health provider about PTSD treatment options. Call 1-800-698-2411 for help.",
+      "tags": ["therapy", "ptsd", "va", "evidence-based", "residential-treatment"]
+    },
+    {
+      "org_name": "Semper Fi & America's Fund",
+      "program_name": "Mental Health Support Services",
+      "service_type": "therapy",
+      "website": "https://thefund.org/",
+      "description": "One-on-one case management and mental health support for combat wounded, critically ill, and catastrophically injured service members and veterans. Provides lifetime support including therapy funding, treatment navigation, and family support.",
+      "hours": "Case manager assigned for ongoing support",
+      "cost": "free",
+      "delivery": ["in-person", "telehealth", "case-management"],
+      "specialties": ["combat-wounded", "catastrophic-injury", "critical-illness", "ptsd", "tbi"],
+      "eligibility": {
+        "summary": "Combat wounded, critically ill, and catastrophically injured service members and veterans from all branches",
+        "enrollment_required": false,
+        "service_era": "any",
+        "disability_required": true,
+        "disability_notes": "Must be combat wounded, critically ill, or catastrophically injured"
+      },
+      "how_to_access": "Apply through thefund.org website. Case managers provide personalized support throughout recovery.",
+      "impact": "$500+ million in grants and services since 2004; served nearly 16,000 individuals in FY2025",
+      "tags": ["therapy", "case-management", "wounded-veterans", "catastrophic-injury", "lifetime-support"]
+    },
+    {
+      "org_name": "Stop Soldier Suicide",
+      "program_name": "Veteran Mental Health Services",
+      "service_type": "therapy",
+      "website": "https://stopsoldiersuicide.org/",
+      "phone": "1-844-889-5610",
+      "description": "Free mental health services focused on suicide prevention for veterans and service members. Provides personalized care plans, therapy referrals, and ongoing support from dedicated care coordinators.",
+      "hours": "Business hours with 24/7 crisis support via VCL",
+      "cost": "free",
+      "delivery": ["telehealth", "case-management"],
+      "specialties": ["suicide-prevention", "ptsd", "depression", "anxiety", "crisis-intervention"],
+      "eligibility": {
+        "summary": "Service members, veterans, and military family members at risk of suicide or struggling with mental health",
+        "enrollment_required": false,
+        "service_era": "any",
+        "discharge_status": "any"
+      },
+      "how_to_access": "Call 1-844-889-5610 or visit stopsoldiersuicide.org to connect with a care coordinator.",
+      "tags": ["therapy", "suicide-prevention", "crisis", "free", "care-coordination"]
+    },
+    {
+      "org_name": "Boulder Crest Foundation",
+      "program_name": "Warrior PATHH",
+      "service_type": "therapy",
+      "website": "https://bouldercrest.org/",
+      "description": "Progressive and Alternative Training for Healing Heroes (PATHH) is a free 7-day residential program using Posttraumatic Growth principles to help veterans transform struggle into strength. Combines clinical support with outdoor activities and peer connection.",
+      "hours": "7-day residential program",
+      "cost": "free",
+      "delivery": ["in-person", "residential"],
+      "location_notes": "Retreat centers in Virginia and Arizona",
+      "specialties": ["ptsd", "posttraumatic-growth", "resilience", "transition-support"],
+      "eligibility": {
+        "summary": "Combat veterans and first responders struggling with PTSD, anxiety, depression, or transition challenges",
+        "enrollment_required": false,
+        "service_era": "any",
+        "discharge_status": "any"
+      },
+      "how_to_access": "Apply through bouldercrest.org for a Warrior PATHH cohort.",
+      "tags": ["therapy", "retreat", "posttraumatic-growth", "residential", "outdoor-therapy"]
+    },
+    {
+      "org_name": "PsychArmor Institute",
+      "program_name": "Veteran Mental Health Education",
+      "service_type": "peer-support",
+      "website": "https://psycharmor.org/",
+      "description": "Free online courses for veterans, families, and providers about military culture, PTSD, suicide prevention, and navigating mental health resources. Helps veterans understand their challenges and find appropriate support.",
+      "hours": "Self-paced online courses",
+      "cost": "free",
+      "delivery": ["virtual"],
+      "specialties": ["education", "ptsd-awareness", "suicide-prevention", "military-culture"],
+      "eligibility": {
+        "summary": "Anyone - veterans, family members, providers, and community members",
+        "enrollment_required": false,
+        "service_era": "any"
+      },
+      "how_to_access": "Create a free account at psycharmor.org and access courses immediately.",
+      "tags": ["education", "self-help", "free-courses", "ptsd-awareness", "family-education"]
+    },
+    {
+      "org_name": "Operation Mend",
+      "program_name": "UCLA Veteran Mental Health Program",
+      "service_type": "therapy",
+      "website": "https://www.uclahealth.org/operation-mend",
+      "description": "Comprehensive mental health treatment at UCLA for post-9/11 veterans with PTSD and TBI. Provides intensive outpatient treatment, medical care coordination, and family support. All services including travel and lodging are provided at no cost.",
+      "hours": "3-week intensive outpatient program",
+      "cost": "free",
+      "cost_notes": "All treatment, travel, and lodging provided at no cost",
+      "delivery": ["in-person", "residential"],
+      "location_notes": "UCLA Medical Center, Los Angeles, CA",
+      "specialties": ["ptsd", "tbi", "intensive-treatment"],
+      "eligibility": {
+        "summary": "Post-9/11 veterans with PTSD and/or TBI",
+        "enrollment_required": false,
+        "service_era": "post-9/11",
+        "discharge_status": "any"
+      },
+      "how_to_access": "Apply through uclahealth.org/operation-mend. Program covers all expenses including travel.",
+      "tags": ["therapy", "ptsd", "tbi", "intensive", "academic-medical-center", "all-expenses-paid"]
+    },
+    {
+      "org_name": "Home Base",
+      "program_name": "Veteran Mental Health Program",
+      "service_type": "therapy",
+      "website": "https://homebase.org/",
+      "phone": "617-onal-BASE",
+      "description": "Partnership between Massachusetts General Hospital and Red Sox Foundation providing free mental health care to post-9/11 veterans and families. Offers 2-week intensive clinical program, outpatient services, and family support. No VA referral or enrollment required.",
+      "hours": "2-week intensive program or ongoing outpatient",
+      "cost": "free",
+      "delivery": ["in-person", "telehealth"],
+      "location_notes": "Massachusetts General Hospital, Boston, MA",
+      "specialties": ["ptsd", "tbi", "depression", "anxiety", "family-therapy"],
+      "eligibility": {
+        "summary": "Post-9/11 veterans, National Guard, Reserve, and military families",
+        "enrollment_required": false,
+        "service_era": "post-9/11",
+        "discharge_status": "any"
+      },
+      "how_to_access": "Call Home Base or apply online at homebase.org. No VA referral required.",
+      "tags": ["therapy", "ptsd", "tbi", "family-therapy", "free", "academic-medical-center"]
+    },
+    {
+      "org_name": "Military OneSource",
+      "program_name": "Non-Medical Counseling",
+      "service_type": "therapy",
+      "website": "https://www.militaryonesource.mil/",
+      "phone": "1-800-342-9647",
+      "description": "Free, confidential, short-term counseling for active duty, National Guard, Reserve, and recently separated veterans (within 365 days). Up to 12 sessions per issue covering stress, relationships, grief, and life transitions. Available in-person, by phone, or online.",
+      "hours": "24/7 call center; counseling by appointment",
+      "cost": "free",
+      "delivery": ["in-person", "phone", "telehealth"],
+      "specialties": ["stress", "relationships", "grief", "transition", "work-life-balance"],
+      "session_limit": 12,
+      "eligibility": {
+        "summary": "Active duty, National Guard, Reserve, and veterans within 365 days of separation. Also available to family members.",
+        "enrollment_required": false,
+        "service_era": "any",
+        "separation_limit": "Within 365 days of separation for veterans"
+      },
+      "how_to_access": "Call 1-800-342-9647 or visit militaryonesource.mil to request counseling.",
+      "tags": ["therapy", "counseling", "short-term", "confidential", "family-support", "active-duty"]
+    },
+    {
+      "org_name": "NAMI Veterans & Military",
+      "program_name": "Family-to-Family & Peer Support",
+      "service_type": "peer-support",
+      "website": "https://www.nami.org/Your-Journey/Veterans-Active-Duty",
+      "phone": "1-800-950-NAMI",
+      "description": "National Alliance on Mental Illness offers free peer support groups, family education programs, and a helpline for veterans and families affected by mental health conditions. NAMI Homefront teaches families about military culture and mental health.",
+      "hours": "Helpline: Mon-Fri 10am-10pm ET; Groups vary",
+      "cost": "free",
+      "delivery": ["in-person", "virtual", "phone"],
+      "specialties": ["family-support", "peer-support", "mental-health-education", "caregiver-support"],
+      "eligibility": {
+        "summary": "Veterans, service members, and family members affected by mental health conditions",
+        "enrollment_required": false,
+        "service_era": "any",
+        "discharge_status": "any"
+      },
+      "how_to_access": "Call 1-800-950-NAMI, text 'HelpLine' to 62640, or visit nami.org to find local programs.",
+      "tags": ["peer-support", "family-education", "support-groups", "caregiver-support", "helpline"]
+    },
+    {
+      "org_name": "Volunteers of America",
+      "program_name": "Veterans Mental Health Services",
+      "service_type": "therapy",
+      "website": "https://www.voa.org/veterans",
+      "phone": "1-800-899-0089",
+      "description": "Community-based mental health services for veterans including counseling, substance abuse treatment, and support for homeless veterans. Programs vary by location but focus on holistic support combining housing, employment, and mental health care.",
+      "hours": "Varies by location",
+      "cost": "sliding-scale",
+      "delivery": ["in-person"],
+      "specialties": ["substance-abuse", "homelessness", "general-mental-health", "holistic-care"],
+      "eligibility": {
+        "summary": "Veterans, with priority for homeless or at-risk veterans",
+        "enrollment_required": false,
+        "service_era": "any",
+        "discharge_status": "any"
+      },
+      "how_to_access": "Call 1-800-899-0089 or visit voa.org/veterans to find local programs.",
+      "tags": ["therapy", "substance-abuse", "homeless-veterans", "community-based", "holistic"]
+    }
+  ]
+}
