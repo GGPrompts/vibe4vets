@@ -173,7 +173,7 @@ function CardInner({
         </div>
       )}
 
-      <CardHeader className={`pb-3 ${resource.logo_url ? 'pl-16 pt-3' : 'pt-4'}`}>
+      <CardHeader className={`pb-1 ${resource.logo_url ? 'pl-16 pt-3' : 'pt-4'}`}>
         {/* Title with icon and bookmark */}
         <div className="flex items-start gap-3">
           {!resource.logo_url && (
@@ -198,7 +198,7 @@ function CardInner({
 
       <CardContent className="pt-1">
         {/* Description - more prominent */}
-        <p className="mb-3 line-clamp-4 text-sm leading-relaxed text-muted-foreground">
+        <p className="mb-3 line-clamp-5 text-sm leading-relaxed text-muted-foreground">
           {resource.summary || resource.description}
         </p>
 
