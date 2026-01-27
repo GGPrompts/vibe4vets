@@ -6,6 +6,128 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 
+#### Embeddings & Semantic Search (2026-01-26)
+- **Local SentenceTransformers support** - Run semantic search embeddings locally without external API calls (370018b)
+- **Model initialization assertions** - Type-safe model loading with proper null checks (923fed3)
+- **Embedding test improvements** - Skip tests gracefully when sentence-transformers unavailable (6d31c3e, b533da3)
+
+#### Geocoding & Distance Search (2026-01-24)
+- **PostGIS integration** - Enable geography column for spatial queries (a7c6949)
+- **Zip code centroids** - Load US zip code centroids for distance calculations (c18feaa)
+- **Census API geocoding** - Geocode all 1,345 locations with Census geocoder (987df5c)
+- **Nearby search endpoint** - `/api/v1/resources/nearby` for zip code proximity search (7b5a9a9)
+- **Distance sort option** - Sort resources by distance from user's zip code (8bc1d50)
+- **Zip code search UI** - Frontend zip code input with distance display (3daaa8a)
+
+#### Connectors (2026-01-23-25)
+- **10 new veteran resource connectors** - GPD, VBOC, SkillBridge, StateVA, CVSO, VeteransCourt, Certifications, VeteranEmployers, GIBillSchools, Apprenticeship (48fbd12)
+- **211 connector** - 383 veteran resources from 211.org across all 50 states + DC (0fd08df, 1c315ec)
+- **United Way connector** - Missions United programs for veteran support (04ec18f, ef56ab9)
+- **HUD-VASH PHA contacts** - Add PHA contact lookup to HUD-VASH connector (3759580)
+- **Retry logic** - Exponential backoff for API connector resilience (8da73f8)
+- **HTTP client cleanup** - Close HTTP clients in connectors to prevent resource leaks (758d411)
+
+#### Saved Resources & Bookmarks (2026-01-20)
+- **Bookmark functionality** - Save resources to localStorage with bookmark icon (241f82e, b25873e)
+- **Export and email** - Export saved resources as PDF, share via email (241f82e)
+- **Bookmark button placement** - Gold bookmark button in resource detail modal header (f496598, 6f4b561)
+- **Virtualized grid bookmarks** - Bookmark button stays attached in virtualized grid (3f85c3e)
+
+#### Landing Page & Filter Builder (2026-01-19-21)
+- **Homepage redesign** - Filters-first layout with navy header (ea4813d, V4V-kj4m)
+- **Live resource count** - Real-time count in header updates with filter changes (0897181, 1d22958)
+- **Resource count API** - `/api/v1/resources/count` endpoint for live filter counts (1fbed8f)
+- **Category card toggles** - Make category cards toggleable for filter builder (b0149a6)
+- **Map multi-select** - Toggle multiple states on US map (daf1132)
+- **Sort chips UI** - Sort options on landing page filter builder (0835dc2)
+- **Shuffle sort** - Random shuffle option for discovery (8ab414e)
+- **DC and territory buttons** - Clickable buttons below US map (5f193cc)
+- **How It Works revamp** - Updated for filter builder flow (602505b)
+- **New logo** - Full version on landing, wordmark in header (ba5a41c, c906f5b)
+
+#### Admin & Analytics (2026-01-19-21)
+- **Admin dashboard revamp** - Improved styling for dashboard and analytics sections (5617454)
+- **About page** - Transparency information page (a09bc1c)
+- **AI transparency section** - AI usage disclosure on About page (9d1d2cd)
+- **API key authentication** - Secure all admin endpoints (b66aaa0)
+- **Partner API** - Resource submission API for partners (b9c0d89)
+
+#### Food & Benefits Resources (2026-01-20-21)
+- **Food category** - New food assistance category with color styling (decabd9)
+- **Benefits category** - New benefits category for veteran benefits resources (decabd9)
+- **140 food resources** - National food assistance database for veterans (cdb6615, 7d13df8)
+- **Benefits discovery** - Jacksonville, Nashville, and Midwest veteran benefits (def8058)
+
+#### UI Enhancements (2026-01-19-26)
+- **Resource logos** - Display organization logos via Google favicon API (2883c7a, 77909ec)
+- **Grid virtualization** - @tanstack/react-virtual for efficient rendering (72f0d59)
+- **Mobile load more** - Fallback button for mobile infinite scroll (3ef9651)
+- **States filter search** - Search input for faster state selection (97b7159)
+- **Magnifying glass a11y** - Accessibility feature for text enlargement (b9df1e8)
+- **React error boundaries** - Graceful error handling in frontend (8651f92)
+- **Hierarchical grouping** - Group resources by organization (ce1a002)
+
+#### ETL & Infrastructure (2026-01-21-24)
+- **Custom PostgreSQL image** - PostGIS + pgvector in CI (f642823)
+- **ETL checkpointing** - Idempotent pipeline with checkpoint recovery (20153b1)
+- **Search vector trigger** - Automatic tsvector updates (4dbf750)
+- **Turbopack** - Enable Next.js Turbopack for faster builds (8a757a0)
+
+### Fixed
+
+#### Geocoding & Search (2026-01-24-25)
+- **National resources in nearby** - Include national scope resources in proximity search (d5366dd)
+- **Timezone-naive dates** - Handle last_verified without timezone in search explanations (9abe809)
+
+#### UI Fixes (2026-01-19-26)
+- **Badge contrast** - Improve badge visibility on white header backgrounds (e76d89b)
+- **Modal z-index** - Fix resource card modal stacking issues (77909ec)
+- **Modal gradient** - Fix resource detail modal gradient transparency (2918d54)
+- **Magnifier hide** - Hide magnifier when resource card modal is expanded (98c0c36)
+- **Card animation** - Use layoutId shared element transition (b917ff6)
+- **Nested anchors** - Prevent invalid anchor nesting in link variant cards (252eaa5)
+- **Search button size** - Prevent jumping on homepage (46f0647)
+- **Sidebar filters** - Move filters icon to top of collapsed sidebar (52e2de8)
+- **Sort dropdown** - Click-to-toggle instead of hover (7e2aecb)
+- **Hydration mismatch** - Fix resource count badge hydration (57a8e61)
+- **Search page UX** - Sidebar overlay, header always visible, grid performance (ec97320)
+
+#### Admin Panel (2026-01-19-21)
+- **Review queue** - Fix content overflow and usability issues (e0d9980)
+- **Table columns** - Fix column overlap in review queue (97e048b)
+- **Dashboard styling** - Fix table overflow, tabs, error handling (79693a2)
+- **Sheet styling** - Fix admin panel loading states and flash (d932f3e)
+- **Race condition** - Prevent race condition in resource fetch (567c3ef)
+- **Loading state** - Reset resourceLoading on sheet close (270c360)
+
+#### Backend Fixes (2026-01-21-26)
+- **Varchar limits** - Increase limits to handle long content (4759950)
+- **Phone field** - Increase to 150 chars for complex numbers (ca61655)
+- **N+1 query** - Fix N+1 in health service (4297761)
+- **Null checks** - Add null checks for organization lookups (511d469)
+- **datetime.utcnow()** - Replace deprecated calls with datetime.now(UTC) (0550fa0)
+- **Job scheduling** - Reschedule job after manual run (cb48022)
+- **ConnectorInfo sync** - Align frontend with backend API fields (1022df9, af39e2c)
+- **211 categories** - Complete category mapping for all 211 resources (dd6fdfc)
+- **Link health migration** - Add missing tracking columns (83ffde8)
+
+#### CI/CD (2026-01-21-24)
+- **CI migrations** - Run Alembic migrations before tests (ef04220)
+- **CI failures** - Fix lint errors and search_vector generated column (66a9b1a)
+- **Ruff formatting** - Fix lint and mypy errors across codebase (9fdb3ac, b5a3d2b)
+
+#### Accessibility & Content (2026-01-22)
+- **Veteran capitalization** - Capitalize Veteran/Veterans throughout UI (61dfd35)
+- **ARIA improvements** - Improve frontend accessibility with ARIA and touch targets (76f754a)
+- **Uncategorized resources** - Add categories to 10 VA resources (f0dbdea)
+- **Taxonomy tests** - Update for 6 categories (benefits, food added) (309f165)
+
+### Changed
+- **Landing page search flow** - Unified filter builder experience (ef0e4b3)
+- **Zip input placement** - Move into Sort by section (c6dc2ba)
+
+---
+
 #### Infinite Scroll & Data Fetching (2026-01-18)
 - **Infinite scroll pagination** - Load More with useInfiniteQuery, shows "X of Y resources" (V4V-rqr)
 - **Server-side filtering** - API supports categories, states, scope params with correct totals (V4V-8mn)
