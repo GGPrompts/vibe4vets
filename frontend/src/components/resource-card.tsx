@@ -307,10 +307,10 @@ function CardInner({
           </p>
         )}
 
-        {/* Eligibility summary */}
+        {/* Eligibility */}
         {resource.eligibility && (
-          <p className="mt-3 text-sm text-green-600 dark:text-green-400 line-clamp-2">
-            {resource.eligibility.split(/[.!?]/)[0].trim()}.
+          <p className="mt-3 text-sm text-green-600 dark:text-green-400">
+            {resource.eligibility}
           </p>
         )}
 
