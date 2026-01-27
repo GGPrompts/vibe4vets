@@ -28,6 +28,7 @@ from connectors import (
     VAGovConnector,
     VBOCConnector,
     VetCentersConnector,
+    VeteranEmergencyAssistanceConnector,
     VeteranEmployersConnector,
     VeteransCourtConnector,
 )
@@ -55,6 +56,7 @@ CONNECTOR_REGISTRY: dict[str, type[BaseConnector]] = {
     "veterans_court": VeteransCourtConnector,  # Veterans Treatment Courts
     "certifications": CertificationsConnector,  # Veteran certification programs
     "veteran_employers": VeteranEmployersConnector,  # Veteran-friendly employers
+    "veteran_emergency_assistance": VeteranEmergencyAssistanceConnector,  # Emergency financial assistance
     # Tier 3: State/County Level
     "state_va": StateVAConnector,  # State VA agencies
     "cvso": CVSOConnector,  # County Veteran Service Officers

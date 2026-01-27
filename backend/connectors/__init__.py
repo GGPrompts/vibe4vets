@@ -18,6 +18,7 @@ from connectors.va_gov import VAGovConnector
 from connectors.vboc import VBOCConnector
 from connectors.vet_centers import VetCentersConnector
 from connectors.veteran_employers import VeteranEmployersConnector
+from connectors.veteran_emergency_assistance import VeteranEmergencyAssistanceConnector
 from connectors.veterans_court import VeteransCourtConnector
 
 __all__ = [
@@ -41,6 +42,7 @@ __all__ = [
     "VAGovConnector",
     "VBOCConnector",
     "VetCentersConnector",
+    "VeteranEmergencyAssistanceConnector",
     "VeteranEmployersConnector",
     "VeteransCourtConnector",
 ]

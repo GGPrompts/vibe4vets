@@ -1,0 +1,258 @@
+{
+  "metadata": {
+    "source": "Curated from official program websites and VA resources",
+    "last_updated": "2026-01",
+    "description": "Emergency financial assistance programs for veterans in crisis - eviction, utility shutoff, medical emergencies",
+    "total_programs": 7
+  },
+  "programs": [
+    {
+      "org_name": "Veterans of Foreign Wars (VFW)",
+      "program_name": "Unmet Needs Program",
+      "website": "https://www.vfw.org/assistance/financial-grants",
+      "phone": "1-866-789-6333",
+      "email": null,
+      "assistance_types": [
+        "mortgage",
+        "rent",
+        "utilities",
+        "vehicle_payment",
+        "food",
+        "clothing",
+        "medical_bills",
+        "prescriptions",
+        "childcare"
+      ],
+      "max_amount": 1500,
+      "max_amount_notes": "Up to $1,500 per grant; paid directly to creditors",
+      "eligibility": {
+        "summary": "Service members and veterans who are facing financial hardship due to deployment, military pay errors, medical discharge, or service-connected injuries/illness after 9/11/2001",
+        "membership_required": false,
+        "service_era": "post-9/11 or currently active duty",
+        "discharge_status": "any (no dishonorable discharge required for post-9/11)",
+        "income_limit": null,
+        "disability_required": false,
+        "notes": "Financial hardship must be related to military service. Active duty hardship must be due to deployment, pay error, or medical discharge."
+      },
+      "application_process": "Online application at vfw.org/assistance. All applications individually reviewed. Payments made directly to creditors upon approval.",
+      "turnaround_time": "1-2 weeks typical",
+      "ineligible_expenses": [
+        "credit_cards",
+        "cable_internet",
+        "cosmetic_procedures",
+        "taxes",
+        "furniture",
+        "electronics",
+        "vehicle_rentals"
+      ],
+      "tags": ["emergency", "rent", "utilities", "medical", "post-9/11"]
+    },
+    {
+      "org_name": "The American Legion",
+      "program_name": "Temporary Financial Assistance (TFA)",
+      "website": "https://www.legion.org/get-involved/community-programs/temporary-financial-assistance",
+      "phone": "317-630-1202",
+      "email": "scope@legion.org",
+      "assistance_types": [
+        "mortgage",
+        "rent",
+        "utilities",
+        "food",
+        "clothing",
+        "medical_child",
+        "dental_child",
+        "medications_child",
+        "educational"
+      ],
+      "max_amount": 2500,
+      "max_amount_notes": "Up to $2,500 one-time grant (increased from $1,500 in May 2025); focused on minor children in the home",
+      "eligibility": {
+        "summary": "American Legion members or active-duty service members with minor children (under 18 or under 21 if still in high school) living in the home",
+        "membership_required": true,
+        "membership_notes": "Legion membership required for veterans; active duty can apply without membership",
+        "service_era": "any",
+        "discharge_status": "any",
+        "income_limit": null,
+        "disability_required": false,
+        "notes": "Must have minor children in household. One-time lifetime grant only. Children must be biological, stepchildren, or in legal custody."
+      },
+      "application_process": "Application originates at local American Legion post. Contact department headquarters for PDF application. Requires home visit by two-party team to validate need.",
+      "turnaround_time": "2-4 weeks (includes home visit)",
+      "ineligible_expenses": [
+        "car_payment",
+        "car_repairs",
+        "phone",
+        "taxes",
+        "cable"
+      ],
+      "tags": ["emergency", "families", "children", "rent", "utilities"]
+    },
+    {
+      "org_name": "Disabled American Veterans (DAV)",
+      "program_name": "Disaster Relief Program",
+      "website": "https://www.dav.org/get-help-now/veteran-topics-resources/disaster-relief/",
+      "phone": "1-877-426-2838",
+      "email": null,
+      "assistance_types": [
+        "disaster_relief",
+        "food",
+        "clothing",
+        "shelter",
+        "basic_necessities"
+      ],
+      "max_amount": null,
+      "max_amount_notes": "Grant amounts vary based on need; program has distributed over $17 million since 1968",
+      "eligibility": {
+        "summary": "Veterans and their surviving spouses affected by natural disasters (hurricanes, tornadoes, floods, fires)",
+        "membership_required": false,
+        "service_era": "any",
+        "discharge_status": "any",
+        "income_limit": null,
+        "disability_required": false,
+        "notes": "Must be impacted by a natural disaster. In 2024, provided nearly $1.5 million to 2,000+ veterans across 24 states."
+      },
+      "application_process": "Contact local DAV chapter or National Service Officer in disaster-affected area. DAV has teams on the ground during major disasters to assist veterans.",
+      "turnaround_time": "Immediate to 1 week during active disaster response",
+      "ineligible_expenses": [],
+      "tags": ["disaster", "emergency", "hurricane", "flood", "fire", "tornado"]
+    },
+    {
+      "org_name": "Operation Homefront",
+      "program_name": "Critical Financial Assistance Program",
+      "website": "https://operationhomefront.org/critical-financial-assistance/",
+      "phone": "1-877-264-3968",
+      "email": null,
+      "assistance_types": [
+        "mortgage",
+        "rent",
+        "utilities",
+        "auto_payment",
+        "auto_repair",
+        "childcare",
+        "baby_items",
+        "dental",
+        "home_repairs",
+        "medical",
+        "moving",
+        "food",
+        "vision"
+      ],
+      "max_amount": null,
+      "max_amount_notes": "Amount varies by need; program has fulfilled 60,000+ requests totaling $47+ million since inception",
+      "eligibility": {
+        "summary": "Active-duty service members (E1-E6), those on Title 10 orders or receiving hazardous duty pay, and post-9/11 wounded/ill/injured veterans",
+        "membership_required": false,
+        "service_era": "post-9/11 or currently active duty",
+        "discharge_status": "any",
+        "income_limit": null,
+        "disability_required": false,
+        "notes": "Active duty E1-E6 may receive 3 lifetime assists. Deployed or hazardous duty may receive 3 lifetime assists. Wounded/ill/injured post-9/11 veterans may receive 5 lifetime assists."
+      },
+      "application_process": "Create account at operationhomefront.org and submit application through online portal. Professional caseworkers validate financial need before providing support. Grants paid directly to service providers or as grocery cards.",
+      "turnaround_time": "Days to 2 weeks",
+      "ineligible_expenses": [
+        "credit_cards",
+        "personal_loans"
+      ],
+      "tags": ["emergency", "rent", "utilities", "auto", "medical", "food", "families"]
+    },
+    {
+      "org_name": "Semper Fi & America's Fund",
+      "program_name": "Service Member and Family Support Program",
+      "website": "https://thefund.org/",
+      "phone": null,
+      "email": null,
+      "assistance_types": [
+        "mortgage",
+        "rent",
+        "utilities",
+        "home_modifications",
+        "home_repairs",
+        "transportation",
+        "travel",
+        "childcare",
+        "lodging",
+        "food"
+      ],
+      "max_amount": null,
+      "max_amount_notes": "Amount varies; organization has delivered $500+ million in grants and services since 2004",
+      "eligibility": {
+        "summary": "Combat wounded, critically ill, and catastrophically injured service members and veterans from all branches of the U.S. Armed Forces",
+        "membership_required": false,
+        "service_era": "any",
+        "discharge_status": "any",
+        "income_limit": null,
+        "disability_required": true,
+        "disability_notes": "Must be combat wounded, critically ill, or catastrophically injured",
+        "notes": "Provides one-on-one case management and lifetime support. In FY2025, served nearly 16,000 individuals."
+      },
+      "application_process": "Apply through thefund.org website. Case managers assigned to provide personalized support throughout recovery process.",
+      "turnaround_time": "Varies based on need; bedside support available during hospitalization",
+      "ineligible_expenses": [],
+      "tags": ["wounded", "injured", "ill", "catastrophic", "housing", "rent", "utilities", "all-branches"]
+    },
+    {
+      "org_name": "PenFed Foundation",
+      "program_name": "Military Heroes Fund Emergency Assistance",
+      "website": "https://penfedfoundation.org/apply-for-assistance/emergency-financial-assistance/",
+      "phone": null,
+      "email": null,
+      "assistance_types": [
+        "mortgage",
+        "rent",
+        "utilities",
+        "auto_payment",
+        "security_deposits",
+        "rental_deposits"
+      ],
+      "max_amount": null,
+      "max_amount_notes": "Up to 3 months of delinquent payments; one emergency request per household",
+      "eligibility": {
+        "summary": "Post-9/11 combat veterans experiencing unexpected short-term (1-3 months) financial setback, with VA disability rating or pending claim",
+        "membership_required": false,
+        "service_era": "post-9/11",
+        "discharge_status": "any",
+        "income_limit": null,
+        "disability_required": true,
+        "disability_notes": "Must have VA disability rating or proof of pending VA disability claim",
+        "notes": "Bills must be 30-90 days past due (rent 3-90 days). Foundation has provided $55+ million in financial support."
+      },
+      "application_process": "Submit through online portal at penfedfoundation.org. Requires VA disability rating statement or proof of claim submission, plus recent bills showing past due status. Payments made directly to creditors.",
+      "turnaround_time": "1-3 weeks",
+      "ineligible_expenses": [
+        "late_fees",
+        "legal_fees"
+      ],
+      "tags": ["emergency", "rent", "utilities", "auto", "post-9/11", "disabled"]
+    },
+    {
+      "org_name": "USA Cares",
+      "program_name": "Military Assistance Response Program",
+      "website": "https://usacares.org/programs/",
+      "phone": null,
+      "email": null,
+      "assistance_types": [
+        "mortgage",
+        "rent",
+        "utilities",
+        "auto_payment",
+        "food"
+      ],
+      "max_amount": null,
+      "max_amount_notes": "Amount varies based on need; no fees or repayment required",
+      "eligibility": {
+        "summary": "Post-9/11 veterans, service members, and military families experiencing financial hardship from service-related incidents or medical issues",
+        "membership_required": false,
+        "service_era": "post-9/11",
+        "discharge_status": "any",
+        "income_limit": null,
+        "disability_required": false,
+        "notes": "Requires DD214, proof of loss of income, reason for hardship, and verification of expenses. Four-Star Charity Navigator rating, 2025 Platinum Transparency status."
+      },
+      "application_process": "Apply at usacares.org. Each family assigned an advocate from Family Resource Center. Payments made directly to mortgage lenders, utility companies, and vendors.",
+      "turnaround_time": "Days from completed application",
+      "ineligible_expenses": [],
+      "tags": ["emergency", "rent", "utilities", "auto", "food", "post-9/11", "families"]
+    }
+  ]
+}
