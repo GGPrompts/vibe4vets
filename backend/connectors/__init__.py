@@ -11,6 +11,7 @@ from connectors.hud_vash import HUDVASHConnector
 from connectors.legal_aid import LegalAidConnector
 from connectors.skillbridge import SkillBridgeConnector
 from connectors.ssvf import SSVFConnector
+from connectors.stand_down_events import StandDownEventsConnector
 from connectors.state_va import StateVAConnector
 from connectors.two_one_one import TwoOneOneConnector
 from connectors.united_way import UnitedWayConnector
@@ -36,6 +37,7 @@ __all__ = [
     "SkillBridgeConnector",
     "SourceMetadata",
     "SSVFConnector",
+    "StandDownEventsConnector",
     "StateVAConnector",
     "TwoOneOneConnector",
     "UnitedWayConnector",

@@ -22,6 +22,7 @@ from connectors import (
     LegalAidConnector,
     SkillBridgeConnector,
     SSVFConnector,
+    StandDownEventsConnector,
     StateVAConnector,
     TwoOneOneConnector,
     UnitedWayConnector,
@@ -51,6 +52,7 @@ CONNECTOR_REGISTRY: dict[str, type[BaseConnector]] = {
     "gpd": GPDConnector,  # Grant and Per Diem (homeless shelters)
     "vboc": VBOCConnector,  # SBA Veterans Business Outreach Centers
     "skillbridge": SkillBridgeConnector,  # DOD SkillBridge partners
+    "stand_down_events": StandDownEventsConnector,  # VA Stand Down outreach events
     # Tier 2: Established Nonprofits/Directories
     "legal_aid": LegalAidConnector,  # LSC-funded legal aid
     "veterans_court": VeteransCourtConnector,  # Veterans Treatment Courts
