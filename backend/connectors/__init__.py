@@ -11,6 +11,7 @@ from connectors.gpd import GPDConnector
 from connectors.hud_vash import HUDVASHConnector
 from connectors.legal_aid import LegalAidConnector
 from connectors.mental_health import MentalHealthConnector
+from connectors.military_onesource import MilitaryOneSourceConnector
 from connectors.skillbridge import SkillBridgeConnector
 from connectors.ssvf import SSVFConnector
 from connectors.stand_down_events import StandDownEventsConnector
@@ -41,6 +42,7 @@ __all__ = [
     "HUDVASHConnector",
     "LegalAidConnector",
     "MentalHealthConnector",
+    "MilitaryOneSourceConnector",
     "ResourceCandidate",
     "SkillBridgeConnector",
     "SourceMetadata",

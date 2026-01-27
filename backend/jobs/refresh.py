@@ -22,6 +22,7 @@ from connectors import (
     HUDVASHConnector,
     LegalAidConnector,
     MentalHealthConnector,
+    MilitaryOneSourceConnector,
     SkillBridgeConnector,
     SSVFConnector,
     StandDownEventsConnector,
@@ -70,6 +71,7 @@ CONNECTOR_REGISTRY: dict[str, type[BaseConnector]] = {
     "veteran_emergency_assistance": VeteranEmergencyAssistanceConnector,  # Emergency financial assistance
     "veteran_food_assistance": VeteranFoodAssistanceConnector,  # Food pantries and distributions
     "mental_health": MentalHealthConnector,  # Mental health resources (crisis, therapy, peer support)
+    "military_onesource": MilitaryOneSourceConnector,  # DoD transition assistance programs
     "vso_post_locator": VSOPostLocatorConnector,  # VFW, American Legion, DAV posts
     # Tier 3: State/County Level
     "state_va": StateVAConnector,  # State VA agencies

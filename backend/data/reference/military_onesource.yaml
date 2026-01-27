@@ -1,0 +1,542 @@
+# Military OneSource Transition Assistance Resources
+# DoD's free, confidential counseling and transition support program
+#
+# Sources:
+# - Military OneSource: https://www.militaryonesource.mil/
+# - TAP Program: https://www.militaryonesource.mil/benefits/transition-assistance-program/
+# - About Services: https://www.militaryonesource.mil/about-us/
+#
+# Last updated: 2026-01-27
+#
+# Eligibility Notes:
+# - Active duty: Army, Navy, Air Force, Marine Corps, Space Force, Coast Guard
+# - National Guard and Reserve (drilling or activated)
+# - Retirees from all branches
+# - Veterans within 365 days of separation/retirement
+# - Family members of eligible personnel
+# - Survivors of deceased service members
+
+source:
+  name: Military OneSource
+  url: https://www.militaryonesource.mil/
+  last_updated: '2026-01-27'
+  contact:
+    phone: 800-342-9647
+    phone_display: 1-800-342-9647
+    hours: 24/7/365
+    chat_url: https://www.militaryonesourceconnect.org/chat.html
+    international_url: https://www.militaryonesource.mil/resources/tools/international-calling-options/
+
+programs:
+  # Transition-specific programs
+  - id: transitioning-veterans-consultation
+    name: Transitioning Veterans Specialty Consultation
+    category: employment
+    description: >
+      Free personalized transition support through a series of 45-minute sessions
+      with professionally trained consultants. Covers goal setting, benefits review
+      (health, dental, vision, life insurance), VA assistance, disability claim filing,
+      education opportunities, GI Bill guidance, civilian workforce preparation,
+      resume building, and interview skills.
+    eligibility:
+      - Active duty service members within 12 months of separation or retirement
+      - Veterans within 365 days of separation or retirement date
+      - All branches including National Guard and Reserve
+    who_qualifies:
+      active_duty: true
+      reserve: true
+      national_guard: true
+      retirees: true
+      veterans_365_days: true
+      family: false
+    how_to_apply: >
+      Call Military OneSource at 1-800-342-9647 or start a secure live chat at
+      militaryonesourceconnect.org. Available 24/7/365. Request the Transitioning
+      Veterans specialty consultation.
+    tags:
+      - transition
+      - counseling
+      - career-planning
+      - benefits-assistance
+
+  - id: tap-program
+    name: DoD Transition Assistance Program (TAP)
+    category: employment
+    description: >
+      Mandatory transition program for separating service members who have served
+      180 continuous days or more on active duty. Includes individualized initial
+      counseling, pre-separation counseling on benefits and entitlements, DOD
+      Transition Day workshops, VA Benefits briefings, and Department of Labor
+      employment fundamentals. Elective 2-day tracks available: Employment Workshop,
+      Vocational Training, Higher Education, and Boots to Business entrepreneurship.
+    eligibility:
+      - Active duty service members with 180+ continuous days of service
+      - Must complete TAP no later than 365 days before separation
+      - Retirees should begin 2+ years before retirement
+      - Spouses may attend workshops
+    who_qualifies:
+      active_duty: true
+      reserve: true
+      national_guard: true
+      retirees: true
+      veterans_365_days: false
+      family: true
+    how_to_apply: >
+      Contact your installation TAP office to begin. Find your local TAP office at
+      installations.militaryonesource.mil or visit dodtap.mil for online resources.
+      Pre-separation counseling must start no later than 365 days prior to transition.
+    source_url: https://www.dodtap.mil/dodtap/
+    tags:
+      - transition
+      - mandatory
+      - career-planning
+      - employment
+      - education
+
+  - id: spouse-transition-program
+    name: Military Spouse Transition Program (MySteP)
+    category: employment
+    description: >
+      Self-directed program for military spouse transitions. MySteP (My Spouse
+      Transition ePlan) helps spouses navigate post-military life including
+      benefits, healthcare options, personal finances, career training, and
+      employment resources. Accessible online at any time.
+    eligibility:
+      - Spouses of separating or retiring service members
+      - Spouses of veterans within 365 days of separation
+    who_qualifies:
+      active_duty: false
+      reserve: false
+      national_guard: false
+      retirees: false
+      veterans_365_days: false
+      family: true
+    how_to_apply: >
+      Access MySteP through Military OneSource at militaryonesource.mil or call
+      1-800-342-9647 for guidance. The program is self-paced and available online.
+    tags:
+      - transition
+      - spouse-support
+      - career-planning
+
+  # Counseling services
+  - id: confidential-counseling
+    name: Military OneSource Confidential Non-Medical Counseling
+    category: training
+    description: >
+      Free, confidential, short-term counseling for individuals, couples, and
+      families addressing life challenges such as deployment stress, reintegration,
+      relationship issues, parenting, grief and loss, stress management, and
+      adjustment to civilian life. Does not affect military career. Available
+      in-person, by phone, or via secure video.
+    eligibility:
+      - Active duty service members (all branches)
+      - National Guard and Reserve members
+      - Retirees
+      - Veterans within 365 days of separation
+      - Family members of all eligible personnel
+      - Survivors of deceased service members
+    who_qualifies:
+      active_duty: true
+      reserve: true
+      national_guard: true
+      retirees: true
+      veterans_365_days: true
+      family: true
+    how_to_apply: >
+      Call Military OneSource at 1-800-342-9647 available 24/7/365, or start a
+      secure live chat at militaryonesourceconnect.org. You can request in-person,
+      phone, or video counseling sessions.
+    tags:
+      - counseling
+      - mental-health
+      - family-support
+      - confidential
+
+  # Career and education services
+  - id: seco
+    name: Spouse Education and Career Opportunities (SECO)
+    category: employment
+    description: >
+      Comprehensive career support for military spouses including personalized
+      career coaching, education guidance, resume assistance, interview preparation,
+      and job search support. Career coaches help with career planning, portable
+      career exploration, and navigating frequent relocations. Also provides
+      scholarship information and licensing/credentialing assistance.
+    eligibility:
+      - Spouses of active duty service members
+      - Spouses of National Guard and Reserve members
+      - Spouses of Coast Guard members
+      - Surviving spouses (within 3 years)
+    who_qualifies:
+      active_duty: false
+      reserve: false
+      national_guard: false
+      retirees: false
+      veterans_365_days: false
+      family: true
+    how_to_apply: >
+      Call Military OneSource at 1-800-342-9647 and ask for SECO career coaching,
+      or visit myseco.militaryonesource.mil to access online resources and
+      schedule coaching sessions.
+    source_url: https://myseco.militaryonesource.mil/
+    tags:
+      - spouse-support
+      - career-coaching
+      - education
+      - employment
+
+  # Financial services
+  - id: financial-counseling
+    name: Financial Counseling and Planning
+    category: training
+    description: >
+      Free, unlimited financial counseling with accredited professionals covering
+      budgeting, money management, debt reduction, savings strategies, retirement
+      planning, and transition financial preparation. Counselors help create
+      personalized financial plans and navigate military-specific financial
+      situations like PCS moves, deployment pay, and TSP optimization.
+    eligibility:
+      - Active duty service members (all branches)
+      - National Guard and Reserve members
+      - Retirees
+      - Veterans within 365 days of separation
+      - Family members of all eligible personnel
+    who_qualifies:
+      active_duty: true
+      reserve: true
+      national_guard: true
+      retirees: true
+      veterans_365_days: true
+      family: true
+    how_to_apply: >
+      Call Military OneSource at 1-800-342-9647 and request financial counseling.
+      Sessions available by phone, video, or in-person at participating locations.
+      Available 24/7/365.
+    tags:
+      - financial-counseling
+      - budgeting
+      - debt-management
+      - retirement-planning
+
+  - id: miltax
+    name: MilTax Free Tax Services
+    category: training
+    description: >
+      Free tax preparation software and expert consultations designed specifically
+      for military situations including deployments, combat pay, training pay,
+      housing allowances, multistate filings, and PCS-related deductions. MilTax
+      software handles federal and up to three state returns at no cost. Tax
+      consultants available for personalized guidance.
+    eligibility:
+      - Active duty service members (all branches)
+      - National Guard and Reserve members
+      - Retirees
+      - Veterans within 365 days of separation
+      - Eligible family members
+      - Survivors
+    who_qualifies:
+      active_duty: true
+      reserve: true
+      national_guard: true
+      retirees: true
+      veterans_365_days: true
+      family: true
+    how_to_apply: >
+      Access MilTax software at militaryonesource.mil/miltax (available mid-January
+      through mid-October annually). For personalized tax consultation, call
+      1-800-342-9647 and request MilTax support.
+    source_url: https://www.militaryonesource.mil/financial-legal/taxes/miltax-military-tax-services/
+    tags:
+      - tax-services
+      - free
+      - financial
+
+  # Family support services
+  - id: child-care-assistance
+    name: Child Care Aware Fee Assistance
+    category: training
+    description: >
+      Access to nationally recognized caregiver database and fee assistance
+      programs for military families. Helps locate quality child care providers,
+      provides hourly care for appointments and emergencies, and offers subsidy
+      programs for families needing financial assistance with child care costs.
+    eligibility:
+      - Active duty service members with children
+      - National Guard and Reserve members (activated)
+      - DoD civilian employees
+      - Families during deployment
+    who_qualifies:
+      active_duty: true
+      reserve: true
+      national_guard: true
+      retirees: false
+      veterans_365_days: false
+      family: true
+    how_to_apply: >
+      Call Military OneSource at 1-800-342-9647 or visit childcareaware.org/military
+      to search for providers and learn about fee assistance programs. Eligibility
+      and benefits vary by program.
+    source_url: https://www.childcareaware.org/fee-assistancerespite/
+    tags:
+      - child-care
+      - family-support
+      - fee-assistance
+
+  - id: special-needs-support
+    name: Exceptional Family Member Program (EFMP) Support
+    category: training
+    description: >
+      Support services for military families with members who have special medical
+      or educational needs. Includes personalized consultations, help navigating
+      special education services (IEPs, 504 plans), locating medical specialists,
+      coordinating care during PCS moves, and connecting with respite care options.
+    eligibility:
+      - Active duty families with special needs members
+      - National Guard and Reserve families (enrolled in EFMP)
+      - Coast Guard families
+    who_qualifies:
+      active_duty: true
+      reserve: true
+      national_guard: true
+      retirees: false
+      veterans_365_days: false
+      family: true
+    how_to_apply: >
+      Call Military OneSource at 1-800-342-9647 and ask for the Special Needs
+      consultant. You can also access resources through your installation's EFMP
+      office or Family Support Center.
+    tags:
+      - special-needs
+      - family-support
+      - education
+      - healthcare
+
+  - id: adoption-support
+    name: Adoption Consultations
+    category: training
+    description: >
+      Free consultations for military families considering adoption. Adoption
+      consultants provide guidance on domestic, international, and foster-to-adopt
+      options, help navigate the adoption process, explain military-specific
+      benefits and reimbursements, and connect families with licensed agencies.
+    eligibility:
+      - Active duty service members considering adoption
+      - National Guard and Reserve members
+      - Coast Guard members
+    who_qualifies:
+      active_duty: true
+      reserve: true
+      national_guard: true
+      retirees: false
+      veterans_365_days: false
+      family: true
+    how_to_apply: >
+      Call Military OneSource at 1-800-342-9647 and request an adoption consultation.
+      Sessions are confidential and available by phone or video.
+    tags:
+      - adoption
+      - family-support
+
+  - id: elder-care-support
+    name: Elder Care Consultation
+    category: training
+    description: >
+      Support for military families caring for aging parents or relatives.
+      Consultants help locate senior care facilities, understand Medicare and
+      Medicaid options, coordinate long-distance caregiving, and navigate
+      caregiver stress and family dynamics. Includes guidance on legal matters
+      like power of attorney and advance directives.
+    eligibility:
+      - Active duty service members with elder care responsibilities
+      - National Guard and Reserve members
+      - Family members caring for elderly relatives
+    who_qualifies:
+      active_duty: true
+      reserve: true
+      national_guard: true
+      retirees: true
+      veterans_365_days: true
+      family: true
+    how_to_apply: >
+      Call Military OneSource at 1-800-342-9647 and request elder care consultation.
+      Available 24/7/365 by phone or video.
+    tags:
+      - elder-care
+      - caregiver-support
+      - family-support
+
+  # Additional services
+  - id: relocation-assistance
+    name: Relocation and Moving Assistance
+    category: training
+    description: >
+      Support for PCS (Permanent Change of Station) moves including destination
+      information, housing searches, school information, spouse employment
+      resources at new location, and help understanding entitlements. Plan My
+      Move tool provides personalized moving checklists and timelines.
+    eligibility:
+      - Active duty service members with PCS orders
+      - National Guard and Reserve members on active orders
+      - Family members relocating with service member
+    who_qualifies:
+      active_duty: true
+      reserve: true
+      national_guard: true
+      retirees: false
+      veterans_365_days: false
+      family: true
+    how_to_apply: >
+      Visit planmymove.militaryonesource.mil to create a personalized moving
+      checklist, or call 1-800-342-9647 for relocation assistance.
+    source_url: https://planmymove.militaryonesource.mil/
+    tags:
+      - relocation
+      - pcs
+      - housing
+
+  - id: translation-services
+    name: Document Translation and Interpretation
+    category: training
+    description: >
+      Free translation and interpretation services in over 150 languages.
+      Services include translation of official documents, real-time telephone
+      interpretation for appointments, and written translation for personal
+      documents needed for overseas assignments or family immigration matters.
+    eligibility:
+      - Active duty service members
+      - National Guard and Reserve members
+      - Family members of service members
+    who_qualifies:
+      active_duty: true
+      reserve: true
+      national_guard: true
+      retirees: false
+      veterans_365_days: false
+      family: true
+    how_to_apply: >
+      Call Military OneSource at 1-800-342-9647 to request translation or
+      interpretation services. Specify the language needed and type of document
+      or appointment.
+    tags:
+      - translation
+      - language-services
+      - international
+
+  - id: health-wellness-coaching
+    name: Health and Wellness Coaching
+    category: training
+    description: >
+      Personalized coaching to improve physical health and well-being. Coaches
+      help with weight management, smoking cessation, sleep improvement, stress
+      reduction, and establishing healthy habits. Program includes goal setting,
+      progress tracking, and ongoing support.
+    eligibility:
+      - Active duty service members
+      - National Guard and Reserve members
+      - Retirees
+      - Veterans within 365 days of separation
+      - Family members
+    who_qualifies:
+      active_duty: true
+      reserve: true
+      national_guard: true
+      retirees: true
+      veterans_365_days: true
+      family: true
+    how_to_apply: >
+      Call Military OneSource at 1-800-342-9647 and request health and wellness
+      coaching. Sessions available by phone or video.
+    tags:
+      - health
+      - wellness
+      - coaching
+      - lifestyle
+
+  - id: wounded-warrior-support
+    name: Wounded Warrior and Caregiver Support
+    category: training
+    description: >
+      Specialized support for wounded, ill, or injured service members and their
+      caregivers. Consultants help navigate benefits, coordinate care across
+      military and VA systems, connect with peer support groups, and provide
+      respite care resources for caregivers. Works in coordination with Warrior
+      Care programs.
+    eligibility:
+      - Wounded, ill, or injured service members (all branches)
+      - Caregivers of wounded warriors
+      - Family members of wounded warriors
+    who_qualifies:
+      active_duty: true
+      reserve: true
+      national_guard: true
+      retirees: true
+      veterans_365_days: true
+      family: true
+    how_to_apply: >
+      Call Military OneSource at 1-800-342-9647 and ask for wounded warrior
+      or caregiver support. Specialists are available 24/7 to help coordinate
+      services.
+    tags:
+      - wounded-warrior
+      - caregiver-support
+      - benefits-navigation
+
+  - id: peer-support
+    name: Peer-to-Peer Support Programs
+    category: training
+    description: >
+      Connection with trained peer supporters who have similar military
+      experiences. Peer support programs include inTransition for behavioral
+      health continuity during moves, Building Healthy Relationships workshops,
+      and connections with veteran service organizations offering peer mentorship.
+    eligibility:
+      - Active duty service members
+      - National Guard and Reserve members
+      - Veterans
+      - Family members
+    who_qualifies:
+      active_duty: true
+      reserve: true
+      national_guard: true
+      retirees: true
+      veterans_365_days: true
+      family: true
+    how_to_apply: >
+      Call Military OneSource at 1-800-342-9647 to learn about peer support
+      programs, or visit militaryonesource.mil to access online peer support
+      resources and community connections.
+    tags:
+      - peer-support
+      - community
+      - mental-health
+
+  - id: installation-tap-office
+    name: Installation TAP Office Support
+    category: employment
+    description: >
+      In-person support at military installation Transition Assistance Program
+      offices. Services include one-on-one counseling, resume workshops, mock
+      interviews, job fairs, and referrals to community resources. Support
+      continues for up to 180 days after separation or retirement.
+    eligibility:
+      - Separating or retiring service members
+      - Recently separated veterans (within 180 days)
+      - Spouses of transitioning members
+    who_qualifies:
+      active_duty: true
+      reserve: true
+      national_guard: true
+      retirees: true
+      veterans_365_days: true
+      family: true
+    how_to_apply: >
+      Find your installation TAP office at installations.militaryonesource.mil
+      or call 1-800-342-9647 for help locating services. Walk-ins often accepted
+      but appointments recommended.
+    source_url: https://installations.militaryonesource.mil/search?program-service=22
+    tags:
+      - transition
+      - in-person
+      - career-counseling
+      - employment
