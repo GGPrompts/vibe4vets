@@ -29,9 +29,7 @@ class TestVeteranEmergencyAssistanceConnector:
         connector = VeteranEmergencyAssistanceConnector(
             data_path=tmp_path / "data.json",
         )
-        title = connector._build_title(
-            "Veterans of Foreign Wars (VFW)", "Unmet Needs Program"
-        )
+        title = connector._build_title("Veterans of Foreign Wars (VFW)", "Unmet Needs Program")
         assert title == "VFW - Unmet Needs Program"
 
     def test_build_title_american_legion(self, tmp_path):
@@ -39,9 +37,7 @@ class TestVeteranEmergencyAssistanceConnector:
         connector = VeteranEmergencyAssistanceConnector(
             data_path=tmp_path / "data.json",
         )
-        title = connector._build_title(
-            "The American Legion", "Temporary Financial Assistance (TFA)"
-        )
+        title = connector._build_title("The American Legion", "Temporary Financial Assistance (TFA)")
         assert title == "American Legion - Temporary Financial Assistance (TFA)"
 
     def test_build_title_dav(self, tmp_path):
@@ -49,9 +45,7 @@ class TestVeteranEmergencyAssistanceConnector:
         connector = VeteranEmergencyAssistanceConnector(
             data_path=tmp_path / "data.json",
         )
-        title = connector._build_title(
-            "Disabled American Veterans (DAV)", "Disaster Relief Program"
-        )
+        title = connector._build_title("Disabled American Veterans (DAV)", "Disaster Relief Program")
         assert title == "DAV - Disaster Relief Program"
 
     def test_build_title_unknown_org(self, tmp_path):
@@ -80,8 +74,18 @@ class TestVeteranEmergencyAssistanceConnector:
         connector = VeteranEmergencyAssistanceConnector(
             data_path=tmp_path / "data.json",
         )
-        types = ["mortgage", "rent", "utilities", "food", "clothing",
-                 "medical", "dental", "transportation", "lodging", "childcare"]
+        types = [
+            "mortgage",
+            "rent",
+            "utilities",
+            "food",
+            "clothing",
+            "medical",
+            "dental",
+            "transportation",
+            "lodging",
+            "childcare",
+        ]
         formatted = connector._format_assistance_types(types)
 
         # Should truncate and add "and more"

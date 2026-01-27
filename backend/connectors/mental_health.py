@@ -311,9 +311,7 @@ class MentalHealthConnector(BaseConnector):
 
         # If no specific instructions, provide generic guidance
         if not parts:
-            parts.append(
-                "Contact the organization through their website to learn more about accessing services."
-            )
+            parts.append("Contact the organization through their website to learn more about accessing services.")
 
         return " ".join(parts)
 

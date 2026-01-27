@@ -29,9 +29,7 @@ class TestVeteranFoodAssistanceConnector:
         connector = VeteranFoodAssistanceConnector(
             data_path=tmp_path / "data.json",
         )
-        title = connector._build_title(
-            "Soldiers' Angels", "Military and Veteran Food Distribution"
-        )
+        title = connector._build_title("Soldiers' Angels", "Military and Veteran Food Distribution")
         assert title == "Soldiers' Angels - Military and Veteran Food Distribution"
 
     def test_build_title_dvnf(self, tmp_path):
@@ -49,9 +47,7 @@ class TestVeteranFoodAssistanceConnector:
         connector = VeteranFoodAssistanceConnector(
             data_path=tmp_path / "data.json",
         )
-        title = connector._build_title(
-            "VFW Post 10054", "Veterans Food Pantry"
-        )
+        title = connector._build_title("VFW Post 10054", "Veterans Food Pantry")
         assert title == "VFW - Veterans Food Pantry"
 
     def test_build_title_unknown_org(self, tmp_path):
@@ -81,8 +77,14 @@ class TestVeteranFoodAssistanceConnector:
             data_path=tmp_path / "data.json",
         )
         services = [
-            "fresh_produce", "meat", "non_perishables", "milk",
-            "eggs", "cheese", "pantry_staples", "holiday_meals"
+            "fresh_produce",
+            "meat",
+            "non_perishables",
+            "milk",
+            "eggs",
+            "cheese",
+            "pantry_staples",
+            "holiday_meals",
         ]
         formatted = connector._format_services(services)
 
@@ -555,8 +557,15 @@ class TestVeteranFoodAssistanceConnector:
             desc_lower = resource.description.lower()
             # Should mention at least one service type
             service_keywords = [
-                "food", "pantry", "distribution", "produce", "groceries",
-                "meals", "delivery", "snap", "nutrition"
+                "food",
+                "pantry",
+                "distribution",
+                "produce",
+                "groceries",
+                "meals",
+                "delivery",
+                "snap",
+                "nutrition",
             ]
             has_service = any(kw in desc_lower for kw in service_keywords)
             assert has_service, f"{resource.title} description doesn't mention services"

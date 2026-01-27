@@ -389,12 +389,16 @@ class VSOPostLocatorConnector(BaseConnector):
         location = f"in {city}, {state_name}" if city and state_name else ""
 
         if post_name and organization:
-            parts.append(f"{organization} {post_name} {location} provides peer support, "
-                         "service assistance, and community for veterans.".strip())
+            parts.append(
+                f"{organization} {post_name} {location} provides peer support, "
+                "service assistance, and community for veterans.".strip()
+            )
         elif organization:
             unit_type = "Chapter" if organization == "DAV" else "Post"
-            parts.append(f"This {organization} {unit_type} {location} provides peer support, "
-                         "service assistance, and community for veterans.".strip())
+            parts.append(
+                f"This {organization} {unit_type} {location} provides peer support, "
+                "service assistance, and community for veterans.".strip()
+            )
         else:
             parts.append("Veterans Service Organization post providing peer support and services.")
 
@@ -508,9 +512,7 @@ class VSOPostLocatorConnector(BaseConnector):
             org_info = VSO_ORGANIZATIONS.get(organization, {})
             org_website = org_info.get("website")
             if org_website:
-                parts.append(
-                    f"For national membership information, visit {org_website}"
-                )
+                parts.append(f"For national membership information, visit {org_website}")
 
         return " ".join(parts)
 

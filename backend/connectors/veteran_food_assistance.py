@@ -176,10 +176,7 @@ class VeteranFoodAssistanceConnector(BaseConnector):
         program_name = program.get("program_name", "")
 
         # Opening description
-        parts.append(
-            f"{org_name}'s {program_name} provides food assistance "
-            "to veterans and military families."
-        )
+        parts.append(f"{org_name}'s {program_name} provides food assistance to veterans and military families.")
 
         # Services offered
         services = program.get("services", [])

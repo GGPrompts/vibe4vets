@@ -33,9 +33,7 @@ class MilitaryOneSourceConnector(BaseConnector):
     """
 
     # Default path to reference data file
-    DEFAULT_DATA_PATH = (
-        Path(__file__).parent.parent / "data" / "reference" / "military_onesource.yaml"
-    )
+    DEFAULT_DATA_PATH = Path(__file__).parent.parent / "data" / "reference" / "military_onesource.yaml"
 
     # Military OneSource main contact info
     PHONE = "1-800-342-9647"
@@ -97,9 +95,7 @@ class MilitaryOneSourceConnector(BaseConnector):
 
         return resources
 
-    def _parse_program(
-        self, program: dict[str, Any], source_info: dict[str, Any]
-    ) -> ResourceCandidate | None:
+    def _parse_program(self, program: dict[str, Any], source_info: dict[str, Any]) -> ResourceCandidate | None:
         """Parse a program entry into a ResourceCandidate.
 
         Args:
@@ -222,9 +218,7 @@ class MilitaryOneSourceConnector(BaseConnector):
 
         return "Service members, veterans, and their families."
 
-    def _build_how_to_apply(
-        self, program: dict[str, Any], source_info: dict[str, Any]
-    ) -> str:
+    def _build_how_to_apply(self, program: dict[str, Any], source_info: dict[str, Any]) -> str:
         """Build application instructions from program data.
 
         Args:

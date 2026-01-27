@@ -545,6 +545,7 @@ class TestVSOPostLocatorConnector:
         resources = connector.run()
 
         import re
+
         phone_pattern = re.compile(r"^\(\d{3}\) \d{3}-\d{4}$")
 
         for resource in resources:
@@ -568,9 +569,7 @@ class TestVSOPostLocatorConnector:
 
         for resource in resources:
             if resource.org_website:
-                assert resource.org_website.startswith(
-                    ("http://", "https://")
-                ), f"Invalid URL: {resource.org_website}"
+                assert resource.org_website.startswith(("http://", "https://")), f"Invalid URL: {resource.org_website}"
 
     def test_meeting_schedules_included(self):
         """Test that meeting schedules are included in raw data."""

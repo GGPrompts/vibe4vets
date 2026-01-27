@@ -217,8 +217,7 @@ class VeteranEmergencyAssistanceConnector(BaseConnector):
             )
         elif "usa cares" in org_name_lower:
             parts.append(
-                "Each family is assigned an advocate who ensures timely assistance. "
-                "No fees or repayment required."
+                "Each family is assigned an advocate who ensures timely assistance. No fees or repayment required."
             )
 
         return " ".join(parts)
@@ -333,9 +332,7 @@ class VeteranEmergencyAssistanceConnector(BaseConnector):
 
         # If no specific process, provide generic guidance
         if not parts:
-            parts.append(
-                "Contact the organization through their website to begin the application process."
-            )
+            parts.append("Contact the organization through their website to begin the application process.")
 
         return " ".join(parts)
 
@@ -347,8 +344,13 @@ class VeteranEmergencyAssistanceConnector(BaseConnector):
 
         # Housing-related assistance
         housing_keywords = {
-            "mortgage", "rent", "shelter", "home_repairs",
-            "home_modifications", "security_deposits", "rental_deposits",
+            "mortgage",
+            "rent",
+            "shelter",
+            "home_repairs",
+            "home_modifications",
+            "security_deposits",
+            "rental_deposits",
         }
         if housing_keywords & set(assistance_types):
             categories.add("housing")

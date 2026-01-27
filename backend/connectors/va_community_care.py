@@ -27,17 +27,65 @@ from connectors.base import BaseConnector, ResourceCandidate, SourceMetadata
 # CCN region mapping
 CCN_REGIONS = {
     # Region 1 - Optum (Northeast)
-    "CT": 1, "DE": 1, "DC": 1, "ME": 1, "MD": 1, "MA": 1, "NH": 1, "NJ": 1,
-    "NY": 1, "PA": 1, "RI": 1, "VT": 1, "VA": 1, "WV": 1,
+    "CT": 1,
+    "DE": 1,
+    "DC": 1,
+    "ME": 1,
+    "MD": 1,
+    "MA": 1,
+    "NH": 1,
+    "NJ": 1,
+    "NY": 1,
+    "PA": 1,
+    "RI": 1,
+    "VT": 1,
+    "VA": 1,
+    "WV": 1,
     # Region 2 - Optum (Southeast)
-    "AL": 2, "FL": 2, "GA": 2, "KY": 2, "MS": 2, "NC": 2, "SC": 2, "TN": 2, "PR": 2, "VI": 2,
+    "AL": 2,
+    "FL": 2,
+    "GA": 2,
+    "KY": 2,
+    "MS": 2,
+    "NC": 2,
+    "SC": 2,
+    "TN": 2,
+    "PR": 2,
+    "VI": 2,
     # Region 3 - Optum (Central)
-    "AR": 3, "LA": 3, "OK": 3, "TX": 3, "IL": 3, "IN": 3, "MI": 3, "MN": 3,
-    "OH": 3, "WI": 3, "IA": 3, "KS": 3, "MO": 3, "NE": 3, "ND": 3, "SD": 3,
+    "AR": 3,
+    "LA": 3,
+    "OK": 3,
+    "TX": 3,
+    "IL": 3,
+    "IN": 3,
+    "MI": 3,
+    "MN": 3,
+    "OH": 3,
+    "WI": 3,
+    "IA": 3,
+    "KS": 3,
+    "MO": 3,
+    "NE": 3,
+    "ND": 3,
+    "SD": 3,
     # Region 4 - TriWest (Mountain)
-    "AZ": 4, "CO": 4, "ID": 4, "MT": 4, "NV": 4, "NM": 4, "UT": 4, "WY": 4,
+    "AZ": 4,
+    "CO": 4,
+    "ID": 4,
+    "MT": 4,
+    "NV": 4,
+    "NM": 4,
+    "UT": 4,
+    "WY": 4,
     # Region 5 - TriWest (Pacific)
-    "AK": 5, "CA": 5, "HI": 5, "OR": 5, "WA": 5, "GU": 5, "AS": 5,
+    "AK": 5,
+    "CA": 5,
+    "HI": 5,
+    "OR": 5,
+    "WA": 5,
+    "GU": 5,
+    "AS": 5,
 }
 
 # TPA contact information
@@ -310,8 +358,7 @@ class VACommunityConnector(BaseConnector):
         network_status = provider.get("network_status", "in_network")
 
         parts.append(
-            "VA Community Care is available to veterans enrolled in VA health care "
-            "who meet one of these criteria:"
+            "VA Community Care is available to veterans enrolled in VA health care who meet one of these criteria:"
         )
 
         parts.append(
@@ -347,8 +394,7 @@ class VACommunityConnector(BaseConnector):
         # Step 1: Get referral (unless urgent care)
         if network_status == "urgent_care":
             parts.append(
-                "Step 1: Locate this urgent care facility and present your Veteran "
-                "Health Identification Card (VHIC)."
+                "Step 1: Locate this urgent care facility and present your Veteran Health Identification Card (VHIC)."
             )
         else:
             parts.append(
@@ -374,18 +420,12 @@ class VACommunityConnector(BaseConnector):
         if region:
             if region <= 3:  # Optum regions
                 tpa_phone = TPA_CONTACTS["optum"]["phone"].get(region, "(888) 901-7407")
-                parts.append(
-                    f"For questions about your referral, contact Optum at {tpa_phone} (Region {region})."
-                )
+                parts.append(f"For questions about your referral, contact Optum at {tpa_phone} (Region {region}).")
             else:  # TriWest regions
-                parts.append(
-                    f"For questions about your referral, contact TriWest at (877) 226-8749 (Region {region})."
-                )
+                parts.append(f"For questions about your referral, contact TriWest at (877) 226-8749 (Region {region}).")
 
         # National contact center
-        parts.append(
-            "VA Community Care Contact Center: 877-881-7618 (Option 1 for Veterans)."
-        )
+        parts.append("VA Community Care Contact Center: 877-881-7618 (Option 1 for Veterans).")
 
         return " ".join(parts)
 
