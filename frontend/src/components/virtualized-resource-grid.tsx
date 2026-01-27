@@ -32,8 +32,8 @@ const BREAKPOINTS = {
   xl: 1280,
 };
 
-// Card heights - fixed height for consistent rows
-const CARD_HEIGHT = 320; // Matches h-[320px] on ResourceCard
+// Card heights - estimate for virtualization (actual height measured dynamically)
+const CARD_HEIGHT = 300; // Approximate card height
 const ROW_GAP = 16; // gap-4 = 1rem = 16px
 
 function useResponsiveColumns() {
