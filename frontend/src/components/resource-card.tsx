@@ -202,8 +202,21 @@ function CardInner({
           {resource.summary || resource.description}
         </p>
 
-        {/* Location badges only */}
+        {/* Category and location badges */}
         <div className="mb-3 flex flex-wrap gap-2">
+          {resource.categories.map((cat) => {
+            const Icon = categoryIcons[cat] || Briefcase;
+            return (
+              <Badge
+                key={cat}
+                variant="outline"
+                className={`${categoryBadgeStyles[cat] || ''} gap-1 border font-medium`}
+              >
+                <Icon className="h-3 w-3" />
+                <span className="capitalize">{cat}</span>
+              </Badge>
+            );
+          })}
           {resource.location && (
             <Badge
               variant="outline"
