@@ -96,6 +96,7 @@ function groupResourcesByProgram(resources: Resource[]): DisplayItem[] {
 import { useResourcesInfinite } from '@/lib/hooks/useResourcesInfinite';
 import { useAnalytics } from '@/lib/useAnalytics';
 import { useIsMobile } from '@/hooks/use-media-query';
+import { useReducedMotion } from '@/hooks/use-reduced-motion';
 import { Filter, Loader2 } from 'lucide-react';
 import { BackToTop } from '@/components/BackToTop';
 
@@ -109,6 +110,7 @@ function SearchResults() {
 
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   const isMobile = useIsMobile();
+  const prefersReducedMotion = useReducedMotion();
 
   // Sidebar collapsed state (lifted from FixedFiltersSidebar for transform-based push)
   const [sidebarCollapsed, setSidebarCollapsed] = useState(true);
@@ -248,18 +250,25 @@ function SearchResults() {
   // Modal handlers with shallow routing
   const openResourceModal = useCallback(
     (resource: Resource, explanations?: MatchExplanation[]) => {
-      setSelectedResource(resource);
-      setSelectedExplanations(explanations);
-
       // Track resource view analytics
       trackResourceView(resource.id, resource.categories[0], resource.states[0]);
+
+      // For reduced motion users, navigate to full page instead of modal
+      if (prefersReducedMotion) {
+        const from = searchParams.toString();
+        router.push(`/resources/${resource.id}${from ? `?from=${encodeURIComponent(from)}` : ''}`);
+        return;
+      }
+
+      setSelectedResource(resource);
+      setSelectedExplanations(explanations);
 
       // Update URL with shallow routing (no navigation)
       const params = new URLSearchParams(searchParams.toString());
       params.set('resource', resource.id);
       router.push(`/search?${params.toString()}`, { scroll: false });
     },
-    [router, searchParams, trackResourceView]
+    [router, searchParams, trackResourceView, prefersReducedMotion]
   );
 
   const closeResourceModal = useCallback(() => {
