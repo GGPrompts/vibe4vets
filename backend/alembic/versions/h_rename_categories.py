@@ -28,24 +28,14 @@ depends_on = None
 
 def upgrade() -> None:
     # Rename mental_health to mentalHealth
-    op.execute(
-        "UPDATE resources SET categories = array_replace(categories, 'mental_health', 'mentalHealth')"
-    )
+    op.execute("UPDATE resources SET categories = array_replace(categories, 'mental_health', 'mentalHealth')")
     # Rename support_services to supportServices
-    op.execute(
-        "UPDATE resources SET categories = array_replace(categories, 'support_services', 'supportServices')"
-    )
+    op.execute("UPDATE resources SET categories = array_replace(categories, 'support_services', 'supportServices')")
     # Merge orphan 'support' into supportServices
-    op.execute(
-        "UPDATE resources SET categories = array_replace(categories, 'support', 'supportServices')"
-    )
+    op.execute("UPDATE resources SET categories = array_replace(categories, 'support', 'supportServices')")
 
 
 def downgrade() -> None:
     # Reverse: rename back to underscored versions
-    op.execute(
-        "UPDATE resources SET categories = array_replace(categories, 'mentalHealth', 'mental_health')"
-    )
-    op.execute(
-        "UPDATE resources SET categories = array_replace(categories, 'supportServices', 'support_services')"
-    )
+    op.execute("UPDATE resources SET categories = array_replace(categories, 'mentalHealth', 'mental_health')")
+    op.execute("UPDATE resources SET categories = array_replace(categories, 'supportServices', 'support_services')")
