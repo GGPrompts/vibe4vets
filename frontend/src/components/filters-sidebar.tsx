@@ -627,27 +627,21 @@ interface FixedFiltersSidebarProps {
   filters: FilterState;
   onFiltersChange: (filters: FilterState) => void;
   resultCount?: number;
+  isCollapsed: boolean;
+  onCollapsedChange: (collapsed: boolean) => void;
 }
 
 export function FixedFiltersSidebar({
   filters,
   onFiltersChange,
   resultCount,
+  isCollapsed,
+  onCollapsedChange,
 }: FixedFiltersSidebarProps) {
-  // Default to collapsed
-  const [isCollapsed, setIsCollapsed] = useState(true);
-
-  // Load collapsed state from localStorage on mount
-  useEffect(() => {
-    const saved = localStorage.getItem('v4v-filters-collapsed');
-    // Default to collapsed if no saved preference
-    if (saved !== null) setIsCollapsed(saved === 'true');
-  }, []);
-
-  // Persist collapsed state
+  // Persist collapsed state to localStorage
   const toggleCollapsed = () => {
     const newValue = !isCollapsed;
-    setIsCollapsed(newValue);
+    onCollapsedChange(newValue);
     localStorage.setItem('v4v-filters-collapsed', String(newValue));
   };
 

@@ -110,6 +110,15 @@ function SearchResults() {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   const isMobile = useIsMobile();
 
+  // Sidebar collapsed state (lifted from FixedFiltersSidebar for transform-based push)
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(true);
+
+  // Load sidebar state from localStorage on mount
+  useEffect(() => {
+    const saved = localStorage.getItem('v4v-filters-collapsed');
+    if (saved !== null) setSidebarCollapsed(saved === 'true');
+  }, []);
+
   // Modal state
   const [selectedResource, setSelectedResource] = useState<Resource | null>(null);
   const [selectedExplanations, setSelectedExplanations] = useState<MatchExplanation[] | undefined>(undefined);
@@ -593,10 +602,17 @@ function SearchResults() {
         filters={filters}
         onFiltersChange={handleFiltersChange}
         resultCount={totalResults}
+        isCollapsed={sidebarCollapsed}
+        onCollapsedChange={setSidebarCollapsed}
       />
 
-      {/* Main Content */}
-      <div className="flex min-w-0 flex-1 flex-col space-y-4">
+      {/* Main Content - transforms right when sidebar expands (GPU-accelerated, no reflow) */}
+      <div
+        className="flex min-w-0 flex-1 flex-col space-y-4 transition-transform duration-200 ease-out"
+        style={{
+          transform: !sidebarCollapsed && !isMobile ? 'translateX(232px)' : undefined,
+        }}
+      >
         {/* Results Header with chips and sort */}
         <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
           {/* Left side: Result count + Filter chips */}
