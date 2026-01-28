@@ -24,7 +24,8 @@ def test_categories_defined():
     assert "healthcare" in CATEGORIES
     assert "education" in CATEGORIES
     assert "financial" in CATEGORIES
-    assert len(CATEGORIES) == 11
+    assert "family" in CATEGORIES
+    assert len(CATEGORIES) == 12
 
 
 def test_subcategories_have_valid_parents():
