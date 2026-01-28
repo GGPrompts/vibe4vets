@@ -16,6 +16,10 @@ interface FilterContextValue {
   isLoadingTotal: boolean;
   isEnabled: boolean;
   setEnabled: (enabled: boolean) => void;
+  // Sidebar state - allows header to open the filter sidebar
+  sidebarCollapsed: boolean;
+  setSidebarCollapsed: (collapsed: boolean) => void;
+  openSidebar: () => void;
 }
 
 const FilterContext = createContext<FilterContextValue | null>(null);
@@ -28,6 +32,26 @@ export function FilterProvider({ children }: { children: ReactNode }) {
   const [isEnabled, setEnabled] = useState(false);
   const [totalCount, setTotalCount] = useState<number | null>(null);
   const [isLoadingTotal, setIsLoadingTotal] = useState(false);
+
+  // Sidebar collapsed state - initialized from localStorage
+  const [sidebarCollapsed, setSidebarCollapsedState] = useState(true);
+
+  // Initialize from localStorage on mount
+  useEffect(() => {
+    const stored = localStorage.getItem('v4v-filters-collapsed');
+    if (stored !== null) {
+      setSidebarCollapsedState(stored === 'true');
+    }
+  }, []);
+
+  const setSidebarCollapsed = useCallback((collapsed: boolean) => {
+    setSidebarCollapsedState(collapsed);
+    localStorage.setItem('v4v-filters-collapsed', String(collapsed));
+  }, []);
+
+  const openSidebar = useCallback(() => {
+    setSidebarCollapsed(false);
+  }, [setSidebarCollapsed]);
 
   const { count, isLoading } = useResourceCount(filters, isEnabled);
 
@@ -87,6 +111,9 @@ export function FilterProvider({ children }: { children: ReactNode }) {
         isLoadingTotal,
         isEnabled,
         setEnabled,
+        sidebarCollapsed,
+        setSidebarCollapsed,
+        openSidebar,
       }}
     >
       {children}

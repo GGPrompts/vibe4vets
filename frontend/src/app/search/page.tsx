@@ -34,6 +34,7 @@ import {
 import { FilterChips } from '@/components/filter-chips';
 import type { SortOption } from '@/components/sort-dropdown';
 import api, { type Resource, type MatchExplanation, type Program } from '@/lib/api';
+import { useOptionalFilterContext } from '@/context/filter-context';
 
 // Helper type for grouped display
 interface ProgramGroup {
@@ -112,14 +113,10 @@ function SearchResults() {
   const isMobile = useIsMobile();
   const prefersReducedMotion = useReducedMotion();
 
-  // Sidebar collapsed state (lifted from FixedFiltersSidebar for transform-based push)
-  const [sidebarCollapsed, setSidebarCollapsed] = useState(true);
-
-  // Load sidebar state from localStorage on mount
-  useEffect(() => {
-    const saved = localStorage.getItem('v4v-filters-collapsed');
-    if (saved !== null) setSidebarCollapsed(saved === 'true');
-  }, []);
+  // Sidebar collapsed state from context (allows header to open sidebar)
+  const filterContext = useOptionalFilterContext();
+  const sidebarCollapsed = filterContext?.sidebarCollapsed ?? true;
+  const setSidebarCollapsed = filterContext?.setSidebarCollapsed ?? (() => {});
 
   // Modal state
   const [selectedResource, setSelectedResource] = useState<Resource | null>(null);
@@ -758,7 +755,7 @@ function SearchResults() {
                             )
                           }
                           distance={isNearbyMode ? distanceMap.get(item.resource.id) : undefined}
-                          enableLayoutId={!sidebarExpanded}
+                          enableLayoutId={true}
                         />
                       );
                     }
@@ -779,7 +776,7 @@ function SearchResults() {
                   newResourceIds={newResourceIds}
                   newResourceIndexById={newResourceIndexById}
                   distanceMap={isNearbyMode ? distanceMap : undefined}
-                  enableLayoutId={!sidebarExpanded}
+                  enableLayoutId={true}
                 />
               )}
 
@@ -812,15 +809,6 @@ function SearchResults() {
               )}
 
               {!isSearchMode && hasNextPage && <div ref={loadMoreSentinelRef} className="h-px w-full" />}
-
-              {/* Resource Detail Modal */}
-              <ResourceDetailModal
-                resource={selectedResource}
-                explanations={selectedExplanations}
-                isOpen={!!selectedResource}
-                onClose={closeResourceModal}
-                enableLayoutId={!sidebarExpanded}
-              />
             </>
           ) : (
             <div className="py-12 text-center">
@@ -839,6 +827,15 @@ function SearchResults() {
         </div>
       </div>
     </div>
+
+    {/* Resource Detail Modal - outside transformed container to avoid stacking context issues */}
+    <ResourceDetailModal
+      resource={selectedResource}
+      explanations={selectedExplanations}
+      isOpen={!!selectedResource}
+      onClose={closeResourceModal}
+      enableLayoutId={true}
+    />
   </div>
   );
 }
