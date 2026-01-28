@@ -595,26 +595,34 @@ function SearchResults() {
     return () => observer.disconnect();
   }, [fetchNextPage, hasNextPage, isFetchingNextPage, isMobile, isSearchMode]);
 
-  return (
-    <div className="flex gap-6">
-      {/* Fixed Filter Sidebar - Desktop (renders spacer + fixed sidebar) */}
-      <FixedFiltersSidebar
-        filters={filters}
-        onFiltersChange={handleFiltersChange}
-        resultCount={totalResults}
-        isCollapsed={sidebarCollapsed}
-        onCollapsedChange={setSidebarCollapsed}
-      />
+  // When sidebar expands on desktop, use full width (no max-w constraint, minimal padding)
+  const sidebarExpanded = !sidebarCollapsed && !isMobile;
 
-      {/* Main Content - shifts right when sidebar expands
-          Transform is GPU-accelerated, padding-right compensates for width (instant, no animation) */}
-      <div
-        className="flex min-w-0 flex-1 flex-col space-y-4 transition-transform duration-200 ease-out"
-        style={{
-          transform: !sidebarCollapsed && !isMobile ? 'translateX(232px)' : undefined,
-          paddingRight: !sidebarCollapsed && !isMobile ? 232 : undefined,
-        }}
-      >
+  return (
+    <div
+      className={`mx-auto transition-all duration-200 ease-out ${
+        sidebarExpanded
+          ? 'max-w-none px-4 lg:pl-8 lg:pr-4'  // Full width, less padding
+          : 'max-w-[1600px] px-4 sm:px-6 lg:px-8'  // Normal centered layout
+      }`}
+    >
+      <div className="flex gap-6">
+        {/* Fixed Filter Sidebar - Desktop (renders spacer + fixed sidebar) */}
+        <FixedFiltersSidebar
+          filters={filters}
+          onFiltersChange={handleFiltersChange}
+          resultCount={totalResults}
+          isCollapsed={sidebarCollapsed}
+          onCollapsedChange={setSidebarCollapsed}
+        />
+
+        {/* Main Content - shifts right when sidebar expands (GPU-accelerated) */}
+        <div
+          className="flex min-w-0 flex-1 flex-col space-y-4 transition-transform duration-200 ease-out"
+          style={{
+            transform: sidebarExpanded ? 'translateX(232px)' : undefined,
+          }}
+        >
         {/* Results Header with chips and sort */}
         <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
           {/* Left side: Result count + Filter chips */}
@@ -824,6 +832,7 @@ function SearchResults() {
         </div>
       </div>
     </div>
+  </div>
   );
 }
 
@@ -860,12 +869,10 @@ function SearchFallback() {
 
 export default function SearchPage() {
   return (
-    <main className="grid-background min-h-screen px-4 pb-6 pt-24 sm:px-6 lg:p-8 lg:pt-24">
-      <div className="mx-auto max-w-[1600px]">
-        <Suspense fallback={<SearchFallback />}>
-          <SearchResults />
-        </Suspense>
-      </div>
+    <main className="grid-background min-h-screen pb-6 pt-24">
+      <Suspense fallback={<div className="mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-8"><SearchFallback /></div>}>
+        <SearchResults />
+      </Suspense>
 
       {/* Back to top button */}
       <BackToTop />
