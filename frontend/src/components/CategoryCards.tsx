@@ -1,6 +1,6 @@
 'use client';
 
-import { Briefcase, GraduationCap, Home as HomeIcon, Scale, UtensilsCrossed, FileCheck, Brain, HeartHandshake, HeartPulse, School, Wallet } from 'lucide-react';
+import { Briefcase, GraduationCap, Home as HomeIcon, Scale, UtensilsCrossed, FileCheck, Brain, HeartHandshake, HeartPulse, School, Wallet, Users } from 'lucide-react';
 
 const categories = [
   {
@@ -101,6 +101,15 @@ const categories = [
     colorClass: 'bg-v4v-financial',
     mutedBgClass: 'bg-v4v-financial-muted',
     textClass: 'text-v4v-financial',
+  },
+  {
+    name: 'Family',
+    slug: 'family',
+    description: 'Resources for spouses, dependents, survivors, and childcare support',
+    icon: Users,
+    colorClass: 'bg-v4v-family',
+    mutedBgClass: 'bg-v4v-family-muted',
+    textClass: 'text-v4v-family',
   },
 ];
 

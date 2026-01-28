@@ -87,6 +87,10 @@
   --v4v-financial-light: 140 45% 50%;
   --v4v-financial-muted: 140 40% 92%;
 
+  --v4v-family: 315 50% 50%;             /* Warm pink/magenta */
+  --v4v-family-light: 315 45% 60%;
+  --v4v-family-muted: 315 40% 92%;
+
   /* Text colors */
   --v4v-text-primary: 220 50% 20%;      /* Deep navy */
   --v4v-text-secondary: 220 20% 45%;    /* Muted navy */
@@ -285,6 +289,10 @@ html {
   --color-v4v-financial: var(--v4v-financial);
   --color-v4v-financial-light: var(--v4v-financial-light);
   --color-v4v-financial-muted: var(--v4v-financial-muted);
+
+  --color-v4v-family: var(--v4v-family);
+  --color-v4v-family-light: var(--v4v-family-light);
+  --color-v4v-family-muted: var(--v4v-family-muted);
 }
 
 @layer base {
@@ -618,6 +626,11 @@ html {
 .bg-v4v-financial-muted { background-color: hsl(var(--v4v-financial-muted)); }
 .text-v4v-financial { color: hsl(var(--v4v-financial)); }
 .border-v4v-financial { border-color: hsl(var(--v4v-financial)); }
+
+.bg-v4v-family { background-color: hsl(var(--v4v-family)); }
+.bg-v4v-family-muted { background-color: hsl(var(--v4v-family-muted)); }
+.text-v4v-family { color: hsl(var(--v4v-family)); }
+.border-v4v-family { border-color: hsl(var(--v4v-family)); }
 
 /* Search input styling - matches hero aesthetic */
 .search-glow {

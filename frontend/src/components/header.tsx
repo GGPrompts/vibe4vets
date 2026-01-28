@@ -181,17 +181,17 @@ export function Header() {
                 {/* Logo */}
                 <Link
                   href="/"
-                  className="flex shrink-0 items-center group relative"
-                  aria-label="Vibe4Vets Home"
+                  className="flex shrink-0 items-center group relative overflow-visible"
+                  aria-label="VRD.ai Home"
                 >
                   <div className="absolute -inset-2 rounded-lg bg-[hsl(var(--v4v-gold)/0.15)] opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-lg" />
                   <Image
-                    src="/brand/vibe4vets-wordmark.png"
-                    alt="Vibe4Vets"
-                    width={391}
-                    height={68}
+                    src="/vrd-logo.png"
+                    alt="VRD.ai"
+                    width={400}
+                    height={150}
                     priority
-                    className="relative h-7 sm:h-8 w-auto transition-all duration-300 group-hover:scale-105 brightness-0 invert"
+                    className="relative h-16 sm:h-20 w-auto transition-all duration-300 group-hover:scale-105 -my-6"
                   />
                 </Link>
               </div>

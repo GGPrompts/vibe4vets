@@ -15,7 +15,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from '@/components/ui/tooltip';
-import { Filter, X, Briefcase, GraduationCap, Home, Scale, UtensilsCrossed, FileCheck, ChevronDown, PanelLeft, PanelLeftClose, Search, MapPin, Brain, HeartHandshake, HeartPulse, School, Wallet } from 'lucide-react';
+import { Filter, X, Briefcase, GraduationCap, Home, Scale, UtensilsCrossed, FileCheck, ChevronDown, PanelLeft, PanelLeftClose, Search, MapPin, Brain, HeartHandshake, HeartPulse, School, Wallet, Users } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { cn } from '@/lib/utils';
 import { ZipCodeInput } from '@/components/ZipCodeInput';
@@ -32,6 +32,7 @@ export const CATEGORIES = [
   { value: 'healthcare', label: 'Healthcare', icon: HeartPulse },
   { value: 'education', label: 'Education', icon: School },
   { value: 'financial', label: 'Financial', icon: Wallet },
+  { value: 'family', label: 'Family', icon: Users },
 ] as const;
 
 export const STATES = [
@@ -127,6 +128,7 @@ const categoryColors: Record<string, string> = {
   healthcare: 'text-[hsl(var(--v4v-healthcare))]',
   education: 'text-[hsl(var(--v4v-education))]',
   financial: 'text-[hsl(var(--v4v-financial))]',
+  family: 'text-[hsl(var(--v4v-family))]',
 };
 
 const categoryAccents: Record<string, string> = {
@@ -141,6 +143,7 @@ const categoryAccents: Record<string, string> = {
   healthcare: 'border-l-[hsl(var(--v4v-healthcare))] bg-[hsl(var(--v4v-healthcare)/0.04)]',
   education: 'border-l-[hsl(var(--v4v-education))] bg-[hsl(var(--v4v-education)/0.04)]',
   financial: 'border-l-[hsl(var(--v4v-financial))] bg-[hsl(var(--v4v-financial)/0.04)]',
+  family: 'border-l-[hsl(var(--v4v-family))] bg-[hsl(var(--v4v-family)/0.04)]',
 };
 
 const categoryIconBg: Record<string, string> = {
@@ -155,6 +158,7 @@ const categoryIconBg: Record<string, string> = {
   healthcare: 'bg-[hsl(var(--v4v-healthcare)/0.1)]',
   education: 'bg-[hsl(var(--v4v-education)/0.1)]',
   financial: 'bg-[hsl(var(--v4v-financial)/0.1)]',
+  family: 'bg-[hsl(var(--v4v-family)/0.1)]',
 };
 
 interface CollapsibleSectionProps {
@@ -177,7 +181,7 @@ function CollapsibleSection({
       <button
         type="button"
         onClick={onToggle}
-        className="flex w-full min-h-[44px] items-center justify-between py-2 text-left"
+        className="flex w-full min-h-[32px] items-center justify-between py-1.5 text-left"
         aria-expanded={isOpen}
       >
         <div className="flex items-center gap-2">
@@ -194,7 +198,7 @@ function CollapsibleSection({
       <div
         className={cn(
           'grid transition-all duration-200 ease-in-out',
-          isOpen ? 'mt-3 grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
+          isOpen ? 'mt-2 grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
         )}
       >
         <div className="overflow-hidden">{children}</div>
@@ -286,7 +290,7 @@ export function FiltersSidebar({
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-3">
       {/* Header - can be hidden when parent provides its own */}
       {!hideHeader && (
         <div className="flex items-center justify-between">
@@ -307,12 +311,12 @@ export function FiltersSidebar({
         size="sm"
         onClick={clearAllFilters}
         className={cn(
-          'h-auto w-full justify-start px-0 py-1 text-sm text-muted-foreground hover:text-foreground',
+          'h-auto w-full justify-start px-0 py-0.5 text-sm text-muted-foreground hover:text-foreground',
           activeFilterCount === 0 && 'invisible'
         )}
       >
         <X className="mr-1 h-3 w-3" />
-        Clear all filters ({activeFilterCount})
+        Clear all ({activeFilterCount})
       </Button>
 
       <Separator />
@@ -338,7 +342,7 @@ export function FiltersSidebar({
               <div
                 key={category.value}
                 className={cn(
-                  'flex min-h-[44px] items-center space-x-3 rounded-lg border-l-2 px-2 transition-all duration-200',
+                  'flex min-h-[36px] items-center space-x-2 rounded-lg border-l-2 px-2 transition-all duration-200',
                   isChecked
                     ? categoryAccents[category.value]
                     : 'border-l-transparent hover:bg-muted/50'
@@ -353,15 +357,15 @@ export function FiltersSidebar({
                 <Label
                   htmlFor={`category-${category.value}`}
                   className={cn(
-                    'flex flex-1 min-h-[44px] cursor-pointer items-center gap-2 text-sm',
+                    'flex flex-1 min-h-[36px] cursor-pointer items-center gap-2 text-sm',
                     isChecked ? categoryColors[category.value] : ''
                   )}
                 >
                   <span className={cn(
-                    'flex h-6 w-6 items-center justify-center rounded-md transition-colors',
+                    'flex h-5 w-5 items-center justify-center rounded-md transition-colors',
                     isChecked ? categoryIconBg[category.value] : 'bg-muted/50'
                   )}>
-                    <Icon className="h-3.5 w-3.5" />
+                    <Icon className="h-3 w-3" />
                   </span>
                   {category.label}
                 </Label>
@@ -386,14 +390,14 @@ export function FiltersSidebar({
         isOpen={scopeOpen}
         onToggle={() => setScopeOpen(!scopeOpen)}
       >
-        <RadioGroup value={filters.scope} onValueChange={handleScopeChange} className="space-y-1">
+        <RadioGroup value={filters.scope} onValueChange={handleScopeChange} className="space-y-0.5">
           {SCOPES.map((scope) => {
             const isSelected = filters.scope === scope.value;
             return (
               <div
                 key={scope.value}
                 className={cn(
-                  'flex min-h-[44px] items-center space-x-3 rounded-lg border-l-2 px-2 transition-all duration-200',
+                  'flex min-h-[36px] items-center space-x-2 rounded-lg border-l-2 px-2 transition-all duration-200',
                   isSelected
                     ? 'border-l-[hsl(var(--v4v-gold))] bg-[hsl(var(--v4v-gold)/0.05)]'
                     : 'border-l-transparent hover:bg-muted/50'
@@ -403,7 +407,7 @@ export function FiltersSidebar({
                 <Label
                   htmlFor={`scope-${scope.value}`}
                   className={cn(
-                    'flex flex-1 min-h-[44px] cursor-pointer items-center text-sm',
+                    'flex flex-1 min-h-[36px] cursor-pointer items-center text-sm',
                     isSelected && 'text-[hsl(var(--v4v-gold-dark))]'
                   )}
                 >
@@ -504,7 +508,7 @@ export function FiltersSidebar({
                   <div
                     key={state.value}
                     className={cn(
-                      'flex min-h-[40px] items-center space-x-3 rounded-md border-l-2 px-2 transition-all duration-200',
+                      'flex min-h-[32px] items-center space-x-2 rounded-md border-l-2 px-2 transition-all duration-200',
                       isChecked
                         ? 'border-l-[hsl(var(--v4v-navy))] bg-[hsl(var(--v4v-navy)/0.06)]'
                         : 'border-l-transparent hover:bg-muted/50'
@@ -518,7 +522,7 @@ export function FiltersSidebar({
                     <Label
                       htmlFor={`state-${state.value}`}
                       className={cn(
-                        'flex flex-1 min-h-[40px] cursor-pointer items-center text-sm',
+                        'flex flex-1 min-h-[32px] cursor-pointer items-center text-sm',
                         isChecked && 'font-medium text-[hsl(var(--v4v-navy))]'
                       )}
                     >
@@ -620,6 +624,13 @@ const FILTER_ICONS = [
     label: 'Financial',
     color: 'text-[hsl(var(--v4v-financial))]',
     bg: 'bg-[hsl(var(--v4v-financial)/0.1)]',
+  },
+  {
+    key: 'family',
+    icon: Users,
+    label: 'Family',
+    color: 'text-[hsl(var(--v4v-family))]',
+    bg: 'bg-[hsl(var(--v4v-family)/0.1)]',
   },
 ] as const;
 
@@ -804,7 +815,7 @@ export function FixedFiltersSidebar({
             className="sidebar-gradient fixed left-0 top-16 z-30 hidden h-[calc(100vh-64px)] flex-shrink-0 flex-col overflow-hidden border-r shadow-sm backdrop-blur supports-[backdrop-filter]:bg-background/90 lg:flex"
           >
             {/* Header with Collapse Button */}
-            <div className="sidebar-header-accent flex items-center justify-between px-4 py-3">
+            <div className="sidebar-header-accent flex flex-none items-center justify-between px-4 py-3">
               <div className="flex items-center gap-2">
                 <Filter className="h-4 w-4 text-[hsl(var(--v4v-gold))]" />
                 <span className="text-sm font-semibold">Filters</span>
@@ -826,8 +837,8 @@ export function FixedFiltersSidebar({
               </Tooltip>
             </div>
 
-            {/* Filter Content */}
-            <ScrollArea className="flex-1 px-4 py-4">
+            {/* Filter Content - min-h-0 is critical for flex scrolling */}
+            <ScrollArea className="min-h-0 flex-1 px-4 py-4">
               <FiltersSidebar
                 filters={filters}
                 onFiltersChange={onFiltersChange}

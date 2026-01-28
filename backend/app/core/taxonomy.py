@@ -82,6 +82,11 @@ CATEGORIES: dict[str, Category] = {
         name="Financial",
         description="Financial counseling, emergency assistance, and debt relief",
     ),
+    "family": Category(
+        id="family",
+        name="Family",
+        description="Resources for veteran families, spouses, dependents, survivors, and childcare support",
+    ),
 }
 
 # Subcategories organized by parent category

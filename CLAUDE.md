@@ -78,10 +78,18 @@ vibe4vets/
 
 ```python
 CATEGORIES = [
-    "employment",    # Job placement, career services
-    "training",      # Vocational rehab, certifications
-    "housing",       # HUD-VASH, SSVF, shelters
-    "legal",         # Legal aid, VA appeals
+    "employment",       # Job placement, career services
+    "training",         # Vocational rehab, certifications
+    "housing",          # HUD-VASH, SSVF, shelters
+    "legal",            # Legal aid, VA appeals
+    "food",             # Food pantries, meal programs
+    "benefits",         # VA claims, benefits counseling
+    "mentalHealth",     # Counseling, PTSD support, crisis services
+    "supportServices",  # Peer mentoring, case management
+    "healthcare",       # Medical care, VA health services
+    "education",        # College programs, scholarships
+    "financial",        # Financial counseling, emergency assistance
+    "family",           # Spouses, dependents, survivors, childcare
 ]
 ```
 
