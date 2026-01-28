@@ -606,11 +606,13 @@ function SearchResults() {
         onCollapsedChange={setSidebarCollapsed}
       />
 
-      {/* Main Content - transforms right when sidebar expands (GPU-accelerated, no reflow) */}
+      {/* Main Content - shifts right when sidebar expands
+          Transform is GPU-accelerated, padding-right compensates for width (instant, no animation) */}
       <div
         className="flex min-w-0 flex-1 flex-col space-y-4 transition-transform duration-200 ease-out"
         style={{
           transform: !sidebarCollapsed && !isMobile ? 'translateX(232px)' : undefined,
+          paddingRight: !sidebarCollapsed && !isMobile ? 232 : undefined,
         }}
       >
         {/* Results Header with chips and sort */}
