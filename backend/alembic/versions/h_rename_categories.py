@@ -19,7 +19,6 @@ New categories being added via taxonomy.py:
 
 from alembic import op
 
-
 # revision identifiers, used by Alembic.
 revision = "h_rename_categories"
 down_revision = "g6486h379496"

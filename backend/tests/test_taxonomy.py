@@ -19,7 +19,12 @@ def test_categories_defined():
     assert "legal" in CATEGORIES
     assert "benefits" in CATEGORIES
     assert "food" in CATEGORIES
-    assert len(CATEGORIES) == 6
+    assert "mentalHealth" in CATEGORIES
+    assert "supportServices" in CATEGORIES
+    assert "healthcare" in CATEGORIES
+    assert "education" in CATEGORIES
+    assert "financial" in CATEGORIES
+    assert len(CATEGORIES) == 11
 
 
 def test_subcategories_have_valid_parents():
