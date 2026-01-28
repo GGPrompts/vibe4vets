@@ -23,6 +23,8 @@ interface VirtualizedResourceGridProps {
   newResourceIndexById?: Map<string, number>;
   /** Map of resource ID to distance in miles (for nearby search) */
   distanceMap?: Map<string, number>;
+  /** Whether to enable layoutId for shared element transitions (disable when sidebar expanded) */
+  enableLayoutId?: boolean;
 }
 
 // Responsive breakpoints (matches Tailwind)
@@ -97,6 +99,7 @@ export function VirtualizedResourceGrid({
   newResourceIds,
   newResourceIndexById,
   distanceMap,
+  enableLayoutId = true,
 }: VirtualizedResourceGridProps) {
   const parentRef = useRef<HTMLDivElement>(null);
   const { columns, isResizing } = useResponsiveColumns();
@@ -251,7 +254,7 @@ export function VirtualizedResourceGrid({
                               explanationsMap.get(resource.id)
                             )
                           }
-                          enableLayoutId
+                          enableLayoutId={enableLayoutId}
                           distance={distanceMap?.get(resource.id)}
                         />
                       </motion.div>

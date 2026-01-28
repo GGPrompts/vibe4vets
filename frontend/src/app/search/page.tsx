@@ -749,6 +749,7 @@ function SearchResults() {
                             )
                           }
                           distance={isNearbyMode ? distanceMap.get(item.resource.id) : undefined}
+                          enableLayoutId={!sidebarExpanded}
                         />
                       );
                     }
@@ -769,6 +770,7 @@ function SearchResults() {
                   newResourceIds={newResourceIds}
                   newResourceIndexById={newResourceIndexById}
                   distanceMap={isNearbyMode ? distanceMap : undefined}
+                  enableLayoutId={!sidebarExpanded}
                 />
               )}
 
@@ -808,6 +810,7 @@ function SearchResults() {
                 explanations={selectedExplanations}
                 isOpen={!!selectedResource}
                 onClose={closeResourceModal}
+                enableLayoutId={!sidebarExpanded}
               />
             </>
           ) : (

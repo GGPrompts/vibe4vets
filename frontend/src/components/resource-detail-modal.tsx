@@ -42,6 +42,8 @@ interface ResourceDetailModalProps {
   explanations?: MatchExplanation[];
   isOpen: boolean;
   onClose: () => void;
+  /** Whether to enable layoutId for shared element transitions (disable when sidebar expanded) */
+  enableLayoutId?: boolean;
 }
 
 // Category styles - use CSS variables for consistency
@@ -291,6 +293,7 @@ export function ResourceDetailModal({
   explanations,
   isOpen,
   onClose,
+  enableLayoutId = true,
 }: ResourceDetailModalProps) {
   const dragControls = useDragControls();
   const constraintsRef = useRef<HTMLDivElement>(null);
@@ -377,7 +380,7 @@ export function ResourceDetailModal({
               'sm:inset-x-auto sm:bottom-auto sm:left-1/2 sm:top-1/2 sm:max-h-[85vh] sm:w-full sm:max-w-2xl sm:-translate-x-1/2 sm:-translate-y-1/2 sm:rounded-2xl',
               bodyBg
             )}
-            layoutId={`resource-card-${resource.id}`}
+            layoutId={enableLayoutId ? `resource-card-${resource.id}` : undefined}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
