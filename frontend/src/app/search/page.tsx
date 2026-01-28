@@ -615,6 +615,7 @@ function SearchResults() {
           className="flex min-w-0 flex-1 flex-col space-y-4 transition-transform duration-200 ease-out"
           style={{
             transform: sidebarExpanded ? 'translateX(232px)' : undefined,
+            paddingRight: sidebarExpanded ? 200 : undefined,  // Slightly less than transform to keep cards wider
           }}
         >
         {/* Results Header with chips and sort */}
