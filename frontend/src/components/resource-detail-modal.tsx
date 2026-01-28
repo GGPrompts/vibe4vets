@@ -26,6 +26,11 @@ import {
   UtensilsCrossed,
   Award,
   Tag,
+  Brain,
+  HeartHandshake,
+  HeartPulse,
+  School,
+  Wallet,
 } from 'lucide-react';
 import { BookmarkButton } from '@/components/bookmark-button';
 import { ReportFeedbackModal } from '@/components/ReportFeedbackModal';
@@ -47,6 +52,11 @@ const categoryGradients: Record<string, string> = {
   legal: 'bg-gradient-to-br from-[hsl(var(--v4v-legal))] to-[hsl(265,50%,45%)]',
   food: 'bg-gradient-to-br from-[hsl(var(--v4v-food))] to-[hsl(145,55%,32%)]',
   benefits: 'bg-gradient-to-br from-[hsl(var(--v4v-benefits))] to-[hsl(340,55%,40%)]',
+  mentalHealth: 'bg-gradient-to-br from-[hsl(var(--v4v-mentalHealth))] to-[hsl(200,60%,35%)]',
+  supportServices: 'bg-gradient-to-br from-[hsl(var(--v4v-supportServices))] to-[hsl(35,65%,40%)]',
+  healthcare: 'bg-gradient-to-br from-[hsl(var(--v4v-healthcare))] to-[hsl(350,55%,42%)]',
+  education: 'bg-gradient-to-br from-[hsl(var(--v4v-education))] to-[hsl(220,55%,40%)]',
+  financial: 'bg-gradient-to-br from-[hsl(var(--v4v-financial))] to-[hsl(140,50%,30%)]',
 };
 
 // Body background tints - solid white for readability (no gradient transparency)
@@ -57,6 +67,11 @@ const bodyBackgrounds: Record<string, string> = {
   legal: 'bg-white',
   food: 'bg-white',
   benefits: 'bg-white',
+  mentalHealth: 'bg-white',
+  supportServices: 'bg-white',
+  healthcare: 'bg-white',
+  education: 'bg-white',
+  financial: 'bg-white',
 };
 
 // Decorative orb colors
@@ -67,6 +82,11 @@ const decorativeOrbs: Record<string, string> = {
   legal: 'bg-[hsl(var(--v4v-legal))]',
   food: 'bg-[hsl(var(--v4v-food))]',
   benefits: 'bg-[hsl(var(--v4v-benefits))]',
+  mentalHealth: 'bg-[hsl(var(--v4v-mentalHealth))]',
+  supportServices: 'bg-[hsl(var(--v4v-supportServices))]',
+  healthcare: 'bg-[hsl(var(--v4v-healthcare))]',
+  education: 'bg-[hsl(var(--v4v-education))]',
+  financial: 'bg-[hsl(var(--v4v-financial))]',
 };
 
 const categoryIcons: Record<string, typeof Briefcase> = {
@@ -76,6 +96,11 @@ const categoryIcons: Record<string, typeof Briefcase> = {
   legal: Scale,
   food: UtensilsCrossed,
   benefits: Award,
+  mentalHealth: Brain,
+  supportServices: HeartHandshake,
+  healthcare: HeartPulse,
+  education: School,
+  financial: Wallet,
 };
 
 // Badge styles for header - white background with category color text for contrast
@@ -86,6 +111,11 @@ const categoryBadgeStyles: Record<string, string> = {
   legal: 'bg-white/90 text-[hsl(var(--v4v-legal))]',
   food: 'bg-white/90 text-[hsl(var(--v4v-food))]',
   benefits: 'bg-white/90 text-[hsl(var(--v4v-benefits))]',
+  mentalHealth: 'bg-white/90 text-[hsl(var(--v4v-mentalHealth))]',
+  supportServices: 'bg-white/90 text-[hsl(var(--v4v-supportServices))]',
+  healthcare: 'bg-white/90 text-[hsl(var(--v4v-healthcare))]',
+  education: 'bg-white/90 text-[hsl(var(--v4v-education))]',
+  financial: 'bg-white/90 text-[hsl(var(--v4v-financial))]',
 };
 
 // Section card styling

@@ -26,6 +26,11 @@ const categoryColors: Record<string, string> = {
   legal: 'bg-[hsl(var(--v4v-legal)/0.12)] text-[hsl(var(--v4v-legal))]',
   food: 'bg-[hsl(var(--v4v-food)/0.12)] text-[hsl(var(--v4v-food))]',
   benefits: 'bg-[hsl(var(--v4v-benefits)/0.12)] text-[hsl(var(--v4v-benefits))]',
+  mentalHealth: 'bg-[hsl(var(--v4v-mentalHealth)/0.12)] text-[hsl(var(--v4v-mentalHealth))]',
+  supportServices: 'bg-[hsl(var(--v4v-supportServices)/0.12)] text-[hsl(var(--v4v-supportServices))]',
+  healthcare: 'bg-[hsl(var(--v4v-healthcare)/0.12)] text-[hsl(var(--v4v-healthcare))]',
+  education: 'bg-[hsl(var(--v4v-education)/0.12)] text-[hsl(var(--v4v-education))]',
+  financial: 'bg-[hsl(var(--v4v-financial)/0.12)] text-[hsl(var(--v4v-financial))]',
 };
 
 interface TrustIndicatorProps {

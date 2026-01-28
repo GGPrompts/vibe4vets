@@ -57,6 +57,31 @@ CATEGORIES: dict[str, Category] = {
         name="Benefits Consultation",
         description="VA claims assistance, benefits counseling, and accredited representatives",
     ),
+    "mentalHealth": Category(
+        id="mentalHealth",
+        name="Mental Health",
+        description="Counseling, PTSD support, crisis services, and mental wellness programs",
+    ),
+    "supportServices": Category(
+        id="supportServices",
+        name="Support Services",
+        description="General veteran support, peer mentoring, and case management",
+    ),
+    "healthcare": Category(
+        id="healthcare",
+        name="Healthcare",
+        description="Medical care, VA health services, and wellness programs",
+    ),
+    "education": Category(
+        id="education",
+        name="Education",
+        description="College programs, scholarships, and academic support",
+    ),
+    "financial": Category(
+        id="financial",
+        name="Financial",
+        description="Financial counseling, emergency assistance, and debt relief",
+    ),
 }
 
 # Subcategories organized by parent category

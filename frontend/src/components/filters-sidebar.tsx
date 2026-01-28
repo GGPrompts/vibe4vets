@@ -15,7 +15,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from '@/components/ui/tooltip';
-import { Filter, X, Briefcase, GraduationCap, Home, Scale, UtensilsCrossed, FileCheck, ChevronDown, PanelLeft, PanelLeftClose, Search, MapPin } from 'lucide-react';
+import { Filter, X, Briefcase, GraduationCap, Home, Scale, UtensilsCrossed, FileCheck, ChevronDown, PanelLeft, PanelLeftClose, Search, MapPin, Brain, HeartHandshake, HeartPulse, School, Wallet } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { cn } from '@/lib/utils';
 import { ZipCodeInput } from '@/components/ZipCodeInput';
@@ -27,6 +27,11 @@ export const CATEGORIES = [
   { value: 'legal', label: 'Legal', icon: Scale },
   { value: 'food', label: 'Food', icon: UtensilsCrossed },
   { value: 'benefits', label: 'Benefits', icon: FileCheck },
+  { value: 'mentalHealth', label: 'Mental Health', icon: Brain },
+  { value: 'supportServices', label: 'Support Services', icon: HeartHandshake },
+  { value: 'healthcare', label: 'Healthcare', icon: HeartPulse },
+  { value: 'education', label: 'Education', icon: School },
+  { value: 'financial', label: 'Financial', icon: Wallet },
 ] as const;
 
 export const STATES = [
@@ -117,6 +122,11 @@ const categoryColors: Record<string, string> = {
   legal: 'text-[hsl(var(--v4v-legal))]',
   food: 'text-[hsl(var(--v4v-food))]',
   benefits: 'text-[hsl(var(--v4v-benefits))]',
+  mentalHealth: 'text-[hsl(var(--v4v-mentalHealth))]',
+  supportServices: 'text-[hsl(var(--v4v-supportServices))]',
+  healthcare: 'text-[hsl(var(--v4v-healthcare))]',
+  education: 'text-[hsl(var(--v4v-education))]',
+  financial: 'text-[hsl(var(--v4v-financial))]',
 };
 
 const categoryAccents: Record<string, string> = {
@@ -126,6 +136,11 @@ const categoryAccents: Record<string, string> = {
   legal: 'border-l-[hsl(var(--v4v-legal))] bg-[hsl(var(--v4v-legal)/0.04)]',
   food: 'border-l-[hsl(var(--v4v-food))] bg-[hsl(var(--v4v-food)/0.04)]',
   benefits: 'border-l-[hsl(var(--v4v-benefits))] bg-[hsl(var(--v4v-benefits)/0.04)]',
+  mentalHealth: 'border-l-[hsl(var(--v4v-mentalHealth))] bg-[hsl(var(--v4v-mentalHealth)/0.04)]',
+  supportServices: 'border-l-[hsl(var(--v4v-supportServices))] bg-[hsl(var(--v4v-supportServices)/0.04)]',
+  healthcare: 'border-l-[hsl(var(--v4v-healthcare))] bg-[hsl(var(--v4v-healthcare)/0.04)]',
+  education: 'border-l-[hsl(var(--v4v-education))] bg-[hsl(var(--v4v-education)/0.04)]',
+  financial: 'border-l-[hsl(var(--v4v-financial))] bg-[hsl(var(--v4v-financial)/0.04)]',
 };
 
 const categoryIconBg: Record<string, string> = {
@@ -135,6 +150,11 @@ const categoryIconBg: Record<string, string> = {
   legal: 'bg-[hsl(var(--v4v-legal)/0.1)]',
   food: 'bg-[hsl(var(--v4v-food)/0.1)]',
   benefits: 'bg-[hsl(var(--v4v-benefits)/0.1)]',
+  mentalHealth: 'bg-[hsl(var(--v4v-mentalHealth)/0.1)]',
+  supportServices: 'bg-[hsl(var(--v4v-supportServices)/0.1)]',
+  healthcare: 'bg-[hsl(var(--v4v-healthcare)/0.1)]',
+  education: 'bg-[hsl(var(--v4v-education)/0.1)]',
+  financial: 'bg-[hsl(var(--v4v-financial)/0.1)]',
 };
 
 interface CollapsibleSectionProps {
@@ -565,6 +585,41 @@ const FILTER_ICONS = [
     label: 'Benefits',
     color: 'text-[hsl(var(--v4v-benefits))]',
     bg: 'bg-[hsl(var(--v4v-benefits)/0.1)]',
+  },
+  {
+    key: 'mentalHealth',
+    icon: Brain,
+    label: 'Mental Health',
+    color: 'text-[hsl(var(--v4v-mentalHealth))]',
+    bg: 'bg-[hsl(var(--v4v-mentalHealth)/0.1)]',
+  },
+  {
+    key: 'supportServices',
+    icon: HeartHandshake,
+    label: 'Support',
+    color: 'text-[hsl(var(--v4v-supportServices))]',
+    bg: 'bg-[hsl(var(--v4v-supportServices)/0.1)]',
+  },
+  {
+    key: 'healthcare',
+    icon: HeartPulse,
+    label: 'Healthcare',
+    color: 'text-[hsl(var(--v4v-healthcare))]',
+    bg: 'bg-[hsl(var(--v4v-healthcare)/0.1)]',
+  },
+  {
+    key: 'education',
+    icon: School,
+    label: 'Education',
+    color: 'text-[hsl(var(--v4v-education))]',
+    bg: 'bg-[hsl(var(--v4v-education)/0.1)]',
+  },
+  {
+    key: 'financial',
+    icon: Wallet,
+    label: 'Financial',
+    color: 'text-[hsl(var(--v4v-financial))]',
+    bg: 'bg-[hsl(var(--v4v-financial)/0.1)]',
   },
 ] as const;
 

@@ -67,6 +67,26 @@
   --v4v-benefits-light: 340 50% 60%;
   --v4v-benefits-muted: 340 45% 92%;
 
+  --v4v-mentalHealth: 200 60% 45%;      /* Calming blue-green */
+  --v4v-mentalHealth-light: 200 55% 55%;
+  --v4v-mentalHealth-muted: 200 45% 92%;
+
+  --v4v-supportServices: 35 65% 50%;     /* Warm amber */
+  --v4v-supportServices-light: 35 60% 60%;
+  --v4v-supportServices-muted: 35 50% 92%;
+
+  --v4v-healthcare: 350 55% 52%;         /* Rose/medical red */
+  --v4v-healthcare-light: 350 50% 62%;
+  --v4v-healthcare-muted: 350 45% 92%;
+
+  --v4v-education: 220 55% 50%;          /* Academic blue */
+  --v4v-education-light: 220 50% 60%;
+  --v4v-education-muted: 220 45% 92%;
+
+  --v4v-financial: 140 50% 40%;          /* Money green */
+  --v4v-financial-light: 140 45% 50%;
+  --v4v-financial-muted: 140 40% 92%;
+
   /* Text colors */
   --v4v-text-primary: 220 50% 20%;      /* Deep navy */
   --v4v-text-secondary: 220 20% 45%;    /* Muted navy */
@@ -245,6 +265,26 @@ html {
   --color-v4v-benefits: var(--v4v-benefits);
   --color-v4v-benefits-light: var(--v4v-benefits-light);
   --color-v4v-benefits-muted: var(--v4v-benefits-muted);
+
+  --color-v4v-mentalHealth: var(--v4v-mentalHealth);
+  --color-v4v-mentalHealth-light: var(--v4v-mentalHealth-light);
+  --color-v4v-mentalHealth-muted: var(--v4v-mentalHealth-muted);
+
+  --color-v4v-supportServices: var(--v4v-supportServices);
+  --color-v4v-supportServices-light: var(--v4v-supportServices-light);
+  --color-v4v-supportServices-muted: var(--v4v-supportServices-muted);
+
+  --color-v4v-healthcare: var(--v4v-healthcare);
+  --color-v4v-healthcare-light: var(--v4v-healthcare-light);
+  --color-v4v-healthcare-muted: var(--v4v-healthcare-muted);
+
+  --color-v4v-education: var(--v4v-education);
+  --color-v4v-education-light: var(--v4v-education-light);
+  --color-v4v-education-muted: var(--v4v-education-muted);
+
+  --color-v4v-financial: var(--v4v-financial);
+  --color-v4v-financial-light: var(--v4v-financial-light);
+  --color-v4v-financial-muted: var(--v4v-financial-muted);
 }
 
 @layer base {
@@ -553,6 +593,31 @@ html {
 .bg-v4v-benefits-muted { background-color: hsl(var(--v4v-benefits-muted)); }
 .text-v4v-benefits { color: hsl(var(--v4v-benefits)); }
 .border-v4v-benefits { border-color: hsl(var(--v4v-benefits)); }
+
+.bg-v4v-mentalHealth { background-color: hsl(var(--v4v-mentalHealth)); }
+.bg-v4v-mentalHealth-muted { background-color: hsl(var(--v4v-mentalHealth-muted)); }
+.text-v4v-mentalHealth { color: hsl(var(--v4v-mentalHealth)); }
+.border-v4v-mentalHealth { border-color: hsl(var(--v4v-mentalHealth)); }
+
+.bg-v4v-supportServices { background-color: hsl(var(--v4v-supportServices)); }
+.bg-v4v-supportServices-muted { background-color: hsl(var(--v4v-supportServices-muted)); }
+.text-v4v-supportServices { color: hsl(var(--v4v-supportServices)); }
+.border-v4v-supportServices { border-color: hsl(var(--v4v-supportServices)); }
+
+.bg-v4v-healthcare { background-color: hsl(var(--v4v-healthcare)); }
+.bg-v4v-healthcare-muted { background-color: hsl(var(--v4v-healthcare-muted)); }
+.text-v4v-healthcare { color: hsl(var(--v4v-healthcare)); }
+.border-v4v-healthcare { border-color: hsl(var(--v4v-healthcare)); }
+
+.bg-v4v-education { background-color: hsl(var(--v4v-education)); }
+.bg-v4v-education-muted { background-color: hsl(var(--v4v-education-muted)); }
+.text-v4v-education { color: hsl(var(--v4v-education)); }
+.border-v4v-education { border-color: hsl(var(--v4v-education)); }
+
+.bg-v4v-financial { background-color: hsl(var(--v4v-financial)); }
+.bg-v4v-financial-muted { background-color: hsl(var(--v4v-financial-muted)); }
+.text-v4v-financial { color: hsl(var(--v4v-financial)); }
+.border-v4v-financial { border-color: hsl(var(--v4v-financial)); }
 
 /* Search input styling - matches hero aesthetic */
 .search-glow {

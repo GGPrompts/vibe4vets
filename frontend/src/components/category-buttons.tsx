@@ -1,36 +1,85 @@
 'use client';
 
 import Link from 'next/link';
-import { Briefcase, GraduationCap, Home, Scale } from 'lucide-react';
+import { Briefcase, GraduationCap, Home, Scale, UtensilsCrossed, FileCheck, Brain, HeartHandshake, HeartPulse, School, Wallet } from 'lucide-react';
 
 const categories = [
   {
     name: 'Employment',
     slug: 'employment',
     icon: Briefcase,
-    color: 'bg-[hsl(210,70%,45%)]',
-    hoverColor: 'hover:bg-[hsl(210,70%,40%)]',
+    color: 'bg-[hsl(var(--v4v-employment))]',
+    hoverColor: 'hover:bg-[hsl(var(--v4v-employment-light))]',
   },
   {
     name: 'Training',
     slug: 'training',
     icon: GraduationCap,
-    color: 'bg-[hsl(160,50%,40%)]',
-    hoverColor: 'hover:bg-[hsl(160,50%,35%)]',
+    color: 'bg-[hsl(var(--v4v-training))]',
+    hoverColor: 'hover:bg-[hsl(var(--v4v-training-light))]',
   },
   {
     name: 'Housing',
     slug: 'housing',
     icon: Home,
-    color: 'bg-[hsl(25,70%,50%)]',
-    hoverColor: 'hover:bg-[hsl(25,70%,45%)]',
+    color: 'bg-[hsl(var(--v4v-housing))]',
+    hoverColor: 'hover:bg-[hsl(var(--v4v-housing-light))]',
   },
   {
     name: 'Legal',
     slug: 'legal',
     icon: Scale,
-    color: 'bg-[hsl(280,40%,45%)]',
-    hoverColor: 'hover:bg-[hsl(280,40%,40%)]',
+    color: 'bg-[hsl(var(--v4v-legal))]',
+    hoverColor: 'hover:bg-[hsl(var(--v4v-legal-light))]',
+  },
+  {
+    name: 'Food',
+    slug: 'food',
+    icon: UtensilsCrossed,
+    color: 'bg-[hsl(var(--v4v-food))]',
+    hoverColor: 'hover:bg-[hsl(var(--v4v-food-light))]',
+  },
+  {
+    name: 'Benefits',
+    slug: 'benefits',
+    icon: FileCheck,
+    color: 'bg-[hsl(var(--v4v-benefits))]',
+    hoverColor: 'hover:bg-[hsl(var(--v4v-benefits-light))]',
+  },
+  {
+    name: 'Mental Health',
+    slug: 'mentalHealth',
+    icon: Brain,
+    color: 'bg-[hsl(var(--v4v-mentalHealth))]',
+    hoverColor: 'hover:bg-[hsl(var(--v4v-mentalHealth-light))]',
+  },
+  {
+    name: 'Support',
+    slug: 'supportServices',
+    icon: HeartHandshake,
+    color: 'bg-[hsl(var(--v4v-supportServices))]',
+    hoverColor: 'hover:bg-[hsl(var(--v4v-supportServices-light))]',
+  },
+  {
+    name: 'Healthcare',
+    slug: 'healthcare',
+    icon: HeartPulse,
+    color: 'bg-[hsl(var(--v4v-healthcare))]',
+    hoverColor: 'hover:bg-[hsl(var(--v4v-healthcare-light))]',
+  },
+  {
+    name: 'Education',
+    slug: 'education',
+    icon: School,
+    color: 'bg-[hsl(var(--v4v-education))]',
+    hoverColor: 'hover:bg-[hsl(var(--v4v-education-light))]',
+  },
+  {
+    name: 'Financial',
+    slug: 'financial',
+    icon: Wallet,
+    color: 'bg-[hsl(var(--v4v-financial))]',
+    hoverColor: 'hover:bg-[hsl(var(--v4v-financial-light))]',
   },
 ];
 

@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Briefcase, BookOpen, Home, Scale, MapPin, Globe, CheckCircle2, Tag, Phone, Clock, UtensilsCrossed, Award, ExternalLink } from 'lucide-react';
+import { Briefcase, BookOpen, Home, Scale, MapPin, Globe, CheckCircle2, Tag, Phone, Clock, UtensilsCrossed, Award, ExternalLink, Brain, HeartHandshake, HeartPulse, School, Wallet } from 'lucide-react';
 import type { Resource, MatchExplanation } from '@/lib/api';
 import { BookmarkButton } from '@/components/bookmark-button';
 
@@ -32,6 +32,11 @@ const accentBarColors: Record<string, string> = {
   legal: 'bg-[hsl(var(--v4v-legal))]',
   food: 'bg-[hsl(var(--v4v-food))]',
   benefits: 'bg-[hsl(var(--v4v-benefits))]',
+  mentalHealth: 'bg-[hsl(var(--v4v-mentalHealth))]',
+  supportServices: 'bg-[hsl(var(--v4v-supportServices))]',
+  healthcare: 'bg-[hsl(var(--v4v-healthcare))]',
+  education: 'bg-[hsl(var(--v4v-education))]',
+  financial: 'bg-[hsl(var(--v4v-financial))]',
 };
 
 // Card background gradients - subtle category tints
@@ -42,6 +47,11 @@ const cardBackgrounds: Record<string, string> = {
   legal: 'bg-gradient-to-br from-[hsl(var(--v4v-legal)/0.03)] via-white to-[hsl(var(--v4v-legal)/0.06)]',
   food: 'bg-gradient-to-br from-[hsl(var(--v4v-food)/0.03)] via-white to-[hsl(var(--v4v-food)/0.06)]',
   benefits: 'bg-gradient-to-br from-[hsl(var(--v4v-benefits)/0.03)] via-white to-[hsl(var(--v4v-benefits)/0.06)]',
+  mentalHealth: 'bg-gradient-to-br from-[hsl(var(--v4v-mentalHealth)/0.03)] via-white to-[hsl(var(--v4v-mentalHealth)/0.06)]',
+  supportServices: 'bg-gradient-to-br from-[hsl(var(--v4v-supportServices)/0.03)] via-white to-[hsl(var(--v4v-supportServices)/0.06)]',
+  healthcare: 'bg-gradient-to-br from-[hsl(var(--v4v-healthcare)/0.03)] via-white to-[hsl(var(--v4v-healthcare)/0.06)]',
+  education: 'bg-gradient-to-br from-[hsl(var(--v4v-education)/0.03)] via-white to-[hsl(var(--v4v-education)/0.06)]',
+  financial: 'bg-gradient-to-br from-[hsl(var(--v4v-financial)/0.03)] via-white to-[hsl(var(--v4v-financial)/0.06)]',
 };
 
 // Card border colors on hover
@@ -52,6 +62,11 @@ const cardHoverBorders: Record<string, string> = {
   legal: 'hover:border-[hsl(var(--v4v-legal)/0.3)]',
   food: 'hover:border-[hsl(var(--v4v-food)/0.3)]',
   benefits: 'hover:border-[hsl(var(--v4v-benefits)/0.3)]',
+  mentalHealth: 'hover:border-[hsl(var(--v4v-mentalHealth)/0.3)]',
+  supportServices: 'hover:border-[hsl(var(--v4v-supportServices)/0.3)]',
+  healthcare: 'hover:border-[hsl(var(--v4v-healthcare)/0.3)]',
+  education: 'hover:border-[hsl(var(--v4v-education)/0.3)]',
+  financial: 'hover:border-[hsl(var(--v4v-financial)/0.3)]',
 };
 
 // Badge styling using design system
@@ -62,6 +77,11 @@ const categoryBadgeStyles: Record<string, string> = {
   legal: 'bg-[hsl(var(--v4v-legal)/0.12)] text-[hsl(var(--v4v-legal))] border-[hsl(var(--v4v-legal)/0.25)]',
   food: 'bg-[hsl(var(--v4v-food)/0.12)] text-[hsl(var(--v4v-food))] border-[hsl(var(--v4v-food)/0.25)]',
   benefits: 'bg-[hsl(var(--v4v-benefits)/0.12)] text-[hsl(var(--v4v-benefits))] border-[hsl(var(--v4v-benefits)/0.25)]',
+  mentalHealth: 'bg-[hsl(var(--v4v-mentalHealth)/0.12)] text-[hsl(var(--v4v-mentalHealth))] border-[hsl(var(--v4v-mentalHealth)/0.25)]',
+  supportServices: 'bg-[hsl(var(--v4v-supportServices)/0.12)] text-[hsl(var(--v4v-supportServices))] border-[hsl(var(--v4v-supportServices)/0.25)]',
+  healthcare: 'bg-[hsl(var(--v4v-healthcare)/0.12)] text-[hsl(var(--v4v-healthcare))] border-[hsl(var(--v4v-healthcare)/0.25)]',
+  education: 'bg-[hsl(var(--v4v-education)/0.12)] text-[hsl(var(--v4v-education))] border-[hsl(var(--v4v-education)/0.25)]',
+  financial: 'bg-[hsl(var(--v4v-financial)/0.12)] text-[hsl(var(--v4v-financial))] border-[hsl(var(--v4v-financial)/0.25)]',
 };
 
 // Category icons
@@ -72,6 +92,11 @@ const categoryIcons: Record<string, typeof Briefcase> = {
   legal: Scale,
   food: UtensilsCrossed,
   benefits: Award,
+  mentalHealth: Brain,
+  supportServices: HeartHandshake,
+  healthcare: HeartPulse,
+  education: School,
+  financial: Wallet,
 };
 
 // Export for use in other components
@@ -85,6 +110,11 @@ const logoBorderColors: Record<string, string> = {
   legal: 'border-[hsl(var(--v4v-legal))]',
   food: 'border-[hsl(var(--v4v-food))]',
   benefits: 'border-[hsl(var(--v4v-benefits))]',
+  mentalHealth: 'border-[hsl(var(--v4v-mentalHealth))]',
+  supportServices: 'border-[hsl(var(--v4v-supportServices))]',
+  healthcare: 'border-[hsl(var(--v4v-healthcare))]',
+  education: 'border-[hsl(var(--v4v-education))]',
+  financial: 'border-[hsl(var(--v4v-financial))]',
 };
 
 function ResourceLogo({

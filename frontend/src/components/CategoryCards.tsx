@@ -1,6 +1,6 @@
 'use client';
 
-import { Briefcase, GraduationCap, Home as HomeIcon, Scale, UtensilsCrossed, FileCheck } from 'lucide-react';
+import { Briefcase, GraduationCap, Home as HomeIcon, Scale, UtensilsCrossed, FileCheck, Brain, HeartHandshake, HeartPulse, School, Wallet } from 'lucide-react';
 
 const categories = [
   {
@@ -56,6 +56,51 @@ const categories = [
     colorClass: 'bg-v4v-benefits',
     mutedBgClass: 'bg-v4v-benefits-muted',
     textClass: 'text-v4v-benefits',
+  },
+  {
+    name: 'Mental Health',
+    slug: 'mentalHealth',
+    description: 'Counseling, PTSD support, crisis services, and mental wellness programs',
+    icon: Brain,
+    colorClass: 'bg-v4v-mentalHealth',
+    mutedBgClass: 'bg-v4v-mentalHealth-muted',
+    textClass: 'text-v4v-mentalHealth',
+  },
+  {
+    name: 'Support Services',
+    slug: 'supportServices',
+    description: 'General veteran support, peer mentoring, and case management',
+    icon: HeartHandshake,
+    colorClass: 'bg-v4v-supportServices',
+    mutedBgClass: 'bg-v4v-supportServices-muted',
+    textClass: 'text-v4v-supportServices',
+  },
+  {
+    name: 'Healthcare',
+    slug: 'healthcare',
+    description: 'Medical care, VA health services, and wellness programs',
+    icon: HeartPulse,
+    colorClass: 'bg-v4v-healthcare',
+    mutedBgClass: 'bg-v4v-healthcare-muted',
+    textClass: 'text-v4v-healthcare',
+  },
+  {
+    name: 'Education',
+    slug: 'education',
+    description: 'College programs, scholarships, and academic support',
+    icon: School,
+    colorClass: 'bg-v4v-education',
+    mutedBgClass: 'bg-v4v-education-muted',
+    textClass: 'text-v4v-education',
+  },
+  {
+    name: 'Financial',
+    slug: 'financial',
+    description: 'Financial counseling, emergency assistance, and debt relief',
+    icon: Wallet,
+    colorClass: 'bg-v4v-financial',
+    mutedBgClass: 'bg-v4v-financial-muted',
+    textClass: 'text-v4v-financial',
   },
 ];
 

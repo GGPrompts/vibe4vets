@@ -10,7 +10,7 @@ export interface HubResource {
 
 interface HubCardProps {
   resource: HubResource;
-  category: 'employment' | 'training' | 'housing' | 'legal' | 'food' | 'benefits';
+  category: 'employment' | 'training' | 'housing' | 'legal' | 'food' | 'benefits' | 'mentalHealth' | 'supportServices' | 'healthcare' | 'education' | 'financial';
 }
 
 const categoryColors: Record<string, string> = {
@@ -20,6 +20,11 @@ const categoryColors: Record<string, string> = {
   legal: 'bg-v4v-legal',
   food: 'bg-v4v-food',
   benefits: 'bg-v4v-benefits',
+  mentalHealth: 'bg-v4v-mentalHealth',
+  supportServices: 'bg-v4v-supportServices',
+  healthcare: 'bg-v4v-healthcare',
+  education: 'bg-v4v-education',
+  financial: 'bg-v4v-financial',
 };
 
 export function HubCard({ resource, category }: HubCardProps) {

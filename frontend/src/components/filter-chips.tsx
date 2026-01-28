@@ -1,6 +1,6 @@
 'use client';
 
-import { X, Briefcase, GraduationCap, Home, Scale, Globe, MapPin, UtensilsCrossed, Award } from 'lucide-react';
+import { X, Briefcase, GraduationCap, Home, Scale, Globe, MapPin, UtensilsCrossed, Award, Brain, HeartHandshake, HeartPulse, School, Wallet } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
 import { CATEGORIES, STATES, SCOPES, type FilterState } from '@/components/filters-sidebar';
@@ -23,6 +23,11 @@ const categoryBadgeStyles: Record<string, string> = {
   legal: 'bg-[hsl(var(--v4v-legal))] text-white border-[hsl(var(--v4v-legal))]',
   food: 'bg-[hsl(var(--v4v-food))] text-white border-[hsl(var(--v4v-food))]',
   benefits: 'bg-[hsl(var(--v4v-benefits))] text-white border-[hsl(var(--v4v-benefits))]',
+  mentalHealth: 'bg-[hsl(var(--v4v-mentalHealth))] text-white border-[hsl(var(--v4v-mentalHealth))]',
+  supportServices: 'bg-[hsl(var(--v4v-supportServices))] text-white border-[hsl(var(--v4v-supportServices))]',
+  healthcare: 'bg-[hsl(var(--v4v-healthcare))] text-white border-[hsl(var(--v4v-healthcare))]',
+  education: 'bg-[hsl(var(--v4v-education))] text-white border-[hsl(var(--v4v-education))]',
+  financial: 'bg-[hsl(var(--v4v-financial))] text-white border-[hsl(var(--v4v-financial))]',
 };
 
 const categoryIcons: Record<string, typeof Briefcase> = {
@@ -32,6 +37,11 @@ const categoryIcons: Record<string, typeof Briefcase> = {
   legal: Scale,
   food: UtensilsCrossed,
   benefits: Award,
+  mentalHealth: Brain,
+  supportServices: HeartHandshake,
+  healthcare: HeartPulse,
+  education: School,
+  financial: Wallet,
 };
 
 export function FilterChips({

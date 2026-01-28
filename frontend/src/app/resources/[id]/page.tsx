@@ -23,6 +23,11 @@ import {
   Scale,
   UtensilsCrossed,
   Award,
+  Brain,
+  HeartHandshake,
+  HeartPulse,
+  School,
+  Wallet,
 } from 'lucide-react';
 import api, { type Resource } from '@/lib/api';
 import { useAnalytics } from '@/lib/useAnalytics';
@@ -38,6 +43,11 @@ const categoryColors: Record<string, string> = {
   legal: 'bg-white/90 text-[hsl(var(--v4v-legal))]',
   food: 'bg-white/90 text-[hsl(var(--v4v-food))]',
   benefits: 'bg-white/90 text-[hsl(var(--v4v-benefits))]',
+  mentalHealth: 'bg-white/90 text-[hsl(var(--v4v-mentalHealth))]',
+  supportServices: 'bg-white/90 text-[hsl(var(--v4v-supportServices))]',
+  healthcare: 'bg-white/90 text-[hsl(var(--v4v-healthcare))]',
+  education: 'bg-white/90 text-[hsl(var(--v4v-education))]',
+  financial: 'bg-white/90 text-[hsl(var(--v4v-financial))]',
 };
 
 const categoryGradients: Record<string, string> = {
@@ -47,6 +57,11 @@ const categoryGradients: Record<string, string> = {
   legal: 'from-[hsl(var(--v4v-legal))] to-[hsl(265,50%,45%)]',
   food: 'from-[hsl(var(--v4v-food))] to-[hsl(145,55%,32%)]',
   benefits: 'from-[hsl(var(--v4v-benefits))] to-[hsl(340,55%,40%)]',
+  mentalHealth: 'from-[hsl(var(--v4v-mentalHealth))] to-[hsl(200,60%,35%)]',
+  supportServices: 'from-[hsl(var(--v4v-supportServices))] to-[hsl(35,65%,40%)]',
+  healthcare: 'from-[hsl(var(--v4v-healthcare))] to-[hsl(350,55%,42%)]',
+  education: 'from-[hsl(var(--v4v-education))] to-[hsl(220,55%,40%)]',
+  financial: 'from-[hsl(var(--v4v-financial))] to-[hsl(140,50%,30%)]',
 };
 
 const categoryIcons: Record<string, typeof Briefcase> = {
@@ -56,6 +71,11 @@ const categoryIcons: Record<string, typeof Briefcase> = {
   legal: Scale,
   food: UtensilsCrossed,
   benefits: Award,
+  mentalHealth: Brain,
+  supportServices: HeartHandshake,
+  healthcare: HeartPulse,
+  education: School,
+  financial: Wallet,
 };
 
 function IntakeCard({ resource }: { resource: Resource }) {

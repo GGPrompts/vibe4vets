@@ -19,6 +19,11 @@ import {
   BadgeCheck,
   Video,
   Coins,
+  Brain,
+  HeartHandshake,
+  HeartPulse,
+  School,
+  Wallet,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -117,6 +122,11 @@ const categoryIcons: Record<string, React.ElementType> = {
   'Legal services': Scale,
   'Food assistance': UtensilsCrossed,
   'Benefits consultation': FileCheck,
+  'Mental health': Brain,
+  'Support services': HeartHandshake,
+  'Healthcare': HeartPulse,
+  'Education': School,
+  'Financial': Wallet,
 };
 
 interface MatchReasonChipsProps {

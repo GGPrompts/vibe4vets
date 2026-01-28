@@ -74,6 +74,11 @@ const RESOURCE_CATEGORIES = [
   { value: 'legal', label: 'Legal services' },
   { value: 'food', label: 'Food assistance' },
   { value: 'benefits', label: 'Benefits consultation' },
+  { value: 'mentalHealth', label: 'Mental health services' },
+  { value: 'supportServices', label: 'Support services' },
+  { value: 'healthcare', label: 'Healthcare services' },
+  { value: 'education', label: 'Education programs' },
+  { value: 'financial', label: 'Financial assistance' },
 ] as const;
 
 const BENEFIT_TYPES = [
