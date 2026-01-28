@@ -8,6 +8,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { useOptionalMagnifier } from '@/context/magnifier-context';
+import { useIsMobile } from '@/hooks/use-media-query';
 import {
   Phone,
   Globe,
@@ -298,6 +299,7 @@ export function ResourceDetailModal({
   const dragControls = useDragControls();
   const constraintsRef = useRef<HTMLDivElement>(null);
   const magnifierContext = useOptionalMagnifier();
+  const isMobile = useIsMobile();
 
   // Suppress magnifier when modal is open
   useEffect(() => {
@@ -393,11 +395,11 @@ export function ResourceDetailModal({
               },
               opacity: { duration: 0.2 },
             }}
-            drag="y"
-            dragControls={dragControls}
-            dragConstraints={{ top: 0, bottom: 0 }}
-            dragElastic={{ top: 0, bottom: 0.5 }}
-            onDragEnd={handleDragEnd}
+            drag={isMobile ? "y" : false}
+            dragControls={isMobile ? dragControls : undefined}
+            dragConstraints={isMobile ? { top: 0, bottom: 0 } : undefined}
+            dragElastic={isMobile ? { top: 0, bottom: 0.5 } : undefined}
+            onDragEnd={isMobile ? handleDragEnd : undefined}
           >
                 {/* Mobile drag handle */}
                 <div className="flex justify-center py-3 sm:hidden">

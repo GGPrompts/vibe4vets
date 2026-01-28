@@ -168,6 +168,7 @@ body {
 }
 
 html {
+  font-size: 18px; /* Bumped from 16px for better readability on large monitors */
   background-color: hsl(var(--background));
 }
 
