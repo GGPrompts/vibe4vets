@@ -595,17 +595,11 @@ function SearchResults() {
     return () => observer.disconnect();
   }, [fetchNextPage, hasNextPage, isFetchingNextPage, isMobile, isSearchMode]);
 
-  // When sidebar expands on desktop, use full width (no max-w constraint, minimal padding)
+  // Track sidebar expanded state for transform (desktop only)
   const sidebarExpanded = !sidebarCollapsed && !isMobile;
 
   return (
-    <div
-      className={`mx-auto transition-all duration-200 ease-out ${
-        sidebarExpanded
-          ? 'max-w-none px-4 lg:pl-8 lg:pr-4'  // Full width, less padding
-          : 'max-w-[1600px] px-4 sm:px-6 lg:px-8'  // Normal centered layout
-      }`}
-    >
+    <div className="px-4 sm:px-6 lg:px-8">
       <div className="flex gap-6">
         {/* Fixed Filter Sidebar - Desktop (renders spacer + fixed sidebar) */}
         <FixedFiltersSidebar
