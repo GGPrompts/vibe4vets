@@ -1,6 +1,5 @@
 """Tests for Wounded Warrior Project connector."""
 
-
 from connectors.wounded_warrior_project import (
     WARRIOR_CARE_NETWORK_CENTERS,
     WoundedWarriorProjectConnector,

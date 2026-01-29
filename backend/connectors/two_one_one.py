@@ -503,7 +503,7 @@ class TwoOneOneConnector(BaseConnector):
             if len(results) < limit:
                 break
 
-        return all_results[:self.max_results_per_keyword]
+        return all_results[: self.max_results_per_keyword]
 
     def _get_result_id(self, result: dict[str, Any]) -> str:
         """Get unique identifier for a search result."""
@@ -596,11 +596,7 @@ class TwoOneOneConnector(BaseConnector):
             service_eligibility = ""
 
         # Build title - prefer service name if different from org
-        title = (
-            f"{service_name} - {org_name}"
-            if service_name and service_name != org_name
-            else org_name
-        )
+        title = f"{service_name} - {org_name}" if service_name and service_name != org_name else org_name
 
         # Build description
         description = (
@@ -723,11 +719,7 @@ class TwoOneOneConnector(BaseConnector):
                 categories.add(self.TAXONOMY_CATEGORY_MAP[service_category])
 
         # Infer from description keywords
-        description = (
-            result.get("description", "")
-            + " "
-            + result.get("service", {}).get("description", "")
-        ).lower()
+        description = (result.get("description", "") + " " + result.get("service", {}).get("description", "")).lower()
 
         category_keywords = {
             "employment": ["job", "employment", "career", "hire", "work"],

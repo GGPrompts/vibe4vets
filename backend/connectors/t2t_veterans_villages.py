@@ -86,8 +86,7 @@ T2T_VILLAGES = [
         "phone": "(602) 717-6682",
         "hours": "24 hours, 7 days a week",
         "description": (
-            "Renovated 150-room hotel providing permanent supportive housing. "
-            "Serves over 300 veterans daily."
+            "Renovated 150-room hotel providing permanent supportive housing. Serves over 300 veterans daily."
         ),
         "capacity": {"total_units": 150},
         "housing_types": ["emergency-shelter", "transitional-housing", "permanent-supportive-housing"],
@@ -333,8 +332,7 @@ class T2TVeteransVillagesConnector(BaseConnector):
         partner = location.get("partner_org")
         if partner == "U.S.VETS":
             parts.append(
-                "U.S.VETS follows a Housing First model with low-barrier access. "
-                "No minimum discharge requirement."
+                "U.S.VETS follows a Housing First model with low-barrier access. No minimum discharge requirement."
             )
 
         # Housing type-specific eligibility

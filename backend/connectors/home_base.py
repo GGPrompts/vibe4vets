@@ -152,9 +152,7 @@ class HomeBaseConnector(BaseConnector):
         full_address = f"{address}, {city}, {state} {zip_code}"
 
         title = f"{name} - Free Veteran Mental Health Care"
-        description = self._build_description(
-            name, city, state, serves_states, is_headquarters
-        )
+        description = self._build_description(name, city, state, serves_states, is_headquarters)
         eligibility = self._build_eligibility()
         how_to_apply = self._build_how_to_apply(name, phone, email)
         tags = self._build_tags(state, serves_states, is_headquarters)
@@ -237,10 +235,7 @@ class HomeBaseConnector(BaseConnector):
         # Coverage area for multi-state locations
         if len(serves_states) > 1:
             state_names = [self._state_code_to_name(s) for s in serves_states]
-            parts.append(
-                f"This location serves veterans throughout New England: "
-                f"{', '.join(state_names)}."
-            )
+            parts.append(f"This location serves veterans throughout New England: {', '.join(state_names)}.")
 
         # Additional services
         parts.append(

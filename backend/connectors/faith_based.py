@@ -179,9 +179,7 @@ class FaithBasedConnector(BaseConnector):
             org_name = program.get("org_name", "This organization")
             program_name = program.get("program_name", "")
             readable_services = self._format_services(services[:5])
-            parts.append(
-                f"{org_name}'s {program_name} provides {readable_services} for veterans."
-            )
+            parts.append(f"{org_name}'s {program_name} provides {readable_services} for veterans.")
 
         return " ".join(parts)
 

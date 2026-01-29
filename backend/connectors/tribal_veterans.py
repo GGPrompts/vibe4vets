@@ -323,9 +323,7 @@ scale when capacity allows."""
         states_served = list({loc.get("state") for loc in locations if loc.get("state")})
 
         # Build enhanced description
-        full_description = self._build_va_program_description(
-            name, description, locations, contact_email
-        )
+        full_description = self._build_va_program_description(name, description, locations, contact_email)
 
         # Determine categories based on program type
         categories = ["benefits", "healthcare"]
@@ -379,11 +377,7 @@ scale when capacity allows."""
         parts = [description]
 
         if locations:
-            location_names = [
-                f"{loc.get('name')} ({loc.get('state')})"
-                for loc in locations
-                if loc.get("name")
-            ]
+            location_names = [f"{loc.get('name')} ({loc.get('state')})" for loc in locations if loc.get("name")]
             if location_names:
                 parts.append(f"Current locations: {', '.join(location_names)}.")
 
@@ -446,10 +440,7 @@ scale when capacity allows."""
 
     def _default_va_tribal_how_to_apply(self, contact_email: str | None) -> str:
         """Return default how-to-apply for VA Tribal programs."""
-        parts = [
-            "Contact the VHA Office of Tribal Health for more information about "
-            "programs and eligibility."
-        ]
+        parts = ["Contact the VHA Office of Tribal Health for more information about programs and eligibility."]
 
         if contact_email:
             parts.append(f"Email: {contact_email}")

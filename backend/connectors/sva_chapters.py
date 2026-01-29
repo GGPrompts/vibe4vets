@@ -273,9 +273,7 @@ class SVAChaptersConnector(BaseConnector):
 
         # Primary description
         if chapter_name.lower() != "student veterans of america":
-            parts.append(
-                f"{chapter_name} is the Student Veterans of America chapter at {school_name}."
-            )
+            parts.append(f"{chapter_name} is the Student Veterans of America chapter at {school_name}.")
         else:
             parts.append(f"Student Veterans of America chapter at {school_name}.")
 

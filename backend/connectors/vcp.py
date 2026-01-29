@@ -162,8 +162,7 @@ class VCPConnector(BaseConnector):
             if homes:
                 home_sizes = village.get("home_sizes", "240-320 sq ft")
                 parts.append(
-                    f"Features {homes} fully furnished tiny homes ({home_sizes}), "
-                    "each with all utilities included."
+                    f"Features {homes} fully furnished tiny homes ({home_sizes}), each with all utilities included."
                 )
         else:
             planned_homes = village.get("planned_homes", 0)
@@ -184,10 +183,7 @@ class VCPConnector(BaseConnector):
             parts.append(f"Services include: {service_list}.")
 
         # Add success rate
-        parts.append(
-            f"VCP has an {success_rate}. Veterans keep all furniture when "
-            "moving to permanent housing."
-        )
+        parts.append(f"VCP has an {success_rate}. Veterans keep all furniture when moving to permanent housing.")
 
         return " ".join(parts)
 
@@ -233,9 +229,7 @@ class VCPConnector(BaseConnector):
         parts = []
 
         if status == "operational":
-            parts.append(
-                f"Contact VCP at {phone} to inquire about housing at the {city} village."
-            )
+            parts.append(f"Contact VCP at {phone} to inquire about housing at the {city} village.")
             parts.append(
                 "Visit vcp.org to learn more about the application process. "
                 "Walk-ins are welcome at the Outreach Center."

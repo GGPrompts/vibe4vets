@@ -205,8 +205,7 @@ class ScholarshipsConnector(BaseConnector):
                 "aggregator",
             ],
             eligibility=(
-                "Open to all Veterans, service members, and military families "
-                "searching for education funding."
+                "Open to all Veterans, service members, and military families searching for education funding."
             ),
             how_to_apply=(
                 f"Visit {website} and use the search tools to find scholarships "
@@ -271,8 +270,7 @@ class ScholarshipsConnector(BaseConnector):
         """
         if not eligibility_list:
             return (
-                "Veterans and military community members. "
-                "Check program requirements for specific eligibility criteria."
+                "Veterans and military community members. Check program requirements for specific eligibility criteria."
             )
 
         if len(eligibility_list) == 1:

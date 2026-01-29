@@ -197,11 +197,13 @@ class TestScholarshipsConnector:
         """Test eligibility text with multiple requirements."""
         connector = ScholarshipsConnector(data_path="/fake/path.json")
 
-        elig = connector._build_eligibility([
-            "Veterans of all branches",
-            "Active duty service members",
-            "Spouses of Veterans",
-        ])
+        elig = connector._build_eligibility(
+            [
+                "Veterans of all branches",
+                "Active duty service members",
+                "Spouses of Veterans",
+            ]
+        )
 
         assert "Veterans of all branches" in elig
         assert "Active duty service members" in elig

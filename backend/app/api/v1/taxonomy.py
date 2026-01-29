@@ -45,9 +45,7 @@ class CategoryTags(BaseModel):
 class TaxonomyResponse(BaseModel):
     """Full tag taxonomy response."""
 
-    categories: list[CategoryTags] = Field(
-        ..., description="All categories with their tags"
-    )
+    categories: list[CategoryTags] = Field(..., description="All categories with their tags")
 
     model_config = {
         "json_schema_extra": {
@@ -78,9 +76,7 @@ class CategoryTagsResponse(BaseModel):
     category_id: str
     category_name: str
     groups: list[TagGroup]
-    flat_tags: list[TagInfo] = Field(
-        ..., description="All tags for this category as a flat list"
-    )
+    flat_tags: list[TagInfo] = Field(..., description="All tags for this category as a flat list")
 
 
 @router.get(
@@ -109,10 +105,7 @@ def get_tag_taxonomy() -> TaxonomyResponse:
 
         groups = []
         for group_name, tag_ids in cat_tags.items():
-            tags = [
-                TagInfo(id=tag_id, name=get_tag_display_name(tag_id))
-                for tag_id in tag_ids
-            ]
+            tags = [TagInfo(id=tag_id, name=get_tag_display_name(tag_id)) for tag_id in tag_ids]
             groups.append(TagGroup(group=group_name, tags=tags))
 
         categories_list.append(
@@ -134,9 +127,7 @@ def get_tag_taxonomy() -> TaxonomyResponse:
     responses={
         404: {
             "description": "Category not found",
-            "content": {
-                "application/json": {"example": {"detail": "Category not found"}}
-            },
+            "content": {"application/json": {"example": {"detail": "Category not found"}}},
         }
     },
 )
@@ -154,14 +145,11 @@ def get_category_tags(category_id: str) -> CategoryTagsResponse:
     cat_tags = get_eligibility_tags(category_id)
     groups = []
     for group_name, tag_ids in cat_tags.items():
-        tags = [
-            TagInfo(id=tag_id, name=get_tag_display_name(tag_id)) for tag_id in tag_ids
-        ]
+        tags = [TagInfo(id=tag_id, name=get_tag_display_name(tag_id)) for tag_id in tag_ids]
         groups.append(TagGroup(group=group_name, tags=tags))
 
     flat_tags = [
-        TagInfo(id=tag_id, name=get_tag_display_name(tag_id))
-        for tag_id in get_flat_tags_for_category(category_id)
+        TagInfo(id=tag_id, name=get_tag_display_name(tag_id)) for tag_id in get_flat_tags_for_category(category_id)
     ]
 
     return CategoryTagsResponse(
@@ -198,8 +186,7 @@ def get_categories() -> CategoriesResponse:
     Returns the list of categories available for filtering resources.
     """
     categories_list = [
-        CategoryInfo(id=cat.id, name=cat.name, description=cat.description)
-        for cat in CATEGORIES.values()
+        CategoryInfo(id=cat.id, name=cat.name, description=cat.description) for cat in CATEGORIES.values()
     ]
     return CategoriesResponse(categories=categories_list)
 

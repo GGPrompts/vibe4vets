@@ -1,6 +1,5 @@
 """Tests for Tunnel to Towers Veterans Villages connector."""
 
-
 from connectors.t2t_veterans_villages import (
     T2T_VILLAGES,
     T2TVeteransVillagesConnector,
@@ -96,10 +95,7 @@ class TestT2TVeteransVillagesConnector:
         for resource in resources:
             # Should mention housing type
             desc_lower = resource.description.lower()
-            assert any(
-                term in desc_lower
-                for term in ["permanent", "transitional", "housing", "supportive"]
-            )
+            assert any(term in desc_lower for term in ["permanent", "transitional", "housing", "supportive"])
             # Should mention T2T
             assert "tunnel to towers" in desc_lower
 

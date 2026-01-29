@@ -1,6 +1,5 @@
 """Tests for Boulder Crest Foundation PATHH program connector."""
 
-
 from connectors.boulder_crest import (
     BOULDER_CREST_LOCATIONS,
     BoulderCrestConnector,

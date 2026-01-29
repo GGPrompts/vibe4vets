@@ -187,14 +187,10 @@ class BoulderCrestConnector(BaseConnector):
             state_names = [self._state_code_to_name(s) for s in serves_states[:4]]
             if len(serves_states) > 4:
                 parts.append(
-                    f"This location serves participants from {', '.join(state_names)}, "
-                    "and surrounding states."
+                    f"This location serves participants from {', '.join(state_names)}, and surrounding states."
                 )
             else:
-                parts.append(
-                    f"This location serves participants from "
-                    f"{', '.join(state_names)}."
-                )
+                parts.append(f"This location serves participants from {', '.join(state_names)}.")
 
         # Additional programs
         parts.append(

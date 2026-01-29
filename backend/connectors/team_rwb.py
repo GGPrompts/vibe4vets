@@ -146,9 +146,7 @@ class TeamRWBConnector(BaseConnector):
             List of normalized ResourceCandidate objects.
         """
         if not self.data_path.exists():
-            raise FileNotFoundError(
-                f"Team RWB chapters data file not found: {self.data_path}"
-            )
+            raise FileNotFoundError(f"Team RWB chapters data file not found: {self.data_path}")
 
         with open(self.data_path) as f:
             data = json.load(f)
@@ -215,9 +213,7 @@ class TeamRWBConnector(BaseConnector):
         state_name = STATE_NAMES.get(state) if state else None
 
         title = self._build_title(name, chapter_type, city, state)
-        resource_description = self._build_description(
-            name, chapter_type, city, state_name, description
-        )
+        resource_description = self._build_description(name, chapter_type, city, state_name, description)
 
         # Build source URL - prefer website, fall back to chapter finder
         source_url = website or "https://teamrwb.org/find-your-chapter/"
@@ -466,12 +462,14 @@ class TeamRWBConnector(BaseConnector):
             tags.append("local-chapter")
 
         # Activity tags
-        tags.extend([
-            "running",
-            "hiking",
-            "yoga",
-            "group-fitness",
-        ])
+        tags.extend(
+            [
+                "running",
+                "hiking",
+                "yoga",
+                "group-fitness",
+            ]
+        )
 
         if state:
             tags.append(f"state-{state.lower()}")

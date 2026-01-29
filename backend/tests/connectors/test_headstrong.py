@@ -1,6 +1,5 @@
 """Tests for The Headstrong Project PTSD treatment connector."""
 
-
 from connectors.headstrong import (
     ALL_US_STATES,
     HEADSTRONG_IN_PERSON_STATES,
@@ -78,8 +77,7 @@ class TestHeadstrongConnector:
         assert set(covered_states) == set(HEADSTRONG_IN_PERSON_STATES)
 
         # Verify specific states from research
-        expected_states = ["AZ", "CA", "CO", "DC", "FL", "GA", "ID", "IL",
-                          "MD", "NJ", "NY", "NC", "OR", "PA", "TX"]
+        expected_states = ["AZ", "CA", "CO", "DC", "FL", "GA", "ID", "IL", "MD", "NJ", "NY", "NC", "OR", "PA", "TX"]
         for state in expected_states:
             assert state in covered_states
 
@@ -255,10 +253,7 @@ class TestHeadstrongConnector:
     def test_in_person_states_list(self):
         """Test the in-person states list matches documentation."""
         # From research: AZ, CA, CO, FL, GA, ID, IL, MD, NJ, NY, NC, OR, PA, TX, DC
-        expected = {
-            "AZ", "CA", "CO", "DC", "FL", "GA", "ID", "IL",
-            "MD", "NJ", "NY", "NC", "OR", "PA", "TX"
-        }
+        expected = {"AZ", "CA", "CO", "DC", "FL", "GA", "ID", "IL", "MD", "NJ", "NY", "NC", "OR", "PA", "TX"}
         assert set(HEADSTRONG_IN_PERSON_STATES) == expected
         assert len(HEADSTRONG_IN_PERSON_STATES) == 15
 

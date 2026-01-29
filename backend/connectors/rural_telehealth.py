@@ -91,9 +91,7 @@ class RuralTelehealthConnector(BaseConnector):
             locations = program.get("locations", [])
             if locations:
                 for location in locations:
-                    location_candidate = self._parse_location(
-                        program, location, fetched_at=now
-                    )
+                    location_candidate = self._parse_location(program, location, fetched_at=now)
                     resources.append(location_candidate)
 
         return resources
@@ -336,10 +334,7 @@ class RuralTelehealthConnector(BaseConnector):
             parts.append(f"Visit {website} for more information.")
 
         if not parts:
-            parts.append(
-                "Contact your local VA facility to learn about telehealth options "
-                "available in your area."
-            )
+            parts.append("Contact your local VA facility to learn about telehealth options available in your area.")
 
         return " ".join(parts)
 

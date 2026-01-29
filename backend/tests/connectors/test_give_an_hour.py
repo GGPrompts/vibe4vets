@@ -1,6 +1,5 @@
 """Tests for Give an Hour volunteer mental health provider connector."""
 
-
 from connectors.give_an_hour import (
     ALL_US_STATES,
     GiveAnHourConnector,

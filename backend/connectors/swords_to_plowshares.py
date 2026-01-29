@@ -370,9 +370,7 @@ class SwordsToPlowsharesConnector(BaseConnector):
 
         return " ".join(parts)
 
-    def _build_tags(
-        self, program_tags: list[str], category: str, program_id: str
-    ) -> list[str]:
+    def _build_tags(self, program_tags: list[str], category: str, program_id: str) -> list[str]:
         """Build tags list.
 
         Args:

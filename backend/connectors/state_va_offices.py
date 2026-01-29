@@ -159,9 +159,7 @@ class StateVAOfficesConnector(BaseConnector):
         hours = office.get("hours")
 
         title = self._build_title(agency_name, office_name, state, is_main_office)
-        description = self._build_description(
-            state_name, agency_name, office_name, services, is_main_office
-        )
+        description = self._build_description(state_name, agency_name, office_name, services, is_main_office)
 
         # Build full address string
         full_address = self._build_full_address(address, city, state, zip_code)
@@ -185,9 +183,7 @@ class StateVAOfficesConnector(BaseConnector):
             email=email,
             hours=hours,
             eligibility=self._build_eligibility(state_name),
-            how_to_apply=self._build_how_to_apply(
-                agency_name, office_name, phone, email, website
-            ),
+            how_to_apply=self._build_how_to_apply(agency_name, office_name, phone, email, website),
             scope="state",
             states=[state] if state else None,
             raw_data={
@@ -267,19 +263,14 @@ class StateVAOfficesConnector(BaseConnector):
                     f"in {state_name}. This is the main headquarters office."
                 )
             elif state_name:
-                parts.append(
-                    f"Official state Veteran affairs headquarters serving Veterans in {state_name}."
-                )
+                parts.append(f"Official state Veteran affairs headquarters serving Veterans in {state_name}.")
         else:
             if office_name and state_name:
                 parts.append(
-                    f"{office_name} is a regional field office providing Veteran services "
-                    f"for {state_name} residents."
+                    f"{office_name} is a regional field office providing Veteran services for {state_name} residents."
                 )
             elif state_name:
-                parts.append(
-                    f"Regional field office providing Veteran services for {state_name} residents."
-                )
+                parts.append(f"Regional field office providing Veteran services for {state_name} residents.")
 
         # Core services description
         parts.append(

@@ -271,9 +271,7 @@ class DAVChaptersConnector(BaseConnector):
             email=email,
             hours=hours,
             eligibility=self._build_eligibility(location_type),
-            how_to_apply=self._build_how_to_apply(
-                location_type, name, phone, email, website, meeting_schedule
-            ),
+            how_to_apply=self._build_how_to_apply(location_type, name, phone, email, website, meeting_schedule),
             scope="local",
             states=[state] if state else None,
             raw_data={
@@ -458,8 +456,7 @@ class DAVChaptersConnector(BaseConnector):
 
         elif location_type == "hsc":
             parts.append(
-                f"DAV Hospital Service Coordinator {location_str} assists veterans "
-                "at VA medical facilities.".strip()
+                f"DAV Hospital Service Coordinator {location_str} assists veterans at VA medical facilities.".strip()
             )
             parts.append(
                 "Hospital Service Coordinators help veterans navigate the VA healthcare "
@@ -585,13 +582,11 @@ class DAVChaptersConnector(BaseConnector):
         elif location_type in ("nso", "tso", "hsc"):
             if phone:
                 parts.append(
-                    f"Call {location_display} at {phone} for a free appointment "
-                    "to discuss your VA benefits and claims."
+                    f"Call {location_display} at {phone} for a free appointment to discuss your VA benefits and claims."
                 )
             else:
                 parts.append(
-                    f"Contact {location_display} for a free appointment to discuss "
-                    "your VA benefits and claims."
+                    f"Contact {location_display} for a free appointment to discuss your VA benefits and claims."
                 )
             parts.append(
                 "No appointment is necessary for walk-ins, but calling ahead ensures "
@@ -600,24 +595,14 @@ class DAVChaptersConnector(BaseConnector):
 
         else:  # chapter
             if phone:
-                parts.append(
-                    f"Call {location_display} at {phone} to inquire about services "
-                    "or membership."
-                )
+                parts.append(f"Call {location_display} at {phone} to inquire about services or membership.")
             elif email:
-                parts.append(
-                    f"Email {location_display} at {email} to inquire about services "
-                    "or membership."
-                )
+                parts.append(f"Email {location_display} at {email} to inquire about services or membership.")
             else:
-                parts.append(
-                    f"Contact {location_display} to inquire about services or membership."
-                )
+                parts.append(f"Contact {location_display} to inquire about services or membership.")
 
             if meeting_schedule:
-                parts.append(
-                    f"Veterans are welcome to attend chapter meetings: {meeting_schedule}"
-                )
+                parts.append(f"Veterans are welcome to attend chapter meetings: {meeting_schedule}")
 
         # Additional contact methods
         if email and phone:
@@ -626,10 +611,7 @@ class DAVChaptersConnector(BaseConnector):
             parts.append(f"Website: {website}")
 
         # National DAV contact
-        parts.append(
-            "For general DAV assistance, call the national helpline at "
-            "1-877-426-2838 (1-877-I AM A VET)."
-        )
+        parts.append("For general DAV assistance, call the national helpline at 1-877-426-2838 (1-877-I AM A VET).")
 
         return " ".join(parts)
 

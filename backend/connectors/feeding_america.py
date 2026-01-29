@@ -266,9 +266,7 @@ class FeedingAmericaConnector(BaseConnector):
         service_area = food_bank.get("service_area")
 
         title = f"Feeding America - {name}"
-        description = self._build_description(
-            name, state, counties, service_area
-        )
+        description = self._build_description(name, state, counties, service_area)
         eligibility = self._build_eligibility()
         how_to_apply = self._build_how_to_apply(name, website, phone, slug)
         tags = self._build_tags(name, state, counties)
@@ -353,8 +351,7 @@ class FeedingAmericaConnector(BaseConnector):
         parts = []
 
         parts.append(
-            f"{name} is a member of Feeding America, the nation's largest "
-            "domestic hunger-relief organization."
+            f"{name} is a member of Feeding America, the nation's largest domestic hunger-relief organization."
         )
 
         # Service area
@@ -413,10 +410,7 @@ class FeedingAmericaConnector(BaseConnector):
         parts = []
 
         if website:
-            parts.append(
-                f"Visit {name}'s website at {website} to find a food pantry "
-                "or distribution event near you."
-            )
+            parts.append(f"Visit {name}'s website at {website} to find a food pantry or distribution event near you.")
         elif slug:
             parts.append(
                 f"Visit https://www.feedingamerica.org/find-your-local-foodbank/{slug} "
@@ -426,10 +420,7 @@ class FeedingAmericaConnector(BaseConnector):
         if phone:
             parts.append(f"Call {phone} for assistance or to locate services.")
 
-        parts.append(
-            "You can also text 'FOOD' to 211 or call 211 to find food assistance "
-            "in your area."
-        )
+        parts.append("You can also text 'FOOD' to 211 or call 211 to find food assistance in your area.")
 
         return " ".join(parts)
 

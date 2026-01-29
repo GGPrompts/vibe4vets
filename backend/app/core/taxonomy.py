@@ -325,8 +325,12 @@ ELIGIBILITY_TAGS: dict[str, dict[str, list[str]]] = {
     "housing": {
         "voucher": ["hud-vash", "ssvf", "section-8", "vash-voucher"],
         "type": [
-            "emergency-shelter", "transitional", "permanent", "rapid-rehousing",
-            "supportive_housing", "rental_assistance",
+            "emergency-shelter",
+            "transitional",
+            "permanent",
+            "rapid-rehousing",
+            "supportive_housing",
+            "rental_assistance",
         ],
         "eligibility": ["no-service-connection", "families", "singles-only", "veterans-only", "low-income"],
         "availability": ["waitlist-open", "accepting-now", "waitlist-closed"],
@@ -356,8 +360,12 @@ ELIGIBILITY_TAGS: dict[str, dict[str, list[str]]] = {
     },
     "food": {
         "type": [
-            "food-pantry", "meal-program", "mobile-distribution", "groceries",
-            "food-bank", "emergency-assistance",
+            "food-pantry",
+            "meal-program",
+            "mobile-distribution",
+            "groceries",
+            "food-bank",
+            "emergency-assistance",
         ],
         "eligibility": ["no-id-required", "walk-in", "appointment-required"],
         "dietary": ["vegetarian", "halal", "kosher", "gluten-free"],

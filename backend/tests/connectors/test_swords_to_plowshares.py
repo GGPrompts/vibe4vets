@@ -1,6 +1,5 @@
 """Tests for Swords to Plowshares veteran services connector."""
 
-
 from connectors.swords_to_plowshares import (
     SWORDS_TO_PLOWSHARES_LOCATIONS,
     SWORDS_TO_PLOWSHARES_PROGRAMS,

@@ -219,13 +219,9 @@ class VFWPostsConnector(BaseConnector):
         state_name = STATE_NAMES.get(state)
 
         title = self._build_title(post_number, post_name, city, state)
-        description = self._build_description(
-            post_number, post_name, city, state_name, amenities
-        )
+        description = self._build_description(post_number, post_name, city, state_name, amenities)
         eligibility = self._build_eligibility()
-        how_to_apply = self._build_how_to_apply(
-            post_number, post_name, phone, email, website
-        )
+        how_to_apply = self._build_how_to_apply(post_number, post_name, phone, email, website)
         tags = self._build_tags(state, amenities)
 
         # Build full address
@@ -350,9 +346,7 @@ class VFWPostsConnector(BaseConnector):
 
         # Amenities if available
         if amenities:
-            amenity_names = [
-                VFW_AMENITIES.get(a, a) for a in amenities if a in VFW_AMENITIES
-            ]
+            amenity_names = [VFW_AMENITIES.get(a, a) for a in amenities if a in VFW_AMENITIES]
             if amenity_names:
                 parts.append(f"This post offers: {', '.join(amenity_names)}.")
 
@@ -409,10 +403,7 @@ class VFWPostsConnector(BaseConnector):
         elif email:
             parts.append(f"Email VFW {post_display} at {email} to inquire about membership or services.")
         elif website:
-            parts.append(
-                f"Visit the website for VFW {post_display} "
-                "to learn about membership and services."
-            )
+            parts.append(f"Visit the website for VFW {post_display} to learn about membership and services.")
         else:
             parts.append(f"Contact VFW {post_display} to inquire about membership and available services.")
 

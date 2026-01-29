@@ -233,13 +233,9 @@ class AmericanLegionPostsConnector(BaseConnector):
         state_name = STATE_NAMES.get(state)
 
         title = self._build_title(post_number, post_name, city, state)
-        description = self._build_description(
-            post_number, post_name, city, state_name, attributes, programs
-        )
+        description = self._build_description(post_number, post_name, city, state_name, attributes, programs)
         eligibility = self._build_eligibility()
-        how_to_apply = self._build_how_to_apply(
-            post_number, post_name, phone, email, website
-        )
+        how_to_apply = self._build_how_to_apply(post_number, post_name, phone, email, website)
         tags = self._build_tags(state, attributes, programs)
 
         # Build full address
@@ -376,9 +372,7 @@ class AmericanLegionPostsConnector(BaseConnector):
 
         # Attributes/amenities if available
         if attributes:
-            attr_names = [
-                LEGION_ATTRIBUTES.get(a, a) for a in attributes if a in LEGION_ATTRIBUTES
-            ]
+            attr_names = [LEGION_ATTRIBUTES.get(a, a) for a in attributes if a in LEGION_ATTRIBUTES]
             if attr_names:
                 parts.append(f"This post offers: {', '.join(attr_names)}.")
 
@@ -437,8 +431,7 @@ class AmericanLegionPostsConnector(BaseConnector):
             parts.append(f"Email American Legion {post_display} at {email} to inquire about membership or services.")
         elif website:
             parts.append(
-                f"Visit the website for American Legion {post_display} "
-                "to learn about membership and services."
+                f"Visit the website for American Legion {post_display} to learn about membership and services."
             )
         else:
             parts.append(f"Contact American Legion {post_display} to inquire about membership and available services.")
