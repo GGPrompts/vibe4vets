@@ -17,6 +17,7 @@ from connectors.fisher_house import FisherHouseConnector
 from connectors.gi_bill_schools import GIBillSchoolsConnector
 from connectors.give_an_hour import GiveAnHourConnector
 from connectors.gpd import GPDConnector
+from connectors.home_base import HomeBaseConnector
 from connectors.headstrong import HeadstrongConnector
 from connectors.hrsa_health_centers import HRSAHealthCentersConnector
 from connectors.hud_vash import HUDVASHConnector
@@ -72,6 +73,7 @@ __all__ = [
     "GiveAnHourConnector",
     "GPDConnector",
     "HeadstrongConnector",
+    "HomeBaseConnector",
     "HRSAHealthCentersConnector",
     "HUDVASHConnector",
     "LegalAidConnector",
