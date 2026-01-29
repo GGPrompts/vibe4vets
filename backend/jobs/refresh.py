@@ -17,9 +17,11 @@ from connectors import (
     CertificationsConnector,
     CohenVeteransNetworkConnector,
     CVSOConnector,
+    DAVChaptersConnector,
     DischargeUpgradeConnector,
     FaithBasedConnector,
     FeedingAmericaConnector,
+    FisherHouseConnector,
     GIBillSchoolsConnector,
     GPDConnector,
     HRSAHealthCentersConnector,
@@ -38,6 +40,7 @@ from connectors import (
     TribalVeteransConnector,
     TwoOneOneConnector,
     UnitedWayConnector,
+    USVetsConnector,
     VACommunityConnector,
     VAGovConnector,
     VAPatientAdvocateConnector,
@@ -47,6 +50,7 @@ from connectors import (
     VeteranEmployersConnector,
     VeteranFoodAssistanceConnector,
     VeteransCourtConnector,
+    VFWPostsConnector,
     VSOPostLocatorConnector,
 )
 from connectors.base import BaseConnector
@@ -84,7 +88,9 @@ CONNECTOR_REGISTRY: dict[str, type[BaseConnector]] = {
     "mental_health": MentalHealthConnector,  # Mental health resources (crisis, therapy, peer support)
     "cohen_veterans_network": CohenVeteransNetworkConnector,  # Cohen Veterans Network mental health clinics
     "military_onesource": MilitaryOneSourceConnector,  # DoD transition assistance programs
-    "vso_post_locator": VSOPostLocatorConnector,  # VFW, American Legion, DAV posts
+    "vfw_posts": VFWPostsConnector,  # VFW post locations (5,500+ nationwide)
+    "dav_chapters": DAVChaptersConnector,  # DAV chapters, NSOs, and transportation network (~1,900 chapters)
+    "vso_post_locator": VSOPostLocatorConnector,  # VFW, American Legion, DAV posts (generic)
     "sva_chapters": SVAChaptersConnector,  # Student Veterans of America chapters (education)
     "scholarships": ScholarshipsConnector,  # Veteran scholarship programs (education)
     "tribal_veterans": TribalVeteransConnector,  # IHS/VA Urban Indian Health Organizations
@@ -94,6 +100,8 @@ CONNECTOR_REGISTRY: dict[str, type[BaseConnector]] = {
     "state_va": StateVAConnector,  # State VA agencies (basic info)
     "state_va_offices": StateVAOfficesConnector,  # State VA offices (detailed with regional offices)
     "cvso": CVSOConnector,  # County Veteran Service Officers
+    # Tier 2: Homeless Veteran Housing (National Nonprofits)
+    "us_vets": USVetsConnector,  # U.S.VETS homeless veteran housing (10+ sites)
     # Tier 4: Community Directories
     "two_one_one": TwoOneOneConnector,  # 211 national database
     "united_way": UnitedWayConnector,  # United Way/Missions United
