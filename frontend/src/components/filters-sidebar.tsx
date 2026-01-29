@@ -495,7 +495,7 @@ export function FiltersSidebar({
   };
 
   return (
-    <div className="space-y-3">
+    <div className="space-y-3 pb-8">
       {/* Header - can be hidden when parent provides its own */}
       {!hideHeader && (
         <div className="flex items-center justify-between">
