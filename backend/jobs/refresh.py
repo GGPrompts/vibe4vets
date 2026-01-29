@@ -85,6 +85,7 @@ CONNECTOR_REGISTRY: dict[str, type[BaseConnector]] = {
     "veteran_emergency_assistance": VeteranEmergencyAssistanceConnector,  # Emergency financial assistance
     "veteran_food_assistance": VeteranFoodAssistanceConnector,  # Food pantries and distributions
     "feeding_america": FeedingAmericaConnector,  # Feeding America food bank network (food)
+    "fisher_house": FisherHouseConnector,  # Fisher House Foundation family housing (~100 locations)
     "mental_health": MentalHealthConnector,  # Mental health resources (crisis, therapy, peer support)
     "cohen_veterans_network": CohenVeteransNetworkConnector,  # Cohen Veterans Network mental health clinics
     "military_onesource": MilitaryOneSourceConnector,  # DoD transition assistance programs
