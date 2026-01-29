@@ -10,6 +10,11 @@ interface FilterContextValue {
   setStates: (states: string[]) => void;
   toggleCategory: (category: string) => void;
   toggleState: (state: string) => void;
+  // Tag filtering
+  tags: string[];
+  setTags: (tags: string[]) => void;
+  toggleTag: (tag: string) => void;
+  // Resource count
   resourceCount: number | null;
   isLoadingCount: boolean;
   totalCount: number | null;
@@ -29,6 +34,7 @@ export function FilterProvider({ children }: { children: ReactNode }) {
     categories: [],
     states: [],
   });
+  const [tags, setTagsState] = useState<string[]>([]);
   const [isEnabled, setEnabled] = useState(false);
   const [totalCount, setTotalCount] = useState<number | null>(null);
   const [isLoadingTotal, setIsLoadingTotal] = useState(false);
@@ -97,6 +103,16 @@ export function FilterProvider({ children }: { children: ReactNode }) {
     }));
   }, []);
 
+  const setTags = useCallback((newTags: string[]) => {
+    setTagsState(newTags);
+  }, []);
+
+  const toggleTag = useCallback((tag: string) => {
+    setTagsState((prev) =>
+      prev.includes(tag) ? prev.filter((t) => t !== tag) : [...prev, tag]
+    );
+  }, []);
+
   return (
     <FilterContext.Provider
       value={{
@@ -105,6 +121,9 @@ export function FilterProvider({ children }: { children: ReactNode }) {
         setStates,
         toggleCategory,
         toggleState,
+        tags,
+        setTags,
+        toggleTag,
         resourceCount: count,
         isLoadingCount: isLoading,
         totalCount,

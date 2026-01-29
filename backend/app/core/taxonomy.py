@@ -30,7 +30,7 @@ CATEGORIES: dict[str, Category] = {
     "employment": Category(
         id="employment",
         name="Employment",
-        description="Job placement, career services, and hiring programs for veterans",
+        description="Job placement, career services, and hiring programs for Veterans",
     ),
     "training": Category(
         id="training",
@@ -65,7 +65,7 @@ CATEGORIES: dict[str, Category] = {
     "supportServices": Category(
         id="supportServices",
         name="Support Services",
-        description="General veteran support, peer mentoring, and case management",
+        description="General Veteran support, peer mentoring, and case management",
     ),
     "healthcare": Category(
         id="healthcare",
@@ -85,7 +85,7 @@ CATEGORIES: dict[str, Category] = {
     "family": Category(
         id="family",
         name="Family",
-        description="Resources for veteran families, spouses, dependents, survivors, and childcare support",
+        description="Resources for Veteran families, spouses, dependents, survivors, and childcare support",
     ),
 }
 
@@ -108,13 +108,13 @@ SUBCATEGORIES: dict[str, Subcategory] = {
         id="veteran-preference",
         name="Veteran Hiring Preference",
         category_id="employment",
-        description="Employers with veteran hiring programs",
+        description="Employers with Veteran hiring programs",
     ),
     "self-employment": Subcategory(
         id="self-employment",
         name="Self-Employment & Entrepreneurship",
         category_id="employment",
-        description="Small business support and veteran-owned business resources",
+        description="Small business support and Veteran-owned business resources",
     ),
     # Training subcategories
     "voc-rehab": Subcategory(
@@ -257,7 +257,7 @@ SUBCATEGORIES: dict[str, Subcategory] = {
         id="cvso",
         name="County Veteran Service Officers",
         category_id="benefits",
-        description="Local county-level veteran service officers",
+        description="Local county-level Veteran service officers",
     ),
 }
 
@@ -275,7 +275,7 @@ SOURCE_TIERS: dict[int, dict[str, str | float]] = {
     },
     3: {
         "name": "State",
-        "description": "State veteran agencies and departments",
+        "description": "State Veteran agencies and departments",
         "reliability": 0.6,
     },
     4: {
@@ -317,3 +317,135 @@ def get_reliability_score(tier: int) -> float:
         return 0.0
     reliability = tier_info.get("reliability", 0.0)
     return float(reliability)
+
+
+# Eligibility tags organized by category
+# These tags allow case managers to filter resources by specific criteria
+ELIGIBILITY_TAGS: dict[str, dict[str, list[str]]] = {
+    "housing": {
+        "voucher": ["hud-vash", "ssvf", "section-8", "vash-voucher"],
+        "type": ["emergency-shelter", "transitional", "permanent", "rapid-rehousing"],
+        "eligibility": ["no-service-connection", "families", "singles-only", "veterans-only", "low-income"],
+        "availability": ["waitlist-open", "accepting-now", "waitlist-closed"],
+        "support": ["case-management", "substance-abuse", "mental-health-support"],
+    },
+    "employment": {
+        "type": ["entry-level", "skilled-trades", "remote", "part-time", "full-time", "federal-jobs"],
+        "support": ["job-placement", "resume-help", "interview-prep", "career-counseling"],
+        "employer": ["veteran-friendly", "federal-contractor", "military-spouse-friendly"],
+        "industry": ["tech", "healthcare", "manufacturing", "logistics", "construction"],
+    },
+    "legal": {
+        "type": ["free-legal-aid", "va-appeals", "discharge-upgrade", "pro-bono"],
+        "scope": ["claims-help", "family-law", "housing-rights", "criminal-defense", "civil-rights"],
+        "representation": ["attorney", "claims-agent", "vso-representative"],
+    },
+    "training": {
+        "type": ["voc-rehab", "certifications", "apprenticeship", "on-the-job", "degree-program"],
+        "format": ["in-person", "online", "hybrid", "self-paced"],
+        "funding": ["gi-bill-approved", "vre-approved", "free", "scholarship-available"],
+        "duration": ["short-term", "long-term", "bootcamp"],
+    },
+    "benefits": {
+        "type": ["disability-claims", "pension", "education-benefits", "healthcare-enrollment"],
+        "support": ["claims-assistance", "appeals-help", "benefits-counseling"],
+        "representative": ["vso", "cvso", "accredited-attorney", "claims-agent"],
+    },
+    "food": {
+        "type": ["food-pantry", "meal-program", "mobile-distribution", "grocery-assistance"],
+        "eligibility": ["no-id-required", "walk-in", "appointment-required"],
+        "dietary": ["vegetarian", "halal", "kosher", "gluten-free"],
+    },
+    "mentalHealth": {
+        "type": ["counseling", "ptsd-treatment", "crisis-services", "peer-support"],
+        "format": ["in-person", "telehealth", "group-therapy", "individual"],
+        "specialization": ["combat-trauma", "mst", "substance-abuse", "family-counseling"],
+    },
+    "healthcare": {
+        "type": ["primary-care", "specialty-care", "dental", "vision", "urgent-care"],
+        "eligibility": ["va-enrolled", "community-care", "no-va-required"],
+        "access": ["walk-in", "appointment-only", "telehealth-available"],
+    },
+    "financial": {
+        "type": ["emergency-assistance", "debt-counseling", "tax-prep", "savings-programs"],
+        "eligibility": ["low-income", "no-income-requirement", "veteran-household"],
+    },
+    "education": {
+        "type": ["college", "vocational", "tutoring", "scholarship"],
+        "funding": ["gi-bill", "scholarship", "grants", "loans"],
+        "level": ["undergraduate", "graduate", "certificate", "high-school-equivalency"],
+    },
+    "supportServices": {
+        "type": ["case-management", "peer-mentoring", "transportation", "clothing"],
+        "population": ["homeless-veterans", "female-veterans", "elderly-veterans", "disabled-veterans"],
+    },
+    "family": {
+        "type": ["childcare", "spouse-support", "dependent-care", "survivor-benefits"],
+        "eligibility": ["military-spouse", "dependent", "caregiver", "survivor"],
+    },
+}
+
+
+@dataclass(frozen=True)
+class EligibilityTag:
+    """Eligibility tag definition."""
+
+    id: str
+    name: str
+    category_id: str
+    group: str
+
+
+def get_eligibility_tags(category_id: str) -> dict[str, list[str]]:
+    """Get all eligibility tags for a category."""
+    return ELIGIBILITY_TAGS.get(category_id, {})
+
+
+def get_all_eligibility_tags() -> dict[str, dict[str, list[str]]]:
+    """Get the complete eligibility tags taxonomy."""
+    return ELIGIBILITY_TAGS
+
+
+def get_flat_tags_for_category(category_id: str) -> list[str]:
+    """Get a flat list of all tags for a category."""
+    tags = []
+    category_tags = ELIGIBILITY_TAGS.get(category_id, {})
+    for group_tags in category_tags.values():
+        tags.extend(group_tags)
+    return tags
+
+
+def is_valid_eligibility_tag(tag: str, category_id: str | None = None) -> bool:
+    """Check if a tag is valid, optionally for a specific category."""
+    if category_id:
+        return tag in get_flat_tags_for_category(category_id)
+
+    # Check across all categories
+    for cat_tags in ELIGIBILITY_TAGS.values():
+        for group_tags in cat_tags.values():
+            if tag in group_tags:
+                return True
+    return False
+
+
+def get_tag_display_name(tag: str) -> str:
+    """Convert tag ID to display name (e.g., 'hud-vash' -> 'HUD-VASH')."""
+    # Special cases
+    special_cases = {
+        "hud-vash": "HUD-VASH",
+        "ssvf": "SSVF",
+        "section-8": "Section 8",
+        "va-appeals": "VA Appeals",
+        "gi-bill": "GI Bill",
+        "gi-bill-approved": "GI Bill Approved",
+        "vre-approved": "VR&E Approved",
+        "vso": "VSO",
+        "cvso": "CVSO",
+        "ptsd-treatment": "PTSD Treatment",
+        "mst": "MST",
+    }
+    if tag in special_cases:
+        return special_cases[tag]
+
+    # Default: capitalize words and replace hyphens with spaces
+    return tag.replace("-", " ").title()

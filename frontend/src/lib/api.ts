@@ -154,8 +154,47 @@ export interface EligibilitySearchParams {
   veteran_status?: boolean;
   discharge?: 'honorable' | 'other_than_dis' | 'unknown';
   has_disability?: boolean;
+  tags?: string;
   limit?: number;
   offset?: number;
+}
+
+// Taxonomy types for tag filtering
+export interface TagInfo {
+  id: string;
+  name: string;
+}
+
+export interface TagGroup {
+  group: string;
+  tags: TagInfo[];
+}
+
+export interface CategoryTags {
+  category_id: string;
+  category_name: string;
+  groups: TagGroup[];
+}
+
+export interface TaxonomyResponse {
+  categories: CategoryTags[];
+}
+
+export interface CategoryTagsResponse {
+  category_id: string;
+  category_name: string;
+  groups: TagGroup[];
+  flat_tags: TagInfo[];
+}
+
+export interface CategoryInfo {
+  id: string;
+  name: string;
+  description: string;
+}
+
+export interface CategoriesResponse {
+  categories: CategoryInfo[];
 }
 
 export interface EligibilitySearchResponse {
@@ -608,6 +647,7 @@ export const api = {
       q: string;
       category?: string;
       state?: string;
+      tags?: string;
       limit?: number;
       offset?: number;
     }): Promise<SearchResponse> => {
@@ -615,6 +655,7 @@ export const api = {
       searchParams.set('q', params.q);
       if (params.category) searchParams.set('category', params.category);
       if (params.state) searchParams.set('state', params.state);
+      if (params.tags) searchParams.set('tags', params.tags);
       if (params.limit) searchParams.set('limit', String(params.limit));
       if (params.offset) searchParams.set('offset', String(params.offset));
 
@@ -634,6 +675,7 @@ export const api = {
       if (params.veteran_status !== undefined) searchParams.set('veteran_status', String(params.veteran_status));
       if (params.discharge) searchParams.set('discharge', params.discharge);
       if (params.has_disability !== undefined) searchParams.set('has_disability', String(params.has_disability));
+      if (params.tags) searchParams.set('tags', params.tags);
       if (params.limit) searchParams.set('limit', String(params.limit));
       if (params.offset) searchParams.set('offset', String(params.offset));
 
@@ -811,6 +853,21 @@ export const api = {
 
     getDailyTrends: (days: number = 30): Promise<DailyTrendItem[]> => {
       return fetchAPI(`/api/v1/analytics/admin/daily-trends?days=${days}`);
+    },
+  },
+
+  // Taxonomy API (for filter UIs)
+  taxonomy: {
+    getTags: (): Promise<TaxonomyResponse> => {
+      return fetchAPI('/api/v1/taxonomy/tags');
+    },
+
+    getCategoryTags: (categoryId: string): Promise<CategoryTagsResponse> => {
+      return fetchAPI(`/api/v1/taxonomy/tags/${categoryId}`);
+    },
+
+    getCategories: (): Promise<CategoriesResponse> => {
+      return fetchAPI('/api/v1/taxonomy/categories');
     },
   },
 

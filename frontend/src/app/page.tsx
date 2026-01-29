@@ -13,7 +13,7 @@ import type { SortOption } from '@/components/sort-dropdown-header';
 import { BackToTop } from '@/components/BackToTop';
 
 export default function Home() {
-  const { filters, toggleCategory, toggleState, setEnabled, resourceCount, isLoadingCount, totalCount, isLoadingTotal } = useFilterContext();
+  const { filters, toggleCategory, toggleState, tags, setTags, setEnabled, resourceCount, isLoadingCount, totalCount, isLoadingTotal } = useFilterContext();
   const [selectedSort, setSelectedSort] = useState<SortOption>('shuffle');
   const [zipCode, setZipCode] = useState('');
   const router = useRouter();
@@ -43,6 +43,11 @@ export default function Home() {
     filters.categories.forEach((category) => {
       params.append('category', category);
     });
+
+    // Add tags (comma-separated)
+    if (tags.length > 0) {
+      params.set('tags', tags.join(','));
+    }
 
     // Add sort option (distance is default when zip is set, handled by search page)
     if (selectedSort && selectedSort !== 'newest' && !hasZip) {
@@ -128,6 +133,9 @@ export default function Home() {
           <CategoryCards
             selectedCategories={filters.categories}
             onToggleCategory={toggleCategory}
+            selectedTags={tags}
+            onTagsChange={setTags}
+            enableTagExpansion={true}
           />
 
           {/* Sort preferences */}
@@ -159,15 +167,17 @@ export default function Home() {
                 <span>Search Resources</span>
               )}
             </Button>
-            <p className={`text-sm text-muted-foreground ${!(filters.states.length > 0 || filters.categories.length > 0 || zipCode.length === 5) ? 'invisible' : ''}`}>
-              {filters.states.length > 0 || filters.categories.length > 0 || zipCode.length === 5 ? (
+            <p className={`text-sm text-muted-foreground ${!(filters.states.length > 0 || filters.categories.length > 0 || tags.length > 0 || zipCode.length === 5) ? 'invisible' : ''}`}>
+              {filters.states.length > 0 || filters.categories.length > 0 || tags.length > 0 || zipCode.length === 5 ? (
                 <>
                   {zipCode.length === 5 && `Near ${zipCode}`}
-                  {zipCode.length === 5 && (filters.states.length > 0 || filters.categories.length > 0) && ' · '}
+                  {zipCode.length === 5 && (filters.states.length > 0 || filters.categories.length > 0 || tags.length > 0) && ' · '}
                   {filters.states.length > 0 && `${filters.states.length} state${filters.states.length > 1 ? 's' : ''}`}
-                  {filters.states.length > 0 && filters.categories.length > 0 && ' · '}
+                  {filters.states.length > 0 && (filters.categories.length > 0 || tags.length > 0) && ' · '}
                   {filters.categories.length > 0 && `${filters.categories.length} categor${filters.categories.length > 1 ? 'ies' : 'y'}`}
-                  {(filters.states.length > 0 || filters.categories.length > 0) && ' selected'}
+                  {filters.categories.length > 0 && tags.length > 0 && ' · '}
+                  {tags.length > 0 && `${tags.length} tag${tags.length > 1 ? 's' : ''}`}
+                  {(filters.states.length > 0 || filters.categories.length > 0 || tags.length > 0) && ' selected'}
                 </>
               ) : (
                 'No filters selected'

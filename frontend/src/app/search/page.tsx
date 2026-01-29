@@ -144,6 +144,10 @@ function SearchResults() {
     const zipParam = searchParams.get('zip');
     const radiusParam = searchParams.get('radius');
 
+    // Get tags param (comma-separated)
+    const tagsParam = searchParams.get('tags');
+    const tags = tagsParam ? tagsParam.split(',').map((t) => t.trim()) : [];
+
     return {
       categories,
       states,
@@ -151,6 +155,7 @@ function SearchResults() {
       minTrust: minTrustParam ? parseInt(minTrustParam, 10) : 0,
       zip: zipParam || undefined,
       radius: radiusParam ? parseInt(radiusParam, 10) : undefined,
+      tags,
     };
   });
 
@@ -186,6 +191,10 @@ function SearchResults() {
         if (newFilters.radius && newFilters.radius !== 25) {
           params.set('radius', String(newFilters.radius));
         }
+      }
+      // Tags filter
+      if (newFilters.tags && newFilters.tags.length > 0) {
+        params.set('tags', newFilters.tags.join(','));
       }
       // Preserve sort from URL (header controls this)
       const currentSort = searchParams.get('sort');
@@ -232,6 +241,14 @@ function SearchResults() {
     handleFiltersChange(newFilters);
   };
 
+  const handleRemoveTag = (tag: string) => {
+    const newFilters = {
+      ...filters,
+      tags: (filters.tags || []).filter((t) => t !== tag),
+    };
+    handleFiltersChange(newFilters);
+  };
+
   const handleClearAll = () => {
     const newFilters = {
       categories: [],
@@ -240,6 +257,7 @@ function SearchResults() {
       minTrust: 0,
       zip: undefined,
       radius: undefined,
+      tags: [],
     };
     handleFiltersChange(newFilters);
   };
@@ -300,6 +318,7 @@ function SearchResults() {
     queryFn: async () => {
       const results = await api.search.query({
         q: query,
+        tags: filters.tags?.length ? filters.tags.join(',') : undefined,
         limit: 500,
       });
       // Track search analytics on new query
@@ -659,6 +678,7 @@ function SearchResults() {
               onRemoveState={handleRemoveState}
               onClearScope={handleClearScope}
               onClearZip={handleClearZip}
+              onRemoveTag={handleRemoveTag}
               onClearAll={handleClearAll}
             />
           </div>

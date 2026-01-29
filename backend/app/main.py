@@ -7,7 +7,7 @@ from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 
-from app.api.v1 import admin, analytics, chat, email, feedback, partner, resources, search, stats
+from app.api.v1 import admin, analytics, chat, email, feedback, partner, resources, search, stats, taxonomy
 from app.config import settings
 from app.database import create_db_and_tables
 from jobs import get_scheduler, setup_jobs
@@ -37,18 +37,18 @@ async def lifespan(app: FastAPI) -> AsyncGenerator[None, None]:
 API_DESCRIPTION = """
 # Vibe4Vets API
 
-AI-powered veteran resource directory focusing on **Employment & Training** and
+AI-powered Veteran resource directory focusing on **Employment & Training** and
 **Housing & Legal** resources nationwide.
 
 ## Overview
 
-Vibe4Vets aggregates veteran resources from official sources (VA.gov, DOL, HUD) and
+Vibe4Vets aggregates Veteran resources from official sources (VA.gov, DOL, HUD) and
 community organizations into a searchable database with trust scoring and freshness tracking.
 
 ## Key Features
 
 - **Full-text search** with relevance ranking and match explanations
-- **Eligibility filtering** - Find resources matching veteran criteria
+- **Eligibility filtering** - Find resources matching Veteran criteria
 - **Semantic search** - AI-powered natural language queries (requires API key)
 - **AI chat assistant** - Conversational resource discovery
 - **Trust scoring** - Resources scored by source reliability and freshness
@@ -79,12 +79,12 @@ fair usage.
 Resources are aggregated from:
 - **Tier 1** (highest trust): VA.gov, DOL, HUD
 - **Tier 2**: DAV, VFW, American Legion
-- **Tier 3**: State veteran agencies
+- **Tier 3**: State Veteran agencies
 - **Tier 4**: Community directories
 
 ## Privacy
 
-We do not store any veteran PII. All searches work without accounts.
+We do not store any Veteran PII. All searches work without accounts.
 """
 
 app = FastAPI(
@@ -103,7 +103,7 @@ app = FastAPI(
     openapi_tags=[
         {
             "name": "resources",
-            "description": "CRUD operations for veteran resources. List, search, create, update, and delete resources.",
+            "description": "CRUD operations for Veteran resources. List, search, create, update, and delete resources.",
         },
         {
             "name": "search",
@@ -130,6 +130,10 @@ app = FastAPI(
                 "and manage resources via API key authentication."
             ),
         },
+        {
+            "name": "taxonomy",
+            "description": "Category and tag taxonomy endpoints for building filter UIs.",
+        },
     ],
 )
 
@@ -152,6 +156,7 @@ app.include_router(analytics.router, prefix="/api/v1/analytics", tags=["analytic
 app.include_router(email.router, prefix="/api/v1/email-resources", tags=["email"])
 app.include_router(partner.router, prefix="/api/v1/partner", tags=["partner"])
 app.include_router(stats.router, prefix="/api/v1/stats", tags=["stats"])
+app.include_router(taxonomy.router, prefix="/api/v1/taxonomy", tags=["taxonomy"])
 
 
 @app.get("/health")

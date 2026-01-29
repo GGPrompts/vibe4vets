@@ -2,7 +2,7 @@
 
 Provides multiple search modes:
 - Full-text search with PostgreSQL tsvector
-- Eligibility-filtered search for veteran criteria matching
+- Eligibility-filtered search for Veteran criteria matching
 - Semantic search using AI embeddings (local SentenceTransformers or OpenAI)
 """
 
@@ -107,10 +107,15 @@ def search_resources(
         min_length=2,
         max_length=2,
     ),
+    tags: str | None = Query(
+        None,
+        description="Filter by eligibility tags (comma-separated). See /api/v1/taxonomy/tags for valid values.",
+        examples=["hud-vash,ssvf", "job-placement,resume-help"],
+    ),
     limit: int = Query(20, ge=1, le=500, description="Maximum results to return"),
     offset: int = Query(0, ge=0, description="Pagination offset"),
 ) -> SearchResponse:
-    """Search veteran resources using PostgreSQL full-text search.
+    """Search Veteran resources using PostgreSQL full-text search.
 
     Returns resources matching the query with relevance ranking and
     **"Why this matched"** explanations for each result.
@@ -125,11 +130,15 @@ def search_resources(
     - Search by program name: "HUD-VASH"
     - Search by eligibility: "disabled veteran housing"
     """
+    # Parse comma-separated tags
+    tags_list = [t.strip().lower() for t in tags.split(",")] if tags else None
+
     service = SearchService(session)
     results, total = service.search(
         query=q,
         category=category,
         state=state,
+        tags=tags_list,
         limit=limit,
         offset=offset,
     )
@@ -147,7 +156,7 @@ def search_resources(
     "/eligibility",
     response_model=EligibilitySearchResponse,
     summary="Eligibility-filtered search",
-    response_description="Resources matching veteran eligibility criteria with match reasons",
+    response_description="Resources matching Veteran eligibility criteria with match reasons",
     responses={
         200: {
             "description": "Search completed with eligibility filters applied",
@@ -206,7 +215,7 @@ def search_with_eligibility(
     ),
     veteran_status: bool | None = Query(
         None,
-        description="Filter for veteran-only resources",
+        description="Filter for Veteran-only resources",
         examples=[True],
     ),
     discharge: str | None = Query(
@@ -220,13 +229,18 @@ def search_with_eligibility(
         description="Filter for disability-related resources",
         examples=[True, False],
     ),
+    tags: str | None = Query(
+        None,
+        description="Filter by eligibility tags (comma-separated). See /api/v1/taxonomy/tags for valid values.",
+        examples=["hud-vash,ssvf", "waitlist-open"],
+    ),
     limit: int = Query(20, ge=1, le=500, description="Maximum results to return"),
     offset: int = Query(0, ge=0, description="Pagination offset"),
 ) -> EligibilitySearchResponse:
     """Search resources with eligibility criteria filtering.
 
     This endpoint powers the **Eligibility Wizard** by filtering resources based on
-    veteran-specific criteria. All inputs are **coarse/bucketed** to avoid collecting PII.
+    Veteran-specific criteria. All inputs are **coarse/bucketed** to avoid collecting PII.
 
     **How it works:**
     1. Filters are applied to find matching resources
@@ -237,7 +251,7 @@ def search_with_eligibility(
     - **Location**: State and county filters
     - **Demographics**: Age bracket, household size
     - **Financial**: Income bracket (relative to Area Median Income)
-    - **Status**: Housing status, veteran status, discharge type, disability
+    - **Status**: Housing status, Veteran status, discharge type, disability
 
     **Privacy note:** No personal information is stored. Filters use broad
     categories to maintain anonymity.
@@ -245,6 +259,7 @@ def search_with_eligibility(
     # Parse comma-separated values
     states_list = [s.strip().upper() for s in states.split(",")] if states else None
     counties_list = [c.strip().lower() for c in counties.split(",")] if counties else None
+    tags_list = [t.strip().lower() for t in tags.split(",")] if tags else None
 
     # Build eligibility filters
     eligibility_filters = EligibilityFilters(
@@ -264,6 +279,7 @@ def search_with_eligibility(
         query=q,
         category=category,
         eligibility_filters=eligibility_filters,
+        tags=tags_list,
         limit=limit,
         offset=offset,
     )
@@ -357,9 +373,9 @@ def semantic_search(
       Reciprocal Rank Fusion (RRF) for balanced results
 
     **Example queries:**
-    - "I'm a veteran struggling to pay rent"
+    - "I'm a Veteran struggling to pay rent"
     - "How can I get help with my resume?"
-    - "Programs for veterans with PTSD"
+    - "Programs for Veterans with PTSD"
 
     Uses local SentenceTransformers model by default (free, fast).
     Can be configured to use OpenAI embeddings via USE_LOCAL_EMBEDDINGS=false.

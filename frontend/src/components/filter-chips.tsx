@@ -1,6 +1,6 @@
 'use client';
 
-import { X, Briefcase, GraduationCap, Home, Scale, Globe, MapPin, UtensilsCrossed, Award, Brain, HeartHandshake, HeartPulse, School, Wallet } from 'lucide-react';
+import { X, Briefcase, GraduationCap, Home, Scale, Globe, MapPin, UtensilsCrossed, Award, Brain, HeartHandshake, HeartPulse, School, Wallet, Tag } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
 import { CATEGORIES, STATES, SCOPES, type FilterState } from '@/components/filters-sidebar';
@@ -11,6 +11,7 @@ interface FilterChipsProps {
   onRemoveState: (state: string) => void;
   onClearScope: () => void;
   onClearZip?: () => void;
+  onRemoveTag?: (tag: string) => void;
   onClearAll: () => void;
   className?: string;
 }
@@ -44,20 +45,42 @@ const categoryIcons: Record<string, typeof Briefcase> = {
   financial: Wallet,
 };
 
+// Convert tag ID to display name
+function getTagDisplayName(tag: string): string {
+  const specialCases: Record<string, string> = {
+    'hud-vash': 'HUD-VASH',
+    'ssvf': 'SSVF',
+    'section-8': 'Section 8',
+    'va-appeals': 'VA Appeals',
+    'gi-bill': 'GI Bill',
+    'gi-bill-approved': 'GI Bill Approved',
+    'vre-approved': 'VR&E Approved',
+    'vso': 'VSO',
+    'cvso': 'CVSO',
+    'ptsd-treatment': 'PTSD Treatment',
+    'mst': 'MST',
+  };
+  if (specialCases[tag]) return specialCases[tag];
+  return tag.replace(/-/g, ' ').replace(/\b\w/g, (l) => l.toUpperCase());
+}
+
 export function FilterChips({
   filters,
   onRemoveCategory,
   onRemoveState,
   onClearScope,
   onClearZip,
+  onRemoveTag,
   onClearAll,
   className,
 }: FilterChipsProps) {
+  const hasTags = (filters.tags?.length ?? 0) > 0;
   const hasFilters =
     filters.categories.length > 0 ||
     filters.states.length > 0 ||
     filters.scope !== 'all' ||
-    !!filters.zip;
+    !!filters.zip ||
+    hasTags;
 
   if (!hasFilters) return null;
 
@@ -74,7 +97,8 @@ export function FilterChips({
     filters.categories.length +
     filters.states.length +
     (filters.scope !== 'all' ? 1 : 0) +
-    (filters.zip ? 1 : 0);
+    (filters.zip ? 1 : 0) +
+    (filters.tags?.length ?? 0);
 
   return (
     <div className={cn('flex flex-wrap items-center gap-2', className)}>
@@ -137,6 +161,20 @@ export function FilterChips({
           <X className="h-3 w-3 ml-0.5" />
         </Badge>
       )}
+
+      {/* Tag chips - teal styling */}
+      {filters.tags?.map((tag) => (
+        <Badge
+          key={`tag-${tag}`}
+          variant="outline"
+          className="cursor-pointer gap-1 border-teal-600 bg-teal-500 text-white font-medium transition-opacity hover:opacity-80"
+          onClick={() => onRemoveTag?.(tag)}
+        >
+          <Tag className="h-3 w-3" />
+          {getTagDisplayName(tag)}
+          <X className="h-3 w-3 ml-0.5" />
+        </Badge>
+      ))}
 
       {/* Clear all - only show if more than one filter */}
       {totalChips > 1 && (

@@ -19,6 +19,7 @@ import { Filter, X, Briefcase, GraduationCap, Home, Scale, UtensilsCrossed, File
 import { Input } from '@/components/ui/input';
 import { cn } from '@/lib/utils';
 import { ZipCodeInput } from '@/components/ZipCodeInput';
+import { TagFilterSidebar } from '@/components/TagFilterSidebar';
 
 export const CATEGORIES = [
   { value: 'employment', label: 'Employment', icon: Briefcase },
@@ -107,6 +108,7 @@ export interface FilterState {
   minTrust: number;
   zip?: string;
   radius?: number;
+  tags?: string[];
 }
 
 interface FiltersSidebarProps {
@@ -219,6 +221,7 @@ export function FiltersSidebar({
   const [scopeOpen, setScopeOpen] = useState(true);
   const [zipOpen, setZipOpen] = useState(filters.zip ? true : false);
   const [statesOpen, setStatesOpen] = useState(filters.states.length > 0);
+  const [tagsOpen, setTagsOpen] = useState((filters.tags?.length ?? 0) > 0);
   const [stateSearch, setStateSearch] = useState('');
 
   // Auto-expand states section when states are pre-selected (e.g., from URL navigation)
@@ -246,7 +249,8 @@ export function FiltersSidebar({
     filters.categories.length +
     filters.states.length +
     (filters.scope !== 'all' ? 1 : 0) +
-    (filters.zip ? 1 : 0);
+    (filters.zip ? 1 : 0) +
+    (filters.tags?.length ?? 0);
 
   const handleCategoryToggle = (category: string) => {
     const newCategories = filters.categories.includes(category)
@@ -278,6 +282,10 @@ export function FiltersSidebar({
     onFiltersChange({ ...filters, zip: undefined, radius: undefined });
   };
 
+  const handleTagsChange = (newTags: string[]) => {
+    onFiltersChange({ ...filters, tags: newTags });
+  };
+
   const clearAllFilters = () => {
     onFiltersChange({
       categories: [],
@@ -286,6 +294,7 @@ export function FiltersSidebar({
       minTrust: 0, // Keep for API compatibility
       zip: undefined,
       radius: undefined,
+      tags: [],
     });
   };
 
@@ -376,6 +385,33 @@ export function FiltersSidebar({
       </CollapsibleSection>
 
       <Separator />
+
+      {/* Eligibility Tags - show when categories are selected */}
+      {filters.categories.length > 0 && (
+        <>
+          <CollapsibleSection
+            title="Eligibility Tags"
+            badge={
+              (filters.tags?.length ?? 0) > 0 && (
+                <Badge variant="outline" className="text-xs">
+                  {filters.tags?.length}
+                </Badge>
+              )
+            }
+            isOpen={tagsOpen}
+            onToggle={() => setTagsOpen(!tagsOpen)}
+          >
+            <TagFilterSidebar
+              selectedTags={filters.tags || []}
+              onTagsChange={handleTagsChange}
+              selectedCategories={filters.categories}
+              hideHeader
+              compact
+            />
+          </CollapsibleSection>
+          <Separator />
+        </>
+      )}
 
       {/* Scope */}
       <CollapsibleSection

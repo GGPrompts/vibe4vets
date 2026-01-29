@@ -71,10 +71,20 @@ class SearchService:
         query: str,
         category: str | None = None,
         state: str | None = None,
+        tags: list[str] | None = None,
         limit: int = 20,
         offset: int = 0,
     ) -> tuple[list[ResourceSearchResult], int]:
-        """Search resources using PostgreSQL full-text search."""
+        """Search resources using PostgreSQL full-text search.
+
+        Args:
+            query: Search query text.
+            category: Optional category filter.
+            state: Optional state filter.
+            tags: Optional list of eligibility tags to filter by (OR logic).
+            limit: Maximum results to return.
+            offset: Pagination offset.
+        """
         # Build the search query with prefix matching for partial words
         prefix_query = self._build_prefix_tsquery(query)
         search_query = func.to_tsquery("english", prefix_query)
@@ -99,6 +109,10 @@ class SearchService:
                     Resource.states.contains([state]),
                 )
             )
+        # Tag filter: resource must have at least one of the requested tags (OR logic)
+        if tags:
+            tag_conditions = [Resource.tags.overlap(tags)]
+            stmt = stmt.where(or_(*tag_conditions))
 
         # Get total count
         count_stmt = (
@@ -115,6 +129,8 @@ class SearchService:
                     Resource.states.contains([state]),
                 )
             )
+        if tags:
+            count_stmt = count_stmt.where(Resource.tags.overlap(tags))
 
         total = self.session.exec(count_stmt).one()
 
@@ -126,7 +142,7 @@ class SearchService:
         # Build search results with explanations
         search_results = []
         for resource, rank in results:
-            explanations = self._build_explanations(resource, query, category, state)
+            explanations = self._build_explanations(resource, query, category, state, tags)
             resource_read = self._to_read_schema(resource)
             search_results.append(
                 ResourceSearchResult(
@@ -144,8 +160,11 @@ class SearchService:
         query: str,
         category: str | None,
         state: str | None,
+        tags: list[str] | None = None,
     ) -> list[MatchExplanation]:
         """Build 'Why this matched' explanations."""
+        from app.core.taxonomy import get_tag_display_name
+
         explanations = []
 
         # Query match explanation
@@ -184,6 +203,21 @@ class SearchService:
                     field="categories",
                 )
             )
+
+        # Tag filter explanation
+        if tags and resource.tags:
+            matched_tags = [t for t in tags if t in resource.tags]
+            if matched_tags:
+                tag_names = [get_tag_display_name(t) for t in matched_tags[:3]]
+                tag_str = ", ".join(tag_names)
+                if len(matched_tags) > 3:
+                    tag_str += f" +{len(matched_tags) - 3} more"
+                explanations.append(
+                    MatchExplanation(
+                        reason=f"Matches tags: {tag_str}",
+                        field="tags",
+                    )
+                )
 
         # State filter explanation
         if state and state in resource.states:
@@ -394,10 +428,19 @@ class SearchService:
         query: str | None = None,
         category: str | None = None,
         eligibility_filters: EligibilityFilters | None = None,
+        tags: list[str] | None = None,
         limit: int = 20,
         offset: int = 0,
     ) -> tuple[list[ResourceSearchResult], int, list[str]]:
         """Search resources with eligibility filtering and match reasons.
+
+        Args:
+            query: Optional search query text.
+            category: Optional category filter.
+            eligibility_filters: Optional eligibility criteria filters.
+            tags: Optional list of eligibility tags to filter by (OR logic).
+            limit: Maximum results to return.
+            offset: Pagination offset.
 
         Returns:
             Tuple of (results, total, filters_applied)
@@ -427,6 +470,11 @@ class SearchService:
         if category:
             stmt = stmt.where(Resource.categories.contains([category]))
             filters_applied.append("category")
+
+        # Apply tag filter (OR logic - match any of the requested tags)
+        if tags:
+            stmt = stmt.where(Resource.tags.overlap(tags))
+            filters_applied.append("tags")
 
         # Apply eligibility filters if provided
         if eligibility_filters:
@@ -594,9 +642,9 @@ class SearchService:
             # Housing status
             if location.housing_status_required:
                 status_labels = {
-                    "homeless": "For veterans experiencing homelessness",
-                    "at_risk": "For veterans at risk of housing instability",
-                    "stably_housed": "For stably housed veterans",
+                    "homeless": "For Veterans experiencing homelessness",
+                    "at_risk": "For Veterans at risk of housing instability",
+                    "stably_housed": "For stably housed Veterans",
                 }
                 for status in location.housing_status_required:
                     if status in status_labels:
@@ -646,7 +694,7 @@ class SearchService:
                     "vso": "VSO representative",
                     "attorney": "Accredited attorney",
                     "claims_agent": "Claims agent",
-                    "cvso": "County veteran service officer",
+                    "cvso": "County Veteran service officer",
                 }
                 if location.representative_type in rep_labels:
                     reasons.append(
