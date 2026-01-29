@@ -6,6 +6,7 @@ import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import type { Resource, MatchExplanation } from '@/lib/api';
+import { getSourceTierBadge } from '@/components/resource-card';
 import {
   ExternalLink,
   Phone,
@@ -33,51 +34,6 @@ const categoryColors: Record<string, string> = {
   financial: 'bg-[hsl(var(--v4v-financial)/0.12)] text-[hsl(var(--v4v-financial))]',
 };
 
-interface TrustIndicatorProps {
-  score: number;
-  size?: 'sm' | 'md';
-}
-
-function TrustIndicator({ score, size = 'md' }: TrustIndicatorProps) {
-  const percentage = Math.round(score * 100);
-  let color = 'bg-red-500';
-  let textColor = 'text-red-600';
-  let label = 'Low Trust';
-
-  if (percentage >= 80) {
-    color = 'bg-green-500';
-    textColor = 'text-green-600';
-    label = 'Highly Trusted';
-  } else if (percentage >= 60) {
-    color = 'bg-yellow-500';
-    textColor = 'text-yellow-600';
-    label = 'Moderately Trusted';
-  } else if (percentage >= 40) {
-    color = 'bg-orange-500';
-    textColor = 'text-orange-600';
-    label = 'Some Trust';
-  }
-
-  const barHeight = size === 'sm' ? 'h-1.5' : 'h-2';
-  const barWidth = size === 'sm' ? 'w-16' : 'w-24';
-
-  return (
-    <div className="flex flex-col gap-1">
-      <div className="flex items-center gap-2">
-        <div className={`${barHeight} ${barWidth} rounded-full bg-muted`}>
-          <div
-            className={`${barHeight} rounded-full ${color}`}
-            style={{ width: `${percentage}%` }}
-          />
-        </div>
-        <span className={`text-sm font-medium ${textColor}`}>{percentage}%</span>
-      </div>
-      {size === 'md' && (
-        <span className="text-xs text-muted-foreground">{label}</span>
-      )}
-    </div>
-  );
-}
 
 interface ResourceDetailPanelProps {
   resource: Resource | null;
@@ -104,7 +60,7 @@ export function ResourceDetailPanel({
     );
   }
 
-  const trustScore = resource.trust.freshness_score * resource.trust.reliability_score;
+  const tierBadge = getSourceTierBadge(resource.trust.source_tier, resource.trust.source_name);
 
   return (
     <ScrollArea className="h-full">
@@ -112,7 +68,20 @@ export function ResourceDetailPanel({
         {/* Header */}
         <div>
           <h2 className="mb-2 text-xl font-bold leading-tight">{resource.title}</h2>
-          <p className="text-sm text-muted-foreground">{resource.organization.name}</p>
+          <div className="flex items-center gap-2 flex-wrap">
+            <p className="text-sm text-muted-foreground">{resource.organization.name}</p>
+            {tierBadge && (
+              <Badge variant="outline" className={`text-xs ${tierBadge.className}`}>
+                <span>{tierBadge.icon}</span>
+                {tierBadge.text}
+              </Badge>
+            )}
+            {resource.trust.source_tier === 4 && resource.trust.source_name && (
+              <span className="text-xs text-muted-foreground">
+                via {resource.trust.source_name}
+              </span>
+            )}
+          </div>
         </div>
 
         {/* Categories & Location */}
@@ -142,30 +111,34 @@ export function ResourceDetailPanel({
         <div className="rounded-lg border bg-muted/30 p-4">
           <div className="mb-3 flex items-center gap-2">
             <Shield className="h-4 w-4 text-[hsl(var(--v4v-gold))]" />
-            <h4 className="font-medium">Trust Signals</h4>
+            <h4 className="font-medium">Source Information</h4>
           </div>
           <div className="space-y-3">
-            <TrustIndicator score={trustScore} />
-            <div className="grid grid-cols-2 gap-3 text-sm">
-              <div>
-                <span className="text-muted-foreground">Source Tier: </span>
-                <span className="font-medium">
-                  {resource.trust.source_tier ? `Tier ${resource.trust.source_tier}` : 'Unknown'}
+            {/* Source tier badge - prominent display */}
+            <div className="flex items-center gap-2">
+              {tierBadge ? (
+                <Badge variant="outline" className={`${tierBadge.className}`}>
+                  <span className="mr-1">{tierBadge.icon}</span>
+                  {tierBadge.text}
+                </Badge>
+              ) : resource.trust.source_tier === 4 && resource.trust.source_name ? (
+                <span className="text-sm text-muted-foreground">
+                  Source: {resource.trust.source_name}
                 </span>
-              </div>
-              <div>
-                <span className="text-muted-foreground">Source: </span>
-                <span className="font-medium">{resource.trust.source_name || 'Manual'}</span>
-              </div>
-              {resource.trust.last_verified && (
-                <div className="col-span-2">
-                  <span className="text-muted-foreground">Last Verified: </span>
-                  <span className="font-medium">
-                    {new Date(resource.trust.last_verified).toLocaleDateString()}
-                  </span>
-                </div>
+              ) : (
+                <span className="text-sm text-muted-foreground">
+                  Source: {resource.trust.source_name || 'Manual entry'}
+                </span>
               )}
             </div>
+            {resource.trust.last_verified && (
+              <div className="text-sm">
+                <span className="text-muted-foreground">Last Verified: </span>
+                <span className="font-medium">
+                  {new Date(resource.trust.last_verified).toLocaleDateString()}
+                </span>
+              </div>
+            )}
           </div>
         </div>
 

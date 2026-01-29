@@ -105,6 +105,41 @@ const categoryIcons: Record<string, typeof Briefcase> = {
 // Export for use in other components
 export const categoryColors = categoryBadgeStyles;
 
+// Source tier badge configuration
+export type SourceTierBadge = {
+  text: string;
+  icon: string;
+  className: string;
+} | null;
+
+export function getSourceTierBadge(tier: number | null, sourceName: string | null): SourceTierBadge {
+  switch (tier) {
+    case 1:
+      return {
+        text: 'Official',
+        icon: '\u{1F3DB}\uFE0F', // Building emoji
+        className: 'bg-blue-100 text-blue-800 border-blue-300 dark:bg-blue-900/50 dark:text-blue-200 dark:border-blue-700',
+      };
+    case 2:
+      return {
+        text: 'Verified Partner',
+        icon: '\u2713', // Checkmark
+        className: 'bg-green-100 text-green-800 border-green-300 dark:bg-green-900/50 dark:text-green-200 dark:border-green-700',
+      };
+    case 3:
+      return {
+        text: 'State Agency',
+        icon: '\u{1F3DB}\uFE0F', // Building emoji
+        className: 'bg-purple-100 text-purple-800 border-purple-300 dark:bg-purple-900/50 dark:text-purple-200 dark:border-purple-700',
+      };
+    case 4:
+      // Tier 4: show source name only, no special badge styling
+      return sourceName ? null : null;
+    default:
+      return null;
+  }
+}
+
 // Border colors for logo container
 const logoBorderColors: Record<string, string> = {
   employment: 'border-[hsl(var(--v4v-employment))]',
@@ -238,9 +273,31 @@ function CardInner({
               {/* Placeholder for bookmark button spacing */}
               {(showBookmark || renderBookmark) && <div className="h-6 w-6 shrink-0" />}
             </div>
-            <p className="mt-1 text-sm text-muted-foreground">
-              {resource.organization.name}
-            </p>
+            <div className="mt-1 flex items-center gap-2 flex-wrap">
+              <p className="text-sm text-muted-foreground">
+                {resource.organization.name}
+              </p>
+              {(() => {
+                const tierBadge = getSourceTierBadge(resource.trust.source_tier, resource.trust.source_name);
+                if (tierBadge) {
+                  return (
+                    <Badge variant="outline" className={`text-xs ${tierBadge.className}`}>
+                      <span>{tierBadge.icon}</span>
+                      {tierBadge.text}
+                    </Badge>
+                  );
+                }
+                // Tier 4: show source name only
+                if (resource.trust.source_tier === 4 && resource.trust.source_name) {
+                  return (
+                    <span className="text-xs text-muted-foreground">
+                      via {resource.trust.source_name}
+                    </span>
+                  );
+                }
+                return null;
+              })()}
+            </div>
           </div>
         </div>
       </CardHeader>
