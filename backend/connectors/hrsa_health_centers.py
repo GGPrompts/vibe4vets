@@ -163,8 +163,15 @@ class HRSAHealthCentersConnector(BaseConnector):
         # Determine organization
         org_name = hc_name if hc_name else site_name
 
-        # Build source URL
-        source_url = website if website else "https://findahealthcenter.hrsa.gov/"
+        # Build source URL - MUST be unique per site for ETL deduplication
+        # Use BPHC Assigned Number which is guaranteed unique per site
+        bphc_number = row.get("BPHC Assigned Number", "").strip()
+        if bphc_number:
+            source_url = f"https://findahealthcenter.hrsa.gov/?bphc={bphc_number}"
+        else:
+            # Fallback using health center number + site name hash for uniqueness
+            hc_num = row.get("Health Center Number", "").strip()
+            source_url = f"https://findahealthcenter.hrsa.gov/?hc={hc_num}&site={hash(site_name) % 100000}"
 
         return ResourceCandidate(
             title=title,
