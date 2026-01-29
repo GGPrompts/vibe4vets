@@ -213,6 +213,8 @@ function SearchResults() {
     updateURL(newFilters);
     // Track filter usage analytics
     trackFilter(newFilters.categories[0], newFilters.states[0]);
+    // Scroll to top so users see new results (pagination has its own scroll handling)
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   // Filter chip handlers
@@ -332,13 +334,14 @@ function SearchResults() {
 
   // Nearby mode: useQuery when zip code is active (no text search)
   const nearbyQuery = useQuery({
-    queryKey: ['nearby', filters.zip, filters.radius, filters.categories, filters.scope],
+    queryKey: ['nearby', filters.zip, filters.radius, filters.categories, filters.scope, filters.tags],
     queryFn: async () => {
       return api.resources.nearby({
         zip: filters.zip!,
         radius: filters.radius || 25,
         categories: filters.categories.length > 0 ? filters.categories.join(',') : undefined,
         scope: filters.scope !== 'all' ? filters.scope : undefined,
+        tags: filters.tags && filters.tags.length > 0 ? filters.tags.join(',') : undefined,
         limit: 100,
       });
     },
