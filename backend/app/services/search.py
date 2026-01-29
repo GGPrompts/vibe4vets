@@ -81,7 +81,7 @@ class SearchService:
             query: Search query text.
             category: Optional category filter.
             state: Optional state filter.
-            tags: Optional list of eligibility tags to filter by (OR logic).
+            tags: Optional list of eligibility tags to filter by (AND logic - must match ALL tags).
             limit: Maximum results to return.
             offset: Pagination offset.
         """
@@ -109,10 +109,11 @@ class SearchService:
                     Resource.states.contains([state]),
                 )
             )
-        # Tag filter: resource must have at least one of the requested tags (OR logic)
+        # Tag filter: resource must have ALL of the requested tags (AND logic)
+        # Uses @> (contains) operator for each tag to ensure all tags are present
         if tags:
-            tag_conditions = [Resource.tags.overlap(tags)]
-            stmt = stmt.where(or_(*tag_conditions))
+            for tag in tags:
+                stmt = stmt.where(Resource.tags.contains([tag]))
 
         # Get total count
         count_stmt = (
@@ -130,7 +131,9 @@ class SearchService:
                 )
             )
         if tags:
-            count_stmt = count_stmt.where(Resource.tags.overlap(tags))
+            # AND logic: each tag must be present
+            for tag in tags:
+                count_stmt = count_stmt.where(Resource.tags.contains([tag]))
 
         total = self.session.exec(count_stmt).one()
 
@@ -438,7 +441,7 @@ class SearchService:
             query: Optional search query text.
             category: Optional category filter.
             eligibility_filters: Optional eligibility criteria filters.
-            tags: Optional list of eligibility tags to filter by (OR logic).
+            tags: Optional list of eligibility tags to filter by (AND logic - must match ALL tags).
             limit: Maximum results to return.
             offset: Pagination offset.
 
@@ -471,9 +474,10 @@ class SearchService:
             stmt = stmt.where(Resource.categories.contains([category]))
             filters_applied.append("category")
 
-        # Apply tag filter (OR logic - match any of the requested tags)
+        # Apply tag filter (AND logic - must match ALL of the requested tags)
         if tags:
-            stmt = stmt.where(Resource.tags.overlap(tags))
+            for tag in tags:
+                stmt = stmt.where(Resource.tags.contains([tag]))
             filters_applied.append("tags")
 
         # Apply eligibility filters if provided

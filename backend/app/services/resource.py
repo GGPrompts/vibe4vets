@@ -93,7 +93,7 @@ class ResourceService:
             scope: Filter by resource scope ('national', 'state', 'local', or 'all')
             status: Filter by resource status
             sort: Sort order ('newest', 'alpha', 'shuffle', or 'relevance')
-            tags: Filter by eligibility tags (resources must match ANY of the provided tags)
+            tags: Filter by eligibility tags (resources must match ALL of the provided tags - AND logic)
             limit: Maximum results to return
             offset: Number of results to skip for pagination
 
@@ -125,15 +125,16 @@ class ResourceService:
 
         # Apply tags filter - search eligibility/title/description text fields and arrays
         # Tags like "hud-vash", "ssvf", "food-pantry" filter by matching content or classifications
+        # Uses AND logic: resources must match ALL provided tags (selecting more tags narrows results)
         if tags:
-            print(f"[ResourceService] Applying tags filter: {tags}")
-            tag_conditions = []
+            print(f"[ResourceService] Applying tags filter (AND logic): {tags}")
             for tag in tags:
                 # Convert tag to search pattern (hud-vash -> %hud%vash% or %hud-vash%)
                 search_term = f"%{tag}%"
                 # Also try with spaces instead of hyphens
                 search_term_spaced = f"%{tag.replace('-', ' ')}%"
-                tag_conditions.append(
+                # Each tag must match - apply as separate WHERE clause (AND logic)
+                query = query.where(
                     or_(
                         Resource.eligibility.ilike(search_term),
                         Resource.eligibility.ilike(search_term_spaced),
@@ -145,7 +146,6 @@ class ResourceService:
                         Resource.subcategories.contains([tag]),  # Check subcategories array
                     )
                 )
-            query = query.where(or_(*tag_conditions))
 
         if status:
             query = query.where(Resource.status == status)
@@ -167,11 +167,11 @@ class ResourceService:
             scope_enum = ResourceScope(scope)
             count_query = count_query.where(Resource.scope == scope_enum)
         if tags:
-            tag_conditions = []
+            # AND logic: each tag must match (apply as separate WHERE clauses)
             for tag in tags:
                 search_term = f"%{tag}%"
                 search_term_spaced = f"%{tag.replace('-', ' ')}%"
-                tag_conditions.append(
+                count_query = count_query.where(
                     or_(
                         Resource.eligibility.ilike(search_term),
                         Resource.eligibility.ilike(search_term_spaced),
@@ -183,7 +183,6 @@ class ResourceService:
                         Resource.subcategories.contains([tag]),  # Also check subcategories
                     )
                 )
-            count_query = count_query.where(or_(*tag_conditions))
         if status:
             count_query = count_query.where(Resource.status == status)
 
@@ -249,7 +248,10 @@ class ResourceService:
 
         # Helper to build tags SQL condition
         def build_tags_sql(tags: list[str]) -> str:
-            """Build SQL condition for tags filtering (matches eligibility, title, description, tags, subcategories)."""
+            """Build SQL condition for tags filtering (matches eligibility, title, description, tags, subcategories).
+
+            Uses AND logic: resources must match ALL provided tags (selecting more tags narrows results).
+            """
             tag_conditions = []
             for tag in tags:
                 # Match tag in text fields (case-insensitive) or in array fields
@@ -262,7 +264,8 @@ class ResourceService:
                     f"OR r.tags @> ARRAY['{tag}']::text[] "
                     f"OR r.subcategories @> ARRAY['{tag}']::text[])"
                 )
-            return " OR ".join(tag_conditions)
+            # AND logic: each tag condition must be satisfied
+            return " AND ".join(tag_conditions)
 
         # If scope is 'national', only return national resources (no spatial query)
         if scope == "national":
