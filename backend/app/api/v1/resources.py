@@ -270,6 +270,11 @@ def list_nearby_resources(
         description="Filter by scope: 'national' (only nationwide), 'state' (only local/state), or omit for all",
         examples=["national", "state"],
     ),
+    tags: str | None = Query(
+        default=None,
+        description="Filter by eligibility tags (comma-separated tag IDs, e.g., 'combat_veteran,female_veteran')",
+        examples=["combat_veteran,female_veteran", "homeless,at_risk"],
+    ),
     limit: int = Query(default=20, ge=1, le=100, description="Maximum results to return"),
     offset: int = Query(default=0, ge=0, description="Number of results to skip for pagination"),
 ) -> ResourceNearbyList:
@@ -288,6 +293,7 @@ def list_nearby_resources(
     - `radius` - Search radius in miles (default 25, max 100)
     - `categories` - Optional category filter (housing, legal, employment, training)
     - `scope` - Optional scope filter: 'national' (only nationwide programs), 'state' (only local/state)
+    - `tags` - Optional eligibility tags filter (comma-separated)
 
     **Note:** When scope is omitted (default), returns local/state resources sorted by distance
     PLUS all national resources (which apply everywhere). National resources appear after
@@ -297,12 +303,17 @@ def list_nearby_resources(
     if categories:
         category_list = [c.strip() for c in categories.split(",") if c.strip()]
 
+    tag_list: list[str] | None = None
+    if tags:
+        tag_list = [t.strip() for t in tags.split(",") if t.strip()]
+
     service = ResourceService(session)
     result = service.list_nearby(
         zip_code=zip,
         radius_miles=radius,
         categories=category_list,
         scope=scope,
+        tags=tag_list,
         limit=limit,
         offset=offset,
     )

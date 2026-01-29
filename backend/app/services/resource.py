@@ -213,6 +213,7 @@ class ResourceService:
         radius_miles: int = 25,
         categories: list[str] | None = None,
         scope: str | None = None,
+        tags: list[str] | None = None,
         limit: int = 20,
         offset: int = 0,
     ) -> ResourceNearbyList | None:
@@ -224,6 +225,7 @@ class ResourceService:
             categories: Filter by categories (optional)
             scope: Filter by scope - 'national' (only nationwide), 'state' (only local/state),
                    or None (local/state + national)
+            tags: Filter by eligibility tags (optional)
             limit: Maximum results to return
             offset: Number of results to skip for pagination
 
@@ -245,6 +247,23 @@ class ResourceService:
         nearby_resources = []
         total = 0
 
+        # Helper to build tags SQL condition
+        def build_tags_sql(tags: list[str]) -> str:
+            """Build SQL condition for tags filtering (matches eligibility, title, description, tags, subcategories)."""
+            tag_conditions = []
+            for tag in tags:
+                # Match tag in text fields (case-insensitive) or in array fields
+                search_term = f"%{tag}%"
+                search_term_spaced = f"%{tag.replace('-', ' ')}%"
+                tag_conditions.append(
+                    f"(r.eligibility ILIKE '{search_term}' OR r.eligibility ILIKE '{search_term_spaced}' "
+                    f"OR r.title ILIKE '{search_term}' OR r.title ILIKE '{search_term_spaced}' "
+                    f"OR r.description ILIKE '{search_term}' OR r.description ILIKE '{search_term_spaced}' "
+                    f"OR r.tags @> ARRAY['{tag}']::text[] "
+                    f"OR r.subcategories @> ARRAY['{tag}']::text[])"
+                )
+            return " OR ".join(tag_conditions)
+
         # If scope is 'national', only return national resources (no spatial query)
         if scope == "national":
             national_sql = """
@@ -258,6 +277,10 @@ class ResourceService:
             if categories:
                 category_conditions = " OR ".join([f"r.categories @> ARRAY['{cat}']::text[]" for cat in categories])
                 national_sql += f" AND ({category_conditions})"
+
+            if tags:
+                tags_condition = build_tags_sql(tags)
+                national_sql += f" AND ({tags_condition})"
 
             count_sql = f"SELECT COUNT(*) FROM ({national_sql}) as subquery"
             total = self.session.execute(text(count_sql), params).scalar() or 0
@@ -300,6 +323,10 @@ class ResourceService:
                 category_conditions = " OR ".join([f"r.categories @> ARRAY['{cat}']::text[]" for cat in categories])
                 base_sql += f" AND ({category_conditions})"
 
+            if tags:
+                tags_condition = build_tags_sql(tags)
+                base_sql += f" AND ({tags_condition})"
+
             # Get nearby resources count
             count_sql = f"SELECT COUNT(*) FROM ({base_sql}) as subquery"
             nearby_count = self.session.execute(text(count_sql), params).scalar() or 0
@@ -315,6 +342,9 @@ class ResourceService:
                 if categories:
                     category_conditions = " OR ".join([f"r.categories @> ARRAY['{cat}']::text[]" for cat in categories])
                     national_count_sql += f" AND ({category_conditions})"
+                if tags:
+                    tags_condition = build_tags_sql(tags)
+                    national_count_sql += f" AND ({tags_condition})"
                 national_count = self.session.execute(text(national_count_sql)).scalar() or 0
 
             total = nearby_count + national_count
@@ -359,6 +389,9 @@ class ResourceService:
                 if categories:
                     category_conditions = " OR ".join([f"r.categories @> ARRAY['{cat}']::text[]" for cat in categories])
                     national_sql += f" AND ({category_conditions})"
+                if tags:
+                    tags_condition = build_tags_sql(tags)
+                    national_sql += f" AND ({tags_condition})"
 
                 national_sql += " ORDER BY r.title ASC LIMIT :limit OFFSET :offset"
 

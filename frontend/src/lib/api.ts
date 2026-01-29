@@ -627,6 +627,7 @@ export const api = {
       radius?: number;
       categories?: string;
       scope?: string;
+      tags?: string;
       limit?: number;
       offset?: number;
     }): Promise<ResourceNearbyList> => {
@@ -635,6 +636,7 @@ export const api = {
       if (params.radius) searchParams.set('radius', String(params.radius));
       if (params.categories) searchParams.set('categories', params.categories);
       if (params.scope && params.scope !== 'all') searchParams.set('scope', params.scope);
+      if (params.tags) searchParams.set('tags', params.tags);
       if (params.limit) searchParams.set('limit', String(params.limit));
       if (params.offset) searchParams.set('offset', String(params.offset));
 
