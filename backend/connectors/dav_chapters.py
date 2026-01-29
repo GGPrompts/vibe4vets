@@ -509,50 +509,43 @@ class DAVChaptersConnector(BaseConnector):
         Returns:
             Eligibility description string.
         """
-        if location_type == "chapter":
-            return (
+        eligibility_map = {
+            "chapter": (
                 "DAV membership is open to men and women who were wounded, injured, "
                 "or became ill while serving in the U.S. Armed Forces during wartime "
                 "or peacetime and have an honorable discharge. Service-connected "
                 "disability is required for membership. However, DAV chapters provide "
                 "claims assistance and referrals to ALL veterans regardless of "
                 "membership status or disability rating."
-            )
-
-        elif location_type == "nso":
-            return (
+            ),
+            "nso": (
                 "DAV National Service Officers provide FREE claims assistance to ALL "
                 "veterans, regardless of DAV membership status. No service-connected "
                 "disability is required to receive help with VA claims. NSOs can help "
                 "with initial claims, appeals, and accessing other VA benefits."
-            )
-
-        elif location_type == "tso":
-            return (
+            ),
+            "tso": (
                 "DAV Transition Service Officers assist service members who are "
                 "separating or retiring from military service. Available at military "
                 "installations, TSOs provide benefits briefings and one-on-one "
                 "counseling to help with the transition to civilian life."
-            )
-
-        elif location_type == "hsc":
-            return (
+            ),
+            "hsc": (
                 "DAV Hospital Service Coordinators assist any veteran receiving care "
                 "at VA medical facilities. No membership or disability rating is "
                 "required to receive assistance navigating VA healthcare services."
-            )
-
-        elif location_type == "transportation":
-            return (
+            ),
+            "transportation": (
                 "DAV Transportation is available to any veteran with an appointment "
                 "at a VA medical facility. No membership, disability rating, or "
                 "income requirement is needed. Rides are provided free of charge "
                 "by volunteer drivers."
-            )
-
-        return (
+            ),
+        }
+        return eligibility_map.get(
+            location_type,
             "DAV provides free assistance to all veterans regardless of membership "
-            "status. Contact this location for specific eligibility information."
+            "status. Contact this location for specific eligibility information.",
         )
 
     def _build_how_to_apply(

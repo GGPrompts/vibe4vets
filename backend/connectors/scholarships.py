@@ -188,7 +188,10 @@ class ScholarshipsConnector(BaseConnector):
 
         return ResourceCandidate(
             title=f"{name} - Scholarship Search Tool",
-            description=f"{description} Use this resource to search for additional Veteran scholarships beyond the major programs listed in our directory.",
+            description=(
+                f"{description} Use this resource to search for additional Veteran "
+                "scholarships beyond the major programs listed in our directory."
+            ),
             source_url=website,
             org_name=name.split()[0] if name else "Scholarship Directory",
             org_website=website,
@@ -201,8 +204,14 @@ class ScholarshipsConnector(BaseConnector):
                 "veteran-education",
                 "aggregator",
             ],
-            eligibility="Open to all Veterans, service members, and military families searching for education funding.",
-            how_to_apply=f"Visit {website} and use the search tools to find scholarships matching your eligibility and educational goals.",
+            eligibility=(
+                "Open to all Veterans, service members, and military families "
+                "searching for education funding."
+            ),
+            how_to_apply=(
+                f"Visit {website} and use the search tools to find scholarships "
+                "matching your eligibility and educational goals."
+            ),
             scope="national",
             states=None,
             raw_data=aggregator,
@@ -261,13 +270,19 @@ class ScholarshipsConnector(BaseConnector):
             Formatted eligibility string.
         """
         if not eligibility_list:
-            return "Veterans and military community members. Check program requirements for specific eligibility criteria."
+            return (
+                "Veterans and military community members. "
+                "Check program requirements for specific eligibility criteria."
+            )
 
         if len(eligibility_list) == 1:
             return f"Eligible: {eligibility_list[0]}. Check program website for complete eligibility requirements."
 
         formatted_list = "; ".join(eligibility_list)
-        return f"Eligible applicants include: {formatted_list}. Check program website for complete eligibility requirements."
+        return (
+            f"Eligible applicants include: {formatted_list}. "
+            "Check program website for complete eligibility requirements."
+        )
 
     def _build_tags(
         self,

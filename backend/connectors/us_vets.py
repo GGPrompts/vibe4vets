@@ -182,12 +182,11 @@ class USVetsConnector(BaseConnector):
 
         # Add capacity info if available
         capacity = location.get("capacity", {})
-        if capacity:
-            if isinstance(capacity, dict):
-                if "total_beds" in capacity:
-                    parts.append(f"Capacity: {capacity['total_beds']} beds.")
-                elif "veterans_village" in capacity:
-                    parts.append(f"Capacity: {capacity['veterans_village']} veterans at Veterans Village.")
+        if capacity and isinstance(capacity, dict):
+            if "total_beds" in capacity:
+                parts.append(f"Capacity: {capacity['total_beds']} beds.")
+            elif "veterans_village" in capacity:
+                parts.append(f"Capacity: {capacity['veterans_village']} veterans at Veterans Village.")
 
         # Add national hotline
         parts.append(f"National hotline: {national_phone} (24/7).")

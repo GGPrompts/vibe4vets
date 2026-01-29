@@ -125,7 +125,8 @@ class RuralTelehealthConnector(BaseConnector):
         website = program.get("website")
         phone = program.get("phone")
         email = program.get("email")
-        tier = program.get("tier", 2)
+        # tier is available in program data but not currently used
+        _ = program.get("tier", 2)
 
         title = self._build_title(program_name)
         description = self._build_description(program)
@@ -358,9 +359,8 @@ class RuralTelehealthConnector(BaseConnector):
         if "veterans affairs" in org_name or "va " in org_name:
             if "va" not in tags:
                 tags.append("va")
-        elif "cohen" in org_name:
-            if "cohen-veterans-network" not in tags:
-                tags.append("cohen-veterans-network")
+        elif "cohen" in org_name and "cohen-veterans-network" not in tags:
+            tags.append("cohen-veterans-network")
 
         # Add scope-based tags
         scope = program.get("scope", "national")
@@ -378,9 +378,8 @@ class RuralTelehealthConnector(BaseConnector):
 
         # Check eligibility for VA enrollment tag
         eligibility = program.get("eligibility", {})
-        if eligibility.get("va_enrollment_required") is False:
-            if "no-va-enrollment" not in tags:
-                tags.append("no-va-enrollment")
+        if eligibility.get("va_enrollment_required") is False and "no-va-enrollment" not in tags:
+            tags.append("no-va-enrollment")
 
         return list(dict.fromkeys(tags))  # Remove duplicates while preserving order
 

@@ -227,10 +227,7 @@ class SubcategoriesResponse(BaseModel):
 )
 def get_all_subcategories(category_id: str | None = None) -> SubcategoriesResponse:
     """Get subcategories, optionally filtered by category."""
-    if category_id:
-        subs = get_subcategories(category_id)
-    else:
-        subs = list(SUBCATEGORIES.values())
+    subs = get_subcategories(category_id) if category_id else list(SUBCATEGORIES.values())
 
     subcategories_list = [
         SubcategoryInfo(

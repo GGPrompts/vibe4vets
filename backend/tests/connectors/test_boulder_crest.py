@@ -1,6 +1,5 @@
 """Tests for Boulder Crest Foundation PATHH program connector."""
 
-import pytest
 
 from connectors.boulder_crest import (
     BOULDER_CREST_LOCATIONS,

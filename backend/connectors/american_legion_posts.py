@@ -436,7 +436,10 @@ class AmericanLegionPostsConnector(BaseConnector):
         elif email:
             parts.append(f"Email American Legion {post_display} at {email} to inquire about membership or services.")
         elif website:
-            parts.append(f"Visit the website for American Legion {post_display} to learn about membership and services.")
+            parts.append(
+                f"Visit the website for American Legion {post_display} "
+                "to learn about membership and services."
+            )
         else:
             parts.append(f"Contact American Legion {post_display} to inquire about membership and available services.")
 

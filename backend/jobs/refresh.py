@@ -46,11 +46,11 @@ from connectors import (
     TwoOneOneConnector,
     UnitedWayConnector,
     USVetsConnector,
-    VCPConnector,
     VACommunityConnector,
     VAGovConnector,
     VAPatientAdvocateConnector,
     VBOCConnector,
+    VCPConnector,
     VetCentersConnector,
     VeteranEmergencyAssistanceConnector,
     VeteranEmployersConnector,
@@ -105,7 +105,8 @@ CONNECTOR_REGISTRY: dict[str, type[BaseConnector]] = {
     "team_rwb": TeamRWBConnector,  # Team Red White & Blue community chapters (peer support, fitness)
     "scholarships": ScholarshipsConnector,  # Veteran scholarship programs (education)
     "tribal_veterans": TribalVeteransConnector,  # IHS/VA Urban Indian Health Organizations
-    "faith_based": FaithBasedConnector,  # Faith-based veteran service organizations (Salvation Army, Catholic Charities, VOA, etc.)
+    # Faith-based veteran service organizations (Salvation Army, Catholic Charities, VOA, etc.)
+    "faith_based": FaithBasedConnector,
     "rural_telehealth": RuralTelehealthConnector,  # VA ATLAS, Connected Devices, FLEX grants, rural telehealth
     # Tier 3: State/County Level
     "state_va": StateVAConnector,  # State VA agencies (basic info)

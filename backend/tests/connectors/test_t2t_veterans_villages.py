@@ -1,6 +1,5 @@
 """Tests for Tunnel to Towers Veterans Villages connector."""
 
-import pytest
 
 from connectors.t2t_veterans_villages import (
     T2T_VILLAGES,

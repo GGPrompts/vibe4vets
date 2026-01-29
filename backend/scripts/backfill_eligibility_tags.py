@@ -71,7 +71,12 @@ TAG_RULES: list[TagRule] = [
     ),
     TagRule(
         tag="transitional",
-        patterns=[r"\btransitional\s+housing\b", r"\btransitional\s+living\b", r"\bgpd\b", r"\bgrant\s+and\s+per\s+diem\b"],
+        patterns=[
+            r"\btransitional\s+housing\b",
+            r"\btransitional\s+living\b",
+            r"\bgpd\b",
+            r"\bgrant\s+and\s+per\s+diem\b",
+        ],
         categories=["housing"],
     ),
     TagRule(
@@ -137,7 +142,12 @@ TAG_RULES: list[TagRule] = [
     ),
     TagRule(
         tag="veteran-friendly",
-        patterns=[r"\bveteran[-\s]?friendly\b", r"\bhires?\s+veterans?\b", r"\bveteran\s+hiring\b", r"\bmilitary[-\s]?friendly\b"],
+        patterns=[
+            r"\bveteran[-\s]?friendly\b",
+            r"\bhires?\s+veterans?\b",
+            r"\bveteran\s+hiring\b",
+            r"\bmilitary[-\s]?friendly\b",
+        ],
         categories=["employment"],
     ),
     TagRule(
@@ -152,23 +162,43 @@ TAG_RULES: list[TagRule] = [
     ),
     TagRule(
         tag="skilled-trades",
-        patterns=[r"\bskilled\s+trades?\b", r"\btrade\s+(?:jobs?|work)\b", r"\belectrician\b", r"\bplumber\b", r"\bweld(?:er|ing)\b"],
+        patterns=[
+            r"\bskilled\s+trades?\b",
+            r"\btrade\s+(?:jobs?|work)\b",
+            r"\belectrician\b",
+            r"\bplumber\b",
+            r"\bweld(?:er|ing)\b",
+        ],
         categories=["employment"],
     ),
     # === LEGAL TAGS ===
     TagRule(
         tag="discharge-upgrade",
-        patterns=[r"\bdischarge\s+upgrade\b", r"\bupgrade\s+(?:your\s+)?discharge\b", r"\bcharacterization\s+(?:of\s+)?(?:service|discharge)\b"],
+        patterns=[
+            r"\bdischarge\s+upgrade\b",
+            r"\bupgrade\s+(?:your\s+)?discharge\b",
+            r"\bcharacterization\s+(?:of\s+)?(?:service|discharge)\b",
+        ],
         categories=["legal"],
     ),
     TagRule(
         tag="va-appeals",
-        patterns=[r"\bva\s+appeal\b", r"\bappeal(?:s|ing)?\s+(?:your\s+)?(?:va|claim)\b", r"\bbva\b", r"\bboard\s+of\s+veterans?\s+appeals?\b"],
+        patterns=[
+            r"\bva\s+appeal\b",
+            r"\bappeal(?:s|ing)?\s+(?:your\s+)?(?:va|claim)\b",
+            r"\bbva\b",
+            r"\bboard\s+of\s+veterans?\s+appeals?\b",
+        ],
         categories=["legal"],
     ),
     TagRule(
         tag="free-legal-aid",
-        patterns=[r"\bfree\s+legal\b", r"\blegal\s+aid\b", r"\blegal\s+assistance\b", r"\blegal\s+services?\s+corporation\b"],
+        patterns=[
+            r"\bfree\s+legal\b",
+            r"\blegal\s+aid\b",
+            r"\blegal\s+assistance\b",
+            r"\blegal\s+services?\s+corporation\b",
+        ],
         categories=["legal"],
     ),
     TagRule(
@@ -204,7 +234,12 @@ TAG_RULES: list[TagRule] = [
     ),
     TagRule(
         tag="crisis-services",
-        patterns=[r"\bcrisis\s+(?:line|services?|intervention|support)\b", r"\bsuicide\s+prevention\b", r"\b988\b", r"\bveterans?\s+crisis\s+line\b"],
+        patterns=[
+            r"\bcrisis\s+(?:line|services?|intervention|support)\b",
+            r"\bsuicide\s+prevention\b",
+            r"\b988\b",
+            r"\bveterans?\s+crisis\s+line\b",
+        ],
         categories=["mentalHealth"],
     ),
     TagRule(
@@ -214,7 +249,12 @@ TAG_RULES: list[TagRule] = [
     ),
     TagRule(
         tag="telehealth",
-        patterns=[r"\btelehealth\b", r"\btelemed(?:icine)?\b", r"\bvirtual\s+(?:care|therapy|counseling|appointment)\b", r"\bonline\s+therapy\b"],
+        patterns=[
+            r"\btelehealth\b",
+            r"\btelemed(?:icine)?\b",
+            r"\bvirtual\s+(?:care|therapy|counseling|appointment)\b",
+            r"\bonline\s+therapy\b",
+        ],
         categories=["mentalHealth", "healthcare"],
     ),
     TagRule(
@@ -255,7 +295,10 @@ TAG_RULES: list[TagRule] = [
     ),
     TagRule(
         tag="free",
-        patterns=[r"\bfree\s+(?:training|course|program|certification)\b", r"\bno[-\s]?cost\s+(?:training|education)\b"],
+        patterns=[
+            r"\bfree\s+(?:training|course|program|certification)\b",
+            r"\bno[-\s]?cost\s+(?:training|education)\b",
+        ],
         categories=["training"],
     ),
     TagRule(
@@ -297,7 +340,12 @@ TAG_RULES: list[TagRule] = [
     ),
     TagRule(
         tag="meal-program",
-        patterns=[r"\bmeal\s+program\b", r"\bhot\s+meals?\b", r"\bcommunity\s+(?:meal|kitchen)\b", r"\bsoup\s+kitchen\b"],
+        patterns=[
+            r"\bmeal\s+program\b",
+            r"\bhot\s+meals?\b",
+            r"\bcommunity\s+(?:meal|kitchen)\b",
+            r"\bsoup\s+kitchen\b",
+        ],
         categories=["food"],
     ),
     TagRule(
@@ -370,7 +418,11 @@ TAG_RULES: list[TagRule] = [
     ),
     TagRule(
         tag="homeless-veterans",
-        patterns=[r"\bhomeless\s+veteran\b", r"\bveteran(?:s)?\s+experiencing\s+homelessness\b", r"\bunhoused\s+veteran\b"],
+        patterns=[
+            r"\bhomeless\s+veteran\b",
+            r"\bveteran(?:s)?\s+experiencing\s+homelessness\b",
+            r"\bunhoused\s+veteran\b",
+        ],
         categories=["supportServices", "housing"],
     ),
     TagRule(
@@ -429,14 +481,12 @@ def infer_tags_for_resource(resource: Resource) -> set[str]:
 
     for rule in TAG_RULES:
         # Check category filter if specified
-        if rule.categories:
-            if not resource_categories.intersection(rule.categories):
-                continue
+        if rule.categories and not resource_categories.intersection(rule.categories):
+            continue
 
         # Check subcategory filter if specified
-        if rule.subcategories:
-            if not resource_subcategories.intersection(rule.subcategories):
-                continue
+        if rule.subcategories and not resource_subcategories.intersection(rule.subcategories):
+            continue
 
         # Check if any pattern matches
         for pattern in rule.patterns:

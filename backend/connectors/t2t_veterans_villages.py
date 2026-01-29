@@ -18,7 +18,6 @@ from pathlib import Path
 
 from connectors.base import BaseConnector, ResourceCandidate, SourceMetadata
 
-
 # Operational Veterans Villages locations
 T2T_VILLAGES = [
     {
@@ -31,7 +30,10 @@ T2T_VILLAGES = [
         "phone": "(347) 868-6561",
         "hours": "24 hours, 7 days a week",
         "opened": "November 2023",
-        "description": "Renovated 161-room former Holiday Inn providing permanent and transitional housing. Phase II added 14 Comfort Homes for senior veterans.",
+        "description": (
+            "Renovated 161-room former Holiday Inn providing permanent and transitional "
+            "housing. Phase II added 14 Comfort Homes for senior veterans."
+        ),
         "capacity": {"total_units": 161, "comfort_homes": 14},
         "housing_types": ["permanent-supportive-housing", "transitional-housing"],
         "partner_org": "U.S.VETS",
@@ -46,7 +48,10 @@ T2T_VILLAGES = [
         "phone": "(951) 867-9691",
         "hours": "8:00 AM - 5:00 PM",
         "opened": "2018",
-        "description": "138-unit LEED Gold supportive housing on March Air Reserve Base. Phase II (2021) added 60 veteran homes. Supports over 400 veterans and families.",
+        "description": (
+            "138-unit LEED Gold supportive housing on March Air Reserve Base. "
+            "Phase II (2021) added 60 veteran homes. Supports over 400 veterans and families."
+        ),
         "capacity": {"phase_1_units": 138, "phase_2_units": 60},
         "housing_types": ["emergency-shelter", "transitional-housing", "permanent-supportive-housing"],
         "partner_org": "U.S.VETS",
@@ -62,7 +67,10 @@ T2T_VILLAGES = [
         "phone": "(310) 268-3240",
         "hours": "Monday - Friday: 8:00 AM - 5:00 PM",
         "opened": "February 2023",
-        "description": "Building 207 on VA West LA Campus housing 67 veterans. Part of 388-acre campus planned to house 3,000+ veterans.",
+        "description": (
+            "Building 207 on VA West LA Campus housing 67 veterans. "
+            "Part of 388-acre campus planned to house 3,000+ veterans."
+        ),
         "capacity": {"building_207_veterans": 67, "campus_planned_units": 1700},
         "housing_types": ["permanent-supportive-housing"],
         "partner_org": "U.S.VETS",
@@ -77,7 +85,10 @@ T2T_VILLAGES = [
         "zip_code": "85012",
         "phone": "(602) 717-6682",
         "hours": "24 hours, 7 days a week",
-        "description": "Renovated 150-room hotel providing permanent supportive housing. Serves over 300 veterans daily.",
+        "description": (
+            "Renovated 150-room hotel providing permanent supportive housing. "
+            "Serves over 300 veterans daily."
+        ),
         "capacity": {"total_units": 150},
         "housing_types": ["emergency-shelter", "transitional-housing", "permanent-supportive-housing"],
         "partner_org": "U.S.VETS",
@@ -92,7 +103,10 @@ T2T_VILLAGES = [
         "phone": "(718) 987-1931",
         "hours": "24 hours, 7 days a week",
         "opened": "August 2025",
-        "description": "First T2T project in Georgia. Converted Wingate hotel with 88 units. Features gym, business center, cafeteria.",
+        "description": (
+            "First T2T project in Georgia. Converted Wingate hotel with 88 units. "
+            "Features gym, business center, cafeteria."
+        ),
         "capacity": {"total_units": 88},
         "housing_types": ["permanent-supportive-housing"],
         "amenities": ["Gym", "Business center", "Great room", "Cafeteria"],
@@ -216,7 +230,7 @@ class T2TVeteransVillagesConnector(BaseConnector):
         tags = self._build_tags(location)
 
         # Build source URL
-        source_url = f"https://t2t.org/homeless-veteran-program/"
+        source_url = "https://t2t.org/homeless-veteran-program/"
 
         return ResourceCandidate(
             title=title,

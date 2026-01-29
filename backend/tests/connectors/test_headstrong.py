@@ -1,6 +1,5 @@
 """Tests for The Headstrong Project PTSD treatment connector."""
 
-import pytest
 
 from connectors.headstrong import (
     ALL_US_STATES,

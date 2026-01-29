@@ -324,7 +324,10 @@ def get_reliability_score(tier: int) -> float:
 ELIGIBILITY_TAGS: dict[str, dict[str, list[str]]] = {
     "housing": {
         "voucher": ["hud-vash", "ssvf", "section-8", "vash-voucher"],
-        "type": ["emergency-shelter", "transitional", "permanent", "rapid-rehousing", "supportive_housing", "rental_assistance"],
+        "type": [
+            "emergency-shelter", "transitional", "permanent", "rapid-rehousing",
+            "supportive_housing", "rental_assistance",
+        ],
         "eligibility": ["no-service-connection", "families", "singles-only", "veterans-only", "low-income"],
         "availability": ["waitlist-open", "accepting-now", "waitlist-closed"],
         "support": ["case-management", "case_management", "substance-abuse", "mental-health-support"],
@@ -352,7 +355,10 @@ ELIGIBILITY_TAGS: dict[str, dict[str, list[str]]] = {
         "representative": ["vso", "cvso", "accredited-attorney", "claims-agent"],
     },
     "food": {
-        "type": ["food-pantry", "meal-program", "mobile-distribution", "groceries", "food-bank", "emergency-assistance"],
+        "type": [
+            "food-pantry", "meal-program", "mobile-distribution", "groceries",
+            "food-bank", "emergency-assistance",
+        ],
         "eligibility": ["no-id-required", "walk-in", "appointment-required"],
         "dietary": ["vegetarian", "halal", "kosher", "gluten-free"],
     },

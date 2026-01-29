@@ -1,8 +1,6 @@
 """Tests for Veterans Community Project (VCP) tiny home village connector."""
 
-from datetime import UTC, datetime
 from pathlib import Path
-from unittest.mock import patch
 
 import pytest
 

@@ -409,7 +409,10 @@ class VFWPostsConnector(BaseConnector):
         elif email:
             parts.append(f"Email VFW {post_display} at {email} to inquire about membership or services.")
         elif website:
-            parts.append(f"Visit the website for VFW {post_display} to learn about membership and services.")
+            parts.append(
+                f"Visit the website for VFW {post_display} "
+                "to learn about membership and services."
+            )
         else:
             parts.append(f"Contact VFW {post_display} to inquire about membership and available services.")
 

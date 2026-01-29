@@ -4,8 +4,6 @@ import json
 from datetime import UTC, datetime
 from pathlib import Path
 
-import pytest
-
 from connectors.american_legion_posts import AmericanLegionPostsConnector
 
 
@@ -389,7 +387,6 @@ class TestAmericanLegionPostsConnector:
         assert meta.tier == 2
 
         # Test with actual resource
-        from datetime import UTC, datetime
 
         now = datetime.now(UTC)
         resource = connector._parse_post(

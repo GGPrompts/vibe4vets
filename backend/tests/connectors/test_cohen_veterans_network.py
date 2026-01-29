@@ -1,6 +1,5 @@
 """Tests for Cohen Veterans Network mental health clinic connector."""
 
-import pytest
 
 from connectors.cohen_veterans_network import (
     COHEN_CLINICS,
