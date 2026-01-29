@@ -2,7 +2,18 @@
 
 ## Overview
 
-Vibe4Vets is an AI-powered veteran resource database focusing on **Employment & Training** and **Housing & Legal** resources nationwide. Transparent about using web scraping and AI to aggregate resources that go beyond VA.gov.
+Vibe4Vets is an AI-powered Veteran resource database focusing on **Employment & Training** and **Housing & Legal** resources nationwide. Transparent about using web scraping and AI to aggregate resources that go beyond VA.gov.
+
+## Style Guide
+
+**Always capitalize "Veteran"** - Per VA style guidelines, "Veteran" is always capitalized when referring to U.S. military Veterans. This applies to all user-facing text, documentation, and code comments.
+
+- ✅ "Resources for Veterans"
+- ✅ "Veteran employment services"
+- ❌ "resources for veterans"
+- ❌ "veteran employment services"
+
+Exceptions: Technical identifiers (variable names, URL slugs, database fields) may use lowercase per coding conventions.
 
 | | |
 |--|--|
@@ -68,7 +79,7 @@ vibe4vets/
 |--------|---------|
 | **Organization** | Parent entity (nonprofits, agencies) |
 | **Location** | Physical locations with geocoding |
-| **Resource** | Programs/services veterans can access |
+| **Resource** | Programs/services Veterans can access |
 | **Source** | Data sources with reliability tiers |
 | **SourceRecord** | Raw data audit trail |
 | **ReviewState** | Human review workflow |
@@ -93,13 +104,39 @@ CATEGORIES = [
 ]
 ```
 
+### Subcategories & Tag Filtering
+
+Resources have three classification arrays that work together:
+
+| Field | Purpose | Example |
+|-------|---------|---------|
+| `categories` | Primary classification | `["food", "housing"]` |
+| `subcategories` | Specific resource type | `["food-pantry", "meal-program"]` |
+| `tags` | Additional attributes | `["case-management", "veteran"]` |
+
+**Critical: Keep taxonomy and data aligned**
+
+The frontend tag filters (`/api/v1/taxonomy/tags/{category}`) must match actual values in `subcategories` and `tags` arrays:
+
+- **Taxonomy file**: `backend/app/core/taxonomy.py` → `ELIGIBILITY_TAGS`
+- **Filter logic**: `backend/app/services/resource.py` → searches both `tags` AND `subcategories`
+
+When adding new connectors or seeding data:
+1. Use existing subcategory values from taxonomy (prefer hyphens: `food-pantry` not `food_pantry`)
+2. If new subcategories needed, add them to `ELIGIBILITY_TAGS` in taxonomy.py
+3. Test filters: `curl "http://localhost:8000/api/v1/resources?categories=X&tags=Y"`
+
+**Common subcategories by category:**
+- **food**: `food-pantry`, `meal-program`, `mobile-distribution`, `groceries`, `food-bank`
+- **housing**: `hud-vash`, `ssvf`, `emergency-shelter`, `supportive_housing`, `rental_assistance`
+
 ### Source Tiers (Trust Scoring)
 
 | Tier | Score | Examples |
 |------|-------|----------|
 | 1 | 1.0 | VA.gov, DOL, HUD |
 | 2 | 0.8 | DAV, VFW, American Legion |
-| 3 | 0.6 | State veteran agencies |
+| 3 | 0.6 | State Veteran agencies |
 | 4 | 0.4 | Community directories |
 
 ---
@@ -131,7 +168,7 @@ Search results always explain the match:
 
 ### 4. No PII Storage
 
-Never store veteran-specific personal data. Search works without accounts.
+Never store Veteran-specific personal data. Search works without accounts.
 
 ### 5. Audit Trail
 
@@ -333,7 +370,7 @@ python backend/scripts/check_links.py
 
 1. **No medical advice** - We don't diagnose or recommend treatments
 2. **No eligibility determinations** - We explain, not decide
-3. **No PII storage** - No veteran accounts or personal data
+3. **No PII storage** - No Veteran accounts or personal data
 4. **No benefits decision engine** - We're a directory, not a processor
 
 ---
@@ -352,7 +389,7 @@ python backend/scripts/check_links.py
 - SSVF provider listings
 
 ### Tier 3: Nonprofit/Community
-- State veteran agencies
+- State Veteran agencies
 - VSO websites (DAV, VFW, Legion)
 - Legal aid directories
 
@@ -573,4 +610,4 @@ Docs are **LLM-optimized**. README.md is for humans; everything else is for agen
 
 ## Contact
 
-Built to help veterans find resources beyond VA.gov.
+Built to help Veterans find resources beyond VA.gov.

@@ -81,6 +81,7 @@ class ResourceService:
         scope: str | None = None,
         status: ResourceStatus | None = None,
         sort: str | None = None,
+        tags: list[str] | None = None,
         limit: int = 20,
         offset: int = 0,
     ) -> tuple[list[ResourceRead], int]:
@@ -92,6 +93,7 @@ class ResourceService:
             scope: Filter by resource scope ('national', 'state', 'local', or 'all')
             status: Filter by resource status
             sort: Sort order ('newest', 'alpha', 'shuffle', or 'relevance')
+            tags: Filter by eligibility tags (resources must match ANY of the provided tags)
             limit: Maximum results to return
             offset: Number of results to skip for pagination
 
@@ -121,6 +123,30 @@ class ResourceService:
             scope_enum = ResourceScope(scope)
             query = query.where(Resource.scope == scope_enum)
 
+        # Apply tags filter - search eligibility/title/description text fields and arrays
+        # Tags like "hud-vash", "ssvf", "food-pantry" filter by matching content or classifications
+        if tags:
+            print(f"[ResourceService] Applying tags filter: {tags}")
+            tag_conditions = []
+            for tag in tags:
+                # Convert tag to search pattern (hud-vash -> %hud%vash% or %hud-vash%)
+                search_term = f"%{tag}%"
+                # Also try with spaces instead of hyphens
+                search_term_spaced = f"%{tag.replace('-', ' ')}%"
+                tag_conditions.append(
+                    or_(
+                        Resource.eligibility.ilike(search_term),
+                        Resource.eligibility.ilike(search_term_spaced),
+                        Resource.title.ilike(search_term),
+                        Resource.title.ilike(search_term_spaced),
+                        Resource.description.ilike(search_term),
+                        Resource.description.ilike(search_term_spaced),
+                        Resource.tags.contains([tag]),  # Check actual tags array
+                        Resource.subcategories.contains([tag]),  # Check subcategories array
+                    )
+                )
+            query = query.where(or_(*tag_conditions))
+
         if status:
             query = query.where(Resource.status == status)
 
@@ -140,6 +166,24 @@ class ResourceService:
         if scope and scope != "all":
             scope_enum = ResourceScope(scope)
             count_query = count_query.where(Resource.scope == scope_enum)
+        if tags:
+            tag_conditions = []
+            for tag in tags:
+                search_term = f"%{tag}%"
+                search_term_spaced = f"%{tag.replace('-', ' ')}%"
+                tag_conditions.append(
+                    or_(
+                        Resource.eligibility.ilike(search_term),
+                        Resource.eligibility.ilike(search_term_spaced),
+                        Resource.title.ilike(search_term),
+                        Resource.title.ilike(search_term_spaced),
+                        Resource.description.ilike(search_term),
+                        Resource.description.ilike(search_term_spaced),
+                        Resource.tags.contains([tag]),
+                        Resource.subcategories.contains([tag]),  # Also check subcategories
+                    )
+                )
+            count_query = count_query.where(or_(*tag_conditions))
         if status:
             count_query = count_query.where(Resource.status == status)
 
