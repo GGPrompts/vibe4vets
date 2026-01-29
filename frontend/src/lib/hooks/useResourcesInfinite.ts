@@ -7,6 +7,7 @@ export interface ResourceFilters {
   categories?: string[];
   states?: string[];
   scope?: string;
+  tags?: string[];
 }
 
 const PAGE_SIZE = 50;
@@ -33,7 +34,11 @@ export function useResourcesInfinite(filters: ResourceFilters) {
       if (filters.scope && filters.scope !== 'all') {
         params.scope = filters.scope;
       }
+      if (filters.tags && filters.tags.length > 0) {
+        params.tags = filters.tags.join(',');
+      }
 
+      console.log('[useResourcesInfinite] Fetching with params:', params);
       return api.resources.list(params);
     },
     initialPageParam: 0,

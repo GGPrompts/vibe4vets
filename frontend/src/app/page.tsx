@@ -13,7 +13,7 @@ import type { SortOption } from '@/components/sort-dropdown-header';
 import { BackToTop } from '@/components/BackToTop';
 
 export default function Home() {
-  const { filters, toggleCategory, toggleState, tags, setTags, setEnabled, resourceCount, isLoadingCount, totalCount, isLoadingTotal } = useFilterContext();
+  const { filters, toggleCategory, toggleState, tags, setEnabled, resourceCount, isLoadingCount, totalCount, isLoadingTotal } = useFilterContext();
   const [selectedSort, setSelectedSort] = useState<SortOption>('shuffle');
   const [zipCode, setZipCode] = useState('');
   const router = useRouter();
@@ -133,9 +133,6 @@ export default function Home() {
           <CategoryCards
             selectedCategories={filters.categories}
             onToggleCategory={toggleCategory}
-            selectedTags={tags}
-            onTagsChange={setTags}
-            enableTagExpansion={true}
           />
 
           {/* Sort preferences */}

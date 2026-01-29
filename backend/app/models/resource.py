@@ -67,6 +67,8 @@ class Resource(SQLModel, table=True):
         default_factory=list, sa_column=Column(ARRAY(Text), nullable=False, default=[])
     )  # employment, training, housing, legal
     subcategories: list[str] = Field(default_factory=list, sa_column=Column(ARRAY(Text), nullable=False, default=[]))
+    # Eligibility tags for filtering (e.g., hud-vash, ssvf, job-placement)
+    # See backend/app/core/taxonomy.py ELIGIBILITY_TAGS for valid values
     tags: list[str] = Field(default_factory=list, sa_column=Column(ARRAY(Text), nullable=False, default=[]))
 
     # Scope

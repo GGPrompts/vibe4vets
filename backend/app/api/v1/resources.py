@@ -1,6 +1,6 @@
 """Resource CRUD endpoints.
 
-Provides REST API for managing veteran resources including listing, creating,
+Provides REST API for managing Veteran resources including listing, creating,
 updating, and deleting resources with filtering and pagination support.
 """
 
@@ -98,7 +98,7 @@ def get_resource_count(
                             {
                                 "id": "550e8400-e29b-41d4-a716-446655440000",
                                 "title": "VA Employment Services",
-                                "description": "Career counseling and job placement assistance for veterans.",
+                                "description": "Career counseling and job placement assistance for Veterans.",
                                 "categories": ["employment"],
                                 "scope": "national",
                                 "states": [],
@@ -162,10 +162,15 @@ def list_resources(
         description="Sort order: 'newest', 'alpha', 'shuffle', or 'relevance' (default)",
         examples=["newest", "alpha", "shuffle"],
     ),
+    tags: str | None = Query(
+        default=None,
+        description="Filter by eligibility tags (comma-separated tag IDs, e.g., 'combat_veteran,female_veteran')",
+        examples=["combat_veteran,female_veteran", "homeless,at_risk"],
+    ),
     limit: int = Query(default=20, ge=1, le=500, description="Maximum results to return"),
     offset: int = Query(default=0, ge=0, description="Number of results to skip for pagination"),
 ) -> ResourceList:
-    """List veteran resources with optional filtering and pagination.
+    """List Veteran resources with optional filtering and pagination.
 
     Returns resources sorted by relevance with trust scoring information.
     Use filters to narrow down results by category, state, or status.
@@ -189,6 +194,11 @@ def list_resources(
     elif state:
         state_list = [state.upper()]
 
+    tag_list: list[str] | None = None
+    if tags:
+        tag_list = [t.strip() for t in tags.split(",") if t.strip()]
+        print(f"[resources.py] Received tags: {tag_list}")
+
     service = ResourceService(session)
     resources, total = service.list_resources(
         categories=category_list,
@@ -196,6 +206,7 @@ def list_resources(
         scope=scope,
         status=status,
         sort=sort,
+        tags=tag_list,
         limit=limit,
         offset=offset,
     )
@@ -262,7 +273,7 @@ def list_nearby_resources(
     limit: int = Query(default=20, ge=1, le=100, description="Maximum results to return"),
     offset: int = Query(default=0, ge=0, description="Number of results to skip for pagination"),
 ) -> ResourceNearbyList:
-    """Find veteran resources near a zip code.
+    """Find Veteran resources near a zip code.
 
     Returns resources sorted by distance from the zip code center.
     Uses PostGIS spatial queries for efficient nearest-neighbor lookup.
@@ -353,7 +364,7 @@ def get_resource(
     },
 )
 def create_resource(data: ResourceCreate, session: SessionDep) -> ResourceRead:
-    """Create a new veteran resource.
+    """Create a new Veteran resource.
 
     This endpoint is for manual resource entry. It will:
     - Create or find the associated organization by name

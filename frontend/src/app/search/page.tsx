@@ -208,6 +208,7 @@ function SearchResults() {
   );
 
   const handleFiltersChange = (newFilters: FilterState) => {
+    console.log('[SearchPage] handleFiltersChange called with:', newFilters);
     setFilters(newFilters);
     updateURL(newFilters);
     // Track filter usage analytics
@@ -310,6 +311,7 @@ function SearchResults() {
     categories: filters.categories,
     states: filters.states,
     scope: filters.scope,
+    tags: filters.tags,
   });
 
   // Search mode: useQuery (still fetches all for now, search API doesn't support pagination yet)

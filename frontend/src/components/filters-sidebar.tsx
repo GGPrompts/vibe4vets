@@ -1,6 +1,7 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
+import { useQuery } from '@tanstack/react-query';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Label } from '@/components/ui/label';
@@ -9,17 +10,18 @@ import { ScrollArea } from '@/components/ui/scroll-area';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { Badge } from '@/components/ui/badge';
+import { Skeleton } from '@/components/ui/skeleton';
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from '@/components/ui/tooltip';
-import { Filter, X, Briefcase, GraduationCap, Home, Scale, UtensilsCrossed, FileCheck, ChevronDown, PanelLeft, PanelLeftClose, Search, MapPin, Brain, HeartHandshake, HeartPulse, School, Wallet, Users } from 'lucide-react';
+import { Filter, X, Briefcase, GraduationCap, Home, Scale, UtensilsCrossed, FileCheck, ChevronDown, PanelLeft, PanelLeftClose, Search, MapPin, Brain, HeartHandshake, HeartPulse, School, Wallet, Users, Check, Tag } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { cn } from '@/lib/utils';
 import { ZipCodeInput } from '@/components/ZipCodeInput';
-import { TagFilterSidebar } from '@/components/TagFilterSidebar';
+import api from '@/lib/api';
 
 export const CATEGORIES = [
   { value: 'employment', label: 'Employment', icon: Briefcase },
@@ -209,6 +211,174 @@ function CollapsibleSection({
   );
 }
 
+interface CategoryWithTagsProps {
+  category: typeof CATEGORIES[number];
+  isChecked: boolean;
+  isTagsExpanded: boolean;
+  selectedTags: string[];
+  onCategoryToggle: () => void;
+  onTagsToggle: () => void;
+  onTagToggle: (tagId: string) => void;
+}
+
+function CategoryWithTags({
+  category,
+  isChecked,
+  isTagsExpanded,
+  selectedTags,
+  onCategoryToggle,
+  onTagsToggle,
+  onTagToggle,
+}: CategoryWithTagsProps) {
+  const Icon = category.icon;
+
+  // Fetch tags for this category when expanded
+  const { data: categoryTags, isLoading } = useQuery({
+    queryKey: ['taxonomy', 'tags', category.value],
+    queryFn: () => api.taxonomy.getCategoryTags(category.value),
+    staleTime: 1000 * 60 * 60, // Cache for 1 hour
+    enabled: isChecked && isTagsExpanded,
+  });
+
+  // Count selected tags in this category
+  const selectedTagCount = useMemo(() => {
+    if (!categoryTags) return 0;
+    const categoryTagIds = categoryTags.flat_tags.map((t) => t.id);
+    return selectedTags.filter((tagId) => categoryTagIds.includes(tagId)).length;
+  }, [categoryTags, selectedTags]);
+
+  return (
+    <div>
+      <div
+        className={cn(
+          'flex min-h-[36px] items-center space-x-2 rounded-lg border-l-2 px-2 transition-all duration-200',
+          isChecked
+            ? categoryAccents[category.value]
+            : 'border-l-transparent hover:bg-muted/50'
+        )}
+      >
+        <Checkbox
+          id={`category-${category.value}`}
+          checked={isChecked}
+          onCheckedChange={onCategoryToggle}
+          className={isChecked ? categoryColors[category.value] : ''}
+        />
+        <Label
+          htmlFor={`category-${category.value}`}
+          className={cn(
+            'flex flex-1 min-h-[36px] cursor-pointer items-center gap-2 text-sm',
+            isChecked ? categoryColors[category.value] : ''
+          )}
+        >
+          <span className={cn(
+            'flex h-5 w-5 items-center justify-center rounded-md transition-colors',
+            isChecked ? categoryIconBg[category.value] : 'bg-muted/50'
+          )}>
+            <Icon className="h-3 w-3" />
+          </span>
+          {category.label}
+        </Label>
+        {/* Tag expand button - only show when category is selected */}
+        {isChecked && (
+          <button
+            type="button"
+            onClick={(e) => {
+              e.preventDefault();
+              onTagsToggle();
+            }}
+            className={cn(
+              'flex items-center gap-1 rounded px-1.5 py-0.5 text-xs transition-colors',
+              isTagsExpanded
+                ? 'bg-[hsl(var(--v4v-gold)/0.15)] text-[hsl(var(--v4v-gold-dark))]'
+                : 'text-muted-foreground hover:bg-muted/50 hover:text-foreground'
+            )}
+          >
+            <Tag className="h-3 w-3" />
+            {selectedTagCount > 0 && (
+              <span className="font-medium">{selectedTagCount}</span>
+            )}
+            <ChevronDown
+              className={cn(
+                'h-3 w-3 transition-transform duration-200',
+                isTagsExpanded && 'rotate-180'
+              )}
+            />
+          </button>
+        )}
+      </div>
+
+      {/* Expandable tag section */}
+      {isChecked && (
+        <div
+          className={cn(
+            'grid transition-all duration-200 ease-in-out',
+            isTagsExpanded
+              ? 'grid-rows-[1fr] opacity-100'
+              : 'grid-rows-[0fr] opacity-0'
+          )}
+        >
+          <div className="overflow-hidden">
+            <div className={cn(
+              'ml-6 mt-2 mb-2 rounded-lg border-l-2 pl-3 py-2',
+              categoryAccents[category.value]
+            )}>
+              {isLoading ? (
+                <div className="flex flex-wrap gap-1.5">
+                  <Skeleton className="h-6 w-16" />
+                  <Skeleton className="h-6 w-20" />
+                  <Skeleton className="h-6 w-14" />
+                </div>
+              ) : categoryTags ? (
+                <div className="space-y-3">
+                  {categoryTags.groups.map((group) => (
+                    <div key={group.group}>
+                      <div className="text-[10px] font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">
+                        {group.group.replace(/_/g, ' ')}
+                      </div>
+                      <div className="flex flex-wrap gap-1">
+                        {group.tags.map((tag) => {
+                          const isTagSelected = selectedTags.includes(tag.id);
+                          return (
+                            <button
+                              key={tag.id}
+                              type="button"
+                              onClick={() => onTagToggle(tag.id)}
+                              className={cn(
+                                'inline-flex items-center gap-1 rounded-md border px-1.5 py-0.5 text-[11px] transition-all text-foreground',
+                                isTagSelected
+                                  ? 'border-[hsl(var(--v4v-gold))] bg-[hsl(var(--v4v-gold)/0.15)] font-medium'
+                                  : 'border-border bg-background hover:bg-muted/50'
+                              )}
+                            >
+                              <span
+                                className={cn(
+                                  'flex h-2.5 w-2.5 items-center justify-center rounded-sm border',
+                                  isTagSelected
+                                    ? 'border-[hsl(var(--v4v-gold))] bg-[hsl(var(--v4v-gold))]'
+                                    : 'border-input bg-background'
+                                )}
+                              >
+                                {isTagSelected && <Check className="h-1.5 w-1.5 text-white" />}
+                              </span>
+                              {tag.name}
+                            </button>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div className="text-xs text-muted-foreground">No tags available</div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
 export function FiltersSidebar({
   filters,
   onFiltersChange,
@@ -221,8 +391,11 @@ export function FiltersSidebar({
   const [scopeOpen, setScopeOpen] = useState(true);
   const [zipOpen, setZipOpen] = useState(filters.zip ? true : false);
   const [statesOpen, setStatesOpen] = useState(filters.states.length > 0);
-  const [tagsOpen, setTagsOpen] = useState((filters.tags?.length ?? 0) > 0);
   const [stateSearch, setStateSearch] = useState('');
+  // Track which categories have expanded tag sections
+  const [expandedCategoryTags, setExpandedCategoryTags] = useState<Set<string>>(
+    new Set()
+  );
 
   // Auto-expand states section when states are pre-selected (e.g., from URL navigation)
   useEffect(() => {
@@ -283,7 +456,30 @@ export function FiltersSidebar({
   };
 
   const handleTagsChange = (newTags: string[]) => {
-    onFiltersChange({ ...filters, tags: newTags });
+    const newFilters = { ...filters, tags: newTags };
+    console.log('[FiltersSidebar] handleTagsChange calling onFiltersChange with:', newFilters);
+    onFiltersChange(newFilters);
+  };
+
+  const toggleCategoryTags = (categoryValue: string) => {
+    setExpandedCategoryTags((prev) => {
+      const next = new Set(prev);
+      if (next.has(categoryValue)) {
+        next.delete(categoryValue);
+      } else {
+        next.add(categoryValue);
+      }
+      return next;
+    });
+  };
+
+  const toggleTag = (tagId: string) => {
+    console.log('[FiltersSidebar] toggleTag called:', tagId);
+    const newTags = (filters.tags || []).includes(tagId)
+      ? (filters.tags || []).filter((t) => t !== tagId)
+      : [...(filters.tags || []), tagId];
+    console.log('[FiltersSidebar] newTags:', newTags);
+    handleTagsChange(newTags);
   };
 
   const clearAllFilters = () => {
@@ -345,73 +541,25 @@ export function FiltersSidebar({
       >
         <div className="space-y-1">
           {CATEGORIES.map((category) => {
-            const Icon = category.icon;
             const isChecked = filters.categories.includes(category.value);
+            const isTagsExpanded = expandedCategoryTags.has(category.value);
             return (
-              <div
+              <CategoryWithTags
                 key={category.value}
-                className={cn(
-                  'flex min-h-[36px] items-center space-x-2 rounded-lg border-l-2 px-2 transition-all duration-200',
-                  isChecked
-                    ? categoryAccents[category.value]
-                    : 'border-l-transparent hover:bg-muted/50'
-                )}
-              >
-                <Checkbox
-                  id={`category-${category.value}`}
-                  checked={isChecked}
-                  onCheckedChange={() => handleCategoryToggle(category.value)}
-                  className={isChecked ? categoryColors[category.value] : ''}
-                />
-                <Label
-                  htmlFor={`category-${category.value}`}
-                  className={cn(
-                    'flex flex-1 min-h-[36px] cursor-pointer items-center gap-2 text-sm',
-                    isChecked ? categoryColors[category.value] : ''
-                  )}
-                >
-                  <span className={cn(
-                    'flex h-5 w-5 items-center justify-center rounded-md transition-colors',
-                    isChecked ? categoryIconBg[category.value] : 'bg-muted/50'
-                  )}>
-                    <Icon className="h-3 w-3" />
-                  </span>
-                  {category.label}
-                </Label>
-              </div>
+                category={category}
+                isChecked={isChecked}
+                isTagsExpanded={isTagsExpanded}
+                selectedTags={filters.tags || []}
+                onCategoryToggle={() => handleCategoryToggle(category.value)}
+                onTagsToggle={() => toggleCategoryTags(category.value)}
+                onTagToggle={toggleTag}
+              />
             );
           })}
         </div>
       </CollapsibleSection>
 
       <Separator />
-
-      {/* Eligibility Tags - show when categories are selected */}
-      {filters.categories.length > 0 && (
-        <>
-          <CollapsibleSection
-            title="Eligibility Tags"
-            badge={
-              (filters.tags?.length ?? 0) > 0 && (
-                <Badge variant="outline" className="text-xs">
-                  {filters.tags?.length}
-                </Badge>
-              )
-            }
-            isOpen={tagsOpen}
-            onToggle={() => setTagsOpen(!tagsOpen)}
-          >
-            <TagFilterSidebar
-              selectedTags={filters.tags || []}
-              onTagsChange={handleTagsChange}
-              selectedCategories={filters.categories}
-              hideHeader
-              compact
-            />
-          </CollapsibleSection>
-          <Separator />
-        </>
-      )}
 
       {/* Scope */}
       <CollapsibleSection

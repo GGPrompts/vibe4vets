@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Briefcase, BookOpen, Home, Scale, MapPin, Globe, CheckCircle2, Tag, Phone, Clock, UtensilsCrossed, Award, ExternalLink, Brain, HeartHandshake, HeartPulse, School, Wallet } from 'lucide-react';
+import { Briefcase, BookOpen, Home, Scale, MapPin, Globe, CheckCircle2, Tag, Phone, Clock, UtensilsCrossed, Award, ExternalLink, Brain, HeartHandshake, HeartPulse, School, Wallet, Users } from 'lucide-react';
 import type { Resource, MatchExplanation } from '@/lib/api';
 import { BookmarkButton } from '@/components/bookmark-button';
 
@@ -67,21 +67,23 @@ const cardHoverBorders: Record<string, string> = {
   healthcare: 'hover:border-[hsl(var(--v4v-healthcare)/0.3)]',
   education: 'hover:border-[hsl(var(--v4v-education)/0.3)]',
   financial: 'hover:border-[hsl(var(--v4v-financial)/0.3)]',
+  family: 'hover:border-[hsl(var(--v4v-family)/0.3)]',
 };
 
-// Badge styling using design system
+// Badge styling using design system - text is foreground (black) for readability
 const categoryBadgeStyles: Record<string, string> = {
-  employment: 'bg-[hsl(var(--v4v-employment)/0.12)] text-[hsl(var(--v4v-employment))] border-[hsl(var(--v4v-employment)/0.25)]',
-  training: 'bg-[hsl(var(--v4v-training)/0.12)] text-[hsl(var(--v4v-training))] border-[hsl(var(--v4v-training)/0.25)]',
-  housing: 'bg-[hsl(var(--v4v-housing)/0.12)] text-[hsl(var(--v4v-housing))] border-[hsl(var(--v4v-housing)/0.25)]',
-  legal: 'bg-[hsl(var(--v4v-legal)/0.12)] text-[hsl(var(--v4v-legal))] border-[hsl(var(--v4v-legal)/0.25)]',
-  food: 'bg-[hsl(var(--v4v-food)/0.12)] text-[hsl(var(--v4v-food))] border-[hsl(var(--v4v-food)/0.25)]',
-  benefits: 'bg-[hsl(var(--v4v-benefits)/0.12)] text-[hsl(var(--v4v-benefits))] border-[hsl(var(--v4v-benefits)/0.25)]',
-  mentalHealth: 'bg-[hsl(var(--v4v-mentalHealth)/0.12)] text-[hsl(var(--v4v-mentalHealth))] border-[hsl(var(--v4v-mentalHealth)/0.25)]',
-  supportServices: 'bg-[hsl(var(--v4v-supportServices)/0.12)] text-[hsl(var(--v4v-supportServices))] border-[hsl(var(--v4v-supportServices)/0.25)]',
-  healthcare: 'bg-[hsl(var(--v4v-healthcare)/0.12)] text-[hsl(var(--v4v-healthcare))] border-[hsl(var(--v4v-healthcare)/0.25)]',
-  education: 'bg-[hsl(var(--v4v-education)/0.12)] text-[hsl(var(--v4v-education))] border-[hsl(var(--v4v-education)/0.25)]',
-  financial: 'bg-[hsl(var(--v4v-financial)/0.12)] text-[hsl(var(--v4v-financial))] border-[hsl(var(--v4v-financial)/0.25)]',
+  employment: 'bg-[hsl(var(--v4v-employment)/0.12)] text-foreground border-[hsl(var(--v4v-employment)/0.25)]',
+  training: 'bg-[hsl(var(--v4v-training)/0.12)] text-foreground border-[hsl(var(--v4v-training)/0.25)]',
+  housing: 'bg-[hsl(var(--v4v-housing)/0.12)] text-foreground border-[hsl(var(--v4v-housing)/0.25)]',
+  legal: 'bg-[hsl(var(--v4v-legal)/0.12)] text-foreground border-[hsl(var(--v4v-legal)/0.25)]',
+  food: 'bg-[hsl(var(--v4v-food)/0.12)] text-foreground border-[hsl(var(--v4v-food)/0.25)]',
+  benefits: 'bg-[hsl(var(--v4v-benefits)/0.12)] text-foreground border-[hsl(var(--v4v-benefits)/0.25)]',
+  mentalHealth: 'bg-[hsl(var(--v4v-mentalHealth)/0.12)] text-foreground border-[hsl(var(--v4v-mentalHealth)/0.25)]',
+  supportServices: 'bg-[hsl(var(--v4v-supportServices)/0.12)] text-foreground border-[hsl(var(--v4v-supportServices)/0.25)]',
+  healthcare: 'bg-[hsl(var(--v4v-healthcare)/0.12)] text-foreground border-[hsl(var(--v4v-healthcare)/0.25)]',
+  education: 'bg-[hsl(var(--v4v-education)/0.12)] text-foreground border-[hsl(var(--v4v-education)/0.25)]',
+  financial: 'bg-[hsl(var(--v4v-financial)/0.12)] text-foreground border-[hsl(var(--v4v-financial)/0.25)]',
+  family: 'bg-[hsl(var(--v4v-family)/0.12)] text-foreground border-[hsl(var(--v4v-family)/0.25)]',
 };
 
 // Category icons
@@ -97,6 +99,7 @@ const categoryIcons: Record<string, typeof Briefcase> = {
   healthcare: HeartPulse,
   education: School,
   financial: Wallet,
+  family: Users,
 };
 
 // Export for use in other components
@@ -115,6 +118,7 @@ const logoBorderColors: Record<string, string> = {
   healthcare: 'border-[hsl(var(--v4v-healthcare))]',
   education: 'border-[hsl(var(--v4v-education))]',
   financial: 'border-[hsl(var(--v4v-financial))]',
+  family: 'border-[hsl(var(--v4v-family))]',
 };
 
 function ResourceLogo({

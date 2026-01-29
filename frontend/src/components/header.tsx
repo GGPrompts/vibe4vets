@@ -208,7 +208,7 @@ export function Header() {
                   <Input
                     ref={searchInputRef}
                     type="text"
-                    placeholder="Search veteran resources..."
+                    placeholder="Search Veteran resources..."
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     className={cn(
@@ -321,7 +321,7 @@ export function Header() {
               <Search className="absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-white/50" />
               <Input
                 type="text"
-                placeholder="Search veteran resources..."
+                placeholder="Search Veteran resources..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className={cn(

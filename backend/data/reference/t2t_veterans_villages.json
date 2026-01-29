@@ -1,0 +1,158 @@
+{
+  "source": "Tunnel to Towers Foundation",
+  "source_url": "https://t2t.org/homeless-veteran-program/",
+  "national_phone": "(718) 987-1931",
+  "national_email": "info@t2t.org",
+  "description": "Tunnel to Towers Foundation provides permanent affordable housing communities for homeless veterans through its Veterans Villages program. The foundation renovates hotels and builds new facilities to provide stable housing with wraparound supportive services.",
+  "last_updated": "2026-01-29",
+  "locations": [
+    {
+      "id": "t2t-houston",
+      "name": "Houston Veterans Village",
+      "city": "Houston",
+      "state": "TX",
+      "address": "18818 Tomball Parkway",
+      "zip_code": "77070",
+      "phone": "(347) 868-6561",
+      "hours": "24 hours, 7 days a week",
+      "opened": "2023-11",
+      "description": "Renovated 161-room former Holiday Inn converted into permanent and transitional housing for veterans. Phase II added 14 Comfort Homes for senior veterans. On-site supportive services provided by U.S.VETS including mental health care, case management, and job readiness programs.",
+      "services": [
+        "Permanent Housing",
+        "Transitional Housing",
+        "Mental health care",
+        "Case management",
+        "Job readiness programs",
+        "Comprehensive service center"
+      ],
+      "housing_types": ["permanent-supportive-housing", "transitional-housing"],
+      "capacity": {
+        "total_units": 161,
+        "comfort_homes": 14,
+        "veterans_served": 130
+      },
+      "partner_org": "U.S.VETS",
+      "status": "operational"
+    },
+    {
+      "id": "t2t-march-riverside",
+      "name": "March Veterans Village",
+      "city": "Riverside",
+      "state": "CA",
+      "address": "15305 6th Street",
+      "zip_code": "92518",
+      "phone": "(951) 867-9691",
+      "hours": "8:00 AM - 5:00 PM",
+      "opened": "2018",
+      "description": "138-unit LEED Gold supportive housing community for veterans on March Air Reserve Base. Features a cafe, flex spaces, and on-site services. Phase II (2021) added 60 veteran homes. Supports more than 400 veterans and families with emergency, transitional and permanent housing.",
+      "services": [
+        "Emergency Housing",
+        "Transitional Housing",
+        "Permanent Supportive Housing",
+        "Mental health care",
+        "Career services",
+        "Case management",
+        "Aftercare services",
+        "Prevention programs",
+        "Aging in place services"
+      ],
+      "housing_types": ["emergency-shelter", "transitional-housing", "permanent-supportive-housing"],
+      "capacity": {
+        "phase_1_units": 138,
+        "phase_2_units": 60,
+        "veterans_restricted": 66,
+        "veterans_served": 400
+      },
+      "partner_org": "U.S.VETS",
+      "facility_notes": "Located on March Air Reserve Base",
+      "status": "operational"
+    },
+    {
+      "id": "t2t-west-la",
+      "name": "West Los Angeles Veterans Village",
+      "city": "Los Angeles",
+      "state": "CA",
+      "address": "11301 Wilshire Boulevard",
+      "zip_code": "90073",
+      "phone": "(310) 268-3240",
+      "hours": "Monday - Friday: 8:00 AM - 5:00 PM",
+      "opened": "2023-02",
+      "description": "Building 207 on the West LA VA Campus provides housing and services to veterans. Part of a larger 388-acre campus planned to house over 3,000 veterans upon completion. Located in the city with the highest concentration of homeless veterans in the country.",
+      "services": [
+        "Permanent Housing",
+        "Supportive Services",
+        "Case management",
+        "Mental health care",
+        "Wraparound services"
+      ],
+      "housing_types": ["permanent-supportive-housing"],
+      "capacity": {
+        "building_207_veterans": 67,
+        "campus_planned_units": 1700,
+        "campus_planned_veterans": 3000
+      },
+      "partner_org": "U.S.VETS",
+      "facility_notes": "Located on VA West Los Angeles Healthcare Campus (Building 207)",
+      "status": "operational"
+    },
+    {
+      "id": "t2t-phoenix",
+      "name": "Phoenix Veterans Village",
+      "city": "Phoenix",
+      "state": "AZ",
+      "address": "3507 North Central Avenue",
+      "zip_code": "85012",
+      "phone": "(602) 717-6682",
+      "hours": "24 hours, 7 days a week",
+      "description": "Renovated 150-room hotel providing permanent supportive housing for veterans in the Phoenix area. On-site supportive services provided by U.S.VETS. Serves more than 300 veterans experiencing homelessness daily.",
+      "services": [
+        "Emergency Shelter",
+        "Transitional Housing",
+        "Permanent Supportive Housing",
+        "Mental health services",
+        "Career development",
+        "Case management"
+      ],
+      "housing_types": ["emergency-shelter", "transitional-housing", "permanent-supportive-housing"],
+      "capacity": {
+        "total_units": 150,
+        "veterans_served_daily": 300
+      },
+      "partner_org": "U.S.VETS",
+      "status": "operational"
+    },
+    {
+      "id": "t2t-atlanta-mableton",
+      "name": "Atlanta Veterans Village",
+      "city": "Mableton",
+      "state": "GA",
+      "address": "65 S. Service Road",
+      "zip_code": "30126",
+      "phone": "(718) 987-1931",
+      "hours": "24 hours, 7 days a week",
+      "opened": "2025-08",
+      "description": "Tunnel to Towers' first project in Georgia, converted from a former Wingate by Wyndham hotel near Six Flags. Features long-term living spaces with apartments including bedroom, living room, kitchen, and bathroom. Amenities include gym, business center, great room, cafeteria and commercial kitchen.",
+      "services": [
+        "Permanent Housing",
+        "Wraparound services",
+        "Mental health support",
+        "Financial counseling",
+        "Gym facilities",
+        "Business center",
+        "Cafeteria and meals"
+      ],
+      "housing_types": ["permanent-supportive-housing"],
+      "capacity": {
+        "total_units": 88
+      },
+      "amenities": [
+        "Gym",
+        "Business center",
+        "Great room",
+        "Cafeteria",
+        "Commercial kitchen"
+      ],
+      "status": "operational"
+    }
+  ]
+}

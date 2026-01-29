@@ -152,9 +152,6 @@ export function CategoryCards({
   // Track which category card is expanded
   const [expandedCategory, setExpandedCategory] = useState<string | null>(null);
 
-  // Check if any cards are selected (for dimming)
-  const hasAnySelection = selectedCategories.length > 0 || selectedTags.length > 0;
-
   const handleCardClick = (categorySlug: string) => {
     if (enableTagExpansion) {
       // Toggle expansion
@@ -189,11 +186,6 @@ export function CategoryCards({
         const isSelected = selectedCategories.includes(category.slug);
         const isExpanded = expandedCategory === category.slug;
 
-        // Dim unselected cards when there is a selection (computed later)
-
-        // Dim unselected cards when there is a selection
-        const shouldDim = hasAnySelection && !isSelected && !isExpanded;
-
         return (
           <div
             key={category.slug}
@@ -207,7 +199,6 @@ export function CategoryCards({
                 isSelected
                   ? 'ring-2 ring-[hsl(var(--v4v-gold))] bg-[hsl(var(--v4v-gold)/0.05)]'
                   : '',
-                shouldDim && 'opacity-60',
                 isExpanded && 'rounded-b-none'
               )}
             >

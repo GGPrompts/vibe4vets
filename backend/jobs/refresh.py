@@ -14,6 +14,7 @@ from sqlmodel import Session
 from connectors import (
     AmericanLegionPostsConnector,
     ApprenticeshipConnector,
+    BoulderCrestConnector,
     CareerOneStopConnector,
     CertificationsConnector,
     CohenVeteransNetworkConnector,
@@ -22,6 +23,7 @@ from connectors import (
     DischargeUpgradeConnector,
     FaithBasedConnector,
     FeedingAmericaConnector,
+    FinalSaluteConnector,
     FisherHouseConnector,
     GIBillSchoolsConnector,
     GPDConnector,
@@ -44,6 +46,7 @@ from connectors import (
     TwoOneOneConnector,
     UnitedWayConnector,
     USVetsConnector,
+    VCPConnector,
     VACommunityConnector,
     VAGovConnector,
     VAPatientAdvocateConnector,
@@ -91,6 +94,7 @@ CONNECTOR_REGISTRY: dict[str, type[BaseConnector]] = {
     "fisher_house": FisherHouseConnector,  # Fisher House Foundation family housing (~100 locations)
     "mental_health": MentalHealthConnector,  # Mental health resources (crisis, therapy, peer support)
     "cohen_veterans_network": CohenVeteransNetworkConnector,  # Cohen Veterans Network mental health clinics
+    "boulder_crest": BoulderCrestConnector,  # Boulder Crest Foundation PATHH program (residential PTSD treatment)
     "headstrong": HeadstrongConnector,  # Headstrong Project PTSD treatment (telehealth + 15 states)
     "military_onesource": MilitaryOneSourceConnector,  # DoD transition assistance programs
     "vfw_posts": VFWPostsConnector,  # VFW post locations (5,500+ nationwide)
@@ -109,6 +113,8 @@ CONNECTOR_REGISTRY: dict[str, type[BaseConnector]] = {
     "cvso": CVSOConnector,  # County Veteran Service Officers
     # Tier 2: Homeless Veteran Housing (National Nonprofits)
     "us_vets": USVetsConnector,  # U.S.VETS homeless veteran housing (10+ sites)
+    "vcp": VCPConnector,  # Veterans Community Project tiny home villages (6 sites)
+    "final_salute": FinalSaluteConnector,  # Final Salute Inc. women veterans housing (national)
     # Tier 4: Community Directories
     "two_one_one": TwoOneOneConnector,  # 211 national database
     "united_way": UnitedWayConnector,  # United Way/Missions United

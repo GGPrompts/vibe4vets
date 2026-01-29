@@ -32,6 +32,7 @@ import {
   HeartPulse,
   School,
   Wallet,
+  Users,
 } from 'lucide-react';
 import { BookmarkButton } from '@/components/bookmark-button';
 import { ReportFeedbackModal } from '@/components/ReportFeedbackModal';
@@ -60,6 +61,7 @@ const categoryGradients: Record<string, string> = {
   healthcare: 'bg-gradient-to-br from-[hsl(var(--v4v-healthcare))] to-[hsl(350,55%,42%)]',
   education: 'bg-gradient-to-br from-[hsl(var(--v4v-education))] to-[hsl(220,55%,40%)]',
   financial: 'bg-gradient-to-br from-[hsl(var(--v4v-financial))] to-[hsl(140,50%,30%)]',
+  family: 'bg-gradient-to-br from-[hsl(var(--v4v-family))] to-[hsl(320,50%,40%)]',
 };
 
 // Body background tints - solid white for readability (no gradient transparency)
@@ -75,6 +77,7 @@ const bodyBackgrounds: Record<string, string> = {
   healthcare: 'bg-white',
   education: 'bg-white',
   financial: 'bg-white',
+  family: 'bg-white',
 };
 
 // Decorative orb colors
@@ -90,6 +93,7 @@ const decorativeOrbs: Record<string, string> = {
   healthcare: 'bg-[hsl(var(--v4v-healthcare))]',
   education: 'bg-[hsl(var(--v4v-education))]',
   financial: 'bg-[hsl(var(--v4v-financial))]',
+  family: 'bg-[hsl(var(--v4v-family))]',
 };
 
 const categoryIcons: Record<string, typeof Briefcase> = {
@@ -104,6 +108,7 @@ const categoryIcons: Record<string, typeof Briefcase> = {
   healthcare: HeartPulse,
   education: School,
   financial: Wallet,
+  family: Users,
 };
 
 // Badge styles for header - white background with category color text for contrast
@@ -119,6 +124,7 @@ const categoryBadgeStyles: Record<string, string> = {
   healthcare: 'bg-white/90 text-[hsl(var(--v4v-healthcare))]',
   education: 'bg-white/90 text-[hsl(var(--v4v-education))]',
   financial: 'bg-white/90 text-[hsl(var(--v4v-financial))]',
+  family: 'bg-white/90 text-[hsl(var(--v4v-family))]',
 };
 
 // Section card styling

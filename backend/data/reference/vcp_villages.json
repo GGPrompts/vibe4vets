@@ -1,0 +1,179 @@
+{
+  "source": "Veterans Community Project (VCP)",
+  "source_url": "https://vcp.org/",
+  "description": "Veterans Community Project (VCP) builds tiny home villages for homeless veterans, providing fully furnished homes (240-320 sq ft) with wraparound support services. Founded by combat veterans, VCP follows a unique model where veterans keep all furniture when transitioning to permanent housing.",
+  "last_updated": "2026-01-29",
+  "success_rate": "85% transition to permanent housing",
+  "villages": [
+    {
+      "id": "vcp-kansas-city",
+      "name": "VCP Village Kansas City",
+      "city": "Kansas City",
+      "state": "MO",
+      "address": "8825 Troost Avenue",
+      "zip_code": "64131",
+      "phone": "(816) 912-8406",
+      "status": "operational",
+      "opened": 2019,
+      "homes": 49,
+      "home_sizes": "240-320 sq ft",
+      "description": "The original VCP Village, featuring 49 tiny homes for veterans experiencing homelessness. Each home is fully furnished with all utilities included. The campus includes a Village Center with fellowship hall, dental clinic, medical services, and veterinary services.",
+      "services": [
+        "Case management",
+        "Fellowship hall and community center",
+        "Dental clinic",
+        "Medical services",
+        "Veterinary services",
+        "4th Wednesday commissary",
+        "Wraparound support services",
+        "Employment assistance",
+        "Mental health support"
+      ],
+      "features": [
+        "Fully furnished homes",
+        "All utilities included",
+        "Veterans keep furniture when transitioning",
+        "Pet-friendly",
+        "Peer support community"
+      ]
+    },
+    {
+      "id": "vcp-longmont",
+      "name": "VCP Village Longmont",
+      "city": "Longmont",
+      "state": "CO",
+      "address": "Hover Street and Nelson Road",
+      "zip_code": "80501",
+      "phone": "(816) 912-8406",
+      "status": "operational",
+      "opened": 2025,
+      "homes": 26,
+      "home_sizes": "240 sq ft (single), larger for families",
+      "family_homes": 5,
+      "description": "Located on a 2-acre property approximately 13 miles northeast of Boulder, the Longmont Village features 26 tiny houses including 5 family homes and a 3,000 sq ft Community Center. Broke ground in 2020 and completed in June 2025.",
+      "services": [
+        "Case management",
+        "Community Center (3,000 sq ft)",
+        "Wraparound support services",
+        "Employment assistance",
+        "Mental health support",
+        "Family support services"
+      ],
+      "features": [
+        "Fully furnished homes",
+        "All utilities included",
+        "Veterans keep furniture when transitioning",
+        "Pet-friendly",
+        "Family housing available",
+        "Community center on-site"
+      ]
+    },
+    {
+      "id": "vcp-st-louis",
+      "name": "VCP Village St. Louis",
+      "city": "St. Louis",
+      "state": "MO",
+      "address": "Jeff Vander-Lou Neighborhood",
+      "zip_code": "63106",
+      "phone": "(816) 912-8406",
+      "status": "operational",
+      "opened": 2024,
+      "homes": 50,
+      "description": "Located on a nearly 4-acre property in the heart of the Jeff Vander-Lou neighborhood, the St. Louis campus includes a Village of 50 tiny houses for veterans experiencing homelessness and an Outreach Center for comprehensive support services.",
+      "services": [
+        "Case management",
+        "Outreach Center",
+        "Wraparound support services",
+        "Employment assistance",
+        "Mental health support",
+        "Community resources"
+      ],
+      "features": [
+        "Fully furnished homes",
+        "All utilities included",
+        "Veterans keep furniture when transitioning",
+        "Pet-friendly",
+        "Dedicated Outreach Center"
+      ]
+    },
+    {
+      "id": "vcp-sioux-falls",
+      "name": "VCP Village Sioux Falls",
+      "city": "Sioux Falls",
+      "state": "SD",
+      "address": "376 N. Willow Avenue",
+      "zip_code": "57104",
+      "phone": "(816) 912-8406",
+      "status": "operational",
+      "opened": 2023,
+      "homes": 25,
+      "family_homes": 10,
+      "description": "Located on a two-acre site in northwest Sioux Falls, this purpose-built community features 25 fully furnished tiny homes (15 single-person and 10 family units) paired with on-site wraparound support services. The first veterans moved in during October 2023.",
+      "services": [
+        "Case management",
+        "Staff and services building",
+        "Volunteer building",
+        "Wraparound support services",
+        "Employment assistance",
+        "Mental health support",
+        "Family support services"
+      ],
+      "features": [
+        "Fully furnished homes",
+        "All utilities included",
+        "Veterans keep furniture when transitioning",
+        "Pet-friendly",
+        "Family housing available"
+      ]
+    },
+    {
+      "id": "vcp-glendale",
+      "name": "VCP Village Glendale",
+      "city": "Glendale",
+      "state": "AZ",
+      "address": "63rd Avenue and Grand Avenue",
+      "zip_code": "85301",
+      "phone": "(816) 912-8406",
+      "status": "under-construction",
+      "groundbreaking": 2025,
+      "expected_completion": 2027,
+      "planned_homes": 50,
+      "description": "VCP's Arizona village, located at 63rd and Grand Avenues in Glendale. Broke ground in February 2025 with anticipated completion in 2027. Will feature 50 tiny homes for veterans experiencing homelessness.",
+      "services": [
+        "Case management (planned)",
+        "Wraparound support services (planned)",
+        "Employment assistance (planned)",
+        "Mental health support (planned)"
+      ],
+      "features": [
+        "Fully furnished homes (planned)",
+        "All utilities included (planned)",
+        "Veterans keep furniture when transitioning"
+      ]
+    },
+    {
+      "id": "vcp-milwaukee",
+      "name": "VCP Village Milwaukee",
+      "city": "Milwaukee",
+      "state": "WI",
+      "address": "6767 N. 60th Street",
+      "zip_code": "53223",
+      "phone": "(816) 912-8406",
+      "status": "under-construction",
+      "groundbreaking": 2025,
+      "planned_homes": 40,
+      "description": "VCP's Wisconsin village, located on a 7-acre site on the northwest side of Milwaukee. Currently under construction, will feature 40 tiny homes for military veterans.",
+      "services": [
+        "Case management (planned)",
+        "Wraparound support services (planned)",
+        "Employment assistance (planned)",
+        "Mental health support (planned)"
+      ],
+      "features": [
+        "Fully furnished homes (planned)",
+        "All utilities included (planned)",
+        "Veterans keep furniture when transitioning"
+      ]
+    }
+  ]
+}

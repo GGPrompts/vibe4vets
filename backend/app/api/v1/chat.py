@@ -1,6 +1,6 @@
-"""AI Chat endpoints for veteran resource assistance.
+"""AI Chat endpoints for Veteran resource assistance.
 
-Provides a conversational interface to help veterans find resources.
+Provides a conversational interface to help Veterans find resources.
 Uses Claude for natural language understanding and grounded responses
 based on the resource database.
 """
@@ -87,7 +87,7 @@ class ChatMessage(BaseModel):
         min_length=1,
         max_length=2000,
         description="The user's message to the AI assistant",
-        json_schema_extra={"example": "I'm a veteran looking for housing assistance in Virginia"},
+        json_schema_extra={"example": "I'm a Veteran looking for housing assistance in Virginia"},
     )
     conversation_id: str | None = Field(
         None,
@@ -101,7 +101,7 @@ class ChatMessage(BaseModel):
     model_config = {
         "json_schema_extra": {
             "example": {
-                "message": "What housing programs are available for homeless veterans?",
+                "message": "What housing programs are available for homeless Veterans?",
                 "conversation_id": None,
                 "client_id": None,
             }
@@ -129,7 +129,7 @@ class ChatResponse(BaseModel):
     model_config = {
         "json_schema_extra": {
             "example": {
-                "response": "There are several housing programs available for homeless veterans...",
+                "response": "There are several housing programs available for homeless Veterans...",
                 "resources": [
                     {
                         "id": 1,
@@ -145,11 +145,11 @@ class ChatResponse(BaseModel):
     }
 
 
-SYSTEM_PROMPT = """You are a helpful assistant for Vibe4Vets, a veteran resource directory.
-Your role is to help veterans, their families, and case managers find relevant resources.
+SYSTEM_PROMPT = """You are a helpful assistant for Vibe4Vets, a Veteran resource directory.
+Your role is to help Veterans, their families, and case managers find relevant resources.
 
 Guidelines:
-- Be warm, respectful, and understanding of veterans' needs
+- Be warm, respectful, and understanding of Veterans' needs
 - Provide clear, actionable information
 - Always mention specific resources from the database when relevant
 - If you mention a resource, include its key contact info (phone, website)
@@ -157,7 +157,7 @@ Guidelines:
 - Never provide medical, legal, or financial advice - refer to appropriate professionals
 - Keep responses concise but helpful
 
-You have access to a database of veteran resources covering:
+You have access to a database of Veteran resources covering:
 - Employment: Job placement, career counseling, resume help
 - Training: Vocational programs, certifications, education benefits
 - Housing: HUD-VASH, SSVF, transitional housing, emergency shelter
@@ -193,13 +193,13 @@ Reference them naturally in your response."""
     },
 )
 async def chat(message: ChatMessage, session: SessionDep) -> ChatResponse:
-    """Chat with the AI assistant about veteran resources.
+    """Chat with the AI assistant about Veteran resources.
 
     The assistant uses Claude (Haiku model) to provide helpful, grounded responses
     based on resources in our database.
 
     **Features:**
-    - Natural conversation about veteran resources
+    - Natural conversation about Veteran resources
     - Automatic resource search based on your question
     - Conversation history maintained for context
     - Rate limited to 10 requests per minute per client

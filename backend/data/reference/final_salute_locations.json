@@ -1,0 +1,110 @@
+{
+  "source": "Final Salute Inc.",
+  "source_url": "https://www.finalsaluteinc.org/",
+  "national_phone": "(866) 472-5883",
+  "main_office_phone": "(703) 224-8843",
+  "description": "Final Salute Inc. provides homeless women Veterans and their children with safe and suitable housing. Founded in 2010 by a female veteran, FSI has served over 5,000 women veterans and children through transitional housing, emergency financial assistance, employment support, and child care subsidies. Programs are available nationwide.",
+  "last_updated": "2026-01-29",
+  "programs": [
+    {
+      "id": "home-program",
+      "name": "H.O.M.E. Program",
+      "full_name": "Housing, Outreach, Mentorship, Encouragement",
+      "description": "Transitional housing program providing safe and suitable housing for homeless women veterans and their children. Works with veterans to establish a plan towards independence.",
+      "services": [
+        "Transitional housing",
+        "Case management",
+        "Mentorship",
+        "Independence planning"
+      ],
+      "served": {
+        "veterans": 81,
+        "days_provided": 17000
+      }
+    },
+    {
+      "id": "safe-program",
+      "name": "S.A.F.E. Program",
+      "full_name": "Financial Assistance and Resources",
+      "description": "Emergency financial assistance program for women veterans and their children who are homeless, facing homelessness, or under financial strain.",
+      "services": [
+        "Emergency financial assistance",
+        "Financial resources",
+        "Crisis intervention",
+        "Rent/utility assistance"
+      ],
+      "served": {
+        "individuals": 7339
+      }
+    },
+    {
+      "id": "next-uniform",
+      "name": "Next Uniform",
+      "description": "Employment transition support program providing professional clothing, shoes, headshots, and makeovers to help women veterans transition to civilian careers.",
+      "services": [
+        "Professional clothing",
+        "Career preparation",
+        "Makeovers and headshots",
+        "Employment support"
+      ],
+      "served": {
+        "individuals": 1764
+      }
+    }
+  ],
+  "locations": [
+    {
+      "id": "final-salute-headquarters",
+      "name": "Final Salute Inc. Headquarters",
+      "type": "headquarters",
+      "address": "2800 Eisenhower Ave, Suite 220",
+      "city": "Alexandria",
+      "state": "VA",
+      "zip_code": "22314",
+      "phone": "(703) 224-8843",
+      "hours": "Monday - Friday: 8:00 AM - 5:00 PM EST",
+      "mailing_address": {
+        "po_box": "P.O. Box 156",
+        "city": "Haymarket",
+        "state": "VA",
+        "zip_code": "20168"
+      },
+      "services": [
+        "Intake and referrals",
+        "Program coordination",
+        "H.O.M.E. Program",
+        "S.A.F.E. Program",
+        "Next Uniform"
+      ],
+      "coverage": {
+        "primary_region": "DC/Northern Virginia/Southern Maryland",
+        "national_reach": true,
+        "states_served": 30
+      }
+    }
+  ],
+  "eligibility": {
+    "gender": "Women veterans only",
+    "discharge": "Generally honorably or generally discharged",
+    "housing_status": [
+      "Currently homeless",
+      "Facing homelessness",
+      "Under financial strain"
+    ],
+    "children_accepted": true,
+    "notes": "Programs available nationwide regardless of location"
+  },
+  "special_focus": {
+    "mst_support": true,
+    "ptsd_support": true,
+    "domestic_violence_support": true,
+    "single_mothers": true,
+    "children_welcome": true
+  },
+  "statistics": {
+    "founded": 2010,
+    "total_served": 5000,
+    "female_homeless_veterans_us": 55000,
+    "note": "Female veterans are 3x more likely to be homeless than male counterparts"
+  }
+}
