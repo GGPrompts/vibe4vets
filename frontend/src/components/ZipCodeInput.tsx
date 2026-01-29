@@ -40,7 +40,7 @@ export function ZipCodeInput({
   onRadiusChange,
   onClear,
   onSubmit,
-  placeholder = 'Enter ZIP code',
+  placeholder = 'ZIP code',
   showRadiusSelect = true,
   className,
   compact = false,
