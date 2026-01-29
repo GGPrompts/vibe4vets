@@ -12,6 +12,7 @@ from typing import Any
 from sqlmodel import Session
 
 from connectors import (
+    AmericanLegionPostsConnector,
     ApprenticeshipConnector,
     CareerOneStopConnector,
     CertificationsConnector,
@@ -24,6 +25,7 @@ from connectors import (
     FisherHouseConnector,
     GIBillSchoolsConnector,
     GPDConnector,
+    HeadstrongConnector,
     HRSAHealthCentersConnector,
     HUDVASHConnector,
     LegalAidConnector,
@@ -37,6 +39,7 @@ from connectors import (
     StateVAConnector,
     StateVAOfficesConnector,
     SVAChaptersConnector,
+    TeamRWBConnector,
     TribalVeteransConnector,
     TwoOneOneConnector,
     UnitedWayConnector,
@@ -88,11 +91,14 @@ CONNECTOR_REGISTRY: dict[str, type[BaseConnector]] = {
     "fisher_house": FisherHouseConnector,  # Fisher House Foundation family housing (~100 locations)
     "mental_health": MentalHealthConnector,  # Mental health resources (crisis, therapy, peer support)
     "cohen_veterans_network": CohenVeteransNetworkConnector,  # Cohen Veterans Network mental health clinics
+    "headstrong": HeadstrongConnector,  # Headstrong Project PTSD treatment (telehealth + 15 states)
     "military_onesource": MilitaryOneSourceConnector,  # DoD transition assistance programs
     "vfw_posts": VFWPostsConnector,  # VFW post locations (5,500+ nationwide)
+    "american_legion_posts": AmericanLegionPostsConnector,  # American Legion post locations (12,000+ nationwide)
     "dav_chapters": DAVChaptersConnector,  # DAV chapters, NSOs, and transportation network (~1,900 chapters)
     "vso_post_locator": VSOPostLocatorConnector,  # VFW, American Legion, DAV posts (generic)
     "sva_chapters": SVAChaptersConnector,  # Student Veterans of America chapters (education)
+    "team_rwb": TeamRWBConnector,  # Team Red White & Blue community chapters (peer support, fitness)
     "scholarships": ScholarshipsConnector,  # Veteran scholarship programs (education)
     "tribal_veterans": TribalVeteransConnector,  # IHS/VA Urban Indian Health Organizations
     "faith_based": FaithBasedConnector,  # Faith-based veteran service organizations (Salvation Army, Catholic Charities, VOA, etc.)
