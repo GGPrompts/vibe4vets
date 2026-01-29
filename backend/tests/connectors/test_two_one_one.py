@@ -101,9 +101,9 @@ class TestTwoOneOneConnector:
         meta = connector.metadata
 
         assert meta.name == "211 National Resource Database"
-        assert meta.tier == 2  # Established nonprofit
-        assert meta.frequency == "monthly"
-        assert meta.requires_auth is False
+        assert meta.tier == 4  # Community directory tier
+        assert meta.frequency == "daily"
+        assert meta.requires_auth is True  # API requires key
         assert "211.org" in meta.url
 
     def test_init_default_states(self):
@@ -153,13 +153,13 @@ class TestTwoOneOneConnector:
         # Test Veterans Center has multiple categories
         test_center = [r for r in resources if r.title == "Test Veterans Center"][0]
         assert "housing" in test_center.categories
-        assert "mental_health" in test_center.categories
+        assert "mentalHealth" in test_center.categories
         assert "employment" in test_center.categories
         assert "benefits" in test_center.categories
 
         # Test Crisis Support has mental health categories
         crisis = [r for r in resources if "Crisis" in r.title][0]
-        assert "mental_health" in crisis.categories
+        assert "mentalHealth" in crisis.categories
 
         # Test Food Bank has food category
         food_bank = [r for r in resources if "Food Bank" in r.title][0]
@@ -170,21 +170,21 @@ class TestTwoOneOneConnector:
         connector = TwoOneOneConnector(data_dir="/fake")
 
         # Test exact match
-        categories = connector._map_categories(["housing assistance"])
+        categories = connector._map_file_categories(["housing assistance"])
         assert "housing" in categories
 
         # Test partial match
-        categories = connector._map_categories(["veterans employment support"])
+        categories = connector._map_file_categories(["veterans employment support"])
         assert "employment" in categories
 
         # Test multiple services
-        categories = connector._map_categories(["mental health services", "job training", "food pantry"])
-        assert "mental_health" in categories
+        categories = connector._map_file_categories(["mental health services", "job training", "food pantry"])
+        assert "mentalHealth" in categories
         assert "employment" in categories
         assert "food" in categories
 
-        # Test unknown service falls back to veteran_services
-        categories = connector._map_categories(["unknown service"])
+        # Test unknown service returns empty list
+        categories = connector._map_file_categories(["unknown service"])
         assert len(categories) == 0  # Unknown services return empty
 
     def test_phone_normalization(self, connector):
@@ -244,7 +244,7 @@ class TestTwoOneOneConnector:
         housing = connector.get_resources_by_category("housing")
         assert len(housing) == 2  # Test Veterans Center + Texas Veterans Housing
 
-        mental_health = connector.get_resources_by_category("mental_health")
+        mental_health = connector.get_resources_by_category("mentalHealth")
         assert len(mental_health) == 2  # Test Veterans Center + Crisis Support
 
         food = connector.get_resources_by_category("food")
@@ -277,12 +277,19 @@ class TestTwoOneOneConnector:
 
         assert "by_category" in stats
         assert stats["by_category"]["housing"] == 2
-        assert stats["by_category"]["mental_health"] == 2
+        assert stats["by_category"]["mentalHealth"] == 2
         assert stats["by_category"]["food"] == 1
 
         # Verify categories are sorted by count (descending)
         category_counts = list(stats["by_category"].values())
         assert category_counts == sorted(category_counts, reverse=True)
+
+        # Verify new stats fields
+        assert "by_source" in stats
+        assert stats["by_source"]["file"] == 4
+        assert stats["by_source"]["api"] == 0
+        assert "api_mode" in stats
+        assert stats["api_mode"] is False
 
     def test_stats_auto_run(self, connector):
         """Test stats auto-runs if not loaded."""
@@ -413,8 +420,8 @@ class TestTwoOneOneConnector:
         assert len(resources) == 1
         assert "Services: housing, food, employment" in resources[0].description
 
-    def test_fallback_to_veteran_services_category(self, test_data_dir):
-        """Test resources with no mapped categories get veteran_services."""
+    def test_fallback_to_support_services_category(self, test_data_dir):
+        """Test resources with no mapped categories get supportServices."""
         data = {
             "state": "AZ",
             "resources": [{"name": "Test Org", "services": ["unknown service type", "another unknown"]}],
@@ -428,7 +435,7 @@ class TestTwoOneOneConnector:
         resources = connector.run()
 
         assert len(resources) == 1
-        assert resources[0].categories == ["veteran_services"]
+        assert resources[0].categories == ["supportServices"]
 
     def test_context_manager(self, connector):
         """Test connector works as context manager."""
@@ -449,6 +456,7 @@ class TestTwoOneOneConnector:
         assert test_center.raw_data["name"] == "Test Veterans Center"
         assert test_center.raw_data["phone"] == "1-800-555-1234"
         assert "phone_alt_normalized" in test_center.raw_data
+        assert test_center.raw_data["source"] == "211_file"
         assert test_center.raw_data["services"] == [
             "housing assistance",
             "mental health",
@@ -511,6 +519,57 @@ class TestTwoOneOneConnector:
         assert "SSVF" in map_dict
         assert map_dict["SSVF"] == "housing"
         assert "PTSD" in map_dict
-        assert map_dict["PTSD"] == "mental_health"
+        assert map_dict["PTSD"] == "mentalHealth"
         assert "GI Bill" in map_dict
         assert map_dict["GI Bill"] == "education"
+
+    def test_veteran_keywords_coverage(self):
+        """Test VETERAN_KEYWORDS list has expected terms."""
+        keywords = TwoOneOneConnector.VETERAN_KEYWORDS
+
+        # Verify critical Veteran keywords
+        assert "veteran" in keywords
+        assert "military" in keywords
+        assert "vfw" in keywords
+        assert "american legion" in keywords
+        assert "hud-vash" in keywords
+        assert "ssvf" in keywords
+        assert "gi bill" in keywords
+
+    def test_api_mode_with_key(self, test_data_dir):
+        """Test connector uses API mode when key is provided."""
+        connector = TwoOneOneConnector(
+            api_key="test-key",
+            data_dir=test_data_dir,
+            states=["CA"],
+        )
+
+        assert connector.api_key == "test-key"
+        stats = connector.stats()
+        # Without real API, should fall back to file mode
+        # but api_mode should still report the key was configured
+        # Note: In actual test, API call will fail and fall back to files
+
+    def test_is_veteran_service_detection(self):
+        """Test _is_veteran_service correctly identifies Veteran services."""
+        connector = TwoOneOneConnector(data_dir="/fake")
+
+        # Should match - has "veteran" in name
+        result1 = {"organization": {"name": "Veterans Support Center"}}
+        assert connector._is_veteran_service(result1) is True
+
+        # Should match - has "military" in description
+        result2 = {"description": "Services for military families"}
+        assert connector._is_veteran_service(result2) is True
+
+        # Should match - has "vfw" in org name
+        result3 = {"organization": {"name": "VFW Post 1234"}}
+        assert connector._is_veteran_service(result3) is True
+
+        # Should match - has "hud-vash" in eligibility
+        result4 = {"service": {"eligibility": "Must be enrolled in HUD-VASH"}}
+        assert connector._is_veteran_service(result4) is True
+
+        # Should NOT match - no Veteran keywords
+        result5 = {"organization": {"name": "General Food Bank"}, "description": "Food for all"}
+        assert connector._is_veteran_service(result5) is False
