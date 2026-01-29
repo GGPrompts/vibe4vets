@@ -84,8 +84,8 @@ export function ZipCodeInput({
   );
 
   return (
-    <div className={cn('flex gap-2', className)}>
-      <div className="relative flex-1">
+    <div className={cn('flex gap-2', compact ? 'flex-col' : '', className)}>
+      <div className="relative flex-1 min-w-0">
         <MapPin className="absolute left-2.5 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
         <Input
           type="text"
@@ -114,7 +114,7 @@ export function ZipCodeInput({
 
       {showRadiusSelect && (
         <Select value={String(radius)} onValueChange={handleRadiusChange}>
-          <SelectTrigger className={cn('w-[110px]', compact ? 'h-9 text-sm' : 'h-10')}>
+          <SelectTrigger className={cn(compact ? 'w-full h-9 text-sm' : 'w-[110px] h-10')}>
             <SelectValue placeholder="Radius" />
           </SelectTrigger>
           <SelectContent>
