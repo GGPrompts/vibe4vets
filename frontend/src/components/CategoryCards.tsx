@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { Briefcase, GraduationCap, Home as HomeIcon, Scale, UtensilsCrossed, FileCheck, Brain, HeartHandshake, HeartPulse, School, Wallet, Users, Check, ChevronDown, Tag } from 'lucide-react';
-import { Checkbox } from '@/components/ui/checkbox';
 import { Badge } from '@/components/ui/badge';
 import { Skeleton } from '@/components/ui/skeleton';
 import { cn } from '@/lib/utils';
@@ -198,10 +197,7 @@ export function CategoryCards({
         return (
           <div
             key={category.slug}
-            className={cn(
-              'relative transition-all duration-300',
-              isExpanded && 'sm:col-span-2 lg:col-span-2'
-            )}
+            className="relative transition-all duration-300"
           >
             <button
               type="button"
@@ -357,24 +353,36 @@ function ExpandedTagSection({
               {group.tags.map((tag) => {
                 const isTagSelected = selectedTags.includes(tag.id);
                 return (
-                  <button
+                  <div
                     key={tag.id}
-                    type="button"
+                    role="button"
+                    tabIndex={0}
                     onClick={(e) => onTagToggle(tag.id, e)}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        onTagToggle(tag.id, e as unknown as React.MouseEvent);
+                      }
+                    }}
                     className={cn(
-                      'inline-flex items-center gap-1.5 rounded-md border px-2.5 py-1.5 text-sm transition-all',
+                      'inline-flex items-center gap-1.5 rounded-md border px-2.5 py-1.5 text-sm transition-all cursor-pointer select-none',
                       isTagSelected
                         ? 'border-[hsl(var(--v4v-gold))] bg-[hsl(var(--v4v-gold)/0.15)] text-[hsl(var(--v4v-gold-dark))] font-medium'
                         : 'border-border bg-background hover:bg-muted/50 text-foreground'
                     )}
                   >
-                    <Checkbox
-                      checked={isTagSelected}
-                      className="h-3.5 w-3.5 pointer-events-none"
-                      tabIndex={-1}
-                    />
+                    <span
+                      className={cn(
+                        'flex h-3.5 w-3.5 items-center justify-center rounded-sm border',
+                        isTagSelected
+                          ? 'border-[hsl(var(--v4v-gold))] bg-[hsl(var(--v4v-gold))]'
+                          : 'border-input bg-background'
+                      )}
+                    >
+                      {isTagSelected && <Check className="h-2.5 w-2.5 text-white" />}
+                    </span>
                     {tag.name}
-                  </button>
+                  </div>
                 );
               })}
             </div>
