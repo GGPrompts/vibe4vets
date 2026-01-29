@@ -1,0 +1,489 @@
+{
+  "metadata": {
+    "name": "IHS/VA Tribal Veteran Services",
+    "description": "Urban Indian Health Organizations and VA Tribal Health Programs serving Native American/Alaska Native Veterans",
+    "sources": [
+      "https://ncuih.org/uio-directory/",
+      "https://www.ihs.gov/urban/urban-indian-organizations/",
+      "https://www.ihs.gov/vaihsmou/",
+      "https://www.va.gov/health/vha-tribal-health.asp"
+    ],
+    "last_updated": "2024-12-01",
+    "notes": "Urban Indian Organizations provide health care and support services to American Indian/Alaska Native people in urban areas. Many partner with VA through the IHS-VA MOU to serve Native Veterans."
+  },
+  "urban_indian_organizations": [
+    {
+      "name": "New York Indian Council, Inc.",
+      "city": "Long Island City",
+      "state": "NY",
+      "phone": "718-215-8417",
+      "website": "https://newyorkindiancouncil.org",
+      "executive_director": "Darrell Waldron",
+      "ihs_region": "Nashville",
+      "active": true
+    },
+    {
+      "name": "Native American LifeLines of Baltimore",
+      "city": "Baltimore",
+      "state": "MD",
+      "phone": "410-837-2258",
+      "website": "https://nativeamericanlifelines.org",
+      "executive_director": "Kerry Lessard",
+      "ihs_region": "Nashville",
+      "active": true
+    },
+    {
+      "name": "Native American LifeLines of Boston",
+      "city": "West Roxbury",
+      "state": "MA",
+      "phone": "857-203-9680",
+      "website": "https://nativeamericanlifelines.org",
+      "executive_director": "Kerry Lessard",
+      "ihs_region": "Nashville",
+      "active": true
+    },
+    {
+      "name": "American Indian Council on Alcoholism, Inc.",
+      "city": "Milwaukee",
+      "state": "WI",
+      "phone": "414-930-9210",
+      "website": "https://aicamilwaukee.com",
+      "executive_director": "Renee Lafleur",
+      "ihs_region": "Bemidji",
+      "active": true
+    },
+    {
+      "name": "American Indian Health & Family Services",
+      "city": "Detroit",
+      "state": "MI",
+      "phone": "313-846-3718",
+      "website": "https://aihfs.org",
+      "executive_director": "Chasity Dial",
+      "ihs_region": "Bemidji",
+      "active": true
+    },
+    {
+      "name": "American Indian Health Service of Chicago",
+      "city": "Chicago",
+      "state": "IL",
+      "phone": "773-883-9100",
+      "website": "https://aihschgo.org",
+      "executive_director": "Dr. Albert Mensah",
+      "ihs_region": "Bemidji",
+      "active": true
+    },
+    {
+      "name": "Gerald L. Ignace Indian Health Center",
+      "city": "Milwaukee",
+      "state": "WI",
+      "phone": "414-383-9526",
+      "website": "https://gliihc.net",
+      "executive_director": "Lyle A. Ignace M.D., M.P.H",
+      "ihs_region": "Bemidji",
+      "active": true
+    },
+    {
+      "name": "Indian Health Board of Minneapolis",
+      "city": "Minneapolis",
+      "state": "MN",
+      "phone": "612-721-9800",
+      "website": "https://indianhealthboard.com",
+      "executive_director": "Patrick M. Rock, M.D.",
+      "ihs_region": "Bemidji",
+      "active": true
+    },
+    {
+      "name": "Juel Fairbanks",
+      "city": "St. Paul",
+      "state": "MN",
+      "phone": "651-644-6204",
+      "website": "https://juelfairbanks.org",
+      "executive_director": "Michelle Kellum",
+      "ihs_region": "Bemidji",
+      "active": true
+    },
+    {
+      "name": "Nebraska Urban Indian Health Coalition, Inc.",
+      "city": "Omaha",
+      "state": "NE",
+      "phone": "402-346-0902",
+      "website": "https://nuihc.com",
+      "executive_director": "Beau Boryca",
+      "ihs_region": "Great Plains",
+      "active": true
+    },
+    {
+      "name": "South Dakota Urban Indian Health, Inc.",
+      "city": "Sioux Falls",
+      "state": "SD",
+      "phone": "605-339-0420",
+      "website": "https://sduih.org",
+      "executive_director": "Colette Keith",
+      "ihs_region": "Great Plains",
+      "active": true
+    },
+    {
+      "name": "Helena Indian Alliance",
+      "city": "Helena",
+      "state": "MT",
+      "phone": "406-442-9244",
+      "website": "https://helenaindianalliance.com",
+      "executive_director": "Todd J. Wilson",
+      "ihs_region": "Billings",
+      "active": true
+    },
+    {
+      "name": "Indian Family Health Clinic",
+      "city": "Great Falls",
+      "state": "MT",
+      "phone": "406-268-1510",
+      "website": "https://ifhcgf.org",
+      "executive_director": "Rachel Arthur",
+      "ihs_region": "Billings",
+      "active": true
+    },
+    {
+      "name": "All Nations Health Center",
+      "city": "Missoula",
+      "state": "MT",
+      "phone": "406-829-9515",
+      "website": "https://allnations.health",
+      "executive_director": "Ryan Wetzel",
+      "ihs_region": "Billings",
+      "active": true
+    },
+    {
+      "name": "Butte Native Wellness Center",
+      "city": "Butte",
+      "state": "MT",
+      "phone": "406-782-0461",
+      "website": "https://buttenwc.org",
+      "executive_director": "Tina Randall",
+      "ihs_region": "Billings",
+      "active": false
+    },
+    {
+      "name": "Billings Urban Indian Health & Wellness Center",
+      "city": "Billings",
+      "state": "MT",
+      "phone": "406-534-4558",
+      "website": "https://billingsurbanindianhealth.org",
+      "executive_director": "Leonard Smith",
+      "ihs_region": "Billings",
+      "active": false
+    },
+    {
+      "name": "NARA NW",
+      "city": "Portland",
+      "state": "OR",
+      "phone": "503-224-1044",
+      "website": "https://naranorthwest.org",
+      "executive_director": "Jackie Mercer",
+      "ihs_region": "Portland",
+      "active": true
+    },
+    {
+      "name": "The NATIVE Project",
+      "city": "Spokane",
+      "state": "WA",
+      "phone": "509-325-5502",
+      "website": "https://nativeproject.org",
+      "executive_director": "Toni Lodge",
+      "ihs_region": "Portland",
+      "active": true
+    },
+    {
+      "name": "Nevada Urban Indians, Inc.",
+      "city": "Reno",
+      "state": "NV",
+      "phone": "775-788-7600",
+      "website": "https://nevadaurbanindians.org",
+      "executive_director": "Janet Reeves",
+      "ihs_region": "Portland",
+      "active": true
+    },
+    {
+      "name": "Seattle Indian Health Board",
+      "city": "Seattle",
+      "state": "WA",
+      "phone": "206-324-9360",
+      "website": "https://sihb.org",
+      "executive_director": "Esther Luceo",
+      "ihs_region": "Portland",
+      "active": false
+    },
+    {
+      "name": "American Indian Health & Services, Inc.",
+      "city": "Santa Barbara",
+      "state": "CA",
+      "phone": "805-681-7144",
+      "website": "https://aihscorp.org",
+      "executive_director": "Scott Black",
+      "ihs_region": "California",
+      "active": true
+    },
+    {
+      "name": "Bakersfield American Indian Health Project",
+      "city": "Bakersfield",
+      "state": "CA",
+      "phone": "661-327-4030",
+      "website": "https://bakersfieldaihp.org",
+      "executive_director": "Angel Galvez",
+      "ihs_region": "California",
+      "active": true
+    },
+    {
+      "name": "Fresno American Indian Health Project",
+      "city": "Fresno",
+      "state": "CA",
+      "phone": "559-320-0490",
+      "website": "https://faihp.org",
+      "executive_director": "Selina de la Pena",
+      "ihs_region": "California",
+      "active": true
+    },
+    {
+      "name": "Friendship House - Association of American Indians, Inc. of San Francisco",
+      "city": "San Francisco",
+      "state": "CA",
+      "phone": "415-865-0964",
+      "website": "https://friendshiphousehealing.org",
+      "executive_director": "Marty Waukazoo",
+      "ihs_region": "California",
+      "active": true
+    },
+    {
+      "name": "Indian Health Center of Santa Clara Valley",
+      "city": "San Jose",
+      "state": "CA",
+      "phone": "408-445-3400",
+      "website": "https://indianhealthcenter.org",
+      "executive_director": "Sonya Tetnowski",
+      "ihs_region": "California",
+      "active": true
+    },
+    {
+      "name": "Native American Health Center",
+      "city": "Oakland",
+      "state": "CA",
+      "phone": "510-434-5300",
+      "website": "https://nativehealth.org",
+      "executive_director": "Natalie Aguilera",
+      "ihs_region": "California",
+      "active": true
+    },
+    {
+      "name": "Sacramento Native American Health Center, Inc.",
+      "city": "Sacramento",
+      "state": "CA",
+      "phone": "916-341-0575",
+      "website": "https://snahc.org",
+      "executive_director": "Britta Guerrero",
+      "ihs_region": "California",
+      "active": false
+    },
+    {
+      "name": "San Diego American Indian Health Center",
+      "city": "San Diego",
+      "state": "CA",
+      "phone": "619-234-2158",
+      "website": "https://sdaihc.org",
+      "executive_director": "Kevin LaChapelle",
+      "ihs_region": "California",
+      "active": true
+    },
+    {
+      "name": "Native Directions, Inc. / Three Rivers Indian Lodge",
+      "city": "Manteca",
+      "state": "CA",
+      "phone": "209-858-2421",
+      "website": "https://nativedirections.org",
+      "executive_director": "Ramona Valadez",
+      "ihs_region": "California",
+      "active": true
+    },
+    {
+      "name": "American Indian Health & Services, Inc. - Los Angeles",
+      "city": "Los Angeles",
+      "state": "CA",
+      "phone": null,
+      "website": "https://aihscorp.org",
+      "executive_director": null,
+      "ihs_region": "California",
+      "active": true
+    },
+    {
+      "name": "First Nations Community HealthSource",
+      "city": "Albuquerque",
+      "state": "NM",
+      "phone": "505-262-2481",
+      "website": "https://fnch.org",
+      "executive_director": "Linda Son-Stone",
+      "ihs_region": "Albuquerque",
+      "active": true
+    },
+    {
+      "name": "Hunter Health",
+      "city": "Wichita",
+      "state": "KS",
+      "phone": "316-262-2415",
+      "website": "https://hunterhealthclinic.org",
+      "executive_director": "Amy Feimer",
+      "ihs_region": "Oklahoma City",
+      "active": true
+    },
+    {
+      "name": "Indian Health Care Resource Center of Tulsa",
+      "city": "Tulsa",
+      "state": "OK",
+      "phone": "918-588-1900",
+      "website": "https://ihcrc.org",
+      "executive_director": "Carmelita Skeeter",
+      "ihs_region": "Oklahoma City",
+      "active": true
+    },
+    {
+      "name": "Kansas City Indian Center",
+      "city": "Kansas City",
+      "state": "MO",
+      "phone": "816-421-7608",
+      "website": "https://kcindiancenter.org",
+      "executive_director": "Gaylene Crouser",
+      "ihs_region": "Oklahoma City",
+      "active": true
+    },
+    {
+      "name": "Native Americans for Community Action",
+      "city": "Flagstaff",
+      "state": "AZ",
+      "phone": "928-526-2968",
+      "website": "https://nacainc.org",
+      "executive_director": "Christopher David",
+      "ihs_region": "Phoenix",
+      "active": true
+    },
+    {
+      "name": "Native Health",
+      "city": "Phoenix",
+      "state": "AZ",
+      "phone": "602-279-5262",
+      "website": "https://nativehealthphoenix.org",
+      "executive_director": "Walter Murillo",
+      "ihs_region": "Phoenix",
+      "active": true
+    },
+    {
+      "name": "Native American Connections",
+      "city": "Phoenix",
+      "state": "AZ",
+      "phone": "602-254-3247",
+      "website": "https://nativeconnections.org",
+      "executive_director": "Trula Breuninger",
+      "ihs_region": "Phoenix",
+      "active": true
+    },
+    {
+      "name": "Oklahoma City Indian Clinic",
+      "city": "Oklahoma City",
+      "state": "OK",
+      "phone": "405-948-4900",
+      "website": "https://okcic.com",
+      "executive_director": "Robyn Sunday-Allen",
+      "ihs_region": "Oklahoma City",
+      "active": true
+    },
+    {
+      "name": "Tucson Indian Center",
+      "city": "Tucson",
+      "state": "AZ",
+      "phone": "520-884-7131",
+      "website": "https://ticenter.org",
+      "executive_director": "Jacob Bernal",
+      "ihs_region": "Tucson",
+      "active": true
+    },
+    {
+      "name": "Urban Indian Center of Salt Lake City",
+      "city": "Salt Lake City",
+      "state": "UT",
+      "phone": "801-486-4877",
+      "website": "https://uicsl.org",
+      "executive_director": "Matt Poss",
+      "ihs_region": "Phoenix",
+      "active": true
+    },
+    {
+      "name": "Texas Native Health",
+      "city": "Dallas",
+      "state": "TX",
+      "phone": "214-941-1050",
+      "website": "https://texasnativehealth.org",
+      "executive_director": "Omer Tamir",
+      "ihs_region": "Oklahoma City",
+      "active": true
+    },
+    {
+      "name": "Denver Indian Health and Family Services",
+      "city": "Denver",
+      "state": "CO",
+      "phone": "303-953-6618",
+      "website": "https://dihfs.org",
+      "executive_director": "Adrianne Maddux",
+      "ihs_region": "Albuquerque",
+      "active": true
+    }
+  ],
+  "va_tribal_programs": [
+    {
+      "name": "VHA Office of Tribal Health",
+      "type": "va_program",
+      "description": "Provides leadership, guidance, and strategic direction to support American Indian/Alaska Native Veteran health care and access. Oversees the IHS-VA MOU implementation.",
+      "contact_email": "VHAOfficeofTribalHealth@va.gov",
+      "website": "https://www.va.gov/health/vha-tribal-health.asp",
+      "scope": "national"
+    },
+    {
+      "name": "VA-IHS Clinic-in-a-Clinic Program",
+      "type": "va_program",
+      "description": "Places VA health care providers within IHS facilities to deliver VA services to Native Veterans. This 'one-stop shop' approach allows Native Veterans to access both VA and IHS services under one roof.",
+      "locations": [
+        {"name": "Chinle Service Unit", "state": "AZ", "opened": "2024"},
+        {"name": "Kayenta Health Center", "state": "AZ", "opened": "2024"}
+      ],
+      "website": "https://www.ihs.gov/vaihsmou/",
+      "scope": "local"
+    },
+    {
+      "name": "VA Copayment Exemption Program for Native Veterans",
+      "type": "va_program",
+      "description": "Exempts enrolled American Indian and Alaska Native Veterans from VA health care copayments. Since April 2023, has exempted or reimbursed over 300,000 copayments totaling more than $5.3 million.",
+      "eligibility": "Must be enrolled in VA health care and possess official tribal documentation (enrollment card, Certificate of Degree of Indian/Alaska Native Blood, or tribal letterhead documentation).",
+      "how_to_apply": "Submit copies of tribal documents and completed VA Form 10-334 to: VHA Tribal Documentation, PO Box 5100, Janesville, WI 53547-5100",
+      "website": "https://www.va.gov/health/vha-tribal-health.asp",
+      "scope": "national"
+    },
+    {
+      "name": "Native American Veteran Homelessness Initiative",
+      "type": "federal_initiative",
+      "description": "Multi-agency effort led by the White House Council on Native American Affairs Health Committee. Includes VA, HHS, and HUD working to address homelessness among Native American Veterans.",
+      "website": "https://www.ihs.gov/vaihsmou/findhealthcaremap/",
+      "scope": "national"
+    }
+  ],
+  "services_commonly_offered": [
+    "Primary medical care",
+    "Behavioral health and substance abuse treatment",
+    "Dental care",
+    "Traditional healing and cultural programs",
+    "Pharmacy services",
+    "Case management",
+    "Social services and referrals",
+    "Transportation assistance",
+    "Health education",
+    "Women's health services",
+    "Youth and elder programs",
+    "HIV/STI testing and treatment",
+    "Nutrition counseling",
+    "Community outreach"
+  ]
+}

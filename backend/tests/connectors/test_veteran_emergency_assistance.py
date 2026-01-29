@@ -208,9 +208,10 @@ class TestVeteranEmergencyAssistanceConnector:
         categories = connector._get_categories(program)
 
         assert "housing" in categories
+        assert "financial" in categories  # All emergency programs are financial
 
-    def test_get_categories_default(self, tmp_path):
-        """Test default category when no specific types match."""
+    def test_get_categories_financial_always_included(self, tmp_path):
+        """Test that financial category is always included for emergency assistance."""
         connector = VeteranEmergencyAssistanceConnector(
             data_path=tmp_path / "data.json",
         )
@@ -219,8 +220,10 @@ class TestVeteranEmergencyAssistanceConnector:
         }
         categories = connector._get_categories(program)
 
-        # Should default to housing since most programs are housing-focused
-        assert "housing" in categories
+        # All emergency assistance programs should have financial category
+        assert "financial" in categories
+        # Without housing-related types, housing should not be included
+        assert "housing" not in categories
 
     def test_build_tags(self, tmp_path):
         """Test tag building."""
@@ -388,14 +391,14 @@ class TestVeteranEmergencyAssistanceConnector:
         connector = VeteranEmergencyAssistanceConnector(data_path=data_file)
         resources = connector.run()
 
-        # Should have at least 7 programs
-        assert len(resources) >= 7
+        # Should have at least 8 programs (including DVNF GPS)
+        assert len(resources) >= 8
 
         # All should be national scope
         assert all(r.scope == "national" for r in resources)
 
-        # All should have housing category
-        assert all("housing" in r.categories for r in resources)
+        # All should have financial category (emergency financial assistance)
+        assert all("financial" in r.categories for r in resources)
 
         # All should have emergency-assistance tag
         assert all("emergency-assistance" in r.tags for r in resources)
@@ -409,6 +412,7 @@ class TestVeteranEmergencyAssistanceConnector:
         assert any("Semper Fi" in t for t in titles)
         assert any("PenFed" in t for t in titles)
         assert any("USA Cares" in t for t in titles)
+        assert any("DVNF" in t or "GPS" in t for t in titles)
 
         # Check first resource structure
         first = resources[0]

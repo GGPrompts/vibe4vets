@@ -1,0 +1,2102 @@
+{
+  "source": "State Veterans Affairs Agencies - Compiled Directory",
+  "source_url": "https://nasdva.us/resources/",
+  "last_updated": "2026-01-28",
+  "description": "Detailed state and territory veteran affairs office locations with contact information, services, and regional offices. Covers all 50 states plus DC and US territories.",
+  "offices": [
+    {
+      "state": "AL",
+      "state_name": "Alabama",
+      "agency_name": "Alabama Department of Veterans Affairs",
+      "main_office": {
+        "name": "Alabama Department of Veterans Affairs - Central Office",
+        "address": "100 North Union Street, Suite 850",
+        "city": "Montgomery",
+        "zip_code": "36104",
+        "phone": "(334) 242-5077",
+        "fax": "(334) 242-5102",
+        "email": "adva@va.alabama.gov",
+        "website": "https://va.alabama.gov/",
+        "hours": "Monday-Friday 8:00 AM - 5:00 PM"
+      },
+      "services": [
+        "VA claims assistance",
+        "State veteran benefits",
+        "Education benefits",
+        "Employment services",
+        "Healthcare referrals",
+        "Burial benefits",
+        "State veterans homes"
+      ],
+      "regional_offices": [
+        {
+          "name": "Birmingham Regional Office",
+          "address": "1500 13th Avenue South",
+          "city": "Birmingham",
+          "zip_code": "35205",
+          "phone": "(205) 933-8501"
+        },
+        {
+          "name": "Huntsville Regional Office",
+          "address": "451 Green Cove Road",
+          "city": "Huntsville",
+          "zip_code": "35803",
+          "phone": "(256) 539-0834"
+        }
+      ]
+    },
+    {
+      "state": "AK",
+      "state_name": "Alaska",
+      "agency_name": "Alaska Office of Veterans Affairs",
+      "main_office": {
+        "name": "Alaska Office of Veterans Affairs - Headquarters",
+        "address": "Camp Denali, Building 49000, Suite 203",
+        "city": "Anchorage",
+        "zip_code": "99505",
+        "phone": "(907) 428-6016",
+        "fax": "(907) 428-6019",
+        "email": "dmva.vets@alaska.gov",
+        "website": "http://veterans.alaska.gov/",
+        "hours": "Monday-Friday 8:00 AM - 4:30 PM"
+      },
+      "services": [
+        "VA claims assistance",
+        "Alaska veteran benefits",
+        "Education benefits",
+        "Employment services",
+        "Land discount program",
+        "Veteran license plates",
+        "Military records assistance"
+      ],
+      "regional_offices": [
+        {
+          "name": "Fairbanks Regional Office",
+          "address": "3001 Peger Road",
+          "city": "Fairbanks",
+          "zip_code": "99709",
+          "phone": "(907) 474-7000"
+        },
+        {
+          "name": "Juneau Regional Office",
+          "address": "400 Willoughby Avenue",
+          "city": "Juneau",
+          "zip_code": "99801",
+          "phone": "(907) 465-4925"
+        }
+      ]
+    },
+    {
+      "state": "AZ",
+      "state_name": "Arizona",
+      "agency_name": "Arizona Department of Veterans' Services",
+      "main_office": {
+        "name": "Arizona Department of Veterans' Services - Headquarters",
+        "address": "3839 North 3rd Street, Suite 200",
+        "city": "Phoenix",
+        "zip_code": "85012",
+        "phone": "(602) 255-3373",
+        "fax": "(602) 255-1038",
+        "email": "dvs@azdvs.gov",
+        "website": "https://dvs.az.gov/",
+        "hours": "Monday-Friday 8:00 AM - 5:00 PM"
+      },
+      "services": [
+        "VA claims assistance",
+        "Arizona veteran benefits",
+        "State veteran cemeteries",
+        "Veterans homes",
+        "Employment services",
+        "Education benefits",
+        "Military family relief fund"
+      ],
+      "regional_offices": [
+        {
+          "name": "Tucson Regional Office",
+          "address": "5411 East Williams Boulevard",
+          "city": "Tucson",
+          "zip_code": "85711",
+          "phone": "(520) 434-1565"
+        },
+        {
+          "name": "Flagstaff Regional Office",
+          "address": "1500 East Cedar Avenue",
+          "city": "Flagstaff",
+          "zip_code": "86004",
+          "phone": "(928) 214-7850"
+        }
+      ]
+    },
+    {
+      "state": "AR",
+      "state_name": "Arkansas",
+      "agency_name": "Arkansas Department of Veterans Affairs",
+      "main_office": {
+        "name": "Arkansas Department of Veterans Affairs - Central Office",
+        "address": "2200 Fort Roots Drive, Building 65",
+        "city": "North Little Rock",
+        "zip_code": "72114",
+        "phone": "(501) 370-3820",
+        "fax": "(501) 370-3829",
+        "email": "info@veterans.arkansas.gov",
+        "website": "http://www.veterans.arkansas.gov/",
+        "hours": "Monday-Friday 8:00 AM - 4:30 PM"
+      },
+      "services": [
+        "VA claims assistance",
+        "Arkansas veteran benefits",
+        "Education benefits",
+        "Employment services",
+        "Veterans homes",
+        "State cemetery",
+        "Property tax exemptions"
+      ],
+      "regional_offices": []
+    },
+    {
+      "state": "CA",
+      "state_name": "California",
+      "agency_name": "California Department of Veterans Affairs (CalVet)",
+      "main_office": {
+        "name": "CalVet Headquarters",
+        "address": "1227 O Street",
+        "city": "Sacramento",
+        "zip_code": "95814",
+        "phone": "(800) 952-5626",
+        "fax": "(916) 653-2456",
+        "email": "calvet.publicaffairs@calvet.ca.gov",
+        "website": "https://www.calvet.ca.gov/",
+        "hours": "Monday-Friday 8:00 AM - 5:00 PM"
+      },
+      "services": [
+        "VA claims assistance",
+        "CalVet home loans",
+        "Veterans homes",
+        "College fee waivers",
+        "Employment services",
+        "Women veterans programs",
+        "License plates",
+        "State cemeteries"
+      ],
+      "regional_offices": [
+        {
+          "name": "Los Angeles Regional Office",
+          "address": "11000 Wilshire Boulevard",
+          "city": "Los Angeles",
+          "zip_code": "90024",
+          "phone": "(310) 268-4524"
+        },
+        {
+          "name": "San Diego Regional Office",
+          "address": "8810 Rio San Diego Drive",
+          "city": "San Diego",
+          "zip_code": "92108",
+          "phone": "(619) 400-5020"
+        },
+        {
+          "name": "Oakland Regional Office",
+          "address": "1301 Clay Street",
+          "city": "Oakland",
+          "zip_code": "94612",
+          "phone": "(510) 637-6298"
+        },
+        {
+          "name": "Fresno Regional Office",
+          "address": "5260 North Palm Avenue",
+          "city": "Fresno",
+          "zip_code": "93704",
+          "phone": "(559) 225-6100"
+        }
+      ]
+    },
+    {
+      "state": "CO",
+      "state_name": "Colorado",
+      "agency_name": "Colorado Department of Military and Veterans Affairs",
+      "main_office": {
+        "name": "Division of Veterans Affairs",
+        "address": "1355 South Colorado Boulevard, Building C, Suite 113",
+        "city": "Denver",
+        "zip_code": "80222",
+        "phone": "(303) 284-6077",
+        "fax": "(303) 284-3115",
+        "email": "dmva.veteraninfo@dmva.state.co.us",
+        "website": "https://www.colorado.gov/vets",
+        "hours": "Monday-Friday 8:00 AM - 5:00 PM"
+      },
+      "services": [
+        "VA claims assistance",
+        "Colorado veteran benefits",
+        "Veterans Trust Fund",
+        "Education benefits",
+        "Employment services",
+        "State veterans cemeteries",
+        "Veterans community living centers"
+      ],
+      "regional_offices": [
+        {
+          "name": "Colorado Springs Regional Office",
+          "address": "3920 N. Nevada Avenue",
+          "city": "Colorado Springs",
+          "zip_code": "80907",
+          "phone": "(719) 772-7900"
+        },
+        {
+          "name": "Grand Junction Regional Office",
+          "address": "2696 Patterson Road",
+          "city": "Grand Junction",
+          "zip_code": "81506",
+          "phone": "(970) 263-2876"
+        }
+      ]
+    },
+    {
+      "state": "CT",
+      "state_name": "Connecticut",
+      "agency_name": "Connecticut Department of Veterans Affairs",
+      "main_office": {
+        "name": "CT Department of Veterans Affairs",
+        "address": "287 West Street",
+        "city": "Rocky Hill",
+        "zip_code": "06067",
+        "phone": "(860) 616-3603",
+        "fax": "(860) 616-3505",
+        "email": "dva.info@ct.gov",
+        "website": "https://portal.ct.gov/DVA/",
+        "hours": "Monday-Friday 8:30 AM - 4:30 PM"
+      },
+      "services": [
+        "VA claims assistance",
+        "Connecticut veteran benefits",
+        "Veterans healthcare",
+        "Residential programs",
+        "Employment services",
+        "Education benefits",
+        "Property tax exemptions"
+      ],
+      "regional_offices": []
+    },
+    {
+      "state": "DE",
+      "state_name": "Delaware",
+      "agency_name": "Delaware Commission of Veterans Affairs",
+      "main_office": {
+        "name": "Delaware Commission of Veterans Affairs",
+        "address": "802 Silver Lake Boulevard, Suite 100",
+        "city": "Dover",
+        "zip_code": "19904",
+        "phone": "(302) 739-2792",
+        "fax": "(302) 739-2794",
+        "email": "veteransaffairs@delaware.gov",
+        "website": "https://veteransaffairs.delaware.gov",
+        "hours": "Monday-Friday 8:00 AM - 4:30 PM"
+      },
+      "services": [
+        "VA claims assistance",
+        "Delaware veteran benefits",
+        "Education benefits",
+        "Employment services",
+        "Delaware Veterans Trust Fund",
+        "Veterans memorial cemetery",
+        "License plates"
+      ],
+      "regional_offices": [
+        {
+          "name": "Wilmington Office",
+          "address": "1601 Kirkwood Highway",
+          "city": "Wilmington",
+          "zip_code": "19805",
+          "phone": "(302) 739-2792"
+        }
+      ]
+    },
+    {
+      "state": "DC",
+      "state_name": "District of Columbia",
+      "agency_name": "DC Mayor's Office of Veterans Affairs",
+      "main_office": {
+        "name": "DC Office of Veterans Affairs",
+        "address": "2235 Shannon Place SE, Suite 3030",
+        "city": "Washington",
+        "zip_code": "20020",
+        "phone": "(202) 724-5454",
+        "fax": "(202) 727-7117",
+        "email": "veterans@dc.gov",
+        "website": "https://communityaffairs.dc.gov/mova",
+        "hours": "Monday-Friday 8:30 AM - 5:00 PM"
+      },
+      "services": [
+        "VA claims assistance",
+        "DC veteran benefits",
+        "Employment services",
+        "Education benefits",
+        "Housing assistance",
+        "Property tax exemptions",
+        "Veteran ID cards"
+      ],
+      "regional_offices": []
+    },
+    {
+      "state": "FL",
+      "state_name": "Florida",
+      "agency_name": "Florida Department of Veterans' Affairs",
+      "main_office": {
+        "name": "Florida Department of Veterans' Affairs",
+        "address": "11351 Ulmerton Road, Suite 311-K",
+        "city": "Largo",
+        "zip_code": "33778",
+        "phone": "(727) 518-3202",
+        "fax": "(727) 518-3403",
+        "email": "fdva@fdva.state.fl.us",
+        "website": "https://www.floridavets.org/",
+        "hours": "Monday-Friday 8:00 AM - 5:00 PM"
+      },
+      "services": [
+        "VA claims assistance",
+        "Florida veteran benefits",
+        "State veterans homes",
+        "Veterans nursing homes",
+        "Education benefits",
+        "Employment services",
+        "Women veterans programs",
+        "Property tax exemptions"
+      ],
+      "regional_offices": [
+        {
+          "name": "Jacksonville Regional Office",
+          "address": "6820 Southpoint Drive South, Suite 303",
+          "city": "Jacksonville",
+          "zip_code": "32216",
+          "phone": "(904) 281-9600"
+        },
+        {
+          "name": "Miami Regional Office",
+          "address": "8925 NW 12th Street, Suite 200",
+          "city": "Miami",
+          "zip_code": "33172",
+          "phone": "(305) 470-5700"
+        },
+        {
+          "name": "Orlando Regional Office",
+          "address": "5201 West Kennedy Boulevard, Suite 600",
+          "city": "Tampa",
+          "zip_code": "33609",
+          "phone": "(813) 871-7575"
+        }
+      ]
+    },
+    {
+      "state": "GA",
+      "state_name": "Georgia",
+      "agency_name": "Georgia Department of Veterans Service",
+      "main_office": {
+        "name": "Georgia Department of Veterans Service",
+        "address": "2 Martin Luther King Jr. Drive SE, Suite E-970",
+        "city": "Atlanta",
+        "zip_code": "30334",
+        "phone": "(404) 656-2300",
+        "fax": "(404) 656-7006",
+        "email": "gdvs@vs.state.ga.us",
+        "website": "https://veterans.georgia.gov/",
+        "hours": "Monday-Friday 8:00 AM - 5:00 PM"
+      },
+      "services": [
+        "VA claims assistance",
+        "Georgia veteran benefits",
+        "Veterans education",
+        "State veterans homes",
+        "War veterans cemeteries",
+        "Employment services",
+        "Women veterans programs"
+      ],
+      "regional_offices": [
+        {
+          "name": "Savannah Field Office",
+          "address": "7300 Hodgson Memorial Drive",
+          "city": "Savannah",
+          "zip_code": "31406",
+          "phone": "(912) 356-5023"
+        },
+        {
+          "name": "Augusta Field Office",
+          "address": "1 Freedom Way",
+          "city": "Augusta",
+          "zip_code": "30904",
+          "phone": "(706) 721-2131"
+        }
+      ]
+    },
+    {
+      "state": "HI",
+      "state_name": "Hawaii",
+      "agency_name": "Hawaii Office of Veterans' Services",
+      "main_office": {
+        "name": "Hawaii Office of Veterans' Services",
+        "address": "459 Patterson Road, E-Wing, Room 1-A103",
+        "city": "Honolulu",
+        "zip_code": "96819",
+        "phone": "(808) 433-0420",
+        "fax": "(808) 433-0385",
+        "email": "ovs@ovs.hawaii.gov",
+        "website": "http://dod.hawaii.gov/ovs/",
+        "hours": "Monday-Friday 7:45 AM - 4:30 PM"
+      },
+      "services": [
+        "VA claims assistance",
+        "Hawaii veteran benefits",
+        "Veterans cemeteries",
+        "Education benefits",
+        "Employment services",
+        "Military funeral honors",
+        "Homeless veterans services"
+      ],
+      "regional_offices": [
+        {
+          "name": "Maui Veterans Center",
+          "address": "99 Mahalani Street",
+          "city": "Wailuku",
+          "zip_code": "96793",
+          "phone": "(808) 873-3121"
+        },
+        {
+          "name": "Hilo Veterans Center",
+          "address": "349 Kapiolani Street",
+          "city": "Hilo",
+          "zip_code": "96720",
+          "phone": "(808) 933-0315"
+        }
+      ]
+    },
+    {
+      "state": "ID",
+      "state_name": "Idaho",
+      "agency_name": "Idaho Division of Veterans Services",
+      "main_office": {
+        "name": "Idaho Division of Veterans Services",
+        "address": "351 Collins Road",
+        "city": "Boise",
+        "zip_code": "83702",
+        "phone": "(208) 780-1300",
+        "fax": "(208) 780-1301",
+        "email": "info@veterans.idaho.gov",
+        "website": "http://www.veterans.idaho.gov/",
+        "hours": "Monday-Friday 8:00 AM - 5:00 PM"
+      },
+      "services": [
+        "VA claims assistance",
+        "Idaho veteran benefits",
+        "State veterans homes",
+        "Veterans cemetery",
+        "Education benefits",
+        "Employment services",
+        "Outreach programs"
+      ],
+      "regional_offices": [
+        {
+          "name": "Pocatello Regional Office",
+          "address": "1070 Hiline Road",
+          "city": "Pocatello",
+          "zip_code": "83201",
+          "phone": "(208) 780-1340"
+        },
+        {
+          "name": "Lewiston Regional Office",
+          "address": "620 21st Avenue",
+          "city": "Lewiston",
+          "zip_code": "83501",
+          "phone": "(208) 780-1330"
+        }
+      ]
+    },
+    {
+      "state": "IL",
+      "state_name": "Illinois",
+      "agency_name": "Illinois Department of Veterans' Affairs",
+      "main_office": {
+        "name": "Illinois Department of Veterans' Affairs",
+        "address": "833 South Spring Street",
+        "city": "Springfield",
+        "zip_code": "62794",
+        "phone": "(217) 782-6641",
+        "fax": "(217) 524-0344",
+        "email": "dva.info@illinois.gov",
+        "website": "https://veterans.illinois.gov",
+        "hours": "Monday-Friday 8:30 AM - 5:00 PM"
+      },
+      "services": [
+        "VA claims assistance",
+        "Illinois veteran benefits",
+        "Veterans homes",
+        "Education benefits",
+        "Employment services",
+        "Women veterans programs",
+        "Veterans service grants"
+      ],
+      "regional_offices": [
+        {
+          "name": "Chicago Regional Office",
+          "address": "69 West Washington Street, Suite 1900",
+          "city": "Chicago",
+          "zip_code": "60602",
+          "phone": "(312) 814-2460"
+        },
+        {
+          "name": "Marion Regional Office",
+          "address": "2401 West Main Street",
+          "city": "Marion",
+          "zip_code": "62959",
+          "phone": "(618) 997-5691"
+        }
+      ]
+    },
+    {
+      "state": "IN",
+      "state_name": "Indiana",
+      "agency_name": "Indiana Department of Veterans Affairs",
+      "main_office": {
+        "name": "Indiana Department of Veterans Affairs",
+        "address": "302 West Washington Street, Room E120",
+        "city": "Indianapolis",
+        "zip_code": "46204",
+        "phone": "(317) 232-3910",
+        "fax": "(317) 232-7721",
+        "email": "veteran.info@dva.in.gov",
+        "website": "https://www.in.gov/dva/",
+        "hours": "Monday-Friday 8:00 AM - 4:30 PM"
+      },
+      "services": [
+        "VA claims assistance",
+        "Indiana veteran benefits",
+        "Veterans homes",
+        "Education benefits",
+        "Employment services",
+        "Military Family Relief Fund",
+        "Veteran service grants"
+      ],
+      "regional_offices": [
+        {
+          "name": "Fort Wayne Regional Office",
+          "address": "1600 Randalia Drive",
+          "city": "Fort Wayne",
+          "zip_code": "46805",
+          "phone": "(260) 483-5632"
+        },
+        {
+          "name": "Evansville Regional Office",
+          "address": "500 John Street",
+          "city": "Evansville",
+          "zip_code": "47713",
+          "phone": "(812) 428-4433"
+        }
+      ]
+    },
+    {
+      "state": "IA",
+      "state_name": "Iowa",
+      "agency_name": "Iowa Department of Veterans Affairs",
+      "main_office": {
+        "name": "Iowa Department of Veterans Affairs",
+        "address": "Camp Dodge, Building 3465",
+        "city": "Johnston",
+        "zip_code": "50131",
+        "phone": "(515) 727-3439",
+        "fax": "(515) 727-3713",
+        "email": "info@iowa.dva.org",
+        "website": "https://va.iowa.gov/",
+        "hours": "Monday-Friday 8:00 AM - 4:30 PM"
+      },
+      "services": [
+        "VA claims assistance",
+        "Iowa veteran benefits",
+        "Veterans home",
+        "Iowa Veterans Cemetery",
+        "Education benefits",
+        "Employment services",
+        "Trust Fund assistance"
+      ],
+      "regional_offices": []
+    },
+    {
+      "state": "KS",
+      "state_name": "Kansas",
+      "agency_name": "Kansas Commission on Veterans Affairs Office",
+      "main_office": {
+        "name": "Kansas Commission on Veterans Affairs",
+        "address": "700 SW Jackson Street, Suite 701",
+        "city": "Topeka",
+        "zip_code": "66603",
+        "phone": "(785) 296-3976",
+        "fax": "(785) 296-1462",
+        "email": "kcva@ks.gov",
+        "website": "https://kcva.ks.gov/",
+        "hours": "Monday-Friday 8:00 AM - 5:00 PM"
+      },
+      "services": [
+        "VA claims assistance",
+        "Kansas veteran benefits",
+        "Veterans homes",
+        "State cemetery",
+        "Education benefits",
+        "Employment services",
+        "Veterans Trust Fund"
+      ],
+      "regional_offices": [
+        {
+          "name": "Wichita Regional Office",
+          "address": "5500 East Kellogg Drive",
+          "city": "Wichita",
+          "zip_code": "67218",
+          "phone": "(316) 685-2221"
+        }
+      ]
+    },
+    {
+      "state": "KY",
+      "state_name": "Kentucky",
+      "agency_name": "Kentucky Department of Veterans Affairs",
+      "main_office": {
+        "name": "Kentucky Department of Veterans Affairs",
+        "address": "1111 Louisville Road",
+        "city": "Frankfort",
+        "zip_code": "40601",
+        "phone": "(502) 564-9203",
+        "fax": "(502) 564-9240",
+        "email": "kdva@ky.gov",
+        "website": "https://veterans.ky.gov/Pages/default.aspx",
+        "hours": "Monday-Friday 8:00 AM - 4:30 PM"
+      },
+      "services": [
+        "VA claims assistance",
+        "Kentucky veteran benefits",
+        "Veterans cemeteries",
+        "Veterans centers",
+        "Education benefits",
+        "Employment services",
+        "Women veterans programs"
+      ],
+      "regional_offices": [
+        {
+          "name": "Louisville Regional Office",
+          "address": "321 West Main Street",
+          "city": "Louisville",
+          "zip_code": "40202",
+          "phone": "(502) 595-4447"
+        },
+        {
+          "name": "Lexington Regional Office",
+          "address": "1101 Veterans Drive",
+          "city": "Lexington",
+          "zip_code": "40502",
+          "phone": "(859) 281-6050"
+        }
+      ]
+    },
+    {
+      "state": "LA",
+      "state_name": "Louisiana",
+      "agency_name": "Louisiana Department of Veterans Affairs",
+      "main_office": {
+        "name": "Louisiana Department of Veterans Affairs",
+        "address": "602 North Fifth Street",
+        "city": "Baton Rouge",
+        "zip_code": "70802",
+        "phone": "(225) 219-5000",
+        "fax": "(225) 219-5590",
+        "email": "vetaffairs@la.gov",
+        "website": "https://www.vetaffairs.la.gov/",
+        "hours": "Monday-Friday 8:00 AM - 4:30 PM"
+      },
+      "services": [
+        "VA claims assistance",
+        "Louisiana veteran benefits",
+        "Veterans homes",
+        "Veterans cemeteries",
+        "Education benefits",
+        "Employment services",
+        "Women veterans programs"
+      ],
+      "regional_offices": [
+        {
+          "name": "New Orleans Regional Office",
+          "address": "1555 Poydras Street, Suite 1975",
+          "city": "New Orleans",
+          "zip_code": "70112",
+          "phone": "(504) 568-0131"
+        },
+        {
+          "name": "Shreveport Regional Office",
+          "address": "510 East Stoner Avenue",
+          "city": "Shreveport",
+          "zip_code": "71101",
+          "phone": "(318) 676-3255"
+        }
+      ]
+    },
+    {
+      "state": "ME",
+      "state_name": "Maine",
+      "agency_name": "Maine Bureau of Veterans' Services",
+      "main_office": {
+        "name": "Maine Bureau of Veterans' Services",
+        "address": "117 State House Station",
+        "city": "Augusta",
+        "zip_code": "04333",
+        "phone": "(207) 430-6035",
+        "fax": "(207) 626-4471",
+        "email": "mainebvs@maine.gov",
+        "website": "https://www.maine.gov/veterans/",
+        "hours": "Monday-Friday 8:00 AM - 5:00 PM"
+      },
+      "services": [
+        "VA claims assistance",
+        "Maine veteran benefits",
+        "Veterans homes",
+        "Veterans cemeteries",
+        "Education benefits",
+        "Employment services",
+        "Emergency assistance"
+      ],
+      "regional_offices": [
+        {
+          "name": "Bangor Regional Office",
+          "address": "35 State House Station",
+          "city": "Bangor",
+          "zip_code": "04401",
+          "phone": "(207) 941-3005"
+        },
+        {
+          "name": "Portland Regional Office",
+          "address": "475 Stevens Avenue",
+          "city": "Portland",
+          "zip_code": "04103",
+          "phone": "(207) 771-3405"
+        }
+      ]
+    },
+    {
+      "state": "MD",
+      "state_name": "Maryland",
+      "agency_name": "Maryland Department of Veterans Affairs",
+      "main_office": {
+        "name": "Maryland Department of Veterans Affairs",
+        "address": "16 Francis Street, 4th Floor",
+        "city": "Annapolis",
+        "zip_code": "21401",
+        "phone": "(410) 260-3838",
+        "fax": "(410) 216-7928",
+        "email": "veteraninfo@maryland.gov",
+        "website": "https://veterans.maryland.gov/",
+        "hours": "Monday-Friday 8:30 AM - 4:30 PM"
+      },
+      "services": [
+        "VA claims assistance",
+        "Maryland veteran benefits",
+        "Charlotte Hall Veterans Home",
+        "Veterans cemeteries",
+        "Education benefits",
+        "Employment services",
+        "Maryland Veterans Trust"
+      ],
+      "regional_offices": [
+        {
+          "name": "Baltimore Regional Office",
+          "address": "10 N. Calvert Street, Room 102",
+          "city": "Baltimore",
+          "zip_code": "21202",
+          "phone": "(410) 767-9935"
+        },
+        {
+          "name": "Silver Spring Regional Office",
+          "address": "8530 Cameron Street",
+          "city": "Silver Spring",
+          "zip_code": "20910",
+          "phone": "(301) 563-0067"
+        }
+      ]
+    },
+    {
+      "state": "MA",
+      "state_name": "Massachusetts",
+      "agency_name": "Massachusetts Department of Veterans' Services",
+      "main_office": {
+        "name": "Massachusetts Department of Veterans' Services",
+        "address": "600 Washington Street, Suite 1100",
+        "city": "Boston",
+        "zip_code": "02111",
+        "phone": "(617) 210-5480",
+        "fax": "(617) 210-5755",
+        "email": "mdvs@mass.gov",
+        "website": "https://www.mass.gov/orgs/massachusetts-department-of-veterans-services",
+        "hours": "Monday-Friday 9:00 AM - 5:00 PM"
+      },
+      "services": [
+        "VA claims assistance",
+        "Massachusetts veteran benefits",
+        "Veterans homes",
+        "Soldiers homes",
+        "Education benefits",
+        "Employment services",
+        "Annuity payments"
+      ],
+      "regional_offices": [
+        {
+          "name": "Worcester Regional Office",
+          "address": "1 Skyline Drive",
+          "city": "Worcester",
+          "zip_code": "01605",
+          "phone": "(774) 501-5645"
+        },
+        {
+          "name": "Springfield Regional Office",
+          "address": "436 Dwight Street",
+          "city": "Springfield",
+          "zip_code": "01103",
+          "phone": "(413) 747-0296"
+        }
+      ]
+    },
+    {
+      "state": "MI",
+      "state_name": "Michigan",
+      "agency_name": "Michigan Veterans Affairs Agency",
+      "main_office": {
+        "name": "Michigan Veterans Affairs Agency",
+        "address": "222 N. Washington Square, 5th Floor",
+        "city": "Lansing",
+        "zip_code": "48913",
+        "phone": "(800) 642-4838",
+        "fax": "(517) 284-7066",
+        "email": "mvaa@michigan.gov",
+        "website": "http://Michigan.gov/mvaa",
+        "hours": "Monday-Friday 8:00 AM - 5:00 PM"
+      },
+      "services": [
+        "VA claims assistance",
+        "Michigan veteran benefits",
+        "Veterans homes",
+        "Veterans trust fund",
+        "Education benefits",
+        "Employment services",
+        "Emergency relief"
+      ],
+      "regional_offices": [
+        {
+          "name": "Detroit Regional Office",
+          "address": "477 Michigan Avenue",
+          "city": "Detroit",
+          "zip_code": "48226",
+          "phone": "(313) 964-6160"
+        },
+        {
+          "name": "Grand Rapids Regional Office",
+          "address": "3249 Three Mile Road NE",
+          "city": "Grand Rapids",
+          "zip_code": "49525",
+          "phone": "(616) 364-5359"
+        }
+      ]
+    },
+    {
+      "state": "MN",
+      "state_name": "Minnesota",
+      "agency_name": "Minnesota Department of Veterans Affairs",
+      "main_office": {
+        "name": "Minnesota Department of Veterans Affairs",
+        "address": "20 West 12th Street, Room 206",
+        "city": "St. Paul",
+        "zip_code": "55155",
+        "phone": "(651) 296-2562",
+        "fax": "(651) 296-3954",
+        "email": "mdva.info@state.mn.us",
+        "website": "https://mn.gov/mdva/",
+        "hours": "Monday-Friday 8:00 AM - 4:30 PM"
+      },
+      "services": [
+        "VA claims assistance",
+        "Minnesota veteran benefits",
+        "Veterans homes",
+        "State cemeteries",
+        "Education benefits",
+        "Employment services",
+        "Veterans emergency assistance"
+      ],
+      "regional_offices": [
+        {
+          "name": "Duluth Regional Office",
+          "address": "405 East Superior Street",
+          "city": "Duluth",
+          "zip_code": "55802",
+          "phone": "(218) 722-8762"
+        },
+        {
+          "name": "Rochester Regional Office",
+          "address": "2500 Valleyhigh Drive NW",
+          "city": "Rochester",
+          "zip_code": "55901",
+          "phone": "(507) 285-7600"
+        }
+      ]
+    },
+    {
+      "state": "MS",
+      "state_name": "Mississippi",
+      "agency_name": "Mississippi Veterans Affairs",
+      "main_office": {
+        "name": "Mississippi Veterans Affairs",
+        "address": "3466 Highway 80 East",
+        "city": "Pearl",
+        "zip_code": "39208",
+        "phone": "(601) 576-4850",
+        "fax": "(601) 576-4868",
+        "email": "info@msva.ms.gov",
+        "website": "https://www.msva.ms.gov/",
+        "hours": "Monday-Friday 8:00 AM - 5:00 PM"
+      },
+      "services": [
+        "VA claims assistance",
+        "Mississippi veteran benefits",
+        "Veterans homes",
+        "Veterans cemeteries",
+        "Education benefits",
+        "Employment services",
+        "Property tax exemptions"
+      ],
+      "regional_offices": [
+        {
+          "name": "Gulfport Regional Office",
+          "address": "400 Veterans Avenue",
+          "city": "Biloxi",
+          "zip_code": "39531",
+          "phone": "(228) 523-5010"
+        }
+      ]
+    },
+    {
+      "state": "MO",
+      "state_name": "Missouri",
+      "agency_name": "Missouri Veterans Commission",
+      "main_office": {
+        "name": "Missouri Veterans Commission",
+        "address": "205 Jefferson Street, 12th Floor",
+        "city": "Jefferson City",
+        "zip_code": "65101",
+        "phone": "(573) 751-3779",
+        "fax": "(573) 751-6836",
+        "email": "mvc@mvc.dps.mo.gov",
+        "website": "https://mvc.dps.mo.gov/",
+        "hours": "Monday-Friday 8:00 AM - 5:00 PM"
+      },
+      "services": [
+        "VA claims assistance",
+        "Missouri veteran benefits",
+        "Veterans homes",
+        "State cemeteries",
+        "Education benefits",
+        "Employment services",
+        "Veterans Trust Fund"
+      ],
+      "regional_offices": [
+        {
+          "name": "St. Louis Regional Office",
+          "address": "400 South 18th Street",
+          "city": "St. Louis",
+          "zip_code": "63103",
+          "phone": "(314) 340-6999"
+        },
+        {
+          "name": "Kansas City Regional Office",
+          "address": "4800 E. Linwood Boulevard",
+          "city": "Kansas City",
+          "zip_code": "64128",
+          "phone": "(816) 922-2951"
+        }
+      ]
+    },
+    {
+      "state": "MT",
+      "state_name": "Montana",
+      "agency_name": "Montana Department of Military Affairs - Veterans Affairs",
+      "main_office": {
+        "name": "Montana Veterans Affairs Division",
+        "address": "1956 Mount Majo Street",
+        "city": "Fort Harrison",
+        "zip_code": "59636",
+        "phone": "(406) 324-3740",
+        "fax": "(406) 324-3741",
+        "email": "mvad@mt.gov",
+        "website": "https://dma.mt.gov/",
+        "hours": "Monday-Friday 8:00 AM - 5:00 PM"
+      },
+      "services": [
+        "VA claims assistance",
+        "Montana veteran benefits",
+        "Veterans homes",
+        "State cemetery",
+        "Education benefits",
+        "Employment services",
+        "Property tax exemptions"
+      ],
+      "regional_offices": [
+        {
+          "name": "Billings Regional Office",
+          "address": "3687 Veterans Drive",
+          "city": "Billings",
+          "zip_code": "59102",
+          "phone": "(406) 248-8556"
+        },
+        {
+          "name": "Missoula Regional Office",
+          "address": "500 Brooks Street",
+          "city": "Missoula",
+          "zip_code": "59801",
+          "phone": "(406) 829-8700"
+        }
+      ]
+    },
+    {
+      "state": "NE",
+      "state_name": "Nebraska",
+      "agency_name": "Nebraska Department of Veterans' Affairs",
+      "main_office": {
+        "name": "Nebraska Department of Veterans' Affairs",
+        "address": "301 Centennial Mall South, 6th Floor",
+        "city": "Lincoln",
+        "zip_code": "68509",
+        "phone": "(402) 471-2458",
+        "fax": "(402) 471-2491",
+        "email": "ndva@nebraska.gov",
+        "website": "https://veterans.nebraska.gov/",
+        "hours": "Monday-Friday 8:00 AM - 5:00 PM"
+      },
+      "services": [
+        "VA claims assistance",
+        "Nebraska veteran benefits",
+        "Veterans homes",
+        "State cemeteries",
+        "Education benefits",
+        "Employment services",
+        "Property tax exemptions"
+      ],
+      "regional_offices": [
+        {
+          "name": "Omaha Regional Office",
+          "address": "11717 Burt Street",
+          "city": "Omaha",
+          "zip_code": "68154",
+          "phone": "(402) 595-2090"
+        }
+      ]
+    },
+    {
+      "state": "NV",
+      "state_name": "Nevada",
+      "agency_name": "Nevada Department of Veterans Services",
+      "main_office": {
+        "name": "Nevada Department of Veterans Services",
+        "address": "5460 Reno Corporate Drive",
+        "city": "Reno",
+        "zip_code": "89511",
+        "phone": "(775) 688-1653",
+        "fax": "(775) 688-1656",
+        "email": "ndvs@veterans.nv.gov",
+        "website": "https://veterans.nv.gov/",
+        "hours": "Monday-Friday 8:00 AM - 5:00 PM"
+      },
+      "services": [
+        "VA claims assistance",
+        "Nevada veteran benefits",
+        "Veterans homes",
+        "State cemeteries",
+        "Education benefits",
+        "Employment services",
+        "Women veterans programs"
+      ],
+      "regional_offices": [
+        {
+          "name": "Las Vegas Regional Office",
+          "address": "6630 South McCarran Boulevard, Suite 200",
+          "city": "Las Vegas",
+          "zip_code": "89118",
+          "phone": "(702) 224-6021"
+        }
+      ]
+    },
+    {
+      "state": "NH",
+      "state_name": "New Hampshire",
+      "agency_name": "New Hampshire Division of Veterans Services",
+      "main_office": {
+        "name": "NH Division of Veterans Services",
+        "address": "4 Park Street",
+        "city": "Concord",
+        "zip_code": "03301",
+        "phone": "(603) 624-9230",
+        "fax": "(603) 624-9236",
+        "email": "veteranservices@dmavs.nh.gov",
+        "website": "https://www.dmavs.nh.gov/veterans-services",
+        "hours": "Monday-Friday 8:00 AM - 4:00 PM"
+      },
+      "services": [
+        "VA claims assistance",
+        "NH veteran benefits",
+        "Veterans home",
+        "State cemetery",
+        "Education benefits",
+        "Employment services",
+        "Property tax credits"
+      ],
+      "regional_offices": [
+        {
+          "name": "Manchester Regional Office",
+          "address": "275 Chestnut Street, Room 517",
+          "city": "Manchester",
+          "zip_code": "03101",
+          "phone": "(603) 624-9230"
+        }
+      ]
+    },
+    {
+      "state": "NJ",
+      "state_name": "New Jersey",
+      "agency_name": "New Jersey Department of Military and Veterans Affairs",
+      "main_office": {
+        "name": "NJ Department of Military and Veterans Affairs",
+        "address": "101 Eggert Crossing Road",
+        "city": "Lawrenceville",
+        "zip_code": "08648",
+        "phone": "(609) 530-6854",
+        "fax": "(609) 530-6970",
+        "email": "dmava.publicaffairs@dmava.nj.gov",
+        "website": "https://www.nj.gov/military/",
+        "hours": "Monday-Friday 8:30 AM - 4:30 PM"
+      },
+      "services": [
+        "VA claims assistance",
+        "NJ veteran benefits",
+        "Veterans homes",
+        "Veterans memorial cemeteries",
+        "Education benefits",
+        "Employment services",
+        "Property tax exemptions"
+      ],
+      "regional_offices": [
+        {
+          "name": "Newark Regional Office",
+          "address": "970 Broad Street, Room 1435",
+          "city": "Newark",
+          "zip_code": "07102",
+          "phone": "(973) 648-4217"
+        },
+        {
+          "name": "Camden Regional Office",
+          "address": "3 Eves Drive",
+          "city": "Marlton",
+          "zip_code": "08053",
+          "phone": "(856) 983-7333"
+        }
+      ]
+    },
+    {
+      "state": "NM",
+      "state_name": "New Mexico",
+      "agency_name": "New Mexico Department of Veterans Services",
+      "main_office": {
+        "name": "NM Department of Veterans Services",
+        "address": "407 Galisteo Street, Room 134",
+        "city": "Santa Fe",
+        "zip_code": "87501",
+        "phone": "(505) 827-6300",
+        "fax": "(505) 827-6372",
+        "email": "nmdvs.info@state.nm.us",
+        "website": "http://www.nmdvs.org/",
+        "hours": "Monday-Friday 8:00 AM - 5:00 PM"
+      },
+      "services": [
+        "VA claims assistance",
+        "NM veteran benefits",
+        "Veterans homes",
+        "State cemetery",
+        "Education benefits",
+        "Employment services",
+        "Property tax exemptions"
+      ],
+      "regional_offices": [
+        {
+          "name": "Albuquerque Regional Office",
+          "address": "5201 Eagle Rock Avenue NE, Suite 300",
+          "city": "Albuquerque",
+          "zip_code": "87113",
+          "phone": "(505) 383-2400"
+        },
+        {
+          "name": "Las Cruces Regional Office",
+          "address": "2024 East Griggs Avenue",
+          "city": "Las Cruces",
+          "zip_code": "88001",
+          "phone": "(575) 524-6220"
+        }
+      ]
+    },
+    {
+      "state": "NY",
+      "state_name": "New York",
+      "agency_name": "New York State Division of Veterans' Services",
+      "main_office": {
+        "name": "NYS Division of Veterans' Services",
+        "address": "2 Empire State Plaza, 17th Floor",
+        "city": "Albany",
+        "zip_code": "12223",
+        "phone": "(888) 838-7697",
+        "fax": "(518) 473-0379",
+        "email": "DVSInfo@veterans.ny.gov",
+        "website": "https://veterans.ny.gov/",
+        "hours": "Monday-Friday 8:30 AM - 5:00 PM"
+      },
+      "services": [
+        "VA claims assistance",
+        "NY veteran benefits",
+        "Veterans homes",
+        "Blind veterans annuity",
+        "Education benefits",
+        "Employment services",
+        "Property tax exemptions"
+      ],
+      "regional_offices": [
+        {
+          "name": "New York City Regional Office",
+          "address": "55 Hanson Place, 3rd Floor",
+          "city": "Brooklyn",
+          "zip_code": "11217",
+          "phone": "(718) 722-2584"
+        },
+        {
+          "name": "Buffalo Regional Office",
+          "address": "130 South Elmwood Avenue, Suite 401",
+          "city": "Buffalo",
+          "zip_code": "14202",
+          "phone": "(716) 857-3391"
+        },
+        {
+          "name": "Syracuse Regional Office",
+          "address": "333 East Washington Street",
+          "city": "Syracuse",
+          "zip_code": "13202",
+          "phone": "(315) 428-4048"
+        }
+      ]
+    },
+    {
+      "state": "NC",
+      "state_name": "North Carolina",
+      "agency_name": "North Carolina Department of Military and Veterans Affairs",
+      "main_office": {
+        "name": "NC Department of Military and Veterans Affairs",
+        "address": "4102 Reedy Creek Road",
+        "city": "Raleigh",
+        "zip_code": "27607",
+        "phone": "(919) 733-3851",
+        "fax": "(919) 715-4240",
+        "email": "dmva.info@milvets.nc.gov",
+        "website": "https://www.milvets.nc.gov/",
+        "hours": "Monday-Friday 8:00 AM - 5:00 PM"
+      },
+      "services": [
+        "VA claims assistance",
+        "NC veteran benefits",
+        "Veterans homes",
+        "State cemeteries",
+        "Education benefits",
+        "Employment services",
+        "Scholarship programs"
+      ],
+      "regional_offices": [
+        {
+          "name": "Charlotte Regional Office",
+          "address": "8601 University East Drive, Suite 101",
+          "city": "Charlotte",
+          "zip_code": "28213",
+          "phone": "(704) 333-6012"
+        },
+        {
+          "name": "Fayetteville Regional Office",
+          "address": "2301 Robeson Street, Suite 102",
+          "city": "Fayetteville",
+          "zip_code": "28305",
+          "phone": "(910) 438-4181"
+        }
+      ]
+    },
+    {
+      "state": "ND",
+      "state_name": "North Dakota",
+      "agency_name": "North Dakota Department of Veterans Affairs",
+      "main_office": {
+        "name": "ND Department of Veterans Affairs",
+        "address": "4201 38th Street SW, Suite 104",
+        "city": "Fargo",
+        "zip_code": "58104",
+        "phone": "(701) 239-7165",
+        "fax": "(701) 239-7166",
+        "email": "veterans@nd.gov",
+        "website": "http://www.nd.gov/veterans/",
+        "hours": "Monday-Friday 8:00 AM - 5:00 PM"
+      },
+      "services": [
+        "VA claims assistance",
+        "ND veteran benefits",
+        "Veterans home",
+        "State cemetery",
+        "Education benefits",
+        "Employment services",
+        "Property tax credits"
+      ],
+      "regional_offices": [
+        {
+          "name": "Bismarck Regional Office",
+          "address": "1411 South 32nd Street",
+          "city": "Bismarck",
+          "zip_code": "58501",
+          "phone": "(701) 328-8308"
+        }
+      ]
+    },
+    {
+      "state": "OH",
+      "state_name": "Ohio",
+      "agency_name": "Ohio Department of Veterans Services",
+      "main_office": {
+        "name": "Ohio Department of Veterans Services",
+        "address": "77 South High Street, 7th Floor",
+        "city": "Columbus",
+        "zip_code": "43215",
+        "phone": "(614) 644-0898",
+        "fax": "(614) 728-9498",
+        "email": "ohio.veterans@dvs.ohio.gov",
+        "website": "https://dvs.ohio.gov/wps/portal/gov/dvs/",
+        "hours": "Monday-Friday 8:00 AM - 5:00 PM"
+      },
+      "services": [
+        "VA claims assistance",
+        "Ohio veteran benefits",
+        "Veterans homes",
+        "State bonus program",
+        "Education benefits",
+        "Employment services",
+        "Women veterans programs"
+      ],
+      "regional_offices": [
+        {
+          "name": "Cleveland Regional Office",
+          "address": "10701 East Boulevard",
+          "city": "Cleveland",
+          "zip_code": "44106",
+          "phone": "(216) 421-3043"
+        },
+        {
+          "name": "Cincinnati Regional Office",
+          "address": "3939 Central Parkway",
+          "city": "Cincinnati",
+          "zip_code": "45225",
+          "phone": "(513) 541-4313"
+        }
+      ]
+    },
+    {
+      "state": "OK",
+      "state_name": "Oklahoma",
+      "agency_name": "Oklahoma Department of Veterans Affairs",
+      "main_office": {
+        "name": "Oklahoma Department of Veterans Affairs",
+        "address": "2311 North Central Avenue",
+        "city": "Oklahoma City",
+        "zip_code": "73105",
+        "phone": "(405) 521-3684",
+        "fax": "(405) 521-6533",
+        "email": "odva@odva.state.ok.us",
+        "website": "https://oklahoma.gov/veterans.html",
+        "hours": "Monday-Friday 8:00 AM - 4:30 PM"
+      },
+      "services": [
+        "VA claims assistance",
+        "OK veteran benefits",
+        "Veterans centers",
+        "State cemeteries",
+        "Education benefits",
+        "Employment services",
+        "Property tax exemptions"
+      ],
+      "regional_offices": [
+        {
+          "name": "Tulsa Regional Office",
+          "address": "1819 South Boulder Avenue",
+          "city": "Tulsa",
+          "zip_code": "74119",
+          "phone": "(918) 628-2514"
+        }
+      ]
+    },
+    {
+      "state": "OR",
+      "state_name": "Oregon",
+      "agency_name": "Oregon Department of Veterans' Affairs",
+      "main_office": {
+        "name": "Oregon Department of Veterans' Affairs",
+        "address": "700 Summer Street NE",
+        "city": "Salem",
+        "zip_code": "97301",
+        "phone": "(503) 373-2085",
+        "fax": "(503) 373-2393",
+        "email": "orvets.mail@odva.state.or.us",
+        "website": "https://www.oregon.gov/odva/Pages/default.aspx",
+        "hours": "Monday-Friday 8:00 AM - 5:00 PM"
+      },
+      "services": [
+        "VA claims assistance",
+        "Oregon veteran benefits",
+        "Oregon Veterans Home",
+        "Home loans",
+        "Education benefits",
+        "Employment services",
+        "Property tax exemptions"
+      ],
+      "regional_offices": [
+        {
+          "name": "Portland Regional Office",
+          "address": "3710 SW US Veterans Hospital Road",
+          "city": "Portland",
+          "zip_code": "97239",
+          "phone": "(503) 412-4768"
+        },
+        {
+          "name": "Eugene Regional Office",
+          "address": "1590 Willamette Street",
+          "city": "Eugene",
+          "zip_code": "97401",
+          "phone": "(541) 682-7780"
+        }
+      ]
+    },
+    {
+      "state": "PA",
+      "state_name": "Pennsylvania",
+      "agency_name": "Pennsylvania Department of Military and Veterans Affairs",
+      "main_office": {
+        "name": "PA Department of Military and Veterans Affairs",
+        "address": "Building S-0-47, Fort Indiantown Gap",
+        "city": "Annville",
+        "zip_code": "17003",
+        "phone": "(717) 861-2000",
+        "fax": "(717) 861-8589",
+        "email": "ra-vavets@pa.gov",
+        "website": "https://www.dmva.pa.gov/Pages/default.aspx",
+        "hours": "Monday-Friday 8:00 AM - 4:00 PM"
+      },
+      "services": [
+        "VA claims assistance",
+        "PA veteran benefits",
+        "Veterans homes",
+        "State cemeteries",
+        "Education benefits",
+        "Employment services",
+        "Blind veterans pension"
+      ],
+      "regional_offices": [
+        {
+          "name": "Philadelphia Regional Office",
+          "address": "5000 Wissahickon Avenue",
+          "city": "Philadelphia",
+          "zip_code": "19144",
+          "phone": "(215) 842-2000"
+        },
+        {
+          "name": "Pittsburgh Regional Office",
+          "address": "1000 Liberty Avenue",
+          "city": "Pittsburgh",
+          "zip_code": "15222",
+          "phone": "(412) 688-6400"
+        }
+      ]
+    },
+    {
+      "state": "RI",
+      "state_name": "Rhode Island",
+      "agency_name": "Rhode Island Office of Veterans Services",
+      "main_office": {
+        "name": "RI Office of Veterans Services",
+        "address": "560 Jefferson Boulevard, Suite 202",
+        "city": "Warwick",
+        "zip_code": "02886",
+        "phone": "(401) 921-2152",
+        "fax": "(401) 921-2139",
+        "email": "veterans@doa.ri.gov",
+        "website": "http://www.vets.ri.gov/",
+        "hours": "Monday-Friday 8:30 AM - 4:00 PM"
+      },
+      "services": [
+        "VA claims assistance",
+        "RI veteran benefits",
+        "Veterans home",
+        "State cemeteries",
+        "Education benefits",
+        "Employment services",
+        "Property tax exemptions"
+      ],
+      "regional_offices": []
+    },
+    {
+      "state": "SC",
+      "state_name": "South Carolina",
+      "agency_name": "South Carolina Department of Veterans' Affairs",
+      "main_office": {
+        "name": "SC Department of Veterans' Affairs",
+        "address": "6437 Garners Ferry Road",
+        "city": "Columbia",
+        "zip_code": "29209",
+        "phone": "(803) 647-2434",
+        "fax": "(803) 647-2312",
+        "email": "va@scdva.sc.gov",
+        "website": "https://scdva.sc.gov/",
+        "hours": "Monday-Friday 8:30 AM - 5:00 PM"
+      },
+      "services": [
+        "VA claims assistance",
+        "SC veteran benefits",
+        "Veterans homes",
+        "State cemeteries",
+        "Education benefits",
+        "Employment services",
+        "Property tax exemptions"
+      ],
+      "regional_offices": [
+        {
+          "name": "Charleston Regional Office",
+          "address": "109 Bee Street, Room 120",
+          "city": "Charleston",
+          "zip_code": "29401",
+          "phone": "(843) 577-6142"
+        }
+      ]
+    },
+    {
+      "state": "SD",
+      "state_name": "South Dakota",
+      "agency_name": "South Dakota Department of Veterans Affairs",
+      "main_office": {
+        "name": "SD Department of Veterans Affairs",
+        "address": "425 East Capitol Avenue",
+        "city": "Pierre",
+        "zip_code": "57501",
+        "phone": "(605) 773-3269",
+        "fax": "(605) 773-5380",
+        "email": "vetaffairs@state.sd.us",
+        "website": "https://vetaffairs.sd.gov/",
+        "hours": "Monday-Friday 8:00 AM - 5:00 PM"
+      },
+      "services": [
+        "VA claims assistance",
+        "SD veteran benefits",
+        "Veterans home",
+        "State cemetery",
+        "Education benefits",
+        "Employment services",
+        "Property tax exemptions"
+      ],
+      "regional_offices": [
+        {
+          "name": "Sioux Falls Regional Office",
+          "address": "2501 West 22nd Street",
+          "city": "Sioux Falls",
+          "zip_code": "57105",
+          "phone": "(605) 333-6851"
+        },
+        {
+          "name": "Rapid City Regional Office",
+          "address": "113 Comanche Road",
+          "city": "Rapid City",
+          "zip_code": "57702",
+          "phone": "(605) 347-2455"
+        }
+      ]
+    },
+    {
+      "state": "TN",
+      "state_name": "Tennessee",
+      "agency_name": "Tennessee Department of Veterans Services",
+      "main_office": {
+        "name": "TN Department of Veterans Services",
+        "address": "312 Rosa L. Parks Avenue",
+        "city": "Nashville",
+        "zip_code": "37243",
+        "phone": "(615) 741-2931",
+        "fax": "(615) 741-4785",
+        "email": "tn.veterans@tn.gov",
+        "website": "https://www.tn.gov/veteran/",
+        "hours": "Monday-Friday 8:00 AM - 4:30 PM"
+      },
+      "services": [
+        "VA claims assistance",
+        "TN veteran benefits",
+        "State veterans homes",
+        "State cemeteries",
+        "Education benefits",
+        "Employment services",
+        "Women veterans programs"
+      ],
+      "regional_offices": [
+        {
+          "name": "Memphis Regional Office",
+          "address": "1030 Jefferson Avenue",
+          "city": "Memphis",
+          "zip_code": "38104",
+          "phone": "(901) 543-7930"
+        },
+        {
+          "name": "Knoxville Regional Office",
+          "address": "9047 Executive Park Drive",
+          "city": "Knoxville",
+          "zip_code": "37923",
+          "phone": "(865) 594-5350"
+        }
+      ]
+    },
+    {
+      "state": "TX",
+      "state_name": "Texas",
+      "agency_name": "Texas Veterans Commission",
+      "main_office": {
+        "name": "Texas Veterans Commission",
+        "address": "1700 North Congress Avenue",
+        "city": "Austin",
+        "zip_code": "78701",
+        "phone": "(512) 463-6564",
+        "fax": "(512) 475-2395",
+        "email": "info@tvc.texas.gov",
+        "website": "https://www.tvc.texas.gov/",
+        "hours": "Monday-Friday 8:00 AM - 5:00 PM"
+      },
+      "services": [
+        "VA claims assistance",
+        "Texas veteran benefits",
+        "State veterans homes",
+        "State cemeteries",
+        "Education benefits",
+        "Employment services",
+        "Hazlewood Act benefits",
+        "Veterans entrepreneur program"
+      ],
+      "regional_offices": [
+        {
+          "name": "Houston Regional Office",
+          "address": "6900 Almeda Road",
+          "city": "Houston",
+          "zip_code": "77030",
+          "phone": "(713) 383-2727"
+        },
+        {
+          "name": "San Antonio Regional Office",
+          "address": "3601 South Congress Avenue",
+          "city": "San Antonio",
+          "zip_code": "78204",
+          "phone": "(210) 921-8002"
+        },
+        {
+          "name": "Dallas Regional Office",
+          "address": "4500 South Lancaster Road",
+          "city": "Dallas",
+          "zip_code": "75216",
+          "phone": "(214) 372-7531"
+        },
+        {
+          "name": "El Paso Regional Office",
+          "address": "5919 Brook Hollow Drive",
+          "city": "El Paso",
+          "zip_code": "79925",
+          "phone": "(915) 564-7890"
+        }
+      ]
+    },
+    {
+      "state": "UT",
+      "state_name": "Utah",
+      "agency_name": "Utah Department of Veterans and Military Affairs",
+      "main_office": {
+        "name": "Utah Department of Veterans and Military Affairs",
+        "address": "550 Foothill Boulevard, Room 202",
+        "city": "Salt Lake City",
+        "zip_code": "84113",
+        "phone": "(801) 326-2372",
+        "fax": "(801) 326-2369",
+        "email": "veteransinfo@utah.gov",
+        "website": "https://veterans.utah.gov/",
+        "hours": "Monday-Friday 8:00 AM - 5:00 PM"
+      },
+      "services": [
+        "VA claims assistance",
+        "Utah veteran benefits",
+        "Veterans nursing home",
+        "State cemetery",
+        "Education benefits",
+        "Employment services",
+        "Property tax exemptions"
+      ],
+      "regional_offices": [
+        {
+          "name": "St. George Regional Office",
+          "address": "196 East Tabernacle Street",
+          "city": "St. George",
+          "zip_code": "84770",
+          "phone": "(435) 986-2590"
+        }
+      ]
+    },
+    {
+      "state": "VT",
+      "state_name": "Vermont",
+      "agency_name": "Vermont Office of Veterans Affairs",
+      "main_office": {
+        "name": "Vermont Office of Veterans Affairs",
+        "address": "118 State Street, Drawer 20",
+        "city": "Montpelier",
+        "zip_code": "05620",
+        "phone": "(802) 828-3379",
+        "fax": "(802) 828-3168",
+        "email": "vt.veterans@vermont.gov",
+        "website": "https://veterans.vermont.gov/",
+        "hours": "Monday-Friday 7:45 AM - 4:30 PM"
+      },
+      "services": [
+        "VA claims assistance",
+        "Vermont veteran benefits",
+        "Veterans home",
+        "State cemeteries",
+        "Education benefits",
+        "Employment services",
+        "Property tax exemptions"
+      ],
+      "regional_offices": []
+    },
+    {
+      "state": "VA",
+      "state_name": "Virginia",
+      "agency_name": "Virginia Department of Veterans Services",
+      "main_office": {
+        "name": "Virginia Department of Veterans Services",
+        "address": "101 North 14th Street, 17th Floor",
+        "city": "Richmond",
+        "zip_code": "23219",
+        "phone": "(804) 786-0286",
+        "fax": "(804) 786-0302",
+        "email": "vaservice@dvs.virginia.gov",
+        "website": "https://www.dvs.virginia.gov/",
+        "hours": "Monday-Friday 8:00 AM - 5:00 PM"
+      },
+      "services": [
+        "VA claims assistance",
+        "Virginia veteran benefits",
+        "Veterans care centers",
+        "Veterans cemeteries",
+        "Education benefits",
+        "Employment services",
+        "Virginia Veteran and Family Support"
+      ],
+      "regional_offices": [
+        {
+          "name": "Hampton Roads Regional Office",
+          "address": "6350 Center Drive, Suite 102",
+          "city": "Norfolk",
+          "zip_code": "23502",
+          "phone": "(757) 455-8901"
+        },
+        {
+          "name": "Northern Virginia Regional Office",
+          "address": "9518 Liberty Road",
+          "city": "Fairfax",
+          "zip_code": "22031",
+          "phone": "(703) 277-0030"
+        }
+      ]
+    },
+    {
+      "state": "WA",
+      "state_name": "Washington",
+      "agency_name": "Washington State Department of Veterans Affairs",
+      "main_office": {
+        "name": "WA Department of Veterans Affairs",
+        "address": "1102 Quince Street SE",
+        "city": "Olympia",
+        "zip_code": "98501",
+        "phone": "(360) 725-2200",
+        "fax": "(360) 586-4393",
+        "email": "publicrecords@dva.wa.gov",
+        "website": "https://www.dva.wa.gov/",
+        "hours": "Monday-Friday 8:00 AM - 5:00 PM"
+      },
+      "services": [
+        "VA claims assistance",
+        "Washington veteran benefits",
+        "Veterans homes",
+        "State cemetery",
+        "Education benefits",
+        "Employment services",
+        "Veterans Estate Management"
+      ],
+      "regional_offices": [
+        {
+          "name": "Seattle Regional Office",
+          "address": "915 Second Avenue",
+          "city": "Seattle",
+          "zip_code": "98174",
+          "phone": "(206) 341-8290"
+        },
+        {
+          "name": "Spokane Regional Office",
+          "address": "4815 North Assembly Street",
+          "city": "Spokane",
+          "zip_code": "99205",
+          "phone": "(509) 434-3025"
+        }
+      ]
+    },
+    {
+      "state": "WV",
+      "state_name": "West Virginia",
+      "agency_name": "West Virginia Department of Veterans Assistance",
+      "main_office": {
+        "name": "WV Department of Veterans Assistance",
+        "address": "1321 Plaza East, Suite 101",
+        "city": "Charleston",
+        "zip_code": "25301",
+        "phone": "(304) 558-3661",
+        "fax": "(304) 558-3662",
+        "email": "wvdva@wv.gov",
+        "website": "https://veterans.wv.gov/Pages/default.aspx",
+        "hours": "Monday-Friday 8:30 AM - 5:00 PM"
+      },
+      "services": [
+        "VA claims assistance",
+        "WV veteran benefits",
+        "Veterans nursing facility",
+        "State cemeteries",
+        "Education benefits",
+        "Employment services",
+        "Property tax exemptions"
+      ],
+      "regional_offices": [
+        {
+          "name": "Martinsburg Regional Office",
+          "address": "510 Butler Avenue",
+          "city": "Martinsburg",
+          "zip_code": "25401",
+          "phone": "(304) 263-6600"
+        }
+      ]
+    },
+    {
+      "state": "WI",
+      "state_name": "Wisconsin",
+      "agency_name": "Wisconsin Department of Veterans Affairs",
+      "main_office": {
+        "name": "Wisconsin Department of Veterans Affairs",
+        "address": "201 West Washington Avenue",
+        "city": "Madison",
+        "zip_code": "53703",
+        "phone": "(800) 947-8387",
+        "fax": "(608) 267-0403",
+        "email": "WDVA@dva.wisconsin.gov",
+        "website": "https://dva.wi.gov/Pages/Home.aspx",
+        "hours": "Monday-Friday 7:45 AM - 4:30 PM"
+      },
+      "services": [
+        "VA claims assistance",
+        "Wisconsin veteran benefits",
+        "Wisconsin GI Bill",
+        "Veterans homes",
+        "State cemeteries",
+        "Employment services",
+        "Veterans Trust Fund"
+      ],
+      "regional_offices": [
+        {
+          "name": "Milwaukee Regional Office",
+          "address": "5000 West National Avenue",
+          "city": "Milwaukee",
+          "zip_code": "53295",
+          "phone": "(414) 902-5718"
+        },
+        {
+          "name": "Union Grove Veterans Home",
+          "address": "21425 G Spring Street",
+          "city": "Union Grove",
+          "zip_code": "53182",
+          "phone": "(262) 878-6700"
+        }
+      ]
+    },
+    {
+      "state": "WY",
+      "state_name": "Wyoming",
+      "agency_name": "Wyoming Veterans Commission",
+      "main_office": {
+        "name": "Wyoming Veterans Commission",
+        "address": "5905 CY Avenue, Room 101",
+        "city": "Casper",
+        "zip_code": "82604",
+        "phone": "(307) 265-7372",
+        "fax": "(307) 265-7378",
+        "email": "wyovets@wyo.gov",
+        "website": "https://www.wyomilitary.wyo.gov/veterans/",
+        "hours": "Monday-Friday 8:00 AM - 5:00 PM"
+      },
+      "services": [
+        "VA claims assistance",
+        "Wyoming veteran benefits",
+        "Wyoming Veterans Home",
+        "State cemeteries",
+        "Education benefits",
+        "Employment services",
+        "Property tax exemptions"
+      ],
+      "regional_offices": [
+        {
+          "name": "Cheyenne Regional Office",
+          "address": "2360 East Pershing Boulevard",
+          "city": "Cheyenne",
+          "zip_code": "82001",
+          "phone": "(307) 778-7396"
+        }
+      ]
+    },
+    {
+      "state": "AS",
+      "state_name": "American Samoa",
+      "agency_name": "American Samoa Office of Veterans Affairs",
+      "main_office": {
+        "name": "American Samoa Veterans Affairs Office",
+        "address": "Executive Office Building",
+        "city": "Pago Pago",
+        "zip_code": "96799",
+        "phone": "(684) 633-4206",
+        "email": "asvetaffairs@samoatelco.com",
+        "website": "https://www.va.gov/directory/guide/facility.asp?ID=5982&dnum=1",
+        "hours": "Monday-Friday 8:00 AM - 4:30 PM"
+      },
+      "services": [
+        "VA claims assistance",
+        "Federal veteran benefits",
+        "Education benefits",
+        "Healthcare referrals"
+      ],
+      "regional_offices": []
+    },
+    {
+      "state": "GU",
+      "state_name": "Guam",
+      "agency_name": "Guam Veterans Affairs Office",
+      "main_office": {
+        "name": "Guam Veterans Affairs Office",
+        "address": "770 East Sunset Boulevard",
+        "city": "Tiyan",
+        "zip_code": "96913",
+        "phone": "(671) 475-8388",
+        "fax": "(671) 475-8389",
+        "email": "gvao@guam.gov",
+        "website": "http://gvao.guam.gov/",
+        "hours": "Monday-Friday 8:00 AM - 5:00 PM"
+      },
+      "services": [
+        "VA claims assistance",
+        "Guam veteran benefits",
+        "Education benefits",
+        "Employment services",
+        "Burial benefits"
+      ],
+      "regional_offices": []
+    },
+    {
+      "state": "MP",
+      "state_name": "Northern Mariana Islands",
+      "agency_name": "Northern Mariana Islands Veterans Affairs Office",
+      "main_office": {
+        "name": "CNMI Veterans Affairs Office",
+        "address": "Civic Center Complex, Susupe",
+        "city": "Saipan",
+        "zip_code": "96950",
+        "phone": "(670) 664-4751",
+        "email": "cnmivao@gmail.com",
+        "website": "https://www.va.gov/directory/guide/state.asp?dnum=All&STATE=MP&map=1",
+        "hours": "Monday-Friday 7:30 AM - 4:30 PM"
+      },
+      "services": [
+        "VA claims assistance",
+        "Federal veteran benefits",
+        "Education benefits",
+        "Healthcare referrals"
+      ],
+      "regional_offices": []
+    },
+    {
+      "state": "PR",
+      "state_name": "Puerto Rico",
+      "agency_name": "Puerto Rico Veterans Advocate Office",
+      "main_office": {
+        "name": "Oficina del Procurador del Veterano",
+        "address": "Mercantile Plaza Building, Suite 701",
+        "city": "San Juan",
+        "zip_code": "00918",
+        "phone": "(787) 758-5760",
+        "fax": "(787) 758-5788",
+        "email": "procurador@veteran.pr.gov",
+        "website": "https://www.va.gov/directory/guide/state.asp?State=PR&dnum=ALL",
+        "hours": "Monday-Friday 8:00 AM - 4:30 PM"
+      },
+      "services": [
+        "VA claims assistance",
+        "Puerto Rico veteran benefits",
+        "Education benefits",
+        "Employment services",
+        "Healthcare referrals"
+      ],
+      "regional_offices": [
+        {
+          "name": "Mayaguez Regional Office",
+          "address": "Highway 2, KM 158.6",
+          "city": "Mayaguez",
+          "zip_code": "00680",
+          "phone": "(787) 833-0050"
+        }
+      ]
+    },
+    {
+      "state": "VI",
+      "state_name": "Virgin Islands",
+      "agency_name": "Virgin Islands Office of Veterans Affairs",
+      "main_office": {
+        "name": "VI Office of Veterans Affairs",
+        "address": "1013 Estate Richmond",
+        "city": "Christiansted",
+        "zip_code": "00820",
+        "phone": "(340) 774-6100",
+        "fax": "(340) 774-1904",
+        "email": "veteransvi@va.vi.gov",
+        "website": "https://veterans.vi.gov/",
+        "hours": "Monday-Friday 8:00 AM - 5:00 PM"
+      },
+      "services": [
+        "VA claims assistance",
+        "VI veteran benefits",
+        "Education benefits",
+        "Employment services",
+        "Healthcare referrals"
+      ],
+      "regional_offices": [
+        {
+          "name": "St. Thomas Office",
+          "address": "Veterans Drive",
+          "city": "Charlotte Amalie",
+          "zip_code": "00802",
+          "phone": "(340) 774-6100"
+        }
+      ]
+    }
+  ]
+}

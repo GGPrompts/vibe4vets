@@ -3,7 +3,7 @@
     "source": "Curated from official program websites and VA resources",
     "last_updated": "2026-01",
     "description": "Emergency financial assistance programs for veterans in crisis - eviction, utility shutoff, medical emergencies",
-    "total_programs": 7
+    "total_programs": 8
   },
   "programs": [
     {
@@ -253,6 +253,45 @@
       "turnaround_time": "Days from completed application",
       "ineligible_expenses": [],
       "tags": ["emergency", "rent", "utilities", "auto", "food", "post-9/11", "families"]
+    },
+    {
+      "org_name": "Disabled Veterans National Foundation (DVNF)",
+      "program_name": "GPS (Grants for Patriots and Supporters) Program",
+      "website": "https://www.dvnf.org/gps/",
+      "phone": "1-888-632-7440",
+      "email": "gps@dvnf.org",
+      "assistance_types": [
+        "mortgage",
+        "rent",
+        "utilities",
+        "food",
+        "medical_bills",
+        "prescriptions",
+        "transportation",
+        "auto_repair"
+      ],
+      "max_amount": 1000,
+      "max_amount_notes": "Grants up to $1,000 for emergency financial needs; one grant per veteran per year",
+      "eligibility": {
+        "summary": "Disabled veterans with an honorable or general discharge who are experiencing a temporary financial hardship",
+        "membership_required": false,
+        "service_era": "any",
+        "discharge_status": "Honorable or General (Under Honorable Conditions)",
+        "income_limit": null,
+        "disability_required": true,
+        "disability_notes": "Must have a service-connected disability rating from the VA",
+        "notes": "Priority given to veterans facing imminent eviction, utility shutoff, or medical emergencies. Must demonstrate temporary hardship rather than chronic financial difficulty."
+      },
+      "application_process": "Apply online at dvnf.org/gps or call the GPS hotline. Applications require DD214, VA disability rating letter, proof of financial need (past-due bills, eviction notice), and brief explanation of hardship. Funds disbursed directly to creditors.",
+      "turnaround_time": "5-10 business days for approved applications",
+      "ineligible_expenses": [
+        "credit_card_debt",
+        "personal_loans",
+        "legal_fees",
+        "fines",
+        "student_loans"
+      ],
+      "tags": ["emergency", "rent", "utilities", "medical", "disabled-veterans", "grants"]
     }
   ]
 }

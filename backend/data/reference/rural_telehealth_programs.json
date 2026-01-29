@@ -1,0 +1,469 @@
+{
+  "metadata": {
+    "description": "Rural Veteran telehealth programs including FLEX grants, VA ATLAS, Connected Devices, and nonprofit telehealth services",
+    "last_updated": "2025-01-28",
+    "sources": [
+      "https://www.ruralhealth.va.gov/",
+      "https://www.va.gov/health/atlas/",
+      "https://www.hrsa.gov/grants/find-funding/hrsa-21-015",
+      "https://www.cohenveteransnetwork.org/telehealth/"
+    ]
+  },
+  "programs": [
+    {
+      "id": "va-atlas",
+      "name": "VA ATLAS (Accessing Telehealth through Local Area Stations)",
+      "org_name": "U.S. Department of Veterans Affairs",
+      "description": "ATLAS provides Veterans in rural and underserved areas access to VA telehealth services at community partner locations. Veterans can connect with VA providers via high-quality video equipment in private, comfortable settings without traveling to VA facilities.",
+      "tier": 1,
+      "website": "https://www.va.gov/health/atlas/",
+      "phone": "1-800-698-2411",
+      "email": null,
+      "scope": "national",
+      "states": null,
+      "categories": ["healthcare"],
+      "tags": ["telehealth", "rural", "va", "atlas", "remote-access"],
+      "eligibility": {
+        "summary": "Veterans enrolled in VA health care who live in rural or underserved areas",
+        "va_enrollment_required": true,
+        "notes": "Available to any enrolled Veteran regardless of service-connected disability status"
+      },
+      "services": [
+        "Primary care telehealth visits",
+        "Mental health appointments",
+        "Specialty care consultations",
+        "Prescription management",
+        "Follow-up care"
+      ],
+      "access_method": "Contact your local VA health care facility to schedule a telehealth appointment at an ATLAS site. Sites are located in VFW posts, American Legion halls, and community centers.",
+      "locations": [
+        {
+          "name": "Northfield VFW Post 4210",
+          "address": "1620 Riverview Drive",
+          "city": "Northfield",
+          "state": "MN",
+          "zip": "55057"
+        },
+        {
+          "name": "Eureka American Legion",
+          "address": "Main Street",
+          "city": "Eureka",
+          "state": "MT",
+          "zip": "59917"
+        },
+        {
+          "name": "Lander VFW Post 7693",
+          "address": "230 Main Street",
+          "city": "Lander",
+          "state": "WY",
+          "zip": "82520"
+        },
+        {
+          "name": "Cut Bank VFW Post 5316",
+          "address": "217 W Main St",
+          "city": "Cut Bank",
+          "state": "MT",
+          "zip": "59427"
+        },
+        {
+          "name": "Glasgow American Legion Post 41",
+          "address": "219 6th Avenue South",
+          "city": "Glasgow",
+          "state": "MT",
+          "zip": "59230"
+        }
+      ]
+    },
+    {
+      "id": "va-connected-devices",
+      "name": "VA Connected Devices Program",
+      "org_name": "U.S. Department of Veterans Affairs",
+      "description": "The VA provides tablets, smartphones, and internet access to Veterans who lack the technology needed for telehealth appointments. The program ensures Veterans in rural areas can access VA Video Connect and other telehealth services from home.",
+      "tier": 1,
+      "website": "https://connectedcare.va.gov/partners/devices",
+      "phone": "1-866-651-3180",
+      "email": null,
+      "scope": "national",
+      "states": null,
+      "categories": ["healthcare"],
+      "tags": ["telehealth", "rural", "va", "connected-devices", "technology-assistance", "free-equipment"],
+      "eligibility": {
+        "summary": "Veterans enrolled in VA health care who lack necessary technology or internet access for telehealth",
+        "va_enrollment_required": true,
+        "notes": "Priority given to Veterans in rural areas, those with transportation challenges, and those with chronic conditions requiring frequent appointments"
+      },
+      "services": [
+        "Free tablet or smartphone devices",
+        "Cellular data plans for video visits",
+        "Technical support and training",
+        "Home telehealth monitoring equipment",
+        "VA Video Connect access"
+      ],
+      "access_method": "Ask your VA provider or Patient Aligned Care Team (PACT) about eligibility for a connected device. Your care team can submit a request on your behalf.",
+      "locations": null
+    },
+    {
+      "id": "alaska-flex-veterans",
+      "name": "Alaska FLEX Rural Veterans Health Access Program",
+      "org_name": "State of Alaska Division of Public Health",
+      "description": "HRSA FLEX grant-funded program providing telehealth services to Veterans in 7 remote Southeast Alaska communities. The program connects isolated Veterans with VA and community health providers via telemedicine, reducing the need for costly and difficult travel.",
+      "tier": 2,
+      "website": "https://health.alaska.gov/dph/Emergency/Pages/ems/flex.aspx",
+      "phone": "907-465-3027",
+      "email": "akflex@alaska.gov",
+      "scope": "state",
+      "states": ["AK"],
+      "categories": ["healthcare"],
+      "tags": ["telehealth", "rural", "flex-grant", "alaska", "mental-health", "primary-care"],
+      "eligibility": {
+        "summary": "Veterans residing in participating Southeast Alaska communities",
+        "va_enrollment_required": false,
+        "notes": "Services available to Veterans regardless of VA enrollment. Communities include Juneau, Ketchikan, Sitka, Wrangell, Petersburg, Haines, and Skagway."
+      },
+      "services": [
+        "Primary care telehealth",
+        "Mental health counseling",
+        "PTSD treatment via telehealth",
+        "Care coordination with VA Anchorage",
+        "Specialty care referrals",
+        "Medication management"
+      ],
+      "access_method": "Contact your local Critical Access Hospital or community health center to schedule a telehealth appointment. Veteran patients can be connected to VA providers in Anchorage or community mental health specialists.",
+      "coverage_area": "Southeast Alaska: Juneau, Ketchikan, Sitka, Wrangell, Petersburg, Haines, Skagway",
+      "locations": null
+    },
+    {
+      "id": "montana-telehealth-network",
+      "name": "Montana Veterans Rural Telehealth Network",
+      "org_name": "Montana VA Health Care System",
+      "description": "Comprehensive telehealth network connecting Montana Veterans in remote areas to VA Fort Harrison and community providers. Includes CBOC telehealth sites, ATLAS locations, and home-based telehealth options for the state with the highest percentage of rural Veterans.",
+      "tier": 1,
+      "website": "https://www.va.gov/montana-health-care/locations/",
+      "phone": "1-877-468-8387",
+      "email": null,
+      "scope": "state",
+      "states": ["MT"],
+      "categories": ["healthcare"],
+      "tags": ["telehealth", "rural", "montana", "mental-health", "primary-care", "cboc"],
+      "eligibility": {
+        "summary": "Veterans enrolled in Montana VA Health Care System",
+        "va_enrollment_required": true,
+        "notes": "Telehealth available to all enrolled Veterans. Particularly beneficial for Veterans more than 30 miles from Fort Harrison VAMC."
+      },
+      "services": [
+        "Primary care telehealth",
+        "Mental health and PTSD treatment",
+        "Tele-emergency services",
+        "Specialty care consultations",
+        "Home telehealth monitoring",
+        "Clinical pharmacy services"
+      ],
+      "access_method": "Contact Montana VA Health Care System or your local CBOC to enroll in telehealth services. ATLAS sites available in Glasgow, Cut Bank, and other rural locations.",
+      "locations": [
+        {
+          "name": "Billings VA Clinic",
+          "address": "1766 Majestic Lane",
+          "city": "Billings",
+          "state": "MT",
+          "zip": "59102"
+        },
+        {
+          "name": "Great Falls VA Clinic",
+          "address": "1417 9th Street South",
+          "city": "Great Falls",
+          "state": "MT",
+          "zip": "59405"
+        },
+        {
+          "name": "Missoula VA Clinic",
+          "address": "2687 Palmer Street",
+          "city": "Missoula",
+          "state": "MT",
+          "zip": "59808"
+        },
+        {
+          "name": "Kalispell VA Clinic",
+          "address": "31 Three Mile Drive",
+          "city": "Kalispell",
+          "state": "MT",
+          "zip": "59901"
+        }
+      ]
+    },
+    {
+      "id": "maine-telehealth-expansion",
+      "name": "Maine Rural Veterans Telehealth Program",
+      "org_name": "VA Maine Healthcare System",
+      "description": "Expanded telehealth services for Veterans in Maine's rural communities, including Aroostook County and Down East regions. Program includes home-based telehealth, CBOC video visits, and partnerships with rural health clinics.",
+      "tier": 1,
+      "website": "https://www.va.gov/maine-health-care/programs/telehealth/",
+      "phone": "1-877-421-8263",
+      "email": null,
+      "scope": "state",
+      "states": ["ME"],
+      "categories": ["healthcare"],
+      "tags": ["telehealth", "rural", "maine", "mental-health", "primary-care", "home-based"],
+      "eligibility": {
+        "summary": "Veterans enrolled in VA Maine Healthcare System",
+        "va_enrollment_required": true,
+        "notes": "Priority access for Veterans in Aroostook, Washington, Hancock, and Piscataquis counties"
+      },
+      "services": [
+        "VA Video Connect home appointments",
+        "Mental health telehealth",
+        "Primary care video visits",
+        "Clinical pharmacy telehealth",
+        "Nutrition counseling",
+        "Social work services"
+      ],
+      "access_method": "Contact VA Maine Healthcare System at 1-877-421-8263 to enroll in telehealth services. Download VA Video Connect app or use your web browser for appointments.",
+      "locations": [
+        {
+          "name": "Caribou VA Clinic",
+          "address": "163 Van Buren Road, Suite 6",
+          "city": "Caribou",
+          "state": "ME",
+          "zip": "04736"
+        },
+        {
+          "name": "Calais VA Clinic",
+          "address": "50 Union Street",
+          "city": "Calais",
+          "state": "ME",
+          "zip": "04619"
+        },
+        {
+          "name": "Bangor VA Clinic",
+          "address": "35 State Hospital Drive",
+          "city": "Bangor",
+          "state": "ME",
+          "zip": "04401"
+        }
+      ]
+    },
+    {
+      "id": "cohen-telehealth",
+      "name": "Cohen Veterans Network Telehealth Services",
+      "org_name": "Cohen Veterans Network",
+      "description": "Free telehealth mental health services available to post-9/11 Veterans and their families nationwide. Services complement in-person clinics with secure video therapy sessions accessible from any location.",
+      "tier": 2,
+      "website": "https://www.cohenveteransnetwork.org/telehealth/",
+      "phone": "1-844-336-4226",
+      "email": null,
+      "scope": "national",
+      "states": null,
+      "categories": ["healthcare", "mentalHealth"],
+      "tags": ["telehealth", "mental-health", "ptsd", "free-services", "post-9/11", "rural", "family-support"],
+      "eligibility": {
+        "summary": "Post-9/11 Veterans, active duty service members, and their families",
+        "va_enrollment_required": false,
+        "notes": "No discharge status restrictions. No VA enrollment required. Services are free regardless of income or location."
+      },
+      "services": [
+        "Individual therapy via video",
+        "Couples counseling telehealth",
+        "Family therapy sessions",
+        "PTSD treatment",
+        "Depression and anxiety treatment",
+        "Military sexual trauma support"
+      ],
+      "access_method": "Call 1-844-336-4226 to schedule a telehealth appointment. Appointments available during evening and weekend hours for accessibility.",
+      "locations": null
+    },
+    {
+      "id": "va-video-connect",
+      "name": "VA Video Connect",
+      "org_name": "U.S. Department of Veterans Affairs",
+      "description": "VA Video Connect allows Veterans to have video visits with their VA health care providers from anywhere using a smartphone, tablet, or computer. Eliminates travel barriers for rural Veterans while maintaining quality care.",
+      "tier": 1,
+      "website": "https://mobile.va.gov/app/va-video-connect",
+      "phone": "1-866-651-3180",
+      "email": null,
+      "scope": "national",
+      "states": null,
+      "categories": ["healthcare"],
+      "tags": ["telehealth", "rural", "va", "video-connect", "mobile-app", "home-based"],
+      "eligibility": {
+        "summary": "Any Veteran enrolled in VA health care",
+        "va_enrollment_required": true,
+        "notes": "Must have a device with camera and microphone. Technical support available for setup assistance."
+      },
+      "services": [
+        "Primary care appointments",
+        "Mental health sessions",
+        "Specialty consultations",
+        "Follow-up visits",
+        "Medication reviews",
+        "Wellness check-ins"
+      ],
+      "access_method": "Download the VA Video Connect app from the App Store or Google Play. Your VA care team will send you a link before your scheduled appointment. For technical help, call 1-866-651-3180.",
+      "locations": null
+    },
+    {
+      "id": "rural-health-initiative-west",
+      "name": "VA Office of Rural Health - Western Region Telehealth",
+      "org_name": "VA Office of Rural Health",
+      "description": "Targeted telehealth expansion for Veterans in the western United States where vast distances create significant barriers to VA care. Focuses on Wyoming, Montana, Idaho, Nevada, and rural portions of other western states.",
+      "tier": 1,
+      "website": "https://www.ruralhealth.va.gov/",
+      "phone": "1-802-295-9363",
+      "email": "vharuralhealth@va.gov",
+      "scope": "regional",
+      "states": ["WY", "MT", "ID", "NV", "AK", "ND", "SD", "NE", "UT", "NM", "AZ"],
+      "categories": ["healthcare"],
+      "tags": ["telehealth", "rural", "va", "western-region", "office-of-rural-health"],
+      "eligibility": {
+        "summary": "Veterans in highly rural and frontier areas of the western United States",
+        "va_enrollment_required": true,
+        "notes": "Special programs for Veterans more than 40 miles from VA facilities"
+      },
+      "services": [
+        "Expanded telehealth access",
+        "Rural health provider training",
+        "Community partnerships",
+        "Mobile health units",
+        "Home-based primary care",
+        "Tele-mental health"
+      ],
+      "access_method": "Contact your local VA facility to learn about rural health telehealth options in your area. The Office of Rural Health works through local VA systems to deliver services.",
+      "locations": null
+    },
+    {
+      "id": "telebehavioral-health-rural",
+      "name": "VA Telebehavioral Health in Rural Communities",
+      "org_name": "U.S. Department of Veterans Affairs",
+      "description": "Specialized mental health telehealth services for Veterans in rural areas. Connects rural Veterans with psychiatrists, psychologists, and counselors via secure video for treatment of PTSD, depression, anxiety, and substance use disorders.",
+      "tier": 1,
+      "website": "https://www.mentalhealth.va.gov/get-help/local-care.asp",
+      "phone": "1-800-698-2411",
+      "email": null,
+      "scope": "national",
+      "states": null,
+      "categories": ["healthcare", "mentalHealth"],
+      "tags": ["telehealth", "rural", "mental-health", "ptsd", "va", "telebehavioral-health"],
+      "eligibility": {
+        "summary": "Veterans enrolled in VA health care, particularly those in rural and underserved areas",
+        "va_enrollment_required": true,
+        "notes": "No copay for telehealth mental health visits for many Veterans"
+      },
+      "services": [
+        "Psychiatric evaluations via video",
+        "Cognitive processing therapy for PTSD",
+        "Prolonged exposure therapy",
+        "Medication management",
+        "Substance use disorder treatment",
+        "Marriage and family counseling"
+      ],
+      "access_method": "Call your local VA facility or the main VA health line at 1-800-698-2411 to request a mental health telehealth appointment. Evening and weekend appointments often available.",
+      "locations": null
+    },
+    {
+      "id": "store-and-forward-telehealth",
+      "name": "VA Store and Forward Telehealth",
+      "org_name": "U.S. Department of Veterans Affairs",
+      "description": "Asynchronous telehealth program where Veterans in remote areas can have images, test results, and health data captured locally and sent to VA specialists for review. Ideal for dermatology, ophthalmology, and wound care consultations without requiring real-time video.",
+      "tier": 1,
+      "website": "https://telehealth.va.gov/type/store-and-forward",
+      "phone": "1-800-698-2411",
+      "email": null,
+      "scope": "national",
+      "states": null,
+      "categories": ["healthcare"],
+      "tags": ["telehealth", "rural", "va", "store-and-forward", "asynchronous", "specialty-care"],
+      "eligibility": {
+        "summary": "Veterans enrolled in VA health care needing specialty consultations",
+        "va_enrollment_required": true,
+        "notes": "Particularly useful for rural Veterans who cannot easily travel to VA specialty clinics"
+      },
+      "services": [
+        "Dermatology consultations",
+        "Ophthalmology screenings",
+        "Wound care assessment",
+        "Radiology reviews",
+        "Pathology consultations",
+        "Diabetic retinopathy screening"
+      ],
+      "access_method": "Ask your VA primary care provider about store-and-forward telehealth options for specialty care. Images or data can often be captured at your local CBOC and sent to specialists.",
+      "locations": null
+    },
+    {
+      "id": "give-an-hour-telehealth",
+      "name": "Give an Hour - Free Telehealth Mental Health",
+      "org_name": "Give an Hour",
+      "description": "Network of volunteer mental health professionals providing free therapy to Veterans, service members, and their families. Telehealth appointments available nationwide, making services accessible to rural Veterans.",
+      "tier": 2,
+      "website": "https://giveanhour.org/",
+      "phone": null,
+      "email": "help@giveanhour.org",
+      "scope": "national",
+      "states": null,
+      "categories": ["healthcare", "mentalHealth"],
+      "tags": ["telehealth", "mental-health", "free-services", "rural", "volunteer-providers"],
+      "eligibility": {
+        "summary": "Veterans, active duty service members, National Guard, Reserves, and their families",
+        "va_enrollment_required": false,
+        "notes": "Free services regardless of discharge status, era of service, or VA eligibility"
+      },
+      "services": [
+        "Individual therapy",
+        "Couples counseling",
+        "Family therapy",
+        "Child and adolescent counseling",
+        "Grief counseling",
+        "Trauma treatment"
+      ],
+      "access_method": "Visit giveanhour.org and use the provider search to find a therapist offering telehealth in your state. Email help@giveanhour.org for assistance finding a provider.",
+      "locations": null
+    },
+    {
+      "id": "wyoming-veterans-telehealth",
+      "name": "Wyoming Veterans Telehealth Initiative",
+      "org_name": "VA Cheyenne Healthcare System",
+      "description": "Specialized telehealth program for Wyoming Veterans, one of the most rural states in the nation. Combines ATLAS sites, CBOC telehealth, and home-based video connect to serve Veterans across the state's vast distances.",
+      "tier": 1,
+      "website": "https://www.va.gov/cheyenne-health-care/",
+      "phone": "1-307-778-7550",
+      "email": null,
+      "scope": "state",
+      "states": ["WY"],
+      "categories": ["healthcare"],
+      "tags": ["telehealth", "rural", "wyoming", "va", "cboc", "home-based"],
+      "eligibility": {
+        "summary": "Veterans enrolled in VA Cheyenne Healthcare System",
+        "va_enrollment_required": true,
+        "notes": "Special outreach for Veterans in remote areas of Wyoming including Big Horn Basin and southwest Wyoming"
+      },
+      "services": [
+        "Primary care telehealth",
+        "Mental health video visits",
+        "ATLAS site appointments",
+        "Home telehealth monitoring",
+        "Specialty care consultations"
+      ],
+      "access_method": "Contact VA Cheyenne Healthcare System at 1-307-778-7550 to enroll in telehealth services. ATLAS sites available in Lander and other locations.",
+      "locations": [
+        {
+          "name": "Casper VA Clinic",
+          "address": "3839 Cy Avenue",
+          "city": "Casper",
+          "state": "WY",
+          "zip": "82604"
+        },
+        {
+          "name": "Sheridan VA Clinic",
+          "address": "1898 Fort Road",
+          "city": "Sheridan",
+          "state": "WY",
+          "zip": "82801"
+        },
+        {
+          "name": "Riverton VA Clinic",
+          "address": "2300 Rose Lane",
+          "city": "Riverton",
+          "state": "WY",
+          "zip": "82501"
+        }
+      ]
+    }
+  ]
+}

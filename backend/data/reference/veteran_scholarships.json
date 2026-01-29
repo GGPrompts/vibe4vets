@@ -1,0 +1,358 @@
+{
+  "source": "Compiled from major Veteran scholarship programs and directories",
+  "source_urls": [
+    "https://www.va.gov/education/about-gi-bill-benefits/",
+    "https://pattillmanfoundation.org/",
+    "https://www.foldsofhonor.org/",
+    "https://www.vfw.org/assistance/student-veterans-support",
+    "https://www.legion.org/scholarships",
+    "https://www.dav.org/veterans/resources/scholarships/",
+    "https://www.military.com/education/money-for-school/scholarships"
+  ],
+  "last_updated": "2026-01-28",
+  "description": "Scholarships specifically for Veterans, active duty service members, and military families pursuing higher education",
+  "scholarships": [
+    {
+      "name": "Pat Tillman Foundation Scholars Program",
+      "organization": "Pat Tillman Foundation",
+      "amount": "Up to $10,000 per year",
+      "deadline": "February (annual)",
+      "eligibility": [
+        "Active duty service members",
+        "Veterans of all branches",
+        "Spouses of service members or Veterans"
+      ],
+      "description": "Provides educational scholarships to military Veterans and spouses who demonstrate leadership potential and a commitment to service beyond self. Scholars join a network of over 700 Tillman Scholars making an impact in their communities.",
+      "how_to_apply": "Submit online application through the Pat Tillman Foundation website. Application includes essays, resume, and recommendations.",
+      "website": "https://pattillmanfoundation.org/apply/",
+      "renewable": true,
+      "notes": "Named after NFL player and Army Ranger Pat Tillman. One of the most prestigious Veteran scholarships."
+    },
+    {
+      "name": "Folds of Honor Scholarship",
+      "organization": "Folds of Honor",
+      "amount": "$5,000 per term",
+      "deadline": "March 31 (annual)",
+      "eligibility": [
+        "Spouses and children of fallen or disabled service members",
+        "Veterans with service-connected disabilities",
+        "Active duty service members"
+      ],
+      "description": "Provides educational scholarships to spouses and children of America's fallen and disabled service members. Supports K-12 private school tuition and higher education.",
+      "how_to_apply": "Apply online through the Folds of Honor website. Requires proof of military service or disability status.",
+      "website": "https://www.foldsofhonor.org/scholarships/",
+      "renewable": true,
+      "notes": "Has awarded over $240 million in educational scholarships since 2007."
+    },
+    {
+      "name": "VFW Sport Clips Help A Hero Scholarship",
+      "organization": "VFW (Veterans of Foreign Wars)",
+      "amount": "Up to $5,000",
+      "deadline": "April 30 (annual)",
+      "eligibility": [
+        "Veterans who served during a period of war",
+        "Currently enrolled in or accepted to an accredited program",
+        "Must have served in a combat zone"
+      ],
+      "description": "Provides scholarships to service members and Veterans who are transitioning to civilian life. Funded through partnership between VFW and Sport Clips.",
+      "how_to_apply": "Apply through VFW website. Requires VFW member sponsor, DD-214, and proof of enrollment.",
+      "website": "https://www.vfw.org/assistance/student-veterans-support",
+      "renewable": false,
+      "notes": "Sport Clips has raised over $10 million for Veteran scholarships."
+    },
+    {
+      "name": "American Legion Legacy Scholarship",
+      "organization": "The American Legion",
+      "amount": "Up to $20,000 (renewable up to $5,000/year for 4 years)",
+      "deadline": "April 15 (annual)",
+      "eligibility": [
+        "Children of post-9/11 Veterans who died on active duty",
+        "Children of post-9/11 Veterans with VA disability rating of 50% or higher",
+        "Must be pursuing undergraduate degree"
+      ],
+      "description": "Provides scholarships to children of post-9/11 fallen or disabled Veterans. Recognizes the sacrifice of military families.",
+      "how_to_apply": "Apply through The American Legion website. Requires proof of parent's service and disability rating or death certificate.",
+      "website": "https://www.legion.org/scholarships/legacy",
+      "renewable": true,
+      "notes": "One of the largest scholarships specifically for children of post-9/11 Veterans."
+    },
+    {
+      "name": "Edith Nourse Rogers STEM Scholarship",
+      "organization": "U.S. Department of Veterans Affairs",
+      "amount": "Up to $30,000 (extension of Post-9/11 GI Bill)",
+      "deadline": "Rolling",
+      "eligibility": [
+        "Veterans using Post-9/11 GI Bill benefits",
+        "Must be enrolled in STEM program",
+        "Less than 6 months of GI Bill benefits remaining"
+      ],
+      "description": "Extends Post-9/11 GI Bill benefits for Veterans pursuing degrees in science, technology, engineering, and math fields. Provides up to 9 months of additional benefits.",
+      "how_to_apply": "Apply through VA.gov or through your school's Veterans certifying official.",
+      "website": "https://www.va.gov/education/other-va-education-benefits/stem-scholarship/",
+      "renewable": false,
+      "notes": "Official VA program. Named after Congresswoman Edith Nourse Rogers, first woman to serve in Congress from Massachusetts."
+    },
+    {
+      "name": "DAV National Education Scholarships",
+      "organization": "Disabled American Veterans (DAV)",
+      "amount": "Varies ($1,000-$5,000)",
+      "deadline": "Varies by program",
+      "eligibility": [
+        "DAV members or dependents",
+        "Children of Veterans who are DAV life members",
+        "Pursuing undergraduate or graduate education"
+      ],
+      "description": "Multiple scholarship programs supporting disabled Veterans and their families in pursuing educational goals.",
+      "how_to_apply": "Apply through DAV chapter or national website. Requirements vary by specific scholarship.",
+      "website": "https://www.dav.org/veterans/resources/scholarships/",
+      "renewable": false,
+      "notes": "Multiple programs available through local DAV chapters."
+    },
+    {
+      "name": "AMVETS National Scholarship Program",
+      "organization": "AMVETS",
+      "amount": "$1,000-$4,000",
+      "deadline": "April 30 (annual)",
+      "eligibility": [
+        "Veterans who served during qualifying period",
+        "Active National Guard and Reserve members",
+        "JROTC cadets (for JROTC scholarship)"
+      ],
+      "description": "Multiple scholarship programs including the AMVETS National Scholarship for Veterans pursuing higher education.",
+      "how_to_apply": "Apply through AMVETS website. Requires proof of service and academic records.",
+      "website": "https://amvets.org/scholarships/",
+      "renewable": false,
+      "notes": "AMVETS also offers scholarships specifically for spouses and children."
+    },
+    {
+      "name": "Tillman Scholars Military Spouse Program",
+      "organization": "Pat Tillman Foundation",
+      "amount": "Up to $10,000 per year",
+      "deadline": "February (annual)",
+      "eligibility": [
+        "Spouses of active duty service members",
+        "Spouses of Veterans",
+        "Must be pursuing degree or certificate"
+      ],
+      "description": "Dedicated scholarship track for military spouses pursuing education. Part of the broader Tillman Scholars program.",
+      "how_to_apply": "Apply through the Pat Tillman Foundation website as part of the Tillman Scholars application.",
+      "website": "https://pattillmanfoundation.org/apply/",
+      "renewable": true,
+      "notes": "Recognizes the unique challenges military spouses face in pursuing education."
+    },
+    {
+      "name": "Marine Corps Scholarship Foundation",
+      "organization": "Marine Corps Scholarship Foundation",
+      "amount": "$1,500-$10,000",
+      "deadline": "March 1 (annual)",
+      "eligibility": [
+        "Children of Marines and Navy Corpsmen",
+        "Parent must have served honorably",
+        "Financial need considered"
+      ],
+      "description": "Provides need-based scholarships to children of Marines and Navy Corpsmen. Has awarded over $165 million since 1962.",
+      "how_to_apply": "Apply online through the Marine Corps Scholarship Foundation website.",
+      "website": "https://www.mcsf.org/apply/",
+      "renewable": true,
+      "notes": "Largest provider of need-based scholarships for Marine and Navy families."
+    },
+    {
+      "name": "Army Women's Foundation Legacy Scholarship",
+      "organization": "Army Women's Foundation",
+      "amount": "$1,000-$2,500",
+      "deadline": "January 31 (annual)",
+      "eligibility": [
+        "Women who served or are serving in the U.S. Army",
+        "Daughters and granddaughters of Army women",
+        "Active duty, Reserve, or National Guard women"
+      ],
+      "description": "Supports women soldiers and their descendants in pursuing higher education.",
+      "how_to_apply": "Apply through the Army Women's Foundation website with proof of service.",
+      "website": "https://www.awfdn.org/scholarships/",
+      "renewable": false,
+      "notes": "Celebrates the legacy of women who have served in the U.S. Army."
+    },
+    {
+      "name": "Air Force Aid Society Education Grants",
+      "organization": "Air Force Aid Society",
+      "amount": "$500-$5,000",
+      "deadline": "March 15 (annual)",
+      "eligibility": [
+        "Dependents of active duty Air Force and Space Force members",
+        "Dependents of Air Force Veterans",
+        "Spouses of active duty members"
+      ],
+      "description": "Provides grants and loans for education to Air Force and Space Force families.",
+      "how_to_apply": "Apply through the Air Force Aid Society portal.",
+      "website": "https://www.afas.org/education-grants/",
+      "renewable": true,
+      "notes": "Also provides emergency assistance beyond education grants."
+    },
+    {
+      "name": "Navy-Marine Corps Relief Society Education Assistance",
+      "organization": "Navy-Marine Corps Relief Society",
+      "amount": "Up to $3,000",
+      "deadline": "May 1 (annual)",
+      "eligibility": [
+        "Children of active duty or retired Navy and Marine Corps service members",
+        "Spouses of active duty members",
+        "Children of deceased service members"
+      ],
+      "description": "Interest-free loans and grants for higher education for Navy and Marine Corps families.",
+      "how_to_apply": "Apply through NMCRS website or local Navy-Marine Corps Relief Society office.",
+      "website": "https://www.nmcrs.org/pages/education-assistance",
+      "renewable": true,
+      "notes": "Offers both loans and grants based on financial need."
+    },
+    {
+      "name": "Coast Guard Foundation Scholarships",
+      "organization": "Coast Guard Foundation",
+      "amount": "$1,000-$5,000",
+      "deadline": "March 15 (annual)",
+      "eligibility": [
+        "Children of Coast Guard members",
+        "Coast Guard active duty, reserve, or retired members",
+        "Spouses of Coast Guard members"
+      ],
+      "description": "Multiple scholarship programs supporting Coast Guard families in pursuing education.",
+      "how_to_apply": "Apply through the Coast Guard Foundation website.",
+      "website": "https://coastguardfoundation.org/scholarships/",
+      "renewable": true,
+      "notes": "The Coast Guard Foundation provides comprehensive support beyond scholarships."
+    },
+    {
+      "name": "Fisher House Foundation Scholarship",
+      "organization": "Fisher House Foundation",
+      "amount": "$2,000-$5,000",
+      "deadline": "Varies by program",
+      "eligibility": [
+        "Children of active duty service members",
+        "Children of Veterans",
+        "Children of service members who died during active duty"
+      ],
+      "description": "Supports the educational pursuits of military children through various scholarship programs.",
+      "how_to_apply": "Apply through Scholarships for Military Children program at participating commissaries.",
+      "website": "https://www.fisherhouse.org/programs/scholarship-programs/",
+      "renewable": false,
+      "notes": "Fisher House is best known for providing housing near VA and military hospitals."
+    },
+    {
+      "name": "VetSuccess Student Veteran Support",
+      "organization": "U.S. Department of Veterans Affairs",
+      "amount": "Support services (not a direct scholarship)",
+      "deadline": "Rolling",
+      "eligibility": [
+        "Veterans using VA education benefits",
+        "Enrolled at participating schools",
+        "May have barriers to education completion"
+      ],
+      "description": "Provides on-campus support through VetSuccess counselors who help with VA benefits, academic challenges, and career planning.",
+      "how_to_apply": "Contact your school's Veterans services office or VetSuccess on Campus counselor.",
+      "website": "https://www.va.gov/careers-employment/vetsuccess-on-campus/",
+      "renewable": false,
+      "notes": "Available at over 100 college campuses nationwide."
+    },
+    {
+      "name": "Yellow Ribbon Program",
+      "organization": "U.S. Department of Veterans Affairs",
+      "amount": "Varies by school (covers tuition beyond GI Bill limits)",
+      "deadline": "Rolling (apply at participating schools)",
+      "eligibility": [
+        "100% Post-9/11 GI Bill eligible Veterans",
+        "Enrolled at a Yellow Ribbon participating school",
+        "Active duty service members transferred benefits to dependents"
+      ],
+      "description": "Participating schools agree to contribute funds to cover tuition that exceeds the GI Bill maximum. VA matches the school's contribution.",
+      "how_to_apply": "Apply through the school's Veterans services office. Check VA website for participating schools.",
+      "website": "https://www.va.gov/education/about-gi-bill-benefits/post-9-11/yellow-ribbon-program/",
+      "renewable": true,
+      "notes": "Over 2,000 schools participate in the Yellow Ribbon Program."
+    },
+    {
+      "name": "Troops to Teachers STEM Scholarship",
+      "organization": "Defense Activity for Non-Traditional Education Support (DANTES)",
+      "amount": "Up to $10,000",
+      "deadline": "Rolling",
+      "eligibility": [
+        "Veterans transitioning to teaching careers",
+        "Focus on high-need subjects (math, science, special education)",
+        "Must agree to teach in high-need schools"
+      ],
+      "description": "Provides stipends to Veterans pursuing teaching certification, with focus on STEM subjects in high-need schools.",
+      "how_to_apply": "Register with Troops to Teachers program and apply through DANTES.",
+      "website": "https://www.proudtoserveagain.com/",
+      "renewable": false,
+      "notes": "Part of the Troops to Teachers program which has helped over 30,000 Veterans become teachers."
+    },
+    {
+      "name": "SkillBridge Higher Education Programs",
+      "organization": "U.S. Department of Defense",
+      "amount": "Salary continuation during program",
+      "deadline": "Rolling (within 180 days of separation)",
+      "eligibility": [
+        "Active duty service members",
+        "Within 180 days of separation",
+        "Participating in approved program"
+      ],
+      "description": "Allows active duty service members to participate in civilian job training, education, and internships during last 180 days of service while continuing to receive military pay.",
+      "how_to_apply": "Coordinate with your transition assistance office and find approved programs on SkillBridge website.",
+      "website": "https://skillbridge.osd.mil/",
+      "renewable": false,
+      "notes": "Many SkillBridge programs include education components alongside job training."
+    },
+    {
+      "name": "Paralyzed Veterans of America (PVA) Scholarship",
+      "organization": "Paralyzed Veterans of America",
+      "amount": "$1,000-$5,000",
+      "deadline": "June 1 (annual)",
+      "eligibility": [
+        "PVA members",
+        "Spouses and children of PVA members",
+        "Pursuing undergraduate or graduate degree"
+      ],
+      "description": "Scholarships for paralyzed Veterans and their families pursuing higher education.",
+      "how_to_apply": "Apply through PVA website with proof of membership and enrollment.",
+      "website": "https://www.pva.org/find-support/scholarship-program/",
+      "renewable": false,
+      "notes": "PVA advocates for Veterans with spinal cord injuries and disorders."
+    },
+    {
+      "name": "MOAA Scholarship Fund",
+      "organization": "Military Officers Association of America",
+      "amount": "$2,500-$5,000",
+      "deadline": "March 1 (annual)",
+      "eligibility": [
+        "Children of military officers (all branches)",
+        "Children of enlisted personnel",
+        "Must be undergraduate students"
+      ],
+      "description": "Interest-free loans and grants for children of military personnel, based on financial need and academic achievement.",
+      "how_to_apply": "Apply through the MOAA website with academic records and financial information.",
+      "website": "https://www.moaa.org/content/benefits-and-discounts/education/moaa-scholarship-fund/",
+      "renewable": true,
+      "notes": "MOAA has provided over $133 million in scholarships since 1948."
+    }
+  ],
+  "aggregator_sites": [
+    {
+      "name": "Military.com Scholarship Finder",
+      "description": "Comprehensive database of military and Veteran scholarships searchable by branch, eligibility, and field of study.",
+      "website": "https://www.military.com/education/money-for-school/scholarships"
+    },
+    {
+      "name": "Fastweb Military Scholarships",
+      "description": "Free scholarship search engine with dedicated military and Veteran scholarship listings.",
+      "website": "https://www.fastweb.com/college-scholarships/scholarships/military-scholarships"
+    },
+    {
+      "name": "Student Veterans of America Resource Hub",
+      "description": "Resources and scholarship information specifically for student Veterans at member institutions.",
+      "website": "https://studentveterans.org/resources/"
+    },
+    {
+      "name": "VA Education Benefits Hub",
+      "description": "Official VA resource for all education benefits including GI Bill, VR&E, and scholarship information.",
+      "website": "https://www.va.gov/education/"
+    }
+  ]
+}

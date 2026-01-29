@@ -12,6 +12,7 @@ Programs included:
 - Semper Fi & America's Fund
 - PenFed Foundation Military Heroes Fund
 - USA Cares Military Assistance Response Program
+- DVNF GPS (Grants for Patriots and Supporters) Program
 
 Source: Curated from official program websites and VA resources
 """
@@ -219,6 +220,11 @@ class VeteranEmergencyAssistanceConnector(BaseConnector):
             parts.append(
                 "Each family is assigned an advocate who ensures timely assistance. No fees or repayment required."
             )
+        elif "dvnf" in org_name_lower or "disabled veterans national" in org_name_lower:
+            parts.append(
+                "DVNF provides emergency grants to help veterans and their families "
+                "facing immediate financial crisis. No membership required."
+            )
 
         return " ".join(parts)
 
@@ -340,7 +346,8 @@ class VeteranEmergencyAssistanceConnector(BaseConnector):
         """Determine categories based on assistance types."""
         assistance_types = program.get("assistance_types", [])
 
-        categories = set()
+        # All emergency assistance programs are financial by nature
+        categories = {"financial"}
 
         # Housing-related assistance
         housing_keywords = {
@@ -359,10 +366,6 @@ class VeteranEmergencyAssistanceConnector(BaseConnector):
         legal_keywords = {"legal", "legal_aid"}
         if legal_keywords & set(assistance_types):
             categories.add("legal")
-
-        # Default to housing since most are housing-focused
-        if not categories:
-            categories.add("housing")
 
         return sorted(categories)
 
@@ -414,5 +417,7 @@ class VeteranEmergencyAssistanceConnector(BaseConnector):
             tags.append("penfed-foundation")
         elif "usa cares" in org_name:
             tags.append("usa-cares")
+        elif "dvnf" in org_name or "disabled veterans national" in org_name:
+            tags.append("dvnf")
 
         return tags

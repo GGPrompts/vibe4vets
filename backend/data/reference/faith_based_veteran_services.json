@@ -1,0 +1,465 @@
+{
+  "metadata": {
+    "source": "Curated from official organization websites and VA resources",
+    "last_updated": "2026-01",
+    "description": "Faith-based organizations providing veteran services including housing, food assistance, financial aid, and support services",
+    "total_programs": 18
+  },
+  "programs": [
+    {
+      "org_name": "The Salvation Army",
+      "program_name": "Veteran & Military Family Services",
+      "website": "https://www.salvationarmyusa.org/usn/veterans/",
+      "phone": "1-800-728-7825",
+      "email": null,
+      "scope": "national",
+      "states": null,
+      "categories": ["housing", "food", "financial", "supportServices"],
+      "services": [
+        "emergency_shelter",
+        "transitional_housing",
+        "food_assistance",
+        "case_management",
+        "job_training",
+        "substance_abuse_treatment",
+        "emergency_financial_assistance"
+      ],
+      "eligibility": {
+        "summary": "Veterans and their families in need of emergency or transitional assistance",
+        "veteran_status_required": true,
+        "income_limit": "Based on need",
+        "documentation_required": ["dd214", "state_id"],
+        "notes": "Services vary by location. Many locations also serve active-duty families."
+      },
+      "description": "The Salvation Army operates comprehensive veteran programs across the United States, including emergency shelters, transitional housing, and SSVF (Supportive Services for Veteran Families) programs. Many locations partner directly with the VA to provide housing and supportive services."
+    },
+    {
+      "org_name": "The Salvation Army",
+      "program_name": "Harbor Light Centers - Veteran Programs",
+      "website": "https://www.salvationarmyusa.org/usn/veterans/",
+      "phone": null,
+      "email": null,
+      "scope": "national",
+      "states": null,
+      "categories": ["housing", "mentalHealth", "supportServices"],
+      "services": [
+        "residential_treatment",
+        "substance_abuse_treatment",
+        "mental_health_counseling",
+        "job_readiness",
+        "life_skills",
+        "case_management"
+      ],
+      "eligibility": {
+        "summary": "Veterans struggling with homelessness, substance abuse, or mental health challenges",
+        "veteran_status_required": true,
+        "income_limit": null,
+        "documentation_required": ["dd214"],
+        "notes": "Harbor Light Centers are located in major metropolitan areas and provide long-term residential treatment."
+      },
+      "description": "Salvation Army Harbor Light Centers provide intensive residential treatment programs for veterans dealing with homelessness, addiction, and mental health issues. Programs typically last 6-12 months and include comprehensive wraparound services."
+    },
+    {
+      "org_name": "Catholic Charities USA",
+      "program_name": "SSVF - Supportive Services for Veteran Families",
+      "website": "https://www.catholiccharitiesusa.org/our-ministry/veterans-services/",
+      "phone": null,
+      "email": null,
+      "scope": "national",
+      "states": null,
+      "categories": ["housing", "financial", "supportServices"],
+      "services": [
+        "rapid_rehousing",
+        "homelessness_prevention",
+        "rental_assistance",
+        "utility_assistance",
+        "case_management",
+        "legal_referrals",
+        "employment_assistance"
+      ],
+      "eligibility": {
+        "summary": "Veterans and their families who are homeless or at imminent risk of homelessness",
+        "veteran_status_required": true,
+        "income_limit": "Below 50% Area Median Income (AMI) for some services",
+        "documentation_required": ["dd214", "proof_of_income", "lease_or_eviction_notice"],
+        "notes": "Catholic Charities is one of the largest SSVF grantees in the nation, operating programs in over 35 dioceses."
+      },
+      "description": "Catholic Charities operates VA-funded SSVF programs across the country, providing rapid rehousing and homelessness prevention services. Their network of local agencies provides case management, financial assistance, and connections to VA benefits."
+    },
+    {
+      "org_name": "Catholic Charities USA",
+      "program_name": "Veteran Housing and Support Services",
+      "website": "https://www.catholiccharitiesusa.org/our-ministry/veterans-services/",
+      "phone": null,
+      "email": null,
+      "scope": "national",
+      "states": null,
+      "categories": ["housing", "supportServices", "mentalHealth"],
+      "services": [
+        "permanent_supportive_housing",
+        "transitional_housing",
+        "mental_health_services",
+        "substance_abuse_counseling",
+        "employment_services",
+        "benefits_counseling"
+      ],
+      "eligibility": {
+        "summary": "Veterans experiencing homelessness or housing instability, including those with mental health or substance abuse challenges",
+        "veteran_status_required": true,
+        "income_limit": "Varies by program",
+        "documentation_required": ["dd214", "va_eligibility_letter"],
+        "notes": "Many programs serve veterans who are chronically homeless or have complex needs."
+      },
+      "description": "Beyond SSVF, Catholic Charities operates GPD (Grant and Per Diem) transitional housing and HUD-funded permanent supportive housing specifically for veterans. Programs emphasize recovery, stability, and community integration."
+    },
+    {
+      "org_name": "Volunteers of America",
+      "program_name": "Veterans Services",
+      "website": "https://www.voa.org/veterans",
+      "phone": "1-800-899-0089",
+      "email": null,
+      "scope": "national",
+      "states": null,
+      "categories": ["housing", "employment", "supportServices", "mentalHealth"],
+      "services": [
+        "transitional_housing",
+        "permanent_supportive_housing",
+        "ssvf_services",
+        "employment_training",
+        "mental_health_services",
+        "substance_abuse_treatment",
+        "case_management",
+        "legal_services"
+      ],
+      "eligibility": {
+        "summary": "Veterans experiencing homelessness, at risk of homelessness, or transitioning from military service",
+        "veteran_status_required": true,
+        "income_limit": "Varies by program",
+        "documentation_required": ["dd214", "state_id"],
+        "notes": "Volunteers of America serves over 20,000 veterans annually through specialized programs."
+      },
+      "description": "Volunteers of America is one of the nation's largest nonprofit housing providers for veterans. They operate transitional housing, permanent supportive housing, SSVF rapid rehousing, and employment programs across more than 30 states."
+    },
+    {
+      "org_name": "Volunteers of America",
+      "program_name": "Veterans Employment Services",
+      "website": "https://www.voa.org/veterans",
+      "phone": null,
+      "email": null,
+      "scope": "national",
+      "states": null,
+      "categories": ["employment", "training", "supportServices"],
+      "services": [
+        "job_placement",
+        "career_counseling",
+        "resume_assistance",
+        "interview_preparation",
+        "skills_training",
+        "employer_partnerships"
+      ],
+      "eligibility": {
+        "summary": "Veterans seeking employment or career advancement",
+        "veteran_status_required": true,
+        "income_limit": null,
+        "documentation_required": ["dd214"],
+        "notes": "Employment services often integrated with housing and support programs for comprehensive assistance."
+      },
+      "description": "Volunteers of America provides employment services to help veterans find and maintain meaningful careers. Services include job training, placement assistance, and ongoing support to ensure long-term employment success."
+    },
+    {
+      "org_name": "Lutheran Services in America",
+      "program_name": "Veteran Housing Programs",
+      "website": "https://www.lutheranservices.org/",
+      "phone": null,
+      "email": null,
+      "scope": "national",
+      "states": null,
+      "categories": ["housing", "supportServices"],
+      "services": [
+        "transitional_housing",
+        "permanent_supportive_housing",
+        "rapid_rehousing",
+        "case_management",
+        "life_skills_training"
+      ],
+      "eligibility": {
+        "summary": "Veterans experiencing homelessness or housing instability",
+        "veteran_status_required": true,
+        "income_limit": "Varies by program",
+        "documentation_required": ["dd214"],
+        "notes": "Lutheran Services network includes over 300 member organizations operating across all 50 states."
+      },
+      "description": "Lutheran Services in America member organizations operate veteran housing programs including transitional housing, permanent supportive housing, and SSVF programs. Their faith-based approach emphasizes holistic care and community support."
+    },
+    {
+      "org_name": "Lutheran Immigration and Refugee Service (LIRS)",
+      "program_name": "Veteran and Military Family Support",
+      "website": "https://www.lirs.org/",
+      "phone": null,
+      "email": null,
+      "scope": "national",
+      "states": null,
+      "categories": ["supportServices", "legal"],
+      "services": [
+        "immigration_assistance",
+        "family_reunification",
+        "legal_services",
+        "case_management"
+      ],
+      "eligibility": {
+        "summary": "Veterans and military families with immigration-related needs, including naturalized citizens and those with immigrant family members",
+        "veteran_status_required": true,
+        "income_limit": null,
+        "documentation_required": ["military_service_records"],
+        "notes": "Specializes in helping veterans navigate complex immigration situations for themselves and family members."
+      },
+      "description": "LIRS provides specialized support for veterans and military families navigating immigration challenges. This includes assistance for naturalized veteran citizens, military spouses, and family reunification cases."
+    },
+    {
+      "org_name": "Jewish War Veterans of the USA",
+      "program_name": "Veteran Assistance Programs",
+      "website": "https://www.jwv.org/",
+      "phone": "202-265-6280",
+      "email": "jwv@jwv.org",
+      "scope": "national",
+      "states": null,
+      "categories": ["benefits", "supportServices"],
+      "services": [
+        "claims_assistance",
+        "benefits_counseling",
+        "hospital_visitation",
+        "community_support",
+        "memorial_services"
+      ],
+      "eligibility": {
+        "summary": "All veterans, regardless of faith, are eligible for assistance through JWV service officers",
+        "veteran_status_required": true,
+        "income_limit": null,
+        "documentation_required": ["dd214"],
+        "notes": "JWV is the oldest active veterans organization in America, founded in 1896. VA-accredited service officers available."
+      },
+      "description": "Jewish War Veterans provides VA claims assistance, benefits counseling, and community support for all veterans. Their VA-accredited National Service Officers help veterans navigate the VA claims process at no cost."
+    },
+    {
+      "org_name": "Jewish War Veterans of the USA",
+      "program_name": "Operation Vet Connect",
+      "website": "https://www.jwv.org/programs/",
+      "phone": "202-265-6280",
+      "email": null,
+      "scope": "national",
+      "states": null,
+      "categories": ["supportServices", "mentalHealth"],
+      "services": [
+        "peer_support",
+        "community_integration",
+        "social_events",
+        "mentorship",
+        "veteran_outreach"
+      ],
+      "eligibility": {
+        "summary": "Veterans seeking community connection and peer support",
+        "veteran_status_required": true,
+        "income_limit": null,
+        "documentation_required": [],
+        "notes": "Open to veterans of all faiths seeking community and camaraderie."
+      },
+      "description": "Operation Vet Connect focuses on building community among veterans through social events, peer support, and mentorship programs. The program helps combat veteran isolation and promotes mental wellness through connection."
+    },
+    {
+      "org_name": "Convoy of Hope",
+      "program_name": "Veteran Family Assistance",
+      "website": "https://convoyofhope.org/",
+      "phone": "417-823-8998",
+      "email": null,
+      "scope": "national",
+      "states": null,
+      "categories": ["food", "supportServices"],
+      "services": [
+        "food_distribution",
+        "disaster_relief",
+        "community_outreach",
+        "resource_connection"
+      ],
+      "eligibility": {
+        "summary": "Veterans and military families in need of food assistance or disaster relief",
+        "veteran_status_required": false,
+        "income_limit": "Based on need",
+        "documentation_required": [],
+        "notes": "Community outreach events often partner with VA and veteran organizations to specifically serve veteran families."
+      },
+      "description": "Convoy of Hope provides food assistance and disaster relief to communities across America, with specific outreach to veteran families. Their community events distribute groceries, health screenings, and connect families to local resources."
+    },
+    {
+      "org_name": "Convoy of Hope",
+      "program_name": "Disaster Response for Veterans",
+      "website": "https://convoyofhope.org/disaster-services/",
+      "phone": "417-823-8998",
+      "email": null,
+      "scope": "national",
+      "states": null,
+      "categories": ["supportServices", "food"],
+      "services": [
+        "disaster_relief",
+        "emergency_supplies",
+        "food_distribution",
+        "recovery_assistance"
+      ],
+      "eligibility": {
+        "summary": "Veterans and families affected by natural disasters",
+        "veteran_status_required": false,
+        "income_limit": null,
+        "documentation_required": [],
+        "notes": "Responds to disasters nationwide, often coordinating with veteran organizations to identify and serve affected veteran families."
+      },
+      "description": "Convoy of Hope responds rapidly to natural disasters, providing emergency food, water, and supplies. Their teams work to identify and assist veteran families in disaster-affected areas, connecting them to long-term recovery resources."
+    },
+    {
+      "org_name": "St. Vincent de Paul Society",
+      "program_name": "Veteran Assistance Programs",
+      "website": "https://www.svdpusa.org/",
+      "phone": null,
+      "email": null,
+      "scope": "national",
+      "states": null,
+      "categories": ["housing", "food", "financial", "supportServices"],
+      "services": [
+        "rent_assistance",
+        "utility_assistance",
+        "food_pantry",
+        "furniture_assistance",
+        "case_management",
+        "thrift_stores"
+      ],
+      "eligibility": {
+        "summary": "Veterans and families in need of emergency assistance, regardless of faith",
+        "veteran_status_required": false,
+        "income_limit": "Based on need",
+        "documentation_required": ["proof_of_need"],
+        "notes": "Assistance provided through local parish conferences. Veterans identified through intake process for targeted support."
+      },
+      "description": "St. Vincent de Paul Society provides person-to-person service through local conferences nationwide. Their members conduct home visits and provide direct financial assistance for rent, utilities, food, and other emergency needs. Many conferences have veteran-specific programs."
+    },
+    {
+      "org_name": "Episcopal Relief & Development",
+      "program_name": "Veteran Family Support",
+      "website": "https://www.episcopalrelief.org/",
+      "phone": "855-312-4325",
+      "email": null,
+      "scope": "national",
+      "states": null,
+      "categories": ["supportServices", "financial"],
+      "services": [
+        "disaster_response",
+        "community_resilience",
+        "emergency_assistance",
+        "referral_services"
+      ],
+      "eligibility": {
+        "summary": "Veterans and military families in need, especially those affected by disasters",
+        "veteran_status_required": false,
+        "income_limit": null,
+        "documentation_required": [],
+        "notes": "Works through Episcopal dioceses and parishes to identify and serve veterans in their communities."
+      },
+      "description": "Episcopal Relief & Development works through local Episcopal churches to provide disaster relief and community support. Their network of parishes often maintains specific programs or funds for veteran families in their communities."
+    },
+    {
+      "org_name": "United Methodist Committee on Relief (UMCOR)",
+      "program_name": "Veteran and Military Family Assistance",
+      "website": "https://umcmission.org/umcor/",
+      "phone": null,
+      "email": null,
+      "scope": "national",
+      "states": null,
+      "categories": ["supportServices", "housing"],
+      "services": [
+        "disaster_response",
+        "recovery_case_management",
+        "emergency_assistance",
+        "housing_repair"
+      ],
+      "eligibility": {
+        "summary": "Veterans and families affected by disasters or experiencing housing instability",
+        "veteran_status_required": false,
+        "income_limit": null,
+        "documentation_required": [],
+        "notes": "UMCOR responds to disasters with long-term recovery assistance and works with local churches to serve veteran families."
+      },
+      "description": "UMCOR provides disaster relief and recovery assistance through the United Methodist Church network. Their long-term recovery programs include case management and housing repair, with outreach to identify and support veteran families."
+    },
+    {
+      "org_name": "Team Rubicon",
+      "program_name": "Veteran Disaster Response Service",
+      "website": "https://teamrubiconusa.org/",
+      "phone": null,
+      "email": null,
+      "scope": "national",
+      "states": null,
+      "categories": ["supportServices"],
+      "services": [
+        "disaster_response",
+        "volunteer_opportunities",
+        "veteran_community",
+        "skills_development",
+        "purpose_through_service"
+      ],
+      "eligibility": {
+        "summary": "Veterans who want to continue serving through disaster response; also serves disaster-affected communities including veteran families",
+        "veteran_status_required": false,
+        "income_limit": null,
+        "documentation_required": [],
+        "notes": "Veteran-led organization that provides opportunities for veterans to serve while also helping communities recover from disasters."
+      },
+      "description": "Team Rubicon unites military veterans with first responders to deploy disaster response teams across the country. Veterans can volunteer to serve, finding purpose and community, while also helping disaster-affected families including fellow veterans."
+    },
+    {
+      "org_name": "Samaritan's Purse",
+      "program_name": "Operation Heal Our Patriots",
+      "website": "https://www.samaritanspurse.org/what-we-do/operation-heal-our-patriots/",
+      "phone": "828-262-1980",
+      "email": null,
+      "scope": "national",
+      "states": null,
+      "categories": ["mentalHealth", "supportServices", "family"],
+      "services": [
+        "marriage_retreat",
+        "spiritual_counseling",
+        "outdoor_activities",
+        "peer_support",
+        "aftercare_program"
+      ],
+      "eligibility": {
+        "summary": "Post-9/11 combat-wounded veterans and their spouses",
+        "veteran_status_required": true,
+        "income_limit": null,
+        "documentation_required": ["dd214", "proof_of_combat_injury"],
+        "notes": "Week-long retreats at wilderness lodge in Alaska. Couples must be legally married. All expenses covered."
+      },
+      "description": "Operation Heal Our Patriots provides marriage enrichment retreats for combat-wounded veterans and their spouses at a wilderness lodge in Alaska. The program focuses on strengthening marriages through outdoor activities, biblical teaching, and connection with other veteran couples."
+    },
+    {
+      "org_name": "Samaritan's Purse",
+      "program_name": "Veteran Disaster Relief",
+      "website": "https://www.samaritanspurse.org/volunteer/us-disaster-relief/",
+      "phone": null,
+      "email": null,
+      "scope": "national",
+      "states": null,
+      "categories": ["supportServices", "housing"],
+      "services": [
+        "disaster_response",
+        "home_repair",
+        "debris_removal",
+        "emergency_supplies"
+      ],
+      "eligibility": {
+        "summary": "Homeowners affected by natural disasters, including veteran families",
+        "veteran_status_required": false,
+        "income_limit": null,
+        "documentation_required": [],
+        "notes": "Deploys volunteer teams to disaster areas. Veterans often serve as volunteers and are prioritized for assistance in affected areas."
+      },
+      "description": "Samaritan's Purse deploys volunteer teams to help homeowners affected by natural disasters. Their crews help with debris removal, home repairs, and rebuilding. Veteran families in disaster areas are identified and prioritized for assistance."
+    }
+  ]
+}

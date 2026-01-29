@@ -15,18 +15,27 @@ from connectors import (
     ApprenticeshipConnector,
     CareerOneStopConnector,
     CertificationsConnector,
+    CohenVeteransNetworkConnector,
     CVSOConnector,
     DischargeUpgradeConnector,
+    FaithBasedConnector,
+    FeedingAmericaConnector,
     GIBillSchoolsConnector,
     GPDConnector,
+    HRSAHealthCentersConnector,
     HUDVASHConnector,
     LegalAidConnector,
     MentalHealthConnector,
     MilitaryOneSourceConnector,
+    RuralTelehealthConnector,
+    ScholarshipsConnector,
     SkillBridgeConnector,
     SSVFConnector,
     StandDownEventsConnector,
     StateVAConnector,
+    StateVAOfficesConnector,
+    SVAChaptersConnector,
+    TribalVeteransConnector,
     TwoOneOneConnector,
     UnitedWayConnector,
     VACommunityConnector,
@@ -62,6 +71,7 @@ CONNECTOR_REGISTRY: dict[str, type[BaseConnector]] = {
     "stand_down_events": StandDownEventsConnector,  # VA Stand Down outreach events
     "va_community_care": VACommunityConnector,  # VA Community Care Network providers
     "va_patient_advocate": VAPatientAdvocateConnector,  # VAMC Patient Advocates
+    "hrsa_health_centers": HRSAHealthCentersConnector,  # HRSA FQHCs (community health centers)
     # Tier 2: Established Nonprofits/Directories
     "legal_aid": LegalAidConnector,  # LSC-funded legal aid
     "discharge_upgrade": DischargeUpgradeConnector,  # Discharge upgrade legal resources
@@ -70,11 +80,19 @@ CONNECTOR_REGISTRY: dict[str, type[BaseConnector]] = {
     "veteran_employers": VeteranEmployersConnector,  # Veteran-friendly employers
     "veteran_emergency_assistance": VeteranEmergencyAssistanceConnector,  # Emergency financial assistance
     "veteran_food_assistance": VeteranFoodAssistanceConnector,  # Food pantries and distributions
+    "feeding_america": FeedingAmericaConnector,  # Feeding America food bank network (food)
     "mental_health": MentalHealthConnector,  # Mental health resources (crisis, therapy, peer support)
+    "cohen_veterans_network": CohenVeteransNetworkConnector,  # Cohen Veterans Network mental health clinics
     "military_onesource": MilitaryOneSourceConnector,  # DoD transition assistance programs
     "vso_post_locator": VSOPostLocatorConnector,  # VFW, American Legion, DAV posts
+    "sva_chapters": SVAChaptersConnector,  # Student Veterans of America chapters (education)
+    "scholarships": ScholarshipsConnector,  # Veteran scholarship programs (education)
+    "tribal_veterans": TribalVeteransConnector,  # IHS/VA Urban Indian Health Organizations
+    "faith_based": FaithBasedConnector,  # Faith-based veteran service organizations (Salvation Army, Catholic Charities, VOA, etc.)
+    "rural_telehealth": RuralTelehealthConnector,  # VA ATLAS, Connected Devices, FLEX grants, rural telehealth
     # Tier 3: State/County Level
-    "state_va": StateVAConnector,  # State VA agencies
+    "state_va": StateVAConnector,  # State VA agencies (basic info)
+    "state_va_offices": StateVAOfficesConnector,  # State VA offices (detailed with regional offices)
     "cvso": CVSOConnector,  # County Veteran Service Officers
     # Tier 4: Community Directories
     "two_one_one": TwoOneOneConnector,  # 211 national database
