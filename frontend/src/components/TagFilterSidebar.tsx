@@ -2,12 +2,11 @@
 
 import { useState, useEffect, useMemo } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { Checkbox } from '@/components/ui/checkbox';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { ChevronDown, X, Tag } from 'lucide-react';
+import { Check, ChevronDown, X, Tag } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import api, { type CategoryTags, type TagGroup } from '@/lib/api';
 
@@ -299,25 +298,36 @@ function TagGroupSection({
         {group.tags.map((tag) => {
           const isSelected = selectedTags.includes(tag.id);
           return (
-            <button
+            <div
               key={tag.id}
-              type="button"
+              role="button"
+              tabIndex={0}
               onClick={() => onTagToggle(tag.id)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  onTagToggle(tag.id);
+                }
+              }}
               className={cn(
-                'inline-flex items-center gap-1.5 rounded-md border px-2 py-1 text-xs transition-all',
+                'inline-flex items-center gap-1.5 rounded-md border px-2 py-1 text-xs transition-all cursor-pointer select-none',
                 isSelected
                   ? 'border-[hsl(var(--v4v-gold))] bg-[hsl(var(--v4v-gold)/0.1)] text-[hsl(var(--v4v-gold-dark))] font-medium'
                   : 'border-border bg-background hover:bg-muted/50 text-foreground'
               )}
             >
-              <Checkbox
-                checked={isSelected}
-                onCheckedChange={() => onTagToggle(tag.id)}
-                className="h-3 w-3 pointer-events-none"
-                tabIndex={-1}
-              />
+              <span
+                className={cn(
+                  'flex h-3 w-3 items-center justify-center rounded-sm border',
+                  isSelected
+                    ? 'border-[hsl(var(--v4v-gold))] bg-[hsl(var(--v4v-gold))]'
+                    : 'border-input bg-background'
+                )}
+              >
+                {isSelected && <Check className="h-2 w-2 text-white" />}
+              </span>
               {tag.name}
-            </button>
+            </div>
           );
         })}
       </div>
