@@ -1,0 +1,21 @@
+Organization/Program,URL,Data Format,Integration Priority,Coverage,Contact/Notes
+VA Food Security Office,https://www.nutrition.va.gov/food_insecurity.asp,Web portal + referrals,HIGH,National (VA Health System),Integrated into VA healthcare
+USDA Food & Nutrition Service,https://www.fns.usda.gov/military-veteran,State directories + web,HIGH,National (50 states + territories),SNAP outreach coordination
+Feeding America,https://www.feedingamerica.org/,Web directory + Data Commons,HIGH,200 food banks / 60000+ pantries,ZIP code lookup available
+Feeding America Data Commons,https://datacommons.feedingamerica.org/,REST API (contact for access),HIGH,National,Contact for data partnership
+Meals on Wheels America,https://www.mealsonwheelsamerica.org/,State franchise directory,HIGH,National (regional franchises),"Helping Homebound Heroes" program
+211.org / United Way,https://211.org/,Community resource database,HIGH,"National (50 states, varies)",Contact national office for data
+Feed Our Vets,https://feedourvets.org/,Web directory + events,HIGH,43 states + DC + PR,info@feedourvets.org
+Meals for Vets,https://mealsforvets.org/,Web application + directory,MEDIUM,Texas (regional),830-992-3375 / info@mealsforvets.org
+Disabled Veterans National Foundation,https://www.dvnf.org/veteran-food-assistance-program/,Grant program (web),MEDIUM,National,One-time emergency food assistance
+Soldiers' Angels,https://soldiersangels.org/get-support/food-assistance/,Event calendar,MEDIUM,8 major cities,Monthly distribution events
+Bob Woodruff Foundation - Food Help NYC,https://bobwoodrufffoundation.org/our-veterans-nyc/food-help-nyc/,Resource directory,LOW,New York City,ZIP code search
+Arizona Food Bank Network,https://azfoodbanks.org/military-hunger/,State directory,MEDIUM,Arizona,Military Hunger program
+Community Harvest Food Bank,https://www.communityharvest.org/about-us/programs/hope-for-heroes/,State directory,MEDIUM,Illinois,Hope for Heroes program
+Central Pennsylvania Food Bank,https://www.centralpafoodbank.org/,State directory,MEDIUM,Pennsylvania,MilitaryShare program
+Central Texas Food Bank,https://www.centraltexasfoodbank.org/,State directory,MEDIUM,Texas,Veteran partnership programs
+Rock and Wrap It Up,https://www.rockandwrapitup.org/feed-the-veterans,Partnership directory,LOW,National (nonprofit partners),Celebrity-driven initiative
+Blue Star Families,https://bluestarfam.org/food-insecurity-resources/,Aggregated resources,MEDIUM,National,Focuses on military families
+Military OneSource,https://www.militaryonesource.mil/resources/millife-guides/food-security-resources-and-support-programs/,Resource guide,MEDIUM,National (active duty + transition),DOD resource
+USDA FoodData Central,https://fdc.nal.usda.gov/,REST API,LOW,National (nutritional reference),Enrichment data for food programs
+VA Developer API Platform,https://developer.va.gov/,REST API (limited),MEDIUM,National,No food-specific endpoints yet - contact for roadmap
