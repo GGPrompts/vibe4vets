@@ -213,20 +213,18 @@ function CollapsibleSection({
 
 interface CategoryWithTagsProps {
   category: typeof CATEGORIES[number];
-  isChecked: boolean;
+  isSelected: boolean;
   isTagsExpanded: boolean;
   selectedTags: string[];
-  onCategoryToggle: () => void;
   onTagsToggle: () => void;
   onTagToggle: (tagId: string) => void;
 }
 
 function CategoryWithTags({
   category,
-  isChecked,
+  isSelected,
   isTagsExpanded,
   selectedTags,
-  onCategoryToggle,
   onTagsToggle,
   onTagToggle,
 }: CategoryWithTagsProps) {
@@ -237,7 +235,7 @@ function CategoryWithTags({
     queryKey: ['taxonomy', 'tags', category.value],
     queryFn: () => api.taxonomy.getCategoryTags(category.value),
     staleTime: 1000 * 60 * 60, // Cache for 1 hour
-    enabled: isChecked && isTagsExpanded,
+    enabled: isSelected && isTagsExpanded,
   });
 
   // Count selected tags in this category
@@ -252,34 +250,33 @@ function CategoryWithTags({
       <div
         className={cn(
           'flex min-h-[36px] items-center space-x-2 rounded-lg border-l-2 px-2 transition-all duration-200',
-          isChecked
+          isSelected
             ? categoryAccents[category.value]
             : 'border-l-transparent hover:bg-muted/50'
         )}
       >
-        <Checkbox
+        <RadioGroupItem
+          value={category.value}
           id={`category-${category.value}`}
-          checked={isChecked}
-          onCheckedChange={onCategoryToggle}
-          className={isChecked ? categoryColors[category.value] : ''}
+          className={isSelected ? categoryColors[category.value] : ''}
         />
         <Label
           htmlFor={`category-${category.value}`}
           className={cn(
             'flex flex-1 min-h-[36px] cursor-pointer items-center gap-2 text-sm',
-            isChecked ? categoryColors[category.value] : ''
+            isSelected ? categoryColors[category.value] : ''
           )}
         >
           <span className={cn(
             'flex h-5 w-5 items-center justify-center rounded-md transition-colors',
-            isChecked ? categoryIconBg[category.value] : 'bg-muted/50'
+            isSelected ? categoryIconBg[category.value] : 'bg-muted/50'
           )}>
             <Icon className="h-3 w-3" />
           </span>
           {category.label}
         </Label>
         {/* Tag expand button - only show when category is selected */}
-        {isChecked && (
+        {isSelected && (
           <button
             type="button"
             onClick={(e) => {
@@ -308,7 +305,7 @@ function CategoryWithTags({
       </div>
 
       {/* Expandable tag section */}
-      {isChecked && (
+      {isSelected && (
         <div
           className={cn(
             'grid transition-all duration-200 ease-in-out',
@@ -425,11 +422,19 @@ export function FiltersSidebar({
     (filters.zip ? 1 : 0) +
     (filters.tags?.length ?? 0);
 
-  const handleCategoryToggle = (category: string) => {
-    const newCategories = filters.categories.includes(category)
-      ? filters.categories.filter((c) => c !== category)
-      : [...filters.categories, category];
-    onFiltersChange({ ...filters, categories: newCategories });
+  // Single-select category handler - clears tags when category changes
+  const handleCategoryChange = (category: string) => {
+    // If selecting the same category, deselect it (allow "no category" state)
+    const currentCategory = filters.categories[0];
+    if (category === currentCategory) {
+      // Clear category and tags
+      onFiltersChange({ ...filters, categories: [], tags: [] });
+    } else {
+      // Change category and clear tags (tags are category-specific)
+      onFiltersChange({ ...filters, categories: [category], tags: [] });
+    }
+    // Collapse any expanded tag sections when category changes
+    setExpandedCategoryTags(new Set());
   };
 
   const handleStateToggle = (state: string) => {
@@ -526,37 +531,40 @@ export function FiltersSidebar({
 
       <Separator />
 
-      {/* Categories */}
+      {/* Categories - Single Select */}
       <CollapsibleSection
-        title="Categories"
+        title="Category"
         badge={
           filters.categories.length > 0 && (
             <Badge variant="outline" className="text-xs">
-              {filters.categories.length}
+              {CATEGORIES.find((c) => c.value === filters.categories[0])?.label}
             </Badge>
           )
         }
         isOpen={categoriesOpen}
         onToggle={() => setCategoriesOpen(!categoriesOpen)}
       >
-        <div className="space-y-1">
+        <RadioGroup
+          value={filters.categories[0] || ''}
+          onValueChange={handleCategoryChange}
+          className="space-y-1"
+        >
           {CATEGORIES.map((category) => {
-            const isChecked = filters.categories.includes(category.value);
+            const isSelected = filters.categories[0] === category.value;
             const isTagsExpanded = expandedCategoryTags.has(category.value);
             return (
               <CategoryWithTags
                 key={category.value}
                 category={category}
-                isChecked={isChecked}
+                isSelected={isSelected}
                 isTagsExpanded={isTagsExpanded}
                 selectedTags={filters.tags || []}
-                onCategoryToggle={() => handleCategoryToggle(category.value)}
                 onTagsToggle={() => toggleCategoryTags(category.value)}
                 onTagToggle={toggleTag}
               />
             );
           })}
-        </div>
+        </RadioGroup>
       </CollapsibleSection>
 
       <Separator />
@@ -946,15 +954,17 @@ export function FixedFiltersSidebar({
 
             <div className="my-2 h-px w-6 bg-border" />
 
-            {/* Category filter icons */}
+            {/* Category filter icons - single select */}
             {FILTER_ICONS.filter(item => item.key !== 'filter').map((item, index) => {
-              const isActive = filters.categories.includes(item.key);
+              const isActive = filters.categories[0] === item.key;
 
               const handleClick = () => {
-                const newCategories = isActive
-                  ? filters.categories.filter((c) => c !== item.key)
-                  : [...filters.categories, item.key];
-                onFiltersChange({ ...filters, categories: newCategories });
+                // Single-select: toggle off if clicking same category, otherwise switch
+                if (isActive) {
+                  onFiltersChange({ ...filters, categories: [], tags: [] });
+                } else {
+                  onFiltersChange({ ...filters, categories: [item.key], tags: [] });
+                }
               };
 
               return (
@@ -982,7 +992,7 @@ export function FixedFiltersSidebar({
                       </Button>
                     </TooltipTrigger>
                     <TooltipContent side="right">
-                      <p className="text-xs">{isActive ? 'Remove' : 'Add'} {item.label}</p>
+                      <p className="text-xs">{isActive ? 'Clear' : 'Filter by'} {item.label}</p>
                     </TooltipContent>
                   </Tooltip>
                 </motion.div>

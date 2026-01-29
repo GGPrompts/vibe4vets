@@ -126,12 +126,16 @@ function SearchResults() {
 
   // Initialize filters from URL params
   // Supports both formats: state=VA,NC (comma-separated) and state=VA&state=NC (multiple params)
+  // For categories: backward compatibility - if multiple categories in URL, use only the first one
   const [filters, setFilters] = useState<FilterState>(() => {
     // Get all 'category' params (handles both ?category=a&category=b and ?category=a,b)
+    // Single-select: only use the first category for backward compatibility
     const categoryParams = searchParams.getAll('category');
-    const categories = categoryParams.length > 0
+    const allCategories = categoryParams.length > 0
       ? categoryParams.flatMap((p) => p.split(','))
       : [];
+    // Use only first category (single-select)
+    const categories = allCategories.length > 0 ? [allCategories[0]] : [];
 
     // Get all 'state' params (handles both ?state=VA&state=NC and ?state=VA,NC)
     const stateParams = searchParams.getAll('state');
@@ -219,9 +223,11 @@ function SearchResults() {
 
   // Filter chip handlers
   const handleRemoveCategory = (category: string) => {
+    // When removing category, also clear tags since they're category-specific
     const newFilters = {
       ...filters,
       categories: filters.categories.filter((c) => c !== category),
+      tags: [],
     };
     handleFiltersChange(newFilters);
   };
