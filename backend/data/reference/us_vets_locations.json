@@ -1,0 +1,290 @@
+{
+  "source": "U.S.VETS (United States Veterans Initiative)",
+  "source_url": "https://usvets.org/",
+  "national_phone": "(877) 548-7838",
+  "description": "U.S.VETS is the nation's largest nonprofit provider of comprehensive services to homeless and at-risk veterans, following a Housing First model with emergency, transitional, and permanent supportive housing.",
+  "last_updated": "2026-01-29",
+  "locations": [
+    {
+      "id": "usvets-inglewood",
+      "name": "U.S.VETS Inglewood",
+      "city": "Inglewood",
+      "state": "CA",
+      "address": "733 South Hindry Avenue",
+      "zip_code": "90301",
+      "phone": "(310) 348-7600",
+      "intake_phone": "(310) 348-8250",
+      "rental_assistance_phone": "(310) 744-6541",
+      "hours": "24 hours, 7 days a week",
+      "founded": 1993,
+      "description": "As the inaugural U.S.VETS site, opened in 1993 under founder Judge Harry Pregerson, a WWII veteran. Provides veterans transitional and long-term housing with supportive services including job training, mental health counseling, and meals.",
+      "services": [
+        "Crisis Housing (emergency shelter)",
+        "Bridge Housing",
+        "Transitional Housing",
+        "Permanent Supportive Housing",
+        "Supportive Services for Veteran Families (SSVF)",
+        "Job training and employment assistance",
+        "Mental health counseling",
+        "Meals"
+      ],
+      "housing_types": ["emergency-shelter", "bridge-housing", "transitional-housing", "permanent-supportive-housing"]
+    },
+    {
+      "id": "usvets-long-beach",
+      "name": "U.S.VETS Long Beach",
+      "city": "Long Beach",
+      "state": "CA",
+      "address": "2001 River Avenue",
+      "zip_code": "90810",
+      "phone": "(562) 200-7300",
+      "hours": "Monday - Friday: 8:00 AM - 6:00 PM",
+      "description": "Situated at the Villages at Cabrillo on 27 acres of the former Cabrillo/Savannah Naval housing, provides supportive services for more than 800 veterans daily. Home to the ADVANCE Women's Program, the nation's largest initiative for women veterans.",
+      "staff_contacts": [
+        {"name": "Veronica Hood", "title": "Outreach Coordinator", "phone": "(562) 676-1078", "email": "vhood@usvets.org"},
+        {"name": "Kayleen Kuykendall", "title": "SSVF Coordinator", "phone": "(562) 676-2356", "email": "kkuykendall@usvets.org"},
+        {"name": "Cherrie Lechuga", "title": "Career Services Program Manager", "phone": "(562) 754-1393", "email": "clechuga@usvets.org"}
+      ],
+      "services": [
+        "Transitional Housing (male veterans)",
+        "Transitional Housing (female veterans)",
+        "Transitional Housing (female veterans with children)",
+        "Non-veteran women's housing",
+        "Permanent Housing",
+        "Supportive Services for Veteran Families (SSVF)",
+        "Workforce development",
+        "ADVANCE Women's Program"
+      ],
+      "housing_types": ["transitional-housing", "permanent-supportive-housing"],
+      "special_programs": ["women-veterans", "veterans-with-children"]
+    },
+    {
+      "id": "usvets-inland-empire",
+      "name": "U.S.VETS Inland Empire - March Veterans Village",
+      "city": "March Air Force Base",
+      "state": "CA",
+      "address": "15305 Sixth Street",
+      "zip_code": "92518",
+      "phone": "(951) 877-3993",
+      "description": "For 22 years has provided housing and critical services for veterans at March Veterans Village on March Air Reserve Base and throughout Riverside and San Bernardino counties. Supports more than 400 veterans and families with emergency, transitional, and permanent housing.",
+      "services": [
+        "Emergency Housing",
+        "Transitional Housing",
+        "Permanent Supportive Housing",
+        "Mental health care",
+        "Career services",
+        "Case management",
+        "Aftercare services",
+        "Prevention programs",
+        "Aging in place services"
+      ],
+      "housing_types": ["emergency-shelter", "transitional-housing", "permanent-supportive-housing"],
+      "capacity": {
+        "phase_1": "138 permanent supportive housing units (opened 2018)",
+        "phase_2": "60 veteran homes in three-story complex (opened 2021)",
+        "phase_3": "44 comfort homes + 24 multi-family units (in development)"
+      }
+    },
+    {
+      "id": "usvets-phoenix",
+      "name": "U.S.VETS Phoenix",
+      "city": "Phoenix",
+      "state": "AZ",
+      "address": "3507 North Central Avenue, Suite 200",
+      "zip_code": "85012",
+      "phone": "(602) 717-6682",
+      "email": "ops_phx@usvets.org",
+      "hours": "24 hours, 7 days a week",
+      "founded": 2001,
+      "description": "Has served more than 10,000 veterans since opening in 2001, providing housing, mental health services, career development and case management. Expanding services at new M.D. Hawkins Veterans Center. Supports more than 300 veterans experiencing homelessness daily.",
+      "services": [
+        "Emergency Shelter",
+        "Residential Employment Program",
+        "Long-term Transitional Housing",
+        "Residential Substance Abuse Treatment",
+        "Permanent Housing (disabled veterans)",
+        "Mental health services",
+        "Career development",
+        "Case management"
+      ],
+      "housing_types": ["emergency-shelter", "transitional-housing", "permanent-supportive-housing"]
+    },
+    {
+      "id": "usvets-prescott",
+      "name": "U.S.VETS Prescott",
+      "city": "Prescott",
+      "state": "AZ",
+      "address": "1040 Whipple Street, Suite 400",
+      "zip_code": "86305",
+      "phone": "(928) 308-4336",
+      "hours": "Monday - Friday: 9:00 AM - 5:00 PM",
+      "staff_contacts": [
+        {"name": "Justin Price", "title": "Housing Contact", "email": "jprice@usvet.org"}
+      ],
+      "description": "Provides temporary and permanent housing for homeless veterans. Liberty Pointe adds 74 housing units bringing all veteran services under one roof, housing 132 veterans total. Fort Whipple, breaking ground in 2025, will add 103 new homes.",
+      "services": [
+        "Emergency Housing (65 beds)",
+        "Transitional Housing",
+        "Long-Term Supportive Housing Program (LTSHP)",
+        "Permanent Housing at Liberty Pointe (7 units)",
+        "Transition In Place (TIP) program",
+        "Employment assistance",
+        "Transportation",
+        "Counseling",
+        "Case management",
+        "Workforce development",
+        "Full-service career center",
+        "Free mental health services",
+        "Substance use treatment"
+      ],
+      "housing_types": ["emergency-shelter", "transitional-housing", "permanent-supportive-housing"],
+      "capacity": {
+        "temporary_beds": 65,
+        "permanent_units": 7,
+        "liberty_pointe": 74,
+        "fort_whipple_planned": 103
+      }
+    },
+    {
+      "id": "usvets-las-vegas",
+      "name": "U.S.VETS Las Vegas",
+      "city": "Las Vegas",
+      "state": "NV",
+      "address": "525 East Bonanza Road",
+      "zip_code": "89101",
+      "phone": "(702) 366-0456",
+      "founded": 2001,
+      "description": "Operates three residential facilities and a community support office with 330 beds of transitional and permanent housing. More than 400 veteran households receive rapid re-housing and homeless prevention services annually.",
+      "staff_contacts": [
+        {"name": "Louie Borrayo", "title": "Outreach Coordinator (USAF Retired)", "phone": "(702) 947-4446"},
+        {"name": "Michael Thwing", "title": "SSVF Program Coordinator (USN Retired)", "phone": "(702) 947-4471"},
+        {"name": "Andrea Love-Paige", "title": "Workforce Development Coordinator", "phone": "(702) 802-8819"}
+      ],
+      "services": [
+        "Transitional Housing",
+        "Permanent Housing",
+        "Supportive Housing Program (SHP)",
+        "Supportive Services for Veteran Families (SSVF)",
+        "Rapid re-housing",
+        "Homeless prevention services",
+        "Workforce program"
+      ],
+      "housing_types": ["transitional-housing", "permanent-supportive-housing"],
+      "capacity": {
+        "total_beds": 330
+      }
+    },
+    {
+      "id": "usvets-houston",
+      "name": "U.S.VETS Houston - Veterans Village",
+      "city": "Houston",
+      "state": "TX",
+      "address": "18818 Tomball Parkway",
+      "zip_code": "77070",
+      "phone": "(832) 203-1626",
+      "founded": 1997,
+      "description": "Since 1997 has served thousands of veterans with transitional, emergency and permanent supportive housing. Veterans Village in Willowbrook area opened in 2023 after full-scale renovation of former hotel, now equipped to house 130 veterans.",
+      "additional_locations": [
+        {"name": "Service Center", "note": "Located on Griggs Road, right outside the VA Medical Center"}
+      ],
+      "services": [
+        "Transitional Housing",
+        "Emergency Housing",
+        "Permanent Supportive Housing",
+        "Mental health and substance use treatment",
+        "Supportive Services for Veteran Families (SSVF)",
+        "Case management",
+        "Career services"
+      ],
+      "housing_types": ["emergency-shelter", "transitional-housing", "permanent-supportive-housing"],
+      "capacity": {
+        "veterans_village": 130
+      },
+      "eligibility": {
+        "minimum_discharge": "None",
+        "disability_required": false,
+        "serves_families": true
+      }
+    },
+    {
+      "id": "usvets-washington-dc",
+      "name": "U.S.VETS Washington D.C.",
+      "city": "Washington",
+      "state": "DC",
+      "address": "1016 11th Street NW",
+      "zip_code": "20001",
+      "phone": "(202) 842-9433",
+      "founded": 2015,
+      "description": "Provides permanent housing in a facility renovated in 2015 with supportive services. Recognized with the 2015 Peter Dougherty Award for Excellence in Supportive Housing for Homeless Veterans from the National Coalition for Homeless Veterans.",
+      "services": [
+        "Permanent Housing",
+        "Employment assistance",
+        "Career counseling",
+        "Resume development",
+        "Skills training",
+        "Employer networking",
+        "Mental health and substance use counseling",
+        "Suicide prevention (Staff Sergeant Gordon Fox Grant recipient)",
+        "Crisis intervention",
+        "Individualized support plans"
+      ],
+      "housing_types": ["permanent-supportive-housing"],
+      "awards": ["2015 Peter Dougherty Award for Excellence in Supportive Housing"]
+    },
+    {
+      "id": "usvets-waianae",
+      "name": "U.S.VETS Wai'anae",
+      "city": "Waianae",
+      "state": "HI",
+      "address": "85-638 Farrington Highway",
+      "zip_code": "96792",
+      "phone": "(808) 664-1400",
+      "intake_phones": ["(808) 208-4456", "(808) 462-0280"],
+      "hours": "Monday - Friday: 8:00 AM - 5:00 PM HST",
+      "description": "Provides low-barrier emergency shelter and housing services. Home to Kulia i Ka Nu'u kauhale (tiny home village) providing emergency shelter, food, health care services, case management, workforce integration, and counseling support.",
+      "services": [
+        "Emergency Housing (low-barrier)",
+        "Transitional Housing",
+        "Kulia i Ka Nu'u kauhale (tiny homes)",
+        "Mental health programs",
+        "Career programs",
+        "Wraparound services",
+        "Food assistance",
+        "Health care services",
+        "Case management",
+        "Workforce integration"
+      ],
+      "housing_types": ["emergency-shelter", "transitional-housing"],
+      "housing_fees": {
+        "large_room_12x12": "$180/month",
+        "medium_room_10x10": "$150/month",
+        "small_room_8x10": "$100/month"
+      }
+    },
+    {
+      "id": "usvets-barbers-point",
+      "name": "U.S.VETS Barber's Point",
+      "city": "Kapolei",
+      "state": "HI",
+      "address": "91-1039 Shangrila Street, Building 37",
+      "zip_code": "96707",
+      "phone": "(808) 682-9000",
+      "alternate_phone": "(808) 630-0771",
+      "email": "tsasaki@usvetsinc.org",
+      "hours": "24 hours, 7 days a week",
+      "description": "Situated in Kalaeloa on O'ahu, serves nearly 1,000 homeless and at-risk veterans throughout Hawaii annually. Home to Veterans in Progress signature work re-entry program and Kama'oku kauhale with 36 individual tiny homes.",
+      "services": [
+        "Transitional Housing",
+        "Long-term Housing",
+        "Permanent Housing",
+        "Veterans in Progress (work re-entry program)",
+        "Supportive Services for Veteran Families (SSVF)",
+        "Career Center",
+        "Career counseling",
+        "Kama'oku kauhale (36 tiny homes)"
+      ],
+      "housing_types": ["transitional-housing", "permanent-supportive-housing"],
+      "special_programs": ["veterans-in-progress", "kamaoku-kauhale"]
+    }
+  ]
+}

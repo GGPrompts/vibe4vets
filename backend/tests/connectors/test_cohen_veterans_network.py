@@ -165,6 +165,8 @@ class TestCohenVeteransNetworkConnector:
             "family-support",
             "no-va-enrollment",
             "cohen-veterans-network",
+            "telehealth",
+            "cohen-clinic",
         ]
 
         for resource in resources:

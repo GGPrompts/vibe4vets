@@ -401,7 +401,7 @@ class CohenVeteransNetworkConnector(BaseConnector):
         # Cost emphasis
         parts.append(
             "All services are completely free, regardless of discharge status. "
-            "No VA enrollment or referral required."
+            "No VA enrollment or referral required. Both in-person and telehealth appointments are available."
         )
 
         return " ".join(parts)
@@ -458,6 +458,8 @@ class CohenVeteransNetworkConnector(BaseConnector):
             "couples-therapy",
             "no-va-enrollment",
             "cohen-veterans-network",
+            "telehealth",
+            "cohen-clinic",
         ]
 
         # Add state tags
