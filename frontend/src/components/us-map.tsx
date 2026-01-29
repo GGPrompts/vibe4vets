@@ -73,6 +73,8 @@ interface USMapProps {
   selectedStates?: string[];
   /** Toggle handler for multi-select mode */
   onToggleState?: (stateAbbr: string) => void;
+  /** When true, only allows single state selection (used on landing page) */
+  singleSelect?: boolean;
 }
 
 interface GeoType {
@@ -161,7 +163,8 @@ function USMapComponent({
   className = '',
   onStateSelect,
   selectedStates = [],
-  onToggleState
+  onToggleState,
+  singleSelect = false
 }: USMapProps) {
   const router = useRouter();
   const [hoveredState, setHoveredState] = useState<TooltipState | null>(null);
@@ -223,8 +226,8 @@ function USMapComponent({
     <div className={`relative ${className}`}>
       {/* Mobile: Dropdown Select with Selected Chips */}
       <div className="md:hidden space-y-3">
-        {/* Selected states as removable chips */}
-        {selectedStates.length > 0 && (
+        {/* Selected states as removable chips - only show in multi-select mode */}
+        {!singleSelect && selectedStates.length > 0 && (
           <div className="flex flex-wrap gap-2">
             {selectedStates.map((abbr) => (
               <button
@@ -253,11 +256,15 @@ function USMapComponent({
           </div>
         )}
 
-        {/* Dropdown to add states */}
-        <Select key={selectedStates.length} onValueChange={handleDropdownChange}>
+        {/* Dropdown to select state */}
+        <Select key={selectedStates.length} onValueChange={handleDropdownChange} value={singleSelect && selectedStates.length > 0 ? selectedStates[0] : undefined}>
           <SelectTrigger className="w-full border-[hsl(var(--v4v-navy)/0.3)] bg-white [&_[data-slot=select-value]]:text-gray-600">
             <SelectValue
-              placeholder={selectedStates.length > 0 ? "Add another state" : "Select a state to explore resources"}
+              placeholder={
+                singleSelect
+                  ? (selectedStates.length > 0 ? STATE_NAMES[selectedStates[0]] || selectedStates[0] : "Select a state")
+                  : (selectedStates.length > 0 ? "Add another state" : "Select a state to explore resources")
+              }
             />
           </SelectTrigger>
           <SelectContent className="max-h-[300px]">
