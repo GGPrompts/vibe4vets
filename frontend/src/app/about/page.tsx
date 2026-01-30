@@ -14,10 +14,51 @@ import {
   ChevronDown,
   Search,
   ArrowRight,
+  X,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { BackToTop } from '@/components/BackToTop';
 import { AIStatsWidget } from '@/components/AIStatsWidget';
+
+// Lightbox component for viewing screenshots
+function ImageLightbox({
+  src,
+  alt,
+  isOpen,
+  onClose
+}: {
+  src: string;
+  alt: string;
+  isOpen: boolean;
+  onClose: () => void;
+}) {
+  if (!isOpen) return null;
+
+  return (
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4"
+      onClick={onClose}
+    >
+      <button
+        onClick={onClose}
+        className="absolute top-4 right-4 p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+        aria-label="Close"
+      >
+        <X className="h-6 w-6 text-white" />
+      </button>
+      <div className="relative max-w-[90vw] max-h-[90vh]" onClick={(e) => e.stopPropagation()}>
+        <Image
+          src={src}
+          alt={alt}
+          width={1920}
+          height={1080}
+          className="object-contain max-h-[90vh] w-auto rounded-lg"
+        />
+        <p className="text-white/80 text-center mt-4 text-sm">{alt}</p>
+      </div>
+    </div>
+  );
+}
 
 interface ExpandableSectionProps {
   title: string;
@@ -30,7 +71,7 @@ function ExpandableSection({ title, icon, children, defaultOpen = false }: Expan
   const [isOpen, setIsOpen] = useState(defaultOpen);
 
   return (
-    <div className="rounded-2xl border border-border/50 bg-card/80 backdrop-blur-sm overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300">
+    <div className="rounded-2xl border-2 border-border bg-white dark:bg-zinc-900 shadow-md hover:shadow-lg transition-shadow duration-300">
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="flex w-full items-center justify-between p-6 text-left"
@@ -120,22 +161,36 @@ const dataSources = [
   },
 ];
 
+const screenshots = [
+  {
+    src: '/about/ParallelAgents.png',
+    alt: '10 AI agents running in parallel, each building a different data connector',
+    title: 'Parallel Agent Grid',
+    description: '10 AI agents building data connectors simultaneously—Vet Centers, GPD Shelters, SkillBridge, and more.',
+  },
+  {
+    src: '/about/OpusAndHaikus.png',
+    alt: '27 AI agents with a mix of Opus and Haiku models working on different tasks',
+    title: 'Opus + Haiku Swarm',
+    description: '27 agents running together—Opus for complex tasks, Haiku for research and data extraction.',
+  },
+  {
+    src: '/about/HaikuResearchSwarm.png',
+    alt: 'Research task queue showing parallel Haiku agents exploring different data sources',
+    title: 'Research Swarm',
+    description: 'Haiku agents researching Veteran resources across dozens of data sources in parallel.',
+  },
+];
+
 export default function AboutPage() {
+  const [lightboxImage, setLightboxImage] = useState<typeof screenshots[0] | null>(null);
+
   return (
     <main className="min-h-screen pt-16">
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-gradient-to-b from-[hsl(var(--v4v-bg-base))] via-[hsl(var(--v4v-bg-elevated))] to-[hsl(var(--v4v-bg-base))]">
         {/* Decorative background elements */}
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute -right-20 -top-20 h-80 w-80 opacity-[0.03]">
-            <Image
-              src="/brand/vibe4vets-icon-square.png"
-              alt=""
-              fill
-              className="object-contain"
-              aria-hidden="true"
-            />
-          </div>
           <div className="absolute left-1/4 top-1/3 h-64 w-64 rounded-full bg-[hsl(var(--v4v-gold)/0.08)] blur-3xl" />
           <div className="absolute right-1/3 bottom-0 h-48 w-48 rounded-full bg-[hsl(var(--v4v-employment)/0.06)] blur-3xl" />
         </div>
@@ -144,9 +199,12 @@ export default function AboutPage() {
           <div className="text-center">
             <h1 className="animate-fade-in-up font-display text-4xl font-semibold text-foreground sm:text-5xl" style={{ opacity: 0 }}>
               About{' '}
-              <span className="text-[hsl(var(--v4v-gold-dark))]">Vibe4Vets</span>
+              <span className="text-[hsl(var(--v4v-gold-dark))]">VRD.ai</span>
             </h1>
-            <p className="animate-fade-in-up delay-100 mt-6 max-w-2xl mx-auto text-lg text-muted-foreground sm:text-xl" style={{ opacity: 0 }}>
+            <p className="animate-fade-in-up delay-100 mt-4 text-sm font-medium uppercase tracking-widest text-[hsl(var(--v4v-gold-dark))]" style={{ opacity: 0 }}>
+              Veteran Resource Directory
+            </p>
+            <p className="animate-fade-in-up delay-200 mt-6 max-w-2xl mx-auto text-lg text-muted-foreground sm:text-xl" style={{ opacity: 0 }}>
               We believe Veterans deserve a transparent, easy-to-use directory of resources.
               Here&apos;s how we build and maintain it.
             </p>
@@ -167,7 +225,7 @@ export default function AboutPage() {
             <div className="h-px w-10 bg-gradient-to-l from-transparent to-[hsl(var(--v4v-gold)/0.5)]" />
           </div>
           <p className="text-xl leading-relaxed text-white/90 sm:text-2xl">
-            Vibe4Vets aggregates Veteran resources from VA.gov, the Department of Labor,
+            VRD.ai aggregates Veteran resources from VA.gov, the Department of Labor,
             nonprofits, and community organizations into one searchable directory.
             We&apos;re transparent about using web scraping and AI to help Veterans find
             resources that go <span className="text-[hsl(var(--v4v-gold))]">beyond VA.gov</span>.
@@ -195,6 +253,46 @@ export default function AboutPage() {
             </p>
           </div>
           <AIStatsWidget />
+
+          {/* AI Development Screenshots */}
+          <div className="mt-12">
+            <h3 className="font-display text-xl font-medium text-foreground text-center mb-6">
+              Built by AI Agents Working in Parallel
+            </h3>
+            <p className="text-muted-foreground text-center mb-8 max-w-2xl mx-auto">
+              VRD.ai was built using Claude AI agents (Opus and Haiku models) working simultaneously
+              on different parts of the codebase. Here&apos;s what that looks like:
+            </p>
+            <div className="grid gap-6 md:grid-cols-3">
+              {screenshots.map((screenshot) => (
+                <button
+                  key={screenshot.src}
+                  onClick={() => setLightboxImage(screenshot)}
+                  className="rounded-xl border-2 border-border bg-white dark:bg-zinc-900 overflow-hidden shadow-md hover:shadow-xl hover:border-[hsl(var(--v4v-gold))] transition-all duration-300 text-left group"
+                >
+                  <div className="aspect-video relative">
+                    <Image
+                      src={screenshot.src}
+                      alt={screenshot.alt}
+                      fill
+                      className="object-cover object-top group-hover:scale-105 transition-transform duration-300"
+                    />
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors flex items-center justify-center">
+                      <span className="opacity-0 group-hover:opacity-100 transition-opacity bg-black/70 text-white text-xs px-3 py-1.5 rounded-full">
+                        Click to enlarge
+                      </span>
+                    </div>
+                  </div>
+                  <div className="p-4">
+                    <h4 className="font-medium text-foreground text-sm mb-1">{screenshot.title}</h4>
+                    <p className="text-xs text-muted-foreground">
+                      {screenshot.description}
+                    </p>
+                  </div>
+                </button>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
@@ -215,7 +313,7 @@ export default function AboutPage() {
               {dataSources.map((source) => (
                 <div
                   key={source.name}
-                  className="rounded-xl border border-border/50 bg-[hsl(var(--v4v-bg-elevated))] p-4"
+                  className="rounded-xl border border-border bg-muted/50 p-4"
                 >
                   <div className="flex items-center justify-between mb-1">
                     <span className="font-medium text-foreground">{source.name}</span>
@@ -239,7 +337,7 @@ export default function AboutPage() {
               <strong className="text-foreground"> reliability</strong> (based on the source tier) and{' '}
               <strong className="text-foreground">freshness</strong> (how recently the resource was verified).
             </p>
-            <div className="rounded-xl border border-border/50 bg-[hsl(var(--v4v-bg-elevated))] p-6">
+            <div className="rounded-xl border border-border bg-muted/50 p-6">
               <div className="flex items-center gap-3 mb-4">
                 <div className="font-mono text-sm text-muted-foreground bg-muted/50 px-3 py-1.5 rounded-lg">
                   Trust Score = Reliability × Freshness
@@ -271,7 +369,7 @@ export default function AboutPage() {
               {sourceTiers.map((tier) => (
                 <div
                   key={tier.tier}
-                  className="flex items-center gap-4 rounded-xl border border-border/50 bg-[hsl(var(--v4v-bg-elevated))] p-4"
+                  className="flex items-center gap-4 rounded-xl border border-border bg-muted/50 p-4"
                 >
                   <div className="flex items-center gap-3 min-w-[80px]">
                     <div className={`h-3 w-3 rounded-full ${tier.color}`} />
@@ -299,25 +397,25 @@ export default function AboutPage() {
               with automated refresh schedules.
             </p>
             <div className="grid gap-4 sm:grid-cols-2">
-              <div className="rounded-xl border border-border/50 bg-[hsl(var(--v4v-bg-elevated))] p-4">
+              <div className="rounded-xl border border-border bg-muted/50 p-4">
                 <h4 className="font-medium text-foreground mb-2">Automated Refresh</h4>
                 <p className="text-sm text-muted-foreground">
                   Our connectors run on scheduled jobs to pull the latest data from sources automatically.
                 </p>
               </div>
-              <div className="rounded-xl border border-border/50 bg-[hsl(var(--v4v-bg-elevated))] p-4">
+              <div className="rounded-xl border border-border bg-muted/50 p-4">
                 <h4 className="font-medium text-foreground mb-2">Freshness Decay</h4>
                 <p className="text-sm text-muted-foreground">
                   Resources that haven&apos;t been verified recently have their trust scores gradually reduced.
                 </p>
               </div>
-              <div className="rounded-xl border border-border/50 bg-[hsl(var(--v4v-bg-elevated))] p-4">
+              <div className="rounded-xl border border-border bg-muted/50 p-4">
                 <h4 className="font-medium text-foreground mb-2">Change Detection</h4>
                 <p className="text-sm text-muted-foreground">
                   When source data changes, we detect it and update our records with full audit trail.
                 </p>
               </div>
-              <div className="rounded-xl border border-border/50 bg-[hsl(var(--v4v-bg-elevated))] p-4">
+              <div className="rounded-xl border border-border bg-muted/50 p-4">
                 <h4 className="font-medium text-foreground mb-2">Source Health</h4>
                 <p className="text-sm text-muted-foreground">
                   We monitor all data sources for availability and flag any that become unreachable.
@@ -335,7 +433,7 @@ export default function AboutPage() {
               Not everything can be automated. Certain changes require human verification
               to ensure accuracy.
             </p>
-            <div className="rounded-xl border border-border/50 bg-[hsl(var(--v4v-bg-elevated))] p-6">
+            <div className="rounded-xl border border-border bg-muted/50 p-6">
               <h4 className="font-medium text-foreground mb-3">Changes that trigger review:</h4>
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li className="flex items-center gap-2">
@@ -372,21 +470,21 @@ export default function AboutPage() {
               Here&apos;s how:
             </p>
             <div className="space-y-4">
-              <div className="rounded-xl border border-border/50 bg-[hsl(var(--v4v-bg-elevated))] p-4">
+              <div className="rounded-xl border border-border bg-muted/50 p-4">
                 <h4 className="font-medium text-foreground mb-2">Resource Extraction</h4>
                 <p className="text-sm text-muted-foreground">
                   AI helps parse unstructured web content to extract resource details like
                   contact information, eligibility criteria, and service descriptions.
                 </p>
               </div>
-              <div className="rounded-xl border border-border/50 bg-[hsl(var(--v4v-bg-elevated))] p-4">
+              <div className="rounded-xl border border-border bg-muted/50 p-4">
                 <h4 className="font-medium text-foreground mb-2">Search Enhancement</h4>
                 <p className="text-sm text-muted-foreground">
                   Semantic search understands the intent behind your queries, not just keywords.
                   Ask natural questions like &quot;housing help for homeless Veterans in Texas.&quot;
                 </p>
               </div>
-              <div className="rounded-xl border border-border/50 bg-[hsl(var(--v4v-bg-elevated))] p-4">
+              <div className="rounded-xl border border-border bg-muted/50 p-4">
                 <h4 className="font-medium text-foreground mb-2">Match Explanations</h4>
                 <p className="text-sm text-muted-foreground">
                   Search results explain why each resource matched your query, so you understand
@@ -402,7 +500,7 @@ export default function AboutPage() {
             icon={<Lock className="h-6 w-6 text-[hsl(var(--v4v-gold-dark))]" />}
           >
             <p className="text-muted-foreground mb-6">
-              Your privacy matters. We&apos;ve designed Vibe4Vets with a strict no-PII policy.
+              Your privacy matters. We&apos;ve designed VRD.ai with a strict no-PII policy.
             </p>
             <div className="rounded-xl border border-green-500/20 bg-green-500/5 p-6">
               <h4 className="font-medium text-foreground mb-4 flex items-center gap-2">
@@ -471,7 +569,19 @@ export default function AboutPage() {
 
         <div className="relative mx-auto max-w-6xl px-6">
           <div className="flex flex-col items-center text-center">
-            <h2 className="font-display text-2xl font-semibold text-[hsl(var(--v4v-gold))]">Vibe4Vets</h2>
+            {/* Logo */}
+            <Link href="/" className="group">
+              <Image
+                src="/vrd-logo.png"
+                alt="VRD.ai - Veteran Resource Directory"
+                width={400}
+                height={150}
+                className="h-24 sm:h-28 w-auto transition-all duration-300 group-hover:scale-105"
+              />
+            </Link>
+            <p className="mt-2 text-sm text-[hsl(var(--v4v-gold))] font-medium">
+              Veteran Resource Directory
+            </p>
 
             <p className="mt-4 max-w-lg text-base leading-relaxed text-white/70">
               Built with transparency. We aggregate Veteran resources from VA.gov,
@@ -497,7 +607,7 @@ export default function AboutPage() {
 
             <div className="mt-8 flex items-center gap-4 text-white/20">
               <div className="h-px w-16 bg-gradient-to-r from-transparent to-white/20" />
-              <span className="text-lg text-[hsl(var(--v4v-gold)/0.5)]">★</span>
+              <span className="text-lg text-[hsl(var(--v4v-gold)/0.5)]">*</span>
               <div className="h-px w-16 bg-gradient-to-l from-transparent to-white/20" />
             </div>
 
@@ -509,6 +619,16 @@ export default function AboutPage() {
       </footer>
 
       <BackToTop />
+
+      {/* Screenshot Lightbox */}
+      {lightboxImage && (
+        <ImageLightbox
+          src={lightboxImage.src}
+          alt={lightboxImage.alt}
+          isOpen={!!lightboxImage}
+          onClose={() => setLightboxImage(null)}
+        />
+      )}
     </main>
   );
 }

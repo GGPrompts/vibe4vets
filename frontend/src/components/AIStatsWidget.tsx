@@ -166,10 +166,10 @@ export function AIStatsWidget() {
 
           <div className="flex-1 min-w-0">
             <h3 className="font-display text-xl font-medium text-foreground mb-1">
-              Meet Vibe, Your AI Assistant
+              AI-Powered Resource Discovery
             </h3>
             <p className="text-sm text-muted-foreground">
-              I help discover and verify Veteran resources 24/7. Here&apos;s what I&apos;ve been up to:
+              Our AI agents work around the clock to discover and verify Veteran resources.
             </p>
           </div>
         </div>

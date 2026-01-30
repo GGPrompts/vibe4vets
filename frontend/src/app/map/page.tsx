@@ -3,7 +3,7 @@ import { MapPin } from 'lucide-react';
 import { USMap } from '@/components/us-map';
 
 export const metadata = {
-  title: 'Find Resources by State | Vibe4Vets',
+  title: 'Find Resources by State | VRD.ai',
   description:
     'Explore Veteran resources across the United States. Click on a state to discover employment, training, housing, and legal resources available in your area.',
 };

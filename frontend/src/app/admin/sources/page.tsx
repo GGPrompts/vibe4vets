@@ -135,22 +135,24 @@ function SourceDetailDialog({
             {source.name}
             <StatusBadge status={source.status} />
           </DialogTitle>
-          <DialogDescription>
-            <div className="flex items-center gap-2">
-              {source.url}
-              <a
-                href={source.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-primary hover:text-primary/80"
-                aria-label={`Visit ${source.name} website`}
-              >
-                <ExternalLink className="h-3 w-3" />
-              </a>
+          <DialogDescription asChild>
+            <div>
+              <span className="flex items-center gap-2">
+                {source.url}
+                <a
+                  href={source.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary hover:text-primary/80"
+                  aria-label={`Visit ${source.name} website`}
+                >
+                  <ExternalLink className="h-3 w-3" />
+                </a>
+              </span>
+              <span className="sr-only">
+                Source status: {source.status}. Resources: {source.resource_count}. Success rate: {Math.round(source.success_rate * 100)}%
+              </span>
             </div>
-            <p className="sr-only">
-              Source status: {source.status}. Resources: {source.resource_count}. Success rate: {Math.round(source.success_rate * 100)}%
-            </p>
           </DialogDescription>
         </DialogHeader>
 
