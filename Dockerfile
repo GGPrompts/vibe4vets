@@ -10,6 +10,7 @@ RUN apt-get update && apt-get install -y \
 
 # Copy backend code
 COPY backend/pyproject.toml .
+COPY backend/README.md .
 COPY backend/app ./app
 COPY backend/alembic.ini .
 COPY backend/alembic ./alembic
