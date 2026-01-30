@@ -24,6 +24,7 @@ import {
 } from '@/components/ui/sheet';
 import { ResourceDetailModal } from '@/components/resource-detail-modal';
 import { VirtualizedResourceGrid } from '@/components/virtualized-resource-grid';
+import { SectionedResultsGrid } from '@/components/sectioned-results-grid';
 import { ProgramCard } from '@/components/ProgramCard';
 import { ResourceCard } from '@/components/resource-card';
 import {
@@ -767,8 +768,18 @@ function SearchResults() {
             </div>
           ) : hasResults ? (
             <>
-              {/* Grouped View (when program groups exist) or Virtualized Grid */}
-              {hasProgramGroups ? (
+              {/* Sectioned View for nearby mode (location-based search) */}
+              {isNearbyMode ? (
+                <SectionedResultsGrid
+                  resources={resources}
+                  explanationsMap={explanationsMap}
+                  distanceMap={distanceMap}
+                  onResourceClick={openResourceModal}
+                  enableLayoutId={true}
+                  locationLabel={filters.zip ? `within ${filters.radius || 25} mi` : undefined}
+                />
+              ) : hasProgramGroups ? (
+                /* Grouped View (when program groups exist) */
                 <div className="space-y-4">
                   {groupedItems.map((item) => {
                     if (item.type === 'program') {
@@ -778,7 +789,7 @@ function SearchResults() {
                           program={item.program}
                           resources={item.resources}
                           explanationsMap={explanationsMap}
-                          distanceMap={isNearbyMode ? distanceMap : undefined}
+                          distanceMap={undefined}
                           onResourceClick={openResourceModal}
                         />
                       );
@@ -795,7 +806,7 @@ function SearchResults() {
                               explanationsMap.get(item.resource.id)
                             )
                           }
-                          distance={isNearbyMode ? distanceMap.get(item.resource.id) : undefined}
+                          distance={undefined}
                           enableLayoutId={true}
                         />
                       );
@@ -810,13 +821,13 @@ function SearchResults() {
                   selectedResourceId={selectedResource?.id}
                   animatingResourceId={animatingResourceId}
                   onResourceClick={openResourceModal}
-                  hasNextPage={!isSearchMode && !isNearbyMode && hasNextPage}
+                  hasNextPage={!isSearchMode && hasNextPage}
                   isFetchingNextPage={isFetchingNextPage}
                   fetchNextPage={handleLoadMore}
                   disableAnimation={disableGridMotion}
                   newResourceIds={newResourceIds}
                   newResourceIndexById={newResourceIndexById}
-                  distanceMap={isNearbyMode ? distanceMap : undefined}
+                  distanceMap={undefined}
                   enableLayoutId={true}
                 />
               )}
