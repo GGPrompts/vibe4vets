@@ -114,14 +114,6 @@ export default function Home() {
         <div className="absolute right-1/4 top-1/3 h-64 w-64 rounded-full bg-[hsl(var(--v4v-employment)/0.08)] blur-3xl" />
 
         <div className="relative mx-auto max-w-6xl px-6 py-10 lg:py-14">
-          {/* Step indicator */}
-          <div className="flex items-center justify-center gap-2 mb-6">
-            <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[hsl(var(--v4v-gold))] text-sm font-bold text-[hsl(var(--v4v-navy))]">
-              1
-            </span>
-            <span className="text-sm font-medium text-white/90">Where are you located?</span>
-          </div>
-
           {/* Intro text */}
           <div className="flex flex-col items-center text-center mb-8">
             <h1 className="font-display text-2xl font-semibold text-white sm:text-3xl lg:text-4xl">
@@ -139,6 +131,14 @@ export default function Home() {
           {/* ZIP centered above full-width map */}
           <div className="mx-auto max-w-5xl">
             <div className="hero-search-container rounded-2xl p-4 sm:p-6 shadow-2xl">
+              {/* Step indicator - inside white container */}
+              <div className="flex items-center justify-center gap-2 mb-4">
+                <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[hsl(var(--v4v-gold))] text-sm font-bold text-[hsl(var(--v4v-navy))]">
+                  1
+                </span>
+                <span className="text-sm font-medium text-[hsl(var(--v4v-navy))]">Where are you located?</span>
+              </div>
+
               {/* ZIP Code Input - centered */}
               <div className="flex flex-col items-center gap-3 mb-6">
                 <label htmlFor="zip-input" className="text-sm font-medium text-[hsl(var(--v4v-navy))]">
