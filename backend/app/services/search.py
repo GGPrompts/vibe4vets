@@ -69,8 +69,9 @@ class SearchService:
     def search(
         self,
         query: str,
-        category: str | None = None,
-        state: str | None = None,
+        categories: list[str] | None = None,
+        states: list[str] | None = None,
+        scope: str | None = None,
         tags: list[str] | None = None,
         limit: int = 20,
         offset: int = 0,
@@ -79,8 +80,9 @@ class SearchService:
 
         Args:
             query: Search query text.
-            category: Optional category filter.
-            state: Optional state filter.
+            categories: Optional list of category filters (OR logic - match ANY category).
+            states: Optional list of state filters (OR logic - match ANY state, includes national).
+            scope: Optional scope filter: 'national', 'state', 'local', or 'all'.
             tags: Optional list of eligibility tags to filter by (AND logic - must match ALL tags).
             limit: Maximum results to return.
             offset: Pagination offset.
@@ -99,37 +101,54 @@ class SearchService:
             .where(Resource.search_vector.op("@@")(search_query))
         )
 
-        # Apply filters
-        if category:
-            stmt = stmt.where(Resource.categories.contains([category]))
-        if state:
-            stmt = stmt.where(
-                or_(
-                    Resource.scope == ResourceScope.NATIONAL,
-                    Resource.states.contains([state]),
-                )
-            )
+        # Apply category filter (OR logic - match ANY category)
+        if categories:
+            category_conditions = [Resource.categories.contains([cat]) for cat in categories]
+            stmt = stmt.where(or_(*category_conditions))
+
+        # Apply state filter (OR logic - match ANY state, always includes national resources)
+        if states:
+            state_conditions = [Resource.scope == ResourceScope.NATIONAL]
+            for state in states:
+                state_conditions.append(Resource.states.contains([state]))
+            stmt = stmt.where(or_(*state_conditions))
+
+        # Apply scope filter
+        if scope and scope != "all":
+            if scope == "national":
+                stmt = stmt.where(Resource.scope == ResourceScope.NATIONAL)
+            elif scope == "state":
+                stmt = stmt.where(Resource.scope == ResourceScope.STATE)
+            elif scope == "local":
+                stmt = stmt.where(Resource.scope == ResourceScope.LOCAL)
+
         # Tag filter: resource must have ALL of the requested tags (AND logic)
         # Uses @> (contains) operator for each tag to ensure all tags are present
         if tags:
             for tag in tags:
                 stmt = stmt.where(Resource.tags.contains([tag]))
 
-        # Get total count
+        # Get total count with same filters
         count_stmt = (
             select(func.count(Resource.id))
             .where(Resource.status == ResourceStatus.ACTIVE)
             .where(Resource.search_vector.op("@@")(search_query))
         )
-        if category:
-            count_stmt = count_stmt.where(Resource.categories.contains([category]))
-        if state:
-            count_stmt = count_stmt.where(
-                or_(
-                    Resource.scope == ResourceScope.NATIONAL,
-                    Resource.states.contains([state]),
-                )
-            )
+        if categories:
+            category_conditions = [Resource.categories.contains([cat]) for cat in categories]
+            count_stmt = count_stmt.where(or_(*category_conditions))
+        if states:
+            state_conditions = [Resource.scope == ResourceScope.NATIONAL]
+            for state in states:
+                state_conditions.append(Resource.states.contains([state]))
+            count_stmt = count_stmt.where(or_(*state_conditions))
+        if scope and scope != "all":
+            if scope == "national":
+                count_stmt = count_stmt.where(Resource.scope == ResourceScope.NATIONAL)
+            elif scope == "state":
+                count_stmt = count_stmt.where(Resource.scope == ResourceScope.STATE)
+            elif scope == "local":
+                count_stmt = count_stmt.where(Resource.scope == ResourceScope.LOCAL)
         if tags:
             # AND logic: each tag must be present
             for tag in tags:
@@ -144,6 +163,9 @@ class SearchService:
 
         # Build search results with explanations
         search_results = []
+        # Use first category/state for explanations (backwards compatibility)
+        category = categories[0] if categories else None
+        state = states[0] if states else None
         for resource, rank in results:
             explanations = self._build_explanations(resource, query, category, state, tags)
             resource_read = self._to_read_schema(resource)

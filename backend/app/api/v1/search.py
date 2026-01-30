@@ -97,15 +97,30 @@ def search_resources(
     ),
     category: str | None = Query(
         None,
-        description="Filter by category (employment, training, housing, legal)",
+        description="Filter by single category (deprecated, use 'categories' instead)",
         examples=["employment", "housing"],
+    ),
+    categories: str | None = Query(
+        None,
+        description="Filter by categories (comma-separated, e.g., 'housing,legal')",
+        examples=["housing,legal", "employment,training"],
     ),
     state: str | None = Query(
         None,
-        description="Filter by state using 2-letter code",
+        description="Filter by single state (deprecated, use 'states' instead)",
         examples=["VA", "TX", "CA"],
         min_length=2,
         max_length=2,
+    ),
+    states: str | None = Query(
+        None,
+        description="Filter by states (comma-separated 2-letter codes, e.g., 'VA,MD,DC')",
+        examples=["VA,MD,DC", "TX,CA"],
+    ),
+    scope: str | None = Query(
+        None,
+        description="Filter by resource scope: 'national', 'state', 'local', or 'all'",
+        examples=["national", "state", "local"],
     ),
     tags: str | None = Query(
         None,
@@ -129,15 +144,34 @@ def search_resources(
     - Use multiple keywords: "job training Virginia"
     - Search by program name: "HUD-VASH"
     - Search by eligibility: "disabled veteran housing"
+
+    **Filter Parameters:**
+    - `categories` - Comma-separated category names (housing, legal, employment, training)
+    - `states` - Comma-separated 2-letter state codes (VA, MD, DC)
+    - `scope` - Resource scope: national, state, local, or all
+    - `tags` - Comma-separated eligibility tags
     """
-    # Parse comma-separated tags
+    # Parse comma-separated filters into lists
+    category_list: list[str] | None = None
+    if categories:
+        category_list = [c.strip() for c in categories.split(",") if c.strip()]
+    elif category:
+        category_list = [category]
+
+    state_list: list[str] | None = None
+    if states:
+        state_list = [s.strip().upper() for s in states.split(",") if s.strip()]
+    elif state:
+        state_list = [state.upper()]
+
     tags_list = [t.strip().lower() for t in tags.split(",")] if tags else None
 
     service = SearchService(session)
     results, total = service.search(
         query=q,
-        category=category,
-        state=state,
+        categories=category_list,
+        states=state_list,
+        scope=scope,
         tags=tags_list,
         limit=limit,
         offset=offset,

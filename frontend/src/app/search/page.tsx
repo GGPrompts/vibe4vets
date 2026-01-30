@@ -322,17 +322,37 @@ function SearchResults() {
     tags: filters.tags,
   });
 
-  // Search mode: useQuery (still fetches all for now, search API doesn't support pagination yet)
+  // Search mode: useQuery with server-side filtering and pagination
+  const [searchOffset, setSearchOffset] = useState(0);
+  const SEARCH_PAGE_SIZE = 50;
+
+  // Extract filter keys for dependency tracking
+  const categoriesKey = filters.categories.join(',');
+  const statesKey = filters.states.join(',');
+  const tagsKey = filters.tags?.join(',') ?? '';
+
+  // Reset search offset when query or filters change
+  useEffect(() => {
+    setSearchOffset(0);
+  }, [query, categoriesKey, statesKey, filters.scope, tagsKey]);
+
   const searchQuery = useQuery({
-    queryKey: ['search', query, filters],
+    queryKey: ['search', query, filters, searchOffset],
     queryFn: async () => {
       const results = await api.search.query({
         q: query,
+        // Pass all filters to the server for server-side filtering
+        categories: filters.categories.length > 0 ? filters.categories.join(',') : undefined,
+        states: filters.states.length > 0 ? filters.states.join(',') : undefined,
+        scope: filters.scope !== 'all' ? filters.scope : undefined,
         tags: filters.tags?.length ? filters.tags.join(',') : undefined,
-        limit: 500,
+        limit: SEARCH_PAGE_SIZE,
+        offset: searchOffset,
       });
-      // Track search analytics on new query
-      trackSearch(query, filters.categories[0], filters.states[0]);
+      // Track search analytics on new query (only on first page)
+      if (searchOffset === 0) {
+        trackSearch(query, filters.categories[0], filters.states[0]);
+      }
       return results;
     },
     enabled: !!query,
@@ -455,34 +475,10 @@ function SearchResults() {
     });
   };
 
-  // Client-side filtering for search mode (server doesn't filter search results)
-  const filterSearchResults = (resources: Resource[]) => {
-    return resources.filter((resource) => {
-      // Category filter
-      if (filters.categories.length > 0) {
-        const hasCategory = resource.categories.some((c) =>
-          filters.categories.includes(c)
-        );
-        if (!hasCategory) return false;
-      }
-
-      // State filter (includes national resources)
-      if (filters.states.length > 0) {
-        const matchesState =
-          resource.scope === 'national' ||
-          resource.states.some((s) => filters.states.includes(s));
-        if (!matchesState) return false;
-      }
-
-      // Scope filter
-      if (filters.scope !== 'all') {
-        if (filters.scope === 'national' && resource.scope !== 'national') return false;
-        if (filters.scope === 'state' && resource.scope === 'national') return false;
-      }
-
-      return true;
-    });
-  };
+  // Note: Client-side filtering for search mode has been removed.
+  // All filtering (categories, states, scope, tags) is now done server-side
+  // via the search API endpoint, which properly handles pagination and returns
+  // accurate total counts.
 
   // Sort results
   const sortResults = <T extends Resource>(resources: T[], distMap?: Map<string, number>) => {
@@ -519,9 +515,11 @@ function SearchResults() {
   // Compute final resources list
   const resources = useMemo(() => {
     if (isSearchMode) {
-      // Search mode: client-side filtering + sorting + trust filter
+      // Search mode: server-side filtering already applied, just trust filter + sorting
+      // Note: Server returns results sorted by relevance, so we apply sort only if user
+      // explicitly changed it (relevance is default for search)
       const searchResources = searchResults?.results.map((r) => r.resource) ?? [];
-      return sortResults(applyTrustFilter(filterSearchResults(searchResources)));
+      return sortResults(applyTrustFilter(searchResources));
     } else if (isNearbyMode) {
       // Nearby mode: apply trust filter, then sort
       // If sort is 'distance', API already sorted - keep order
@@ -551,14 +549,26 @@ function SearchResults() {
   // Check if we have any program groups (to decide whether to use grouped vs flat view)
   const hasProgramGroups = groupedItems.some((item) => item.type === 'program');
 
-  // For browse mode, use server total; for search mode, use filtered count
+  // Use server totals for all modes (server-side filtering is now complete)
   const totalResults = isSearchMode
-    ? resources.length
+    ? (searchResults?.total ?? 0)
     : isNearbyMode
       ? (nearbyResults?.total ?? 0)
       : browseTotal;
   const displayedCount = resources.length;
   const hasResults = displayedCount > 0;
+
+  // Search mode pagination helpers
+  const searchHasNextPage = isSearchMode && searchResults && (searchOffset + SEARCH_PAGE_SIZE) < searchResults.total;
+  const searchHasPrevPage = isSearchMode && searchOffset > 0;
+  const handleSearchNextPage = useCallback(() => {
+    setSearchOffset((prev) => prev + SEARCH_PAGE_SIZE);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
+  const handleSearchPrevPage = useCallback(() => {
+    setSearchOffset((prev) => Math.max(0, prev - SEARCH_PAGE_SIZE));
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
 
   // Infinite scroll helpers
   const { fetchNextPage, hasNextPage, isFetchingNextPage } = browseQuery;
@@ -840,6 +850,36 @@ function SearchResults() {
               )}
 
               {!isSearchMode && hasNextPage && <div ref={loadMoreSentinelRef} className="h-px w-full" />}
+
+              {/* Search mode pagination controls */}
+              {isSearchMode && (searchHasNextPage || searchHasPrevPage) && (
+                <div className="mt-6 flex items-center justify-center gap-4">
+                  <Button
+                    variant="outline"
+                    onClick={handleSearchPrevPage}
+                    disabled={!searchHasPrevPage || searchQuery.isLoading}
+                  >
+                    Previous
+                  </Button>
+                  <span className="text-sm text-muted-foreground">
+                    Showing {searchOffset + 1}-{Math.min(searchOffset + SEARCH_PAGE_SIZE, totalResults)} of {totalResults}
+                  </span>
+                  <Button
+                    variant="outline"
+                    onClick={handleSearchNextPage}
+                    disabled={!searchHasNextPage || searchQuery.isLoading}
+                  >
+                    Next
+                  </Button>
+                </div>
+              )}
+
+              {/* Loading indicator for search pagination */}
+              {isSearchMode && searchQuery.isLoading && searchOffset > 0 && (
+                <div className="mt-6 flex justify-center">
+                  <Loader2 className="h-6 w-6 animate-spin text-muted-foreground" />
+                </div>
+              )}
             </>
           ) : (
             <div className="py-12 text-center">
