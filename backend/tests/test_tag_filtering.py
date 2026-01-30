@@ -66,11 +66,7 @@ class TestTagFilteringLogic:
 
         filter_tags = []
         # Empty filter should match all (no filtering applied)
-        matches = (
-            resources
-            if not filter_tags
-            else [r for r in resources if all(t in r["tags"] for t in filter_tags)]
-        )
+        matches = resources if not filter_tags else [r for r in resources if all(t in r["tags"] for t in filter_tags)]
 
         assert len(matches) == 2
 

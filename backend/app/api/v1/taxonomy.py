@@ -193,10 +193,7 @@ def get_category_tags(
                 func.lower(Resource.title).contains(tag_id.replace("-", " ").lower()),
             )
 
-            query = select(func.count()).select_from(Resource).where(
-                *base_conditions,
-                tag_condition
-            )
+            query = select(func.count()).select_from(Resource).where(*base_conditions, tag_condition)
             count = db.execute(query).scalar() or 0
             if count > 0:
                 tags_with_results.add(tag_id)
@@ -210,9 +207,7 @@ def get_category_tags(
             groups.append(TagGroup(group=group_name, tags=tags))
 
     flat_tags = [
-        TagInfo(id=tag_id, name=get_tag_display_name(tag_id))
-        for tag_id in all_tag_ids
-        if tag_id in tags_with_results
+        TagInfo(id=tag_id, name=get_tag_display_name(tag_id)) for tag_id in all_tag_ids if tag_id in tags_with_results
     ]
 
     return CategoryTagsResponse(
