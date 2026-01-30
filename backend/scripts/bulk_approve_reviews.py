@@ -7,20 +7,18 @@ Usage:
 """
 
 import sys
+from collections import Counter
 from datetime import UTC, datetime
 from pathlib import Path
 
 # Add backend to path
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from collections import Counter
-
 from sqlmodel import Session, select
 
-from app.config import settings
 from app.database import engine
-from app.models.review import ReviewState, ReviewStatus
 from app.models.resource import Resource
+from app.models.review import ReviewState, ReviewStatus
 
 
 def main():
