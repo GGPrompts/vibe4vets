@@ -110,7 +110,7 @@ export interface ResourceNearbyResult {
 export interface ResourceNearbyList {
   resources: ResourceNearbyResult[];
   total: number;
-  zip_code: string;
+  zip_code: string | null;  // null when using lat/lng geolocation
   state: string | null;  // 2-letter state code for the zip
   radius_miles: number;
   center_lat: number;
@@ -628,7 +628,9 @@ export const api = {
     },
 
     nearby: (params: {
-      zip: string;
+      zip?: string;
+      lat?: number;
+      lng?: number;
       radius?: number;
       categories?: string;
       scope?: string;
@@ -637,7 +639,13 @@ export const api = {
       offset?: number;
     }): Promise<ResourceNearbyList> => {
       const searchParams = new URLSearchParams();
-      searchParams.set('zip', params.zip);
+      // Support both zip code and lat/lng modes
+      if (params.zip) {
+        searchParams.set('zip', params.zip);
+      } else if (params.lat !== undefined && params.lng !== undefined) {
+        searchParams.set('lat', String(params.lat));
+        searchParams.set('lng', String(params.lng));
+      }
       if (params.radius) searchParams.set('radius', String(params.radius));
       if (params.categories) searchParams.set('categories', params.categories);
       if (params.scope && params.scope !== 'all') searchParams.set('scope', params.scope);

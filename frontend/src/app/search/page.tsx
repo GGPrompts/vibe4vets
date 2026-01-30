@@ -359,20 +359,29 @@ function SearchResults() {
     enabled: !!query,
   });
 
-  // Nearby mode: useInfiniteQuery when zip code is active (no text search)
+  // Nearby mode: useInfiniteQuery when zip code or geolocation is active (no text search)
   const NEARBY_PAGE_SIZE = 50;
+  const hasGeolocation = filters.lat !== undefined && filters.lng !== undefined;
   const nearbyQuery = useInfiniteQuery({
-    queryKey: ['nearby', filters.zip, filters.radius, filters.categories, filters.scope, filters.tags],
+    queryKey: ['nearby', filters.zip, filters.lat, filters.lng, filters.radius, filters.categories, filters.scope, filters.tags],
     queryFn: async ({ pageParam = 0 }) => {
-      return api.resources.nearby({
-        zip: filters.zip!,
+      // Support both zip code and lat/lng geolocation
+      const params: Parameters<typeof api.resources.nearby>[0] = {
         radius: filters.radius || 100,
         categories: filters.categories.length > 0 ? filters.categories.join(',') : undefined,
         scope: filters.scope !== 'all' ? filters.scope : undefined,
         tags: filters.tags && filters.tags.length > 0 ? filters.tags.join(',') : undefined,
         limit: NEARBY_PAGE_SIZE,
         offset: pageParam,
-      });
+      };
+      // Use lat/lng if available, otherwise use zip
+      if (hasGeolocation) {
+        params.lat = filters.lat;
+        params.lng = filters.lng;
+      } else if (filters.zip) {
+        params.zip = filters.zip;
+      }
+      return api.resources.nearby(params);
     },
     initialPageParam: 0,
     getNextPageParam: (lastPage, _allPages, lastPageParam) => {
@@ -382,13 +391,13 @@ function SearchResults() {
       }
       return lastPageParam + NEARBY_PAGE_SIZE;
     },
-    enabled: !!filters.zip && !query,
+    enabled: (!!filters.zip || hasGeolocation) && !query,
     placeholderData: (previousData) => previousData,
   });
 
   // Determine which data source to use
   const isSearchMode = !!query;
-  const isNearbyMode = !!filters.zip && !query;
+  const isNearbyMode = (!!filters.zip || hasGeolocation) && !query;
   const searchResults = searchQuery.data;
 
   // Flatten browse pages into single array
@@ -780,7 +789,13 @@ function SearchResults() {
                   distanceMap={distanceMap}
                   onResourceClick={openResourceModal}
                   enableLayoutId={true}
-                  locationLabel={filters.zip ? `within ${filters.radius || 100} mi` : undefined}
+                  locationLabel={
+                    filters.zip
+                      ? `within ${filters.radius || 100} mi of ${filters.zip}`
+                      : hasGeolocation
+                        ? `within ${filters.radius || 100} mi`
+                        : undefined
+                  }
                 />
               ) : hasProgramGroups ? (
                 /* Grouped View (when program groups exist) */

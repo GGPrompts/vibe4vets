@@ -106,6 +106,9 @@ export interface FilterState {
   zip?: string;
   radius?: number;
   tags?: string[];
+  // Geolocation coordinates (used when "Use my location" is clicked)
+  lat?: number;
+  lng?: number;
 }
 
 interface FiltersSidebarProps {
@@ -458,16 +461,33 @@ export function FiltersSidebar({
   };
 
   const handleZipChange = (zip: string) => {
-    // When ZIP is entered, clear states since ZIP is more specific location filter
-    onFiltersChange({ ...filters, zip: zip || undefined, states: zip ? [] : filters.states });
+    // When ZIP is entered, clear states and geolocation since ZIP is more specific
+    onFiltersChange({
+      ...filters,
+      zip: zip || undefined,
+      lat: undefined,
+      lng: undefined,
+      states: zip ? [] : filters.states,
+    });
   };
 
   const handleRadiusChange = (radius: number) => {
     onFiltersChange({ ...filters, radius });
   };
 
+  const handleGeolocation = (lat: number, lng: number) => {
+    // When using geolocation, clear zip and states
+    onFiltersChange({
+      ...filters,
+      lat,
+      lng,
+      zip: undefined,
+      states: [],
+    });
+  };
+
   const handleClearZip = () => {
-    onFiltersChange({ ...filters, zip: undefined, radius: undefined });
+    onFiltersChange({ ...filters, zip: undefined, radius: undefined, lat: undefined, lng: undefined });
   };
 
   const handleTagsChange = (newTags: string[]) => {
@@ -505,6 +525,8 @@ export function FiltersSidebar({
       minTrust: 0, // Keep for API compatibility
       zip: undefined,
       radius: undefined,
+      lat: undefined,
+      lng: undefined,
       tags: [],
     });
   };
@@ -586,13 +608,13 @@ export function FiltersSidebar({
       <Separator />
 
 
-      {/* Near ZIP - location-based search */}
+      {/* Near ZIP / Location - location-based search */}
       <CollapsibleSection
-        title="Near ZIP"
+        title="Location"
         badge={
-          filters.zip && (
+          (filters.zip || (filters.lat !== undefined && filters.lng !== undefined)) && (
             <Badge variant="outline" className="text-xs">
-              {filters.zip}
+              {filters.zip ? filters.zip : 'GPS'}
             </Badge>
           )
         }
@@ -605,7 +627,10 @@ export function FiltersSidebar({
             radius={filters.radius || 100}
             onZipChange={handleZipChange}
             onRadiusChange={handleRadiusChange}
+            onGeolocation={handleGeolocation}
             onClear={handleClearZip}
+            showGeolocation
+            isUsingGeolocation={filters.lat !== undefined && filters.lng !== undefined}
             compact
           />
           <p className="text-xs text-muted-foreground">
@@ -826,7 +851,8 @@ export function FixedFiltersSidebar({
     filters.states.length +
     (filters.scope !== 'all' ? 1 : 0) +
     (filters.minTrust > 0 ? 1 : 0) +
-    (filters.zip ? 1 : 0);
+    (filters.zip ? 1 : 0) +
+    (filters.lat !== undefined && filters.lng !== undefined ? 1 : 0);
 
   return (
     <TooltipProvider>
@@ -887,7 +913,7 @@ export function FixedFiltersSidebar({
                     <Button
                       variant="ghost"
                       size="icon"
-                      onClick={() => onFiltersChange({ categories: [], states: [], scope: 'all', minTrust: 0, zip: undefined, radius: undefined })}
+                      onClick={() => onFiltersChange({ categories: [], states: [], scope: 'all', minTrust: 0, zip: undefined, radius: undefined, lat: undefined, lng: undefined })}
                       className="h-8 w-8 rounded-lg text-muted-foreground hover:text-destructive hover:bg-destructive/10"
                     >
                       <X className="h-4 w-4" />
@@ -900,8 +926,8 @@ export function FixedFiltersSidebar({
               </>
             )}
 
-            {/* Zip code indicator */}
-            {filters.zip && (
+            {/* Location indicator (zip code or geolocation) */}
+            {(filters.zip || (filters.lat !== undefined && filters.lng !== undefined)) && (
               <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -912,14 +938,19 @@ export function FixedFiltersSidebar({
                     <Button
                       variant="ghost"
                       size="icon"
-                      onClick={() => onFiltersChange({ ...filters, zip: undefined, radius: undefined })}
+                      onClick={() => onFiltersChange({ ...filters, zip: undefined, radius: undefined, lat: undefined, lng: undefined })}
                       className="h-8 w-8 rounded-lg bg-[hsl(var(--v4v-gold)/0.1)] text-[hsl(var(--v4v-gold))] shadow-sm border-2 border-current"
                     >
                       <MapPin className="h-4 w-4" />
                     </Button>
                   </TooltipTrigger>
                   <TooltipContent side="right">
-                    <p className="text-xs">Near {filters.zip} ({filters.radius || 100} mi) - Click to clear</p>
+                    <p className="text-xs">
+                      {filters.zip
+                        ? `Near ${filters.zip} (${filters.radius || 100} mi) - Click to clear`
+                        : `Using GPS location (${filters.radius || 100} mi) - Click to clear`
+                      }
+                    </p>
                   </TooltipContent>
                 </Tooltip>
               </motion.div>
