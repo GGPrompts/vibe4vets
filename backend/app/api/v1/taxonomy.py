@@ -5,8 +5,8 @@ Provides the tag taxonomy for frontend consumption to power filter UIs.
 
 from fastapi import APIRouter, Depends, HTTPException, Query
 from pydantic import BaseModel, Field
-from sqlalchemy import func, or_, select
-from sqlalchemy.orm import Session
+from sqlalchemy import func, or_
+from sqlmodel import Session, select
 
 from app.core.taxonomy import (
     CATEGORIES,
@@ -19,7 +19,8 @@ from app.core.taxonomy import (
     get_tag_display_name,
 )
 from app.database import get_session
-from app.models.resource import Resource
+from app.models import Resource
+from app.models.resource import ResourceScope
 
 router = APIRouter()
 
@@ -170,19 +171,19 @@ def get_category_tags(
             state_list = [s.strip().upper() for s in states.split(",") if s.strip()]
             if state_list:
                 # Include national resources + state-specific
-                base_conditions.append(
-                    or_(
-                        Resource.state.in_(state_list),
-                        Resource.scope == "national",
-                    )
-                )
+                state_conditions = [Resource.scope == ResourceScope.NATIONAL]
+                for s in state_list:
+                    state_conditions.append(Resource.states.contains([s]))
+                base_conditions.append(or_(*state_conditions))
 
         if scope and scope != "all":
             if scope == "state":
                 # "state" in UI means non-national (state + local)
-                base_conditions.append(Resource.scope != "national")
-            else:
-                base_conditions.append(Resource.scope == scope)
+                base_conditions.append(Resource.scope != ResourceScope.NATIONAL)
+            elif scope == "national":
+                base_conditions.append(Resource.scope == ResourceScope.NATIONAL)
+            elif scope == "local":
+                base_conditions.append(Resource.scope == ResourceScope.LOCAL)
 
         # For each tag, check if there are any matching resources
         for tag_id in all_tag_ids:

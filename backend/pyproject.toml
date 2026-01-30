@@ -114,6 +114,7 @@ module = [
     "app.api.v1.analytics",
     "app.api.v1.feedback",
     "app.api.v1.chat",
+    "app.api.v1.taxonomy",
 ]
 ignore_errors = true
 
