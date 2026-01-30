@@ -10,6 +10,20 @@ class Settings(BaseSettings):
     # Database - use psycopg (v3) driver
     database_url: str = "postgresql+psycopg://localhost:5432/vibe4vets"
 
+    @field_validator("database_url", mode="before")
+    @classmethod
+    def convert_to_psycopg3(cls, v: str) -> str:
+        """Convert DATABASE_URL to use psycopg (v3) driver.
+
+        Railway/Heroku provide postgresql:// or postgres:// URLs which
+        default to psycopg2. We use psycopg (v3) instead.
+        """
+        if v.startswith("postgres://"):
+            return v.replace("postgres://", "postgresql+psycopg://", 1)
+        if v.startswith("postgresql://") and "+psycopg" not in v:
+            return v.replace("postgresql://", "postgresql+psycopg://", 1)
+        return v
+
     # CORS - accepts comma-separated string or JSON array
     cors_origins: list[str] = ["http://localhost:3000"]
 
