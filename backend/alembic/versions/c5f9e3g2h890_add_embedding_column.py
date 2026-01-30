@@ -28,9 +28,7 @@ logger = logging.getLogger(__name__)
 def _pgvector_available() -> bool:
     """Check if pgvector extension is available on this PostgreSQL instance."""
     conn = op.get_bind()
-    result = conn.execute(
-        text("SELECT 1 FROM pg_available_extensions WHERE name = 'vector'")
-    )
+    result = conn.execute(text("SELECT 1 FROM pg_available_extensions WHERE name = 'vector'"))
     return result.scalar() is not None
 
 

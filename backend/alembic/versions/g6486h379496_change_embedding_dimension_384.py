@@ -29,9 +29,7 @@ logger = logging.getLogger(__name__)
 def _pgvector_available() -> bool:
     """Check if pgvector extension is available on this PostgreSQL instance."""
     conn = op.get_bind()
-    result = conn.execute(
-        text("SELECT 1 FROM pg_available_extensions WHERE name = 'vector'")
-    )
+    result = conn.execute(text("SELECT 1 FROM pg_available_extensions WHERE name = 'vector'"))
     return result.scalar() is not None
 
 
@@ -55,9 +53,7 @@ def upgrade() -> None:
     Skips gracefully if pgvector is not available.
     """
     if not _pgvector_available():
-        logger.warning(
-            "pgvector extension not available. Skipping embedding dimension change."
-        )
+        logger.warning("pgvector extension not available. Skipping embedding dimension change.")
         return
 
     if not _embedding_column_exists():

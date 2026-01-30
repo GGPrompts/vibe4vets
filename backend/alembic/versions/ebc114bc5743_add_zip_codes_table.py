@@ -28,9 +28,7 @@ logger = logging.getLogger(__name__)
 def _postgis_available() -> bool:
     """Check if PostGIS extension is available on this PostgreSQL instance."""
     conn = op.get_bind()
-    result = conn.execute(
-        text("SELECT 1 FROM pg_available_extensions WHERE name = 'postgis'")
-    )
+    result = conn.execute(text("SELECT 1 FROM pg_available_extensions WHERE name = 'postgis'"))
     return result.scalar() is not None
 
 
