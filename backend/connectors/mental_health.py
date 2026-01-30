@@ -70,7 +70,7 @@ class MentalHealthConnector(BaseConnector):
         return SourceMetadata(
             name="Veteran Mental Health Resources",
             url="https://www.mentalhealth.va.gov/",
-            tier=2,  # Mix of VA (tier 1) and established nonprofits (tier 2)
+            tier=1,  # VA resources (Veterans Crisis Line, Vet Centers) are primary
             frequency="monthly",  # Programs change infrequently
             terms_url=None,
             requires_auth=False,
