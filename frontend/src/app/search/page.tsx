@@ -4,7 +4,6 @@ import {
   Suspense,
   useCallback,
   useEffect,
-  useLayoutEffect,
   useMemo,
   useRef,
   useState,
@@ -608,29 +607,16 @@ function SearchResults() {
   const fetchNextPage = isNearbyMode ? nearbyFetchNextPage : browseFetchNextPage;
   const hasNextPage = isNearbyMode ? nearbyHasNextPage : browseHasNextPage;
   const isFetchingNextPage = isNearbyMode ? nearbyIsFetchingNextPage : browseIsFetchingNextPage;
-  const restoreScrollYRef = useRef<number | null>(null);
   const loadMoreSentinelRef = useRef<HTMLDivElement | null>(null);
   const disableGridMotionRef = useRef(false);
   const [disableGridMotion, setDisableGridMotion] = useState(false);
 
   const handleLoadMore = useCallback(async () => {
-    restoreScrollYRef.current = window.scrollY;
+    // Disable grid animations during load to prevent visual jitter
     disableGridMotionRef.current = true;
     setDisableGridMotion(true);
     await fetchNextPage();
   }, [fetchNextPage]);
-
-  // Restore scroll after the DOM commits the newly appended items.
-  // useLayoutEffect runs synchronously after DOM mutations, before paint.
-  useLayoutEffect(() => {
-    const restoreY = restoreScrollYRef.current;
-    if (restoreY === null) return;
-    if (isFetchingNextPage) return;
-
-    // Restore immediately without requestAnimationFrame to prevent visible shift
-    window.scrollTo({ top: restoreY, behavior: 'instant' });
-    restoreScrollYRef.current = null;
-  }, [isFetchingNextPage]);
 
   // Turn animations back on shortly after pagination settles.
   useEffect(() => {
@@ -663,7 +649,10 @@ function SearchResults() {
         if (!isIntersecting) return;
         if (!hasNextPage) return;
         if (isFetchingNextPage) return;
-        restoreScrollYRef.current = window.scrollY;
+        // Disable grid animations during load to prevent visual jitter
+        // Note: Do NOT save/restore scroll position here - when appending items
+        // to the bottom, the browser naturally maintains scroll position.
+        // Attempting to "restore" would actually cause unwanted scroll jumps.
         disableGridMotionRef.current = true;
         setDisableGridMotion(true);
         fetchNextPage();
