@@ -8,7 +8,7 @@ import { USMap } from '@/components/us-map';
 import { CategoryCards } from '@/components/CategoryCards';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Search, MapPin, ChevronDown, X } from 'lucide-react';
+import { Search, MapPin, ChevronDown, X, Locate, Loader2 } from 'lucide-react';
 import { useFilterContext } from '@/context/filter-context';
 import { BackToTop } from '@/components/BackToTop';
 import { cn } from '@/lib/utils';
@@ -17,14 +17,18 @@ export default function Home() {
   const { filters, setStates, totalCount, isLoadingTotal } = useFilterContext();
   const [zipCode, setZipCode] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
+  const [isLocating, setIsLocating] = useState(false);
+  const [userCoords, setUserCoords] = useState<{ lat: number; lng: number } | null>(null);
   const router = useRouter();
   const step2Ref = useRef<HTMLElement>(null);
 
-  // Track if location has been selected (ZIP or state)
-  const hasLocation = zipCode.length === 5 || filters.states.length > 0;
+  // Track if location has been selected (ZIP, state, or geolocation)
+  const hasLocation = zipCode.length === 5 || filters.states.length > 0 || userCoords !== null;
 
   // Handle single state selection (replaces previous selection)
   const handleStateSelect = useCallback((stateAbbr: string) => {
+    // Clear geolocation when selecting state
+    setUserCoords(null);
     // Single-select: if same state clicked, deselect; otherwise select only this state
     if (filters.states.includes(stateAbbr)) {
       setStates([]);
@@ -37,12 +41,43 @@ export default function Home() {
     }
   }, [filters.states, setStates]);
 
+  // Handle "Use my location" click
+  const handleGeolocation = useCallback(() => {
+    if (!navigator.geolocation) return;
+
+    setIsLocating(true);
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        setIsLocating(false);
+        const { latitude, longitude } = position.coords;
+        setUserCoords({ lat: latitude, lng: longitude });
+        setZipCode(''); // Clear ZIP when using geolocation
+        setStates([]); // Clear state selection
+        // Scroll to categories
+        setTimeout(() => {
+          step2Ref.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 300);
+      },
+      () => {
+        setIsLocating(false);
+        // Silently fail - user can still use ZIP or state
+      },
+      { enableHighAccuracy: false, timeout: 10000, maximumAge: 300000 }
+    );
+  }, [setStates]);
+
   // Build search URL with location pre-filtered
   const buildSearchUrl = (categorySlug?: string) => {
     const params = new URLSearchParams();
 
+    // Add geolocation if available (highest priority)
+    if (userCoords) {
+      params.set('lat', String(userCoords.lat));
+      params.set('lng', String(userCoords.lng));
+      params.set('radius', '100');
+    }
     // Add zip code if provided (enables distance sorting)
-    if (zipCode.length === 5) {
+    else if (zipCode.length === 5) {
       params.set('zip', zipCode);
       params.set('radius', '100'); // Default 100mi for rural coverage
     }
@@ -76,6 +111,11 @@ export default function Home() {
   const handleZipChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value.replace(/\D/g, '').slice(0, 5);
     setZipCode(value);
+
+    // Clear geolocation when typing ZIP
+    if (value.length > 0 && userCoords) {
+      setUserCoords(null);
+    }
 
     // Clear state selection when ZIP is entered (ZIP is more specific)
     if (value.length === 5 && filters.states.length > 0) {
@@ -179,10 +219,34 @@ export default function Home() {
                     </button>
                   )}
                 </div>
-                {zipCode.length === 5 && (
-                  <p className="text-sm text-[hsl(var(--v4v-gold))] font-medium">
+                {zipCode.length === 5 ? (
+                  <p className="text-sm text-[hsl(var(--v4v-gold-dark))] font-medium">
                     Searching within 100 miles
                   </p>
+                ) : userCoords ? (
+                  <p className="text-sm text-[hsl(var(--v4v-gold-dark))] font-medium flex items-center gap-1">
+                    <Locate className="h-3.5 w-3.5" />
+                    Using your location
+                  </p>
+                ) : (
+                  <button
+                    type="button"
+                    onClick={handleGeolocation}
+                    disabled={isLocating}
+                    className="text-sm text-[hsl(var(--v4v-navy)/0.7)] hover:text-[hsl(var(--v4v-navy))] transition-colors flex items-center gap-1"
+                  >
+                    {isLocating ? (
+                      <>
+                        <Loader2 className="h-3.5 w-3.5 animate-spin" />
+                        Getting location...
+                      </>
+                    ) : (
+                      <>
+                        <Locate className="h-3.5 w-3.5" />
+                        or use my location
+                      </>
+                    )}
+                  </button>
                 )}
               </div>
 
