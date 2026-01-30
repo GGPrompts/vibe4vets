@@ -14,13 +14,13 @@ backend_dir = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(backend_dir))
 
 # Load .env file
-from dotenv import load_dotenv
+from dotenv import load_dotenv  # noqa: E402
 
 load_dotenv(backend_dir / ".env")
 
-from sqlmodel import Session, create_engine, select
+from sqlmodel import Session, create_engine, select  # noqa: E402
 
-from app.models.resource import Resource
+from app.models.resource import Resource  # noqa: E402
 
 
 def fix_feeding_america_categories(dry_run: bool = True) -> None:
