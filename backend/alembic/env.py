@@ -25,6 +25,9 @@ config = context.config
 # Override sqlalchemy.url from environment if DATABASE_URL is set
 # Use psycopg (v3) driver - same as app.config
 database_url = os.getenv("DATABASE_URL", "postgresql+psycopg://localhost:5432/vibe4vets")
+# Convert postgresql:// to postgresql+psycopg:// for psycopg v3
+if database_url.startswith("postgresql://"):
+    database_url = database_url.replace("postgresql://", "postgresql+psycopg://", 1)
 config.set_main_option("sqlalchemy.url", database_url)
 
 # Setup loggers
