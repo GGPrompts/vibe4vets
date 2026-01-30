@@ -4,9 +4,12 @@ Provides REST API for managing Veteran resources including listing, creating,
 updating, and deleting resources with filtering and pagination support.
 """
 
+import time
+from collections import defaultdict
+from threading import Lock
 from uuid import UUID
 
-from fastapi import APIRouter, HTTPException, Query
+from fastapi import APIRouter, HTTPException, Query, Request
 
 from app.api.deps import AdminAuthDep
 from app.database import SessionDep
@@ -17,11 +20,50 @@ from app.schemas.resource import (
     ResourceList,
     ResourceNearbyList,
     ResourceRead,
+    ResourceSuggest,
     ResourceUpdate,
+    SuggestResponse,
 )
 from app.services.resource import ResourceService
 
 router = APIRouter()
+
+# Rate limiting for resource suggestions
+# In production, use Redis for distributed rate limiting
+_suggest_rate_limit_store: dict[str, list[float]] = defaultdict(list)
+_suggest_rate_limit_lock = Lock()
+SUGGEST_RATE_LIMIT_REQUESTS = 5  # requests per window
+SUGGEST_RATE_LIMIT_WINDOW = 3600  # 1 hour in seconds
+
+
+def _check_suggest_rate_limit(client_ip: str) -> bool:
+    """Check if client has exceeded suggestion rate limit.
+
+    Returns True if request is allowed, False if rate limited.
+    """
+    now = time.time()
+    with _suggest_rate_limit_lock:
+        # Clean old entries
+        _suggest_rate_limit_store[client_ip] = [
+            ts for ts in _suggest_rate_limit_store[client_ip] if now - ts < SUGGEST_RATE_LIMIT_WINDOW
+        ]
+        # Check limit
+        if len(_suggest_rate_limit_store[client_ip]) >= SUGGEST_RATE_LIMIT_REQUESTS:
+            return False
+        # Add current request
+        _suggest_rate_limit_store[client_ip].append(now)
+        return True
+
+
+def _get_client_ip(request: Request) -> str:
+    """Extract client IP from request, handling proxies."""
+    # Check for X-Forwarded-For header (common with proxies/load balancers)
+    forwarded = request.headers.get("x-forwarded-for")
+    if forwarded:
+        # Take the first IP in the chain (original client)
+        return forwarded.split(",")[0].strip()
+    # Fall back to direct client IP
+    return request.client.host if request.client else "unknown"
 
 
 @router.get(
@@ -82,6 +124,91 @@ def get_resource_count(
         scope=scope,
     )
     return ResourceCount(count=count)
+
+
+@router.post(
+    "/suggest",
+    response_model=SuggestResponse,
+    status_code=201,
+    summary="Suggest a resource",
+    response_description="Confirmation that the suggestion was received",
+    responses={
+        201: {
+            "description": "Suggestion submitted successfully",
+            "content": {
+                "application/json": {
+                    "example": {
+                        "success": True,
+                        "message": "Thank you! Your suggestion has been submitted for review.",
+                        "suggestion_id": "550e8400-e29b-41d4-a716-446655440000",
+                    }
+                }
+            },
+        },
+        429: {
+            "description": "Rate limit exceeded (5 submissions per hour)",
+            "content": {
+                "application/json": {
+                    "example": {
+                        "detail": "Rate limit exceeded. Please wait before submitting another suggestion."
+                    }
+                }
+            },
+        },
+        422: {
+            "description": "Validation error in request body",
+        },
+    },
+)
+def suggest_resource(
+    data: ResourceSuggest,
+    request: Request,
+    session: SessionDep,
+) -> SuggestResponse:
+    """Suggest a resource not currently in the database.
+
+    **No account or authentication required.**
+
+    This endpoint allows case managers, Veterans, and community members to
+    suggest resources they know about. Submissions are reviewed by our team
+    before being added to the directory.
+
+    **Required fields:**
+    - `name` - Name of the resource or program
+    - `description` - What the resource offers (min 20 characters)
+    - `category` - Primary category (employment, housing, legal, etc.)
+
+    **Recommended fields:**
+    - `website` OR `phone` - At least one way to contact the resource
+    - `city` and `state` - Location helps Veterans find local resources
+
+    **Rate limiting:**
+    Limited to 5 submissions per hour per IP address to prevent spam.
+
+    **What happens next:**
+    1. Your suggestion is added to our review queue
+    2. Our team verifies the information
+    3. If approved, it appears in search results
+
+    Thank you for helping Veterans find resources!
+    """
+    # Check rate limit
+    client_ip = _get_client_ip(request)
+    if not _check_suggest_rate_limit(client_ip):
+        raise HTTPException(
+            status_code=429,
+            detail="Rate limit exceeded. Please wait before submitting another suggestion.",
+        )
+
+    # Create the resource suggestion
+    service = ResourceService(session)
+    resource_id = service.create_suggestion(data)
+
+    return SuggestResponse(
+        success=True,
+        message="Thank you! Your suggestion has been submitted for review.",
+        suggestion_id=str(resource_id) if resource_id else None,
+    )
 
 
 @router.get(

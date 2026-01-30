@@ -18,6 +18,7 @@ from app.schemas.resource import (
     ResourceNearbyList,
     ResourceNearbyResult,
     ResourceRead,
+    ResourceSuggest,
     ResourceUpdate,
     TrustSignals,
     VerificationInfo,
@@ -700,6 +701,89 @@ class ResourceService:
         self.session.refresh(resource)
 
         return self._to_read_schema(resource)
+
+    def create_suggestion(self, data: ResourceSuggest) -> UUID:
+        """Create a resource from a public suggestion.
+
+        Creates a resource with pending_review status and adds it to the
+        admin review queue. The submitter info is stored in notes.
+
+        Args:
+            data: The suggestion data from the public form
+
+        Returns:
+            The UUID of the created resource
+        """
+        from app.models.review import ReviewState, ReviewStatus
+
+        # Create organization with a placeholder name based on resource name
+        org_name = f"Suggested: {data.name[:100]}"
+        organization = Organization(
+            name=org_name,
+            website=str(data.website) if data.website else None,
+        )
+        self.session.add(organization)
+        self.session.flush()
+
+        # Create location if address info provided
+        location = None
+        if data.city and data.state:
+            location = Location(
+                organization_id=organization.id,
+                address=data.address,
+                city=data.city,
+                state=data.state.upper(),
+                zip_code=data.zip_code,
+            )
+            self.session.add(location)
+            self.session.flush()
+
+        # Determine scope based on location
+        scope = ResourceScope.LOCAL if location else ResourceScope.NATIONAL
+        states = [data.state.upper()] if data.state else []
+
+        # Build description with submitter notes
+        full_description = data.description
+        if data.notes:
+            full_description = f"{data.description}\n\n---\nSubmitter notes: {data.notes}"
+
+        # Store submitter email in a way that's visible in review
+        eligibility_note = None
+        if data.submitter_email:
+            eligibility_note = f"[Suggested by: {data.submitter_email}]"
+
+        # Create resource with pending_review status
+        resource = Resource(
+            organization_id=organization.id,
+            location_id=location.id if location else None,
+            title=data.name,
+            description=full_description,
+            eligibility=eligibility_note,
+            categories=[data.category] if data.category else [],
+            scope=scope,
+            states=states,
+            website=str(data.website) if data.website else None,
+            phone=data.phone,
+            status=ResourceStatus.NEEDS_REVIEW,
+            freshness_score=1.0,
+            reliability_score=0.3,  # Low reliability for unverified suggestions
+        )
+
+        self.session.add(resource)
+        self.session.flush()
+
+        # Create review entry so it appears in admin queue
+        review = ReviewState(
+            resource_id=resource.id,
+            status=ReviewStatus.PENDING,
+            reason="User-submitted suggestion via public form",
+        )
+        self.session.add(review)
+
+        self.session.commit()
+        self.session.refresh(resource)
+
+        return resource.id
 
     def update_resource(self, resource_id: UUID, data: ResourceUpdate) -> ResourceRead | None:
         """Update a resource."""

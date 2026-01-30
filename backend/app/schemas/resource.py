@@ -147,6 +147,86 @@ class ResourceCreate(BaseModel):
     model_config = {"str_strip_whitespace": True}
 
 
+class ResourceSuggest(BaseModel):
+    """Schema for public resource suggestion (no auth required).
+
+    Allows case managers and Veterans to suggest resources not in the database.
+    Submissions go to the review queue for admin approval.
+    """
+
+    # Required fields
+    name: str = Field(
+        ...,
+        min_length=3,
+        max_length=255,
+        description="Name of the resource or program",
+        json_schema_extra={"example": "Veterans Community Center Job Fair"},
+    )
+    description: str = Field(
+        ...,
+        min_length=20,
+        max_length=2000,
+        description="Description of what the resource offers",
+        json_schema_extra={"example": "Monthly job fair connecting Veterans with local employers"},
+    )
+    category: str = Field(
+        ...,
+        description="Primary category: employment, training, housing, legal, food, benefits, mentalHealth, etc.",
+        json_schema_extra={"example": "employment"},
+    )
+
+    # Contact info (at least one recommended)
+    website: HttpUrl | None = Field(
+        default=None,
+        description="Official website URL",
+        json_schema_extra={"example": "https://example.org"},
+    )
+    phone: str | None = Field(
+        default=None,
+        max_length=50,
+        description="Contact phone number",
+        json_schema_extra={"example": "(555) 123-4567"},
+    )
+
+    # Location info (optional)
+    address: str | None = Field(default=None, max_length=255, description="Street address")
+    city: str | None = Field(default=None, max_length=100, description="City name")
+    state: str | None = Field(
+        default=None,
+        max_length=2,
+        description="2-letter state code (e.g., VA, TX)",
+        json_schema_extra={"example": "VA"},
+    )
+    zip_code: str | None = Field(
+        default=None,
+        max_length=10,
+        description="ZIP code",
+        json_schema_extra={"example": "22201"},
+    )
+
+    # Optional submitter info
+    submitter_email: str | None = Field(
+        default=None,
+        max_length=255,
+        description="Your email (optional, for follow-up questions)",
+    )
+    notes: str | None = Field(
+        default=None,
+        max_length=1000,
+        description="Additional notes or context about this resource",
+    )
+
+    model_config = {"str_strip_whitespace": True}
+
+
+class SuggestResponse(BaseModel):
+    """Response for resource suggestion submission."""
+
+    success: bool = Field(..., description="Whether the submission was accepted")
+    message: str = Field(..., description="Confirmation message")
+    suggestion_id: str | None = Field(None, description="ID for tracking (if available)")
+
+
 class ResourceUpdate(BaseModel):
     """Schema for updating a resource."""
 

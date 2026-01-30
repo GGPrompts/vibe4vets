@@ -9,9 +9,10 @@ import { useDebounce } from '@/hooks/use-debounce';
 import { cn } from '@/lib/utils';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-import { Search, Loader2, Bookmark, Filter, X } from 'lucide-react';
+import { Search, Loader2, Bookmark, Filter, X, Plus } from 'lucide-react';
 import { SortDropdownHeader, type SortOption } from '@/components/sort-dropdown-header';
 import { MagnifierToggle } from '@/components/MagnifierToggle';
+import { SuggestResourceModal } from '@/components/SuggestResourceModal';
 import { useOptionalFilterContext } from '@/context/filter-context';
 import { useOptionalSavedResources } from '@/context/saved-resources-context';
 
@@ -296,11 +297,38 @@ export function Header() {
                   </span>
                 </NavLink>
 
+                {/* Suggest Resource Button */}
+                <SuggestResourceModal
+                  trigger={
+                    <button
+                      className="relative group px-1 py-2 text-base font-medium transition-colors duration-200 text-white/80 hover:text-white flex items-center gap-1.5"
+                    >
+                      <Plus className="h-4 w-4" />
+                      Suggest
+                      <span className="absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-[hsl(var(--v4v-gold))] to-[hsl(var(--v4v-gold-light))] transition-all duration-300 ease-out w-0 group-hover:w-full" />
+                    </button>
+                  }
+                />
+
                 <MagnifierToggle />
               </nav>
 
-              {/* Mobile Right Controls: Search + Saved */}
+              {/* Mobile Right Controls: Search + Saved + Suggest */}
               <div className="flex md:hidden items-center gap-1">
+                {/* Mobile Suggest Resource */}
+                <SuggestResourceModal
+                  trigger={
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      className="h-9 w-9 rounded-lg text-white/80 hover:text-[hsl(var(--v4v-gold))] hover:bg-white/10"
+                      aria-label="Suggest a resource"
+                    >
+                      <Plus className="h-5 w-5" />
+                    </Button>
+                  }
+                />
+
                 {/* Mobile Search Toggle */}
                 <Button
                   variant="ghost"

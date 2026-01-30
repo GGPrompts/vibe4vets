@@ -230,6 +230,27 @@ export interface ResourceCreate {
   zip_code?: string;
 }
 
+// Resource suggestion (public form, no auth required)
+export interface ResourceSuggest {
+  name: string;
+  description: string;
+  category: string;
+  website?: string;
+  phone?: string;
+  address?: string;
+  city?: string;
+  state?: string;
+  zip_code?: string;
+  submitter_email?: string;
+  notes?: string;
+}
+
+export interface SuggestResponse {
+  success: boolean;
+  message: string;
+  suggestion_id: string | null;
+}
+
 export interface ReviewQueueItem {
   id: string;
   resource_id: string;
@@ -659,6 +680,14 @@ export const api = {
     /** Get state info for a ZIP code (for map highlighting) */
     zipInfo: (zipCode: string): Promise<{ zip_code: string; state: string | null }> => {
       return fetchAPI(`/api/v1/resources/zip/${zipCode}`);
+    },
+
+    /** Suggest a resource (public, no auth required) */
+    suggest: (data: ResourceSuggest): Promise<SuggestResponse> => {
+      return fetchAPI('/api/v1/resources/suggest', {
+        method: 'POST',
+        body: JSON.stringify(data),
+      });
     },
   },
 
