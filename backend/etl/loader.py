@@ -35,6 +35,12 @@ class Loader:
     # Fields that trigger review when changed
     RISKY_FIELDS = {"phone", "website", "address", "eligibility", "how_to_apply", "cost"}
 
+    # Source tiers at or below this threshold are auto-approved (no manual review)
+    # Tier 1: Federal (VA, DOL, HUD) - highly trusted
+    # Tier 2: Established nonprofits (DAV, VFW) - trusted
+    # Tier 3+: State/community sources - require review for risky changes
+    AUTO_APPROVE_TIER_THRESHOLD = 2
+
     def __init__(self, session: Session):
         """Initialize loader.
 
@@ -296,10 +302,15 @@ class Loader:
             ("hours", existing.hours, normalized.hours),
         ]
 
+        # Determine if source is trusted (auto-approve risky changes)
+        source_tier = source.tier if source else 4
+        is_trusted_source = source_tier <= self.AUTO_APPROVE_TIER_THRESHOLD
+
         for field_name, old_val, new_val in field_updates:
             if old_val != new_val and new_val:
                 changes.append((field_name, old_val, new_val))
-                if field_name in self.RISKY_FIELDS:
+                # Only flag for review if risky field AND source is not trusted
+                if field_name in self.RISKY_FIELDS and not is_trusted_source:
                     needs_review = True
                 setattr(existing, field_name, new_val)
 
