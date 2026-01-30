@@ -6,12 +6,16 @@ Provides multiple search modes:
 - Semantic search using AI embeddings (local SentenceTransformers or OpenAI)
 """
 
+import logging
+
 from fastapi import APIRouter, HTTPException, Query
 from pydantic import BaseModel, Field
 
 from app.database import SessionDep
 from app.schemas.resource import ResourceSearchResult
 from app.services.search import EligibilityFilters, SearchService
+
+logger = logging.getLogger(__name__)
 
 router = APIRouter()
 
@@ -422,9 +426,11 @@ def semantic_search(
         result = embedding_service.generate_embedding(q)
         query_embedding = result.embedding
     except Exception as e:
+        # Log full error server-side, return generic message to client
+        logger.exception("Failed to generate embedding for query: %s", e)
         raise HTTPException(
             status_code=500,
-            detail=f"Failed to generate embedding: {e}",
+            detail="Failed to process search query",
         ) from e
 
     service = SearchService(session)

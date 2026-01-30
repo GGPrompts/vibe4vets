@@ -1,5 +1,6 @@
 """VetRD API - Veteran Resource Directory."""
 
+import logging
 from collections.abc import AsyncGenerator
 from contextlib import asynccontextmanager
 
@@ -11,6 +12,8 @@ from app.api.v1 import admin, analytics, chat, email, feedback, partner, resourc
 from app.config import settings
 from app.database import create_db_and_tables
 from jobs import get_scheduler, setup_jobs
+
+logger = logging.getLogger(__name__)
 
 
 @asynccontextmanager
@@ -167,7 +170,14 @@ async def health_check() -> dict[str, str]:
 
 @app.exception_handler(Exception)
 async def global_exception_handler(request: Request, exc: Exception) -> JSONResponse:
-    """Global exception handler that preserves CORS headers on errors."""
+    """Global exception handler that preserves CORS headers on errors.
+
+    Returns generic error message to clients while logging full details server-side.
+    This prevents leaking internal details like SQL errors, file paths, or config.
+    """
+    # Log full exception for debugging (server-side only)
+    logger.exception("Unhandled exception for %s %s: %s", request.method, request.url.path, exc)
+
     # Get the origin from the request
     origin = request.headers.get("origin", "")
 
@@ -177,8 +187,9 @@ async def global_exception_handler(request: Request, exc: Exception) -> JSONResp
         headers["Access-Control-Allow-Origin"] = origin
         headers["Access-Control-Allow-Credentials"] = "true"
 
+    # Return generic message to clients - never expose internal details
     return JSONResponse(
         status_code=500,
-        content={"detail": str(exc)},
+        content={"detail": "Internal server error"},
         headers=headers,
     )
