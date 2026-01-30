@@ -1,0 +1,1388 @@
+[
+  {
+    "id": "c6c7f7ac-f672-447a-b1c5-1376c5ddd663",
+    "title": "Feeding America - Akron Canton Regional Food Bank",
+    "org_name": "Akron Canton Regional Food Bank",
+    "url": "https://www.akroncantonfoodbank.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "3c184f83-c2d4-4c16-a99c-1c04a57dd7c6",
+    "title": "Feeding America - Alameda County Community Food Bank",
+    "org_name": "Alameda County Community Food Bank",
+    "url": "https://www.accfb.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "e1ecc994-5426-4a83-9d69-0b2eec160365",
+    "title": "Feeding America - All Faiths Food Bank",
+    "org_name": "All Faiths Food Bank",
+    "url": "https://www.allfaithsfoodbank.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "773d7e6e-3738-4ddf-912c-75bf8917331b",
+    "title": "Feeding America - America's Second Harvest of the Big Bend",
+    "org_name": "America's Second Harvest of the Big Bend",
+    "url": "https://fightinghunger.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "fd0c04ba-485a-499c-8600-4668d6a11dd3",
+    "title": "Feeding America - Arkansas Food Bank",
+    "org_name": "Arkansas Food Bank",
+    "url": "https://arkansasfoodbank.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "e3f196fd-1daa-4098-b235-dcfeb9f9c5a7",
+    "title": "Feeding America - Atlanta Community Food Bank",
+    "org_name": "Atlanta Community Food Bank",
+    "url": "https://www.acfb.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "0c79da71-da58-4774-b93d-e10a848ca807",
+    "title": "Feeding America - Banco de Alimentos de Puerto Rico",
+    "org_name": "Banco de Alimentos de Puerto Rico",
+    "url": "https://www.bancodealimentospr.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "026f7250-46c0-4beb-adf3-be2c3785b374",
+    "title": "Feeding America - Blue Ridge Area Food Bank",
+    "org_name": "Blue Ridge Area Food Bank",
+    "url": "https://www.bfrfoodbank.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "a26d6fbb-68af-452e-b473-aac3bb0c1f6e",
+    "title": "Feeding America - Capital Area Food Bank",
+    "org_name": "Capital Area Food Bank",
+    "url": "https://www.capitalareafoodbank.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "f005f660-707c-4590-81a0-d1c87c824b8c",
+    "title": "Feeding America - Care and Share Food Bank",
+    "org_name": "Care and Share Food Bank",
+    "url": "https://careandshare.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "7501610e-b103-436b-bedf-612ca7438a7f",
+    "title": "Feeding America - Central California Food Bank",
+    "org_name": "Central California Food Bank",
+    "url": "https://www.ccfoodbank.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "d065b83c-bce1-45b6-a0fe-919ecade8c96",
+    "title": "Feeding America - Central Illinois Food Bank",
+    "org_name": "Central Illinois Food Bank",
+    "url": "https://centralilfoodbank.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "81b911a8-eec2-4b4a-8f02-f4643324cf7a",
+    "title": "Feeding America - Central Pennsylvania Food Bank",
+    "org_name": "Central Pennsylvania Food Bank",
+    "url": "https://www.centralpafoodbank.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "d61a3384-4b32-43f1-b8ce-0a44d9aa3ff7",
+    "title": "Feeding America - Central Texas Food Bank",
+    "org_name": "Central Texas Food Bank",
+    "url": "https://www.centraltexasfoodbank.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "76b15143-125d-4912-8847-24c6eb3de4ba",
+    "title": "Feeding America - Channel One Food Bank",
+    "org_name": "Channel One Food Bank",
+    "url": "https://www.channel-one.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "ca210ac8-ac4d-4286-8d6a-9dfa2096cca9",
+    "title": "Feeding America - Chattanooga Area Food Bank",
+    "org_name": "Chattanooga Area Food Bank",
+    "url": "https://www.chattfoodbank.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "56f376d9-fc1c-4906-a392-bffb7d50e8dc",
+    "title": "Feeding America - City Harvest",
+    "org_name": "City Harvest",
+    "url": "https://www.cityharvest.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "f538b539-3a33-44d4-84a8-6357c1378523",
+    "title": "Feeding America - Coastal Bend Food Bank",
+    "org_name": "Coastal Bend Food Bank",
+    "url": "https://www.coastalbendfoodbank.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "a4ba9366-1994-43c0-84f4-749a736011f4",
+    "title": "Feeding America - Community Food Bank of Central Alabama",
+    "org_name": "Community Food Bank of Central Alabama",
+    "url": "https://www.feedingal.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "0ca17eb7-0371-45e9-99ed-b7c180401a58",
+    "title": "Feeding America - Community Food Bank of Eastern Oklahoma",
+    "org_name": "Community Food Bank of Eastern Oklahoma",
+    "url": "https://cfbeo.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "1b724162-46fc-415a-94c9-bc69b71635dc",
+    "title": "Feeding America - Community Food Bank of New Jersey",
+    "org_name": "Community Food Bank of New Jersey",
+    "url": "https://cfbnj.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "16f98aa9-b7ba-41c6-9382-dee0f905c099",
+    "title": "Feeding America - Community Food Bank of Southern Arizona",
+    "org_name": "Community Food Bank of Southern Arizona",
+    "url": "https://www.communityfoodbank.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "86a06617-6f79-4473-9364-15c213665d09",
+    "title": "Feeding America - Community Food Share",
+    "org_name": "Community Food Share",
+    "url": "https://communityfoodshare.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "7ebb0a8c-dbd6-432c-a49f-75405b717601",
+    "title": "Feeding America - Community Harvest Food Bank of Northeast Indiana",
+    "org_name": "Community Harvest Food Bank of Northeast Indiana",
+    "url": "https://www.communityharvest.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "feed58cb-94d4-4334-bb99-256b7797dc29",
+    "title": "Feeding America - Connecticut Food Bank",
+    "org_name": "Connecticut Food Bank",
+    "url": "https://www.ctfoodbank.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "60a7c62b-7de3-439f-91e0-d94acf9de81d",
+    "title": "Feeding America - Dare to Care Food Bank",
+    "org_name": "Dare to Care Food Bank",
+    "url": "https://daretocare.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "559f5488-e884-45ef-978c-a5fb9412bb2b",
+    "title": "Feeding America - Eastern Illinois Food Bank",
+    "org_name": "Eastern Illinois Food Bank",
+    "url": "https://eifoodbank.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "b525b92c-eb92-4882-bcba-32d8bf9fe5e4",
+    "title": "Feeding America - East Texas Food Bank",
+    "org_name": "East Texas Food Bank",
+    "url": "https://www.easttexasfoodbank.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "78cfba4a-e4b0-4d6a-baec-a8647aab2f4b",
+    "title": "Feeding America - El Pasoans Fighting Hunger Food Bank",
+    "org_name": "El Pasoans Fighting Hunger Food Bank",
+    "url": "https://elpasoansfightinghunger.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "8c3d1318-6df7-4648-8e60-dc391d3259ee",
+    "title": "Feeding America - Facing Hunger Food Bank",
+    "org_name": "Facing Hunger Food Bank",
+    "url": "https://facinghunger.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "b8e7d3dc-fc4f-4d41-8b92-c6e99728abb5",
+    "title": "Feeding America - Feeding America Eastern Wisconsin",
+    "org_name": "Feeding America Eastern Wisconsin",
+    "url": "https://feedingamericawi.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "2d49fa74-e867-4cc5-a7fc-6c0a426f686e",
+    "title": "Feeding America - Feeding America Kentuckys Heartland",
+    "org_name": "Feeding America Kentuckys Heartland",
+    "url": "https://feedingamericaky.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "fea73c20-00f1-427a-a90c-cf4be88fc761",
+    "title": "Feeding America - Feeding America Riverside San Bernardino Counties",
+    "org_name": "Feeding America Riverside San Bernardino Counties",
+    "url": "https://www.feedingamericaie.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "1d2e7c99-2233-45f4-8d54-9f86cfb32e6d",
+    "title": "Feeding America - Feeding America Southwest Virginia",
+    "org_name": "Feeding America Southwest Virginia",
+    "url": "https://faswva.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "9d8514cc-c842-4c5f-838d-e436ffd7c59f",
+    "title": "Feeding America - Feeding America West Michigan Food Bank",
+    "org_name": "Feeding America West Michigan Food Bank",
+    "url": "https://feedwm.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "33e4026f-5f81-46fd-b40b-cb4192a360cd",
+    "title": "Feeding America - Feeding Foothills",
+    "org_name": "Feeding Foothills",
+    "url": "https://www.feedingfoothills.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "7018a737-e8f8-4441-a737-3a7539c03eb8",
+    "title": "Feeding America - Feeding Northeast Florida",
+    "org_name": "Feeding Northeast Florida",
+    "url": "https://feedingnefl.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "0c3b1f4f-8ee7-41ce-a7f0-77e43fdf88b8",
+    "title": "Feeding America - Feeding San Diego",
+    "org_name": "Feeding San Diego",
+    "url": "https://feedingsandiego.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "9fbe28df-551a-4d59-8e79-876bdb323db6",
+    "title": "Feeding America - Feeding South Dakota",
+    "org_name": "Feeding South Dakota",
+    "url": "https://feedingsouthdakota.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "493a2795-ba77-4034-b2d9-c56fc1541bca",
+    "title": "Feeding America - Feeding South Florida",
+    "org_name": "Feeding South Florida",
+    "url": "https://feedingsouthflorida.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "09ddf0e4-1f9b-472f-8e71-cc18b420664a",
+    "title": "Feeding America - Feeding Tampa Bay",
+    "org_name": "Feeding Tampa Bay",
+    "url": "https://feedingtampabay.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "59229943-ab97-4669-a0ac-009762c4b3af",
+    "title": "Feeding America - Feeding the Gulf Coast",
+    "org_name": "Feeding the Gulf Coast",
+    "url": "https://feedingthegulfcoast.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "a6c01d4a-d960-47b0-b7b8-2a8850036965",
+    "title": "Feeding America - Feeding the Valley Food Bank",
+    "org_name": "Feeding the Valley Food Bank",
+    "url": "https://www.feedingthevalley.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "83ea402e-a8b1-4713-9afe-6023c1fb2447",
+    "title": "Feeding America - Feeding Westchester",
+    "org_name": "Feeding Westchester",
+    "url": "https://feedingwestchester.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "e389d923-c02d-4d84-908c-ca65db4d1db5",
+    "title": "Feeding America - Feed More",
+    "org_name": "Feed More",
+    "url": "https://feedmore.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "979d9cfa-8b3c-40ed-931f-62bb9f88e78c",
+    "title": "Feeding America - Food Bank for Larimer County",
+    "org_name": "Food Bank for Larimer County",
+    "url": "https://foodbanklarimer.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "b4a40d78-56d0-4a72-836c-4f177320048e",
+    "title": "Feeding America - Food Bank for Monterey County",
+    "org_name": "Food Bank for Monterey County",
+    "url": "https://foodbankformontereycounty.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "ce3d302f-ffdd-44dd-8e63-e42e90c235ea",
+    "title": "Feeding America - Food Bank for New York City",
+    "org_name": "Food Bank for New York City",
+    "url": "https://www.foodbanknyc.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "b0635fc1-7784-41a4-b28b-577cf8642be9",
+    "title": "Feeding America - Food Bank for the Heartland",
+    "org_name": "Food Bank for the Heartland",
+    "url": "https://foodbankheartland.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "e8b8b404-4951-4e62-89b6-b8685b81af70",
+    "title": "Feeding America - Food Bank of Alaska",
+    "org_name": "Food Bank of Alaska",
+    "url": "https://foodbankofalaska.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "5489a430-614a-4f06-8529-acbe1845afd9",
+    "title": "Feeding America - Food Bank of Central and Eastern North Carolina",
+    "org_name": "Food Bank of Central and Eastern North Carolina",
+    "url": "https://foodbankcenc.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "74a537d1-5ef9-470f-97e6-cd613f04aff0",
+    "title": "Feeding America - Food Bank of Central Louisiana",
+    "org_name": "Food Bank of Central Louisiana",
+    "url": "https://www.foodbankcenla.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "96123fe9-80dc-4bae-ab2e-7c079c1a3878",
+    "title": "Feeding America - Food Bank of Central New York",
+    "org_name": "Food Bank of Central New York",
+    "url": "https://foodbankcny.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "49f38e6c-891b-449e-8fe7-af20d2a966f4",
+    "title": "Feeding America - Food Bank of Contra Costa and Solano",
+    "org_name": "Food Bank of Contra Costa and Solano",
+    "url": "https://www.foodbankccs.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "78ada31c-8780-4af0-b55b-8c84d7be1f14",
+    "title": "Feeding America - Food Bank of Eastern Michigan",
+    "org_name": "Food Bank of Eastern Michigan",
+    "url": "https://fbem.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "40d5ffae-a67f-4ce4-ac0d-e45f1239afac",
+    "title": "Feeding America - Food Bank of Iowa",
+    "org_name": "Food Bank of Iowa",
+    "url": "https://foodbankiowa.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "e360b32f-beea-4ef5-ac99-3c750ddf8f15",
+    "title": "Feeding America - Food Bank of Lincoln",
+    "org_name": "Food Bank of Lincoln",
+    "url": "https://www.lincolnfoodbank.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "e83ec8ec-589a-4750-8c41-3f430271fadb",
+    "title": "Feeding America - Food Bank of North Alabama",
+    "org_name": "Food Bank of North Alabama",
+    "url": "https://foodbankna.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "bc48c98e-a660-49ff-8935-df6c06241fa9",
+    "title": "Feeding America - Food Bank of Northeast Arkansas",
+    "org_name": "Food Bank of Northeast Arkansas",
+    "url": "https://foodbankofnea.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "e07d0023-b5b5-4b77-a058-b746ba7a0ca8",
+    "title": "Feeding America - Food Bank of Northeast Georgia",
+    "org_name": "Food Bank of Northeast Georgia",
+    "url": "https://foodbanknega.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "4c2a3526-d2e9-48be-8590-80769f3f7010",
+    "title": "Feeding America - Food Bank of Northeast Louisiana",
+    "org_name": "Food Bank of Northeast Louisiana",
+    "url": "https://www.foodbanknela.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "80927e83-78ed-405e-903b-0045a51adec2",
+    "title": "Feeding America - Food Bank of Northern Indiana",
+    "org_name": "Food Bank of Northern Indiana",
+    "url": "https://foodbankni.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "03426d1b-4839-41ff-a8f2-981ae6fa6c1b",
+    "title": "Feeding America - Food Bank of Northern Nevada",
+    "org_name": "Food Bank of Northern Nevada",
+    "url": "https://fbnn.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "7143b75e-8f5f-4399-bf5f-5a86faf6e4d3",
+    "title": "Feeding America - Food Bank of Northwest Indiana",
+    "org_name": "Food Bank of Northwest Indiana",
+    "url": "https://foodbanknwi.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "098fa7c7-34df-46cc-a804-58bad684043a",
+    "title": "Feeding America - Food Bank of Northwest Louisiana",
+    "org_name": "Food Bank of Northwest Louisiana",
+    "url": "https://www.foodbanknla.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "0dcc07c2-b703-4fcf-a603-2972c21fa3bf",
+    "title": "Feeding America - Food Bank of Santa Barbara County",
+    "org_name": "Food Bank of Santa Barbara County",
+    "url": "https://foodbanksbc.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "b40e13f6-a777-41c4-84f7-8384d6e76a1a",
+    "title": "Feeding America - Food Bank of South Central Michigan",
+    "org_name": "Food Bank of South Central Michigan",
+    "url": "https://foodbankofscm.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "880c8bb6-3fbb-472b-829c-91dd295c114c",
+    "title": "Feeding America - Food Bank of Southeastern Virginia",
+    "org_name": "Food Bank of Southeastern Virginia",
+    "url": "https://foodbankonline.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "b0437561-f0be-4a78-a310-d9f55bc29fb7",
+    "title": "Feeding America - Food Bank of South Jersey",
+    "org_name": "Food Bank of South Jersey",
+    "url": "https://foodbanksj.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "cd851283-4f8d-4171-9c76-79e5339b66cd",
+    "title": "Feeding America - Food Bank of the Albemarle",
+    "org_name": "Food Bank of the Albemarle",
+    "url": "https://afoodbank.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "6312a271-f75a-4a0d-8db2-249d3d2a9a06",
+    "title": "Feeding America - Food Bank of the Golden Crescent",
+    "org_name": "Food Bank of the Golden Crescent",
+    "url": "https://www.victoriafoodbank.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "aa7e243c-473d-4d6d-8bdd-13438eb955e1",
+    "title": "Feeding America - Food Bank of the Rio Grande Valley",
+    "org_name": "Food Bank of the Rio Grande Valley",
+    "url": "https://foodbankrgv.com/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "4c2a70cf-855b-4089-8d6f-ffff196c1fcf",
+    "title": "Feeding America - Food Bank of the Rockies",
+    "org_name": "Food Bank of the Rockies",
+    "url": "https://www.foodbankrockies.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "30e96186-83b1-4b0a-b68c-de22481f4c90",
+    "title": "Feeding America - Food Bank of the Southern Tier",
+    "org_name": "Food Bank of the Southern Tier",
+    "url": "https://foodbankst.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "26585a71-6e1c-474d-be3e-ed1025b22b83",
+    "title": "Feeding America - Food Bank of West Central Texas",
+    "org_name": "Food Bank of West Central Texas",
+    "url": "https://foodbankofwestcentraltexas.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "ac8a36ab-be8d-46d3-a22d-bea36b910459",
+    "title": "Feeding America - Food Bank of Western Massachusetts",
+    "org_name": "Food Bank of Western Massachusetts",
+    "url": "https://www.foodbankwma.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "472d3c6f-7d79-4670-9ab2-bf6ddc523972",
+    "title": "Feeding America - Food Bank of Western New York",
+    "org_name": "Food Bank of Western New York",
+    "url": "https://www.foodbankwny.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "e914be7a-10e7-4669-9a97-81fd4ceaa664",
+    "title": "Feeding America - Food Finders Food Bank",
+    "org_name": "Food Finders Food Bank",
+    "url": "https://www.food-finders.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "2e17301a-fb89-411c-8c64-f6684f5551e9",
+    "title": "Feeding America - Food Gatherers",
+    "org_name": "Food Gatherers",
+    "url": "https://www.foodgatherers.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "51728ce1-205c-4817-9590-b39c1d1f5f67",
+    "title": "Feeding America - Food Lifeline",
+    "org_name": "Food Lifeline",
+    "url": "https://foodlifeline.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "8de09666-749c-4a44-a719-afcb058dad55",
+    "title": "Feeding America - Foodlink",
+    "org_name": "Foodlink",
+    "url": "https://foodlinkny.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "96642e0a-5a4b-4657-a187-43ba63989dcc",
+    "title": "Feeding America - Foodshare",
+    "org_name": "Foodshare",
+    "url": "https://foodshare.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "28555379-9e17-4cb5-bada-5dcac1c22dfc",
+    "title": "Feeding America - Food Share",
+    "org_name": "Food Share",
+    "url": "https://www.foodshare.com/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "d3d44e1e-3a9a-45af-8967-da58c54a29d8",
+    "title": "Feeding America - Forgotten Harvest",
+    "org_name": "Forgotten Harvest",
+    "url": "https://forgottenharvest.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "ecdd24b1-cf69-4046-b315-4568e5a6fda8",
+    "title": "Feeding America - Fredericksburg Regional Food Bank",
+    "org_name": "Fredericksburg Regional Food Bank",
+    "url": "https://fredfood.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "44d9b0ec-c8ae-4009-ad82-47a1238e8277",
+    "title": "Feeding America - Freestore Food Bank",
+    "org_name": "Freestore Food Bank",
+    "url": "https://freestorefoodbank.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "b3d1ba74-f7c6-443b-af23-1b89fcb22823",
+    "title": "Feeding America - Fulfill the Food Bank of Monmouth and Ocean Counties",
+    "org_name": "Fulfill the Food Bank of Monmouth and Ocean Counties",
+    "url": "https://fulfillnj.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "54b913b5-e7fb-45a1-aee9-f077af443538",
+    "title": "Feeding America - Gleaners Community Food Bank of Southeastern Michigan",
+    "org_name": "Gleaners Community Food Bank of Southeastern Michigan",
+    "url": "https://www.gcfb.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "299ae859-9511-420f-8425-63227abd4c59",
+    "title": "Feeding America - Gleaners Food Bank of Indiana",
+    "org_name": "Gleaners Food Bank of Indiana",
+    "url": "https://www.gleaners.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "0475aed7-d589-46ee-80ea-0190a891fe31",
+    "title": "Feeding America - God's Pantry Food Bank",
+    "org_name": "God's Pantry Food Bank",
+    "url": "https://godspantry.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "3ed71b31-d43d-4981-8169-8c3c95815a10",
+    "title": "Feeding America - Golden Harvest Food Bank",
+    "org_name": "Golden Harvest Food Bank",
+    "url": "https://www.goldenharvest.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "c6e40473-aad2-4131-b5e0-6eaa7e8fd1e5",
+    "title": "Feeding America - Good Shepherd Food Bank",
+    "org_name": "Good Shepherd Food Bank",
+    "url": "https://www.gsfb.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "d5c19a88-ce98-4e82-8db2-db5511f05037",
+    "title": "Feeding America - Greater Baton Rouge Food Bank",
+    "org_name": "Greater Baton Rouge Food Bank",
+    "url": "https://brfoodbank.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "0ec6d316-554e-4f7d-9fb8-45b8741ad77f",
+    "title": "Feeding America - Greater Berks Food Bank",
+    "org_name": "Greater Berks Food Bank",
+    "url": "https://www.berksfoodbank.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "c56a4f7a-03cc-4dab-98c3-a331ba577612",
+    "title": "Feeding America - Greater Chicago Food Depository",
+    "org_name": "Greater Chicago Food Depository",
+    "url": "https://www.chicagosfoodbank.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "0a296039-fbe7-4632-8145-e70879353640",
+    "title": "Feeding America - Greater Cleveland Food Bank",
+    "org_name": "Greater Cleveland Food Bank",
+    "url": "https://greaterclevelandfoodbank.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "c7078a4d-49b3-422f-bb88-6fe590dbbed2",
+    "title": "Feeding America - Greater Lansing Food Bank",
+    "org_name": "Greater Lansing Food Bank",
+    "url": "https://greaterlansingfoodbank.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "734176e4-a1cd-4fe6-ad17-9b8e8fab5f89",
+    "title": "Feeding America - Greater Pittsburgh Community Food Bank",
+    "org_name": "Greater Pittsburgh Community Food Bank",
+    "url": "https://pittsburghfoodbank.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "4f0a970f-ff52-40db-8170-0b56daaacf27",
+    "title": "Feeding America - Great Plains Food Bank",
+    "org_name": "Great Plains Food Bank",
+    "url": "https://greatplainsfoodbank.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "6bd7d9a0-2755-4ec2-a979-ee1040276373",
+    "title": "Feeding America - HACAP Food Reservoir",
+    "org_name": "HACAP Food Reservoir",
+    "url": "https://www.hacap.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "f01ef766-7d7b-413e-b8cd-184ccb3ea8c1",
+    "title": "Feeding America - Harry Chapin Food Bank of Southwest Florida",
+    "org_name": "Harry Chapin Food Bank of Southwest Florida",
+    "url": "https://harrychapinfoodbank.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "320d0d3f-2083-453a-8575-3df55ef0d5d1",
+    "title": "Feeding America - Harvesters the Community Food Network",
+    "org_name": "Harvesters the Community Food Network",
+    "url": "https://www.harvesters.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "3c7a243c-227a-4ed4-97c9-52ebe94eaa0f",
+    "title": "Feeding America - Harvest Hope Food Bank",
+    "org_name": "Harvest Hope Food Bank",
+    "url": "https://harvesthope.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "90fa4b13-49e6-4ae7-9697-85e1d5183554",
+    "title": "Feeding America - Harvest Regional Food Bank",
+    "org_name": "Harvest Regional Food Bank",
+    "url": "https://harvestregionalfoodbank.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "372c924d-8cce-4713-99ce-073787942561",
+    "title": "Feeding America - Hawaii Food Bank",
+    "org_name": "Hawaii Food Bank",
+    "url": "https://hawaiifoodbank.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "128eb8b4-75de-4638-84ee-f154486b32cd",
+    "title": "Feeding America - High Plains Food Bank",
+    "org_name": "High Plains Food Bank",
+    "url": "https://hpfb.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "d71ce8b6-5002-4375-a24f-5a9908c76b64",
+    "title": "Feeding America - Hoosier Hills Food Bank",
+    "org_name": "Hoosier Hills Food Bank",
+    "url": "https://www.hhfoodbank.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "ffd77b77-da20-41bb-ba2e-63c320932e6e",
+    "title": "Feeding America - Houston Food Bank",
+    "org_name": "Houston Food Bank",
+    "url": "https://www.houstonfoodbank.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "7cf0e3b5-a34c-48ab-b43c-22b892f88907",
+    "title": "Feeding America - Inter Faith Food Shuttle",
+    "org_name": "Inter Faith Food Shuttle",
+    "url": "https://www.foodshuttle.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "26a2a31f-0aef-4abd-9297-ace470958a17",
+    "title": "Feeding America - Island Harvest",
+    "org_name": "Island Harvest",
+    "url": "https://www.islandharvest.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "74e79c55-a0aa-47dc-88c2-96030e37fe09",
+    "title": "Feeding America - Kansas Food Bank",
+    "org_name": "Kansas Food Bank",
+    "url": "https://kansasfoodbank.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "4412e6ed-5ad6-4631-8465-c9be1d71708c",
+    "title": "Feeding America - Long Island Cares",
+    "org_name": "Long Island Cares",
+    "url": "https://www.licares.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "0fd8a372-383a-46e4-8299-d7e1dd3e556b",
+    "title": "Feeding America - Los Angeles Regional Food Bank",
+    "org_name": "Los Angeles Regional Food Bank",
+    "url": "https://www.lafoodbank.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "a7de7e2e-5995-49ef-8c54-9aa1908aec0d",
+    "title": "Feeding America - Lowcountry Food Bank",
+    "org_name": "Lowcountry Food Bank",
+    "url": "https://lowcountryfoodbank.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "1a3f7600-da2a-4cf8-8303-94ab676dac80",
+    "title": "Feeding America - Manna Food Bank",
+    "org_name": "Manna Food Bank",
+    "url": "https://www.mannafoodbank.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "d94953a4-37ee-47eb-bc3e-8a17e9326b0f",
+    "title": "Feeding America - Maryland Food Bank",
+    "org_name": "Maryland Food Bank",
+    "url": "https://mdfoodbank.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "a53d2d4c-5d54-4ea4-9500-017fc4227466",
+    "title": "Feeding America - Mercer County Food Bank",
+    "org_name": "Mercer County Food Bank",
+    "url": "https://www.mcfoodbank.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "88790357-2d1a-41c9-8f77-1147c8b3212d",
+    "title": "Feeding America - Middle Georgia Community Food Bank",
+    "org_name": "Middle Georgia Community Food Bank",
+    "url": "https://www.middlegafoodbank.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "3826ed65-de7c-4d96-a38f-93ad69a2bc4b",
+    "title": "Feeding America - Mid Ohio Food Bank",
+    "org_name": "Mid Ohio Food Bank",
+    "url": "https://www.midohiofoodbank.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "958d01d2-d28c-466f-98f6-e9dba1eae56b",
+    "title": "Feeding America - Mid South Food Bank",
+    "org_name": "Mid South Food Bank",
+    "url": "https://www.midsouthfoodbank.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "ac76bffa-deaa-44e6-9ae7-7fd40461acad",
+    "title": "Feeding America - Mississippi Food Network",
+    "org_name": "Mississippi Food Network",
+    "url": "https://www.msfoodnet.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "969fcd12-2895-42f2-92e3-d23e25673d72",
+    "title": "Feeding America - Montana Food Bank Network",
+    "org_name": "Montana Food Bank Network",
+    "url": "https://myfoodbank.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "b1293199-3fe4-4d77-9ae6-46d495c88f66",
+    "title": "Feeding America - Montgomery Area Food Bank",
+    "org_name": "Montgomery Area Food Bank",
+    "url": "https://www.montgomeryareafoodbank.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "e7765b7f-5d61-4c49-afa0-29758e561567",
+    "title": "Feeding America - Mountaineer Food Bank",
+    "org_name": "Mountaineer Food Bank",
+    "url": "https://mountaineerfoodbank.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "4a3b1a1d-0494-463e-9ec7-7744d3cb9f5e",
+    "title": "Feeding America - New Hampshire Food Bank",
+    "org_name": "New Hampshire Food Bank",
+    "url": "https://nhfoodbank.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "00ddede6-070b-4614-b49a-813368b2caaa",
+    "title": "Feeding America - North Country Food Bank",
+    "org_name": "North Country Food Bank",
+    "url": "https://www.ncfoodbank.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "b35f7e04-9ee2-4b74-9e94-36113c17de71",
+    "title": "Feeding America - Northeast Iowa Food Bank",
+    "org_name": "Northeast Iowa Food Bank",
+    "url": "https://www.northeastiowafoodbank.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "306a82e6-4d4c-40ca-9989-0b295bafc62a",
+    "title": "Feeding America - Northern Illinois Food Bank",
+    "org_name": "Northern Illinois Food Bank",
+    "url": "https://solvehungertoday.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "60334a35-7748-4c92-9d6a-9cfdda55d355",
+    "title": "Feeding America - North Texas Food Bank",
+    "org_name": "North Texas Food Bank",
+    "url": "https://ntfb.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "a5e67404-d62d-4e6e-bc94-10c9f683a045",
+    "title": "Feeding America - Northwest Arkansas Food Bank",
+    "org_name": "Northwest Arkansas Food Bank",
+    "url": "https://nwafoodbank.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "1830fb17-8928-4a57-ad99-23ae8e4f4071",
+    "title": "Feeding America - Oregon Food Bank",
+    "org_name": "Oregon Food Bank",
+    "url": "https://www.oregonfoodbank.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "e3173fe3-feca-4120-bab9-804c0940b2de",
+    "title": "Feeding America - Ozarks Food Harvest",
+    "org_name": "Ozarks Food Harvest",
+    "url": "https://ozarksfoodharvest.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "6d469bfe-fb52-4f9a-a93a-4718b8c879e1",
+    "title": "Feeding America - Peoria Area Food Bank",
+    "org_name": "Peoria Area Food Bank",
+    "url": "https://peoriaareafoodbank.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "5c8b06b1-3c97-4f10-8d64-2267865c2b17",
+    "title": "Feeding America - Philabundance",
+    "org_name": "Philabundance",
+    "url": "https://www.philabundance.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "452a3a09-46c3-48b2-a37f-b9fde9e0e041",
+    "title": "Feeding America - Redwood Empire Food Bank",
+    "org_name": "Redwood Empire Food Bank",
+    "url": "https://refb.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "a74ab76b-0623-4887-bd20-56afe69a206e",
+    "title": "Feeding America - Regional Food Bank of Northeastern New York",
+    "org_name": "Regional Food Bank of Northeastern New York",
+    "url": "https://regionalfoodbank.net/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "a9303b30-7299-4a17-b779-5178e943b7e9",
+    "title": "Feeding America - Regional Food Bank of Oklahoma",
+    "org_name": "Regional Food Bank of Oklahoma",
+    "url": "https://rfbo.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "d1d746e9-2e8f-4d8a-81a9-ba19e46134a0",
+    "title": "Feeding America - Rhode Island Community Food Bank",
+    "org_name": "Rhode Island Community Food Bank",
+    "url": "https://rifoodbank.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "b85e795f-77f2-4e80-ae35-147db88decf8",
+    "title": "Feeding America - River Bend Food Bank",
+    "org_name": "River Bend Food Bank",
+    "url": "https://www.riverbendfoodbank.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "bd26734c-a573-4c61-8670-bf928debb464",
+    "title": "Feeding America - River Valley Regional Food Bank",
+    "org_name": "River Valley Regional Food Bank",
+    "url": "https://www.rvfoodbank.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "7dbd1042-16fb-4318-82bd-071488aa7d59",
+    "title": "Feeding America - Roadrunner Food Bank",
+    "org_name": "Roadrunner Food Bank",
+    "url": "https://www.rrfb.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "1fa3c7c1-273b-4fcf-8621-915295ad6259",
+    "title": "Feeding America - San Antonio Food Bank",
+    "org_name": "San Antonio Food Bank",
+    "url": "https://safoodbank.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "eb54cb72-1187-4af8-9305-a24db33d90c1",
+    "title": "Feeding America - Second Harvest Community Food Bank",
+    "org_name": "Second Harvest Community Food Bank",
+    "url": "https://www.shcfb.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "65e7d628-bddd-4374-8637-575a6ab81287",
+    "title": "Feeding America - Second Harvest Food Bank of Central Florida",
+    "org_name": "Second Harvest Food Bank of Central Florida",
+    "url": "https://feedhopenow.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "61654d9b-6a07-434d-840e-95c34ff60c5a",
+    "title": "Feeding America - Second Harvest Food Bank of Clark Champaign and Logan Counties",
+    "org_name": "Second Harvest Food Bank of Clark Champaign and Logan Counties",
+    "url": "https://shfbccl.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "9f4b4b3e-cc6f-4595-ba20-dd79c0c2b876",
+    "title": "Feeding America - Second Harvest Food Bank of East Central Indiana",
+    "org_name": "Second Harvest Food Bank of East Central Indiana",
+    "url": "https://curehunger.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "f838cc4b-fc73-4892-ae92-0b05ab50ac81",
+    "title": "Feeding America - Second Harvest Food Bank of East Tennessee",
+    "org_name": "Second Harvest Food Bank of East Tennessee",
+    "url": "https://secondharvestetn.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "6d86b1cd-27ce-43eb-a854-bb51d524f5f1",
+    "title": "Feeding America - Second Harvest Food Bank of Greater New Orleans and Acadiana",
+    "org_name": "Second Harvest Food Bank of Greater New Orleans and Acadiana",
+    "url": "https://no-hunger.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "86c06555-0fea-4894-a949-4970c2c90779",
+    "title": "Feeding America - Second Harvest Food Bank of Lehigh Valley and ne Pennsylvania",
+    "org_name": "Second Harvest Food Bank of Lehigh Valley and ne Pennsylvania",
+    "url": "https://shfblv.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "7a5b492d-96a0-46fa-8f68-c3de708d94ed",
+    "title": "Feeding America - Second Harvest Food Bank of Metrolina",
+    "org_name": "Second Harvest Food Bank of Metrolina",
+    "url": "https://www.secondharvestmetrolina.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "109daca7-03f3-4912-b013-5586c4b2e526",
+    "title": "Feeding America - Second Harvest Food Bank of Middle Tennessee",
+    "org_name": "Second Harvest Food Bank of Middle Tennessee",
+    "url": "https://secondharvestmidtn.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "4688d8df-4dbd-49be-801e-0fcbb2caa4cd",
+    "title": "Feeding America - Second Harvest Food Bank of North Central Ohio",
+    "org_name": "Second Harvest Food Bank of North Central Ohio",
+    "url": "https://www.secondharvestfoodbank.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "39b7237b-d9d5-480a-b7ba-4ac3c19c15d6",
+    "title": "Feeding America - Second Harvest Food Bank of Northeast Tennessee",
+    "org_name": "Second Harvest Food Bank of Northeast Tennessee",
+    "url": "https://netfoodbank.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "05d13743-45a3-4ad1-8793-b60792b53b92",
+    "title": "Feeding America - Second Harvest Food Bank of Northwest North Carolina",
+    "org_name": "Second Harvest Food Bank of Northwest North Carolina",
+    "url": "https://www.secondharvest.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "f50bf790-ab68-4a2a-83c0-534c20063ef3",
+    "title": "Feeding America - Second Harvest Food Bank of Northwest Pennsylvania",
+    "org_name": "Second Harvest Food Bank of Northwest Pennsylvania",
+    "url": "https://shfbnwpa.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "f9ecc2ac-2756-403b-87b4-7e49b51a25f3",
+    "title": "Feeding America - Second Harvest Food Bank of Orange County",
+    "org_name": "Second Harvest Food Bank of Orange County",
+    "url": "https://feedoc.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "51db2300-1fd3-4bb6-8323-0420f7c0dc2f",
+    "title": "Feeding America - Second Harvest Food Bank of San Joaquin and Stanislaus Counties",
+    "org_name": "Second Harvest Food Bank of San Joaquin and Stanislaus Counties",
+    "url": "https://localfoodbank.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "167daa38-8673-4771-838e-140db5fc7036",
+    "title": "Feeding America - Second Harvest Food Bank of Southeast North Carolina",
+    "org_name": "Second Harvest Food Bank of Southeast North Carolina",
+    "url": "https://www.secondharvestfb.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "c8b647f3-8863-466a-a2f3-382782a17b97",
+    "title": "Feeding America - Second Harvest Food Bank of Southern Wisconsin",
+    "org_name": "Second Harvest Food Bank of Southern Wisconsin",
+    "url": "https://www.secondharvestmadison.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "67f9aa5d-1b0f-43d9-b09b-24d11f705016",
+    "title": "Feeding America - Second Harvest Food Bank of the Mahoning Valley",
+    "org_name": "Second Harvest Food Bank of the Mahoning Valley",
+    "url": "https://mahoningvalleysecondharvest.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "ac37d872-ab46-4e5f-be21-55cde032a742",
+    "title": "Feeding America - Second Harvest Food Bank Santa Cruz County",
+    "org_name": "Second Harvest Food Bank Santa Cruz County",
+    "url": "https://www.thefoodbank.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "02dfc0f4-9ee8-4c39-9147-ddfe093be7b5",
+    "title": "Feeding America - Second Harvest Heartland",
+    "org_name": "Second Harvest Heartland",
+    "url": "https://www.2harvest.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "bfa5611d-d342-4edc-afb8-f79f16162450",
+    "title": "Feeding America - Second Harvest Inland Northwest",
+    "org_name": "Second Harvest Inland Northwest",
+    "url": "https://2-harvest.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "ff0403bf-e010-4045-9f8e-3ba0c7ee3e32",
+    "title": "Feeding America - Second Harvest North Central Food Bank",
+    "org_name": "Second Harvest North Central Food Bank",
+    "url": "https://www.shncfb.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "eac5240c-e39b-46f4-87c2-0e932def6bad",
+    "title": "Feeding America - Second Harvest Northland",
+    "org_name": "Second Harvest Northland",
+    "url": "https://secondharvestnorthland.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "8ab85d77-f793-4c57-aff8-775e7dc9ef64",
+    "title": "Feeding America - Second Harvest of Coastal Georgia",
+    "org_name": "Second Harvest of Coastal Georgia",
+    "url": "https://www.helpendhunger.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "ccf28ce0-9818-4e5a-87c8-98343870e82f",
+    "title": "Feeding America - Second Harvest of Silicon Valley",
+    "org_name": "Second Harvest of Silicon Valley",
+    "url": "https://shfb.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "fc911665-597b-464e-a033-d601a640b087",
+    "title": "Feeding America - Second Harvest of South Georgia",
+    "org_name": "Second Harvest of South Georgia",
+    "url": "https://www.feedsga.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "7ad807f3-54df-46f2-91c8-91f83b26fcb3",
+    "title": "Feeding America - SF-Marin Food Bank",
+    "org_name": "SF-Marin Food Bank",
+    "url": "https://www.sfmfoodbank.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "ea7bc7c1-f84d-4775-a3a6-6532ce031357",
+    "title": "Feeding America - Shared Harvest Food Bank",
+    "org_name": "Shared Harvest Food Bank",
+    "url": "https://sharedharvest.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "af257b66-fe41-4092-bb50-8e646d18c508",
+    "title": "Feeding America - Southeast Missouri Food Bank",
+    "org_name": "Southeast Missouri Food Bank",
+    "url": "https://semofoodbank.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "66652453-47a4-4928-8549-208abbb18282",
+    "title": "Feeding America - Southeast Ohio Foodbank",
+    "org_name": "Southeast Ohio Foodbank",
+    "url": "https://seofoodbank.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "5c260732-2140-42c5-a809-60318825defc",
+    "title": "Feeding America - Southeast Texas Food Bank",
+    "org_name": "Southeast Texas Food Bank",
+    "url": "https://setxfoodbank.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "3f390a9d-5e65-46bf-9fb0-967ebdbbeafb",
+    "title": "Feeding America - South Plains Food Bank",
+    "org_name": "South Plains Food Bank",
+    "url": "https://spfb.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "61476250-c0c2-4e16-87bf-84717d09733a",
+    "title": "Feeding America - South Texas Food Bank",
+    "org_name": "South Texas Food Bank",
+    "url": "https://southtexasfoodbank.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "3479ebb5-70a5-4675-b28c-bf2f36b57355",
+    "title": "Feeding America - St. Louis Area Foodbank",
+    "org_name": "St. Louis Area Foodbank",
+    "url": "https://stlfoodbank.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "4b764676-1cbe-4d07-b072-e4e6a769d713",
+    "title": "Feeding America - St. Mary's Food Bank Alliance",
+    "org_name": "St. Mary's Food Bank Alliance",
+    "url": "https://www.firstfoodbank.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "44af75cd-49c2-4ad2-bf73-404dd69e87a0",
+    "title": "Feeding America - Tarrant Area Food Bank",
+    "org_name": "Tarrant Area Food Bank",
+    "url": "https://tafb.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "01c03434-a0bb-405d-943a-a492e87b22df",
+    "title": "Feeding America - Terre Haute Catholic Charities Food Bank",
+    "org_name": "Terre Haute Catholic Charities Food Bank",
+    "url": "https://caborig.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "213d361a-3091-4cb8-8e12-4fd255aa8616",
+    "title": "Feeding America - The Food Bank",
+    "org_name": "The Food Bank",
+    "url": "https://www.thefoodbank.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "1dc793c1-6074-48d3-9fef-43405af94761",
+    "title": "Feeding America - The Food Bank for Central and Northeast Missouri",
+    "org_name": "The Food Bank for Central and Northeast Missouri",
+    "url": "https://sharefoodbringhope.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "b05312ce-87d4-4723-9d67-e90b3307e1da",
+    "title": "Feeding America - The Greater Boston Food Bank",
+    "org_name": "The Greater Boston Food Bank",
+    "url": "https://www.gbfb.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "0845c735-0032-44c7-8f24-c4df5789b3b9",
+    "title": "Feeding America - The Idaho Food Bank",
+    "org_name": "The Idaho Food Bank",
+    "url": "https://idahofoodbank.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "a746a1ef-88b7-4d82-bb64-0fe79de2bd34",
+    "title": "Feeding America - Three Square Food Bank",
+    "org_name": "Three Square Food Bank",
+    "url": "https://www.threesquare.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "e2a96c29-0601-440a-9a0f-d3485201c93b",
+    "title": "Feeding America - Toledo Northwestern Ohio Food Bank",
+    "org_name": "Toledo Northwestern Ohio Food Bank",
+    "url": "https://toledofoodbank.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "3bfb8c6e-8375-410b-a47e-0cdda35fb2f9",
+    "title": "Feeding America - Treasure Coast Food Bank",
+    "org_name": "Treasure Coast Food Bank",
+    "url": "https://stophunger.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "42be0c5d-dd04-486a-b6d8-7b25f5d6a798",
+    "title": "Feeding America - Tri State Food Bank",
+    "org_name": "Tri State Food Bank",
+    "url": "https://tristatefoodbank.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "52dbb500-7308-4c42-9bff-a824fb3527d5",
+    "title": "Feeding America - United Food Bank",
+    "org_name": "United Food Bank",
+    "url": "https://www.unitedfoodbank.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "88d59c1a-a285-4101-ab25-d269e0e29cc9",
+    "title": "Feeding America - Utah Food Bank",
+    "org_name": "Utah Food Bank",
+    "url": "https://www.utahfoodbank.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "733d39ef-c393-4eac-9d1f-3135711881a5",
+    "title": "Feeding America - Vermont Food Bank",
+    "org_name": "Vermont Food Bank",
+    "url": "https://www.vtfoodbank.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "8e727f2c-57da-4693-baf7-5b8e8093985d",
+    "title": "Feeding America - Virginia Peninsula Food Bank",
+    "org_name": "Virginia Peninsula Food Bank",
+    "url": "https://hrfoodbank.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "5afed534-98eb-4115-ae31-cbfb77bc1a30",
+    "title": "Feeding America - Weld Food Bank",
+    "org_name": "Weld Food Bank",
+    "url": "https://www.weldfoodbank.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "97389302-0fc9-410f-9590-c946ec4c4f45",
+    "title": "Feeding America - Westmoreland County Food Bank",
+    "org_name": "Westmoreland County Food Bank",
+    "url": "https://westmorelandfoodbank.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "cf5056b7-1bd9-40c4-91f3-720041e54622",
+    "title": "Feeding America - West Ohio Food Bank",
+    "org_name": "West Ohio Food Bank",
+    "url": "https://www.westohiofoodbank.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "f08a82d4-e7c4-4a62-bf72-f05ebe7c40ec",
+    "title": "Feeding America - West Texas Food Bank",
+    "org_name": "West Texas Food Bank",
+    "url": "https://wtxfoodbank.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "5590fdc3-c9ad-44ff-b483-765777dec334",
+    "title": "Feeding America - Wichita Falls Area Food Bank",
+    "org_name": "Wichita Falls Area Food Bank",
+    "url": "https://wfafb.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "29cdbf68-fe05-4aa0-bb43-30f0a1578e19",
+    "title": "Feeding America - Worcester County Food Bank",
+    "org_name": "Worcester County Food Bank",
+    "url": "https://foodbank.org/",
+    "confidence": "HIGH"
+  },
+  {
+    "id": "56772af8-88f1-4942-8fb1-83225620cc40",
+    "title": "Feeding America - Yuma Community Food Bank",
+    "org_name": "Yuma Community Food Bank",
+    "url": "https://yumafoodbank.org/",
+    "confidence": "HIGH"
+  }
+]
