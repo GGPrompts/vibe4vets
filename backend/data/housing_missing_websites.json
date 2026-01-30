@@ -1,0 +1,1661 @@
+[
+  {
+    "id": "52704086-b1bd-4171-9223-c3e6e02e8ebc",
+    "title": "125th Street Health Center - New York, NY",
+    "org_name": "Housing Works Health Services III, Inc.",
+    "city": "New York",
+    "state": "NY"
+  },
+  {
+    "id": "f0a7bc24-6313-4c6f-9dfd-b881c0f07069",
+    "title": "30th Street Men's Shelter Health Center - New York, NY",
+    "org_name": "CARE FOR THE HOMELESS",
+    "city": "New York",
+    "state": "NY"
+  },
+  {
+    "id": "b4ee403a-46f5-43f5-924b-fefeffbb5fef",
+    "title": "48th Avenue East Shelter Health Center - Denver, CO",
+    "org_name": "THE COLORADO COALITION FOR THE HOMELESS",
+    "city": "Denver",
+    "state": "CO"
+  },
+  {
+    "id": "e378c238-19c1-48c3-ba39-027e9d793608",
+    "title": "52nd Street Health Center - New York, NY",
+    "org_name": "CARE FOR THE HOMELESS",
+    "city": "New York",
+    "state": "NY"
+  },
+  {
+    "id": "4bde726d-96e3-4d3d-84ef-892e99049ac2",
+    "title": "801 East Shelter Clinic - Washington, DC",
+    "org_name": "UNITY HEALTH CARE, INC.",
+    "city": "Washington",
+    "state": "DC"
+  },
+  {
+    "id": "4191aecd-a478-47fc-94a3-0d96e5a2451d",
+    "title": "801 East Shelter-Medical Respite - Washington, DC",
+    "org_name": "UNITY HEALTH CARE, INC.",
+    "city": "Washington",
+    "state": "DC"
+  },
+  {
+    "id": "908c17ea-90b1-4221-a448-998bead621b5",
+    "title": "91 East Broadway Health Center - New York, NY",
+    "org_name": "CARE FOR THE HOMELESS",
+    "city": "New York",
+    "state": "NY"
+  },
+  {
+    "id": "f8b364d3-5645-46a0-b4a3-0aad37fa61df",
+    "title": "Academic Center for Excellence Wellness Center - Orlando, FL",
+    "org_name": "HEALTH CARE CENTER FOR THE HOMELESS INC",
+    "city": "Orlando",
+    "state": "FL"
+  },
+  {
+    "id": "f996f28d-a15e-4365-99c2-9be9750d0a14",
+    "title": "Admin Only - Salt Lake City, UT",
+    "org_name": "WASATCH HOMELESS HEALTH CARE INC",
+    "city": "Salt Lake City",
+    "state": "UT"
+  },
+  {
+    "id": "898a9eb4-908e-4f21-99d4-d08dbdcbef90",
+    "title": "Advantage Health Centers-8 Mile - Warren, MI",
+    "org_name": "DETROIT HEALTH CARE FOR THE HOMELESS, INC",
+    "city": "Warren",
+    "state": "MI"
+  },
+  {
+    "id": "219f34e6-d447-4230-8fed-8bfb6e233297",
+    "title": "Advantage health Centers-McNichols - Detroit, MI",
+    "org_name": "DETROIT HEALTH CARE FOR THE HOMELESS, INC",
+    "city": "Detroit",
+    "state": "MI"
+  },
+  {
+    "id": "321bbb4a-e82d-4111-99f4-1b2d907b9b44",
+    "title": "Advantage Health - Warren, MI",
+    "org_name": "DETROIT HEALTH CARE FOR THE HOMELESS, INC",
+    "city": "Warren",
+    "state": "MI"
+  },
+  {
+    "id": "49253430-c037-4ec9-9d51-75d3972c076e",
+    "title": "Albany Street Shelter/Cambridge - Cambridge, MA",
+    "org_name": "BOSTON HEALTH CARE FOR THE HOMELESS PROGRAM",
+    "city": "Cambridge",
+    "state": "MA"
+  },
+  {
+    "id": "8ae98838-a566-4f5d-8257-f136c5637938",
+    "title": "ARcare - 137 - Mountain Home, AR",
+    "org_name": "ARCARE",
+    "city": "Mountain Home",
+    "state": "AR"
+  },
+  {
+    "id": "ee1a8a42-e945-4c23-8396-b72b6a87a8a5",
+    "title": "Baltimore County Eastern Family Resource Center - Rosedale, MD",
+    "org_name": "HEALTH CARE FOR HOMELESS INC",
+    "city": "Rosedale",
+    "state": "MD"
+  },
+  {
+    "id": "d0329f22-29d5-4a1d-a890-ebde5e1ca5eb",
+    "title": "BANGOR NURSING & REHABILITATION CENTER - Bangor, ME",
+    "org_name": "PENOBSCOT COMMUNITY HEALTH CENTER",
+    "city": "Bangor",
+    "state": "ME"
+  },
+  {
+    "id": "65e688d9-d427-4ea6-838b-d99008e1a5cc",
+    "title": "BHCHP Family Care Clinic - Roxbury, MA",
+    "org_name": "BOSTON HEALTH CARE FOR THE HOMELESS PROGRAM",
+    "city": "Roxbury",
+    "state": "MA"
+  },
+  {
+    "id": "75858341-e452-4533-94dd-d2993abe7202",
+    "title": "Birch Hill Elementary School - Nashua, NH",
+    "org_name": "Harbor Homes, Inc.",
+    "city": "Nashua",
+    "state": "NH"
+  },
+  {
+    "id": "d1c6c820-d588-46ff-8c3b-9f4bdd505585",
+    "title": "Boston Health Care for the Homeless Program Administrativ... (MA)",
+    "org_name": "BOSTON HEALTH CARE FOR THE HOMELESS PROGRAM",
+    "city": "Boston",
+    "state": "MA"
+  },
+  {
+    "id": "c72804de-2fdf-43f3-b5bb-48c108b6d1db",
+    "title": "Boston Mountain Rural Health Center - Mountain Home - Mountain Home, AR",
+    "org_name": "BOSTON MOUNTAIN RURAL HEALTH CENTER, INC",
+    "city": "Mountain Home",
+    "state": "AR"
+  },
+  {
+    "id": "7438c394-0eb3-48e3-8e45-77f717e0fae0",
+    "title": "Boys and Girls Club of Souhegan Valley - Milford, NH",
+    "org_name": "Harbor Homes, Inc.",
+    "city": "Milford",
+    "state": "NH"
+  },
+  {
+    "id": "c9cea811-90d3-49e2-96ec-eca930ab6383",
+    "title": "BREWER REHAB & LIVING CENTER - Brewer, ME",
+    "org_name": "PENOBSCOT COMMUNITY HEALTH CENTER",
+    "city": "Brewer",
+    "state": "ME"
+  },
+  {
+    "id": "d1877b44-c736-46f9-a1d2-5e1eba96b55b",
+    "title": "Bridge Over Troubled Waters - Boston, MA",
+    "org_name": "BOSTON HEALTH CARE FOR THE HOMELESS PROGRAM",
+    "city": "Boston",
+    "state": "MA"
+  },
+  {
+    "id": "f5ca2063-0d3e-46a9-b4ff-b4864441010b",
+    "title": "Cahaba Medical Care - Brent Aministration - Brent, AL",
+    "org_name": "CAHABA MEDICAL CARE FOUNDATION",
+    "city": "Brent",
+    "state": "AL"
+  },
+  {
+    "id": "7e6b057a-69b9-484f-8b1a-66a6b2ec3610",
+    "title": "Cahaba Medical Care - Brent - Brent, AL",
+    "org_name": "CAHABA MEDICAL CARE FOUNDATION",
+    "city": "Brent",
+    "state": "AL"
+  },
+  {
+    "id": "9dd83a0c-b170-4411-bbdc-9671fa485f7b",
+    "title": "California Hotel - Supportive Housing Program - Oakland, CA",
+    "org_name": "LIFELONG MEDICAL CARE",
+    "city": "Oakland",
+    "state": "CA"
+  },
+  {
+    "id": "fdb94717-4f20-4e11-b42e-a8f92a9bc342",
+    "title": "Care Found Here: Blondell Health Center - Bronx, NY",
+    "org_name": "CARE FOR THE HOMELESS",
+    "city": "Bronx",
+    "state": "NY"
+  },
+  {
+    "id": "18db7a93-c10e-477d-8c84-e988789ced8b",
+    "title": "Care Found Here: Junius St - Brooklyn, NY",
+    "org_name": "CARE FOR THE HOMELESS",
+    "city": "Brooklyn",
+    "state": "NY"
+  },
+  {
+    "id": "cfbc6d79-201a-4adf-98a7-56142086e0c8",
+    "title": "Care Found Here: Liberty Avenue Health Center - Brooklyn, NY",
+    "org_name": "CARE FOR THE HOMELESS",
+    "city": "Brooklyn",
+    "state": "NY"
+  },
+  {
+    "id": "273d97fd-860a-4dd7-9857-5432672a1a40",
+    "title": "Care Management (Health Home) - Brooklyn, NY",
+    "org_name": "SUNSET PARK HEALTH COUNCIL, INC.",
+    "city": "Brooklyn",
+    "state": "NY"
+  },
+  {
+    "id": "38f98c6a-af55-4781-9dd0-67b35e3a46cb",
+    "title": "Casa Esperanza - Boston, MA",
+    "org_name": "BOSTON HEALTH CARE FOR THE HOMELESS PROGRAM",
+    "city": "Boston",
+    "state": "MA"
+  },
+  {
+    "id": "5d260fdc-f84a-4352-b399-87cdd889487a",
+    "title": "CCHS Health Care for the Homeless Administration - Concord, CA",
+    "org_name": "County of Contra Costa",
+    "city": "Concord",
+    "state": "CA"
+  },
+  {
+    "id": "03941d53-4f5d-4fbc-9140-de9342f62b76",
+    "title": "Centro Medico Community Clinic, Inc. - Harrison Shelter - Corona, CA",
+    "org_name": "CENTRO MEDICO COMMUNITY CLINIC, INC.",
+    "city": "Corona",
+    "state": "CA"
+  },
+  {
+    "id": "41c36638-1193-4563-a4c5-00384a212502",
+    "title": "Centro San Vicente Homeless Health Care Center - El Paso, TX",
+    "org_name": "CENTRO SAN VICENTE",
+    "city": "El Paso",
+    "state": "TX"
+  },
+  {
+    "id": "b3dabf11-f064-4793-a8eb-9ba181fbe326",
+    "title": "Charles Drew Health Center Inc. at Omaha Home for Boys - Omaha, NE",
+    "org_name": "CHARLES DREW HEALTH CENTER INC",
+    "city": "Omaha",
+    "state": "NE"
+  },
+  {
+    "id": "ae7a4dec-2c3b-4eb6-a578-69aba588746f",
+    "title": "CHCS,INC - Mobile Unit Two - Warrenton, GA",
+    "org_name": "COMMUNITY HEALTH CARE SYSTEMS, INC.",
+    "city": "Warrenton",
+    "state": "GA"
+  },
+  {
+    "id": "b3c65e68-f58c-4f0b-8cb9-6f6a589027bf",
+    "title": "Children's Hospital La Family Housing - North Hollywood, CA",
+    "org_name": "NORTHEAST VALLEY HEALTH CORPORATION",
+    "city": "North Hollywood",
+    "state": "CA"
+  },
+  {
+    "id": "5ba59eaa-dfa7-45e1-8878-b6f59fe3a210",
+    "title": "CHN MDC Homestead - Homestead, FL",
+    "org_name": "CITRUS HEALTH NETWORK INC",
+    "city": "Homestead",
+    "state": "FL"
+  },
+  {
+    "id": "caac256b-57b5-4e1b-aef6-2af5fe0cb55f",
+    "title": "CHP - Housing First Village - Bozeman, MT",
+    "org_name": "BIGHORN VALLEY HEALTH CENTER INC",
+    "city": "Bozeman",
+    "state": "MT"
+  },
+  {
+    "id": "b5faef03-363b-410b-a852-9b7d626da90e",
+    "title": "CITY OF NEW ORLEANS HEALTH CARE for HOMELESS - New Orleans, LA",
+    "org_name": "NEW ORLEANS CITY HUMAN SVC",
+    "city": "New Orleans",
+    "state": "LA"
+  },
+  {
+    "id": "a0a57a6e-7215-42c9-855d-d644e0c64c5e",
+    "title": "Clallam County Jail - Transitional Care in Carceral Setting - Port Angeles, WA",
+    "org_name": "NORTH OLYMPIC HEALTHCARE NETWORK",
+    "city": "Port Angeles",
+    "state": "WA"
+  },
+  {
+    "id": "31adf351-7221-4987-a80f-cf4517859a5f",
+    "title": "Community Shelter and Resource Center Lincoln City - Lincoln City, OR",
+    "org_name": "COUNTY OF LINCOLN",
+    "city": "Lincoln City",
+    "state": "OR"
+  },
+  {
+    "id": "09e0b8c0-1901-4a36-884f-3050fed07d60",
+    "title": "Compass Health Inc. - Warrenton, MO",
+    "org_name": "COMPASS HEALTH, INC",
+    "city": "Warrenton",
+    "state": "MO"
+  },
+  {
+    "id": "45b3770a-75ef-4407-92fc-9c25636cc643",
+    "title": "Compass Health, Inc. - Warrenton, MO",
+    "org_name": "COMPASS HEALTH, INC",
+    "city": "Warrenton",
+    "state": "MO"
+  },
+  {
+    "id": "fb7c2d19-5825-4518-9969-b398ca3b27b5",
+    "title": "Crawford Apartments Clinic - Bloomington, IN",
+    "org_name": "Health Net, Inc.",
+    "city": "Bloomington",
+    "state": "IN"
+  },
+  {
+    "id": "fd4f02a0-3aa5-4b73-9989-247c79c2dbc5",
+    "title": "Cylar House Community Health Center - New York, NY",
+    "org_name": "Housing Works Health Services III, Inc.",
+    "city": "New York",
+    "state": "NY"
+  },
+  {
+    "id": "6aa6ae74-0460-46e9-835a-52ecbd81aa52",
+    "title": "Dallas Deflection Center-Homeward Bound - Dallas, TX",
+    "org_name": "DALLAS COUNTY HOSPITAL DISTRICT",
+    "city": "Dallas",
+    "state": "TX"
+  },
+  {
+    "id": "81c5a5f5-c0d2-42fd-a862-b98f8b2ce3fc",
+    "title": "Dellums Apartment - Supportive Housing Program - Oakland, CA",
+    "org_name": "LIFELONG MEDICAL CARE",
+    "city": "Oakland",
+    "state": "CA"
+  },
+  {
+    "id": "c6675e21-ae5e-406a-856a-a3942cc8b3bf",
+    "title": "Desert Sage Health Centers - Mountain Home, ID",
+    "org_name": "GLENN'S FERRY HEALTH CENTER INC",
+    "city": "Mountain Home",
+    "state": "ID"
+  },
+  {
+    "id": "040eabd7-c9e3-46a2-bc6d-8b9041fe830f",
+    "title": "DESERT SAGE MOBILE - Mountain Home, ID",
+    "org_name": "GLENN'S FERRY HEALTH CENTER INC",
+    "city": "Mountain Home",
+    "state": "ID"
+  },
+  {
+    "id": "cc131918-0f90-4b41-aea5-fdcf6fb68fa6",
+    "title": "Domestic Violence Shelter (XX)",
+    "org_name": "MONTEFIORE MEDICAL CENTER",
+    "city": null,
+    "state": null
+  },
+  {
+    "id": "e9c4bdd6-6835-4fd7-9035-dfaafb8e5e9a",
+    "title": "Downtown Brooklyn Health Center - Brooklyn, NY",
+    "org_name": "Housing Works Health Services III, Inc.",
+    "city": "Brooklyn",
+    "state": "NY"
+  },
+  {
+    "id": "4b3f4f5e-6db4-447e-9e3e-13491ef89484",
+    "title": "EASTSIDE REHAB & LIVING CTR - Bangor, ME",
+    "org_name": "PENOBSCOT COMMUNITY HEALTH CENTER",
+    "city": "Bangor",
+    "state": "ME"
+  },
+  {
+    "id": "f569ff4a-0893-46ad-96e2-62b9f3a32241",
+    "title": "East Valley Community Health Center - Hope for Home - Pomona, CA",
+    "org_name": "EAST VALLEY COMMUNITY HEALTH CENTER, INC",
+    "city": "Pomona",
+    "state": "CA"
+  },
+  {
+    "id": "d721664e-201a-4d1e-a4b4-4fcd3981bc8f",
+    "title": "ECHO John Street Woodson Homeless Health Clinic - Evansville, IN",
+    "org_name": "ECHO COMMUNITY HEALTH CARE",
+    "city": "Evansville",
+    "state": "IN"
+  },
+  {
+    "id": "f214e046-128b-402b-84f3-cc0eef3c6360",
+    "title": "Edgewood Local Schools SBHC - Trenton, OH",
+    "org_name": "BUTLER COUNTY COMMUNITY HEALTH CONSORTIUM",
+    "city": "Trenton",
+    "state": "OH"
+  },
+  {
+    "id": "17afaaf4-d524-4a7c-a7aa-4976476d178f",
+    "title": "EMPath - Brighton, MA",
+    "org_name": "BOSTON HEALTH CARE FOR THE HOMELESS PROGRAM",
+    "city": "Brighton",
+    "state": "MA"
+  },
+  {
+    "id": "2511f213-3e28-4983-8db8-4f304172d7d8",
+    "title": "Engagement Center - Boston, MA",
+    "org_name": "BOSTON HEALTH CARE FOR THE HOMELESS PROGRAM",
+    "city": "Boston",
+    "state": "MA"
+  },
+  {
+    "id": "bf218d43-0255-4745-b392-91dc05ff2612",
+    "title": "Entre Familia - Mattapan, MA",
+    "org_name": "BOSTON HEALTH CARE FOR THE HOMELESS PROGRAM",
+    "city": "Mattapan",
+    "state": "MA"
+  },
+  {
+    "id": "16c29c71-7e8d-4e0c-916c-a63e1c7123dc",
+    "title": "Espanola Pathways Shelter - Espanola, NM",
+    "org_name": "LA FAMILIA MEDICAL CENTER",
+    "city": "Espanola",
+    "state": "NM"
+  },
+  {
+    "id": "cbb478e5-0a89-425c-b55d-7367e3f21b1b",
+    "title": "Evans High School Wellness Center - Orlando, FL",
+    "org_name": "HEALTH CARE CENTER FOR THE HOMELESS INC",
+    "city": "Orlando",
+    "state": "FL"
+  },
+  {
+    "id": "28e12d9d-e74b-47a1-9bb1-590a82046ab8",
+    "title": "Fairgrounds Elementary School - Nashua, NH",
+    "org_name": "Harbor Homes, Inc.",
+    "city": "Nashua",
+    "state": "NH"
+  },
+  {
+    "id": "45b44890-36f9-4d34-8cc8-e74828d231ec",
+    "title": "Family Health Care Clinic, Prentiss-Head Start - Prentiss, MS",
+    "org_name": "Family Health Care Clinic, Inc.",
+    "city": "Prentiss",
+    "state": "MS"
+  },
+  {
+    "id": "c15bbba8-cb60-448d-ac15-22617cf27235",
+    "title": "Family Medical Center - Lincoln Elementary - Hudson, MI",
+    "org_name": "FAMILY MEDICAL CENTER OF MICHIGAN, INC.",
+    "city": "Hudson",
+    "state": "MI"
+  },
+  {
+    "id": "66afe9bc-6075-41d1-83b7-5841b52d8ba9",
+    "title": "Family Medical Center - SMCSI - Hudson, MI",
+    "org_name": "FAMILY MEDICAL CENTER OF MICHIGAN, INC.",
+    "city": "Hudson",
+    "state": "MI"
+  },
+  {
+    "id": "0637e9c6-438f-4955-a2d4-3b3e38b93108",
+    "title": "Finance Office - Renton, WA",
+    "org_name": "INTERNATIONAL COMMUNITY HEALTH SERVICES",
+    "city": "Renton",
+    "state": "WA"
+  },
+  {
+    "id": "e5f55e5b-bc44-4649-b679-7719e1f135bc",
+    "title": "First Choice Atrium Transitional Care - Macon, GA",
+    "org_name": "FIRST CHOICE PRIMARY CARE, INC.",
+    "city": "Macon",
+    "state": "GA"
+  },
+  {
+    "id": "ba302ab5-e714-4473-a12f-2ecc8ca080e1",
+    "title": "First Choice Emory HHC Transitional Care - Warner Robins, GA",
+    "org_name": "FIRST CHOICE PRIMARY CARE, INC.",
+    "city": "Warner Robins",
+    "state": "GA"
+  },
+  {
+    "id": "76c697ab-3e4a-4f5d-b3f3-f7801fbd0aae",
+    "title": "FISH Torrington Emergency Shelter - Torrington, CT",
+    "org_name": "COMMUNITY HEALTH AND WELLNESS CENTER OF GREATER TORRINGTON, INCORPORATED",
+    "city": "Torrington",
+    "state": "CT"
+  },
+  {
+    "id": "ae466c0d-eec8-40f9-8518-87d966786c80",
+    "title": "FOH Men's Shelter- Dental Site - Columbus, OH",
+    "org_name": "SOUTHEAST INC",
+    "city": "Columbus",
+    "state": "OH"
+  },
+  {
+    "id": "ab91402f-98e2-4cae-98d4-9baf13104134",
+    "title": "Fresh Meadows - Fresh Meadows, NY",
+    "org_name": "Housing Works Health Services III, Inc.",
+    "city": "Fresh Meadows",
+    "state": "NY"
+  },
+  {
+    "id": "2f4d6a43-a47f-435b-befb-9caf4b1179ef",
+    "title": "GCHC- Appalachian Children's Home - Barbourville, KY",
+    "org_name": "GRACE COMMUNITY HEALTH CENTER",
+    "city": "Barbourville",
+    "state": "KY"
+  },
+  {
+    "id": "c2bfe4d1-4c14-41ee-a24f-9c57036e746a",
+    "title": "GOOD SAMARITAN SHELTER - Santa Maria, CA",
+    "org_name": "COUNTY OF SANTA BARBARA",
+    "city": "Santa Maria",
+    "state": "CA"
+  },
+  {
+    "id": "3f7b9afd-f0a8-47d4-986d-a58a30ff23bc",
+    "title": "Goulds Elementary School - Homestead, FL",
+    "org_name": "COMMUNITY HEALTH OF SOUTH FLORIDA, INC.",
+    "city": "Homestead",
+    "state": "FL"
+  },
+  {
+    "id": "c9f93e80-173d-4ebd-8b14-58602c429f9b",
+    "title": "Hacker Middle School - Mountain Home, ID",
+    "org_name": "GLENN'S FERRY HEALTH CENTER INC",
+    "city": "Mountain Home",
+    "state": "ID"
+  },
+  {
+    "id": "9db59428-d7c9-48b2-b98b-e339b373f2b3",
+    "title": "Hamilton Homeless Clinic - Flint, MI",
+    "org_name": "Hamilton Community Health Network, Inc.",
+    "city": "Flint",
+    "state": "MI"
+  },
+  {
+    "id": "638eac80-fe02-47fd-aebb-9845128ebf56",
+    "title": "Harbor Care Health and Wellness Center - Nashua, NH",
+    "org_name": "Harbor Homes, Inc.",
+    "city": "Nashua",
+    "state": "NH"
+  },
+  {
+    "id": "c5806a01-7e71-4954-b7c0-6f19f09a2339",
+    "title": "Harbor Homes, Inc. Headquarters - Nashua, NH",
+    "org_name": "Harbor Homes, Inc.",
+    "city": "Nashua",
+    "state": "NH"
+  },
+  {
+    "id": "76f5d4b0-1d93-4a6c-8129-c100ff2ed185",
+    "title": "Harm Reduction Outreach Van - Albuquerque, NM",
+    "org_name": "ALBUQUERQUE HEALTH CARE FOR HOMELESS",
+    "city": "Albuquerque",
+    "state": "NM"
+  },
+  {
+    "id": "a4a8f955-1178-43af-ab9e-a1f1e99bc71d",
+    "title": "Healthcare For the Homeless - Billings, MT",
+    "org_name": "YELLOWSTONE CITY COUNTY HEALTH DEPARTMENT",
+    "city": "Billings",
+    "state": "MT"
+  },
+  {
+    "id": "cf4043fa-2e00-4ab0-a645-b0fda97dc136",
+    "title": "Health Care for the Homeless-The Ozanam Inn - New Orleans, LA",
+    "org_name": "NEW ORLEANS CITY HUMAN SVC",
+    "city": "New Orleans",
+    "state": "LA"
+  },
+  {
+    "id": "3117249a-184f-4ae2-86c8-c5fad492d8c0",
+    "title": "Health Care for the Homeless, West Baltimore - Baltimore, MD",
+    "org_name": "HEALTH CARE FOR HOMELESS INC",
+    "city": "Baltimore",
+    "state": "MD"
+  },
+  {
+    "id": "2a509c26-a472-44af-9804-183abacda62c",
+    "title": "HealthNet Homeless Initiative Program - Bloomington - Bloomington, IN",
+    "org_name": "Health Net, Inc.",
+    "city": "Bloomington",
+    "state": "IN"
+  },
+  {
+    "id": "92e18cfe-0f78-46ed-b697-fb186e16fc48",
+    "title": "HealthNet Homeless Initiative Program - Indianapolis, IN",
+    "org_name": "Health Net, Inc.",
+    "city": "Indianapolis",
+    "state": "IN"
+  },
+  {
+    "id": "8eb6efa2-28a5-4f2a-9e11-2ecdf4964377",
+    "title": "HealthPoint Administration 841 - Renton, WA",
+    "org_name": "HEALTHPOINT",
+    "city": "Renton",
+    "state": "WA"
+  },
+  {
+    "id": "0b825a62-db90-4cc8-a216-aceb50206463",
+    "title": "HealthPoint at Family First Community Center - Renton, WA",
+    "org_name": "HEALTHPOINT",
+    "city": "Renton",
+    "state": "WA"
+  },
+  {
+    "id": "16f66891-19b1-4a87-97be-66322ca94307",
+    "title": "HealthPoint at Sunset Neighborhood Center - Renton, WA",
+    "org_name": "HEALTHPOINT",
+    "city": "Renton",
+    "state": "WA"
+  },
+  {
+    "id": "4d82592e-dcae-4468-b7bd-56a7fcce4cce",
+    "title": "HealthPoint - First Step Home - Cincinnati, OH",
+    "org_name": "HEALTH POINT FAMILY CARE, INC.",
+    "city": "Cincinnati",
+    "state": "OH"
+  },
+  {
+    "id": "e860ade9-1ac8-41a3-be9f-40556a6fff15",
+    "title": "HealthPoint Specialty Services Clinic - Renton, WA",
+    "org_name": "HEALTHPOINT",
+    "city": "Renton",
+    "state": "WA"
+  },
+  {
+    "id": "e462f575-e3f8-400b-9079-04fcc38bc384",
+    "title": "Henry J Austin Health Center - Mobile Health Unit - Trenton, NJ",
+    "org_name": "HENRY J. AUSTIN HEALTH CENTER, INC.",
+    "city": "Trenton",
+    "state": "NJ"
+  },
+  {
+    "id": "278ba6d7-b4e9-441c-979c-1af5ffa94f2c",
+    "title": "Henry J. Austin Health Center-Nottingham - Trenton, NJ",
+    "org_name": "HENRY J. AUSTIN HEALTH CENTER, INC.",
+    "city": "Trenton",
+    "state": "NJ"
+  },
+  {
+    "id": "9db0b515-bb52-49c5-8ed7-30617b3a5312",
+    "title": "Holy Family Shelter Clinic - Indianapolis, IN",
+    "org_name": "Health Net, Inc.",
+    "city": "Indianapolis",
+    "state": "IN"
+  },
+  {
+    "id": "4720f387-a7b9-4ed7-807b-6cc05d79e895",
+    "title": "Homeless Open Hands - Little Rock, AR",
+    "org_name": "JEFFERSON COMPREHENSIVE CARE SYSTEM INC",
+    "city": "Little Rock",
+    "state": "AR"
+  },
+  {
+    "id": "ef45c8d6-12ce-48ef-b83d-2b33a998fe49",
+    "title": "Homeless Outreach, Case Management and Advocacy - Eugene, OR",
+    "org_name": "WHITE BIRD CLINIC",
+    "city": "Eugene",
+    "state": "OR"
+  },
+  {
+    "id": "ff864f46-b54c-4aa3-b1f8-baad918cc283",
+    "title": "Homeless Persons Health Project Mobile Unit - Santa Cruz, CA",
+    "org_name": "COUNTY OF SANTA CRUZ",
+    "city": "Santa Cruz",
+    "state": "CA"
+  },
+  {
+    "id": "2dda420e-f72d-4a61-928d-cd95a812c55b",
+    "title": "Homeless Respite Care and Shelter Clinic - Concord - Concord, CA",
+    "org_name": "County of Contra Costa",
+    "city": "Concord",
+    "state": "CA"
+  },
+  {
+    "id": "8d8e1a2c-ddae-48d1-a4eb-41bb10464991",
+    "title": "HomePlace Clinic - Ashland - Ashland, KY",
+    "org_name": "MOUNTAIN COMPREHENSIVE CARE CENTER, INC.",
+    "city": "Ashland",
+    "state": "KY"
+  },
+  {
+    "id": "8b80b838-53a2-49e1-9931-79aa8c52d673",
+    "title": "HomePlace Clinic - Chavies - Chavies, KY",
+    "org_name": "MOUNTAIN COMPREHENSIVE CARE CENTER, INC.",
+    "city": "Chavies",
+    "state": "KY"
+  },
+  {
+    "id": "358c4de9-4c5c-44da-a15d-945d91c30ef2",
+    "title": "HomePlace Clinic - Cynthiana - Cynthiana, KY",
+    "org_name": "MOUNTAIN COMPREHENSIVE CARE CENTER, INC.",
+    "city": "Cynthiana",
+    "state": "KY"
+  },
+  {
+    "id": "6e082df0-ec58-478d-a2c4-9e70a1c66272",
+    "title": "HomePlace Clinic - Dorton - Jenkins, KY",
+    "org_name": "MOUNTAIN COMPREHENSIVE CARE CENTER, INC.",
+    "city": "Jenkins",
+    "state": "KY"
+  },
+  {
+    "id": "65b5fe6d-c225-4546-8aca-429002b74635",
+    "title": "HomePlace Clinic for Children and Families - Pikeville, KY",
+    "org_name": "MOUNTAIN COMPREHENSIVE CARE CENTER, INC.",
+    "city": "Pikeville",
+    "state": "KY"
+  },
+  {
+    "id": "75e21fa2-ed1e-4115-92ce-aa00cf6ad11c",
+    "title": "HomePlace Clinic - Grayson - Grayson, KY",
+    "org_name": "MOUNTAIN COMPREHENSIVE CARE CENTER, INC.",
+    "city": "Grayson",
+    "state": "KY"
+  },
+  {
+    "id": "404e86b8-ed36-42b0-b041-84d825f1947c",
+    "title": "HomePlace Clinic - Inez - Inez, KY",
+    "org_name": "MOUNTAIN COMPREHENSIVE CARE CENTER, INC.",
+    "city": "Inez",
+    "state": "KY"
+  },
+  {
+    "id": "7c345da8-0119-4c47-a377-f940c2da9c0d",
+    "title": "HomePlace Clinic - Martin - Martin, KY",
+    "org_name": "MOUNTAIN COMPREHENSIVE CARE CENTER, INC.",
+    "city": "Martin",
+    "state": "KY"
+  },
+  {
+    "id": "f124ba59-30c1-4c3a-8b45-2d3853066580",
+    "title": "HomePlace Clinic - Mobile Medical Unit - Paintsville, KY",
+    "org_name": "MOUNTAIN COMPREHENSIVE CARE CENTER, INC.",
+    "city": "Paintsville",
+    "state": "KY"
+  },
+  {
+    "id": "221697e9-7a20-45ee-aae8-0e04468975db",
+    "title": "HomePlace Clinic - Paintsville - Paintsville, KY",
+    "org_name": "MOUNTAIN COMPREHENSIVE CARE CENTER, INC.",
+    "city": "Paintsville",
+    "state": "KY"
+  },
+  {
+    "id": "e552860d-173a-42cd-bc96-e24ff87de6d8",
+    "title": "HomePlace Clinic - Prestonsburg - Prestonsburg, KY",
+    "org_name": "MOUNTAIN COMPREHENSIVE CARE CENTER, INC.",
+    "city": "Prestonsburg",
+    "state": "KY"
+  },
+  {
+    "id": "bb71f693-bb28-4fdc-80b9-89ecaaac2a86",
+    "title": "HomePlace Clinic - Salyersville - Salyersville, KY",
+    "org_name": "MOUNTAIN COMPREHENSIVE CARE CENTER, INC.",
+    "city": "Salyersville",
+    "state": "KY"
+  },
+  {
+    "id": "72172dd6-b941-448e-b292-2a706b4f82ed",
+    "title": "HomePlace Clinic - Winchester - Winchester, KY",
+    "org_name": "MOUNTAIN COMPREHENSIVE CARE CENTER, INC.",
+    "city": "Winchester",
+    "state": "KY"
+  },
+  {
+    "id": "b44fb74f-9bd0-4c57-995e-ec9d5d0054ed",
+    "title": "HomePlace Dental - Prestonsburg, KY",
+    "org_name": "MOUNTAIN COMPREHENSIVE CARE CENTER, INC.",
+    "city": "Prestonsburg",
+    "state": "KY"
+  },
+  {
+    "id": "eddcb48b-a845-4511-bc43-11b344b8ec6e",
+    "title": "HomePlace Eye Care - Paintsville, KY",
+    "org_name": "MOUNTAIN COMPREHENSIVE CARE CENTER, INC.",
+    "city": "Paintsville",
+    "state": "KY"
+  },
+  {
+    "id": "036ebc37-a17b-49d7-89cc-7fd5461f2a6f",
+    "title": "HomePlace OB/GYN - Prestonsburg, KY",
+    "org_name": "MOUNTAIN COMPREHENSIVE CARE CENTER, INC.",
+    "city": "Prestonsburg",
+    "state": "KY"
+  },
+  {
+    "id": "450218f9-59f1-46a3-8451-37196270d01c",
+    "title": "Hometown Health Centers at Amsterdam - Amsterdam, NY",
+    "org_name": "SCHENECTADY FAMILY HEALTH SERVICES, INC.",
+    "city": "Amsterdam",
+    "state": "NY"
+  },
+  {
+    "id": "ca5c20a0-a034-49a1-b284-8ce7eb8ecb64",
+    "title": "Hometown Health Centers at Mont Pleasant Middle School - Schenectady, NY",
+    "org_name": "SCHENECTADY FAMILY HEALTH SERVICES, INC.",
+    "city": "Schenectady",
+    "state": "NY"
+  },
+  {
+    "id": "e8d83d5b-d006-4d68-ad1f-24ca792e4e6b",
+    "title": "Hometown Health Centers at Schenectady High School - Schenectady, NY",
+    "org_name": "SCHENECTADY FAMILY HEALTH SERVICES, INC.",
+    "city": "Schenectady",
+    "state": "NY"
+  },
+  {
+    "id": "8672e6e2-bff0-49fa-b1aa-a084e7fcf8ad",
+    "title": "HomeTown Pediatrics - Clinton, SC",
+    "org_name": "CAROLINA HEALTH CENTERS INC",
+    "city": "Clinton",
+    "state": "SC"
+  },
+  {
+    "id": "8f9b0ee6-9e0c-4f57-be06-41eb2f3afd0b",
+    "title": "Hope Has a Home 2 - Washington, DC",
+    "org_name": "UNITY HEALTH CARE, INC.",
+    "city": "Washington",
+    "state": "DC"
+  },
+  {
+    "id": "21ae4db8-796e-4452-af2d-db249d4d194a",
+    "title": "Hub of Hope - Philadelphia, PA",
+    "org_name": "PROJECT HOME",
+    "city": "Philadelphia",
+    "state": "PA"
+  },
+  {
+    "id": "8c7c267c-190c-4f3c-9096-0ffa384dfd32",
+    "title": "Hudson Headwaters Administrative Offices - Queensbury, NY",
+    "org_name": "HUDSON HEADWATERS HEALTH NETWORK",
+    "city": "Queensbury",
+    "state": "NY"
+  },
+  {
+    "id": "44b3b1d4-dec4-4bf1-9123-893c2a76191f",
+    "title": "Hudson Headwaters Pediatric and Adolescent Health - Queensbury, NY",
+    "org_name": "HUDSON HEADWATERS HEALTH NETWORK",
+    "city": "Queensbury",
+    "state": "NY"
+  },
+  {
+    "id": "fb25961f-2099-4ad8-b8fa-a56538fd38ab",
+    "title": "Hudson Middle and High School - Hudson, MI",
+    "org_name": "FAMILY MEDICAL CENTER OF MICHIGAN, INC.",
+    "city": "Hudson",
+    "state": "MI"
+  },
+  {
+    "id": "db5f4beb-fbb8-47ca-ba2a-798a77616634",
+    "title": "Hudson River HealthCare - Nyack - Nyack, NY",
+    "org_name": "REFUAH HEALTH CENTER INC",
+    "city": "Nyack",
+    "state": "NY"
+  },
+  {
+    "id": "0236b39c-e601-4fa1-9111-dd857a4e66cc",
+    "title": "IHC at the Centers for the Homeless - South Bend, IN",
+    "org_name": "INDIANA HEALTH CENTERS INCORPORATED",
+    "city": "South Bend",
+    "state": "IN"
+  },
+  {
+    "id": "45bbca31-d3c5-498c-b0a4-23c7508a97c6",
+    "title": "Integrated Medical/Dental Outreach Van - Albuquerque, NM",
+    "org_name": "ALBUQUERQUE HEALTH CARE FOR HOMELESS",
+    "city": "Albuquerque",
+    "state": "NM"
+  },
+  {
+    "id": "48846a36-cde4-4a55-a150-24a3f8133130",
+    "title": "Ivey Lane Health Center - Orlando, FL",
+    "org_name": "HEALTH CARE CENTER FOR THE HOMELESS INC",
+    "city": "Orlando",
+    "state": "FL"
+  },
+  {
+    "id": "7f0562a7-8cdf-477e-a5ea-042b9609bf2a",
+    "title": "Jackson Avenue Family Residence - Bronx, NY",
+    "org_name": "CARE FOR THE HOMELESS",
+    "city": "Bronx",
+    "state": "NY"
+  },
+  {
+    "id": "20c25646-6a05-4fb6-84f2-d82155d10187",
+    "title": "Jericho Road Community Health Center Vive Shelter - Buffalo, NY",
+    "org_name": "JERICHO ROAD MINISTRIES INC",
+    "city": "Buffalo",
+    "state": "NY"
+  },
+  {
+    "id": "6a0fa3ff-c359-47b0-8929-78d06d5ba732",
+    "title": "Jerome Avenue Men's Shelter Health Center - Bronx, NY",
+    "org_name": "CARE FOR THE HOMELESS",
+    "city": "Bronx",
+    "state": "NY"
+  },
+  {
+    "id": "3400ce21-6066-4334-9b82-c34afcb3fced",
+    "title": "Kathleen & John Faltis Child Shelter - Summersville, WV",
+    "org_name": "CAMDEN-ON-GAULEY MEDICAL CENTER, INC.",
+    "city": "Summersville",
+    "state": "WV"
+  },
+  {
+    "id": "2ede65e7-ed0e-4e24-8bc9-aeebb53b7415",
+    "title": "Kingsboro Men's MICA Shelter - Brooklyn, NY",
+    "org_name": "Housing Works Health Services III, Inc.",
+    "city": "Brooklyn",
+    "state": "NY"
+  },
+  {
+    "id": "1089bb33-c136-4108-8278-a8ad88d46da0",
+    "title": "Kingston House - Boston, MA",
+    "org_name": "BOSTON HEALTH CARE FOR THE HOMELESS PROGRAM",
+    "city": "Boston",
+    "state": "MA"
+  },
+  {
+    "id": "4181f548-4aff-4a4e-99bc-eb045a8d763d",
+    "title": "LAGLC Transitional Living Program - Los Angeles, CA",
+    "org_name": "NORTHEAST VALLEY HEALTH CORPORATION",
+    "city": "Los Angeles",
+    "state": "CA"
+  },
+  {
+    "id": "f6d4182d-e72d-4a98-89a6-fc2f78b4e217",
+    "title": "Lamprey Health Care - Nashua Soup Kitchen & Shelter - Spr... (NH)",
+    "org_name": "LAMPREY HEALTH CARE INC",
+    "city": "Nashua",
+    "state": "NH"
+  },
+  {
+    "id": "4ff53c20-b8c4-46db-bc01-61680da620e9",
+    "title": "LCHC at Midway Shelter - Chicago, IL",
+    "org_name": "LAWNDALE CHRISTIAN HEALTH CENTER",
+    "city": "Chicago",
+    "state": "IL"
+  },
+  {
+    "id": "3f26427b-8050-4532-a92e-3ec45bed4c2e",
+    "title": "Libertyville Behavioral Health Home - Libertyville, IL",
+    "org_name": "LAKE COUNTY HEALTH DEPARTMENT & COMMUNITY HEALTH CENTER",
+    "city": "Libertyville",
+    "state": "IL"
+  },
+  {
+    "id": "4799d9de-b9ad-4b5a-9e9f-1e4b9955df47",
+    "title": "Life Link Homeless Resource - Santa Fe, NM",
+    "org_name": "LA FAMILIA MEDICAL CENTER",
+    "city": "Santa Fe",
+    "state": "NM"
+  },
+  {
+    "id": "6e4c5000-9e15-44a0-aedd-f8ead8567934",
+    "title": "LifeLong Berkeley Food and Housing, Russell Street Reside... (CA)",
+    "org_name": "LIFELONG MEDICAL CARE",
+    "city": "Berkeley",
+    "state": "CA"
+  },
+  {
+    "id": "ab54e679-69af-4c3f-aa93-20c1e613c22f",
+    "title": "LifeLong Idaho Apartments - Supportive Housing Program - El Cerrito, CA",
+    "org_name": "LIFELONG MEDICAL CARE",
+    "city": "El Cerrito",
+    "state": "CA"
+  },
+  {
+    "id": "d85354d1-504e-49a9-8cfc-fee501685196",
+    "title": "Lindemann Mental Health Center - Boston, MA",
+    "org_name": "BOSTON HEALTH CARE FOR THE HOMELESS PROGRAM",
+    "city": "Boston",
+    "state": "MA"
+  },
+  {
+    "id": "6cf52beb-037b-47a9-af30-7c09f0bb6283",
+    "title": "Lotus House Shelter - Miami, FL",
+    "org_name": "CITRUS HEALTH NETWORK INC",
+    "city": "Miami",
+    "state": "FL"
+  },
+  {
+    "id": "11cdbc0e-c56b-440b-9aee-18408cc14cf0",
+    "title": "Magnolia Apartments - Salt Lake City, UT",
+    "org_name": "WASATCH HOMELESS HEALTH CARE INC",
+    "city": "Salt Lake City",
+    "state": "UT"
+  },
+  {
+    "id": "dd72a266-122d-4c8d-949e-bf04a12592e1",
+    "title": "MAINE VETERANS CENTER/HOMES - Bangor, ME",
+    "org_name": "PENOBSCOT COMMUNITY HEALTH CENTER",
+    "city": "Bangor",
+    "state": "ME"
+  },
+  {
+    "id": "893d2114-3540-4f1a-af81-cd220d0cfbd0",
+    "title": "Marimn Health Teen Shelter - Plummer, ID",
+    "org_name": "Coeur d'Alene Tribal Health Authority",
+    "city": "Plummer",
+    "state": "ID"
+  },
+  {
+    "id": "1e47d664-c449-424f-bacf-bfee79d964ac",
+    "title": "MASSACHUSETTS GENERAL HOSPITAL - Boston, MA",
+    "org_name": "BOSTON HEALTH CARE FOR THE HOMELESS PROGRAM",
+    "city": "Boston",
+    "state": "MA"
+  },
+  {
+    "id": "93c0501b-18f2-40e2-bb17-fb249433b979",
+    "title": "McKeesport Downtown Housing - Mckeesport, PA",
+    "org_name": "PRIMARY CARE HEALTH SERVICES INC",
+    "city": "Mckeesport",
+    "state": "PA"
+  },
+  {
+    "id": "63dedd21-90e7-491a-976f-d1d4a2802757",
+    "title": "Medical Respite Collaborative @ Gateway Center - Albuquerque, NM",
+    "org_name": "ALBUQUERQUE HEALTH CARE FOR HOMELESS",
+    "city": "Albuquerque",
+    "state": "NM"
+  },
+  {
+    "id": "cf48e3fe-4aeb-4bd3-9a31-4b0c58b22356",
+    "title": "Midtown Health Center - Vets Home - Norfolk, NE",
+    "org_name": "MIDTOWN HEALTH CENTER, INC.",
+    "city": "Norfolk",
+    "state": "NE"
+  },
+  {
+    "id": "dab43b34-0c9e-4d9b-b7b8-e2fabbfb41c6",
+    "title": "Mobile Van #1 - Boston, MA",
+    "org_name": "BOSTON HEALTH CARE FOR THE HOMELESS PROGRAM",
+    "city": "Boston",
+    "state": "MA"
+  },
+  {
+    "id": "a9f2bf43-3ad2-4222-89cb-8a7d0c1f5ebe",
+    "title": "Moreau Family Health - Gansevoort, NY",
+    "org_name": "HUDSON HEADWATERS HEALTH NETWORK",
+    "city": "Gansevoort",
+    "state": "NY"
+  },
+  {
+    "id": "8e738d72-decb-4907-8a9e-13d0f7145dce",
+    "title": "Morris Avenue Health Center - Bronx, NY",
+    "org_name": "CARE FOR THE HOMELESS",
+    "city": "Bronx",
+    "state": "NY"
+  },
+  {
+    "id": "c0e6de3b-7dc6-4787-a905-ef55896bd7a2",
+    "title": "MVP - Sandy, UT",
+    "org_name": "WASATCH HOMELESS HEALTH CARE INC",
+    "city": "Sandy",
+    "state": "UT"
+  },
+  {
+    "id": "1c03275d-ba14-4ac7-8c04-cdeee46e811e",
+    "title": "Neighborcare Health Ballard Homeless Clinic at Nyer Urnes... (WA)",
+    "org_name": "NEIGHBORCARE HEALTH",
+    "city": "Seattle",
+    "state": "WA"
+  },
+  {
+    "id": "e11fb1b2-f332-4ecc-a320-1f8da57d10a8",
+    "title": "Neighborcare Health Homeless Youth Clinic - Seattle, WA",
+    "org_name": "KING COUNTY",
+    "city": "Seattle",
+    "state": "WA"
+  },
+  {
+    "id": "6663d98f-9670-4a13-94f0-880e4d6565c8",
+    "title": "New England Center and Home for Veterans - Boston, MA",
+    "org_name": "BOSTON HEALTH CARE FOR THE HOMELESS PROGRAM",
+    "city": "Boston",
+    "state": "MA"
+  },
+  {
+    "id": "e78aaeb0-d3be-4260-ae9b-ab0fdbdde478",
+    "title": "New Path Community Housing - Boise, ID",
+    "org_name": "COMMUNITY HEALTH CLINICS INC",
+    "city": "Boise",
+    "state": "ID"
+  },
+  {
+    "id": "697ee013-f95a-4a5a-89a2-434f7d76108d",
+    "title": "Newport Community Shelter and Resource Center - Newport, OR",
+    "org_name": "COUNTY OF LINCOLN",
+    "city": "Newport",
+    "state": "OR"
+  },
+  {
+    "id": "ecd80860-daf0-460a-a2b7-201123e06679",
+    "title": "NEXT DOOR TRANSITIONAL SHELTER - San Francisco, CA",
+    "org_name": "SAN FRANCISCO COMMUNITY CLINIC CONSORTIUM",
+    "city": "San Francisco",
+    "state": "CA"
+  },
+  {
+    "id": "7e047cb3-c7e6-4be1-92aa-b69054471c37",
+    "title": "North Hudson Community Action Coporation-Harrison Health ... (NJ)",
+    "org_name": "North Hudson Community Action Corporation",
+    "city": "Harrison",
+    "state": "NJ"
+  },
+  {
+    "id": "6592d5cd-2a0c-466c-b9f5-f1e62ee83d22",
+    "title": "North Hudson Community Action Corporation Health Center @... (NJ)",
+    "org_name": "North Hudson Community Action Corporation",
+    "city": "Englewood",
+    "state": "NJ"
+  },
+  {
+    "id": "a69a1fe8-0ed3-48dc-a427-e5bb5b98d653",
+    "title": "North Hudson Community Action Corporation Health Center @... (NJ)",
+    "org_name": "North Hudson Community Action Corporation",
+    "city": "Union City",
+    "state": "NJ"
+  },
+  {
+    "id": "96c338fe-77c9-4738-b7e6-8133cc0b911a",
+    "title": "North Hudson Community Action Corporation @ Passaic - Passaic, NJ",
+    "org_name": "North Hudson Community Action Corporation",
+    "city": "Passaic",
+    "state": "NJ"
+  },
+  {
+    "id": "1739c1d3-838a-4a41-8a7d-6072d38e5bad",
+    "title": "North Hudson Community Action Corporation @ Secaucus - Secaucus, NJ",
+    "org_name": "North Hudson Community Action Corporation",
+    "city": "Secaucus",
+    "state": "NJ"
+  },
+  {
+    "id": "8a198226-30ff-47ec-b52f-d97ec32e02d2",
+    "title": "One Health - Home Base - Miles City, MT",
+    "org_name": "BIGHORN VALLEY HEALTH CENTER INC",
+    "city": "Miles City",
+    "state": "MT"
+  },
+  {
+    "id": "9ecfdd05-b198-4421-ad99-63b5ec5914a5",
+    "title": "On The Rise - Cambridge, MA",
+    "org_name": "BOSTON HEALTH CARE FOR THE HOMELESS PROGRAM",
+    "city": "Cambridge",
+    "state": "MA"
+  },
+  {
+    "id": "c1ac2c83-af7a-45e0-b0da-cd8e3d64f3cd",
+    "title": "Operation Outreach Homeless Health Center - Memphis, TN",
+    "org_name": "CHRIST COMMUNITY HEALTH SERVICES INC",
+    "city": "Memphis",
+    "state": "TN"
+  },
+  {
+    "id": "aca46334-d518-4116-b017-69df4bdc271b",
+    "title": "ORONO COMMONS - Orono, ME",
+    "org_name": "PENOBSCOT COMMUNITY HEALTH CENTER",
+    "city": "Orono",
+    "state": "ME"
+  },
+  {
+    "id": "18a8fb9b-323a-4658-a79e-9d26c895167d",
+    "title": "Our Daily Bread - Baltimore, MD",
+    "org_name": "HEALTH CARE FOR HOMELESS INC",
+    "city": "Baltimore",
+    "state": "MD"
+  },
+  {
+    "id": "c045b5a5-7756-4434-8952-346db79e1660",
+    "title": "Packing Shed Housing Camp - Johns Island, SC",
+    "org_name": "FETTER HEALTH CARE NETWORK, INC.",
+    "city": "Johns Island",
+    "state": "SC"
+  },
+  {
+    "id": "73ebf128-3ac0-4933-8fcc-0fc2661280f5",
+    "title": "Palm Center Homeless Support Services Site - Hialeah, FL",
+    "org_name": "CITRUS HEALTH NETWORK INC",
+    "city": "Hialeah",
+    "state": "FL"
+  },
+  {
+    "id": "7f127857-7567-45ef-af35-2b335df46e61",
+    "title": "Palms Medical Group - Fleming Island - Fleming Island, FL",
+    "org_name": "TRENTON MEDICAL CENTER, INC.",
+    "city": "Fleming Island",
+    "state": "FL"
+  },
+  {
+    "id": "c84671b6-9931-4cdf-a39e-3fb4cdca03bc",
+    "title": "PATH (People Assisting The Homeless) - Santa Barbara, CA",
+    "org_name": "COUNTY OF SANTA BARBARA",
+    "city": "Santa Barbara",
+    "state": "CA"
+  },
+  {
+    "id": "5229dd9d-c3f2-4562-816b-2aceb9edb46e",
+    "title": "Pathways to Housing-Bladensburg Rd - Washington, DC",
+    "org_name": "UNITY HEALTH CARE, INC.",
+    "city": "Washington",
+    "state": "DC"
+  },
+  {
+    "id": "d860db5b-088a-4d57-830d-d6425dfeaa06",
+    "title": "Pete's Place Homeless Resource - Santa Fe, NM",
+    "org_name": "LA FAMILIA MEDICAL CENTER",
+    "city": "Santa Fe",
+    "state": "NM"
+  },
+  {
+    "id": "93fc7e66-3dfb-4c33-99f2-2923f163ad2f",
+    "title": "Pine Street Inn at the Shattuck - Jamaica Plain, MA",
+    "org_name": "BOSTON HEALTH CARE FOR THE HOMELESS PROGRAM",
+    "city": "Jamaica Plain",
+    "state": "MA"
+  },
+  {
+    "id": "f2e6fdd2-fdd3-4402-9540-07b21e89538a",
+    "title": "PINE STREET INN-MEN'S CLINIC - Boston, MA",
+    "org_name": "BOSTON HEALTH CARE FOR THE HOMELESS PROGRAM",
+    "city": "Boston",
+    "state": "MA"
+  },
+  {
+    "id": "ec32fcf7-2d0a-4370-a0cf-ae4a531baa6c",
+    "title": "PINE STREET INN Women's Clinic - Boston, MA",
+    "org_name": "BOSTON HEALTH CARE FOR THE HOMELESS PROGRAM",
+    "city": "Boston",
+    "state": "MA"
+  },
+  {
+    "id": "5a2caec7-5c4d-4187-ae4f-813774c3bc5c",
+    "title": "Project HOME Mobile - Philadelphia, PA",
+    "org_name": "PROJECT HOME",
+    "city": "Philadelphia",
+    "state": "PA"
+  },
+  {
+    "id": "12f5672a-7cbd-476f-8f23-579d99ca6316",
+    "title": "Project Hospitality Health Center - Staten Island, NY",
+    "org_name": "CARE FOR THE HOMELESS",
+    "city": "Staten Island",
+    "state": "NY"
+  },
+  {
+    "id": "9cf8a47a-ebb5-40c1-8e41-739c17c987a8",
+    "title": "Rapides School Based Health Center - Huddle - Alexandria, LA",
+    "org_name": "WINN COMMUNITY HEALTH CENTER INC",
+    "city": "Alexandria",
+    "state": "LA"
+  },
+  {
+    "id": "14b572c0-c723-4cfa-b84b-2ea90e84ff24",
+    "title": "Reed Family Clinic - Houston, TX",
+    "org_name": "HEALTHCARE FOR THE HOMELESS-HOUSTON",
+    "city": "Houston",
+    "state": "TX"
+  },
+  {
+    "id": "9736c2fb-acbc-4270-861d-9caedfc1577a",
+    "title": "Renaissance Downtown Lofts - Denver, CO",
+    "org_name": "THE COLORADO COALITION FOR THE HOMELESS",
+    "city": "Denver",
+    "state": "CO"
+  },
+  {
+    "id": "edaa8396-4f33-459c-b88c-c4e017a9b371",
+    "title": "Renewal Village - Denver, CO",
+    "org_name": "THE COLORADO COALITION FOR THE HOMELESS",
+    "city": "Denver",
+    "state": "CO"
+  },
+  {
+    "id": "d805176a-2f83-4beb-b0b7-29e47c600636",
+    "title": "Rosie's Place - Boston, MA",
+    "org_name": "BOSTON HEALTH CARE FOR THE HOMELESS PROGRAM",
+    "city": "Boston",
+    "state": "MA"
+  },
+  {
+    "id": "4c5fa2b6-b066-4bab-8aa6-e5bf3c53b747",
+    "title": "ROSS MANOR - Bangor, ME",
+    "org_name": "PENOBSCOT COMMUNITY HEALTH CENTER",
+    "city": "Bangor",
+    "state": "ME"
+  },
+  {
+    "id": "5a2db6e1-8714-455f-851d-39272bb74e19",
+    "title": "Safehome (XX)",
+    "org_name": "HEALTH PARTNERSHIP CLINIC, INC.",
+    "city": null,
+    "state": null
+  },
+  {
+    "id": "f750e70c-2421-460f-8e16-f4a42513eb4d",
+    "title": "SAINT MARTHA'S SHELTER - San Francisco, CA",
+    "org_name": "SAN FRANCISCO COMMUNITY CLINIC CONSORTIUM",
+    "city": "San Francisco",
+    "state": "CA"
+  },
+  {
+    "id": "2fd04f3e-4c15-4fef-bd93-ec2aebc893e6",
+    "title": "Salvation Army - Cambridge, MA",
+    "org_name": "BOSTON HEALTH CARE FOR THE HOMELESS PROGRAM",
+    "city": "Cambridge",
+    "state": "MA"
+  },
+  {
+    "id": "14d7c5eb-c2ab-4fe3-9015-485fb94d2a4a",
+    "title": "San Mateo County Homeless Navigation Center - Redwood City, CA",
+    "org_name": "San Mateo County Health",
+    "city": "Redwood City",
+    "state": "CA"
+  },
+  {
+    "id": "3240c0c4-6fc6-44fe-a688-d46cde8d7b75",
+    "title": "Saranac Lake Family Health - Saranac Lake, NY",
+    "org_name": "HUDSON HEADWATERS HEALTH NETWORK",
+    "city": "Saranac Lake",
+    "state": "NY"
+  },
+  {
+    "id": "1cb1de04-eb2a-45b1-907f-99fb613154fd",
+    "title": "Sea Mar CHC - Vashon Island - Vashon, WA",
+    "org_name": "SEA MAR COMMUNITY HEALTH CENTERS",
+    "city": "Vashon",
+    "state": "WA"
+  },
+  {
+    "id": "d319ba5b-41ab-41d5-b455-ea2eb1523c91",
+    "title": "SHERO Hour Children 1 - Astoria, NY",
+    "org_name": "Housing Works Health Services III, Inc.",
+    "city": "Astoria",
+    "state": "NY"
+  },
+  {
+    "id": "586be1fb-6505-473a-b917-38c1ee880003",
+    "title": "SHERO Housing Plus 2 - Brooklyn, NY",
+    "org_name": "Housing Works Health Services III, Inc.",
+    "city": "Brooklyn",
+    "state": "NY"
+  },
+  {
+    "id": "afe70990-f903-4cad-8c85-331b666b5a05",
+    "title": "SHERO Providence House 1 - Brooklyn, NY",
+    "org_name": "Housing Works Health Services III, Inc.",
+    "city": "Brooklyn",
+    "state": "NY"
+  },
+  {
+    "id": "6f46c594-b63a-4e2b-90c9-a1e89dfb735f",
+    "title": "SHERO Providence House 2 - Brooklyn, NY",
+    "org_name": "Housing Works Health Services III, Inc.",
+    "city": "Brooklyn",
+    "state": "NY"
+  },
+  {
+    "id": "f7e34c13-f36a-4e90-8731-1456d156bc92",
+    "title": "Simons Senior Apartments - Seattle, WA",
+    "org_name": "NEIGHBORCARE HEALTH",
+    "city": "Seattle",
+    "state": "WA"
+  },
+  {
+    "id": "7f9f6555-0e15-4beb-b97b-450b124fa903",
+    "title": "Southampton Street Shelter - Boston, MA",
+    "org_name": "BOSTON HEALTH CARE FOR THE HOMELESS PROGRAM",
+    "city": "Boston",
+    "state": "MA"
+  },
+  {
+    "id": "fef77065-8c57-4f7c-be90-0bfb1fcef02d",
+    "title": "Southeast Community Health Systems - Port Hudson School - Zachary, LA",
+    "org_name": "SOUTHEAST COMMUNITY HEALTH SYSTEMS",
+    "city": "Zachary",
+    "state": "LA"
+  },
+  {
+    "id": "4089fa94-ca30-48f6-8b8c-5bc315b63ea3",
+    "title": "St. Anthony Shrine - Boston, MA",
+    "org_name": "BOSTON HEALTH CARE FOR THE HOMELESS PROGRAM",
+    "city": "Boston",
+    "state": "MA"
+  },
+  {
+    "id": "126d7dd8-266d-4506-9435-616884f648f1",
+    "title": "Star Community Health-Hometown - Tamaqua, PA",
+    "org_name": "STAR COMMUNITY HEALTH INC",
+    "city": "Tamaqua",
+    "state": "PA"
+  },
+  {
+    "id": "c41e2773-f2b0-466e-8f7d-f978f43cf549",
+    "title": "Stephen Klein Wellness Center - Philadelphia, PA",
+    "org_name": "PROJECT HOME",
+    "city": "Philadelphia",
+    "state": "PA"
+  },
+  {
+    "id": "64f9b4b9-5662-4fd1-ab75-73d8627c066f",
+    "title": "ST. FRANCIS HOUSE - Boston, MA",
+    "org_name": "BOSTON HEALTH CARE FOR THE HOMELESS PROGRAM",
+    "city": "Boston",
+    "state": "MA"
+  },
+  {
+    "id": "f425542a-4e41-4845-b5b1-ad04fdaab7fc",
+    "title": "STILLWATER HEALTH CARE - Bangor, ME",
+    "org_name": "PENOBSCOT COMMUNITY HEALTH CENTER",
+    "city": "Bangor",
+    "state": "ME"
+  },
+  {
+    "id": "566108ab-8ead-4fcf-b784-7c7624a8f101",
+    "title": "St. John's Bread and Life - Brooklyn, NY",
+    "org_name": "CARE FOR THE HOMELESS",
+    "city": "Brooklyn",
+    "state": "NY"
+  },
+  {
+    "id": "51c8ce73-aa10-400c-b887-d2e165f7cfa2",
+    "title": "St. Mary's Center for Women & Children (Bridge Home, Marg... (MA)",
+    "org_name": "BOSTON HEALTH CARE FOR THE HOMELESS PROGRAM",
+    "city": "Dorchester",
+    "state": "MA"
+  },
+  {
+    "id": "4212d1bd-bd57-4740-8a54-7779f2c62ff0",
+    "title": "Stout Street Recuperative Care Center & Legacy Lofts - Denver, CO",
+    "org_name": "THE COLORADO COALITION FOR THE HOMELESS",
+    "city": "Denver",
+    "state": "CO"
+  },
+  {
+    "id": "85c4e129-4820-4778-b43f-e495ae31e318",
+    "title": "St. Patrick's Women's Shelter - Somerville, MA",
+    "org_name": "BOSTON HEALTH CARE FOR THE HOMELESS PROGRAM",
+    "city": "Somerville",
+    "state": "MA"
+  },
+  {
+    "id": "52985010-bad9-427e-a35f-71023f49b445",
+    "title": "St. Thomas Office",
+    "org_name": "Virgin Islands Office of Veterans Affairs",
+    "city": "Charlotte Amalie",
+    "state": "VI"
+  },
+  {
+    "id": "6defe164-9e5f-4d8c-84d6-0bbc3128b886",
+    "title": "Sun River Health Brentwood - Brentwood, NY",
+    "org_name": "SUN RIVER HEALTH, INC.",
+    "city": "Brentwood",
+    "state": "NY"
+  },
+  {
+    "id": "5891c53e-85c5-4cb1-810e-b49082863499",
+    "title": "Sun River Health Hudson - Hudson, NY",
+    "org_name": "SUN RIVER HEALTH, INC.",
+    "city": "Hudson",
+    "state": "NY"
+  },
+  {
+    "id": "4fb211f9-c299-4978-8f54-01fcfcd5f572",
+    "title": "Sweet Home Health Center - Sweet Home, OR",
+    "org_name": "BENTON COUNTY",
+    "city": "Sweet Home",
+    "state": "OR"
+  },
+  {
+    "id": "a3e582ff-908b-482e-8186-f445135c4baf",
+    "title": "TAPM Family Medicine at Brentwood - High Point, NC",
+    "org_name": "TRIAD ADULT & PEDIATRIC MEDICINE, INC.",
+    "city": "High Point",
+    "state": "NC"
+  },
+  {
+    "id": "44061c4b-a650-40d6-91bc-0528ce9f75f0",
+    "title": "Temporary Site - Lakeshore Hotel Shelter - Chicago, IL",
+    "org_name": "ESPERANZA HEALTH CENTERS",
+    "city": "Chicago",
+    "state": "IL"
+  },
+  {
+    "id": "4a8d19dd-b6b6-4bbb-bb0f-0f60d73c8ceb",
+    "title": "Temporary Site - Parthenon Shelter - Chicago, IL",
+    "org_name": "ESPERANZA HEALTH CENTERS",
+    "city": "Chicago",
+    "state": "IL"
+  },
+  {
+    "id": "bd450c74-8ebd-460d-ac46-bec43f0e795c",
+    "title": "Temporary Site - Social Club Shelter - Chicago, IL",
+    "org_name": "ESPERANZA HEALTH CENTERS",
+    "city": "Chicago",
+    "state": "IL"
+  },
+  {
+    "id": "d9da8fe1-6cc3-41d2-b2ae-b41e5ca5af68",
+    "title": "The Childrens Clinic - Long Beach Multiservice Center for... (CA)",
+    "org_name": "NORTHEAST VALLEY HEALTH CORPORATION",
+    "city": "Long Beach",
+    "state": "CA"
+  },
+  {
+    "id": "3f267f25-4ea3-43f4-9e6a-00fc7e77e16e",
+    "title": "The Children's Home of Cincinnati - Cincinnati, OH",
+    "org_name": "CITY OF CINCINNATI",
+    "city": "Cincinnati",
+    "state": "OH"
+  },
+  {
+    "id": "ca829708-e5da-4e4d-aa7a-2dda028311a3",
+    "title": "The Living Room - Bronx, NY",
+    "org_name": "CARE FOR THE HOMELESS",
+    "city": "Bronx",
+    "state": "NY"
+  },
+  {
+    "id": "ee56c0cc-9eb8-4b5d-aea4-418f80e45c3f",
+    "title": "Ticonderoga Health Center - Ticonderoga, NY",
+    "org_name": "HUDSON HEADWATERS HEALTH NETWORK",
+    "city": "Ticonderoga",
+    "state": "NY"
+  },
+  {
+    "id": "6b0ec664-5167-4e5d-a4ee-e976495b5cd0",
+    "title": "Transitional Wellness Center / Cambridge Health Alliance - Cambridge, MA",
+    "org_name": "BOSTON HEALTH CARE FOR THE HOMELESS PROGRAM",
+    "city": "Cambridge",
+    "state": "MA"
+  },
+  {
+    "id": "20fcb27d-d534-483e-93e0-2a94821a1537",
+    "title": "Transitions - Mattapan, MA",
+    "org_name": "BOSTON HEALTH CARE FOR THE HOMELESS PROGRAM",
+    "city": "Mattapan",
+    "state": "MA"
+  },
+  {
+    "id": "12566d85-8c17-4065-abb0-1cbf8ebb7a47",
+    "title": "Tupper Lake Family Health - Tupper Lake, NY",
+    "org_name": "HUDSON HEADWATERS HEALTH NETWORK",
+    "city": "Tupper Lake",
+    "state": "NY"
+  },
+  {
+    "id": "fcbc78dc-012a-40ce-8ec2-157f61106666",
+    "title": "UW Homeless Youth Clinic - Seattle, WA",
+    "org_name": "KING COUNTY",
+    "city": "Seattle",
+    "state": "WA"
+  },
+  {
+    "id": "2f8b008a-2b0b-4189-b783-762abf16f0b6",
+    "title": "Valley-Wide WAGEES Housing - La Junta, CO",
+    "org_name": "VALLEY-WIDE HEALTH SYSTEMS",
+    "city": "La Junta",
+    "state": "CO"
+  },
+  {
+    "id": "bc22dba0-65fe-4f72-b2fa-799da6f5e28b",
+    "title": "VENTURA COUNTY HEALTHCARE FOR THE HOMELESS PROGRAM - Ventura, CA",
+    "org_name": "COUNTY OF VENTURA",
+    "city": "Ventura",
+    "state": "CA"
+  },
+  {
+    "id": "8b6fb7f3-eba4-4bba-b8aa-4f8003ab4cb7",
+    "title": "Wellness Pointe - LISD - Hudson PEP - Longview, TX",
+    "org_name": "LONGVIEW WELLNESS CENTER, INC",
+    "city": "Longview",
+    "state": "TX"
+  },
+  {
+    "id": "f0d0693d-c90f-4661-8dec-580190969b78",
+    "title": "West 48th Street Health Center - New York, NY",
+    "org_name": "Housing Works Health Services III, Inc.",
+    "city": "New York",
+    "state": "NY"
+  },
+  {
+    "id": "6d070c01-a128-4b9e-a757-8738c1359b4c",
+    "title": "West End Health Center - Denver, CO",
+    "org_name": "THE COLORADO COALITION FOR THE HOMELESS",
+    "city": "Denver",
+    "state": "CO"
+  },
+  {
+    "id": "54021be4-2ec9-4f0d-bbd0-14498eeae178",
+    "title": "WESTGATE MANOR NURSING HOMES - Bangor, ME",
+    "org_name": "PENOBSCOT COMMUNITY HEALTH CENTER",
+    "city": "Bangor",
+    "state": "ME"
+  },
+  {
+    "id": "ce8c8337-1793-4f6b-b87c-af130ad52489",
+    "title": "Wheeler Shelter for Women and Children Clinic - Indianapolis, IN",
+    "org_name": "Health Net, Inc.",
+    "city": "Indianapolis",
+    "state": "IN"
+  },
+  {
+    "id": "f118d247-ed83-4a29-8bfa-c268707d8d19",
+    "title": "Wilkes Villa Public Housing - Elyria, OH",
+    "org_name": "LORAIN COUNTY HEALTH & DENTISTRY",
+    "city": "Elyria",
+    "state": "OH"
+  },
+  {
+    "id": "52293fa3-7303-4fa2-8622-d6e9390f7cf4",
+    "title": "Windward Apartments - Bridgeport, CT",
+    "org_name": "SOUTHWEST COMMUNITY HEALTH CENTER INC",
+    "city": "Bridgeport",
+    "state": "CT"
+  },
+  {
+    "id": "189a3c7f-9b4a-4ed9-b066-5277dd04ee78",
+    "title": "Women's Lunch Place - Boston, MA",
+    "org_name": "BOSTON HEALTH CARE FOR THE HOMELESS PROGRAM",
+    "city": "Boston",
+    "state": "MA"
+  },
+  {
+    "id": "3d3e199d-af40-4571-97c2-2a8f20ec00bb",
+    "title": "WOODLANDS ASSISTED LIVING BREWER - Brewer, ME",
+    "org_name": "PENOBSCOT COMMUNITY HEALTH CENTER",
+    "city": "Brewer",
+    "state": "ME"
+  },
+  {
+    "id": "75296a23-cafa-448b-b804-83b1a6613438",
+    "title": "Woods Mullen Shelter - Boston, MA",
+    "org_name": "BOSTON HEALTH CARE FOR THE HOMELESS PROGRAM",
+    "city": "Boston",
+    "state": "MA"
+  },
+  {
+    "id": "cc549999-4580-4005-a9f0-12ec35885dae",
+    "title": "WYA New London Homeless Hospitality Center - New London, CT",
+    "org_name": "COMMUNITY HEALTH CENTER, INCORPORATED",
+    "city": "New London",
+    "state": "CT"
+  },
+  {
+    "id": "e9cebaef-3e85-4df0-a81c-536284e28fd9",
+    "title": "Y2Y Harvard Square - Cambridge, MA",
+    "org_name": "BOSTON HEALTH CARE FOR THE HOMELESS PROGRAM",
+    "city": "Cambridge",
+    "state": "MA"
+  },
+  {
+    "id": "5372876f-0d70-4fac-85c4-421606b74100",
+    "title": "YMCA of Greater Seattle Arcadia Shelter and Drop-In Center - Auburn, WA",
+    "org_name": "KING COUNTY",
+    "city": "Auburn",
+    "state": "WA"
+  }
+]

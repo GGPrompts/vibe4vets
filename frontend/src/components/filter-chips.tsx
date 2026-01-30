@@ -1,15 +1,14 @@
 'use client';
 
-import { X, Briefcase, GraduationCap, Home, Scale, Globe, MapPin, UtensilsCrossed, Award, Brain, HeartHandshake, HeartPulse, School, Wallet, Tag } from 'lucide-react';
+import { X, Briefcase, GraduationCap, Home, Scale, MapPin, UtensilsCrossed, Award, Brain, HeartHandshake, HeartPulse, School, Wallet, Tag } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
-import { CATEGORIES, STATES, SCOPES, type FilterState } from '@/components/filters-sidebar';
+import { CATEGORIES, STATES, type FilterState } from '@/components/filters-sidebar';
 
 interface FilterChipsProps {
   filters: FilterState;
   onRemoveCategory: (category: string) => void;
   onRemoveState: (state: string) => void;
-  onClearScope: () => void;
   onClearZip?: () => void;
   onRemoveTag?: (tag: string) => void;
   onClearAll: () => void;
@@ -68,7 +67,6 @@ export function FilterChips({
   filters,
   onRemoveCategory,
   onRemoveState,
-  onClearScope,
   onClearZip,
   onRemoveTag,
   onClearAll,
@@ -78,7 +76,6 @@ export function FilterChips({
   const hasFilters =
     filters.categories.length > 0 ||
     filters.states.length > 0 ||
-    filters.scope !== 'all' ||
     !!filters.zip ||
     hasTags;
 
@@ -90,13 +87,9 @@ export function FilterChips({
   const getStateLabel = (value: string) =>
     STATES.find((s) => s.value === value)?.label || value;
 
-  const getScopeLabel = (value: string) =>
-    SCOPES.find((s) => s.value === value)?.label || value;
-
   const totalChips =
     filters.categories.length +
     filters.states.length +
-    (filters.scope !== 'all' ? 1 : 0) +
     (filters.zip ? 1 : 0) +
     (filters.tags?.length ?? 0);
 
@@ -135,19 +128,6 @@ export function FilterChips({
           <X className="h-3 w-3 ml-0.5" />
         </Badge>
       ))}
-
-      {/* Scope chip - light gold styling */}
-      {filters.scope !== 'all' && (
-        <Badge
-          variant="outline"
-          className="cursor-pointer gap-1 border-[hsl(var(--v4v-gold)/0.4)] bg-[hsl(var(--v4v-gold)/0.12)] text-foreground font-medium transition-opacity hover:opacity-80"
-          onClick={onClearScope}
-        >
-          <Globe className="h-3 w-3" />
-          {filters.scope === 'state' ? 'Local only' : getScopeLabel(filters.scope)}
-          <X className="h-3 w-3 ml-0.5" />
-        </Badge>
-      )}
 
       {/* Zip code chip - light emerald styling for proximity search */}
       {filters.zip && onClearZip && (

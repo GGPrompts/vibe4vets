@@ -242,11 +242,6 @@ function SearchResults() {
     handleFiltersChange(newFilters);
   };
 
-  const handleClearScope = () => {
-    const newFilters = { ...filters, scope: 'all' };
-    handleFiltersChange(newFilters);
-  };
-
   const handleClearZip = () => {
     const newFilters = { ...filters, zip: undefined, radius: undefined };
     handleFiltersChange(newFilters);
@@ -732,7 +727,6 @@ function SearchResults() {
               filters={filters}
               onRemoveCategory={handleRemoveCategory}
               onRemoveState={handleRemoveState}
-              onClearScope={handleClearScope}
               onClearZip={handleClearZip}
               onRemoveTag={handleRemoveTag}
               onClearAll={handleClearAll}

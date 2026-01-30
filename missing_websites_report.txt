@@ -1,0 +1,69 @@
+
+================================================================================
+RESOURCES MISSING WEBSITE URLs - DETAILED ANALYSIS REPORT
+Generated: 2026-01-29
+================================================================================
+
+EXECUTIVE SUMMARY
+-----------------
+Total Resources Missing Website URLs: 8,167
+
+Status Breakdown:
+  ACTIVE: 8,164
+  NEEDS_REVIEW: 3
+
+Top 15 Categories (by count of missing website resources):
+   1. employment                 7,960 resources
+   2. healthcare                 7,955 resources
+   3. training                   2,748 resources
+   4. housing                      239 resources
+   5. [uncategorized]              204 resources
+   6. legal                         81 resources
+
+Geographic Distribution (Top 20 States):
+   1. CA  1,292 resources
+   2. KY    424 resources
+   3. NY    400 resources
+   4. TX    330 resources
+   5. IN    284 resources
+   6. CT    282 resources
+   7. NC    266 resources
+   8. WV    264 resources
+   9. MO    250 resources
+  10. MI    248 resources
+  11. OH    247 resources
+  12. LA    243 resources
+  13. PA    229 resources
+  14. FL    229 resources
+  15. IL    192 resources
+  16. WI    175 resources
+  17. WA    170 resources
+  18. GA    134 resources
+  19. OR    128 resources
+  20. OK    124 resources
+
+Scope Breakdown:
+  LOCAL            7,965 resources
+  NATIONAL           199 resources
+  STATE                3 resources
+
+FILES GENERATED
+===============
+1. /tmp/missing_websites.csv
+   - Complete list of 8,167 resources with missing websites
+   - Columns: id, title, organization, city, state, status, created_date
+   - Ready for web search/lookup phase
+   
+2. /tmp/missing_websites_summary.json
+   - JSON format summary with totals and status counts
+   
+3. This report
+   - Detailed analysis and breakdown
+
+NEXT STEPS
+==========
+1. Use the CSV file to perform web searches for missing website URLs
+2. Batch process organization names through web search APIs
+3. Update Resource.website field with validated URLs
+4. Track source confidence scores for each discovered URL
+

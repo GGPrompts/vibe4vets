@@ -1,0 +1,65 @@
+================================================================================
+SAMPLE RESOURCES MISSING WEBSITES (First 10 Records)
+================================================================================
+
+1. HEALTHFIRST FAMILY CARE CENTER - Fall River, MA
+   ID: 78a3b61e-fa24-44b8-b17a-c9211f6aa3d7
+   Title: HealthFirst Family Care Center-School-Based Health Center - Fall River, MA
+   Status: ACTIVE
+   Created: 2026-01-29
+
+2. COASTAL FAMILY HEALTH CENTER - Moss Point, MS
+   ID: a14a9f0c-f0f5-4862-a732-1947b6264377
+   Title: SBHC - Magnolia - Moss Point, MS
+   Status: ACTIVE
+   Created: 2026-01-29
+
+3. HEALTH CARE FOR HOMELESS INC - Baltimore, MD
+   ID: 18a8fb9b-323a-4658-a79e-9d26c895167d
+   Title: Our Daily Bread - Baltimore, MD
+   Status: ACTIVE
+   Created: 2026-01-29
+
+4. SAN BERNARDINO PUBLIC HEALTH - Apple Valley, CA
+   ID: 28469391-e0ed-4f31-9b32-c295dfd837b5
+   Title: Apple Valley Head Start - Apple Valley, CA
+   Status: ACTIVE
+   Created: 2026-01-29
+
+5. LAKES COMMUNITY HEALTH CENTER, INC THE - Clear Lake, WI
+   ID: 0ff01995-96ba-462a-96ca-2e739e8ca5c3
+   Title: School District of Clear Lake- Clear Lake JR/SR High School (WI)
+   Status: ACTIVE
+   Created: 2026-01-29
+
+6. NEW YORK CITY HEALTH AND HOSPITALS CORPORATION - Brooklyn, NY
+   ID: 34e39b26-749a-4c45-b4b8-06a3ae7074a1
+   Title: Bedford Community Health Center - Brooklyn, NY
+   Status: ACTIVE
+   Created: 2026-01-29
+
+7. COMPLETE CARE COMMUNITY HEALTH CENTER, INC. - Fountain Valley, CA
+   ID: 23cc9aa4-60bf-42e0-95e5-bb3ab1580170
+   Title: Complete Care Community Health Center--Fountain Valley - Fountain Valley
+   Status: ACTIVE
+   Created: 2026-01-29
+
+8. GRACE HEALTH, INC - Battle Creek, MI
+   ID: 691d305e-38dc-49e1-b9c3-774b9e4e9af7
+   Title: Northwestern Academy of Visual and Performing Arts - Battle Creek, MI
+   Status: ACTIVE
+   Created: 2026-01-29
+
+9. HOWARD BROWN HEALTH CENTER - Chicago, IL
+   ID: ed960b14-259e-493e-a485-ae3bc6d793b3
+   Title: Howard Brown Health 55th Street - Chicago, IL
+   Status: ACTIVE
+   Created: 2026-01-29
+
+10. ODA PRIMARY HEALTH CARE NETWORK, INC. - Brooklyn, NY
+    ID: b07ba49b-5571-4c00-8c3e-f4d47e59c68e
+    Title: ODA Professionals - Brooklyn, NY
+    Status: ACTIVE
+    Created: 2026-01-29
+
+================================================================================

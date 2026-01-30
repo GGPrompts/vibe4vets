@@ -98,15 +98,6 @@ export const STATES = [
   { value: 'WY', label: 'Wyoming' },
 ] as const;
 
-export const SCOPES = [
-  { value: 'all', label: 'All Resources' },
-  { value: 'national', label: 'Nationwide Only' },
-  { value: 'state', label: 'State-Specific' },
-] as const;
-
-// Helper to determine if national resources should be included based on scope
-export const includesNational = (scope: string) => scope !== 'state';
-
 export interface FilterState {
   categories: string[];
   states: string[];
@@ -466,10 +457,6 @@ export function FiltersSidebar({
     onFiltersChange({ ...filters, states: newStates });
   };
 
-  const handleScopeChange = (scope: string) => {
-    onFiltersChange({ ...filters, scope });
-  };
-
   const handleZipChange = (zip: string) => {
     // When ZIP is entered, clear states since ZIP is more specific location filter
     onFiltersChange({ ...filters, zip: zip || undefined, states: zip ? [] : filters.states });
@@ -598,33 +585,6 @@ export function FiltersSidebar({
 
       <Separator />
 
-      {/* Include National Resources Toggle */}
-      <div className="space-y-2">
-        <div className="flex items-center justify-between">
-          <div className="space-y-0.5">
-            <Label
-              htmlFor="include-national"
-              className="text-sm font-medium cursor-pointer"
-            >
-              Include national resources
-            </Label>
-            <p className="text-xs text-muted-foreground">
-              Show nationwide programs alongside local results
-            </p>
-          </div>
-          <Switch
-            id="include-national"
-            checked={filters.scope !== 'state'}
-            onCheckedChange={(checked) => {
-              // When ON: scope='all' (include national)
-              // When OFF: scope='state' (exclude national, show only local/state)
-              handleScopeChange(checked ? 'all' : 'state');
-            }}
-          />
-        </div>
-      </div>
-
-      <Separator />
 
       {/* Near ZIP - location-based search */}
       <CollapsibleSection
