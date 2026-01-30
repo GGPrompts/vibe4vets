@@ -431,11 +431,13 @@ export function FiltersSidebar({
     state.value.toLowerCase().includes(stateSearch.toLowerCase())
   );
 
+  // Count location as 1 if either zip OR geolocation is active (they're mutually exclusive)
+  const hasLocation = filters.zip || (filters.lat !== undefined && filters.lng !== undefined);
   const activeFilterCount =
     filters.categories.length +
     filters.states.length +
     (filters.scope !== 'all' ? 1 : 0) +
-    (filters.zip ? 1 : 0) +
+    (hasLocation ? 1 : 0) +
     (filters.tags?.length ?? 0);
 
   // Single-select category handler - clears tags when category changes
@@ -846,13 +848,14 @@ export function FixedFiltersSidebar({
     localStorage.setItem('v4v-filters-collapsed', String(newValue));
   };
 
+  // Count location as 1 if either zip OR geolocation is active (they're mutually exclusive)
+  const hasLocationFixed = filters.zip || (filters.lat !== undefined && filters.lng !== undefined);
   const activeFilterCount =
     filters.categories.length +
     filters.states.length +
     (filters.scope !== 'all' ? 1 : 0) +
-    (filters.minTrust > 0 ? 1 : 0) +
-    (filters.zip ? 1 : 0) +
-    (filters.lat !== undefined && filters.lng !== undefined ? 1 : 0);
+    (hasLocationFixed ? 1 : 0) +
+    (filters.tags?.length ?? 0);
 
   return (
     <TooltipProvider>

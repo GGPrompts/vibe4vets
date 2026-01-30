@@ -135,12 +135,34 @@ export function Header() {
     }
   };
 
-  // Get active filter count for badge
-  const activeFilterCount = filterContext ? (
-    (filterContext.filters.categories?.length || 0) +
-    (filterContext.filters.states?.length || 0) +
-    (filterContext.tags?.length || 0)
-  ) : 0;
+  // Get active filter count for badge - read from URL params on search page for accuracy
+  const activeFilterCount = (() => {
+    if (isSearchPage) {
+      // Read filters from URL params (source of truth on search page)
+      const categoryParams = searchParams.getAll('category');
+      const categories = categoryParams.flatMap((p) => p.split(','));
+      const stateParams = searchParams.getAll('state');
+      const states = stateParams.flatMap((p) => p.split(','));
+      const tagsParam = searchParams.get('tags');
+      const tags = tagsParam ? tagsParam.split(',') : [];
+      const hasLocation = !!searchParams.get('zip') || (!!searchParams.get('lat') && !!searchParams.get('lng'));
+      const scope = searchParams.get('scope');
+
+      return (
+        categories.length +
+        states.length +
+        tags.length +
+        (hasLocation ? 1 : 0) +
+        (scope && scope !== 'all' ? 1 : 0)
+      );
+    }
+    // On other pages, use filter context
+    return filterContext ? (
+      (filterContext.filters.categories?.length || 0) +
+      (filterContext.filters.states?.length || 0) +
+      (filterContext.tags?.length || 0)
+    ) : 0;
+  })();
 
   // Don't render on admin pages
   if (pathname.startsWith('/admin')) {

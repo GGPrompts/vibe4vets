@@ -97,7 +97,7 @@ import { useResourcesInfinite } from '@/lib/hooks/useResourcesInfinite';
 import { useAnalytics } from '@/lib/useAnalytics';
 import { useIsMobile } from '@/hooks/use-media-query';
 import { useReducedMotion } from '@/hooks/use-reduced-motion';
-import { Loader2 } from 'lucide-react';
+import { Loader2, X } from 'lucide-react';
 import { BackToTop } from '@/components/BackToTop';
 
 
@@ -744,8 +744,33 @@ function SearchResults() {
         {/* Mobile Filter Sheet - controlled by header button */}
         <Sheet open={mobileFiltersOpen} onOpenChange={setMobileFiltersOpen}>
           <SheetContent side="left" className="w-[90vw] max-w-[20rem]">
-            <SheetHeader>
+            <SheetHeader className="flex flex-row items-center justify-between pr-8">
               <SheetTitle>Filters</SheetTitle>
+              {/* Clear all button with count badge */}
+              {(() => {
+                // Count location as 1 if either zip OR geolocation is active
+                const hasLocation = filters.zip || (filters.lat !== undefined && filters.lng !== undefined);
+                const count =
+                  filters.categories.length +
+                  filters.states.length +
+                  (filters.scope !== 'all' ? 1 : 0) +
+                  (hasLocation ? 1 : 0) +
+                  (filters.tags?.length ?? 0);
+                return count > 0 ? (
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => {
+                      handleClearAll();
+                      setMobileFiltersOpen(false);
+                    }}
+                    className="h-8 px-2 text-xs text-muted-foreground hover:text-destructive"
+                  >
+                    <X className="mr-1 h-3 w-3" />
+                    Clear ({count})
+                  </Button>
+                ) : null;
+              })()}
             </SheetHeader>
             <ScrollArea className="mt-6 h-[calc(100vh-100px)]">
               <FiltersSidebar
