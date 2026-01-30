@@ -201,7 +201,8 @@ class TestSemanticSearchEndpoint:
         response = client.post("/api/v1/search/semantic?q=housing+assistance")
 
         assert response.status_code == 500
-        assert "Failed to generate embedding" in response.json()["detail"]
+        # Error message is sanitized for security - doesn't expose internal details
+        assert "Failed to process search query" in response.json()["detail"]
 
 
 class TestEmbeddingsJob:

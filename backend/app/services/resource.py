@@ -521,13 +521,14 @@ class ResourceService:
                     )
         else:
             # Build spatial query for local/state resources using lat/lng directly
-            base_sql = """
+            point_expr = "ST_SetSRID(ST_MakePoint(:lng, :lat), 4326)::geography"
+            base_sql = f"""
                 SELECT r.id as resource_id,
-                       ST_Distance(l.geog, ST_SetSRID(ST_MakePoint(:lng, :lat), 4326)::geography) / :meters_per_mile as distance_miles
+                       ST_Distance(l.geog, {point_expr}) / :meters_per_mile as distance_miles
                 FROM resources r
                 JOIN locations l ON r.location_id = l.id
                 WHERE l.geog IS NOT NULL
-                AND ST_DWithin(l.geog, ST_SetSRID(ST_MakePoint(:lng, :lat), 4326)::geography, :radius_meters)
+                AND ST_DWithin(l.geog, {point_expr}, :radius_meters)
                 AND r.status::text != 'inactive'
             """
 

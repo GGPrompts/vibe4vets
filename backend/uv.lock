@@ -2217,7 +2217,7 @@ wheels = [
 ]
 
 [[package]]
-name = "vibe4vets-backend"
+name = "vetrd-backend"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [
