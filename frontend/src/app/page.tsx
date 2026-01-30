@@ -228,10 +228,7 @@ export default function Home() {
       {/* Step 2: What are you looking for? */}
       <section
         ref={step2Ref}
-        className={cn(
-          'relative bg-background py-12 lg:py-16 transition-opacity duration-500',
-          hasLocation ? 'opacity-100' : 'opacity-50'
-        )}
+        className="relative bg-background py-12 lg:py-16"
       >
         {/* Subtle background decoration */}
         <div className="absolute inset-0 overflow-hidden">
@@ -242,18 +239,10 @@ export default function Home() {
         <div className="relative mx-auto max-w-6xl px-6">
           {/* Step indicator */}
           <div className="flex items-center justify-center gap-2 mb-6">
-            <span className={cn(
-              'flex h-7 w-7 items-center justify-center rounded-full text-sm font-bold transition-colors',
-              hasLocation
-                ? 'bg-[hsl(var(--v4v-gold))] text-[hsl(var(--v4v-navy))]'
-                : 'bg-muted text-muted-foreground'
-            )}>
+            <span className="flex h-7 w-7 items-center justify-center rounded-full text-sm font-bold bg-[hsl(var(--v4v-gold))] text-[hsl(var(--v4v-navy))]">
               2
             </span>
-            <span className={cn(
-              'text-sm font-medium transition-colors',
-              hasLocation ? 'text-foreground' : 'text-muted-foreground'
-            )}>
+            <span className="text-sm font-medium text-foreground">
               What do you need help with?
             </span>
           </div>
@@ -280,11 +269,9 @@ export default function Home() {
                   onKeyDown={handleKeyDown}
                   placeholder="Search for jobs, housing, benefits, legal help..."
                   className="h-14 pl-12 pr-32 text-lg rounded-xl border-2 focus:border-[hsl(var(--v4v-gold))]"
-                  disabled={!hasLocation}
                 />
                 <Button
                   type="submit"
-                  disabled={!hasLocation}
                   className="absolute right-2 top-1/2 -translate-y-1/2 btn-gold rounded-lg px-6"
                 >
                   Search
