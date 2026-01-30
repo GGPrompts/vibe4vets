@@ -111,6 +111,7 @@ export interface ResourceNearbyList {
   resources: ResourceNearbyResult[];
   total: number;
   zip_code: string;
+  state: string | null;  // 2-letter state code for the zip
   radius_miles: number;
   center_lat: number;
   center_lng: number;
@@ -641,6 +642,11 @@ export const api = {
       if (params.offset) searchParams.set('offset', String(params.offset));
 
       return fetchAPI(`/api/v1/resources/nearby?${searchParams.toString()}`);
+    },
+
+    /** Get state info for a ZIP code (for map highlighting) */
+    zipInfo: (zipCode: string): Promise<{ zip_code: string; state: string | null }> => {
+      return fetchAPI(`/api/v1/resources/zip/${zipCode}`);
     },
   },
 

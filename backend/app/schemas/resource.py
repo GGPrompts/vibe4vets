@@ -337,6 +337,7 @@ class ResourceNearbyList(BaseModel):
     resources: list[ResourceNearbyResult] = Field(..., description="Resources sorted by distance")
     total: int = Field(..., description="Total number of resources within radius")
     zip_code: str = Field(..., description="Search zip code")
+    state: str | None = Field(None, description="2-letter state code for the zip code")
     radius_miles: int = Field(..., description="Search radius in miles")
     center_lat: float = Field(..., description="Search center latitude")
     center_lng: float = Field(..., description="Search center longitude")

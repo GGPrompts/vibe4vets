@@ -11,16 +11,29 @@ import { Search, MapPin, ChevronDown, X } from 'lucide-react';
 import { useFilterContext } from '@/context/filter-context';
 import { BackToTop } from '@/components/BackToTop';
 import { cn } from '@/lib/utils';
+import api from '@/lib/api';
 
 export default function Home() {
   const { filters, setStates, totalCount, isLoadingTotal } = useFilterContext();
   const [zipCode, setZipCode] = useState('');
+  const [zipState, setZipState] = useState<string | null>(null); // State for the entered ZIP
   const [searchQuery, setSearchQuery] = useState('');
   const router = useRouter();
   const step2Ref = useRef<HTMLElement>(null);
 
   // Track if location has been selected (ZIP or state)
   const hasLocation = zipCode.length === 5 || filters.states.length > 0;
+
+  // Fetch state when ZIP code is complete (5 digits)
+  useEffect(() => {
+    if (zipCode.length === 5) {
+      api.resources.zipInfo(zipCode)
+        .then((data) => setZipState(data.state))
+        .catch(() => setZipState(null));
+    } else {
+      setZipState(null);
+    }
+  }, [zipCode]);
 
   // Handle single state selection (replaces previous selection)
   const handleStateSelect = useCallback((stateAbbr: string) => {
@@ -188,7 +201,7 @@ export default function Home() {
               <div className="hidden sm:block">
                 <USMap
                   className="[&_svg]:max-h-[320px]"
-                  selectedStates={filters.states}
+                  selectedStates={zipState ? [zipState] : filters.states}
                   onToggleState={handleStateSelect}
                   singleSelect
                 />
@@ -198,7 +211,7 @@ export default function Home() {
               <div className="sm:hidden">
                 <USMap
                   className=""
-                  selectedStates={filters.states}
+                  selectedStates={zipState ? [zipState] : filters.states}
                   onToggleState={handleStateSelect}
                   singleSelect
                 />

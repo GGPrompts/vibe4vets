@@ -214,6 +214,42 @@ def list_resources(
 
 
 @router.get(
+    "/zip/{zip_code}",
+    summary="Get ZIP code info",
+    response_description="State and location for a ZIP code",
+    responses={
+        200: {
+            "description": "ZIP code found",
+            "content": {"application/json": {"example": {"zip_code": "22201", "state": "VA"}}},
+        },
+        404: {
+            "description": "ZIP code not found",
+            "content": {"application/json": {"example": {"detail": "Zip code not found"}}},
+        },
+    },
+)
+def get_zip_info(
+    session: SessionDep,
+    zip_code: str,
+) -> dict:
+    """Get state and location info for a ZIP code.
+
+    Used by the landing page to highlight the state on the map when a ZIP is entered.
+    """
+    from sqlalchemy import text
+
+    result = session.execute(
+        text("SELECT state FROM zip_codes WHERE zip_code = :zip"),
+        {"zip": zip_code},
+    ).fetchone()
+
+    if not result:
+        raise HTTPException(status_code=404, detail="Zip code not found")
+
+    return {"zip_code": zip_code, "state": result.state}
+
+
+@router.get(
     "/nearby",
     response_model=ResourceNearbyList,
     summary="Find nearby resources",

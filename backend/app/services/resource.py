@@ -248,9 +248,9 @@ class ResourceService:
         Returns:
             ResourceNearbyList with resources sorted by distance, or None if zip not found
         """
-        # Look up zip code center point
+        # Look up zip code center point and state
         zip_result = self.session.execute(
-            text("SELECT latitude, longitude, geog FROM zip_codes WHERE zip_code = :zip"),
+            text("SELECT latitude, longitude, state, geog FROM zip_codes WHERE zip_code = :zip"),
             {"zip": zip_code},
         ).fetchone()
 
@@ -258,6 +258,7 @@ class ResourceService:
             return None
 
         center_lat, center_lng = zip_result.latitude, zip_result.longitude
+        zip_state = zip_result.state  # 2-letter state code
         radius_meters = radius_miles * METERS_PER_MILE
 
         nearby_resources = []
@@ -433,6 +434,7 @@ class ResourceService:
             resources=nearby_resources,
             total=total,
             zip_code=zip_code,
+            state=zip_state,
             radius_miles=radius_miles,
             center_lat=center_lat,
             center_lng=center_lng,
