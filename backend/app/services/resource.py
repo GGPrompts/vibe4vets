@@ -67,9 +67,16 @@ class ResourceService:
             )
 
         # Apply scope filter
+        # 'national' = only national resources
+        # 'state' = exclude national (show state + local)
+        # 'local' = only local resources
         if scope and scope != "all":
-            scope_enum = ResourceScope(scope)
-            query = query.where(Resource.scope == scope_enum)
+            if scope == "state":
+                # Exclude national resources (keep state and local)
+                query = query.where(Resource.scope != ResourceScope.NATIONAL)
+            else:
+                scope_enum = ResourceScope(scope)
+                query = query.where(Resource.scope == scope_enum)
 
         result = self.session.exec(query).one()
         return result
@@ -119,9 +126,16 @@ class ResourceService:
             )
 
         # Apply scope filter
+        # 'national' = only national resources
+        # 'state' = exclude national (show state + local)
+        # 'local' = only local resources
         if scope and scope != "all":
-            scope_enum = ResourceScope(scope)
-            query = query.where(Resource.scope == scope_enum)
+            if scope == "state":
+                # Exclude national resources (keep state and local)
+                query = query.where(Resource.scope != ResourceScope.NATIONAL)
+            else:
+                scope_enum = ResourceScope(scope)
+                query = query.where(Resource.scope == scope_enum)
 
         # Apply tags filter - search eligibility/title/description text fields and arrays
         # Tags like "hud-vash", "ssvf", "food-pantry" filter by matching content or classifications
@@ -164,8 +178,11 @@ class ResourceService:
                 )
             )
         if scope and scope != "all":
-            scope_enum = ResourceScope(scope)
-            count_query = count_query.where(Resource.scope == scope_enum)
+            if scope == "state":
+                count_query = count_query.where(Resource.scope != ResourceScope.NATIONAL)
+            else:
+                scope_enum = ResourceScope(scope)
+                count_query = count_query.where(Resource.scope == scope_enum)
         if tags:
             # AND logic: each tag must match (apply as separate WHERE clauses)
             for tag in tags:

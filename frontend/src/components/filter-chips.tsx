@@ -144,7 +144,7 @@ export function FilterChips({
           onClick={onClearScope}
         >
           <Globe className="h-3 w-3" />
-          {getScopeLabel(filters.scope)}
+          {filters.scope === 'state' ? 'Local only' : getScopeLabel(filters.scope)}
           <X className="h-3 w-3 ml-0.5" />
         </Badge>
       )}

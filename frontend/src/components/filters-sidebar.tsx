@@ -21,6 +21,7 @@ import { Filter, X, Briefcase, GraduationCap, Home, Scale, UtensilsCrossed, File
 import { Input } from '@/components/ui/input';
 import { cn } from '@/lib/utils';
 import { ZipCodeInput } from '@/components/ZipCodeInput';
+import { Switch } from '@/components/ui/switch';
 import api from '@/lib/api';
 
 export const CATEGORIES = [
@@ -102,6 +103,9 @@ export const SCOPES = [
   { value: 'national', label: 'Nationwide Only' },
   { value: 'state', label: 'State-Specific' },
 ] as const;
+
+// Helper to determine if national resources should be included based on scope
+export const includesNational = (scope: string) => scope !== 'state';
 
 export interface FilterState {
   categories: string[];
@@ -382,10 +386,9 @@ export function FiltersSidebar({
   resultCount,
   hideHeader = false,
 }: FiltersSidebarProps) {
-  // Collapsible section state - categories and scope open by default
+  // Collapsible section state - categories open by default
   // States section opens if states are pre-selected (e.g., from landing page URL)
   const [categoriesOpen, setCategoriesOpen] = useState(true);
-  const [scopeOpen, setScopeOpen] = useState(true);
   const [zipOpen, setZipOpen] = useState(filters.zip ? true : false);
   const [statesOpen, setStatesOpen] = useState(filters.states.length > 0);
   const [stateSearch, setStateSearch] = useState('');
@@ -569,47 +572,31 @@ export function FiltersSidebar({
 
       <Separator />
 
-      {/* Scope */}
-      <CollapsibleSection
-        title="Coverage"
-        badge={
-          filters.scope !== 'all' && (
-            <Badge variant="outline" className="text-xs">
-              1
-            </Badge>
-          )
-        }
-        isOpen={scopeOpen}
-        onToggle={() => setScopeOpen(!scopeOpen)}
-      >
-        <RadioGroup value={filters.scope} onValueChange={handleScopeChange} className="space-y-0.5">
-          {SCOPES.map((scope) => {
-            const isSelected = filters.scope === scope.value;
-            return (
-              <div
-                key={scope.value}
-                className={cn(
-                  'flex min-h-[36px] items-center space-x-2 rounded-lg border-l-2 px-2 transition-all duration-200',
-                  isSelected
-                    ? 'border-l-[hsl(var(--v4v-gold))] bg-[hsl(var(--v4v-gold)/0.05)]'
-                    : 'border-l-transparent hover:bg-muted/50'
-                )}
-              >
-                <RadioGroupItem value={scope.value} id={`scope-${scope.value}`} />
-                <Label
-                  htmlFor={`scope-${scope.value}`}
-                  className={cn(
-                    'flex flex-1 min-h-[36px] cursor-pointer items-center text-sm',
-                    isSelected && 'text-[hsl(var(--v4v-gold-dark))]'
-                  )}
-                >
-                  {scope.label}
-                </Label>
-              </div>
-            );
-          })}
-        </RadioGroup>
-      </CollapsibleSection>
+      {/* Include National Resources Toggle */}
+      <div className="space-y-2">
+        <div className="flex items-center justify-between">
+          <div className="space-y-0.5">
+            <Label
+              htmlFor="include-national"
+              className="text-sm font-medium cursor-pointer"
+            >
+              Include national resources
+            </Label>
+            <p className="text-xs text-muted-foreground">
+              Show nationwide programs alongside local results
+            </p>
+          </div>
+          <Switch
+            id="include-national"
+            checked={filters.scope !== 'state'}
+            onCheckedChange={(checked) => {
+              // When ON: scope='all' (include national)
+              // When OFF: scope='state' (exclude national, show only local/state)
+              handleScopeChange(checked ? 'all' : 'state');
+            }}
+          />
+        </div>
+      </div>
 
       <Separator />
 
