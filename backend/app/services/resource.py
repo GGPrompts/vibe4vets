@@ -137,27 +137,17 @@ class ResourceService:
                 scope_enum = ResourceScope(scope)
                 query = query.where(Resource.scope == scope_enum)
 
-        # Apply tags filter - search eligibility/title/description text fields and arrays
-        # Tags like "hud-vash", "ssvf", "food-pantry" filter by matching content or classifications
+        # Apply tags filter - check tags and subcategories arrays only
+        # Tags like "hud-vash", "ssvf", "food-pantry" filter by exact array membership
         # Uses AND logic: resources must match ALL provided tags (selecting more tags narrows results)
         if tags:
             print(f"[ResourceService] Applying tags filter (AND logic): {tags}")
             for tag in tags:
-                # Convert tag to search pattern (hud-vash -> %hud%vash% or %hud-vash%)
-                search_term = f"%{tag}%"
-                # Also try with spaces instead of hyphens
-                search_term_spaced = f"%{tag.replace('-', ' ')}%"
-                # Each tag must match - apply as separate WHERE clause (AND logic)
+                # Each tag must be in either tags or subcategories array
                 query = query.where(
                     or_(
-                        Resource.eligibility.ilike(search_term),
-                        Resource.eligibility.ilike(search_term_spaced),
-                        Resource.title.ilike(search_term),
-                        Resource.title.ilike(search_term_spaced),
-                        Resource.description.ilike(search_term),
-                        Resource.description.ilike(search_term_spaced),
-                        Resource.tags.contains([tag]),  # Check actual tags array
-                        Resource.subcategories.contains([tag]),  # Check subcategories array
+                        Resource.tags.contains([tag]),
+                        Resource.subcategories.contains([tag]),
                     )
                 )
 
@@ -186,18 +176,10 @@ class ResourceService:
         if tags:
             # AND logic: each tag must match (apply as separate WHERE clauses)
             for tag in tags:
-                search_term = f"%{tag}%"
-                search_term_spaced = f"%{tag.replace('-', ' ')}%"
                 count_query = count_query.where(
                     or_(
-                        Resource.eligibility.ilike(search_term),
-                        Resource.eligibility.ilike(search_term_spaced),
-                        Resource.title.ilike(search_term),
-                        Resource.title.ilike(search_term_spaced),
-                        Resource.description.ilike(search_term),
-                        Resource.description.ilike(search_term_spaced),
                         Resource.tags.contains([tag]),
-                        Resource.subcategories.contains([tag]),  # Also check subcategories
+                        Resource.subcategories.contains([tag]),
                     )
                 )
         if status:

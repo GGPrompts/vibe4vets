@@ -568,6 +568,8 @@ export const api = {
       categories?: string;
       states?: string;
       scope?: string;
+      tags?: string;
+      sort?: string;
       limit?: number;
       offset?: number;
     } = {}): Promise<ResourceList> => {
@@ -578,6 +580,8 @@ export const api = {
       if (params.states) searchParams.set('states', params.states);
       else if (params.state) searchParams.set('state', params.state);
       if (params.scope) searchParams.set('scope', params.scope);
+      if (params.tags) searchParams.set('tags', params.tags);
+      if (params.sort) searchParams.set('sort', params.sort);
       if (params.limit) searchParams.set('limit', String(params.limit));
       if (params.offset) searchParams.set('offset', String(params.offset));
 

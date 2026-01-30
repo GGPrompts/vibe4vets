@@ -131,8 +131,21 @@ STATE_NAME_TO_CODE = {
     "northern mariana islands": "MP",
 }
 
-# Valid resource categories from taxonomy
-VALID_CATEGORIES = {"employment", "training", "housing", "legal"}
+# Valid resource categories from taxonomy (must match app/core/taxonomy.py CATEGORIES)
+VALID_CATEGORIES = {
+    "employment",
+    "training",
+    "housing",
+    "legal",
+    "food",
+    "benefits",
+    "mentalHealth",
+    "healthcare",
+    "education",
+    "financial",
+    "family",
+    "supportServices",
+}
 
 
 class Normalizer:
