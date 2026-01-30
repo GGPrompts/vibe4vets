@@ -45,7 +45,13 @@ class LocalEmbeddingService:
         """Initialize the local embedding service."""
         if LocalEmbeddingService._model is None:
             logger.info(f"Loading local embedding model: {LOCAL_MODEL_NAME}")
-            from sentence_transformers import SentenceTransformer
+            try:
+                from sentence_transformers import SentenceTransformer
+            except ImportError:
+                raise ImportError(
+                    "sentence-transformers not installed. "
+                    "Install with: pip install 'vetrd-backend[ml]' or pip install sentence-transformers"
+                )
 
             LocalEmbeddingService._model = SentenceTransformer(LOCAL_MODEL_NAME)
             logger.info("Local embedding model loaded")
