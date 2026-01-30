@@ -191,10 +191,7 @@ class ResourceService:
         # When no location filter is applied, boost national resources to the top
         # since they're relevant to all users
         no_location_filter = not states
-        national_boost = case(
-            (Resource.scope == ResourceScope.NATIONAL, 0),
-            else_=1
-        ) if no_location_filter else None
+        national_boost = case((Resource.scope == ResourceScope.NATIONAL, 0), else_=1) if no_location_filter else None
 
         if sort == "newest":
             if national_boost is not None:

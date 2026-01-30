@@ -232,17 +232,14 @@ class SearchService:
         # Order by rank, then reliability
         # When no location filter, boost national resources to the top (they're relevant to everyone)
         if not states:
-            national_boost = case(
-                (Resource.scope == ResourceScope.NATIONAL, 0),
-                else_=1
+            national_boost = case((Resource.scope == ResourceScope.NATIONAL, 0), else_=1)
+            stmt = (
+                stmt.order_by(national_boost, text("rank DESC"), col(Resource.reliability_score).desc())
+                .offset(offset)
+                .limit(limit)
             )
-            stmt = stmt.order_by(
-                national_boost, text("rank DESC"), col(Resource.reliability_score).desc()
-            ).offset(offset).limit(limit)
         else:
-            stmt = stmt.order_by(
-                text("rank DESC"), col(Resource.reliability_score).desc()
-            ).offset(offset).limit(limit)
+            stmt = stmt.order_by(text("rank DESC"), col(Resource.reliability_score).desc()).offset(offset).limit(limit)
 
         results = self.session.exec(stmt).all()
 

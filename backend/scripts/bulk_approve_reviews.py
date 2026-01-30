@@ -26,20 +26,16 @@ def main():
 
     with Session(engine) as session:
         # Get all pending reviews
-        stmt = (
-            select(ReviewState, Resource)
-            .join(Resource)
-            .where(ReviewState.status == ReviewStatus.PENDING)
-        )
+        stmt = select(ReviewState, Resource).join(Resource).where(ReviewState.status == ReviewStatus.PENDING)
         results = session.exec(stmt).all()
 
         if not results:
             print("No pending reviews found!")
             return
 
-        print(f"\n{'='*60}")
+        print(f"\n{'=' * 60}")
         print(f"Found {len(results)} pending reviews")
-        print(f"{'='*60}\n")
+        print(f"{'=' * 60}\n")
 
         # Count reasons
         reasons = Counter(r[0].reason for r in results)
@@ -61,9 +57,9 @@ def main():
             print(f"  ... and {len(results) - 10} more\n")
 
         if approve:
-            print(f"{'='*60}")
+            print(f"{'=' * 60}")
             print("APPROVING ALL PENDING REVIEWS...")
-            print(f"{'='*60}\n")
+            print(f"{'=' * 60}\n")
 
             for review, _ in results:
                 review.status = ReviewStatus.APPROVED
