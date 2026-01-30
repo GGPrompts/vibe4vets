@@ -7,7 +7,7 @@ import { USMap } from '@/components/us-map';
 import { CategoryCards } from '@/components/CategoryCards';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Search, MapPin, ChevronDown } from 'lucide-react';
+import { Search, MapPin, ChevronDown, X } from 'lucide-react';
 import { useFilterContext } from '@/context/filter-context';
 import { BackToTop } from '@/components/BackToTop';
 import { cn } from '@/lib/utils';
@@ -16,23 +16,11 @@ export default function Home() {
   const { filters, setStates, totalCount, isLoadingTotal } = useFilterContext();
   const [zipCode, setZipCode] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
-  const [locationSelected, setLocationSelected] = useState(false);
   const router = useRouter();
   const step2Ref = useRef<HTMLElement>(null);
 
   // Track if location has been selected (ZIP or state)
   const hasLocation = zipCode.length === 5 || filters.states.length > 0;
-
-  // Smooth scroll to Step 2 when location is selected
-  useEffect(() => {
-    if (hasLocation && !locationSelected) {
-      setLocationSelected(true);
-      // Small delay to allow state update before scroll
-      setTimeout(() => {
-        step2Ref.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }, 300);
-    }
-  }, [hasLocation, locationSelected]);
 
   // Handle single state selection (replaces previous selection)
   const handleStateSelect = useCallback((stateAbbr: string) => {
@@ -41,6 +29,10 @@ export default function Home() {
       setStates([]);
     } else {
       setStates([stateAbbr]);
+      // Scroll to categories when state is selected
+      setTimeout(() => {
+        step2Ref.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 300);
     }
   }, [filters.states, setStates]);
 
@@ -83,6 +75,13 @@ export default function Home() {
   const handleZipChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value.replace(/\D/g, '').slice(0, 5);
     setZipCode(value);
+
+    // Scroll to categories when ZIP is complete
+    if (value.length === 5) {
+      setTimeout(() => {
+        step2Ref.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 300);
+    }
   };
 
   const handleSearch = (e?: React.FormEvent) => {
@@ -155,11 +154,21 @@ export default function Home() {
                     onChange={handleZipChange}
                     placeholder="e.g. 22030"
                     className={cn(
-                      'h-12 pl-10 text-lg text-center bg-white border-2 border-white text-[hsl(var(--v4v-navy))] placeholder:text-gray-400 rounded-lg shadow-lg',
+                      'h-12 pl-10 pr-10 text-lg text-center bg-white border-2 border-white text-[hsl(var(--v4v-navy))] placeholder:text-gray-400 rounded-lg shadow-lg',
                       'focus:border-[hsl(var(--v4v-gold))] focus:ring-[hsl(var(--v4v-gold)/0.5)] focus:ring-2',
                       zipCode.length === 5 && 'bg-[hsl(var(--v4v-gold))] border-[hsl(var(--v4v-gold))] text-[hsl(var(--v4v-navy))] font-semibold'
                     )}
                   />
+                  {zipCode && (
+                    <button
+                      type="button"
+                      onClick={() => setZipCode('')}
+                      className="absolute right-3 top-1/2 -translate-y-1/2 h-5 w-5 text-[hsl(var(--v4v-navy)/0.5)] hover:text-[hsl(var(--v4v-navy))] transition-colors"
+                      aria-label="Clear ZIP code"
+                    >
+                      <X className="h-5 w-5" />
+                    </button>
+                  )}
                 </div>
                 {zipCode.length === 5 && (
                   <p className="text-sm text-[hsl(var(--v4v-gold))] font-medium">
