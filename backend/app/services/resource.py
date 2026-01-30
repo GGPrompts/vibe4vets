@@ -141,7 +141,6 @@ class ResourceService:
         # Tags like "hud-vash", "ssvf", "food-pantry" filter by exact array membership
         # Uses AND logic: resources must match ALL provided tags (selecting more tags narrows results)
         if tags:
-            print(f"[ResourceService] Applying tags filter (AND logic): {tags}")
             for tag in tags:
                 # Each tag must be in either tags or subcategories array
                 query = query.where(
@@ -536,6 +535,8 @@ class ResourceService:
         """Convert Resource model to read schema."""
         # Get organization
         organization = self.session.get(Organization, resource.organization_id)
+        if organization is None:
+            raise ValueError(f"Organization not found for resource {resource.id}")
         org_nested = OrganizationNested(
             id=organization.id,
             name=organization.name,

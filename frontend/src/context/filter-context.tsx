@@ -74,18 +74,30 @@ export function FilterProvider({ children }: { children: ReactNode }) {
 
   // Fetch total count once on mount (unfiltered)
   useEffect(() => {
+    let mounted = true;
+
     const fetchTotal = async () => {
       setIsLoadingTotal(true);
       try {
         const result = await api.resources.count({});
-        setTotalCount(result.count);
+        if (mounted) {
+          setTotalCount(result.count);
+        }
       } catch {
-        setTotalCount(null);
+        if (mounted) {
+          setTotalCount(null);
+        }
       } finally {
-        setIsLoadingTotal(false);
+        if (mounted) {
+          setIsLoadingTotal(false);
+        }
       }
     };
     fetchTotal();
+
+    return () => {
+      mounted = false;
+    };
   }, []);
 
   const setCategories = useCallback((categories: string[]) => {

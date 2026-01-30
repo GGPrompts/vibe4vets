@@ -198,7 +198,6 @@ def list_resources(
     tag_list: list[str] | None = None
     if tags:
         tag_list = [t.strip() for t in tags.split(",") if t.strip()]
-        print(f"[resources.py] Received tags: {tag_list}")
 
     service = ResourceService(session)
     resources, total = service.list_resources(
@@ -254,7 +253,7 @@ def get_zip_info(
     "/nearby",
     response_model=ResourceNearbyList,
     summary="Find nearby resources",
-    response_description="Resources near a zip code sorted by distance",
+    response_description="Resources near a zip code or coordinates sorted by distance",
     responses={
         200: {
             "description": "Successful response with nearby resources",
@@ -276,6 +275,10 @@ def get_zip_info(
                 }
             },
         },
+        400: {
+            "description": "Invalid parameters",
+            "content": {"application/json": {"example": {"detail": "Either zip or lat/lng must be provided"}}},
+        },
         404: {
             "description": "Zip code not found",
             "content": {"application/json": {"example": {"detail": "Zip code not found"}}},
@@ -284,12 +287,26 @@ def get_zip_info(
 )
 def list_nearby_resources(
     session: SessionDep,
-    zip: str = Query(
-        ...,
-        description="5-digit zip code to search near",
+    zip: str | None = Query(
+        default=None,
+        description="5-digit zip code to search near (required if lat/lng not provided)",
         min_length=5,
         max_length=5,
         examples=["22201", "90210"],
+    ),
+    lat: float | None = Query(
+        default=None,
+        description="Latitude for geolocation search (use with lng instead of zip)",
+        ge=-90,
+        le=90,
+        examples=[38.88],
+    ),
+    lng: float | None = Query(
+        default=None,
+        description="Longitude for geolocation search (use with lat instead of zip)",
+        ge=-180,
+        le=180,
+        examples=[-77.09],
     ),
     radius: int = Query(
         default=25,
@@ -315,18 +332,23 @@ def list_nearby_resources(
     limit: int = Query(default=20, ge=1, le=100, description="Maximum results to return"),
     offset: int = Query(default=0, ge=0, description="Number of results to skip for pagination"),
 ) -> ResourceNearbyList:
-    """Find Veteran resources near a zip code.
+    """Find Veteran resources near a location.
 
-    Returns resources sorted by distance from the zip code center.
+    Returns resources sorted by distance from the search location.
     Uses PostGIS spatial queries for efficient nearest-neighbor lookup.
+
+    **Location Options (provide one):**
+    - `zip` - 5-digit zip code
+    - `lat` + `lng` - GPS coordinates (for browser geolocation)
 
     **Use cases:**
     - Veterans with limited transportation needing closest resources
     - Case managers finding local services for clients
-    - Mobile app location-based search
+    - Mobile app location-based search with GPS
 
     **Query Parameters:**
-    - `zip` - 5-digit zip code (required)
+    - `zip` - 5-digit zip code (required if lat/lng not provided)
+    - `lat` + `lng` - GPS coordinates (alternative to zip, for geolocation)
     - `radius` - Search radius in miles (default 25, max 100)
     - `categories` - Optional category filter (housing, legal, employment, training)
     - `scope` - Optional scope filter: 'national' (only nationwide programs), 'state' (only local/state)
@@ -336,6 +358,13 @@ def list_nearby_resources(
     PLUS all national resources (which apply everywhere). National resources appear after
     distance-sorted results with distance_miles=0.
     """
+    # Validate that either zip or lat/lng is provided
+    if not zip and (lat is None or lng is None):
+        raise HTTPException(
+            status_code=400,
+            detail="Either zip or both lat and lng must be provided"
+        )
+
     category_list: list[str] | None = None
     if categories:
         category_list = [c.strip() for c in categories.split(",") if c.strip()]
@@ -345,15 +374,29 @@ def list_nearby_resources(
         tag_list = [t.strip() for t in tags.split(",") if t.strip()]
 
     service = ResourceService(session)
-    result = service.list_nearby(
-        zip_code=zip,
-        radius_miles=radius,
-        categories=category_list,
-        scope=scope,
-        tags=tag_list,
-        limit=limit,
-        offset=offset,
-    )
+
+    # Use lat/lng if provided, otherwise use zip
+    if lat is not None and lng is not None:
+        result = service.list_nearby_by_coords(
+            lat=lat,
+            lng=lng,
+            radius_miles=radius,
+            categories=category_list,
+            scope=scope,
+            tags=tag_list,
+            limit=limit,
+            offset=offset,
+        )
+    else:
+        result = service.list_nearby(
+            zip_code=zip,  # type: ignore  # We validated zip exists above
+            radius_miles=radius,
+            categories=category_list,
+            scope=scope,
+            tags=tag_list,
+            limit=limit,
+            offset=offset,
+        )
 
     if result is None:
         raise HTTPException(status_code=404, detail="Zip code not found")
