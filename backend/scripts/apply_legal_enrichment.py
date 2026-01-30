@@ -17,7 +17,7 @@ from pathlib import Path
 # Add backend to path
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from sqlmodel import Session, select
+from sqlmodel import Session
 
 from app.database import engine
 from app.models.resource import Resource
@@ -46,7 +46,7 @@ def main():
         ]
 
     print(f"{'=' * 60}")
-    print(f"Legal Resources Website Enrichment")
+    print("Legal Resources Website Enrichment")
     print(f"{'=' * 60}\n")
 
     print(f"Total entries in enrichment file: {len(enrichment_data)}")
@@ -113,8 +113,8 @@ def main():
     print(f"  Errors: {stats['errors']}")
 
     if not apply:
-        print(f"\nRun with --apply to apply these changes to the database.")
-        print(f"Run with --high-only to only apply HIGH confidence URLs.")
+        print("\nRun with --apply to apply these changes to the database.")
+        print("Run with --high-only to only apply HIGH confidence URLs.")
 
 
 if __name__ == "__main__":

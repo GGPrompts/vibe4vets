@@ -155,8 +155,8 @@ def main():
 
     if verify:
         print("\nVerifying URLs (this may take a while)...")
-        import urllib.request
         import urllib.error
+        import urllib.request
 
         verified = 0
         failed = []
