@@ -236,9 +236,13 @@ class SearchService:
                 (Resource.scope == ResourceScope.NATIONAL, 0),
                 else_=1
             )
-            stmt = stmt.order_by(national_boost, text("rank DESC"), col(Resource.reliability_score).desc()).offset(offset).limit(limit)
+            stmt = stmt.order_by(
+                national_boost, text("rank DESC"), col(Resource.reliability_score).desc()
+            ).offset(offset).limit(limit)
         else:
-            stmt = stmt.order_by(text("rank DESC"), col(Resource.reliability_score).desc()).offset(offset).limit(limit)
+            stmt = stmt.order_by(
+                text("rank DESC"), col(Resource.reliability_score).desc()
+            ).offset(offset).limit(limit)
 
         results = self.session.exec(stmt).all()
 
