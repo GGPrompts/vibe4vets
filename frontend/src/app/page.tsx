@@ -141,7 +141,7 @@ export default function Home() {
             <div className="hero-search-container rounded-2xl p-4 sm:p-6 shadow-2xl">
               {/* ZIP Code Input - centered */}
               <div className="flex flex-col items-center gap-3 mb-6">
-                <label htmlFor="zip-input" className="text-sm font-medium text-white/90">
+                <label htmlFor="zip-input" className="text-sm font-medium text-[hsl(var(--v4v-navy))]">
                   Enter your ZIP code
                 </label>
                 <div className="relative w-full max-w-[220px]">
@@ -170,9 +170,9 @@ export default function Home() {
 
               {/* Divider */}
               <div className="flex items-center gap-3 mb-6">
-                <div className="h-px flex-1 bg-white/20" />
-                <span className="text-xs text-white/50 uppercase tracking-wide">or click a state</span>
-                <div className="h-px flex-1 bg-white/20" />
+                <div className="h-px flex-1 bg-[hsl(var(--v4v-navy)/0.2)]" />
+                <span className="text-xs text-[hsl(var(--v4v-navy)/0.6)] uppercase tracking-wide">or click a state</span>
+                <div className="h-px flex-1 bg-[hsl(var(--v4v-navy)/0.2)]" />
               </div>
 
               {/* Full-width US Map */}
