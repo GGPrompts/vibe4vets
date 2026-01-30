@@ -199,7 +199,7 @@ export default function AboutPage() {
           <div className="text-center">
             <h1 className="animate-fade-in-up font-display text-4xl font-semibold text-foreground sm:text-5xl" style={{ opacity: 0 }}>
               About{' '}
-              <span className="text-[hsl(var(--v4v-gold-dark))]">VRD.ai</span>
+              <span className="text-[hsl(var(--v4v-gold-dark))]">VetRD</span>
             </h1>
             <p className="animate-fade-in-up delay-100 mt-4 text-sm font-medium uppercase tracking-widest text-[hsl(var(--v4v-gold-dark))]" style={{ opacity: 0 }}>
               Veteran Resource Directory
@@ -225,7 +225,7 @@ export default function AboutPage() {
             <div className="h-px w-10 bg-gradient-to-l from-transparent to-[hsl(var(--v4v-gold)/0.5)]" />
           </div>
           <p className="text-xl leading-relaxed text-white/90 sm:text-2xl">
-            VRD.ai aggregates Veteran resources from VA.gov, the Department of Labor,
+            VetRD aggregates Veteran resources from VA.gov, the Department of Labor,
             nonprofits, and community organizations into one searchable directory.
             We&apos;re transparent about using web scraping and AI to help Veterans find
             resources that go <span className="text-[hsl(var(--v4v-gold))]">beyond VA.gov</span>.
@@ -260,7 +260,7 @@ export default function AboutPage() {
               Built by AI Agents Working in Parallel
             </h3>
             <p className="text-muted-foreground text-center mb-8 max-w-2xl mx-auto">
-              VRD.ai was built using Claude AI agents (Opus and Haiku models) working simultaneously
+              VetRD was built using Claude AI agents (Opus and Haiku models) working simultaneously
               on different parts of the codebase. Here&apos;s what that looks like:
             </p>
             <div className="grid gap-6 md:grid-cols-3">
@@ -500,7 +500,7 @@ export default function AboutPage() {
             icon={<Lock className="h-6 w-6 text-[hsl(var(--v4v-gold-dark))]" />}
           >
             <p className="text-muted-foreground mb-6">
-              Your privacy matters. We&apos;ve designed VRD.ai with a strict no-PII policy.
+              Your privacy matters. We&apos;ve designed VetRD with a strict no-PII policy.
             </p>
             <div className="rounded-xl border border-green-500/20 bg-green-500/5 p-6">
               <h4 className="font-medium text-foreground mb-4 flex items-center gap-2">
@@ -573,7 +573,7 @@ export default function AboutPage() {
             <Link href="/" className="group">
               <Image
                 src="/vrd-logo.png"
-                alt="VRD.ai - Veteran Resource Directory"
+                alt="VetRD - Veteran Resource Directory"
                 width={400}
                 height={150}
                 className="h-24 sm:h-28 w-auto transition-all duration-300 group-hover:scale-105"

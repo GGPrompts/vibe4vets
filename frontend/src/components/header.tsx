@@ -198,16 +198,16 @@ export function Header() {
                 <Link
                   href="/"
                   className="flex shrink-0 items-center group relative overflow-visible"
-                  aria-label="VRD.ai Home"
+                  aria-label="VetRD Home"
                 >
                   <div className="absolute -inset-2 rounded-lg bg-[hsl(var(--v4v-gold)/0.15)] opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-lg" />
                   <Image
                     src="/vrd-logo.png"
-                    alt="VRD.ai"
+                    alt="VetRD"
                     width={400}
                     height={150}
                     priority
-                    className="relative h-16 sm:h-20 w-auto transition-all duration-300 group-hover:scale-105 -my-6"
+                    className="relative h-12 w-auto transition-all duration-300 group-hover:scale-105 -my-4"
                   />
                 </Link>
               </div>

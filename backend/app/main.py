@@ -1,4 +1,4 @@
-"""Vibe4Vets API - Veteran Resource Directory."""
+"""VetRD API - Veteran Resource Directory."""
 
 from collections.abc import AsyncGenerator
 from contextlib import asynccontextmanager
@@ -35,14 +35,14 @@ async def lifespan(app: FastAPI) -> AsyncGenerator[None, None]:
 
 
 API_DESCRIPTION = """
-# Vibe4Vets API
+# VetRD API
 
 AI-powered Veteran resource directory focusing on **Employment & Training** and
 **Housing & Legal** resources nationwide.
 
 ## Overview
 
-Vibe4Vets aggregates Veteran resources from official sources (VA.gov, DOL, HUD) and
+VetRD aggregates Veteran resources from official sources (VA.gov, DOL, HUD) and
 community organizations into a searchable database with trust scoring and freshness tracking.
 
 ## Key Features
@@ -88,13 +88,13 @@ We do not store any Veteran PII. All searches work without accounts.
 """
 
 app = FastAPI(
-    title="Vibe4Vets API",
+    title="VetRD API",
     description=API_DESCRIPTION,
     version="1.0.0",
     lifespan=lifespan,
     contact={
-        "name": "Vibe4Vets Support",
-        "url": "https://github.com/vibe4vets/vibe4vets",
+        "name": "VetRD Support",
+        "url": "https://vetrd.org",
     },
     license_info={
         "name": "MIT License",

@@ -1,5 +1,5 @@
 [project]
-name = "vibe4vets-backend"
+name = "vetrd-backend"
 version = "0.1.0"
 description = "Veteran resource directory API"
 readme = "README.md"

@@ -145,7 +145,7 @@ class ChatResponse(BaseModel):
     }
 
 
-SYSTEM_PROMPT = """You are a helpful assistant for Vibe4Vets, a Veteran resource directory.
+SYSTEM_PROMPT = """You are a helpful assistant for VetRD, a Veteran resource directory.
 Your role is to help Veterans, their families, and case managers find relevant resources.
 
 Guidelines:

@@ -29,7 +29,7 @@ def test_openapi_schema_loads(client: TestClient):
     response = client.get("/openapi.json")
     assert response.status_code == 200
     schema = response.json()
-    assert schema["info"]["title"] == "Vibe4Vets API"
+    assert schema["info"]["title"] == "VetRD API"
     assert "/api/v1/resources" in schema["paths"]
     assert "/api/v1/search" in schema["paths"]
     assert "/api/v1/admin/review-queue" in schema["paths"]

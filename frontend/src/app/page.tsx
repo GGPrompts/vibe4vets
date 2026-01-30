@@ -343,10 +343,10 @@ export default function Home() {
             <Link href="/" className="group">
               <Image
                 src="/vrd-logo.png"
-                alt="VRD.ai - Veteran Resource Directory"
+                alt="VetRD - Veteran Resource Directory"
                 width={400}
                 height={150}
-                className="h-24 sm:h-28 w-auto transition-all duration-300 group-hover:scale-105"
+                className="h-16 w-auto transition-all duration-300 group-hover:scale-105"
               />
             </Link>
             <p className="mt-2 text-sm text-[hsl(var(--v4v-gold))] font-medium">

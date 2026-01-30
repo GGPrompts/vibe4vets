@@ -8,6 +8,7 @@ from uuid import UUID
 
 from fastapi import APIRouter, HTTPException, Query
 
+from app.api.deps import AdminAuthDep
 from app.database import SessionDep
 from app.models.resource import ResourceStatus
 from app.schemas.resource import (
@@ -410,7 +411,7 @@ def get_resource(
         },
     },
 )
-def create_resource(data: ResourceCreate, session: SessionDep) -> ResourceRead:
+def create_resource(data: ResourceCreate, session: SessionDep, _auth: AdminAuthDep) -> ResourceRead:
     """Create a new Veteran resource.
 
     This endpoint is for manual resource entry. It will:
@@ -455,6 +456,7 @@ def update_resource(
     resource_id: UUID,
     data: ResourceUpdate,
     session: SessionDep,
+    _auth: AdminAuthDep,
 ) -> ResourceRead:
     """Update an existing resource with partial data.
 
@@ -489,7 +491,7 @@ def update_resource(
         },
     },
 )
-def delete_resource(resource_id: UUID, session: SessionDep) -> None:
+def delete_resource(resource_id: UUID, session: SessionDep, _auth: AdminAuthDep) -> None:
     """Soft delete a resource.
 
     Sets the resource status to `inactive` rather than permanently deleting.

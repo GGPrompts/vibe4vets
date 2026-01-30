@@ -22,7 +22,7 @@ def format_resources_html(resources: list["ResourceRead"]) -> str:
         <head>
             <meta charset="utf-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Your Saved Resources - Vibe4Vets</title>
+            <title>Your Saved Resources - VetRD</title>
             <style>
                 body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px; }
                 h1 { color: #1e3a5f; border-bottom: 3px solid #c9a227; padding-bottom: 10px; }
@@ -39,7 +39,7 @@ def format_resources_html(resources: list["ResourceRead"]) -> str:
         </head>
         <body>
             <h1>Your Saved Resources</h1>
-            <p>Here are the resources you saved from Vibe4Vets:</p>
+            <p>Here are the resources you saved from VetRD:</p>
         """
     ]
 
@@ -76,7 +76,7 @@ def format_resources_html(resources: list["ResourceRead"]) -> str:
 
     html_parts.append("""
             <div class="footer">
-                <p>Sent from <a href="https://vibe4vets.com" style="color: #c9a227;">Vibe4Vets</a> - Veteran Resource Directory</p>
+                <p>Sent from <a href="https://vetrd.org" style="color: #c9a227;">VetRD</a> - Veteran Resource Directory</p>
                 <p>This email was sent because you requested your saved resources be emailed to you.</p>
             </div>
         </body>
@@ -117,7 +117,7 @@ def format_resources_text(resources: list["ResourceRead"]) -> str:
     lines.extend(
         [
             "-" * 40,
-            "Sent from Vibe4Vets - https://vibe4vets.com",
+            "Sent from VetRD - https://vetrd.org",
             "Veteran Resource Directory",
         ]
     )
@@ -141,11 +141,11 @@ def send_resources_email(email: str, resources: list["ResourceRead"]) -> bool:
     smtp_port = int(os.getenv("SMTP_PORT", "587"))
     smtp_user = os.getenv("SMTP_USER")
     smtp_password = os.getenv("SMTP_PASSWORD")
-    smtp_from = os.getenv("SMTP_FROM", "noreply@vibe4vets.com")
+    smtp_from = os.getenv("SMTP_FROM", "noreply@vetrd.org")
 
     # Create email message
     msg = MIMEMultipart("alternative")
-    msg["Subject"] = f"Your Saved Resources ({len(resources)} items) - Vibe4Vets"
+    msg["Subject"] = f"Your Saved Resources ({len(resources)} items) - VetRD"
     msg["From"] = smtp_from
     msg["To"] = email
 
