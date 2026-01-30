@@ -136,70 +136,64 @@ export default function Home() {
             </p>
           </div>
 
-          {/* ZIP + Map side by side */}
+          {/* ZIP centered above full-width map */}
           <div className="mx-auto max-w-5xl">
             <div className="hero-search-container rounded-2xl p-4 sm:p-6 shadow-2xl">
-              <div className="grid gap-6 lg:grid-cols-[280px_1fr] lg:gap-8 items-start">
-                {/* ZIP Code Input */}
-                <div className="flex flex-col gap-4">
-                  <div className="text-center lg:text-left">
-                    <label htmlFor="zip-input" className="block text-sm font-medium text-white/90 mb-2">
-                      Enter your ZIP code
-                    </label>
-                    <div className="relative">
-                      <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-white/50" />
-                      <Input
-                        id="zip-input"
-                        type="text"
-                        inputMode="numeric"
-                        pattern="[0-9]*"
-                        value={zipCode}
-                        onChange={handleZipChange}
-                        placeholder="e.g. 22030"
-                        className={cn(
-                          'h-12 pl-10 text-lg text-center bg-white/10 border-white/20 text-white placeholder:text-white/40',
-                          'focus:bg-white/20 focus:border-[hsl(var(--v4v-gold))] focus:ring-[hsl(var(--v4v-gold)/0.3)]',
-                          zipCode.length === 5 && 'bg-[hsl(var(--v4v-gold)/0.2)] border-[hsl(var(--v4v-gold))] font-semibold'
-                        )}
-                      />
-                    </div>
-                    {zipCode.length === 5 && (
-                      <p className="mt-2 text-sm text-[hsl(var(--v4v-gold))] font-medium">
-                        Searching within 100 miles
-                      </p>
+              {/* ZIP Code Input - centered */}
+              <div className="flex flex-col items-center gap-3 mb-6">
+                <label htmlFor="zip-input" className="text-sm font-medium text-white/90">
+                  Enter your ZIP code
+                </label>
+                <div className="relative w-full max-w-[200px]">
+                  <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-white/50" />
+                  <Input
+                    id="zip-input"
+                    type="text"
+                    inputMode="numeric"
+                    pattern="[0-9]*"
+                    value={zipCode}
+                    onChange={handleZipChange}
+                    placeholder="e.g. 22030"
+                    style={{ color: 'white' }}
+                    className={cn(
+                      'h-12 pl-10 text-lg text-center bg-white/10 border-white/20 placeholder:text-white/40',
+                      'focus:bg-white/20 focus:border-[hsl(var(--v4v-gold))] focus:ring-[hsl(var(--v4v-gold)/0.3)]',
+                      zipCode.length === 5 && 'bg-[hsl(var(--v4v-gold)/0.2)] border-[hsl(var(--v4v-gold))] font-semibold'
                     )}
-                  </div>
-
-                  <div className="flex items-center gap-3">
-                    <div className="h-px flex-1 bg-white/20" />
-                    <span className="text-xs text-white/50 uppercase tracking-wide">or</span>
-                    <div className="h-px flex-1 bg-white/20" />
-                  </div>
-
-                  <p className="text-sm text-white/70 text-center lg:text-left">
-                    Click a state on the map
+                  />
+                </div>
+                {zipCode.length === 5 && (
+                  <p className="text-sm text-[hsl(var(--v4v-gold))] font-medium">
+                    Searching within 100 miles
                   </p>
-                </div>
+                )}
+              </div>
 
-                {/* Interactive US Map */}
-                <div className="hidden lg:block">
-                  <USMap
-                    className="[&_svg]:max-h-[280px]"
-                    selectedStates={filters.states}
-                    onToggleState={handleStateSelect}
-                    singleSelect
-                  />
-                </div>
+              {/* Divider */}
+              <div className="flex items-center gap-3 mb-6">
+                <div className="h-px flex-1 bg-white/20" />
+                <span className="text-xs text-white/50 uppercase tracking-wide">or click a state</span>
+                <div className="h-px flex-1 bg-white/20" />
+              </div>
 
-                {/* Mobile: Dropdown for state selection */}
-                <div className="lg:hidden">
-                  <USMap
-                    className=""
-                    selectedStates={filters.states}
-                    onToggleState={handleStateSelect}
-                    singleSelect
-                  />
-                </div>
+              {/* Full-width US Map */}
+              <div className="hidden sm:block">
+                <USMap
+                  className="[&_svg]:max-h-[320px]"
+                  selectedStates={filters.states}
+                  onToggleState={handleStateSelect}
+                  singleSelect
+                />
+              </div>
+
+              {/* Mobile: Dropdown for state selection */}
+              <div className="sm:hidden">
+                <USMap
+                  className=""
+                  selectedStates={filters.states}
+                  onToggleState={handleStateSelect}
+                  singleSelect
+                />
               </div>
             </div>
 
