@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -28,6 +29,7 @@ import {
   HeartPulse,
   School,
   Wallet,
+  Users,
 } from 'lucide-react';
 import api, { type Resource } from '@/lib/api';
 import { useAnalytics } from '@/lib/useAnalytics';
@@ -76,7 +78,36 @@ const categoryIcons: Record<string, typeof Briefcase> = {
   healthcare: HeartPulse,
   education: School,
   financial: Wallet,
+  family: Users,
 };
+
+function ResourcePageLogo({
+  logoUrl,
+  fallbackIcon: FallbackIcon,
+  size = 32,
+}: {
+  logoUrl: string | null | undefined;
+  fallbackIcon: typeof Briefcase;
+  size?: number;
+}) {
+  const [hasError, setHasError] = useState(false);
+
+  if (!logoUrl || hasError) {
+    return <FallbackIcon className="h-8 w-8" />;
+  }
+
+  return (
+    <Image
+      src={logoUrl}
+      alt=""
+      width={size}
+      height={size}
+      className="rounded-sm"
+      onError={() => setHasError(true)}
+      unoptimized
+    />
+  );
+}
 
 function IntakeCard({ resource }: { resource: Resource }) {
   const location = resource.location;
@@ -368,10 +399,14 @@ export default function ResourceDetailPage() {
             </Link>
           </div>
 
-          {/* Category icon and badges */}
+          {/* Logo/Category icon and badges */}
           <div className="mb-4 flex items-center gap-3">
-            <div className="rounded-xl bg-white/20 p-3">
-              <CategoryIcon className="h-6 w-6" />
+            <div className="rounded-xl bg-white/20 p-2.5">
+              <ResourcePageLogo
+                logoUrl={resource.logo_url}
+                fallbackIcon={CategoryIcon}
+                size={32}
+              />
             </div>
             <div className="flex flex-wrap gap-2">
               {resource.categories.map((cat) => {

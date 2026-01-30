@@ -133,7 +133,7 @@ const sectionCardStyle = 'rounded-xl border bg-white p-4 shadow-sm';
 function ResourceModalLogo({
   logoUrl,
   fallbackIcon: FallbackIcon,
-  size = 24,
+  size = 32,
 }: {
   logoUrl: string | null;
   fallbackIcon: typeof Briefcase;
@@ -142,7 +142,7 @@ function ResourceModalLogo({
   const [hasError, setHasError] = useState(false);
 
   if (!logoUrl || hasError) {
-    return <FallbackIcon className="h-6 w-6" />;
+    return <FallbackIcon className="h-8 w-8" />;
   }
 
   return (
@@ -442,11 +442,11 @@ export function ResourceDetailModal({
 
                   {/* Logo/Category icon and badges */}
                   <div className="mb-4 flex items-start gap-3 pr-24">
-                    <div className="shrink-0 rounded-xl bg-white/20 p-3">
+                    <div className="shrink-0 rounded-xl bg-white/20 p-2.5">
                       <ResourceModalLogo
                         logoUrl={resource.logo_url}
                         fallbackIcon={CategoryIcon}
-                        size={24}
+                        size={32}
                       />
                     </div>
                     <div className="flex flex-wrap gap-2">
