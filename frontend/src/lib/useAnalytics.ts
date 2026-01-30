@@ -57,8 +57,8 @@ export function useAnalytics() {
           page_path: pathname,
         });
       } catch (error) {
-        // Silently fail - analytics should never break the user experience
-        console.debug('Analytics tracking failed:', error);
+        // Log to console.warn so it's visible without enabling verbose mode
+        console.warn('[Analytics] Event tracking failed:', eventType, error);
       }
     },
     [pathname]
