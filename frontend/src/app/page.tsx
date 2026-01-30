@@ -145,7 +145,7 @@ export default function Home() {
                   Enter your ZIP code
                 </label>
                 <div className="relative w-full max-w-[220px]">
-                  <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-white/70" />
+                  <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-[hsl(var(--v4v-navy))]" />
                   <Input
                     id="zip-input"
                     type="text"
@@ -154,11 +154,10 @@ export default function Home() {
                     value={zipCode}
                     onChange={handleZipChange}
                     placeholder="e.g. 22030"
-                    style={{ color: 'white' }}
                     className={cn(
-                      'h-12 pl-10 text-lg text-center bg-white/20 border-2 border-white/50 placeholder:text-white/70',
-                      'focus:bg-white/30 focus:border-[hsl(var(--v4v-gold))] focus:ring-[hsl(var(--v4v-gold)/0.3)]',
-                      zipCode.length === 5 && 'bg-[hsl(var(--v4v-gold)/0.3)] border-[hsl(var(--v4v-gold))] font-semibold'
+                      'h-12 pl-10 text-lg text-center bg-white border-2 border-white text-[hsl(var(--v4v-navy))] placeholder:text-gray-400 rounded-lg shadow-lg',
+                      'focus:border-[hsl(var(--v4v-gold))] focus:ring-[hsl(var(--v4v-gold)/0.5)] focus:ring-2',
+                      zipCode.length === 5 && 'bg-[hsl(var(--v4v-gold))] border-[hsl(var(--v4v-gold))] text-[hsl(var(--v4v-navy))] font-semibold'
                     )}
                   />
                 </div>
