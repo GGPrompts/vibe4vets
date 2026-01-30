@@ -9,7 +9,7 @@ import { useDebounce } from '@/hooks/use-debounce';
 import { cn } from '@/lib/utils';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-import { Search, Loader2, Bookmark, Menu, X } from 'lucide-react';
+import { Search, Loader2, Bookmark, Filter, X } from 'lucide-react';
 import { SortDropdownHeader, type SortOption } from '@/components/sort-dropdown-header';
 import { MagnifierToggle } from '@/components/MagnifierToggle';
 import { useOptionalFilterContext } from '@/context/filter-context';
@@ -123,14 +123,23 @@ export function Header() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router, searchParams, query, zip]);
 
-  // Open filter sidebar (from context)
+  // Open filter sidebar (desktop) or mobile filter sheet
   const handleOpenFilters = () => {
-    filterContext?.openSidebar();
-    // Navigate to search page if not already there
-    if (!isSearchPage) {
+    // On search page, open the mobile filters sheet
+    if (isSearchPage) {
+      filterContext?.openMobileFilters();
+    } else {
+      // Navigate to search page (filters will be available there)
       router.push('/search');
     }
   };
+
+  // Get active filter count for badge
+  const activeFilterCount = filterContext ? (
+    (filterContext.filters.categories?.length || 0) +
+    (filterContext.filters.states?.length || 0) +
+    (filterContext.tags?.length || 0)
+  ) : 0;
 
   // Don't render on admin pages
   if (pathname.startsWith('/admin')) {
@@ -183,15 +192,20 @@ export function Header() {
 
               {/* Left section: Filter button (mobile) + Logo */}
               <div className="flex items-center gap-2">
-                {/* Mobile Filter Button - opens sidebar */}
+                {/* Mobile Filter Button - opens filter sheet */}
                 <Button
                   variant="ghost"
                   size="icon"
                   onClick={handleOpenFilters}
-                  className="h-9 w-9 rounded-lg md:hidden text-white/80 hover:text-[hsl(var(--v4v-gold))] hover:bg-white/10"
+                  className="relative h-9 w-9 rounded-lg md:hidden text-white/80 hover:text-[hsl(var(--v4v-gold))] hover:bg-white/10"
                   aria-label="Open filters"
                 >
-                  <Menu className="h-5 w-5" />
+                  <Filter className="h-5 w-5" />
+                  {activeFilterCount > 0 && (
+                    <span className="absolute -top-0.5 -right-0.5 inline-flex items-center justify-center min-w-[1rem] h-4 px-1 text-[10px] font-bold rounded-full bg-[hsl(var(--v4v-gold))] text-[hsl(var(--v4v-navy))]">
+                      {activeFilterCount}
+                    </span>
+                  )}
                 </Button>
 
                 {/* Logo */}

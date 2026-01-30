@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import {
@@ -32,29 +32,52 @@ function ImageLightbox({
   isOpen: boolean;
   onClose: () => void;
 }) {
+  // Handle Escape key to close
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    // Prevent body scroll when lightbox is open
+    document.body.style.overflow = 'hidden';
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = '';
+    };
+  }, [isOpen, onClose]);
+
   if (!isOpen) return null;
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 p-2 sm:p-4"
       onClick={onClose}
     >
       <button
         onClick={onClose}
-        className="absolute top-4 right-4 p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+        className="absolute top-4 right-4 z-10 p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
         aria-label="Close"
       >
         <X className="h-6 w-6 text-white" />
       </button>
-      <div className="relative max-w-[90vw] max-h-[90vh]" onClick={(e) => e.stopPropagation()}>
-        <Image
-          src={src}
-          alt={alt}
-          width={1920}
-          height={1080}
-          className="object-contain max-h-[90vh] w-auto rounded-lg"
-        />
-        <p className="text-white/80 text-center mt-4 text-sm">{alt}</p>
+      <div className="relative w-full h-full flex flex-col items-center justify-center" onClick={(e) => e.stopPropagation()}>
+        <div className="relative w-full max-w-[95vw] max-h-[85vh] flex items-center justify-center">
+          <Image
+            src={src}
+            alt={alt}
+            width={2560}
+            height={1440}
+            className="object-contain w-full h-auto max-h-[85vh] rounded-lg shadow-2xl"
+            quality={100}
+            priority
+          />
+        </div>
+        <p className="text-white/80 text-center mt-4 text-sm max-w-2xl px-4">{alt}</p>
+        <p className="text-white/50 text-center mt-2 text-xs">Click anywhere or press Escape to close</p>
       </div>
     </div>
   );
@@ -170,9 +193,9 @@ const screenshots = [
   },
   {
     src: '/about/OpusAndHaikus.png',
-    alt: '27 AI agents with a mix of Opus and Haiku models working on different tasks',
+    alt: '17 AI agents with a mix of Opus and Haiku models working on different tasks',
     title: 'Opus + Haiku Swarm',
-    description: '27 agents running together—Opus for complex tasks, Haiku for research and data extraction.',
+    description: '17 agents running together—Opus for complex tasks, Haiku for research and data extraction.',
   },
   {
     src: '/about/HaikuResearchSwarm.png',

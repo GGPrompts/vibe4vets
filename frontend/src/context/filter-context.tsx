@@ -21,10 +21,14 @@ interface FilterContextValue {
   isLoadingTotal: boolean;
   isEnabled: boolean;
   setEnabled: (enabled: boolean) => void;
-  // Sidebar state - allows header to open the filter sidebar
+  // Sidebar state - allows header to open the filter sidebar (desktop)
   sidebarCollapsed: boolean;
   setSidebarCollapsed: (collapsed: boolean) => void;
   openSidebar: () => void;
+  // Mobile filter sheet state - shared between header and search page
+  mobileFiltersOpen: boolean;
+  setMobileFiltersOpen: (open: boolean) => void;
+  openMobileFilters: () => void;
 }
 
 const FilterContext = createContext<FilterContextValue | null>(null);
@@ -58,6 +62,13 @@ export function FilterProvider({ children }: { children: ReactNode }) {
   const openSidebar = useCallback(() => {
     setSidebarCollapsed(false);
   }, [setSidebarCollapsed]);
+
+  // Mobile filter sheet state
+  const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
+
+  const openMobileFilters = useCallback(() => {
+    setMobileFiltersOpen(true);
+  }, []);
 
   const { count, isLoading } = useResourceCount(filters, isEnabled);
 
@@ -133,6 +144,9 @@ export function FilterProvider({ children }: { children: ReactNode }) {
         sidebarCollapsed,
         setSidebarCollapsed,
         openSidebar,
+        mobileFiltersOpen,
+        setMobileFiltersOpen,
+        openMobileFilters,
       }}
     >
       {children}

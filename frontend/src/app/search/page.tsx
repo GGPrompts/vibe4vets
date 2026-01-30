@@ -20,7 +20,6 @@ import {
   SheetContent,
   SheetHeader,
   SheetTitle,
-  SheetTrigger,
 } from '@/components/ui/sheet';
 import { ResourceDetailModal } from '@/components/resource-detail-modal';
 import { VirtualizedResourceGrid } from '@/components/virtualized-resource-grid';
@@ -99,7 +98,7 @@ import { useResourcesInfinite } from '@/lib/hooks/useResourcesInfinite';
 import { useAnalytics } from '@/lib/useAnalytics';
 import { useIsMobile } from '@/hooks/use-media-query';
 import { useReducedMotion } from '@/hooks/use-reduced-motion';
-import { Filter, Loader2 } from 'lucide-react';
+import { Loader2 } from 'lucide-react';
 import { BackToTop } from '@/components/BackToTop';
 
 
@@ -110,12 +109,17 @@ function SearchResults() {
   const query = searchParams.get('q') || '';
   const selectedResourceId = searchParams.get('resource');
 
-  const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   const isMobile = useIsMobile();
   const prefersReducedMotion = useReducedMotion();
 
-  // Sidebar collapsed state from context (allows header to open sidebar)
+  // Filter context (shared state with header)
   const filterContext = useOptionalFilterContext();
+
+  // Mobile filter sheet state from context (shared with header)
+  const mobileFiltersOpen = filterContext?.mobileFiltersOpen ?? false;
+  const setMobileFiltersOpen = filterContext?.setMobileFiltersOpen ?? (() => {});
+
+  // Sidebar collapsed state from context (allows header to open sidebar)
   const sidebarCollapsed = filterContext?.sidebarCollapsed ?? true;
   const setSidebarCollapsed = filterContext?.setSidebarCollapsed ?? (() => {});
 
@@ -733,44 +737,27 @@ function SearchResults() {
             />
           </div>
 
-          {/* Right side: Mobile Filter Button */}
-          <div className="flex shrink-0 items-center gap-2">
-            {/* Mobile Filter Button */}
-            <Sheet open={mobileFiltersOpen} onOpenChange={setMobileFiltersOpen}>
-              <SheetTrigger asChild>
-                <Button variant="outline" size="sm" className="lg:hidden">
-                  <Filter className="mr-2 h-4 w-4" />
-                  Filters
-                  {(filters.categories.length > 0 ||
-                    filters.states.length > 0 ||
-                    filters.scope !== 'all') && (
-                    <span className="ml-2 rounded-full bg-primary px-2 py-0.5 text-xs text-primary-foreground">
-                      {filters.categories.length +
-                        filters.states.length +
-                        (filters.scope !== 'all' ? 1 : 0)}
-                    </span>
-                  )}
-                </Button>
-              </SheetTrigger>
-              <SheetContent side="left" className="w-[90vw] max-w-[20rem]">
-                <SheetHeader>
-                  <SheetTitle>Filters</SheetTitle>
-                </SheetHeader>
-                <ScrollArea className="mt-6 h-[calc(100vh-100px)]">
-                  <FiltersSidebar
-                    filters={filters}
-                    onFiltersChange={(newFilters) => {
-                      handleFiltersChange(newFilters);
-                      setMobileFiltersOpen(false);
-                    }}
-                    resultCount={totalResults}
-                    hideHeader
-                  />
-                </ScrollArea>
-              </SheetContent>
-            </Sheet>
-          </div>
         </div>
+
+        {/* Mobile Filter Sheet - controlled by header button */}
+        <Sheet open={mobileFiltersOpen} onOpenChange={setMobileFiltersOpen}>
+          <SheetContent side="left" className="w-[90vw] max-w-[20rem]">
+            <SheetHeader>
+              <SheetTitle>Filters</SheetTitle>
+            </SheetHeader>
+            <ScrollArea className="mt-6 h-[calc(100vh-100px)]">
+              <FiltersSidebar
+                filters={filters}
+                onFiltersChange={(newFilters) => {
+                  handleFiltersChange(newFilters);
+                  setMobileFiltersOpen(false);
+                }}
+                resultCount={totalResults}
+                hideHeader
+              />
+            </ScrollArea>
+          </SheetContent>
+        </Sheet>
 
         {/* Results Grid */}
         <div>

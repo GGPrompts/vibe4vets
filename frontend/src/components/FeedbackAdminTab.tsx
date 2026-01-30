@@ -156,14 +156,14 @@ export function FeedbackAdminTab() {
             key={status}
             className="rounded-lg border p-4"
           >
-            <p className="text-sm text-muted-foreground capitalize">{status}</p>
-            <p className="text-2xl font-bold">
+            <div className="text-sm text-muted-foreground capitalize">{status}</div>
+            <div className="text-2xl font-bold">
               {statsLoading ? (
                 <Skeleton className="h-8 w-12" />
               ) : (
                 stats?.[status] ?? 0
               )}
-            </p>
+            </div>
           </div>
         ))}
       </div>

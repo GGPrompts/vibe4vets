@@ -122,7 +122,7 @@ export function getSourceTierBadge(tier: number | null, sourceName: string | nul
       };
     case 2:
       return {
-        text: 'Verified Partner',
+        text: 'Nonprofit',
         icon: '\u2713', // Checkmark
         className: 'bg-green-100 text-green-800 border-green-300 dark:bg-green-900/50 dark:text-green-200 dark:border-green-700',
       };
@@ -246,69 +246,69 @@ function CardInner({
         </div>
       )}
 
-      <CardHeader className={`pb-1 ${resource.logo_url ? 'pl-16 pt-3' : 'pt-4'}`}>
-        {/* Title with icon and bookmark */}
-        <div className="flex items-start gap-3">
-          {!resource.logo_url && (
-            <div className={`shrink-0 rounded-lg p-2 ${accentBarColors[primaryCategory] || accentBarColors.employment} text-white transition-transform duration-300 group-hover:scale-110`}>
-              <CategoryIcon className="h-5 w-5" />
-            </div>
-          )}
-          <div className="min-w-0 flex-1">
-            <div className="flex items-start justify-between gap-2">
-              {resource.website && !disablePhoneLinks ? (
-                <a
-                  href={resource.website}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={(e) => e.stopPropagation()}
-                  className="group/title flex items-start gap-1.5 hover:underline"
-                >
-                  <CardTitle className="font-display line-clamp-2 text-lg text-[hsl(var(--v4v-navy))] dark:text-foreground">
-                    {resource.title}
-                  </CardTitle>
-                  <ExternalLink className="h-4 w-4 mt-1 shrink-0 text-muted-foreground opacity-50 group-hover/title:opacity-100" />
-                </a>
-              ) : (
-                <CardTitle className="font-display line-clamp-2 text-lg text-[hsl(var(--v4v-navy))] dark:text-foreground">
-                  {resource.title}
-                </CardTitle>
-              )}
-              {/* Placeholder for bookmark button spacing */}
-              {(showBookmark || renderBookmark) && <div className="h-6 w-6 shrink-0" />}
-            </div>
-            <div className="mt-1 flex items-center gap-2 flex-wrap">
-              <p className="text-sm text-muted-foreground">
-                {resource.organization.name}
-              </p>
-              {(() => {
-                const tierBadge = getSourceTierBadge(resource.trust.source_tier, resource.trust.source_name);
-                if (tierBadge) {
-                  return (
-                    <Badge variant="outline" className={`text-xs ${tierBadge.className}`}>
-                      <span>{tierBadge.icon}</span>
-                      {tierBadge.text}
-                    </Badge>
-                  );
-                }
-                // Tier 4: show source name only
-                if (resource.trust.source_tier === 4 && resource.trust.source_name) {
-                  return (
-                    <span className="text-xs text-muted-foreground">
-                      via {resource.trust.source_name}
-                    </span>
-                  );
-                }
-                return null;
-              })()}
-            </div>
+      <CardHeader className={`pb-1 px-4 ${resource.logo_url ? 'pl-14 pt-3' : 'pt-4'}`}>
+        {/* Top row: Icon + Badge + Bookmark */}
+        <div className="flex items-center justify-between gap-2 mb-1.5">
+          <div className="flex items-center gap-2">
+            {!resource.logo_url && (
+              <div className={`shrink-0 rounded-lg p-2 ${accentBarColors[primaryCategory] || accentBarColors.employment} text-white transition-transform duration-300 group-hover:scale-110`}>
+                <CategoryIcon className="h-5 w-5" />
+              </div>
+            )}
+            {(() => {
+              const tierBadge = getSourceTierBadge(resource.trust.source_tier, resource.trust.source_name);
+              if (tierBadge) {
+                return (
+                  <Badge variant="outline" className={`text-xs ${tierBadge.className}`}>
+                    <span>{tierBadge.icon}</span>
+                    {tierBadge.text}
+                  </Badge>
+                );
+              }
+              // Tier 4: show source name only
+              if (resource.trust.source_tier === 4 && resource.trust.source_name) {
+                return (
+                  <span className="text-xs text-muted-foreground">
+                    via {resource.trust.source_name}
+                  </span>
+                );
+              }
+              return null;
+            })()}
           </div>
+          {/* Placeholder for bookmark button spacing */}
+          {(showBookmark || renderBookmark) && <div className="h-6 w-6 shrink-0" />}
         </div>
+
+        {/* Title - full width */}
+        {resource.website && !disablePhoneLinks ? (
+          <a
+            href={resource.website}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={(e) => e.stopPropagation()}
+            className="group/title block hover:underline"
+          >
+            <CardTitle className="font-display line-clamp-2 text-lg text-[hsl(var(--v4v-navy))] dark:text-foreground inline">
+              {resource.title}
+            </CardTitle>
+            <ExternalLink className="h-3.5 w-3.5 ml-1 inline-block align-middle text-muted-foreground opacity-40 group-hover/title:opacity-100" />
+          </a>
+        ) : (
+          <CardTitle className="font-display line-clamp-2 text-lg text-[hsl(var(--v4v-navy))] dark:text-foreground">
+            {resource.title}
+          </CardTitle>
+        )}
+
+        {/* Organization name */}
+        <p className="text-sm text-muted-foreground mt-0.5">
+          {resource.organization.name}
+        </p>
       </CardHeader>
 
-      <CardContent className="pt-1">
+      <CardContent className="pt-0 px-4">
         {/* Description - truncated to 4 lines, full text shown on detail page */}
-        <p className="mb-3 text-sm leading-relaxed text-muted-foreground line-clamp-4">
+        <p className="mb-2 text-sm leading-relaxed text-muted-foreground line-clamp-4">
           {resource.summary || resource.description}
         </p>
 
