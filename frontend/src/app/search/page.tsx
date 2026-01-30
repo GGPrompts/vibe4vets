@@ -681,9 +681,8 @@ function SearchResults() {
                       Found <strong>{totalResults}</strong> results for &quot;{query}&quot;
                     </>
                   ) : isNearbyMode ? (
-                    <>
-                      <strong>{displayedCount}</strong> resources within <strong>{filters.radius || 25}</strong> miles of <strong>{filters.zip}</strong>
-                    </>
+                    // Minimal header for nearby mode - details shown in section headers
+                    null
                   ) : (
                     <>
                       Showing <strong>{displayedCount}</strong> of <strong>{totalResults}</strong> resources
