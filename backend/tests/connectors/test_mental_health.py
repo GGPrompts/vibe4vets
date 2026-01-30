@@ -17,7 +17,7 @@ class TestMentalHealthConnector:
         meta = connector.metadata
 
         assert "Mental Health" in meta.name
-        assert meta.tier == 2
+        assert meta.tier == 1  # Official VA source
         assert meta.frequency == "monthly"
         assert meta.requires_auth is False
         assert "mentalhealth.va.gov" in meta.url

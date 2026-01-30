@@ -41,9 +41,7 @@ def main():
         entries_to_apply = [e for e in enrichment_data if e["confidence"] == "HIGH" and e["url"]]
     else:
         # Apply both HIGH and MEDIUM confidence (reviewed and approved)
-        entries_to_apply = [
-            e for e in enrichment_data if e["confidence"] in ("HIGH", "MEDIUM") and e["url"]
-        ]
+        entries_to_apply = [e for e in enrichment_data if e["confidence"] in ("HIGH", "MEDIUM") and e["url"]]
 
     print(f"{'=' * 60}")
     print("Legal Resources Website Enrichment")

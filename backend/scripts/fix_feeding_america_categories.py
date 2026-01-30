@@ -29,16 +29,12 @@ def fix_feeding_america_categories(dry_run: bool = True) -> None:
     Args:
         dry_run: If True, only report what would be changed without making changes.
     """
-    database_url = os.getenv(
-        "DATABASE_URL", "postgresql+psycopg://localhost:5432/vibe4vets"
-    )
+    database_url = os.getenv("DATABASE_URL", "postgresql+psycopg://localhost:5432/vibe4vets")
     engine = create_engine(database_url, echo=False)
 
     with Session(engine) as session:
         # Find resources with "Feeding America" in title that don't have food category
-        stmt = select(Resource).where(
-            Resource.title.ilike("%Feeding America%")
-        )
+        stmt = select(Resource).where(Resource.title.ilike("%Feeding America%"))
         resources = session.exec(stmt).all()
 
         print(f"Found {len(resources)} Feeding America resources")
@@ -71,9 +67,7 @@ def fix_feeding_america_categories(dry_run: bool = True) -> None:
 if __name__ == "__main__":
     import argparse
 
-    parser = argparse.ArgumentParser(
-        description="Fix Feeding America resources to include 'food' category"
-    )
+    parser = argparse.ArgumentParser(description="Fix Feeding America resources to include 'food' category")
     parser.add_argument(
         "--apply",
         action="store_true",

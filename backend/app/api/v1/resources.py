@@ -149,9 +149,7 @@ def get_resource_count(
             "description": "Rate limit exceeded (5 submissions per hour)",
             "content": {
                 "application/json": {
-                    "example": {
-                        "detail": "Rate limit exceeded. Please wait before submitting another suggestion."
-                    }
+                    "example": {"detail": "Rate limit exceeded. Please wait before submitting another suggestion."}
                 }
             },
         },
@@ -487,10 +485,7 @@ def list_nearby_resources(
     """
     # Validate that either zip or lat/lng is provided
     if not zip and (lat is None or lng is None):
-        raise HTTPException(
-            status_code=400,
-            detail="Either zip or both lat and lng must be provided"
-        )
+        raise HTTPException(status_code=400, detail="Either zip or both lat and lng must be provided")
 
     category_list: list[str] | None = None
     if categories:
