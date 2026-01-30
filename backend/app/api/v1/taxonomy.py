@@ -3,9 +3,12 @@
 Provides the tag taxonomy for frontend consumption to power filter UIs.
 """
 
-from fastapi import APIRouter
+from fastapi import APIRouter, Depends, Query
 from pydantic import BaseModel, Field
+from sqlalchemy import func, or_, select
+from sqlalchemy.orm import Session
 
+from app.core.database import get_db
 from app.core.taxonomy import (
     CATEGORIES,
     ELIGIBILITY_TAGS,
@@ -131,25 +134,87 @@ def get_tag_taxonomy() -> TaxonomyResponse:
         }
     },
 )
-def get_category_tags(category_id: str) -> CategoryTagsResponse:
+def get_category_tags(
+    category_id: str,
+    states: str | None = Query(None, description="Filter by states (comma-separated)"),
+    zip: str | None = Query(None, description="Filter by ZIP code"),
+    radius: int = Query(100, description="Radius in miles for ZIP search"),
+    scope: str | None = Query(None, description="Filter by scope (national/state/local)"),
+    filter_empty: bool = Query(False, description="If true, only return tags with results"),
+    db: Session = Depends(get_db),
+) -> CategoryTagsResponse:
     """Get eligibility tags for a specific category.
 
     Returns both grouped and flat tag lists for flexible frontend usage.
+
+    When filter_empty=true and filters are provided, only returns tags that have
+    at least 1 resource matching the current filters.
     """
     from fastapi import HTTPException
+    from app.models.resource import Resource
 
     category = get_category(category_id)
     if not category:
         raise HTTPException(status_code=404, detail="Category not found")
 
     cat_tags = get_eligibility_tags(category_id)
+    all_tag_ids = get_flat_tags_for_category(category_id)
+
+    # If filter_empty is requested and we have filters, check which tags have results
+    tags_with_results = set(all_tag_ids)  # Default: all tags
+    if filter_empty and (states or zip or scope):
+        tags_with_results = set()
+
+        # Build base query with current filters
+        base_conditions = [Resource.categories.contains([category_id])]
+
+        if states:
+            state_list = [s.strip().upper() for s in states.split(",") if s.strip()]
+            if state_list:
+                # Include national resources + state-specific
+                base_conditions.append(
+                    or_(
+                        Resource.state.in_(state_list),
+                        Resource.scope == "national",
+                    )
+                )
+
+        if scope and scope != "all":
+            if scope == "state":
+                # "state" in UI means non-national (state + local)
+                base_conditions.append(Resource.scope != "national")
+            else:
+                base_conditions.append(Resource.scope == scope)
+
+        # For each tag, check if there are any matching resources
+        for tag_id in all_tag_ids:
+            tag_condition = or_(
+                Resource.tags.contains([tag_id]),
+                Resource.subcategories.contains([tag_id]),
+                func.lower(Resource.eligibility).contains(tag_id.lower()),
+                func.lower(Resource.title).contains(tag_id.replace("-", " ").lower()),
+            )
+
+            query = select(func.count()).select_from(Resource).where(
+                *base_conditions,
+                tag_condition
+            )
+            count = db.execute(query).scalar() or 0
+            if count > 0:
+                tags_with_results.add(tag_id)
+
+    # Build response with only tags that have results
     groups = []
     for group_name, tag_ids in cat_tags.items():
-        tags = [TagInfo(id=tag_id, name=get_tag_display_name(tag_id)) for tag_id in tag_ids]
-        groups.append(TagGroup(group=group_name, tags=tags))
+        filtered_tag_ids = [tid for tid in tag_ids if tid in tags_with_results]
+        if filtered_tag_ids:  # Only include group if it has tags
+            tags = [TagInfo(id=tag_id, name=get_tag_display_name(tag_id)) for tag_id in filtered_tag_ids]
+            groups.append(TagGroup(group=group_name, tags=tags))
 
     flat_tags = [
-        TagInfo(id=tag_id, name=get_tag_display_name(tag_id)) for tag_id in get_flat_tags_for_category(category_id)
+        TagInfo(id=tag_id, name=get_tag_display_name(tag_id))
+        for tag_id in all_tag_ids
+        if tag_id in tags_with_results
     ]
 
     return CategoryTagsResponse(

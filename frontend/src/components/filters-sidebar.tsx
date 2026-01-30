@@ -222,6 +222,13 @@ interface CategoryWithTagsProps {
   selectedTags: string[];
   onTagsToggle: () => void;
   onTagToggle: (tagId: string) => void;
+  // Filters for dynamic tag loading
+  filterContext?: {
+    states?: string[];
+    zip?: string;
+    radius?: number;
+    scope?: string;
+  };
 }
 
 function CategoryWithTags({
@@ -231,14 +238,26 @@ function CategoryWithTags({
   selectedTags,
   onTagsToggle,
   onTagToggle,
+  filterContext,
 }: CategoryWithTagsProps) {
   const Icon = category.icon;
 
-  // Fetch tags for this category when expanded
+  // Check if we have active filters that should trigger empty tag filtering
+  const hasActiveFilters = Boolean(
+    filterContext?.states?.length || filterContext?.zip || filterContext?.scope
+  );
+
+  // Fetch tags for this category when expanded, filtering out empty tags if filters are active
   const { data: categoryTags, isLoading } = useQuery({
-    queryKey: ['taxonomy', 'tags', category.value],
-    queryFn: () => api.taxonomy.getCategoryTags(category.value),
-    staleTime: 1000 * 60 * 60, // Cache for 1 hour
+    queryKey: ['taxonomy', 'tags', category.value, filterContext?.states, filterContext?.zip, filterContext?.scope],
+    queryFn: () => api.taxonomy.getCategoryTags(category.value, {
+      states: filterContext?.states,
+      zip: filterContext?.zip,
+      radius: filterContext?.radius,
+      scope: filterContext?.scope,
+      filterEmpty: hasActiveFilters,
+    }),
+    staleTime: 1000 * 60 * 5, // Cache for 5 min when filtering (shorter since it depends on filters)
     enabled: isSelected && isTagsExpanded,
   });
 
@@ -564,6 +583,12 @@ export function FiltersSidebar({
                 selectedTags={filters.tags || []}
                 onTagsToggle={() => toggleCategoryTags(category.value)}
                 onTagToggle={toggleTag}
+                filterContext={{
+                  states: filters.states,
+                  zip: filters.zip,
+                  radius: filters.radius,
+                  scope: filters.scope,
+                }}
               />
             );
           })}

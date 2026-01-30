@@ -872,8 +872,18 @@ export const api = {
       return fetchAPI('/api/v1/taxonomy/tags');
     },
 
-    getCategoryTags: (categoryId: string): Promise<CategoryTagsResponse> => {
-      return fetchAPI(`/api/v1/taxonomy/tags/${categoryId}`);
+    getCategoryTags: (
+      categoryId: string,
+      filters?: { states?: string[]; zip?: string; radius?: number; scope?: string; filterEmpty?: boolean }
+    ): Promise<CategoryTagsResponse> => {
+      const params = new URLSearchParams();
+      if (filters?.states?.length) params.set('states', filters.states.join(','));
+      if (filters?.zip) params.set('zip', filters.zip);
+      if (filters?.radius) params.set('radius', String(filters.radius));
+      if (filters?.scope) params.set('scope', filters.scope);
+      if (filters?.filterEmpty) params.set('filter_empty', 'true');
+      const queryString = params.toString();
+      return fetchAPI(`/api/v1/taxonomy/tags/${categoryId}${queryString ? `?${queryString}` : ''}`);
     },
 
     getCategories: (): Promise<CategoriesResponse> => {
