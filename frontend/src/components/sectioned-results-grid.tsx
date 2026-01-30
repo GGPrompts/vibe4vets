@@ -1,8 +1,7 @@
 'use client';
 
 import { useMemo, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronDown, ChevronUp, MapPin, Globe } from 'lucide-react';
+import { MapPin, Globe } from 'lucide-react';
 import { ResourceCard } from '@/components/resource-card';
 import { Button } from '@/components/ui/button';
 import type { Resource, MatchExplanation } from '@/lib/api';
@@ -47,10 +46,6 @@ export function SectionedResultsGrid({
     return { localResources: local, nationalResources: national };
   }, [resources]);
 
-  // Track collapsed state for each section
-  const [localCollapsed, setLocalCollapsed] = useState(false);
-  const [nationalCollapsed, setNationalCollapsed] = useState(false);
-
   // Initial items to show before "Load more"
   const INITIAL_ITEMS = 12;
   const [localShowAll, setLocalShowAll] = useState(false);
@@ -71,8 +66,6 @@ export function SectionedResultsGrid({
     icon: typeof MapPin,
     sectionResources: Resource[],
     displayedResources: Resource[],
-    isCollapsed: boolean,
-    setCollapsed: (value: boolean) => void,
     showAll: boolean,
     setShowAll: (value: boolean) => void,
     hasMore: boolean,
@@ -84,10 +77,9 @@ export function SectionedResultsGrid({
 
     return (
       <section className="space-y-4">
-        {/* Section Header */}
-        <button
-          onClick={() => setCollapsed(!isCollapsed)}
-          className="flex w-full items-center justify-between rounded-lg bg-muted/50 px-4 py-3 transition-colors hover:bg-muted"
+        {/* Section Header - non-interactive, just informational */}
+        <div
+          className="relative z-20 flex w-full items-center justify-between rounded-lg bg-muted/50 px-4 py-3"
         >
           <div className="flex items-center gap-3">
             <div className="flex h-9 w-9 items-center justify-center rounded-full bg-primary/10">
@@ -102,63 +94,41 @@ export function SectionedResultsGrid({
               </p>
             </div>
           </div>
-          <div className="flex items-center gap-2 text-muted-foreground">
-            {isCollapsed ? (
-              <ChevronDown className="h-5 w-5" />
-            ) : (
-              <ChevronUp className="h-5 w-5" />
-            )}
-          </div>
-        </button>
+        </div>
 
         {/* Section Content */}
-        <AnimatePresence initial={false}>
-          {!isCollapsed && (
-            <motion.div
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: 'auto', opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.3, ease: 'easeInOut' }}
-              className="overflow-hidden"
-            >
-              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                {displayedResources.map((resource) => (
-                  <ResourceCard
-                    key={resource.id}
-                    resource={resource}
-                    explanations={explanationsMap.get(resource.id)}
-                    variant="modal"
-                    onClick={() =>
-                      onResourceClick(
-                        resource,
-                        explanationsMap.get(resource.id)
-                      )
-                    }
-                    enableLayoutId={enableLayoutId}
-                    distance={distanceMap?.get(resource.id)}
-                  />
-                ))}
-              </div>
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {displayedResources.map((resource) => (
+            <ResourceCard
+              key={resource.id}
+              resource={resource}
+              explanations={explanationsMap.get(resource.id)}
+              variant="modal"
+              onClick={() =>
+                onResourceClick(
+                  resource,
+                  explanationsMap.get(resource.id)
+                )
+              }
+              enableLayoutId={enableLayoutId}
+              distance={distanceMap?.get(resource.id)}
+            />
+          ))}
+        </div>
 
-              {/* Load More Button */}
-              {hasMore && (
-                <div className="mt-4 flex justify-center">
-                  <Button
-                    variant="outline"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setShowAll(!showAll);
-                    }}
-                  >
-                    {showAll
-                      ? `Show less`
-                      : `Load more (${totalCount - INITIAL_ITEMS} more)`}
-                  </Button>
-                </div>
-              )}
-            </motion.div>
-          )}
-        </AnimatePresence>
+        {/* Load More Button */}
+        {hasMore && (
+          <div className="mt-4 flex justify-center">
+            <Button
+              variant="outline"
+              onClick={() => setShowAll(!showAll)}
+            >
+              {showAll
+                ? `Show less`
+                : `Load more (${totalCount - INITIAL_ITEMS} more)`}
+            </Button>
+          </div>
+        )}
       </section>
     );
   };
@@ -176,8 +146,6 @@ export function SectionedResultsGrid({
         MapPin,
         localResources,
         displayedLocalResources,
-        localCollapsed,
-        setLocalCollapsed,
         localShowAll,
         setLocalShowAll,
         hasMoreLocal,
@@ -190,8 +158,6 @@ export function SectionedResultsGrid({
         Globe,
         nationalResources,
         displayedNationalResources,
-        nationalCollapsed,
-        setNationalCollapsed,
         nationalShowAll,
         setNationalShowAll,
         hasMoreNational,
