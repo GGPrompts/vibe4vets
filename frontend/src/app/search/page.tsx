@@ -218,8 +218,9 @@ function SearchResults() {
     updateURL(newFilters);
     // Track filter usage analytics
     trackFilter(newFilters.categories[0], newFilters.states[0]);
-    // Scroll to top so users see new results (pagination has its own scroll handling)
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    // Scroll to top immediately so users see new results
+    // Use instant scroll (not smooth) for reliability when far down the page
+    window.scrollTo({ top: 0, behavior: 'instant' });
   };
 
   // Filter chip handlers
@@ -586,18 +587,15 @@ function SearchResults() {
   }, [fetchNextPage]);
 
   // Restore scroll after the DOM commits the newly appended items.
+  // useLayoutEffect runs synchronously after DOM mutations, before paint.
   useLayoutEffect(() => {
     const restoreY = restoreScrollYRef.current;
     if (restoreY === null) return;
     if (isFetchingNextPage) return;
 
-    requestAnimationFrame(() => {
-      const currentY = window.scrollY;
-      if (Math.abs(currentY - restoreY) > 10) {
-        window.scrollTo({ top: restoreY });
-      }
-      restoreScrollYRef.current = null;
-    });
+    // Restore immediately without requestAnimationFrame to prevent visible shift
+    window.scrollTo({ top: restoreY, behavior: 'instant' });
+    restoreScrollYRef.current = null;
   }, [isFetchingNextPage]);
 
   // Turn animations back on shortly after pagination settles.
@@ -635,7 +633,8 @@ function SearchResults() {
         setDisableGridMotion(true);
         fetchNextPage();
       },
-      { root: null, rootMargin: '1200px 0px', threshold: 0 }
+      // Load more when user is ~400px from bottom (about 1-2 rows away)
+      { root: null, rootMargin: '400px 0px', threshold: 0 }
     );
 
     observer.observe(el);
