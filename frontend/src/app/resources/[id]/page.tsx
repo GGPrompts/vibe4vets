@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useParams, useSearchParams } from 'next/navigation';
+import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -35,19 +35,19 @@ import { cn } from '@/lib/utils';
 import { ReportFeedbackModal } from '@/components/ReportFeedbackModal';
 import { BookmarkButton } from '@/components/bookmark-button';
 
-// Badge styles for header - white background with category color text for contrast on gradient
+// Badge styles for header - opaque white background with neutral border (on gradient header)
 const categoryColors: Record<string, string> = {
-  employment: 'bg-white/90 text-[hsl(var(--v4v-employment))]',
-  training: 'bg-white/90 text-[hsl(var(--v4v-training))]',
-  housing: 'bg-white/90 text-[hsl(var(--v4v-housing))]',
-  legal: 'bg-white/90 text-[hsl(var(--v4v-legal))]',
-  food: 'bg-white/90 text-[hsl(var(--v4v-food))]',
-  benefits: 'bg-white/90 text-[hsl(var(--v4v-benefits))]',
-  mentalHealth: 'bg-white/90 text-[hsl(var(--v4v-mentalHealth))]',
-  supportServices: 'bg-white/90 text-[hsl(var(--v4v-supportServices))]',
-  healthcare: 'bg-white/90 text-[hsl(var(--v4v-healthcare))]',
-  education: 'bg-white/90 text-[hsl(var(--v4v-education))]',
-  financial: 'bg-white/90 text-[hsl(var(--v4v-financial))]',
+  employment: 'bg-white text-gray-900 border-gray-300',
+  training: 'bg-white text-gray-900 border-gray-300',
+  housing: 'bg-white text-gray-900 border-gray-300',
+  legal: 'bg-white text-gray-900 border-gray-300',
+  food: 'bg-white text-gray-900 border-gray-300',
+  benefits: 'bg-white text-gray-900 border-gray-300',
+  mentalHealth: 'bg-white text-gray-900 border-gray-300',
+  supportServices: 'bg-white text-gray-900 border-gray-300',
+  healthcare: 'bg-white text-gray-900 border-gray-300',
+  education: 'bg-white text-gray-900 border-gray-300',
+  financial: 'bg-white text-gray-900 border-gray-300',
 };
 
 const categoryGradients: Record<string, string> = {
@@ -238,13 +238,11 @@ function IntakeCard({ resource }: { resource: Resource }) {
 
 export default function ResourceDetailPage() {
   const params = useParams();
-  const searchParams = useSearchParams();
   const { trackResourceView } = useAnalytics();
   const id = params.id as string;
 
-  // Build back link with preserved search params
-  const fromParams = searchParams.get('from');
-  const backLink = fromParams ? `/search?${fromParams}` : '/search';
+  // Back navigation - full-screen detail view is only accessed from saved/bookmarks page
+  const backNav = { href: '/saved', text: 'Back to Saved' };
 
   const [resource, setResource] = useState<Resource | null>(null);
   const [loading, setLoading] = useState(true);
@@ -344,7 +342,7 @@ export default function ResourceDetailPage() {
           <h1 className="mb-4 text-2xl font-bold">Resource Not Found</h1>
           <p className="mb-4 text-muted-foreground">{error}</p>
           <Button asChild>
-            <Link href={backLink}>Back to Search</Link>
+            <Link href={backNav.href}>{backNav.text}</Link>
           </Button>
         </div>
       </main>
@@ -363,10 +361,10 @@ export default function ResourceDetailPage() {
           {/* Navigation */}
           <div className="mb-6">
             <Link
-              href={backLink}
+              href={backNav.href}
               className="inline-flex items-center gap-1 text-sm text-white/80 transition-colors hover:text-white"
             >
-              ← Back to Search
+              ← {backNav.text}
             </Link>
           </div>
 
@@ -376,14 +374,19 @@ export default function ResourceDetailPage() {
               <CategoryIcon className="h-6 w-6" />
             </div>
             <div className="flex flex-wrap gap-2">
-              {resource.categories.map((cat) => (
-                <Badge
-                  key={cat}
-                  className={cn('border-0 font-medium capitalize', categoryColors[cat] || '')}
-                >
-                  {cat}
-                </Badge>
-              ))}
+              {resource.categories.map((cat) => {
+                const Icon = categoryIcons[cat] || Briefcase;
+                return (
+                  <Badge
+                    key={cat}
+                    variant="outline"
+                    className={cn('gap-1 font-medium capitalize', categoryColors[cat] || '')}
+                  >
+                    <Icon className="h-3 w-3" />
+                    {cat}
+                  </Badge>
+                );
+              })}
             </div>
           </div>
 
@@ -575,11 +578,15 @@ export default function ResourceDetailPage() {
               </CardHeader>
               <CardContent>
                 {resource.scope === 'national' ? (
-                  <Badge variant="outline">Nationwide</Badge>
+                  <Badge variant="outline" className="gap-1 border-[hsl(var(--v4v-gold)/0.4)] bg-[hsl(var(--v4v-gold)/0.12)] text-foreground font-medium">
+                    <Globe className="h-3 w-3" />
+                    Nationwide
+                  </Badge>
                 ) : (
                   <div className="flex flex-wrap gap-1">
                     {resource.states.map((state) => (
-                      <Badge key={state} variant="outline">
+                      <Badge key={state} variant="outline" className="gap-1 border-[hsl(var(--v4v-gold)/0.4)] bg-[hsl(var(--v4v-gold)/0.12)] text-foreground font-medium">
+                        <MapPin className="h-3 w-3" />
                         {state}
                       </Badge>
                     ))}

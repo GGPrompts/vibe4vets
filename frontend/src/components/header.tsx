@@ -38,6 +38,7 @@ export function Header() {
   const [searchQuery, setSearchQuery] = useState('');
   const debouncedQuery = useDebounce(searchQuery, 300);
   const skipDebounceRef = useRef(false);
+  const isTypingRef = useRef(false);
 
   const query = searchParams.get('q') || '';
   const zip = searchParams.get('zip') || '';
@@ -48,7 +49,10 @@ export function Header() {
   };
   const currentSort = (searchParams.get('sort') as SortOption) || getDefaultSort();
 
+  // Sync search query from URL only on initial load or when navigating to search page
+  // Don't sync while user is actively typing (prevents dropped keystrokes)
   useEffect(() => {
+    if (isTypingRef.current) return; // Don't overwrite while typing
     if (isSearchPage) {
       setSearchQuery(searchParams.get('q') || '');
     } else {
@@ -56,6 +60,7 @@ export function Header() {
     }
   }, [isSearchPage, searchParams]);
 
+  // Push debounced query to URL
   useEffect(() => {
     if (!isSearchPage) return;
     if (skipDebounceRef.current) {
@@ -71,7 +76,18 @@ export function Header() {
       params.delete('q');
     }
     router.push(`/search?${params.toString()}`, { scroll: false });
+
+    // Clear typing flag after URL update settles
+    setTimeout(() => {
+      isTypingRef.current = false;
+    }, 100);
   }, [debouncedQuery, isSearchPage, query, router, searchParams]);
+
+  // Track when user is typing
+  const handleSearchChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    isTypingRef.current = true;
+    setSearchQuery(e.target.value);
+  }, []);
 
   // Focus search input when expanded
   useEffect(() => {
@@ -210,7 +226,7 @@ export function Header() {
                     type="text"
                     placeholder="Search Veteran resources..."
                     value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
+                    onChange={handleSearchChange}
                     className={cn(
                       "relative h-10 w-full rounded-full pl-10 pr-4",
                       "bg-white/10 border-white/20 text-white placeholder:text-white/40",
@@ -323,7 +339,7 @@ export function Header() {
                 type="text"
                 placeholder="Search Veteran resources..."
                 value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
+                onChange={handleSearchChange}
                 className={cn(
                   "h-10 w-full rounded-full pl-10 pr-20",
                   "bg-white/10 border-white/20 text-white placeholder:text-white/40",

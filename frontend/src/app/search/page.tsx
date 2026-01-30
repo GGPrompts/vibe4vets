@@ -10,7 +10,7 @@ import {
   useState,
 } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, useInfiniteQuery } from '@tanstack/react-query';
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Card } from '@/components/ui/card';
@@ -193,7 +193,7 @@ function SearchResults() {
       // Zip code location filter
       if (newFilters.zip) {
         params.set('zip', newFilters.zip);
-        if (newFilters.radius && newFilters.radius !== 25) {
+        if (newFilters.radius && newFilters.radius !== 100) {
           params.set('radius', String(newFilters.radius));
         }
       }
@@ -316,12 +316,13 @@ function SearchResults() {
   }, [router, searchParams, selectedResource, selectedResourceId]);
 
   // ========== DATA FETCHING ==========
-  // Browse mode: useInfiniteQuery with server-side filtering
+  // Browse mode: useInfiniteQuery with server-side filtering and sorting
   const browseQuery = useResourcesInfinite({
     categories: filters.categories,
     states: filters.states,
     scope: filters.scope,
     tags: filters.tags,
+    sort: sort,
   });
 
   // Search mode: useQuery with server-side filtering and pagination
@@ -360,27 +361,37 @@ function SearchResults() {
     enabled: !!query,
   });
 
-  // Nearby mode: useQuery when zip code is active (no text search)
-  const nearbyQuery = useQuery({
+  // Nearby mode: useInfiniteQuery when zip code is active (no text search)
+  const NEARBY_PAGE_SIZE = 50;
+  const nearbyQuery = useInfiniteQuery({
     queryKey: ['nearby', filters.zip, filters.radius, filters.categories, filters.scope, filters.tags],
-    queryFn: async () => {
+    queryFn: async ({ pageParam = 0 }) => {
       return api.resources.nearby({
         zip: filters.zip!,
-        radius: filters.radius || 25,
+        radius: filters.radius || 100,
         categories: filters.categories.length > 0 ? filters.categories.join(',') : undefined,
         scope: filters.scope !== 'all' ? filters.scope : undefined,
         tags: filters.tags && filters.tags.length > 0 ? filters.tags.join(',') : undefined,
-        limit: 100,
+        limit: NEARBY_PAGE_SIZE,
+        offset: pageParam,
       });
     },
+    initialPageParam: 0,
+    getNextPageParam: (lastPage, _allPages, lastPageParam) => {
+      // If we got fewer results than page size, we've reached the end
+      if (lastPage.resources.length < NEARBY_PAGE_SIZE) {
+        return undefined;
+      }
+      return lastPageParam + NEARBY_PAGE_SIZE;
+    },
     enabled: !!filters.zip && !query,
+    placeholderData: (previousData) => previousData,
   });
 
   // Determine which data source to use
   const isSearchMode = !!query;
   const isNearbyMode = !!filters.zip && !query;
   const searchResults = searchQuery.data;
-  const nearbyResults = nearbyQuery.data;
 
   // Flatten browse pages into single array
   const browseResources = useMemo(() => {
@@ -416,19 +427,28 @@ function SearchResults() {
     previousResourceIdsRef.current = currentBrowseResourceIds;
   }, [currentBrowseResourceIds]);
 
+  // Flatten nearby pages into single array
+  const nearbyResultsFlat = useMemo(() => {
+    if (!nearbyQuery.data?.pages) return [];
+    return nearbyQuery.data.pages.flatMap((page) => page.resources);
+  }, [nearbyQuery.data?.pages]);
+
+  // Get total from first page for nearby mode
+  const nearbyTotal = nearbyQuery.data?.pages[0]?.total ?? 0;
+
   // Distance map for nearby results
   const distanceMap = useMemo(() => {
-    if (!nearbyResults?.resources) return new Map<string, number>();
+    if (nearbyResultsFlat.length === 0) return new Map<string, number>();
     return new Map(
-      nearbyResults.resources.map((r) => [r.resource.id, r.distance_miles])
+      nearbyResultsFlat.map((r) => [r.resource.id, r.distance_miles])
     );
-  }, [nearbyResults]);
+  }, [nearbyResultsFlat]);
 
   // Extract resources from nearby results
   const nearbyResources = useMemo(() => {
-    if (!nearbyResults?.resources) return [];
-    return nearbyResults.resources.map((r) => r.resource);
-  }, [nearbyResults]);
+    if (nearbyResultsFlat.length === 0) return [];
+    return nearbyResultsFlat.map((r) => r.resource);
+  }, [nearbyResultsFlat]);
 
   // Loading states
   const initialLoading = isSearchMode
@@ -532,8 +552,9 @@ function SearchResults() {
       }
       return sortResults(filtered, distanceMap);
     } else {
-      // Browse mode: server-side filtering already applied, just trust + sort
-      return sortResults(applyTrustFilter(browseResources));
+      // Browse mode: server handles sorting, just apply trust filter
+      // Don't re-sort on client to maintain stable order during infinite scroll
+      return applyTrustFilter(browseResources);
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isSearchMode, isNearbyMode, searchResults, nearbyResources, browseResources, filters, sort, distanceMap]);
@@ -555,7 +576,7 @@ function SearchResults() {
   const totalResults = isSearchMode
     ? (searchResults?.total ?? 0)
     : isNearbyMode
-      ? (nearbyResults?.total ?? 0)
+      ? nearbyTotal
       : browseTotal;
   const displayedCount = resources.length;
   const hasResults = displayedCount > 0;
@@ -572,8 +593,22 @@ function SearchResults() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
 
-  // Infinite scroll helpers
-  const { fetchNextPage, hasNextPage, isFetchingNextPage } = browseQuery;
+  // Infinite scroll helpers - use nearby query when in nearby mode, otherwise browse query
+  const {
+    fetchNextPage: browseFetchNextPage,
+    hasNextPage: browseHasNextPage,
+    isFetchingNextPage: browseIsFetchingNextPage,
+  } = browseQuery;
+  const {
+    fetchNextPage: nearbyFetchNextPage,
+    hasNextPage: nearbyHasNextPage,
+    isFetchingNextPage: nearbyIsFetchingNextPage,
+  } = nearbyQuery;
+
+  // Select the right infinite query based on mode
+  const fetchNextPage = isNearbyMode ? nearbyFetchNextPage : browseFetchNextPage;
+  const hasNextPage = isNearbyMode ? nearbyHasNextPage : browseHasNextPage;
+  const isFetchingNextPage = isNearbyMode ? nearbyIsFetchingNextPage : browseIsFetchingNextPage;
   const restoreScrollYRef = useRef<number | null>(null);
   const loadMoreSentinelRef = useRef<HTMLDivElement | null>(null);
   const disableGridMotionRef = useRef(false);
@@ -613,8 +648,9 @@ function SearchResults() {
 
   // Background prefetch: load the next page when the user is near the bottom.
   // Desktop only - on mobile, use the explicit "Load more" button.
+  // Works for both browse mode and nearby mode (not search mode which uses pagination).
   useEffect(() => {
-    if (isSearchMode) return;
+    if (isSearchMode) return; // Search mode uses pagination buttons
     if (isMobile) return; // On mobile, use button instead of auto-fetch
     if (!hasNextPage) return;
     if (isFetchingNextPage) return;
@@ -774,7 +810,7 @@ function SearchResults() {
                   distanceMap={distanceMap}
                   onResourceClick={openResourceModal}
                   enableLayoutId={true}
-                  locationLabel={filters.zip ? `within ${filters.radius || 25} mi` : undefined}
+                  locationLabel={filters.zip ? `within ${filters.radius || 100} mi` : undefined}
                 />
               ) : hasProgramGroups ? (
                 /* Grouped View (when program groups exist) */
@@ -830,7 +866,7 @@ function SearchResults() {
                 />
               )}
 
-              {/* Load More Button - mobile only (desktop uses auto-fetch) */}
+              {/* Load More Button - mobile only for browse/nearby modes (desktop uses auto-fetch) */}
               {!isSearchMode && hasNextPage && isMobile && (
                 <div className="mt-6 flex justify-center">
                   <Button
@@ -851,13 +887,14 @@ function SearchResults() {
                 </div>
               )}
 
-              {/* Loading indicator for desktop auto-fetch */}
+              {/* Loading indicator for desktop auto-fetch (browse and nearby modes) */}
               {!isSearchMode && isFetchingNextPage && !isMobile && (
                 <div className="mt-6 flex justify-center">
                   <Loader2 className="h-6 w-6 animate-spin text-muted-foreground" />
                 </div>
               )}
 
+              {/* Infinite scroll sentinel for browse and nearby modes */}
               {!isSearchMode && hasNextPage && <div ref={loadMoreSentinelRef} className="h-px w-full" />}
 
               {/* Search mode pagination controls */}

@@ -92,14 +92,14 @@ export function ResourceDetailPanel({
             </Badge>
           ))}
           {resource.location && (
-            <Badge variant="outline">
-              <MapPin className="mr-1 h-3 w-3" />
+            <Badge variant="outline" className="gap-1 border-[hsl(var(--v4v-gold)/0.4)] bg-[hsl(var(--v4v-gold)/0.12)] text-foreground font-medium">
+              <MapPin className="h-3 w-3" />
               {resource.location.city}, {resource.location.state}
             </Badge>
           )}
           {resource.scope === 'national' && (
-            <Badge variant="outline">
-              <Globe className="mr-1 h-3 w-3" />
+            <Badge variant="outline" className="gap-1 border-[hsl(var(--v4v-gold)/0.4)] bg-[hsl(var(--v4v-gold)/0.12)] text-foreground font-medium">
+              <Globe className="h-3 w-3" />
               Nationwide
             </Badge>
           )}

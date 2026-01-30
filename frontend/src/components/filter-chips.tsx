@@ -16,19 +16,19 @@ interface FilterChipsProps {
   className?: string;
 }
 
-// Higher contrast badge styling for filter chips on light backgrounds
+// Category badge styling - light tinted backgrounds with black text
 const categoryBadgeStyles: Record<string, string> = {
-  employment: 'bg-[hsl(var(--v4v-employment))] text-white border-[hsl(var(--v4v-employment))]',
-  training: 'bg-[hsl(var(--v4v-training))] text-white border-[hsl(var(--v4v-training))]',
-  housing: 'bg-[hsl(var(--v4v-housing))] text-white border-[hsl(var(--v4v-housing))]',
-  legal: 'bg-[hsl(var(--v4v-legal))] text-white border-[hsl(var(--v4v-legal))]',
-  food: 'bg-[hsl(var(--v4v-food))] text-white border-[hsl(var(--v4v-food))]',
-  benefits: 'bg-[hsl(var(--v4v-benefits))] text-white border-[hsl(var(--v4v-benefits))]',
-  mentalHealth: 'bg-[hsl(var(--v4v-mentalHealth))] text-white border-[hsl(var(--v4v-mentalHealth))]',
-  supportServices: 'bg-[hsl(var(--v4v-supportServices))] text-white border-[hsl(var(--v4v-supportServices))]',
-  healthcare: 'bg-[hsl(var(--v4v-healthcare))] text-white border-[hsl(var(--v4v-healthcare))]',
-  education: 'bg-[hsl(var(--v4v-education))] text-white border-[hsl(var(--v4v-education))]',
-  financial: 'bg-[hsl(var(--v4v-financial))] text-white border-[hsl(var(--v4v-financial))]',
+  employment: 'bg-[hsl(var(--v4v-employment)/0.12)] text-foreground border-[hsl(var(--v4v-employment)/0.25)]',
+  training: 'bg-[hsl(var(--v4v-training)/0.12)] text-foreground border-[hsl(var(--v4v-training)/0.25)]',
+  housing: 'bg-[hsl(var(--v4v-housing)/0.12)] text-foreground border-[hsl(var(--v4v-housing)/0.25)]',
+  legal: 'bg-[hsl(var(--v4v-legal)/0.12)] text-foreground border-[hsl(var(--v4v-legal)/0.25)]',
+  food: 'bg-[hsl(var(--v4v-food)/0.12)] text-foreground border-[hsl(var(--v4v-food)/0.25)]',
+  benefits: 'bg-[hsl(var(--v4v-benefits)/0.12)] text-foreground border-[hsl(var(--v4v-benefits)/0.25)]',
+  mentalHealth: 'bg-[hsl(var(--v4v-mentalHealth)/0.12)] text-foreground border-[hsl(var(--v4v-mentalHealth)/0.25)]',
+  supportServices: 'bg-[hsl(var(--v4v-supportServices)/0.12)] text-foreground border-[hsl(var(--v4v-supportServices)/0.25)]',
+  healthcare: 'bg-[hsl(var(--v4v-healthcare)/0.12)] text-foreground border-[hsl(var(--v4v-healthcare)/0.25)]',
+  education: 'bg-[hsl(var(--v4v-education)/0.12)] text-foreground border-[hsl(var(--v4v-education)/0.25)]',
+  financial: 'bg-[hsl(var(--v4v-financial)/0.12)] text-foreground border-[hsl(var(--v4v-financial)/0.25)]',
 };
 
 const categoryIcons: Record<string, typeof Briefcase> = {
@@ -122,12 +122,12 @@ export function FilterChips({
         );
       })}
 
-      {/* State chips - high contrast gold styling */}
+      {/* State chips - light gold styling */}
       {filters.states.map((state) => (
         <Badge
           key={`state-${state}`}
           variant="outline"
-          className="cursor-pointer gap-1 border-[hsl(var(--v4v-gold-dark))] bg-[hsl(var(--v4v-gold))] text-[hsl(var(--v4v-navy))] font-medium transition-opacity hover:opacity-80"
+          className="cursor-pointer gap-1 border-[hsl(var(--v4v-gold)/0.4)] bg-[hsl(var(--v4v-gold)/0.12)] text-foreground font-medium transition-opacity hover:opacity-80"
           onClick={() => onRemoveState(state)}
         >
           <MapPin className="h-3 w-3" />
@@ -136,11 +136,11 @@ export function FilterChips({
         </Badge>
       ))}
 
-      {/* Scope chip - high contrast gold styling */}
+      {/* Scope chip - light gold styling */}
       {filters.scope !== 'all' && (
         <Badge
           variant="outline"
-          className="cursor-pointer gap-1 border-[hsl(var(--v4v-gold-dark))] bg-[hsl(var(--v4v-gold))] text-[hsl(var(--v4v-navy))] font-medium transition-opacity hover:opacity-80"
+          className="cursor-pointer gap-1 border-[hsl(var(--v4v-gold)/0.4)] bg-[hsl(var(--v4v-gold)/0.12)] text-foreground font-medium transition-opacity hover:opacity-80"
           onClick={onClearScope}
         >
           <Globe className="h-3 w-3" />
@@ -149,25 +149,25 @@ export function FilterChips({
         </Badge>
       )}
 
-      {/* Zip code chip - emerald styling for proximity search */}
+      {/* Zip code chip - light emerald styling for proximity search */}
       {filters.zip && onClearZip && (
         <Badge
           variant="outline"
-          className="cursor-pointer gap-1 border-emerald-600 bg-emerald-500 text-white font-medium transition-opacity hover:opacity-80"
+          className="cursor-pointer gap-1 border-emerald-500/40 bg-emerald-500/12 text-foreground font-medium transition-opacity hover:opacity-80"
           onClick={onClearZip}
         >
           <MapPin className="h-3 w-3" />
-          Near {filters.zip} ({filters.radius || 25} mi)
+          Near {filters.zip} ({filters.radius || 100} mi)
           <X className="h-3 w-3 ml-0.5" />
         </Badge>
       )}
 
-      {/* Tag chips - teal styling */}
+      {/* Tag chips - light teal styling */}
       {filters.tags?.map((tag) => (
         <Badge
           key={`tag-${tag}`}
           variant="outline"
-          className="cursor-pointer gap-1 border-teal-600 bg-teal-500 text-white font-medium transition-opacity hover:opacity-80"
+          className="cursor-pointer gap-1 border-teal-500/40 bg-teal-500/12 text-foreground font-medium transition-opacity hover:opacity-80"
           onClick={() => onRemoveTag?.(tag)}
         >
           <Tag className="h-3 w-3" />

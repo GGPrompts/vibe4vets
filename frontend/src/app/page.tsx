@@ -1,7 +1,8 @@
 'use client';
 
-import { useState, useEffect, useRef, useCallback } from 'react';
+import { useState, useRef, useCallback } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { USMap } from '@/components/us-map';
 import { CategoryCards } from '@/components/CategoryCards';
@@ -15,93 +16,12 @@ import { cn } from '@/lib/utils';
 export default function Home() {
   const { filters, setStates, totalCount, isLoadingTotal } = useFilterContext();
   const [zipCode, setZipCode] = useState('');
-  const [zipState, setZipState] = useState<string | null>(null); // State for the entered ZIP
   const [searchQuery, setSearchQuery] = useState('');
   const router = useRouter();
   const step2Ref = useRef<HTMLElement>(null);
 
   // Track if location has been selected (ZIP or state)
   const hasLocation = zipCode.length === 5 || filters.states.length > 0;
-
-  // Map ZIP prefix (first 3 digits) to state - covers ~99% of cases
-  // Source: USPS ZIP code prefix assignments
-  const getStateFromZip = (zip: string): string | null => {
-    if (zip.length < 3) return null;
-    const prefix = parseInt(zip.substring(0, 3), 10);
-
-    // ZIP prefix ranges by state (approximate, covers most cases)
-    const ranges: [number, number, string][] = [
-      [5, 5, 'NY'], [100, 149, 'NY'],
-      [150, 196, 'PA'],
-      [197, 199, 'DE'],
-      [200, 205, 'DC'],
-      [206, 219, 'MD'],
-      [220, 246, 'VA'],
-      [247, 268, 'WV'],
-      [270, 289, 'NC'],
-      [290, 299, 'SC'],
-      [300, 319, 'GA'], [398, 399, 'GA'],
-      [320, 339, 'FL'], [341, 342, 'FL'],
-      [350, 369, 'AL'],
-      [370, 385, 'TN'],
-      [386, 397, 'MS'],
-      [400, 418, 'KY'],
-      [420, 427, 'KY'],
-      [430, 458, 'OH'],
-      [460, 479, 'IN'],
-      [480, 499, 'MI'],
-      [500, 528, 'IA'],
-      [530, 549, 'WI'],
-      [550, 567, 'MN'],
-      [570, 577, 'SD'],
-      [580, 588, 'ND'],
-      [590, 599, 'MT'],
-      [600, 629, 'IL'],
-      [630, 658, 'MO'],
-      [660, 679, 'KS'],
-      [680, 693, 'NE'],
-      [700, 714, 'LA'],
-      [716, 729, 'AR'],
-      [730, 749, 'OK'],
-      [750, 799, 'TX'],
-      [800, 816, 'CO'],
-      [820, 831, 'WY'],
-      [832, 838, 'ID'],
-      [840, 847, 'UT'],
-      [850, 865, 'AZ'],
-      [870, 884, 'NM'],
-      [889, 898, 'NV'],
-      [900, 961, 'CA'],
-      [967, 968, 'HI'],
-      [970, 979, 'OR'],
-      [980, 994, 'WA'],
-      [995, 999, 'AK'],
-      [6, 9, 'PR'],
-      [10, 27, 'MA'],
-      [28, 29, 'RI'],
-      [30, 38, 'NH'],
-      [39, 49, 'ME'],
-      [50, 59, 'VT'],
-      [60, 69, 'CT'],
-      [70, 89, 'NJ'],
-    ];
-
-    for (const [start, end, state] of ranges) {
-      if (prefix >= start && prefix <= end) {
-        return state;
-      }
-    }
-    return null;
-  };
-
-  // Get state from ZIP prefix (instant, no API call needed)
-  useEffect(() => {
-    if (zipCode.length === 5) {
-      setZipState(getStateFromZip(zipCode));
-    } else {
-      setZipState(null);
-    }
-  }, [zipCode]);
 
   // Handle single state selection (replaces previous selection)
   const handleStateSelect = useCallback((stateAbbr: string) => {
@@ -157,6 +77,11 @@ export default function Home() {
     const value = e.target.value.replace(/\D/g, '').slice(0, 5);
     setZipCode(value);
 
+    // Clear state selection when ZIP is entered (ZIP is more specific)
+    if (value.length === 5 && filters.states.length > 0) {
+      setStates([]);
+    }
+
     // Scroll to categories when ZIP is complete
     if (value.length === 5) {
       setTimeout(() => {
@@ -182,7 +107,10 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen pt-16">
+    <main className="min-h-screen pt-16 relative">
+      {/* Gold strip behind header to match accent bar */}
+      <div className="absolute top-0 left-0 right-0 h-16 bg-gradient-to-r from-[hsl(var(--v4v-gold))] via-[hsl(var(--v4v-gold-light))] to-[hsl(var(--v4v-gold))]" />
+
       {/* Step 1: Location Selection */}
       <section className="relative overflow-hidden bg-v4v-navy text-white">
         {/* Background gradient and pattern */}
@@ -269,7 +197,7 @@ export default function Home() {
               <div className="hidden sm:block">
                 <USMap
                   className="[&_svg]:max-h-[320px]"
-                  selectedStates={zipState ? [zipState] : filters.states}
+                  selectedStates={filters.states}
                   onToggleState={handleStateSelect}
                   singleSelect
                 />
@@ -279,7 +207,7 @@ export default function Home() {
               <div className="sm:hidden">
                 <USMap
                   className=""
-                  selectedStates={zipState ? [zipState] : filters.states}
+                  selectedStates={filters.states}
                   onToggleState={handleStateSelect}
                   singleSelect
                 />
@@ -343,7 +271,7 @@ export default function Home() {
               Find Resources
             </h2>
             <p className="mt-2 text-muted-foreground">
-              Search by keyword or browse by category
+              Search by keyword
             </p>
           </div>
 
@@ -373,7 +301,7 @@ export default function Home() {
           {/* Divider */}
           <div className="flex items-center gap-4 mb-10">
             <div className="h-px flex-1 bg-border" />
-            <span className="text-sm text-muted-foreground">or browse categories</span>
+            <span className="text-muted-foreground">or browse categories</span>
             <div className="h-px flex-1 bg-border" />
           </div>
 
@@ -411,7 +339,19 @@ export default function Home() {
 
         <div className="relative mx-auto max-w-6xl px-6">
           <div className="flex flex-col items-center text-center">
-            <h2 className="font-display text-2xl font-semibold text-[hsl(var(--v4v-gold))]">Vibe4Vets</h2>
+            {/* Logo */}
+            <Link href="/" className="group">
+              <Image
+                src="/vrd-logo.png"
+                alt="VRD.ai - Veteran Resource Directory"
+                width={400}
+                height={150}
+                className="h-24 sm:h-28 w-auto transition-all duration-300 group-hover:scale-105"
+              />
+            </Link>
+            <p className="mt-2 text-sm text-[hsl(var(--v4v-gold))] font-medium">
+              Veteran Resource Directory
+            </p>
 
             {/* Transparency statement */}
             <p className="mt-4 max-w-lg text-base leading-relaxed text-white/70">

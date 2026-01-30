@@ -16,8 +16,6 @@ interface ResourceCardProps {
   variant?: 'link' | 'selectable' | 'modal';
   selected?: boolean;
   onClick?: () => void;
-  /** Search params to preserve for "back to search" navigation */
-  searchParams?: string;
   /** Enable layoutId for shared element transitions */
   enableLayoutId?: boolean;
   /** Distance in miles from search location (for nearby search) */
@@ -326,7 +324,7 @@ function CardInner({
           {resource.location && (
             <Badge
               variant="outline"
-              className="gap-1 border-[hsl(var(--v4v-gold)/0.4)] bg-[hsl(var(--v4v-gold)/0.08)] text-[hsl(var(--v4v-gold))] font-medium"
+              className="gap-1 border-[hsl(var(--v4v-gold)/0.4)] bg-[hsl(var(--v4v-gold)/0.12)] text-foreground font-medium"
             >
               <MapPin className="h-3 w-3" />
               {resource.location.city}, {resource.location.state}
@@ -338,7 +336,7 @@ function CardInner({
               <Badge
                 key={state}
                 variant="outline"
-                className="gap-1 border-[hsl(var(--v4v-gold)/0.4)] bg-[hsl(var(--v4v-gold)/0.08)] text-[hsl(var(--v4v-gold))] font-medium"
+                className="gap-1 border-[hsl(var(--v4v-gold)/0.4)] bg-[hsl(var(--v4v-gold)/0.12)] text-foreground font-medium"
               >
                 <MapPin className="h-3 w-3" />
                 {state}
@@ -348,7 +346,7 @@ function CardInner({
           {resource.scope === 'national' && (
             <Badge
               variant="outline"
-              className="gap-1 border-[hsl(var(--v4v-gold)/0.4)] bg-[hsl(var(--v4v-gold)/0.08)] text-[hsl(var(--v4v-gold))] font-medium"
+              className="gap-1 border-[hsl(var(--v4v-gold)/0.4)] bg-[hsl(var(--v4v-gold)/0.12)] text-foreground font-medium"
             >
               <Globe className="h-3 w-3" />
               Nationwide
@@ -407,7 +405,6 @@ export function ResourceCard({
   variant = 'link',
   selected = false,
   onClick,
-  searchParams,
   enableLayoutId = false,
   distance,
 }: ResourceCardProps) {
@@ -468,9 +465,7 @@ export function ResourceCard({
 
   // Link variant (default): navigates to detail page
   // Bookmark is outside the Link so it's clickable independently
-  const href = searchParams
-    ? `/resources/${resource.id}?from=${encodeURIComponent(searchParams)}`
-    : `/resources/${resource.id}`;
+  const href = `/resources/${resource.id}`;
 
   return withBookmark(
     <Link href={href} className="block h-full">

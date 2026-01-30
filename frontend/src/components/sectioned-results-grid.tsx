@@ -1,9 +1,8 @@
 'use client';
 
-import { useMemo, useState } from 'react';
+import { useMemo } from 'react';
 import { MapPin, Globe } from 'lucide-react';
 import { ResourceCard } from '@/components/resource-card';
-import { Button } from '@/components/ui/button';
 import type { Resource, MatchExplanation } from '@/lib/api';
 
 interface SectionedResultsGridProps {
@@ -20,6 +19,7 @@ interface SectionedResultsGridProps {
 /**
  * Groups resources into "Near You" (local/state) and "Nationwide" (national) sections.
  * Displays each section with a header showing the count.
+ * All loaded items are displayed - infinite scroll handles pagination.
  */
 export function SectionedResultsGrid({
   resources,
@@ -46,29 +46,10 @@ export function SectionedResultsGrid({
     return { localResources: local, nationalResources: national };
   }, [resources]);
 
-  // Initial items to show before "Load more"
-  const INITIAL_ITEMS = 12;
-  const [localShowAll, setLocalShowAll] = useState(false);
-  const [nationalShowAll, setNationalShowAll] = useState(false);
-
-  const displayedLocalResources = localShowAll
-    ? localResources
-    : localResources.slice(0, INITIAL_ITEMS);
-  const displayedNationalResources = nationalShowAll
-    ? nationalResources
-    : nationalResources.slice(0, INITIAL_ITEMS);
-
-  const hasMoreLocal = localResources.length > INITIAL_ITEMS;
-  const hasMoreNational = nationalResources.length > INITIAL_ITEMS;
-
   const renderSection = (
     title: string,
     icon: typeof MapPin,
     sectionResources: Resource[],
-    displayedResources: Resource[],
-    showAll: boolean,
-    setShowAll: (value: boolean) => void,
-    hasMore: boolean,
     totalCount: number
   ) => {
     if (sectionResources.length === 0) return null;
@@ -96,9 +77,9 @@ export function SectionedResultsGrid({
           </div>
         </div>
 
-        {/* Section Content */}
+        {/* Section Content - show all loaded items, infinite scroll handles pagination */}
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {displayedResources.map((resource) => (
+          {sectionResources.map((resource) => (
             <ResourceCard
               key={resource.id}
               resource={resource}
@@ -115,20 +96,6 @@ export function SectionedResultsGrid({
             />
           ))}
         </div>
-
-        {/* Load More Button */}
-        {hasMore && (
-          <div className="mt-4 flex justify-center">
-            <Button
-              variant="outline"
-              onClick={() => setShowAll(!showAll)}
-            >
-              {showAll
-                ? `Show less`
-                : `Load more (${totalCount - INITIAL_ITEMS} more)`}
-            </Button>
-          </div>
-        )}
       </section>
     );
   };
@@ -145,10 +112,6 @@ export function SectionedResultsGrid({
         localTitle,
         MapPin,
         localResources,
-        displayedLocalResources,
-        localShowAll,
-        setLocalShowAll,
-        hasMoreLocal,
         localResources.length
       )}
 
@@ -157,10 +120,6 @@ export function SectionedResultsGrid({
         'Available Nationwide',
         Globe,
         nationalResources,
-        displayedNationalResources,
-        nationalShowAll,
-        setNationalShowAll,
-        hasMoreNational,
         nationalResources.length
       )}
 

@@ -111,20 +111,20 @@ const categoryIcons: Record<string, typeof Briefcase> = {
   family: Users,
 };
 
-// Badge styles for header - white background with category color text for contrast
+// Badge styles for header - opaque white background with neutral border (on gradient header)
 const categoryBadgeStyles: Record<string, string> = {
-  employment: 'bg-white/90 text-[hsl(var(--v4v-employment))]',
-  training: 'bg-white/90 text-[hsl(var(--v4v-training))]',
-  housing: 'bg-white/90 text-[hsl(var(--v4v-housing))]',
-  legal: 'bg-white/90 text-[hsl(var(--v4v-legal))]',
-  food: 'bg-white/90 text-[hsl(var(--v4v-food))]',
-  benefits: 'bg-white/90 text-[hsl(var(--v4v-benefits))]',
-  mentalHealth: 'bg-white/90 text-[hsl(var(--v4v-mentalHealth))]',
-  supportServices: 'bg-white/90 text-[hsl(var(--v4v-supportServices))]',
-  healthcare: 'bg-white/90 text-[hsl(var(--v4v-healthcare))]',
-  education: 'bg-white/90 text-[hsl(var(--v4v-education))]',
-  financial: 'bg-white/90 text-[hsl(var(--v4v-financial))]',
-  family: 'bg-white/90 text-[hsl(var(--v4v-family))]',
+  employment: 'bg-white text-gray-900 border-gray-300',
+  training: 'bg-white text-gray-900 border-gray-300',
+  housing: 'bg-white text-gray-900 border-gray-300',
+  legal: 'bg-white text-gray-900 border-gray-300',
+  food: 'bg-white text-gray-900 border-gray-300',
+  benefits: 'bg-white text-gray-900 border-gray-300',
+  mentalHealth: 'bg-white text-gray-900 border-gray-300',
+  supportServices: 'bg-white text-gray-900 border-gray-300',
+  healthcare: 'bg-white text-gray-900 border-gray-300',
+  education: 'bg-white text-gray-900 border-gray-300',
+  financial: 'bg-white text-gray-900 border-gray-300',
+  family: 'bg-white text-gray-900 border-gray-300',
 };
 
 // Section card styling
@@ -441,8 +441,8 @@ export function ResourceDetailModal({
                   </div>
 
                   {/* Logo/Category icon and badges */}
-                  <div className="mb-4 flex items-center gap-3">
-                    <div className="rounded-xl bg-white/20 p-3">
+                  <div className="mb-4 flex items-start gap-3 pr-24">
+                    <div className="shrink-0 rounded-xl bg-white/20 p-3">
                       <ResourceModalLogo
                         logoUrl={resource.logo_url}
                         fallbackIcon={CategoryIcon}
@@ -450,17 +450,22 @@ export function ResourceDetailModal({
                       />
                     </div>
                     <div className="flex flex-wrap gap-2">
-                      {resource.categories.map((cat) => (
-                        <Badge
-                          key={cat}
-                          className={cn(
-                            'border-0 font-medium capitalize',
-                            categoryBadgeStyles[cat] || ''
-                          )}
-                        >
-                          {cat}
-                        </Badge>
-                      ))}
+                      {resource.categories.map((cat) => {
+                        const Icon = categoryIcons[cat] || Briefcase;
+                        return (
+                          <Badge
+                            key={cat}
+                            variant="outline"
+                            className={cn(
+                              'gap-1 font-medium capitalize',
+                              categoryBadgeStyles[cat] || ''
+                            )}
+                          >
+                            <Icon className="h-3 w-3" />
+                            {cat}
+                          </Badge>
+                        );
+                      })}
                     </div>
                   </div>
 
@@ -668,10 +673,14 @@ export function ResourceDetailModal({
                           <p className="mb-1 text-sm font-medium">Coverage</p>
                           <div className="flex flex-wrap gap-1">
                             {resource.scope === 'national' ? (
-                              <Badge variant="outline" className="border-[hsl(var(--v4v-gold)/0.3)] bg-[hsl(var(--v4v-gold)/0.08)]">Nationwide</Badge>
+                              <Badge variant="outline" className="gap-1 border-[hsl(var(--v4v-gold)/0.4)] bg-[hsl(var(--v4v-gold)/0.12)] text-foreground font-medium">
+                                <Globe className="h-3 w-3" />
+                                Nationwide
+                              </Badge>
                             ) : (
                               resource.states.map((state) => (
-                                <Badge key={state} variant="outline">
+                                <Badge key={state} variant="outline" className="gap-1 border-[hsl(var(--v4v-gold)/0.4)] bg-[hsl(var(--v4v-gold)/0.12)] text-foreground font-medium">
+                                  <MapPin className="h-3 w-3" />
                                   {state}
                                 </Badge>
                               ))

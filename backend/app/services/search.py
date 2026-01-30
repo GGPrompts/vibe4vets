@@ -48,23 +48,96 @@ class EligibilityFilters:
 class SearchService:
     """Service for searching resources."""
 
+    # Common compound word variations to expand
+    # Maps single-word form to space-separated form
+    COMPOUND_WORDS = {
+        "childcare": "child care",
+        "healthcare": "health care",
+        "jobtraining": "job training",
+        "foodbank": "food bank",
+        "foodpantry": "food pantry",
+        "legalaid": "legal aid",
+        "jobsearch": "job search",
+        "careerservices": "career services",
+        "mentalhealth": "mental health",
+        "substanceabuse": "substance abuse",
+    }
+
     def __init__(self, session: Session) -> None:
         self.session = session
+
+    def _expand_query(self, query: str) -> str:
+        """Expand query to handle compound word variations.
+
+        E.g., "childcare" becomes "childcare OR child care"
+        """
+        query_lower = query.lower()
+        expansions = []
+
+        # Check if query contains any compound words that need expansion
+        for compound, expanded in self.COMPOUND_WORDS.items():
+            if compound in query_lower:
+                # Add the expanded version
+                expanded_query = query_lower.replace(compound, expanded)
+                if expanded_query != query_lower:
+                    expansions.append(expanded_query)
+
+            # Also check reverse: "child care" -> "childcare"
+            if expanded in query_lower:
+                contracted_query = query_lower.replace(expanded, compound)
+                if contracted_query != query_lower:
+                    expansions.append(contracted_query)
+
+        return query if not expansions else query
 
     def _build_prefix_tsquery(self, query: str) -> str:
         """Convert query to prefix-matching tsquery string.
 
         E.g., "helm hard" becomes "helm:* & hard:*" to match partial words.
+        Handles compound word variations like "childcare" / "child care".
         """
         import re
 
-        # Remove special characters that could break tsquery syntax
-        clean_query = re.sub(r"[^\w\s]", " ", query)
-        words = clean_query.strip().split()
-        if not words:
+        query_lower = query.lower()
+
+        # Check for compound word expansions and build OR query
+        or_parts = []
+
+        # Build tsquery for original query
+        def build_tsquery_part(q: str) -> str:
+            clean = re.sub(r"[^\w\s]", " ", q)
+            words = clean.strip().split()
+            if not words:
+                return ""
+            return " & ".join(f"{word}:*" for word in words if word)
+
+        original_part = build_tsquery_part(query_lower)
+        if original_part:
+            or_parts.append(f"({original_part})")
+
+        # Check for compound word variations
+        for compound, expanded in self.COMPOUND_WORDS.items():
+            if compound in query_lower:
+                # User typed "childcare", also search for "child care"
+                expanded_query = query_lower.replace(compound, expanded)
+                expanded_part = build_tsquery_part(expanded_query)
+                if expanded_part and f"({expanded_part})" not in or_parts:
+                    or_parts.append(f"({expanded_part})")
+
+            if expanded in query_lower:
+                # User typed "child care", also search for "childcare"
+                contracted_query = query_lower.replace(expanded, compound)
+                contracted_part = build_tsquery_part(contracted_query)
+                if contracted_part and f"({contracted_part})" not in or_parts:
+                    or_parts.append(f"({contracted_part})")
+
+        if not or_parts:
             return ""
-        # Add :* suffix for prefix matching, join with & for AND logic
-        return " & ".join(f"{word}:*" for word in words if word)
+
+        # Join with OR for compound word variations
+        if len(or_parts) == 1:
+            return or_parts[0].strip("()")
+        return " | ".join(or_parts)
 
     def search(
         self,

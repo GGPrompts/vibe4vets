@@ -471,7 +471,8 @@ export function FiltersSidebar({
   };
 
   const handleZipChange = (zip: string) => {
-    onFiltersChange({ ...filters, zip: zip || undefined });
+    // When ZIP is entered, clear states since ZIP is more specific location filter
+    onFiltersChange({ ...filters, zip: zip || undefined, states: zip ? [] : filters.states });
   };
 
   const handleRadiusChange = (radius: number) => {
@@ -641,7 +642,7 @@ export function FiltersSidebar({
         <div className="space-y-3">
           <ZipCodeInput
             zip={filters.zip || ''}
-            radius={filters.radius || 25}
+            radius={filters.radius || 100}
             onZipChange={handleZipChange}
             onRadiusChange={handleRadiusChange}
             onClear={handleClearZip}
@@ -958,7 +959,7 @@ export function FixedFiltersSidebar({
                     </Button>
                   </TooltipTrigger>
                   <TooltipContent side="right">
-                    <p className="text-xs">Near {filters.zip} ({filters.radius || 25} mi) - Click to clear</p>
+                    <p className="text-xs">Near {filters.zip} ({filters.radius || 100} mi) - Click to clear</p>
                   </TooltipContent>
                 </Tooltip>
               </motion.div>

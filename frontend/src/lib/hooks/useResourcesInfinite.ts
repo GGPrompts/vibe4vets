@@ -8,6 +8,7 @@ export interface ResourceFilters {
   states?: string[];
   scope?: string;
   tags?: string[];
+  sort?: string;
 }
 
 const PAGE_SIZE = 50;
@@ -36,6 +37,9 @@ export function useResourcesInfinite(filters: ResourceFilters) {
       }
       if (filters.tags && filters.tags.length > 0) {
         params.tags = filters.tags.join(',');
+      }
+      if (filters.sort) {
+        params.sort = filters.sort;
       }
 
       console.log('[useResourcesInfinite] Fetching with params:', params);
