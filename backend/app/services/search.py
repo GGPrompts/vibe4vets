@@ -5,7 +5,7 @@ from dataclasses import dataclass
 from datetime import UTC, datetime
 from typing import TYPE_CHECKING
 
-from sqlalchemy import Float, cast, func, or_, text
+from sqlalchemy import Float, case, cast, func, or_, text
 from sqlmodel import Session, col, select
 
 from app.models import Location, Organization, Resource, Source
@@ -230,7 +230,15 @@ class SearchService:
         total = self.session.exec(count_stmt).one()
 
         # Order by rank, then reliability
-        stmt = stmt.order_by(text("rank DESC"), col(Resource.reliability_score).desc()).offset(offset).limit(limit)
+        # When no location filter, boost national resources to the top (they're relevant to everyone)
+        if not states:
+            national_boost = case(
+                (Resource.scope == ResourceScope.NATIONAL, 0),
+                else_=1
+            )
+            stmt = stmt.order_by(national_boost, text("rank DESC"), col(Resource.reliability_score).desc()).offset(offset).limit(limit)
+        else:
+            stmt = stmt.order_by(text("rank DESC"), col(Resource.reliability_score).desc()).offset(offset).limit(limit)
 
         results = self.session.exec(stmt).all()
 

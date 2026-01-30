@@ -20,6 +20,8 @@ interface ResourceCardProps {
   enableLayoutId?: boolean;
   /** Distance in miles from search location (for nearby search) */
   distance?: number;
+  /** Hide Local Provider section to save space */
+  compact?: boolean;
 }
 
 // Design system colors for accent bars
@@ -197,6 +199,8 @@ function CardInner({
   disablePhoneLinks = false,
   /** Distance in miles from search location */
   distance,
+  /** Hide Local Provider section to save space */
+  compact = false,
 }: {
   resource: Resource;
   explanations?: MatchExplanation[];
@@ -207,6 +211,8 @@ function CardInner({
   disablePhoneLinks?: boolean;
   /** Distance in miles from search location */
   distance?: number;
+  /** Hide Local Provider section to save space */
+  compact?: boolean;
 }) {
   const primaryCategory = resource.categories[0] || 'employment';
   const CategoryIcon = categoryIcons[primaryCategory] || Briefcase;
@@ -363,8 +369,8 @@ function CardInner({
           )}
         </div>
 
-        {/* Local provider contact info */}
-        {resource.location && (resource.location.intake?.phone || resource.location.intake?.hours) && (
+        {/* Local provider contact info - hidden in compact mode */}
+        {!compact && resource.location && (resource.location.intake?.phone || resource.location.intake?.hours) && (
           <div className="mt-3 rounded-lg border border-muted bg-muted/30 p-3">
             <p className="mb-2 text-xs font-semibold text-muted-foreground">Local Provider</p>
             <div className="space-y-1">
@@ -407,6 +413,7 @@ export function ResourceCard({
   onClick,
   enableLayoutId = false,
   distance,
+  compact = false,
 }: ResourceCardProps) {
   const primaryCategory = resource.categories[0] || 'employment';
 
@@ -431,6 +438,7 @@ export function ResourceCard({
         renderBookmark={renderBookmarkInside}
         disablePhoneLinks={isLinkVariant}
         distance={distance}
+        compact={compact}
       />
     </Card>
   );

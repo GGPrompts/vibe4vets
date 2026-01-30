@@ -93,6 +93,7 @@ export function SectionedResultsGrid({
               }
               enableLayoutId={enableLayoutId}
               distance={distanceMap?.get(resource.id)}
+              compact
             />
           ))}
         </div>

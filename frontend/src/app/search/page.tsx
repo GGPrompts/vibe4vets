@@ -836,6 +836,7 @@ function SearchResults() {
                           }
                           distance={undefined}
                           enableLayoutId={true}
+                          compact
                         />
                       );
                     }

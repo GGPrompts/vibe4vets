@@ -199,6 +199,7 @@ export function ProgramCard({
                   variant="modal"
                   onClick={() => onResourceClick?.(resource, explanationsMap?.get(resource.id))}
                   distance={distanceMap?.get(resource.id)}
+                  compact
                 />
               ))}
             </div>

@@ -3,7 +3,7 @@
 from datetime import UTC, datetime
 from uuid import UUID
 
-from sqlalchemy import String, func, or_, text
+from sqlalchemy import String, case, func, or_, text
 from sqlmodel import Session, col, select
 
 from app.models import Location, Organization, Program, Resource, Source
@@ -188,17 +188,34 @@ class ResourceService:
         total = len(self.session.exec(count_query).all())
 
         # Apply ordering based on sort option (secondary sort by id for stable pagination)
+        # When no location filter is applied, boost national resources to the top
+        # since they're relevant to all users
+        no_location_filter = not states
+        national_boost = case(
+            (Resource.scope == ResourceScope.NATIONAL, 0),
+            else_=1
+        ) if no_location_filter else None
+
         if sort == "newest":
-            query = query.order_by(col(Resource.created_at).desc(), col(Resource.id))
+            if national_boost is not None:
+                query = query.order_by(national_boost, col(Resource.created_at).desc(), col(Resource.id))
+            else:
+                query = query.order_by(col(Resource.created_at).desc(), col(Resource.id))
         elif sort == "alpha":
-            query = query.order_by(col(Resource.title).asc(), col(Resource.id))
+            if national_boost is not None:
+                query = query.order_by(national_boost, col(Resource.title).asc(), col(Resource.id))
+            else:
+                query = query.order_by(col(Resource.title).asc(), col(Resource.id))
         elif sort == "shuffle":
             # Day-seeded random: consistent order within a day, varies day-to-day
             # Uses md5(id::text || current_date::text) for deterministic shuffling
             query = query.order_by(func.md5(func.concat(Resource.id.cast(String), func.current_date().cast(String))))
         else:
             # Default: relevance (by reliability score)
-            query = query.order_by(col(Resource.reliability_score).desc(), col(Resource.id))
+            if national_boost is not None:
+                query = query.order_by(national_boost, col(Resource.reliability_score).desc(), col(Resource.id))
+            else:
+                query = query.order_by(col(Resource.reliability_score).desc(), col(Resource.id))
 
         query = query.offset(offset).limit(limit)
 

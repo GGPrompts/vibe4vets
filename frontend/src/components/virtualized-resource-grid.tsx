@@ -256,6 +256,7 @@ export function VirtualizedResourceGrid({
                           }
                           enableLayoutId={enableLayoutId}
                           distance={distanceMap?.get(resource.id)}
+                          compact
                         />
                       </motion.div>
                     );
