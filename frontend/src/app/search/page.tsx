@@ -151,6 +151,8 @@ function SearchResults() {
     const minTrustParam = searchParams.get('minTrust');
     const zipParam = searchParams.get('zip');
     const radiusParam = searchParams.get('radius');
+    const latParam = searchParams.get('lat');
+    const lngParam = searchParams.get('lng');
 
     // Get tags param (comma-separated)
     const tagsParam = searchParams.get('tags');
@@ -163,6 +165,8 @@ function SearchResults() {
       minTrust: minTrustParam ? parseInt(minTrustParam, 10) : 0,
       zip: zipParam || undefined,
       radius: radiusParam ? parseInt(radiusParam, 10) : undefined,
+      lat: latParam ? parseFloat(latParam) : undefined,
+      lng: lngParam ? parseFloat(lngParam) : undefined,
       tags,
     };
   });
@@ -171,7 +175,7 @@ function SearchResults() {
   const sortParam = searchParams.get('sort') as SortOption;
   const getDefaultSort = (): SortOption => {
     if (query) return 'relevance';
-    if (filters.zip) return 'distance';
+    if (filters.zip || (filters.lat && filters.lng)) return 'distance';
     return 'newest';
   };
   const sort: SortOption = (sortParam && ['relevance', 'newest', 'alpha', 'shuffle', 'distance'].includes(sortParam))
