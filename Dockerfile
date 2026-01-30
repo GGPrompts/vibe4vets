@@ -11,7 +11,7 @@ RUN apt-get update && apt-get install -y \
 # Copy backend code
 COPY backend/pyproject.toml .
 COPY backend/app ./app
-COPY backend/alembic.cfg .
+COPY backend/alembic.ini .
 COPY backend/alembic ./alembic
 COPY backend/connectors ./connectors
 COPY backend/etl ./etl
@@ -23,4 +23,4 @@ RUN pip install --no-cache-dir .
 
 EXPOSE 8000
 
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-8000}
