@@ -4,13 +4,6 @@ These tests verify that selecting multiple tags narrows results (AND logic)
 rather than broadening them (OR logic).
 """
 
-import pytest
-from unittest.mock import MagicMock, patch
-from uuid import uuid4
-
-from app.models import Resource
-from app.models.resource import ResourceStatus, ResourceScope
-
 
 class TestTagFilteringLogic:
     """Test that tag filtering uses AND logic."""
@@ -73,10 +66,11 @@ class TestTagFilteringLogic:
 
         filter_tags = []
         # Empty filter should match all (no filtering applied)
-        if not filter_tags:
-            matches = resources
-        else:
-            matches = [r for r in resources if all(t in r["tags"] for t in filter_tags)]
+        matches = (
+            resources
+            if not filter_tags
+            else [r for r in resources if all(t in r["tags"] for t in filter_tags)]
+        )
 
         assert len(matches) == 2
 

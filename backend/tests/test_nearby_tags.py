@@ -4,9 +4,10 @@ Note: Full integration tests require PostgreSQL with PostGIS for spatial queries
 These tests verify that the endpoint correctly accepts and parses the tags parameter.
 """
 
+from unittest.mock import MagicMock, patch
+
 import pytest
 from fastapi.testclient import TestClient
-from unittest.mock import patch, MagicMock
 
 from app.main import app
 

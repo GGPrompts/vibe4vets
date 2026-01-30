@@ -3,12 +3,11 @@
 Provides the tag taxonomy for frontend consumption to power filter UIs.
 """
 
-from fastapi import APIRouter, Depends, Query
+from fastapi import APIRouter, Depends, HTTPException, Query
 from pydantic import BaseModel, Field
 from sqlalchemy import func, or_, select
 from sqlalchemy.orm import Session
 
-from app.core.database import get_db
 from app.core.taxonomy import (
     CATEGORIES,
     ELIGIBILITY_TAGS,
@@ -19,6 +18,8 @@ from app.core.taxonomy import (
     get_subcategories,
     get_tag_display_name,
 )
+from app.database import get_session
+from app.models.resource import Resource
 
 router = APIRouter()
 
@@ -141,7 +142,7 @@ def get_category_tags(
     radius: int = Query(100, description="Radius in miles for ZIP search"),
     scope: str | None = Query(None, description="Filter by scope (national/state/local)"),
     filter_empty: bool = Query(False, description="If true, only return tags with results"),
-    db: Session = Depends(get_db),
+    db: Session = Depends(get_session),
 ) -> CategoryTagsResponse:
     """Get eligibility tags for a specific category.
 
@@ -150,9 +151,6 @@ def get_category_tags(
     When filter_empty=true and filters are provided, only returns tags that have
     at least 1 resource matching the current filters.
     """
-    from fastapi import HTTPException
-    from app.models.resource import Resource
-
     category = get_category(category_id)
     if not category:
         raise HTTPException(status_code=404, detail="Category not found")
