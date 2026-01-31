@@ -24,12 +24,6 @@ RUN pip install --no-cache-dir .
 
 EXPOSE 8000
 
-# Run migrations then start server (with debug output)
-CMD echo "Starting app..." && \
-    python -c "import app.main; print('Import OK')" && \
-    echo "Testing DB connection..." && \
-    python -c "from app.database import engine; from sqlmodel import Session, text; s=Session(engine); r=s.exec(text('SELECT 1')); print('DB OK:', list(r))" && \
-    echo "Running alembic..." && \
-    alembic upgrade head && \
-    echo "Starting uvicorn..." && \
+# Skip migrations for now, just start uvicorn
+CMD echo "Starting uvicorn directly..." && \
     uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-8000}
