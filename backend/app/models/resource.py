@@ -122,11 +122,12 @@ class Resource(SQLModel, table=True):
     )
 
     # Vector embedding for semantic search (pgvector)
-    # Enabled now that we're on Supabase with pgvector extension
-    embedding: Any = Field(
-        default=None,
-        sa_column=Column(Vector(EMBEDDING_DIMENSION), nullable=True) if _HAS_PGVECTOR else None,
-    )
+    # Column exists in Supabase, but keep Python model simple to avoid import issues
+    # The embeddings job writes directly via SQL when available
+    # embedding: Any = Field(
+    #     default=None,
+    #     sa_column=Column(Vector(EMBEDDING_DIMENSION), nullable=True) if _HAS_PGVECTOR else None,
+    # )
 
     # Relationships
     organization: "Organization" = Relationship(back_populates="resources")
