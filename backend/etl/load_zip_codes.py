@@ -71,6 +71,17 @@ def download_zcta_data() -> pd.DataFrame:
     return df
 
 
+def _has_geog_column(session: Session) -> bool:
+    """Check if zip_codes table has the geog (PostGIS) column."""
+    result = session.execute(
+        text("""
+            SELECT column_name FROM information_schema.columns
+            WHERE table_name = 'zip_codes' AND column_name = 'geog'
+        """)
+    )
+    return result.fetchone() is not None
+
+
 def load_zip_codes(df: pd.DataFrame) -> int:
     """Load zip codes into the database.
 
@@ -107,6 +118,13 @@ def load_zip_codes(df: pd.DataFrame) -> int:
     logger.info(f"Loading {len(df)} zip codes into database")
 
     with Session(engine) as session:
+        # Check if PostGIS geography column exists
+        has_geog = _has_geog_column(session)
+        if has_geog:
+            logger.info("PostGIS geog column detected, using spatial inserts")
+        else:
+            logger.info("No PostGIS geog column, using lat/lng only")
+
         # Clear existing data
         session.execute(text("TRUNCATE TABLE zip_codes"))
 
@@ -117,22 +135,39 @@ def load_zip_codes(df: pd.DataFrame) -> int:
         for i in range(0, len(df), batch_size):
             batch = df.iloc[i : i + batch_size]
 
-            # Build VALUES clause
-            values = []
-            for _, row in batch.iterrows():
-                values.append(
-                    f"('{row['zip_code']}', {row['latitude']}, {row['longitude']}, "
-                    f"ST_MakePoint({row['longitude']}, {row['latitude']})::geography)"
-                )
+            if has_geog:
+                # Build VALUES clause with PostGIS geography
+                values = []
+                for _, row in batch.iterrows():
+                    values.append(
+                        f"('{row['zip_code']}', {row['latitude']}, {row['longitude']}, "
+                        f"ST_MakePoint({row['longitude']}, {row['latitude']})::geography)"
+                    )
 
-            sql = f"""
-                INSERT INTO zip_codes (zip_code, latitude, longitude, geog)
-                VALUES {", ".join(values)}
-                ON CONFLICT (zip_code) DO UPDATE SET
-                    latitude = EXCLUDED.latitude,
-                    longitude = EXCLUDED.longitude,
-                    geog = EXCLUDED.geog
-            """
+                sql = f"""
+                    INSERT INTO zip_codes (zip_code, latitude, longitude, geog)
+                    VALUES {", ".join(values)}
+                    ON CONFLICT (zip_code) DO UPDATE SET
+                        latitude = EXCLUDED.latitude,
+                        longitude = EXCLUDED.longitude,
+                        geog = EXCLUDED.geog
+                """
+            else:
+                # Build VALUES clause without PostGIS (lat/lng only)
+                values = []
+                for _, row in batch.iterrows():
+                    values.append(
+                        f"('{row['zip_code']}', {row['latitude']}, {row['longitude']})"
+                    )
+
+                sql = f"""
+                    INSERT INTO zip_codes (zip_code, latitude, longitude)
+                    VALUES {", ".join(values)}
+                    ON CONFLICT (zip_code) DO UPDATE SET
+                        latitude = EXCLUDED.latitude,
+                        longitude = EXCLUDED.longitude
+                """
+
             session.execute(text(sql))
             inserted += len(batch)
             logger.info(f"Inserted {inserted}/{len(df)} zip codes")
@@ -151,6 +186,9 @@ def verify_data() -> None:
     }
 
     with Session(engine) as session:
+        # Check if PostGIS geography column exists
+        has_geog = _has_geog_column(session)
+
         # Count total
         result = session.execute(text("SELECT COUNT(*) FROM zip_codes"))
         count = result.scalar()
@@ -167,27 +205,47 @@ def verify_data() -> None:
                 lat, lng = row
                 # Check within ~10 miles (0.15 degrees)
                 if abs(lat - expected_lat) < 0.15 and abs(lng - expected_lng) < 0.15:
-                    logger.info(f"✓ {zip_code} ({name}): {lat:.4f}, {lng:.4f}")
+                    logger.info(f"[OK] {zip_code} ({name}): {lat:.4f}, {lng:.4f}")
                 else:
                     logger.warning(
-                        f"✗ {zip_code} ({name}): got ({lat:.4f}, {lng:.4f}), "
+                        f"[WARN] {zip_code} ({name}): got ({lat:.4f}, {lng:.4f}), "
                         f"expected ({expected_lat:.4f}, {expected_lng:.4f})"
                     )
             else:
-                logger.warning(f"✗ {zip_code} ({name}): not found")
+                logger.warning(f"[WARN] {zip_code} ({name}): not found")
 
-        # Test spatial query
-        result = session.execute(
-            text("""
-                SELECT zip_code, ST_Distance(geog, ST_MakePoint(-77.03, 38.89)::geography) as dist_m
-                FROM zip_codes
-                ORDER BY geog <-> ST_MakePoint(-77.03, 38.89)::geography
-                LIMIT 3
-            """)
-        )
-        logger.info("Nearest zip codes to White House (38.89, -77.03):")
-        for row in result:
-            logger.info(f"  {row.zip_code}: {row.dist_m:.0f}m away")
+        # Test spatial query (only if PostGIS is available)
+        if has_geog:
+            result = session.execute(
+                text("""
+                    SELECT zip_code, ST_Distance(geog, ST_MakePoint(-77.03, 38.89)::geography) as dist_m
+                    FROM zip_codes
+                    ORDER BY geog <-> ST_MakePoint(-77.03, 38.89)::geography
+                    LIMIT 3
+                """)
+            )
+            logger.info("Nearest zip codes to White House (38.89, -77.03):")
+            for row in result:
+                logger.info(f"  {row.zip_code}: {row.dist_m:.0f}m away")
+        else:
+            # Haversine-based query for non-PostGIS databases
+            # Use approximate distance calculation
+            result = session.execute(
+                text("""
+                    SELECT zip_code,
+                           (6371000 * acos(
+                               cos(radians(38.89)) * cos(radians(latitude)) *
+                               cos(radians(longitude) - radians(-77.03)) +
+                               sin(radians(38.89)) * sin(radians(latitude))
+                           )) as dist_m
+                    FROM zip_codes
+                    ORDER BY dist_m
+                    LIMIT 3
+                """)
+            )
+            logger.info("Nearest zip codes to White House (38.89, -77.03) [Haversine]:")
+            for row in result:
+                logger.info(f"  {row.zip_code}: {row.dist_m:.0f}m away")
 
 
 def main() -> None:

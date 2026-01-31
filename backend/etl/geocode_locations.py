@@ -520,11 +520,12 @@ def update_locations(results: list[GeocodedResult], dry_run: bool = False) -> in
     updated = 0
     with Session(engine) as session:
         for result in results:
+            # Update lat/lng and geog (PostGIS geography column for spatial queries)
             sql = """
                 UPDATE locations
                 SET latitude = :lat,
                     longitude = :lon,
-                    geog = ST_MakePoint(:lon, :lat)::geography
+                    geog = ST_SetSRID(ST_MakePoint(:lon, :lat), 4326)::geography
                 WHERE id = :id
             """
             session.execute(
@@ -553,24 +554,30 @@ def print_stats(results: list[GeocodedResult]) -> None:
 
 
 def verify_spatial_index() -> None:
-    """Verify PostGIS is working with a test query."""
+    """Verify geocoding worked with a test query using Haversine formula."""
     with Session(engine) as session:
-        # Test nearest neighbor query
+        # Test nearest neighbor query using Haversine distance
+        # Washington DC coordinates: 38.89, -77.03
         result = session.execute(
             text("""
                 SELECT l.id, l.city, l.state,
-                       ST_Distance(l.geog, ST_MakePoint(-77.03, 38.89)::geography) as dist_m
+                       3959 * ACOS(
+                           LEAST(1.0, GREATEST(-1.0,
+                               COS(RADIANS(38.89)) * COS(RADIANS(l.latitude)) *
+                               COS(RADIANS(l.longitude) - RADIANS(-77.03)) +
+                               SIN(RADIANS(38.89)) * SIN(RADIANS(l.latitude))
+                           ))
+                       ) as dist_miles
                 FROM locations l
-                WHERE l.geog IS NOT NULL
-                ORDER BY l.geog <-> ST_MakePoint(-77.03, 38.89)::geography
+                WHERE l.latitude IS NOT NULL AND l.longitude IS NOT NULL
+                ORDER BY dist_miles ASC
                 LIMIT 5
             """)
         )
 
         logger.info("Nearest locations to Washington DC (38.89, -77.03):")
         for row in result:
-            dist_miles = row.dist_m / 1609.34
-            logger.info(f"  {row.city}, {row.state}: {dist_miles:.1f} miles")
+            logger.info(f"  {row.city}, {row.state}: {row.dist_miles:.1f} miles")
 
 
 def main() -> None:

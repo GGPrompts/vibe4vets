@@ -179,6 +179,11 @@ class RefreshJob(BaseJob):
         else:
             result = pipeline.run(connectors)
 
+            # Post-ETL: Fill in missing lat/lng from zip centroids (fast, no API)
+            geocoded = self._geocode_from_zip_centroids(session)
+            if geocoded > 0:
+                self._log(f"Geocoded {geocoded} locations from zip centroids")
+
         # Build stats from ETL result
         stats: dict[str, Any] = {
             "success": result.success,
@@ -227,6 +232,34 @@ class RefreshJob(BaseJob):
                 self._log(f"Failed to initialize connector {name}: {e}", level="warning")
 
         return connectors
+
+    def _geocode_from_zip_centroids(self, session: Session) -> int:
+        """Fill in missing lat/lng from zip code centroids.
+
+        This is a fast fallback that doesn't require API calls.
+        The geog column is auto-populated via database trigger.
+
+        Args:
+            session: Database session.
+
+        Returns:
+            Number of locations geocoded.
+        """
+        from sqlalchemy import text
+
+        result = session.execute(
+            text("""
+                UPDATE locations l
+                SET latitude = z.latitude,
+                    longitude = z.longitude
+                FROM zip_codes z
+                WHERE l.zip_code = z.zip_code
+                  AND l.latitude IS NULL
+                  AND z.latitude IS NOT NULL
+            """)
+        )
+        session.commit()
+        return result.rowcount or 0
 
     def _format_message(self, stats: dict[str, Any]) -> str:
         """Format refresh statistics into a message."""
