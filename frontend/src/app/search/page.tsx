@@ -396,7 +396,8 @@ function SearchResults() {
       return lastPageParam + NEARBY_PAGE_SIZE;
     },
     enabled: (!!filters.zip || hasGeolocation) && !query,
-    placeholderData: (previousData) => previousData,
+    // Don't use placeholderData - it causes stale results when filters change
+    // Better to show loading state briefly than wrong filtered results
   });
 
   // Determine which data source to use
