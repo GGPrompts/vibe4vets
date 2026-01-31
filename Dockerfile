@@ -24,5 +24,5 @@ RUN pip install --no-cache-dir .
 
 EXPOSE 8000
 
-# Run migrations then start server
-CMD alembic upgrade head && uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-8000}
+# Run migrations then start server (with debug output)
+CMD echo "Starting app..." && python -c "import app.main; print('Import OK')" && alembic upgrade head 2>&1 && uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-8000}
