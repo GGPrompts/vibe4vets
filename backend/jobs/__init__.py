@@ -7,10 +7,12 @@ This module provides:
 - Link checker job for URL health validation
 - Discovery job for AI-powered resource discovery
 - Embeddings job for vector embedding generation
+- Cleanup job for database maintenance
 - Job registry and configuration
 """
 
 from jobs.base import BaseJob, JobResult, JobStatus
+from jobs.cleanup import CleanupJob, TruncateChangeLogsJob
 from jobs.discovery import DiscoveryJob
 from jobs.embeddings import EmbeddingsJob
 from jobs.freshness import FreshnessJob
@@ -81,6 +83,21 @@ def setup_jobs(scheduler: JobScheduler, config: dict[str, str | bool]) -> None:
         enabled=bool(enabled) and bool(embeddings_schedule),
     )
 
+    # Register cleanup job (daily at 3am by default)
+    cleanup_schedule = config.get("CLEANUP_SCHEDULE", "0 3 * * *")
+    scheduler.register_job(
+        CleanupJob(),
+        schedule=cleanup_schedule if isinstance(cleanup_schedule, str) else None,
+        enabled=bool(enabled) and bool(cleanup_schedule),
+    )
+
+    # Register truncate job (manual only, no schedule)
+    scheduler.register_job(
+        TruncateChangeLogsJob(),
+        schedule=None,
+        enabled=False,
+    )
+
 
 __all__ = [
     # Base
@@ -88,11 +105,13 @@ __all__ = [
     "JobResult",
     "JobStatus",
     # Jobs
+    "CleanupJob",
     "DiscoveryJob",
     "EmbeddingsJob",
     "FreshnessJob",
     "LinkCheckerJob",
     "RefreshJob",
+    "TruncateChangeLogsJob",
     "get_available_connectors",
     # Scheduler
     "JobScheduler",
