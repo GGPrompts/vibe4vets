@@ -4,6 +4,7 @@ from datetime import UTC, datetime
 from uuid import UUID
 
 from sqlalchemy import String, case, func, or_, text
+from sqlalchemy.orm import selectinload
 from sqlmodel import Session, col, select
 
 from app.models import Location, Organization, Program, Resource, Source
@@ -154,8 +155,8 @@ class ResourceService:
         if status:
             query = query.where(Resource.status == status)
 
-        # Get total count with same filters
-        count_query = select(Resource.id).where(Resource.status != ResourceStatus.INACTIVE)
+        # Get total count with same filters (using COUNT(*) for efficiency)
+        count_query = select(func.count()).select_from(Resource).where(Resource.status != ResourceStatus.INACTIVE)
         if categories:
             category_conditions = [Resource.categories.contains([cat]) for cat in categories]
             count_query = count_query.where(or_(*category_conditions))
@@ -185,7 +186,7 @@ class ResourceService:
         if status:
             count_query = count_query.where(Resource.status == status)
 
-        total = len(self.session.exec(count_query).all())
+        total = self.session.exec(count_query).one()
 
         # Apply ordering based on sort option (secondary sort by id for stable pagination)
         # When no location filter is applied, boost national resources to the top
@@ -215,6 +216,14 @@ class ResourceService:
                 query = query.order_by(col(Resource.reliability_score).desc(), col(Resource.id))
 
         query = query.offset(offset).limit(limit)
+
+        # Eager load relationships to avoid N+1 queries
+        query = query.options(
+            selectinload(Resource.organization),  # type: ignore[attr-defined]
+            selectinload(Resource.location),  # type: ignore[attr-defined]
+            selectinload(Resource.source),  # type: ignore[attr-defined]
+            selectinload(Resource.program),  # type: ignore[attr-defined]
+        )
 
         resources = self.session.exec(query).all()
         return [self._to_read_schema(r) for r in resources], total
@@ -819,9 +828,23 @@ class ResourceService:
         return True
 
     def _to_read_schema(self, resource: Resource) -> ResourceRead:
-        """Convert Resource model to read schema."""
-        # Get organization
-        organization = self.session.get(Organization, resource.organization_id)
+        """Convert Resource model to read schema.
+
+        Uses pre-loaded relationships when available (via selectinload),
+        falling back to session.get() for single-resource fetches.
+        """
+        from sqlalchemy import inspect
+
+        # Check if relationships are already loaded (from selectinload)
+        insp = inspect(resource)
+
+        # Get organization - use loaded relationship or fetch
+        organization = None
+        if 'organization' in insp.dict and resource.organization is not None:
+            organization = resource.organization
+        else:
+            organization = self.session.get(Organization, resource.organization_id)
+
         if organization is None:
             raise ValueError(f"Organization not found for resource {resource.id}")
         org_nested = OrganizationNested(
@@ -830,18 +853,26 @@ class ResourceService:
             website=organization.website,
         )
 
-        # Get location if exists
+        # Get location if exists - use loaded relationship or fetch
         location_nested = None
         if resource.location_id:
-            location = self.session.get(Location, resource.location_id)
+            location = None
+            if 'location' in insp.dict and resource.location is not None:
+                location = resource.location
+            else:
+                location = self.session.get(Location, resource.location_id)
             if location:
                 location_nested = self._build_location_nested(location)
 
-        # Build trust signals
+        # Build trust signals - use loaded relationship or fetch
         source_tier = None
         source_name = None
         if resource.source_id:
-            source = self.session.get(Source, resource.source_id)
+            source = None
+            if 'source' in insp.dict and resource.source is not None:
+                source = resource.source
+            else:
+                source = self.session.get(Source, resource.source_id)
             if source:
                 source_tier = source.tier
                 source_name = source.name
@@ -854,10 +885,14 @@ class ResourceService:
             source_name=source_name,
         )
 
-        # Get program if exists
+        # Get program if exists - use loaded relationship or fetch
         program_nested = None
         if resource.program_id:
-            program = self.session.get(Program, resource.program_id)
+            program = None
+            if 'program' in insp.dict and resource.program is not None:
+                program = resource.program
+            else:
+                program = self.session.get(Program, resource.program_id)
             if program:
                 program_nested = ProgramNested(
                     id=program.id,
