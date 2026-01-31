@@ -39,9 +39,7 @@ def _check_postgis(session: Session) -> bool:
     if _postgis_available is not None:
         return _postgis_available
     try:
-        result = session.execute(
-            text("SELECT 1 FROM pg_extension WHERE extname = 'postgis'")
-        ).fetchone()
+        result = session.execute(text("SELECT 1 FROM pg_extension WHERE extname = 'postgis'")).fetchone()
         _postgis_available = result is not None
     except Exception:
         _postgis_available = False
@@ -938,7 +936,7 @@ class ResourceService:
 
         # Get organization - use loaded relationship or fetch
         organization = None
-        if 'organization' in insp.dict and resource.organization is not None:
+        if "organization" in insp.dict and resource.organization is not None:
             organization = resource.organization
         else:
             organization = self.session.get(Organization, resource.organization_id)
@@ -955,7 +953,7 @@ class ResourceService:
         location_nested = None
         if resource.location_id:
             location = None
-            if 'location' in insp.dict and resource.location is not None:
+            if "location" in insp.dict and resource.location is not None:
                 location = resource.location
             else:
                 location = self.session.get(Location, resource.location_id)
@@ -967,7 +965,7 @@ class ResourceService:
         source_name = None
         if resource.source_id:
             source = None
-            if 'source' in insp.dict and resource.source is not None:
+            if "source" in insp.dict and resource.source is not None:
                 source = resource.source
             else:
                 source = self.session.get(Source, resource.source_id)
@@ -987,7 +985,7 @@ class ResourceService:
         program_nested = None
         if resource.program_id:
             program = None
-            if 'program' in insp.dict and resource.program is not None:
+            if "program" in insp.dict and resource.program is not None:
                 program = resource.program
             else:
                 program = self.session.get(Program, resource.program_id)
