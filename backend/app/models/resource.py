@@ -5,10 +5,18 @@ from datetime import UTC, datetime
 from enum import Enum
 from typing import TYPE_CHECKING, Any, Optional
 
-from pgvector.sqlalchemy import Vector
 from sqlalchemy import Column, FetchedValue, Text
 from sqlalchemy.dialects.postgresql import ARRAY, TSVECTOR
 from sqlmodel import Field, Relationship, SQLModel
+
+# pgvector is optional - only available when extension is installed
+try:
+    from pgvector.sqlalchemy import Vector
+
+    _HAS_PGVECTOR = True
+except ImportError:
+    _HAS_PGVECTOR = False
+    Vector = None  # type: ignore
 
 
 def _utc_now() -> datetime:
@@ -114,10 +122,12 @@ class Resource(SQLModel, table=True):
     )
 
     # Vector embedding for semantic search (pgvector)
-    embedding: Any = Field(
-        default=None,
-        sa_column=Column(Vector(EMBEDDING_DIMENSION), nullable=True),
-    )
+    # DISABLED: Railway doesn't have pgvector extension, column doesn't exist
+    # To re-enable: uncomment and run migration to add the column
+    # embedding: Any = Field(
+    #     default=None,
+    #     sa_column=Column(Vector(EMBEDDING_DIMENSION), nullable=True) if _HAS_PGVECTOR else None,
+    # )
 
     # Relationships
     organization: "Organization" = Relationship(back_populates="resources")

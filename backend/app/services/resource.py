@@ -285,9 +285,9 @@ class ResourceService:
         Returns:
             ResourceNearbyList with resources sorted by distance, or None if zip not found
         """
-        # Look up zip code center point and state
+        # Look up zip code center point and state (no geog column needed - we use Haversine)
         zip_result = self.session.execute(
-            text("SELECT latitude, longitude, state, geog FROM zip_codes WHERE zip_code = :zip"),
+            text("SELECT latitude, longitude, state FROM zip_codes WHERE zip_code = :zip"),
             {"zip": zip_code},
         ).fetchone()
 
