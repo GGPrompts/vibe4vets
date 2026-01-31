@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Briefcase, BookOpen, Home, Scale, MapPin, Globe, CheckCircle2, Tag, Phone, Clock, UtensilsCrossed, Award, ExternalLink, Brain, HeartHandshake, HeartPulse, School, Wallet, Users } from 'lucide-react';
+import { Briefcase, BookOpen, Home, Scale, MapPin, Globe, Phone, Clock, UtensilsCrossed, Award, ExternalLink, Brain, HeartHandshake, HeartPulse, School, Wallet, Users } from 'lucide-react';
 import type { Resource, MatchExplanation } from '@/lib/api';
 import { BookmarkButton } from '@/components/bookmark-button';
 
@@ -192,7 +192,7 @@ function ResourceLogo({
 
 function CardInner({
   resource,
-  explanations,
+  explanations: _explanations,
   showBookmark = false,
   renderBookmark = false,
   /** When true, phone numbers render as plain text (to avoid nested <a> in <Link>) */

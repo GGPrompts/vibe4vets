@@ -21,7 +21,6 @@ import { Filter, X, Briefcase, GraduationCap, Home, Scale, UtensilsCrossed, File
 import { Input } from '@/components/ui/input';
 import { cn } from '@/lib/utils';
 import { ZipCodeInput } from '@/components/ZipCodeInput';
-import { Switch } from '@/components/ui/switch';
 import api from '@/lib/api';
 
 export const CATEGORIES = [

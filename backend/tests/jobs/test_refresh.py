@@ -134,7 +134,9 @@ class TestRefreshJob:
                 mock_pipeline.run.return_value = mock_result
                 mock_pipeline_cls.return_value = mock_pipeline
 
-                stats = job.execute(mock_session, dry_run=False)
+                # Mock the geocoding method to return an int
+                with patch.object(job, "_geocode_from_zip_centroids", return_value=0):
+                    stats = job.execute(mock_session, dry_run=False)
 
         assert stats["success"] is True
         assert stats["extracted"] == 10
