@@ -283,13 +283,35 @@ class TestNormalizer:
             result, _ = normalizer.normalize(candidate)
             assert result.scope == scope
 
-        # Invalid scope defaults to national
+        # Invalid scope defaults to local (safer than polluting national results)
         candidate = ResourceCandidate(
             title="Test",
             description="Test desc",
             source_url="https://example.com",
             org_name="Test Org",
             scope="invalid",
+        )
+        result, _ = normalizer.normalize(candidate)
+        assert result.scope == "local"
+
+        # Regional maps to state
+        candidate = ResourceCandidate(
+            title="Test",
+            description="Test desc",
+            source_url="https://example.com",
+            org_name="Test Org",
+            scope="regional",
+        )
+        result, _ = normalizer.normalize(candidate)
+        assert result.scope == "state"
+
+        # Nationwide maps to national
+        candidate = ResourceCandidate(
+            title="Test",
+            description="Test desc",
+            source_url="https://example.com",
+            org_name="Test Org",
+            scope="nationwide",
         )
         result, _ = normalizer.normalize(candidate)
         assert result.scope == "national"

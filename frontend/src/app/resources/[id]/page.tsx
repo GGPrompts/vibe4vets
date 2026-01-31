@@ -408,7 +408,8 @@ export default function ResourceDetailPage() {
                 size={32}
               />
             </div>
-            <div className="flex flex-wrap gap-2">
+            {/* Category badges - hidden on mobile, shown in body instead */}
+            <div className="hidden sm:flex flex-wrap gap-2">
               {resource.categories.map((cat) => {
                 const Icon = categoryIcons[cat] || Briefcase;
                 return (
@@ -491,6 +492,25 @@ export default function ResourceDetailPage() {
       {/* Main Content */}
       <div className="px-4 sm:px-8 py-6 sm:py-8 w-full">
         <div className="mx-auto max-w-4xl w-full">
+          {/* Categories - mobile only */}
+          <div className="sm:hidden mb-4">
+            <div className="flex flex-wrap gap-2">
+              {resource.categories.map((cat) => {
+                const Icon = categoryIcons[cat] || Briefcase;
+                return (
+                  <Badge
+                    key={cat}
+                    variant="outline"
+                    className={cn('gap-1 font-medium capitalize border-muted-foreground/30', categoryColors[cat] || '')}
+                  >
+                    <Icon className="h-3 w-3" />
+                    {cat}
+                  </Badge>
+                );
+              })}
+            </div>
+          </div>
+
           <div className="grid gap-6 md:grid-cols-3 min-w-0">
             {/* Main Content */}
             <div className="space-y-6 md:col-span-2 min-w-0">

@@ -442,7 +442,8 @@ export function ResourceDetailModal({
                         size={32}
                       />
                     </div>
-                    <div className="flex flex-wrap gap-2">
+                    {/* Category badges - hidden on mobile, shown in body instead */}
+                    <div className="hidden sm:flex flex-wrap gap-2">
                       {resource.categories.map((cat) => {
                         const Icon = categoryIcons[cat] || Briefcase;
                         return (
@@ -504,6 +505,29 @@ export function ResourceDetailModal({
                       orbColor
                     )}
                   />
+
+                  {/* Categories - mobile only */}
+                  <div className="sm:hidden mb-4">
+                    <div className="flex flex-wrap gap-2">
+                      {resource.categories.map((cat) => {
+                        const Icon = categoryIcons[cat] || Briefcase;
+                        return (
+                          <Badge
+                            key={cat}
+                            variant="outline"
+                            className={cn(
+                              'gap-1 font-medium capitalize border-muted-foreground/30',
+                              categoryBadgeStyles[cat] || ''
+                            )}
+                          >
+                            <Icon className="h-3 w-3" />
+                            {cat}
+                          </Badge>
+                        );
+                      })}
+                    </div>
+                  </div>
+
                   {/* Primary CTAs */}
                   <div className="mb-6 flex flex-wrap gap-3">
                     {resource.website && (

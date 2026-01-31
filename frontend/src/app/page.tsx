@@ -176,98 +176,26 @@ export default function Home() {
             </p>
           </div>
 
-          {/* ZIP centered above full-width map */}
+          {/* Map as hero element */}
           <div className="mx-auto max-w-5xl">
+            {/* US Map in white container - hero element */}
             <div className="hero-search-container rounded-2xl p-4 sm:p-6 shadow-2xl">
-              {/* Step indicator - inside white container */}
-              <div className="flex items-center justify-center gap-2 mb-4">
-                <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[hsl(var(--v4v-gold))] text-sm font-bold text-[hsl(var(--v4v-navy))]">
-                  1
-                </span>
-                <span className="text-sm font-medium text-[hsl(var(--v4v-navy))]">Where are you located?</span>
-              </div>
-
-              {/* ZIP Code Input - centered */}
-              <div className="flex flex-col items-center gap-3 mb-6">
-                <label htmlFor="zip-input" className="text-sm font-medium text-[hsl(var(--v4v-navy))]">
-                  Enter your ZIP code
-                </label>
-                <div className="relative w-full max-w-[220px]">
-                  <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-[hsl(var(--v4v-navy))]" />
-                  <Input
-                    id="zip-input"
-                    type="text"
-                    inputMode="numeric"
-                    pattern="[0-9]*"
-                    value={zipCode}
-                    onChange={handleZipChange}
-                    placeholder="e.g. 22030"
-                    className={cn(
-                      'h-12 pl-10 pr-10 text-lg text-center bg-white border-2 border-white text-[hsl(var(--v4v-navy))] placeholder:text-gray-400 rounded-lg shadow-lg',
-                      'focus:border-[hsl(var(--v4v-gold))] focus:ring-[hsl(var(--v4v-gold)/0.5)] focus:ring-2',
-                      zipCode.length === 5 && 'bg-[hsl(var(--v4v-gold))] border-[hsl(var(--v4v-gold))] text-[hsl(var(--v4v-navy))] font-semibold'
-                    )}
-                  />
-                  {zipCode && (
-                    <button
-                      type="button"
-                      onClick={() => setZipCode('')}
-                      className="absolute right-3 top-1/2 -translate-y-1/2 h-5 w-5 text-[hsl(var(--v4v-navy)/0.5)] hover:text-[hsl(var(--v4v-navy))] transition-colors"
-                      aria-label="Clear ZIP code"
-                    >
-                      <X className="h-5 w-5" />
-                    </button>
-                  )}
-                </div>
-                {zipCode.length === 5 ? (
-                  <p className="text-sm text-[hsl(var(--v4v-gold-dark))] font-medium">
-                    Searching within 100 miles
-                  </p>
-                ) : userCoords ? (
-                  <p className="text-sm text-[hsl(var(--v4v-gold-dark))] font-medium flex items-center gap-1">
-                    <Locate className="h-3.5 w-3.5" />
-                    Using your location
-                  </p>
-                ) : (
-                  <button
-                    type="button"
-                    onClick={handleGeolocation}
-                    disabled={isLocating}
-                    className="text-sm text-[hsl(var(--v4v-navy)/0.7)] hover:text-[hsl(var(--v4v-navy))] transition-colors flex items-center gap-1"
-                  >
-                    {isLocating ? (
-                      <>
-                        <Loader2 className="h-3.5 w-3.5 animate-spin" />
-                        Getting location...
-                      </>
-                    ) : (
-                      <>
-                        <Locate className="h-3.5 w-3.5" />
-                        or use my location
-                      </>
-                    )}
-                  </button>
-                )}
-              </div>
-
-              {/* Divider */}
-              <div className="flex items-center gap-3 mb-6">
-                <div className="h-px flex-1 bg-[hsl(var(--v4v-navy)/0.2)]" />
-                <span className="text-xs text-[hsl(var(--v4v-navy)/0.6)] uppercase tracking-wide">or click a state</span>
-                <div className="h-px flex-1 bg-[hsl(var(--v4v-navy)/0.2)]" />
-              </div>
+              {/* Subtle instruction text */}
+              <p className="text-center text-sm text-[hsl(var(--v4v-navy)/0.7)] mb-4">
+                Click a state to begin
+              </p>
 
               {/* Full-width US Map */}
               <div className="hidden sm:block">
                 <USMap
-                  className="[&_svg]:max-h-[320px]"
+                  className="[&_svg]:max-h-[360px]"
                   selectedStates={filters.states}
                   onToggleState={handleStateSelect}
                   singleSelect
                 />
               </div>
 
-              {/* Mobile: Dropdown for state selection */}
+              {/* Mobile: state selection */}
               <div className="sm:hidden">
                 <USMap
                   className=""
@@ -276,22 +204,106 @@ export default function Home() {
                   singleSelect
                 />
               </div>
+
+              {/* Selected state indicator inside container */}
+              {filters.states.length > 0 && (
+                <div className="mt-3 text-center">
+                  <span className="inline-flex items-center gap-2 rounded-full bg-[hsl(var(--v4v-gold))] px-4 py-1.5 text-sm font-semibold text-[hsl(var(--v4v-navy))]">
+                    {filters.states[0]}
+                    <button
+                      type="button"
+                      onClick={() => setStates([])}
+                      className="hover:text-[hsl(var(--v4v-navy)/0.7)] transition-colors"
+                      aria-label="Clear state selection"
+                    >
+                      <X className="h-4 w-4" />
+                    </button>
+                  </span>
+                </div>
+              )}
             </div>
 
-            {/* Selected location indicator */}
-            {hasLocation && (
-              <div className="mt-4 text-center">
-                <p className="text-base font-medium text-[hsl(var(--v4v-gold))]">
-                  {zipCode.length === 5 && `ZIP: ${zipCode}`}
-                  {zipCode.length === 5 && filters.states.length > 0 && ' + '}
-                  {filters.states.length > 0 && filters.states[0]}
-                </p>
+            {/* Location input below container - on blue background */}
+            <div className="mt-6 flex flex-col items-center gap-4">
+              {/* ZIP Code Input */}
+              <div className="flex items-center gap-3">
+                <span className="text-sm text-white/70">Or enter ZIP:</span>
+                <div className="relative">
+                  <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-white/50" />
+                  <Input
+                    id="zip-input"
+                    type="text"
+                    inputMode="numeric"
+                    pattern="[0-9]*"
+                    value={zipCode}
+                    onChange={handleZipChange}
+                    placeholder="ZIP code"
+                    className={cn(
+                      'h-10 w-32 pl-9 pr-8 text-sm text-center bg-white/10 border border-white/20 text-white placeholder:text-white/40 rounded-lg',
+                      'focus:border-[hsl(var(--v4v-gold))] focus:ring-[hsl(var(--v4v-gold)/0.3)] focus:ring-2 focus:bg-white/15',
+                      zipCode.length === 5 && 'bg-[hsl(var(--v4v-gold))] border-[hsl(var(--v4v-gold))] text-[hsl(var(--v4v-navy))] font-semibold placeholder:text-[hsl(var(--v4v-navy)/0.5)]'
+                    )}
+                  />
+                  {zipCode && (
+                    <button
+                      type="button"
+                      onClick={() => setZipCode('')}
+                      className={cn(
+                        'absolute right-2 top-1/2 -translate-y-1/2 h-4 w-4 transition-colors',
+                        zipCode.length === 5 ? 'text-[hsl(var(--v4v-navy)/0.5)] hover:text-[hsl(var(--v4v-navy))]' : 'text-white/50 hover:text-white'
+                      )}
+                      aria-label="Clear ZIP code"
+                    >
+                      <X className="h-4 w-4" />
+                    </button>
+                  )}
+                </div>
+                {zipCode.length === 5 && (
+                  <span className="text-sm text-[hsl(var(--v4v-gold))] font-medium">
+                    100mi radius
+                  </span>
+                )}
               </div>
-            )}
+
+              {/* Use my location button */}
+              {!userCoords ? (
+                <button
+                  type="button"
+                  onClick={handleGeolocation}
+                  disabled={isLocating}
+                  className="text-sm text-white/60 hover:text-white transition-colors flex items-center gap-1.5"
+                >
+                  {isLocating ? (
+                    <>
+                      <Loader2 className="h-4 w-4 animate-spin" />
+                      Getting location...
+                    </>
+                  ) : (
+                    <>
+                      <Locate className="h-4 w-4" />
+                      Use my current location
+                    </>
+                  )}
+                </button>
+              ) : (
+                <div className="flex items-center gap-2 text-sm text-[hsl(var(--v4v-gold))] font-medium">
+                  <Locate className="h-4 w-4" />
+                  Using your location
+                  <button
+                    type="button"
+                    onClick={() => setUserCoords(null)}
+                    className="text-white/50 hover:text-white transition-colors"
+                    aria-label="Clear location"
+                  >
+                    <X className="h-4 w-4" />
+                  </button>
+                </div>
+              )}
+            </div>
 
             {/* Scroll indicator when location not yet selected */}
             {!hasLocation && (
-              <div className="mt-6 flex flex-col items-center text-white/50 animate-bounce">
+              <div className="mt-8 flex flex-col items-center text-white/50 animate-bounce">
                 <span className="text-xs mb-1">Select a location to continue</span>
                 <ChevronDown className="h-5 w-5" />
               </div>
@@ -310,7 +322,7 @@ export default function Home() {
       {/* Step 2: What are you looking for? */}
       <section
         ref={step2Ref}
-        className="relative bg-background py-12 lg:py-16"
+        className="relative bg-background py-12 lg:py-16 scroll-mt-20"
       >
         {/* Subtle background decoration */}
         <div className="absolute inset-0 overflow-hidden">

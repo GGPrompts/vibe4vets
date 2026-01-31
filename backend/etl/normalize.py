@@ -398,15 +398,47 @@ class Normalizer:
         return list(set(normalized))  # Deduplicate
 
     def _normalize_scope(self, scope: str | None) -> str:
-        """Normalize scope value."""
+        """Normalize scope value to one of: national, state, local.
+
+        Unknown values default to 'local' to avoid polluting national search results.
+        """
         if not scope:
-            return "national"
+            return "local"
 
         scope = scope.lower().strip()
+
+        # Direct matches
         if scope in ("national", "state", "local"):
             return scope
 
-        return "national"
+        # Mappings for common variations
+        scope_mappings = {
+            # Regional resources typically serve specific states/areas
+            "regional": "state",
+            "multi-state": "state",
+            "multistate": "state",
+            # Nationwide variations
+            "nationwide": "national",
+            "country": "national",
+            "countrywide": "national",
+            "us": "national",
+            "usa": "national",
+            "federal": "national",
+            # Statewide variations
+            "statewide": "state",
+            # Local variations
+            "city": "local",
+            "county": "local",
+            "municipal": "local",
+            "community": "local",
+            "neighborhood": "local",
+        }
+
+        if scope in scope_mappings:
+            return scope_mappings[scope]
+
+        # Default to local for unknown values (safer than polluting national results)
+        return "local"
 
     def _normalize_states_list(self, states: list[str] | None) -> list[str]:
         """Normalize list of states to 2-letter codes."""
