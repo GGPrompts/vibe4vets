@@ -1,5 +1,6 @@
 """Resource service for CRUD operations."""
 
+import math
 from datetime import UTC, datetime
 from uuid import UUID
 
@@ -27,6 +28,37 @@ from app.schemas.resource import (
 
 # Meters per mile for distance calculations
 METERS_PER_MILE = 1609.34
+
+# Cache for PostGIS availability check (per-process)
+_postgis_available: bool | None = None
+
+
+def _check_postgis(session: Session) -> bool:
+    """Check if PostGIS is available on this database."""
+    global _postgis_available
+    if _postgis_available is not None:
+        return _postgis_available
+    try:
+        result = session.execute(
+            text("SELECT 1 FROM pg_extension WHERE extname = 'postgis'")
+        ).fetchone()
+        _postgis_available = result is not None
+    except Exception:
+        _postgis_available = False
+    return _postgis_available
+
+
+# Haversine distance formula in SQL (returns miles)
+# Uses Earth radius of 3959 miles
+HAVERSINE_DISTANCE_SQL = """
+    3959 * ACOS(
+        LEAST(1.0, GREATEST(-1.0,
+            COS(RADIANS(:center_lat)) * COS(RADIANS(l.latitude)) *
+            COS(RADIANS(l.longitude) - RADIANS(:center_lng)) +
+            SIN(RADIANS(:center_lat)) * SIN(RADIANS(l.latitude))
+        ))
+    )
+"""
 
 
 class ResourceService:
@@ -326,24 +358,64 @@ class ResourceService:
                         )
                     )
         else:
-            # Build spatial query for local/state resources
-            base_sql = """
-                SELECT r.id as resource_id,
-                       ST_Distance(l.geog, z.geog) / :meters_per_mile as distance_miles
-                FROM resources r
-                JOIN locations l ON r.location_id = l.id
-                CROSS JOIN zip_codes z
-                WHERE z.zip_code = :zip
-                AND l.geog IS NOT NULL
-                AND ST_DWithin(l.geog, z.geog, :radius_meters)
-                AND r.status::text != 'inactive'
-            """
+            # Check if PostGIS is available
+            has_postgis = _check_postgis(self.session)
 
-            params = {
-                "zip": zip_code,
-                "radius_meters": radius_meters,
-                "meters_per_mile": METERS_PER_MILE,
-            }
+            if has_postgis:
+                # Use PostGIS spatial query (more accurate)
+                base_sql = """
+                    SELECT r.id as resource_id,
+                           ST_Distance(l.geog, z.geog) / :meters_per_mile as distance_miles
+                    FROM resources r
+                    JOIN locations l ON r.location_id = l.id
+                    CROSS JOIN zip_codes z
+                    WHERE z.zip_code = :zip
+                    AND l.geog IS NOT NULL
+                    AND ST_DWithin(l.geog, z.geog, :radius_meters)
+                    AND r.status::text != 'inactive'
+                """
+                params = {
+                    "zip": zip_code,
+                    "radius_meters": radius_meters,
+                    "meters_per_mile": METERS_PER_MILE,
+                }
+            else:
+                # Fallback: Use Haversine formula (pure SQL, no PostGIS required)
+                lat_range = radius_miles / 69.0  # ~69 miles per degree latitude
+                lng_range = radius_miles / (69.0 * max(0.1, abs(math.cos(math.radians(center_lat)))))
+
+                base_sql = """
+                    SELECT r.id as resource_id,
+                           3959 * ACOS(
+                               LEAST(1.0, GREATEST(-1.0,
+                                   COS(RADIANS(:center_lat)) * COS(RADIANS(l.latitude)) *
+                                   COS(RADIANS(l.longitude) - RADIANS(:center_lng)) +
+                                   SIN(RADIANS(:center_lat)) * SIN(RADIANS(l.latitude))
+                               ))
+                           ) as distance_miles
+                    FROM resources r
+                    JOIN locations l ON r.location_id = l.id
+                    WHERE l.latitude IS NOT NULL AND l.longitude IS NOT NULL
+                    AND l.latitude BETWEEN :lat_min AND :lat_max
+                    AND l.longitude BETWEEN :lng_min AND :lng_max
+                    AND r.status::text != 'inactive'
+                    AND 3959 * ACOS(
+                        LEAST(1.0, GREATEST(-1.0,
+                            COS(RADIANS(:center_lat)) * COS(RADIANS(l.latitude)) *
+                            COS(RADIANS(l.longitude) - RADIANS(:center_lng)) +
+                            SIN(RADIANS(:center_lat)) * SIN(RADIANS(l.latitude))
+                        ))
+                    ) <= :radius_miles
+                """
+                params = {
+                    "center_lat": center_lat,
+                    "center_lng": center_lng,
+                    "lat_min": center_lat - lat_range,
+                    "lat_max": center_lat + lat_range,
+                    "lng_min": center_lng - lng_range,
+                    "lng_max": center_lng + lng_range,
+                    "radius_miles": radius_miles,
+                }
 
             if categories:
                 category_conditions = " OR ".join([f"r.categories @> ARRAY['{cat}']::text[]" for cat in categories])
@@ -529,24 +601,65 @@ class ResourceService:
                         )
                     )
         else:
-            # Build spatial query for local/state resources using lat/lng directly
-            point_expr = "ST_SetSRID(ST_MakePoint(:lng, :lat), 4326)::geography"
-            base_sql = f"""
-                SELECT r.id as resource_id,
-                       ST_Distance(l.geog, {point_expr}) / :meters_per_mile as distance_miles
-                FROM resources r
-                JOIN locations l ON r.location_id = l.id
-                WHERE l.geog IS NOT NULL
-                AND ST_DWithin(l.geog, {point_expr}, :radius_meters)
-                AND r.status::text != 'inactive'
-            """
+            # Check if PostGIS is available
+            has_postgis = _check_postgis(self.session)
 
-            params = {
-                "lat": lat,
-                "lng": lng,
-                "radius_meters": radius_meters,
-                "meters_per_mile": METERS_PER_MILE,
-            }
+            if has_postgis:
+                # Use PostGIS spatial query (more accurate)
+                point_expr = "ST_SetSRID(ST_MakePoint(:lng, :lat), 4326)::geography"
+                base_sql = f"""
+                    SELECT r.id as resource_id,
+                           ST_Distance(l.geog, {point_expr}) / :meters_per_mile as distance_miles
+                    FROM resources r
+                    JOIN locations l ON r.location_id = l.id
+                    WHERE l.geog IS NOT NULL
+                    AND ST_DWithin(l.geog, {point_expr}, :radius_meters)
+                    AND r.status::text != 'inactive'
+                """
+                params = {
+                    "lat": lat,
+                    "lng": lng,
+                    "radius_meters": radius_meters,
+                    "meters_per_mile": METERS_PER_MILE,
+                }
+            else:
+                # Fallback: Use Haversine formula (pure SQL, no PostGIS required)
+                # Approximate bounding box first for performance, then exact distance
+                lat_range = radius_miles / 69.0  # ~69 miles per degree latitude
+                lng_range = radius_miles / (69.0 * max(0.1, abs(math.cos(math.radians(lat)))))
+
+                base_sql = f"""
+                    SELECT r.id as resource_id,
+                           3959 * ACOS(
+                               LEAST(1.0, GREATEST(-1.0,
+                                   COS(RADIANS(:center_lat)) * COS(RADIANS(l.latitude)) *
+                                   COS(RADIANS(l.longitude) - RADIANS(:center_lng)) +
+                                   SIN(RADIANS(:center_lat)) * SIN(RADIANS(l.latitude))
+                               ))
+                           ) as distance_miles
+                    FROM resources r
+                    JOIN locations l ON r.location_id = l.id
+                    WHERE l.latitude IS NOT NULL AND l.longitude IS NOT NULL
+                    AND l.latitude BETWEEN :lat_min AND :lat_max
+                    AND l.longitude BETWEEN :lng_min AND :lng_max
+                    AND r.status::text != 'inactive'
+                    AND 3959 * ACOS(
+                        LEAST(1.0, GREATEST(-1.0,
+                            COS(RADIANS(:center_lat)) * COS(RADIANS(l.latitude)) *
+                            COS(RADIANS(l.longitude) - RADIANS(:center_lng)) +
+                            SIN(RADIANS(:center_lat)) * SIN(RADIANS(l.latitude))
+                        ))
+                    ) <= :radius_miles
+                """
+                params = {
+                    "center_lat": lat,
+                    "center_lng": lng,
+                    "lat_min": lat - lat_range,
+                    "lat_max": lat + lat_range,
+                    "lng_min": lng - lng_range,
+                    "lng_max": lng + lng_range,
+                    "radius_miles": radius_miles,
+                }
 
             if categories:
                 category_conditions = " OR ".join([f"r.categories @> ARRAY['{cat}']::text[]" for cat in categories])
