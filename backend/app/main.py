@@ -20,21 +20,32 @@ logger = logging.getLogger(__name__)
 async def lifespan(app: FastAPI) -> AsyncGenerator[None, None]:
     """Application lifespan handler."""
     # Startup - create tables if they don't exist
-    create_db_and_tables()
+    try:
+        create_db_and_tables()
+        logger.info("Database tables initialized")
+    except Exception as e:
+        logger.error("Failed to initialize database: %s", e)
+        # Continue anyway to allow health checks
 
     # Initialize and start the job scheduler
-    scheduler = get_scheduler()
-    scheduler_config = settings.get_scheduler_config()
-    setup_jobs(scheduler, scheduler_config)
+    try:
+        scheduler = get_scheduler()
+        scheduler_config = settings.get_scheduler_config()
+        setup_jobs(scheduler, scheduler_config)
 
-    if settings.scheduler_enabled:
-        scheduler.start()
+        if settings.scheduler_enabled:
+            scheduler.start()
+    except Exception as e:
+        logger.error("Failed to start scheduler: %s", e)
 
     yield
 
     # Shutdown - stop scheduler gracefully
-    if scheduler.is_running:
-        scheduler.shutdown(wait=True)
+    try:
+        if scheduler.is_running:
+            scheduler.shutdown(wait=True)
+    except Exception:
+        pass  # Scheduler may not have started
 
 
 API_DESCRIPTION = """
