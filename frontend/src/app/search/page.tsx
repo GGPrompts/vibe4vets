@@ -772,7 +772,7 @@ function SearchResults() {
                 ) : null;
               })()}
             </SheetHeader>
-            <ScrollArea className="mt-6 h-[calc(100vh-100px)]">
+            <ScrollArea className="mt-3 h-[calc(100vh-80px)] px-1">
               <FiltersSidebar
                 filters={filters}
                 onFiltersChange={(newFilters) => {
@@ -781,6 +781,19 @@ function SearchResults() {
                 }}
                 resultCount={totalResults}
                 hideHeader
+                sort={sort}
+                onSortChange={(newSort) => {
+                  const params = new URLSearchParams(searchParams.toString());
+                  if (newSort !== 'newest') {
+                    params.set('sort', newSort);
+                  } else {
+                    params.delete('sort');
+                  }
+                  router.push(`/search?${params.toString()}`, { scroll: false });
+                  setMobileFiltersOpen(false);
+                }}
+                hasQuery={!!query}
+                hasZip={!!filters.zip || !!(filters.lat && filters.lng)}
               />
             </ScrollArea>
           </SheetContent>

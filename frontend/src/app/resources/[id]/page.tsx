@@ -385,10 +385,10 @@ export default function ResourceDetailPage() {
   const gradient = categoryGradients[primaryCategory] || categoryGradients.employment;
 
   return (
-    <main className="min-h-screen min-h-[100dvh]">
+    <main className="min-h-screen min-h-[100dvh] w-full overflow-x-hidden">
       {/* Gradient Header */}
-      <div className={cn('bg-gradient-to-br px-4 sm:px-8 pb-6 sm:pb-8 pt-20 sm:pt-24 text-white', gradient)}>
-        <div className="mx-auto max-w-4xl">
+      <div className={cn('bg-gradient-to-br px-4 sm:px-8 pb-6 sm:pb-8 pt-20 sm:pt-24 text-white w-full', gradient)}>
+        <div className="mx-auto max-w-4xl w-full">
           {/* Navigation */}
           <div className="mb-6">
             <Link
@@ -489,11 +489,11 @@ export default function ResourceDetailPage() {
       </div>
 
       {/* Main Content */}
-      <div className="px-4 sm:px-8 py-6 sm:py-8">
-        <div className="mx-auto max-w-4xl">
-          <div className="grid gap-6 md:grid-cols-3">
+      <div className="px-4 sm:px-8 py-6 sm:py-8 w-full">
+        <div className="mx-auto max-w-4xl w-full">
+          <div className="grid gap-6 md:grid-cols-3 min-w-0">
             {/* Main Content */}
-            <div className="space-y-6 md:col-span-2">
+            <div className="space-y-6 md:col-span-2 min-w-0">
               {/* Description */}
               <Card>
                 <CardHeader>
@@ -530,7 +530,7 @@ export default function ResourceDetailPage() {
             </div>
 
           {/* Sidebar */}
-          <div className="space-y-6">
+          <div className="space-y-6 min-w-0">
             {/* Intake Card - How to Apply */}
             <IntakeCard resource={resource} />
 

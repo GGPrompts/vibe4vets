@@ -394,9 +394,9 @@ export function Header() {
         {/* Mobile Search Dropdown */}
         <div className={cn(
           "md:hidden overflow-hidden transition-all duration-300 ease-out bg-v4v-navy border-b border-white/10",
-          searchExpanded ? "max-h-28 opacity-100" : "max-h-0 opacity-0"
+          searchExpanded ? "max-h-20 opacity-100" : "max-h-0 opacity-0"
         )}>
-          <div className="px-4 py-3 space-y-2">
+          <div className="px-4 py-3">
             <form onSubmit={handleSearch} className="relative">
               <Search className="absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-white/50" />
               <Input
@@ -420,17 +420,6 @@ export function Header() {
                 Search
               </Button>
             </form>
-            {/* Mobile Sort - shown on search page */}
-            {isSearchPage && (
-              <div className="flex justify-end">
-                <SortDropdownHeader
-                  value={currentSort}
-                  onChange={handleSortChange}
-                  hasQuery={!!query}
-                  hasZip={!!zip}
-                />
-              </div>
-            )}
           </div>
         </div>
       </header>

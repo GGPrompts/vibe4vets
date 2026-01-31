@@ -17,7 +17,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from '@/components/ui/tooltip';
-import { Filter, X, Briefcase, GraduationCap, Home, Scale, UtensilsCrossed, FileCheck, ChevronDown, PanelLeft, PanelLeftClose, Search, MapPin, Brain, HeartHandshake, HeartPulse, School, Wallet, Users, Check, Tag } from 'lucide-react';
+import { Filter, X, Briefcase, GraduationCap, Home, Scale, UtensilsCrossed, FileCheck, ChevronDown, PanelLeft, PanelLeftClose, Search, MapPin, Brain, HeartHandshake, HeartPulse, School, Wallet, Users, Check, Tag, ArrowUpDown, Clock, ArrowDownAZ, Sparkles, Shuffle } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { cn } from '@/lib/utils';
 import { ZipCodeInput } from '@/components/ZipCodeInput';
@@ -111,11 +111,26 @@ export interface FilterState {
   lng?: number;
 }
 
+export type SortOption = 'relevance' | 'newest' | 'alpha' | 'shuffle' | 'distance';
+
+const SORT_OPTIONS: { value: SortOption; label: string; icon: React.ElementType; description: string }[] = [
+  { value: 'relevance', label: 'Relevance', icon: Sparkles, description: 'Best matches first' },
+  { value: 'distance', label: 'Distance', icon: MapPin, description: 'Closest to you' },
+  { value: 'newest', label: 'Newest', icon: Clock, description: 'Recently added' },
+  { value: 'alpha', label: 'A-Z', icon: ArrowDownAZ, description: 'Alphabetical order' },
+  { value: 'shuffle', label: 'Shuffle', icon: Shuffle, description: 'Randomized order' },
+];
+
 interface FiltersSidebarProps {
   filters: FilterState;
   onFiltersChange: (filters: FilterState) => void;
   resultCount?: number;
   hideHeader?: boolean;
+  // Mobile sort controls (optional - only shown when provided)
+  sort?: SortOption;
+  onSortChange?: (sort: SortOption) => void;
+  hasQuery?: boolean;
+  hasZip?: boolean;
 }
 
 const categoryColors: Record<string, string> = {
@@ -398,6 +413,10 @@ export function FiltersSidebar({
   onFiltersChange,
   resultCount,
   hideHeader = false,
+  sort,
+  onSortChange,
+  hasQuery = false,
+  hasZip = false,
 }: FiltersSidebarProps) {
   // Collapsible section state - categories open by default
   // States section opens if states are pre-selected (e.g., from landing page URL)
@@ -533,6 +552,13 @@ export function FiltersSidebar({
     });
   };
 
+  // Filter sort options based on context
+  const availableSortOptions = SORT_OPTIONS.filter((opt) => {
+    if (opt.value === 'relevance' && !hasQuery) return false;
+    if (opt.value === 'distance' && !hasZip) return false;
+    return true;
+  });
+
   return (
     <div className="space-y-3 pb-8">
       {/* Header - can be hidden when parent provides its own */}
@@ -548,6 +574,41 @@ export function FiltersSidebar({
             </Badge>
           )}
         </div>
+      )}
+
+      {/* Sort section - only shown on mobile when props provided */}
+      {sort && onSortChange && (
+        <>
+          <div className="space-y-2">
+            <h4 className="flex items-center gap-2 text-sm font-medium">
+              <ArrowUpDown className="h-4 w-4 text-muted-foreground" />
+              Sort by
+            </h4>
+            <div className="flex flex-wrap gap-1.5">
+              {availableSortOptions.map((option) => {
+                const isSelected = sort === option.value;
+                const Icon = option.icon;
+                return (
+                  <button
+                    key={option.value}
+                    type="button"
+                    onClick={() => onSortChange(option.value)}
+                    className={cn(
+                      'inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-all',
+                      isSelected
+                        ? 'border-[hsl(var(--v4v-gold))] bg-[hsl(var(--v4v-gold)/0.15)] text-[hsl(var(--v4v-gold-dark))] font-medium'
+                        : 'border-border bg-background hover:bg-muted/50'
+                    )}
+                  >
+                    <Icon className="h-3.5 w-3.5" />
+                    {option.label}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+          <Separator />
+        </>
       )}
 
       <Button

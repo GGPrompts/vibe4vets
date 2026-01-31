@@ -384,9 +384,9 @@ export function ResourceDetailModal({
             aria-labelledby="modal-title"
             className={cn(
               // Mobile: full-screen overlay with flex layout
-              'fixed inset-0 flex flex-col overflow-hidden shadow-2xl outline-none',
-              // Desktop: centered modal
-              'sm:inset-auto sm:left-1/2 sm:top-1/2 sm:max-h-[85vh] sm:w-full sm:max-w-2xl sm:-translate-x-1/2 sm:-translate-y-1/2 sm:rounded-2xl',
+              'fixed inset-0 w-screen max-w-none flex flex-col overflow-hidden shadow-2xl outline-none',
+              // Desktop: centered modal with constrained width
+              'sm:inset-auto sm:left-1/2 sm:top-1/2 sm:w-full sm:max-w-2xl sm:max-h-[85vh] sm:-translate-x-1/2 sm:-translate-y-1/2 sm:rounded-2xl',
               bodyBg
             )}
             layoutId={enableLayoutId ? `resource-card-${resource.id}` : undefined}
