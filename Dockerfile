@@ -24,6 +24,6 @@ RUN pip install --no-cache-dir .
 
 EXPOSE 8000
 
-# Skip migrations for now, just start uvicorn
-CMD echo "Starting uvicorn directly..." && \
+# Run migrations then start server (migrations may fail if DB is down, app will start anyway)
+CMD alembic upgrade head 2>&1 || echo "Alembic failed - continuing anyway" && \
     uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-8000}
