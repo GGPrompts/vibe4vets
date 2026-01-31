@@ -381,6 +381,7 @@ class ResourceService:
                 }
             else:
                 # Fallback: Use Haversine formula (pure SQL, no PostGIS required)
+                # Use bounding box for filtering (close enough), calculate exact distance for display
                 lat_range = radius_miles / 69.0  # ~69 miles per degree latitude
                 lng_range = radius_miles / (69.0 * max(0.1, abs(math.cos(math.radians(center_lat)))))
 
@@ -399,13 +400,6 @@ class ResourceService:
                     AND l.latitude BETWEEN :lat_min AND :lat_max
                     AND l.longitude BETWEEN :lng_min AND :lng_max
                     AND r.status::text != 'inactive'
-                    AND 3959 * ACOS(
-                        LEAST(1.0, GREATEST(-1.0,
-                            COS(RADIANS(:center_lat)) * COS(RADIANS(l.latitude)) *
-                            COS(RADIANS(l.longitude) - RADIANS(:center_lng)) +
-                            SIN(RADIANS(:center_lat)) * SIN(RADIANS(l.latitude))
-                        ))
-                    ) <= :radius_miles
                 """
                 params = {
                     "center_lat": center_lat,
@@ -414,7 +408,6 @@ class ResourceService:
                     "lat_max": center_lat + lat_range,
                     "lng_min": center_lng - lng_range,
                     "lng_max": center_lng + lng_range,
-                    "radius_miles": radius_miles,
                 }
 
             if categories:
@@ -624,11 +617,11 @@ class ResourceService:
                 }
             else:
                 # Fallback: Use Haversine formula (pure SQL, no PostGIS required)
-                # Approximate bounding box first for performance, then exact distance
+                # Use bounding box for filtering (close enough), calculate exact distance for display
                 lat_range = radius_miles / 69.0  # ~69 miles per degree latitude
                 lng_range = radius_miles / (69.0 * max(0.1, abs(math.cos(math.radians(lat)))))
 
-                base_sql = f"""
+                base_sql = """
                     SELECT r.id as resource_id,
                            3959 * ACOS(
                                LEAST(1.0, GREATEST(-1.0,
@@ -643,13 +636,6 @@ class ResourceService:
                     AND l.latitude BETWEEN :lat_min AND :lat_max
                     AND l.longitude BETWEEN :lng_min AND :lng_max
                     AND r.status::text != 'inactive'
-                    AND 3959 * ACOS(
-                        LEAST(1.0, GREATEST(-1.0,
-                            COS(RADIANS(:center_lat)) * COS(RADIANS(l.latitude)) *
-                            COS(RADIANS(l.longitude) - RADIANS(:center_lng)) +
-                            SIN(RADIANS(:center_lat)) * SIN(RADIANS(l.latitude))
-                        ))
-                    ) <= :radius_miles
                 """
                 params = {
                     "center_lat": lat,
@@ -658,7 +644,6 @@ class ResourceService:
                     "lat_max": lat + lat_range,
                     "lng_min": lng - lng_range,
                     "lng_max": lng + lng_range,
-                    "radius_miles": radius_miles,
                 }
 
             if categories:
