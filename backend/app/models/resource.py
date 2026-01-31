@@ -122,12 +122,11 @@ class Resource(SQLModel, table=True):
     )
 
     # Vector embedding for semantic search (pgvector)
-    # DISABLED: Railway doesn't have pgvector extension, column doesn't exist
-    # To re-enable: uncomment and run migration to add the column
-    # embedding: Any = Field(
-    #     default=None,
-    #     sa_column=Column(Vector(EMBEDDING_DIMENSION), nullable=True) if _HAS_PGVECTOR else None,
-    # )
+    # Enabled now that we're on Supabase with pgvector extension
+    embedding: Any = Field(
+        default=None,
+        sa_column=Column(Vector(EMBEDDING_DIMENSION), nullable=True) if _HAS_PGVECTOR else None,
+    )
 
     # Relationships
     organization: "Organization" = Relationship(back_populates="resources")
