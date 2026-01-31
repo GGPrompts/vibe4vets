@@ -16,7 +16,7 @@ try:
     _HAS_PGVECTOR = True
 except ImportError:
     _HAS_PGVECTOR = False
-    Vector = None  # type: ignore
+    Vector = None
 
 
 def _utc_now() -> datetime:
