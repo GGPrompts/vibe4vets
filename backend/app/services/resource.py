@@ -442,6 +442,10 @@ class ResourceService:
             remaining_limit = limit
             current_offset = offset
 
+            # Collect resource IDs and distances first, then batch load
+            nearby_ids_distances: list[tuple[UUID, float]] = []
+            national_ids: list[UUID] = []
+
             # Fetch nearby resources if we're within that range
             if current_offset < nearby_count:
                 results_sql = f"""
@@ -454,15 +458,8 @@ class ResourceService:
 
                 results = self.session.execute(text(results_sql), params).fetchall()
                 for row in results:
-                    resource = self.session.get(Resource, row.resource_id)
-                    if resource:
-                        nearby_resources.append(
-                            ResourceNearbyResult(
-                                resource=self._to_read_schema(resource),
-                                distance_miles=round(row.distance_miles, 1),
-                            )
-                        )
-                remaining_limit -= len(nearby_resources)
+                    nearby_ids_distances.append((row.resource_id, round(row.distance_miles, 1)))
+                remaining_limit -= len(nearby_ids_distances)
                 current_offset = 0  # Reset for national query
             else:
                 current_offset -= nearby_count
@@ -489,7 +486,37 @@ class ResourceService:
                 ).fetchall()
 
                 for row in national_results:
-                    resource = self.session.get(Resource, row.resource_id)
+                    national_ids.append(row.resource_id)
+
+            # Batch load all resources with eager loading to avoid N+1 queries
+            all_ids = [rid for rid, _ in nearby_ids_distances] + national_ids
+            if all_ids:
+                resources_query = (
+                    select(Resource)
+                    .where(Resource.id.in_(all_ids))
+                    .options(
+                        selectinload(Resource.organization),  # type: ignore[attr-defined]
+                        selectinload(Resource.location),  # type: ignore[attr-defined]
+                        selectinload(Resource.source),  # type: ignore[attr-defined]
+                        selectinload(Resource.program),  # type: ignore[attr-defined]
+                    )
+                )
+                resources_by_id = {r.id: r for r in self.session.exec(resources_query).all()}
+
+                # Build nearby results in order
+                for rid, distance in nearby_ids_distances:
+                    resource = resources_by_id.get(rid)
+                    if resource:
+                        nearby_resources.append(
+                            ResourceNearbyResult(
+                                resource=self._to_read_schema(resource),
+                                distance_miles=distance,
+                            )
+                        )
+
+                # Build national results in order
+                for rid in national_ids:
+                    resource = resources_by_id.get(rid)
                     if resource:
                         nearby_resources.append(
                             ResourceNearbyResult(
@@ -678,6 +705,10 @@ class ResourceService:
             remaining_limit = limit
             current_offset = offset
 
+            # Collect resource IDs and distances first, then batch load
+            nearby_ids_distances: list[tuple[UUID, float]] = []
+            national_ids: list[UUID] = []
+
             # Fetch nearby resources if we're within that range
             if current_offset < nearby_count:
                 results_sql = f"""
@@ -690,15 +721,8 @@ class ResourceService:
 
                 results = self.session.execute(text(results_sql), params).fetchall()
                 for row in results:
-                    resource = self.session.get(Resource, row.resource_id)
-                    if resource:
-                        nearby_resources.append(
-                            ResourceNearbyResult(
-                                resource=self._to_read_schema(resource),
-                                distance_miles=round(row.distance_miles, 1),
-                            )
-                        )
-                remaining_limit -= len(nearby_resources)
+                    nearby_ids_distances.append((row.resource_id, round(row.distance_miles, 1)))
+                remaining_limit -= len(nearby_ids_distances)
                 current_offset = 0
             else:
                 current_offset -= nearby_count
@@ -725,7 +749,37 @@ class ResourceService:
                 ).fetchall()
 
                 for row in national_results:
-                    resource = self.session.get(Resource, row.resource_id)
+                    national_ids.append(row.resource_id)
+
+            # Batch load all resources with eager loading to avoid N+1 queries
+            all_ids = [rid for rid, _ in nearby_ids_distances] + national_ids
+            if all_ids:
+                resources_query = (
+                    select(Resource)
+                    .where(Resource.id.in_(all_ids))
+                    .options(
+                        selectinload(Resource.organization),  # type: ignore[attr-defined]
+                        selectinload(Resource.location),  # type: ignore[attr-defined]
+                        selectinload(Resource.source),  # type: ignore[attr-defined]
+                        selectinload(Resource.program),  # type: ignore[attr-defined]
+                    )
+                )
+                resources_by_id = {r.id: r for r in self.session.exec(resources_query).all()}
+
+                # Build nearby results in order
+                for rid, distance in nearby_ids_distances:
+                    resource = resources_by_id.get(rid)
+                    if resource:
+                        nearby_resources.append(
+                            ResourceNearbyResult(
+                                resource=self._to_read_schema(resource),
+                                distance_miles=distance,
+                            )
+                        )
+
+                # Build national results in order
+                for rid in national_ids:
+                    resource = resources_by_id.get(rid)
                     if resource:
                         nearby_resources.append(
                             ResourceNearbyResult(
