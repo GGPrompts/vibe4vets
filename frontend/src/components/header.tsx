@@ -335,8 +335,19 @@ export function Header() {
                 <MagnifierToggle />
               </nav>
 
-              {/* Mobile Right Controls: Search + Saved + Suggest */}
+              {/* Mobile Right Controls: Sort + Search + Saved + Suggest */}
               <div className="flex md:hidden items-center gap-1">
+                {/* Mobile Sort - search page only */}
+                {isSearchPage && (
+                  <SortDropdownHeader
+                    value={currentSort}
+                    onChange={handleSortChange}
+                    hasQuery={!!query}
+                    hasZip={!!zip}
+                    className="mr-1"
+                  />
+                )}
+
                 {/* Mobile Suggest Resource */}
                 <SuggestResourceModal
                   trigger={

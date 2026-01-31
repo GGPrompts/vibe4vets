@@ -385,9 +385,9 @@ export default function ResourceDetailPage() {
   const gradient = categoryGradients[primaryCategory] || categoryGradients.employment;
 
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen min-h-[100dvh]">
       {/* Gradient Header */}
-      <div className={cn('bg-gradient-to-br px-8 pb-8 pt-24 text-white', gradient)}>
+      <div className={cn('bg-gradient-to-br px-4 sm:px-8 pb-6 sm:pb-8 pt-20 sm:pt-24 text-white', gradient)}>
         <div className="mx-auto max-w-4xl">
           {/* Navigation */}
           <div className="mb-6">
@@ -489,7 +489,7 @@ export default function ResourceDetailPage() {
       </div>
 
       {/* Main Content */}
-      <div className="px-8 py-8">
+      <div className="px-4 sm:px-8 py-6 sm:py-8">
         <div className="mx-auto max-w-4xl">
           <div className="grid gap-6 md:grid-cols-3">
             {/* Main Content */}

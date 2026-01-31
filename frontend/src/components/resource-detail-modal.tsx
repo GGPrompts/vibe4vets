@@ -23,7 +23,6 @@ import {
   BookOpen,
   Home,
   Scale,
-  ChevronDown,
   UtensilsCrossed,
   Award,
   Tag,
@@ -384,14 +383,16 @@ export function ResourceDetailModal({
             aria-modal="true"
             aria-labelledby="modal-title"
             className={cn(
-              'fixed inset-x-0 bottom-0 max-h-[90vh] overflow-hidden rounded-t-2xl shadow-2xl outline-none',
-              'sm:inset-x-auto sm:bottom-auto sm:left-1/2 sm:top-1/2 sm:max-h-[85vh] sm:w-full sm:max-w-2xl sm:-translate-x-1/2 sm:-translate-y-1/2 sm:rounded-2xl',
+              // Mobile: full-screen overlay with flex layout
+              'fixed inset-0 flex flex-col overflow-hidden shadow-2xl outline-none',
+              // Desktop: centered modal
+              'sm:inset-auto sm:left-1/2 sm:top-1/2 sm:max-h-[85vh] sm:w-full sm:max-w-2xl sm:-translate-x-1/2 sm:-translate-y-1/2 sm:rounded-2xl',
               bodyBg
             )}
             layoutId={enableLayoutId ? `resource-card-${resource.id}` : undefined}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
+            initial={{ opacity: 0, y: isMobile ? '100%' : 0 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: isMobile ? '100%' : 0 }}
             style={{ zIndex: 100 }}
             transition={{
               layout: {
@@ -400,6 +401,7 @@ export function ResourceDetailModal({
                 stiffness: 200,
               },
               opacity: { duration: 0.2 },
+              y: { type: 'spring', damping: 25, stiffness: 200 },
             }}
             drag={isMobile ? "y" : false}
             dragControls={isMobile ? dragControls : undefined}
@@ -407,15 +409,11 @@ export function ResourceDetailModal({
             dragElastic={isMobile ? { top: 0, bottom: 0.5 } : undefined}
             onDragEnd={isMobile ? handleDragEnd : undefined}
           >
-                {/* Mobile drag handle */}
-                <div className="flex justify-center py-3 sm:hidden">
-                  <div className="h-1.5 w-12 rounded-full bg-muted-foreground/30" />
-                </div>
 
                 {/* Header with gradient background */}
-                <div className={cn('p-6 text-white', gradient)}>
-                  {/* Header action buttons */}
-                  <div className="absolute right-4 top-4 flex items-center gap-2">
+                <div className={cn('relative shrink-0 p-4 sm:p-6 text-white', gradient)}>
+                  {/* Header action buttons - positioned for safe area on mobile */}
+                  <div className="absolute right-3 top-3 sm:right-4 sm:top-4 flex items-center gap-2 z-10">
                     {/* Bookmark button */}
                     <BookmarkButton
                       resourceId={resource.id}
@@ -433,11 +431,6 @@ export function ResourceDetailModal({
                     >
                       <X className="h-5 w-5" />
                     </button>
-                  </div>
-
-                  {/* Mobile: pull down indicator */}
-                  <div className="absolute left-1/2 top-4 -translate-x-1/2 sm:hidden">
-                    <ChevronDown className="h-5 w-5 animate-bounce opacity-60" />
                   </div>
 
                   {/* Logo/Category icon and badges */}
@@ -497,7 +490,7 @@ export function ResourceDetailModal({
                 </div>
 
                 {/* Scrollable content */}
-                <div className="relative max-h-[calc(90vh-280px)] overflow-x-hidden overflow-y-auto overscroll-contain p-6 sm:max-h-[calc(85vh-280px)]">
+                <div className="relative flex-1 overflow-x-hidden overflow-y-auto overscroll-contain p-4 sm:p-6 sm:max-h-[calc(85vh-280px)]">
                   {/* Decorative orbs */}
                   <div
                     className={cn(
