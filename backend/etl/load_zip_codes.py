@@ -156,9 +156,7 @@ def load_zip_codes(df: pd.DataFrame) -> int:
                 # Build VALUES clause without PostGIS (lat/lng only)
                 values = []
                 for _, row in batch.iterrows():
-                    values.append(
-                        f"('{row['zip_code']}', {row['latitude']}, {row['longitude']})"
-                    )
+                    values.append(f"('{row['zip_code']}', {row['latitude']}, {row['longitude']})")
 
                 sql = f"""
                     INSERT INTO zip_codes (zip_code, latitude, longitude)
