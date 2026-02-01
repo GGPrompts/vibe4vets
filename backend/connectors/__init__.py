@@ -53,6 +53,15 @@ from connectors.vfw_posts import VFWPostsConnector
 from connectors.vso_post_locator import VSOPostLocatorConnector
 from connectors.wounded_warrior_project import WoundedWarriorProjectConnector
 
+# Optional: Crawl4AI-based discovery (requires crawl4ai package)
+try:
+    from connectors.crawl4ai_discovery import Crawl4AIDiscoveryConnector
+
+    _CRAWL4AI_AVAILABLE = True
+except ImportError:
+    _CRAWL4AI_AVAILABLE = False
+    Crawl4AIDiscoveryConnector = None  # type: ignore
+
 __all__ = [
     "AmericanLegionPostsConnector",
     "ApprenticeshipConnector",
@@ -109,4 +118,6 @@ __all__ = [
     "VFWPostsConnector",
     "VSOPostLocatorConnector",
     "WoundedWarriorProjectConnector",
+    # Optional (requires crawl4ai)
+    "Crawl4AIDiscoveryConnector",
 ]

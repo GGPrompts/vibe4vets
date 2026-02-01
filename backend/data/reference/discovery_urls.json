@@ -1,0 +1,70 @@
+{
+  "description": "URLs for Crawl4AI discovery connector to crawl for veteran resources",
+  "last_updated": "2026-02-01",
+  "sources": [
+    {
+      "name": "State VA Agencies",
+      "tier": 3,
+      "frequency": "monthly",
+      "urls": [
+        "https://www.calvet.ca.gov/VetServices",
+        "https://www.tvc.texas.gov/grants/",
+        "https://floridavets.org/benefits-services/",
+        "https://www.dva.wa.gov/veterans-service-members-and-their-families",
+        "https://www.veterans.ny.gov/services",
+        "https://www.mva.maryland.gov/veterans-benefits/",
+        "https://www.dva.virginia.gov/benefits/",
+        "https://www.ohiovets.gov/What-We-Do/Services",
+        "https://www.michigan.gov/mvaa/services",
+        "https://www.nc4vets.com/benefits-services"
+      ]
+    },
+    {
+      "name": "211 Directories",
+      "tier": 4,
+      "frequency": "monthly",
+      "urls": [
+        "https://211la.org/resources/category/veterans-services",
+        "https://www.211.org/about-us/your-local-211"
+      ]
+    },
+    {
+      "name": "Veteran Nonprofits",
+      "tier": 3,
+      "frequency": "monthly",
+      "urls": [
+        "https://teamrubiconusa.org/programs/",
+        "https://missioncontinues.org/programs/",
+        "https://www.dav.org/get-help-now/",
+        "https://www.vfw.org/assistance",
+        "https://www.legion.org/veteransbenefits"
+      ]
+    },
+    {
+      "name": "Food Resources",
+      "tier": 4,
+      "frequency": "monthly",
+      "urls": [
+        "https://www.feedingamerica.org/find-your-local-foodbank"
+      ]
+    },
+    {
+      "name": "Housing Resources",
+      "tier": 3,
+      "frequency": "monthly",
+      "urls": [
+        "https://www.va.gov/homeless/housing.asp",
+        "https://www.hudexchange.info/programs/coc/"
+      ]
+    },
+    {
+      "name": "Mental Health",
+      "tier": 3,
+      "frequency": "monthly",
+      "urls": [
+        "https://www.mentalhealth.va.gov/",
+        "https://www.giveanhour.org/find-a-provider"
+      ]
+    }
+  ]
+}

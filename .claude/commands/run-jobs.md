@@ -25,6 +25,21 @@ Run maintenance jobs that are overdue based on `.claude/job-state.json`.
 
 ## Available Jobs
 
+### crawl4ai_verify (Weekly)
+Recheck flagged resources using Crawl4AI browser automation.
+- Visits URLs that failed HTTP checks (403s, connection errors)
+- Uses Firefox browser to bypass bot detection
+- ~45% recovery rate on false positives
+- Confirms truly broken URLs for cleanup
+- No API costs (pure browser automation)
+
+### crawl4ai_discovery (Bi-weekly)
+Discover new veteran resources from configured URLs.
+- Crawls Tier 3-4 sites using Crawl4AI (handles JS, bot detection)
+- Extracts resources using Claude CLI (Max subscription = no per-call fees)
+- URLs configured in `data/reference/discovery_urls.json`
+- State VA pages, 211 directories, nonprofit veteran orgs
+
 ### link_checker (Weekly)
 Check all resource URLs for broken links and soft 404s.
 - Uses `scripts/parallel_link_check.py` for fast async checking (~50 concurrent)
@@ -150,6 +165,42 @@ Generate vector embeddings for resources.
    "
    ```
 
+   **crawl4ai_verify**: Use browser automation to recheck flagged resources
+   ```bash
+   cd backend && source .venv/bin/activate
+   python scripts/crawl4ai_verify.py --flagged --limit 100
+   ```
+   - Rechecks resources flagged as 403/broken using Crawl4AI browser automation
+   - Recovers ~45% of false positives (bot-blocked sites that actually work)
+   - Confirms truly broken URLs for cleanup
+   - No API costs (just browser automation)
+
+   **crawl4ai_discovery**: Discover new resources from configured URLs
+   ```bash
+   cd backend && source .venv/bin/activate
+   PYTHONPATH=. python -c "
+   import json
+   from pathlib import Path
+   from connectors import Crawl4AIDiscoveryConnector
+
+   # Load discovery URLs
+   config = json.loads(Path('data/reference/discovery_urls.json').read_text())
+
+   for source in config['sources']:
+       print(f'Crawling {source[\"name\"]}...')
+       connector = Crawl4AIDiscoveryConnector(
+           urls=source['urls'],
+           source_name=source['name'],
+           tier=source['tier'],
+       )
+       resources = connector.run()
+       print(f'  Found {len(resources)} resources')
+   "
+   ```
+   - Crawls Tier 3-4 sites using Crawl4AI (handles JS, bot detection)
+   - Extracts resources using Claude CLI (Max subscription = no per-call fees)
+   - Configured in `data/reference/discovery_urls.json`
+
 6. **Update job state** after successful run:
    ```python
    import json
@@ -184,6 +235,9 @@ Generate vector embeddings for resources.
 | `scripts/parallel_link_check.py` | Fast async link checker (50 concurrent) |
 | `scripts/recheck_403s.py` | Recheck 403s with browser User-Agent |
 | `scripts/sync_to_railway.py` | Efficient incremental sync to Railway |
+| `scripts/crawl4ai_verify.py` | Recheck flagged resources using Crawl4AI browser automation |
+| `scripts/test_crawl4ai.py` | Test Crawl4AI on individual URLs |
+| `scripts/test_tier34_crawl.py` | Test Crawl4AI quality on Tier 3-4 sources |
 
 ## Notes
 
