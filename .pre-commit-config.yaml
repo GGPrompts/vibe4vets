@@ -1,0 +1,41 @@
+# Pre-commit hooks for vibe4vets
+# Run `pre-commit install` to set up hooks
+# Run `pre-commit run --all-files` to check all files manually
+
+repos:
+  # Ruff - Python linting and formatting (backend)
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.9.6
+    hooks:
+      - id: ruff
+        name: ruff lint
+        args: [--fix, --exit-non-zero-on-fix]
+        files: ^backend/
+      - id: ruff-format
+        name: ruff format
+        files: ^backend/
+
+  # General file checks
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: trailing-whitespace
+        exclude: ^(frontend/|\.beads/)
+      - id: end-of-file-fixer
+        exclude: ^(frontend/|\.beads/)
+      - id: check-yaml
+        args: [--unsafe]  # Allow custom tags
+      - id: check-json
+        exclude: ^(frontend/|\.beads/|.*data/.*\.json$|ssvf_providers_output\.json)
+      - id: check-added-large-files
+        args: [--maxkb=1000]
+
+  # Frontend - Next.js/ESLint (runs npm run lint)
+  - repo: local
+    hooks:
+      - id: frontend-lint
+        name: frontend lint
+        entry: bash -c 'cd frontend && npm run lint --fix 2>/dev/null || npm run lint'
+        language: system
+        files: ^frontend/.*\.(ts|tsx|js|jsx)$
+        pass_filenames: false

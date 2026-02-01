@@ -64,7 +64,7 @@ def _categorize_exception(e: Exception, source_name: str) -> ETLError:
         )
 
     # JSON/parsing errors
-    if isinstance(e, (json.JSONDecodeError, ValueError, KeyError, TypeError)):
+    if isinstance(e, json.JSONDecodeError | ValueError | KeyError | TypeError):
         return ETLError(
             stage="extract",
             message=f"Connector {source_name} parse error: {e}",
