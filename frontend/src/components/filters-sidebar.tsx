@@ -513,7 +513,6 @@ export function FiltersSidebar({
 
   const handleTagsChange = (newTags: string[]) => {
     const newFilters = { ...filters, tags: newTags };
-    console.log('[FiltersSidebar] handleTagsChange calling onFiltersChange with:', newFilters);
     onFiltersChange(newFilters);
   };
 
@@ -530,11 +529,9 @@ export function FiltersSidebar({
   };
 
   const toggleTag = (tagId: string) => {
-    console.log('[FiltersSidebar] toggleTag called:', tagId);
     const newTags = (filters.tags || []).includes(tagId)
       ? (filters.tags || []).filter((t) => t !== tagId)
       : [...(filters.tags || []), tagId];
-    console.log('[FiltersSidebar] newTags:', newTags);
     handleTagsChange(newTags);
   };
 

@@ -42,7 +42,6 @@ export function useResourcesInfinite(filters: ResourceFilters) {
         params.sort = filters.sort;
       }
 
-      console.log('[useResourcesInfinite] Fetching with params:', params);
       return api.resources.list(params);
     },
     initialPageParam: 0,
