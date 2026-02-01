@@ -7,11 +7,15 @@
     "notes": "Uses browser automation to verify resources that failed HTTP checks"
   },
   "crawl4ai_discovery": {
-    "last_run": null,
+    "last_run": "2026-02-01T21:45:00Z",
     "frequency_hours": 336,
     "description": "Discover new veteran resources from configured URLs using Crawl4AI + CLI",
     "disabled": false,
-    "notes": "Crawls Tier 3-4 sites, extracts resources with Claude CLI (Max subscription)"
+    "notes": "Crawls Tier 3-4 sites, extracts resources with Claude CLI (Max subscription)",
+    "last_run_stats": {
+      "pages": 20,
+      "resources": 288
+    }
   },
   "link_checker": {
     "last_run": "2026-02-01T17:57:00Z",
