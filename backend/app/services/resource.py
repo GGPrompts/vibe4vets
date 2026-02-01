@@ -1,5 +1,6 @@
 """Resource service for CRUD operations."""
 
+import logging
 import math
 from datetime import UTC, datetime
 from uuid import UUID
@@ -29,6 +30,8 @@ from app.schemas.resource import (
 # Meters per mile for distance calculations
 METERS_PER_MILE = 1609.34
 
+logger = logging.getLogger(__name__)
+
 # Cache for PostGIS availability check (per-process)
 _postgis_available: bool | None = None
 
@@ -41,7 +44,8 @@ def _check_postgis(session: Session) -> bool:
     try:
         result = session.execute(text("SELECT 1 FROM pg_extension WHERE extname = 'postgis'")).fetchone()
         _postgis_available = result is not None
-    except Exception:
+    except Exception as e:
+        logger.warning("Failed to check PostGIS availability: %s", e)
         _postgis_available = False
     return _postgis_available
 
