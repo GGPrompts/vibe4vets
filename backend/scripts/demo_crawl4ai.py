@@ -17,7 +17,7 @@ TEST_URLS = [
 
 async def test_crawl(url: str) -> dict:
     """Crawl a URL and return results."""
-    print(f"\n{'='*60}")
+    print(f"\n{'=' * 60}")
     print(f"Crawling: {url}")
     print("=" * 60)
 

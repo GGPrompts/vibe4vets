@@ -77,8 +77,7 @@ async def verify_url(crawler: "AsyncWebCrawler", url: str) -> dict:
                 "title": result.metadata.get("title", ""),
                 "content_length": len(result.markdown),
                 "markdown_preview": result.markdown[:1000] if result.markdown else "",
-                "links_count": len(result.links.get("internal", []))
-                + len(result.links.get("external", [])),
+                "links_count": len(result.links.get("internal", [])) + len(result.links.get("external", [])),
             }
         else:
             return {
@@ -115,7 +114,7 @@ async def verify_batch(urls: list[str], concurrency: int = 3) -> list[dict]:
         # Process in batches to avoid overwhelming servers
         for i in range(0, len(urls), concurrency):
             batch = urls[i : i + concurrency]
-            print(f"\nVerifying batch {i//concurrency + 1} ({len(batch)} URLs)...")
+            print(f"\nVerifying batch {i // concurrency + 1} ({len(batch)} URLs)...")
 
             tasks = [verify_url(crawler, url) for url in batch]
             batch_results = await asyncio.gather(*tasks)
@@ -314,9 +313,7 @@ def main():
 
             was_flagged = resource.link_flagged_reason is not None
 
-            if update_resource_from_verification(
-                session, resource, verification, args.dry_run
-            ):
+            if update_resource_from_verification(session, resource, verification, args.dry_run):
                 updated_count += 1
                 if verification["status"] == "active" and was_flagged:
                     recovered_count += 1

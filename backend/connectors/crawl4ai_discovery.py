@@ -96,8 +96,7 @@ class Crawl4AIDiscoveryConnector(BaseConnector):
         """
         if not CRAWL4AI_AVAILABLE:
             raise ImportError(
-                "crawl4ai not installed. Run: uv pip install crawl4ai && "
-                "python -m playwright install firefox"
+                "crawl4ai not installed. Run: uv pip install crawl4ai && python -m playwright install firefox"
             )
 
         self.urls = urls
@@ -145,9 +144,7 @@ class Crawl4AIDiscoveryConnector(BaseConnector):
         async with AsyncWebCrawler(config=browser_config) as crawler:
             for url in self.urls:
                 try:
-                    resources = await self._crawl_and_extract(
-                        crawler, url, run_config, now
-                    )
+                    resources = await self._crawl_and_extract(crawler, url, run_config, now)
                     all_resources.extend(resources)
                 except Exception as e:
                     print(f"Error crawling {url}: {e}")

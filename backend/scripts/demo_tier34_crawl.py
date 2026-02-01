@@ -42,7 +42,7 @@ async def test_source(
     config: "CrawlerRunConfig",
 ) -> dict:
     """Test crawling a single source."""
-    print(f"\n{'='*60}")
+    print(f"\n{'=' * 60}")
     print(f"Testing: {name}")
     print(f"URL: {url}")
     print("=" * 60)
@@ -54,14 +54,8 @@ async def test_source(
             # Analyze content quality
             markdown = result.markdown
             word_count = len(markdown.split())
-            has_phone = any(
-                pattern in markdown
-                for pattern in ["(", ")", "-", "tel:", "phone", "call"]
-            )
-            has_address = any(
-                pattern in markdown.lower()
-                for pattern in ["street", "ave", "blvd", "suite", "address"]
-            )
+            has_phone = any(pattern in markdown for pattern in ["(", ")", "-", "tel:", "phone", "call"])
+            has_address = any(pattern in markdown.lower() for pattern in ["street", "ave", "blvd", "suite", "address"])
             has_lists = markdown.count("* ") + markdown.count("- ")
 
             print(f"✓ Success in {result.response_headers.get('x-crawl4ai-time', 'N/A')}")
