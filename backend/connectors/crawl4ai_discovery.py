@@ -1,33 +1,30 @@
 """Crawl4AI-powered resource discovery connector.
 
-Uses Crawl4AI to crawl websites and Claude CLI (Max subscription) to extract
-structured resource data. No API fees - uses flat-rate CLI subscription.
+Uses Crawl4AI to crawl websites. Extraction is done externally via parallel
+haiku subagents in Claude Code sessions (10-20x faster and cheaper than CLI).
 
 Workflow:
-1. Crawl4AI fetches page → clean markdown (free)
-2. Claude CLI extracts resources → JSON (Max subscription flat fee)
-3. Parse JSON → ResourceCandidate objects
+1. crawl_urls() fetches pages → {url: markdown} dict
+2. Claude Code launches parallel haiku subagents for extraction
+3. parse_extracted() converts JSON → ResourceCandidate objects
+4. ETL pipeline loads to database
 """
 
 import asyncio
-import json
-import subprocess
-import tempfile
 from datetime import UTC, datetime
-from pathlib import Path
 
 from connectors.base import BaseConnector, ResourceCandidate, SourceMetadata
 
-# Try to import crawl4ai - graceful fallback if not installed
+# Check if crawl4ai is available
 try:
-    from crawl4ai import AsyncWebCrawler, BrowserConfig, CrawlerRunConfig
+    import crawl4ai  # noqa: F401
 
     CRAWL4AI_AVAILABLE = True
 except ImportError:
     CRAWL4AI_AVAILABLE = False
 
 
-# Default extraction prompt for Claude CLI
+# Extraction prompt template for haiku subagents
 EXTRACTION_PROMPT = """Extract veteran resources from this webpage content.
 
 Return a JSON array of resources. For each resource found, include:
@@ -57,20 +54,35 @@ Webpage content:
 """
 
 
+def get_extraction_prompt(content: str) -> str:
+    """Get the extraction prompt with content inserted.
+
+    Use this to build prompts for haiku subagents.
+    """
+    return EXTRACTION_PROMPT.format(content=content)
+
+
 class Crawl4AIDiscoveryConnector(BaseConnector):
-    """Discover veteran resources using Crawl4AI + Claude CLI.
+    """Discover veteran resources using Crawl4AI + parallel haiku subagents.
 
     This connector crawls specified URLs using Crawl4AI (handles JS rendering,
-    bot detection avoidance) and uses Claude CLI for extraction (uses Max
-    subscription flat fee instead of per-API-call pricing).
+    bot detection avoidance). Extraction is done via parallel haiku subagents
+    in Claude Code sessions - 10-20x faster and cheaper than CLI.
 
-    Usage:
+    Usage (in Claude Code session):
+        # Step 1: Crawl URLs
         connector = Crawl4AIDiscoveryConnector(
             urls=["https://state-va.gov/resources"],
             source_name="State VA Discovery",
             tier=3,
         )
-        resources = connector.run()
+        crawled = connector.crawl_urls()  # Returns {url: markdown}
+
+        # Step 2: Launch parallel haiku subagents for extraction
+        # (Done in Claude Code using Task tool with model="haiku")
+
+        # Step 3: Parse extracted JSON to ResourceCandidates
+        resources = connector.parse_extracted(extracted_json, url)
     """
 
     def __init__(
@@ -80,8 +92,7 @@ class Crawl4AIDiscoveryConnector(BaseConnector):
         source_url: str = "https://crawl4ai.com",
         tier: int = 4,
         frequency: str = "weekly",
-        max_content_length: int = 50000,
-        cli_timeout: int = 120,
+        max_content_length: int = 30000,
     ):
         """Initialize the connector.
 
@@ -91,8 +102,7 @@ class Crawl4AIDiscoveryConnector(BaseConnector):
             source_url: Base URL for the source.
             tier: Trust tier (1-4, default 4 for discovered content).
             frequency: How often to run (daily, weekly, monthly).
-            max_content_length: Max chars to send to CLI (truncates if longer).
-            cli_timeout: Timeout in seconds for Claude CLI calls.
+            max_content_length: Max chars per page (truncates if longer).
         """
         if not CRAWL4AI_AVAILABLE:
             raise ImportError(
@@ -105,7 +115,6 @@ class Crawl4AIDiscoveryConnector(BaseConnector):
         self.tier = tier
         self.frequency = frequency
         self.max_content_length = max_content_length
-        self.cli_timeout = cli_timeout
 
     @property
     def metadata(self) -> SourceMetadata:
@@ -119,17 +128,32 @@ class Crawl4AIDiscoveryConnector(BaseConnector):
         )
 
     def run(self) -> list[ResourceCandidate]:
-        """Crawl URLs and extract resources.
+        """Legacy method - use crawl_urls() + haiku subagents instead.
+
+        This method is kept for interface compatibility but should not be used.
+        The new workflow is:
+        1. crawl_urls() to get markdown
+        2. Parallel haiku subagents for extraction (in Claude Code)
+        3. parse_extracted() to convert to ResourceCandidates
+        """
+        raise NotImplementedError(
+            "Use crawl_urls() + parallel haiku subagents instead. "
+            "See /run-jobs crawl4ai_discovery for the new workflow."
+        )
+
+    def crawl_urls(self) -> dict[str, str]:
+        """Crawl all URLs and return markdown content.
 
         Returns:
-            List of ResourceCandidate objects from all crawled pages.
+            Dict mapping URL to markdown content.
         """
-        return asyncio.run(self._run_async())
+        return asyncio.run(self._crawl_urls_async())
 
-    async def _run_async(self) -> list[ResourceCandidate]:
-        """Async implementation of crawl and extract."""
-        all_resources: list[ResourceCandidate] = []
-        now = datetime.now(UTC)
+    async def _crawl_urls_async(self) -> dict[str, str]:
+        """Async implementation of URL crawling."""
+        from crawl4ai import AsyncWebCrawler, BrowserConfig, CrawlerRunConfig
+
+        results: dict[str, str] = {}
 
         browser_config = BrowserConfig(
             headless=True,
@@ -144,146 +168,51 @@ class Crawl4AIDiscoveryConnector(BaseConnector):
         async with AsyncWebCrawler(config=browser_config) as crawler:
             for url in self.urls:
                 try:
-                    resources = await self._crawl_and_extract(crawler, url, run_config, now)
-                    all_resources.extend(resources)
+                    print(f"Crawling: {url}")
+                    result = await crawler.arun(url=url, config=run_config)
+
+                    if result.success:
+                        markdown = result.markdown
+                        # Truncate if too long
+                        if len(markdown) > self.max_content_length:
+                            markdown = markdown[: self.max_content_length]
+                            print(f"  Got {len(markdown):,} chars (truncated)")
+                        else:
+                            print(f"  Got {len(markdown):,} chars")
+                        results[url] = markdown
+                    else:
+                        print(f"  Failed: {result.error_message}")
                 except Exception as e:
-                    print(f"Error crawling {url}: {e}")
+                    print(f"  Error: {e}")
                     continue
 
-        return all_resources
+        return results
 
-    async def _crawl_and_extract(
+    def parse_extracted(
         self,
-        crawler: "AsyncWebCrawler",
-        url: str,
-        config: "CrawlerRunConfig",
-        fetched_at: datetime,
+        extracted: list[dict],
+        source_url: str,
+        fetched_at: datetime | None = None,
     ) -> list[ResourceCandidate]:
-        """Crawl a single URL and extract resources.
+        """Convert extracted JSON from haiku to ResourceCandidates.
 
         Args:
-            crawler: The AsyncWebCrawler instance.
-            url: URL to crawl.
-            config: Crawler run configuration.
-            fetched_at: Timestamp for the fetch.
+            extracted: List of resource dicts from haiku extraction.
+            source_url: URL where resources were found.
+            fetched_at: Timestamp of extraction (defaults to now).
 
         Returns:
-            List of ResourceCandidate objects from this page.
+            List of ResourceCandidate objects.
         """
-        print(f"Crawling: {url}")
+        if fetched_at is None:
+            fetched_at = datetime.now(UTC)
 
-        result = await crawler.arun(url=url, config=config)
-
-        if not result.success:
-            print(f"  Failed: {result.error_message}")
-            return []
-
-        markdown = result.markdown
-        print(f"  Got {len(markdown):,} chars of markdown")
-
-        # Truncate if too long
-        if len(markdown) > self.max_content_length:
-            markdown = markdown[: self.max_content_length]
-            print(f"  Truncated to {self.max_content_length:,} chars")
-
-        # Extract using Claude CLI
-        extracted = self._extract_with_cli(markdown, url)
-
-        if not extracted:
-            print("  No resources extracted")
-            return []
-
-        print(f"  Extracted {len(extracted)} resources")
-
-        # Convert to ResourceCandidate objects
         resources = []
         for item in extracted:
-            candidate = self._to_candidate(item, url, fetched_at)
+            candidate = self._to_candidate(item, source_url, fetched_at)
             if candidate:
                 resources.append(candidate)
-
         return resources
-
-    def _extract_with_cli(self, markdown: str, source_url: str) -> list[dict]:
-        """Use Claude CLI to extract resources from markdown.
-
-        Args:
-            markdown: The crawled page content as markdown.
-            source_url: URL of the crawled page (for context).
-
-        Returns:
-            List of extracted resource dictionaries.
-        """
-        prompt = EXTRACTION_PROMPT.format(content=markdown)
-
-        # Write prompt to temp file (avoids shell escaping issues)
-        with tempfile.NamedTemporaryFile(mode="w", suffix=".txt", delete=False) as f:
-            f.write(prompt)
-            prompt_file = f.name
-
-        try:
-            # Call Claude CLI
-            result = subprocess.run(
-                [
-                    "claude",
-                    "-p",
-                    f"$(cat {prompt_file})",
-                    "--output-format",
-                    "json",
-                ],
-                capture_output=True,
-                text=True,
-                timeout=self.cli_timeout,
-                shell=True,  # Need shell for $() expansion
-            )
-
-            if result.returncode != 0:
-                # Try alternative: pipe content directly
-                result = subprocess.run(
-                    ["claude", "-p", prompt, "--output-format", "json"],
-                    capture_output=True,
-                    text=True,
-                    timeout=self.cli_timeout,
-                )
-
-            if result.returncode != 0:
-                print(f"  CLI error: {result.stderr[:200]}")
-                return []
-
-            # Parse JSON output
-            output = result.stdout.strip()
-            if not output:
-                return []
-
-            # Handle potential markdown code blocks in output
-            if output.startswith("```"):
-                lines = output.split("\n")
-                output = "\n".join(lines[1:-1])
-
-            data = json.loads(output)
-
-            # Handle both direct array and wrapped response
-            if isinstance(data, list):
-                return data
-            elif isinstance(data, dict) and "resources" in data:
-                return data["resources"]
-            elif isinstance(data, dict) and "result" in data:
-                return data["result"] if isinstance(data["result"], list) else []
-
-            return []
-
-        except subprocess.TimeoutExpired:
-            print(f"  CLI timeout after {self.cli_timeout}s")
-            return []
-        except json.JSONDecodeError as e:
-            print(f"  JSON parse error: {e}")
-            return []
-        except Exception as e:
-            print(f"  Extraction error: {e}")
-            return []
-        finally:
-            # Clean up temp file
-            Path(prompt_file).unlink(missing_ok=True)
 
     def _to_candidate(
         self,
@@ -345,16 +274,36 @@ class Crawl4AIDiscoveryConnector(BaseConnector):
 
 
 # Convenience function for one-off crawls
-async def crawl_and_extract(url: str) -> list[dict]:
-    """Crawl a single URL and extract resources.
+def crawl_url(url: str) -> str | None:
+    """Crawl a single URL and return markdown.
 
-    Convenience function for testing or one-off extractions.
+    Convenience function for testing.
 
     Args:
         url: URL to crawl.
 
     Returns:
-        List of extracted resource dictionaries.
+        Markdown content or None if failed.
     """
     connector = Crawl4AIDiscoveryConnector(urls=[url])
-    return connector.run()
+    results = connector.crawl_urls()
+    return results.get(url)
+
+
+def crawl_urls(urls: list[str], max_content_length: int = 30000) -> dict[str, str]:
+    """Crawl multiple URLs and return markdown.
+
+    Convenience function for batch crawling.
+
+    Args:
+        urls: List of URLs to crawl.
+        max_content_length: Max chars per page.
+
+    Returns:
+        Dict mapping URL to markdown content.
+    """
+    connector = Crawl4AIDiscoveryConnector(
+        urls=urls,
+        max_content_length=max_content_length,
+    )
+    return connector.crawl_urls()

@@ -35,8 +35,9 @@ Recheck flagged resources using Crawl4AI browser automation.
 
 ### crawl4ai_discovery (Bi-weekly)
 Discover new veteran resources from configured URLs.
-- Crawls Tier 3-4 sites using Crawl4AI (handles JS, bot detection)
-- Extracts resources using Claude CLI (Max subscription = no per-call fees)
+- **Phase 1:** Crawl4AI fetches pages → markdown (handles JS, bot detection)
+- **Phase 2:** Parallel haiku subagents extract resources (10 at a time)
+- 10-20x faster and cheaper than CLI extraction
 - URLs configured in `data/reference/discovery_urls.json`
 - State VA pages, 211 directories, nonprofit veteran orgs
 
@@ -175,31 +176,55 @@ Generate vector embeddings for resources.
    - Confirms truly broken URLs for cleanup
    - No API costs (just browser automation)
 
-   **crawl4ai_discovery**: Discover new resources from configured URLs
+   **crawl4ai_discovery**: Discover new resources using parallel haiku subagents
+
+   This job uses a two-phase approach for 10-20x faster, cheaper extraction:
+
+   **Phase 1: Crawl URLs (Python script)**
    ```bash
    cd backend && source .venv/bin/activate
    PYTHONPATH=. python -c "
    import json
    from pathlib import Path
-   from connectors import Crawl4AIDiscoveryConnector
+   from connectors.crawl4ai_discovery import crawl_urls
 
    # Load discovery URLs
    config = json.loads(Path('data/reference/discovery_urls.json').read_text())
+   all_urls = [url for source in config['sources'] for url in source['urls']]
 
-   for source in config['sources']:
-       print(f'Crawling {source[\"name\"]}...')
-       connector = Crawl4AIDiscoveryConnector(
-           urls=source['urls'],
-           source_name=source['name'],
-           tier=source['tier'],
-       )
-       resources = connector.run()
-       print(f'  Found {len(resources)} resources')
+   # Crawl all URLs, save markdown
+   results = crawl_urls(all_urls)
+   Path('/tmp/crawl4ai_discovery.json').write_text(json.dumps(results))
+   print(f'Crawled {len(results)} pages, saved to /tmp/crawl4ai_discovery.json')
    "
    ```
-   - Crawls Tier 3-4 sites using Crawl4AI (handles JS, bot detection)
-   - Extracts resources using Claude CLI (Max subscription = no per-call fees)
-   - Configured in `data/reference/discovery_urls.json`
+
+   **Phase 2: Parallel haiku extraction (in Claude Code session)**
+
+   Launch waves of 10 haiku subagents to extract resources:
+
+   ```
+   # Read crawled content
+   crawled = json.loads(Path('/tmp/crawl4ai_discovery.json').read_text())
+
+   # For each batch of 10 URLs, launch parallel haiku subagents:
+   for url, markdown in batch(crawled.items(), 10):
+       Task(
+           description=f"Extract resources from {domain}",
+           prompt=f"Extract veteran resources from this page. Return JSON array...\n\n{markdown}",
+           model="haiku",
+           subagent_type="general-purpose"
+       )
+
+   # Collect results, parse to ResourceCandidates, load via ETL
+   ```
+
+   **Benefits:**
+   - 10x faster (parallel vs sequential)
+   - 10-20x cheaper (haiku vs Opus/Sonnet)
+   - Better quality (stays in session context)
+
+   **Configured in:** `data/reference/discovery_urls.json` (17 URLs across State VA, 211, nonprofits)
 
 6. **Update job state** after successful run:
    ```python
