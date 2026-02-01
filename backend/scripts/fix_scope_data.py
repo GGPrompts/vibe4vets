@@ -71,7 +71,7 @@ def fix_scope_data(dry_run: bool = True) -> dict:
             print(f"\n  ID: {resource.id}")
             print(f"  Title: {resource.title[:60]}...")
             print(f"  Current: scope={resource.scope.value}, states={states}")
-            print(f"  Fix: scope=STATE")
+            print("  Fix: scope=STATE")
 
             if not dry_run:
                 resource.scope = ResourceScope.STATE
@@ -97,8 +97,8 @@ def fix_scope_data(dry_run: bool = True) -> dict:
             if len(states) == 0:
                 print(f"\n  ID: {resource.id}")
                 print(f"  Title: {resource.title[:60]}...")
-                print(f"  Issue: scope=STATE but states is empty")
-                print(f"  Action: Needs manual investigation")
+                print("  Issue: scope=STATE but states is empty")
+                print("  Action: Needs manual investigation")
                 stats["state_with_empty_states"] += 1
 
         # =================================================================
