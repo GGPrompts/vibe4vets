@@ -69,7 +69,7 @@ async def test_source(
             print(f"  Has phone patterns: {has_phone}")
             print(f"  Has address patterns: {has_address}")
             print(f"  List items: {has_lists}")
-            print(f"\n  Preview (first 500 chars):")
+            print("\n  Preview (first 500 chars):")
             print(f"  {markdown[:500]}...")
 
             return {
@@ -146,7 +146,7 @@ async def main():
         with_phone = sum(1 for r in successful if r.get("has_phone"))
         with_address = sum(1 for r in successful if r.get("has_address"))
 
-        print(f"\nContent Quality:")
+        print("\nContent Quality:")
         print(f"  Avg words per page: {avg_words:,.0f}")
         print(f"  Pages with phone patterns: {with_phone}/{len(successful)}")
         print(f"  Pages with address patterns: {with_address}/{len(successful)}")

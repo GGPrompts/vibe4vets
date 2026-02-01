@@ -3,6 +3,7 @@
 
 import asyncio
 import sys
+
 from crawl4ai import AsyncWebCrawler, BrowserConfig, CrawlerRunConfig
 
 # Test URLs - mix of static and JS-heavy sites
@@ -36,13 +37,13 @@ async def test_crawl(url: str) -> dict:
         result = await crawler.arun(url=url, config=run_config)
 
         if result.success:
-            print(f"\n✓ Success!")
+            print("\n✓ Success!")
             print(f"  Title: {result.metadata.get('title', 'N/A')[:60]}")
             print(f"  Markdown length: {len(result.markdown):,} chars")
             print(f"  Links found: {len(result.links.get('internal', [])) + len(result.links.get('external', []))}")
 
             # Show first 2000 chars of markdown
-            print(f"\n--- Markdown Preview (first 2000 chars) ---\n")
+            print("\n--- Markdown Preview (first 2000 chars) ---\n")
             print(result.markdown[:2000])
             print("\n--- End Preview ---")
 
