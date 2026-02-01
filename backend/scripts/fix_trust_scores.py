@@ -27,7 +27,7 @@ from sqlmodel import Session, select
 from app.database import engine
 from app.models import Resource, Source
 from app.models.resource import ResourceStatus
-from app.services.trust import TIER_SCORES, TrustService
+from app.services.trust import TIER_SCORES
 
 
 def fix_trust_scores(dry_run: bool = False) -> dict:
@@ -49,7 +49,6 @@ def fix_trust_scores(dry_run: bool = False) -> dict:
     }
 
     with Session(engine) as session:
-        trust_service = TrustService(session)
 
         # Get all active resources
         resources = session.exec(
@@ -93,10 +92,9 @@ def fix_trust_scores(dry_run: bool = False) -> dict:
 
             # Update freshness based on last_verified or created_at
             # Handle timezone-naive datetimes by calculating freshness directly
-            if resource.last_verified is not None:
-                reference_date = resource.last_verified
-            else:
-                reference_date = resource.created_at
+            reference_date = (
+                resource.last_verified if resource.last_verified is not None else resource.created_at
+            )
 
             if reference_date:
                 # Make timezone-aware if needed
