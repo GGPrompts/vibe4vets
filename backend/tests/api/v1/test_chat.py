@@ -202,7 +202,9 @@ def test_chat_search_failure_sets_flag(mock_settings, mock_search_class, mock_cl
 @patch("app.api.v1.chat.ClaudeClient")
 @patch("app.api.v1.chat.SearchService")
 @patch("app.api.v1.chat.settings")
-def test_chat_empty_results_not_flagged_as_failure(mock_settings, mock_search_class, mock_claude_class, client: TestClient):
+def test_chat_empty_results_not_flagged_as_failure(
+    mock_settings, mock_search_class, mock_claude_class, client: TestClient
+):
     """Test that empty search results (no match) do not set search_failed flag."""
     mock_settings.anthropic_api_key = "test-key"
 

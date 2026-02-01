@@ -23,7 +23,7 @@ from datetime import UTC, datetime, timedelta
 # Add parent to path for imports
 sys.path.insert(0, ".")
 
-from sqlmodel import Session, func, select, text  # noqa: E402
+from sqlmodel import Session, func, select  # noqa: E402
 
 from app.database import engine  # noqa: E402
 from app.models.resource import Resource, ResourceStatus  # noqa: E402
