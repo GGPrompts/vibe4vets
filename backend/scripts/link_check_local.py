@@ -50,10 +50,7 @@ def export_for_check(limit: int = 1000, days_old: int = 7) -> None:
             )
             .where(Resource.website.isnot(None))
             .where(Resource.status == ResourceStatus.ACTIVE)
-            .where(
-                (Resource.link_checked_at.is_(None))
-                | (Resource.link_checked_at < cutoff)
-            )
+            .where((Resource.link_checked_at.is_(None)) | (Resource.link_checked_at < cutoff))
             .order_by(Resource.link_checked_at.asc().nullsfirst())
             .limit(limit)
         )
@@ -144,9 +141,7 @@ def show_stats() -> None:
     """Show link check statistics."""
     with Session(engine) as session:
         # Total with URLs
-        total = session.exec(
-            select(func.count(Resource.id)).where(Resource.website.isnot(None))
-        ).one()
+        total = session.exec(select(func.count(Resource.id)).where(Resource.website.isnot(None))).one()
 
         # Never checked
         never_checked = session.exec(
@@ -165,9 +160,7 @@ def show_stats() -> None:
 
         # Broken (score < 0.3)
         broken = session.exec(
-            select(func.count(Resource.id))
-            .where(Resource.website.isnot(None))
-            .where(Resource.link_health_score < 0.3)
+            select(func.count(Resource.id)).where(Resource.website.isnot(None)).where(Resource.link_health_score < 0.3)
         ).one()
 
         # Flagged for review
@@ -179,8 +172,7 @@ def show_stats() -> None:
 
         # Average score (where checked)
         avg_score = session.exec(
-            select(func.avg(Resource.link_health_score))
-            .where(Resource.link_health_score.isnot(None))
+            select(func.avg(Resource.link_health_score)).where(Resource.link_health_score.isnot(None))
         ).one()
 
         print("Link Check Statistics")
@@ -200,12 +192,8 @@ def main():
 
     # Export command
     export_parser = subparsers.add_parser("export", help="Export resources for checking")
-    export_parser.add_argument(
-        "--limit", type=int, default=1000, help="Max resources to export"
-    )
-    export_parser.add_argument(
-        "--days-old", type=int, default=7, help="Check resources older than N days"
-    )
+    export_parser.add_argument("--limit", type=int, default=1000, help="Max resources to export")
+    export_parser.add_argument("--days-old", type=int, default=7, help="Check resources older than N days")
 
     # Import command
     subparsers.add_parser("import", help="Import results from stdin")

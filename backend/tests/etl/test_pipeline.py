@@ -307,18 +307,14 @@ class TestErrorCategorization:
 
     def test_timeout_error_categorized_as_transient(self):
         """Test that timeout exceptions are categorized as transient."""
-        error = _categorize_exception(
-            httpx.TimeoutException("Request timed out"), "Test Source"
-        )
+        error = _categorize_exception(httpx.TimeoutException("Request timed out"), "Test Source")
         assert error.category == "transient"
         assert error.stage == "extract"
         assert "timeout" in error.message.lower()
 
     def test_connect_error_categorized_as_network(self):
         """Test that connection errors are categorized as network."""
-        error = _categorize_exception(
-            httpx.ConnectError("Connection refused"), "Test Source"
-        )
+        error = _categorize_exception(httpx.ConnectError("Connection refused"), "Test Source")
         assert error.category == "network"
         assert "network error" in error.message.lower()
 
@@ -364,9 +360,7 @@ class TestErrorCategorization:
 
     def test_json_decode_error_categorized_as_parse(self):
         """Test that JSON errors are categorized as parse."""
-        error = _categorize_exception(
-            json.JSONDecodeError("Invalid JSON", "doc", 0), "Test Source"
-        )
+        error = _categorize_exception(json.JSONDecodeError("Invalid JSON", "doc", 0), "Test Source")
         assert error.category == "parse"
         assert "parse error" in error.message.lower()
 
@@ -386,9 +380,7 @@ class TestErrorCategorization:
         error = _categorize_exception(RuntimeError("Failed"), "VA.gov API")
         assert "VA.gov API" in error.message
 
-    def test_pipeline_categorizes_timeout_connector(
-        self, etl_session, timeout_connector, sample_candidate
-    ):
+    def test_pipeline_categorizes_timeout_connector(self, etl_session, timeout_connector, sample_candidate):
         """Test that pipeline correctly categorizes timeout errors."""
         connectors = [
             timeout_connector,
@@ -403,9 +395,7 @@ class TestErrorCategorization:
         assert len(extract_errors) == 1
         assert extract_errors[0].category == "transient"
 
-    def test_pipeline_categorizes_auth_failure_connector(
-        self, etl_session, auth_failure_connector, sample_candidate
-    ):
+    def test_pipeline_categorizes_auth_failure_connector(self, etl_session, auth_failure_connector, sample_candidate):
         """Test that pipeline correctly categorizes auth failures."""
         connectors = [
             auth_failure_connector,

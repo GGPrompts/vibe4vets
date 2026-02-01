@@ -219,9 +219,7 @@ class AuthFailureConnector:
         class MockResponse:
             status_code = 401
 
-        raise httpx.HTTPStatusError(
-            "Unauthorized", request=None, response=MockResponse()
-        )
+        raise httpx.HTTPStatusError("Unauthorized", request=None, response=MockResponse())
 
     def close(self) -> None:
         pass

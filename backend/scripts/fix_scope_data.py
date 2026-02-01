@@ -134,9 +134,7 @@ def print_summary(stats: dict, dry_run: bool) -> None:
 if __name__ == "__main__":
     import argparse
 
-    parser = argparse.ArgumentParser(
-        description="Fix resources with mismatched scope/states data"
-    )
+    parser = argparse.ArgumentParser(description="Fix resources with mismatched scope/states data")
     parser.add_argument(
         "--apply",
         action="store_true",

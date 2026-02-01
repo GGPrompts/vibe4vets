@@ -519,9 +519,7 @@ class ResourceService:
 
                 national_sql += " ORDER BY r.title ASC LIMIT :limit OFFSET :offset"
 
-                national_results = self.session.execute(
-                    text(national_sql), nat_fetch_params
-                ).fetchall()
+                national_results = self.session.execute(text(national_sql), nat_fetch_params).fetchall()
 
                 for row in national_results:
                     national_ids.append(row.resource_id)
@@ -808,9 +806,7 @@ class ResourceService:
 
                 national_sql += " ORDER BY r.title ASC LIMIT :limit OFFSET :offset"
 
-                national_results = self.session.execute(
-                    text(national_sql), coord_nat_fetch_params
-                ).fetchall()
+                national_results = self.session.execute(text(national_sql), coord_nat_fetch_params).fetchall()
 
                 for row in national_results:
                     national_ids.append(row.resource_id)

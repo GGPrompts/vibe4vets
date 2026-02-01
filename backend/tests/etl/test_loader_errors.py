@@ -25,9 +25,7 @@ class TestLoaderErrorHandling:
     def test_integrity_error_returns_skipped(self):
         """Test that IntegrityError results in skipped action."""
         mock_session = MagicMock()
-        mock_session.exec.side_effect = IntegrityError(
-            "duplicate key", {}, Exception("constraint violation")
-        )
+        mock_session.exec.side_effect = IntegrityError("duplicate key", {}, Exception("constraint violation"))
 
         loader = Loader(mock_session)
         resource = NormalizedResource(
@@ -47,9 +45,7 @@ class TestLoaderErrorHandling:
     def test_timeout_error_is_retriable(self):
         """Test that timeout OperationalError is marked retriable."""
         mock_session = MagicMock()
-        mock_session.exec.side_effect = OperationalError(
-            "connection timeout", {}, Exception("timeout expired")
-        )
+        mock_session.exec.side_effect = OperationalError("connection timeout", {}, Exception("timeout expired"))
 
         loader = Loader(mock_session)
         resource = NormalizedResource(
@@ -91,9 +87,7 @@ class TestLoaderErrorHandling:
     def test_connection_error_is_retriable(self):
         """Test that connection OperationalError is marked retriable."""
         mock_session = MagicMock()
-        mock_session.exec.side_effect = OperationalError(
-            "connection refused", {}, Exception("could not connect")
-        )
+        mock_session.exec.side_effect = OperationalError("connection refused", {}, Exception("could not connect"))
 
         loader = Loader(mock_session)
         resource = NormalizedResource(
@@ -135,9 +129,7 @@ class TestLoaderErrorHandling:
     def test_other_operational_error_not_retriable(self):
         """Test that other OperationalError is not retriable."""
         mock_session = MagicMock()
-        mock_session.exec.side_effect = OperationalError(
-            "syntax error", {}, Exception("SQL syntax error")
-        )
+        mock_session.exec.side_effect = OperationalError("syntax error", {}, Exception("SQL syntax error"))
 
         loader = Loader(mock_session)
         resource = NormalizedResource(
