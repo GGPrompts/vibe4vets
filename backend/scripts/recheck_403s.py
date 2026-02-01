@@ -3,7 +3,7 @@
 
 import asyncio
 import sys
-from datetime import UTC, datetime
+from datetime import datetime
 
 import httpx
 from sqlmodel import Session, select
@@ -14,7 +14,10 @@ from app.database import engine
 from app.models.resource import Resource, ResourceStatus
 
 # Browser-like User-Agent
-USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+USER_AGENT = (
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+    "(KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+)
 
 MAX_CONCURRENT = 30
 TIMEOUT = 20.0
@@ -97,9 +100,11 @@ async def main():
                 session.commit()
 
             pct = ((i + len(batch)) / total) * 100
-            print(f"[{datetime.now().strftime('%H:%M:%S')}] Progress: {i + len(batch)}/{total} ({pct:.1f}%) - Fixed: {fixed}, Still broken: {still_broken}")
+            ts = datetime.now().strftime("%H:%M:%S")
+            done = i + len(batch)
+            print(f"[{ts}] Progress: {done}/{total} ({pct:.1f}%) - Fixed: {fixed}, Still broken: {still_broken}")
 
-    print(f"\n=== COMPLETE ===")
+    print("\n=== COMPLETE ===")
     print(f"Fixed (now healthy): {fixed}")
     print(f"Still broken: {still_broken}")
 

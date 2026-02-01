@@ -47,8 +47,8 @@ async def check_url(client: httpx.AsyncClient, url: str) -> dict:
         return {"status_code": None, "error": "timeout"}
     except httpx.TooManyRedirects:
         return {"status_code": None, "error": "too_many_redirects"}
-    except httpx.ConnectError as e:
-        return {"status_code": None, "error": f"connection_failed"}
+    except httpx.ConnectError:
+        return {"status_code": None, "error": "connection_failed"}
     except Exception as e:
         return {"status_code": None, "error": str(e)[:50]}
 
@@ -146,9 +146,10 @@ async def main():
 
         checked += len(batch)
         pct = (checked / total) * 100
-        print(f"[{datetime.now().strftime('%H:%M:%S')}] Progress: {checked}/{total} ({pct:.1f}%) - Healthy: {total_healthy}, Broken: {total_broken}")
+        ts = datetime.now().strftime("%H:%M:%S")
+        print(f"[{ts}] Progress: {checked}/{total} ({pct:.1f}%) - Healthy: {total_healthy}, Broken: {total_broken}")
 
-    print(f"\n=== COMPLETE ===")
+    print("\n=== COMPLETE ===")
     print(f"Total checked: {checked}")
     print(f"Healthy: {total_healthy} ({total_healthy/checked*100:.1f}%)")
     print(f"Broken: {total_broken} ({total_broken/checked*100:.1f}%)")
