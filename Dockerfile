@@ -24,6 +24,6 @@ RUN pip install --no-cache-dir .
 
 EXPOSE 8000
 
-# Run migrations then start server (with 15s timeout for alembic)
-CMD timeout 15 alembic upgrade head 2>&1 || echo "Alembic failed/timed out - continuing anyway" && \
+# Run migrations then start server (with 60s timeout for alembic)
+CMD (timeout 60 alembic upgrade head 2>&1 || echo "Alembic failed/timed out - continuing anyway") && \
     uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-8000}
