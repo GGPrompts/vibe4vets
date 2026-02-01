@@ -49,11 +49,8 @@ def fix_trust_scores(dry_run: bool = False) -> dict:
     }
 
     with Session(engine) as session:
-
         # Get all active resources
-        resources = session.exec(
-            select(Resource).where(Resource.status == ResourceStatus.ACTIVE)
-        ).all()
+        resources = session.exec(select(Resource).where(Resource.status == ResourceStatus.ACTIVE)).all()
 
         stats["total"] = len(resources)
         print(f"Processing {len(resources)} active resources...")
@@ -92,9 +89,7 @@ def fix_trust_scores(dry_run: bool = False) -> dict:
 
             # Update freshness based on last_verified or created_at
             # Handle timezone-naive datetimes by calculating freshness directly
-            reference_date = (
-                resource.last_verified if resource.last_verified is not None else resource.created_at
-            )
+            reference_date = resource.last_verified if resource.last_verified is not None else resource.created_at
 
             if reference_date:
                 # Make timezone-aware if needed
@@ -129,7 +124,9 @@ def fix_trust_scores(dry_run: bool = False) -> dict:
                 )
             ).one()
             verified_count = session.exec(
-                select(func.count()).select_from(Resource).where(
+                select(func.count())
+                .select_from(Resource)
+                .where(
                     Resource.last_verified != None  # noqa: E711
                 )
             ).one()

@@ -193,9 +193,7 @@ class HealthService:
         counts = self.session.exec(stmt).all()
         return {source_id: count for source_id, count in counts}
 
-    def _batch_count_resources_by_status_per_source(
-        self, source_ids: list[UUID]
-    ) -> dict[UUID, dict[str, int]]:
+    def _batch_count_resources_by_status_per_source(self, source_ids: list[UUID]) -> dict[UUID, dict[str, int]]:
         """Count resources by status for multiple sources in one query."""
         stmt = (
             select(Resource.source_id, Resource.status, func.count(Resource.id))
@@ -204,9 +202,7 @@ class HealthService:
         )
         rows = self.session.exec(stmt).all()
 
-        result: dict[UUID, dict[str, int]] = {
-            sid: {s.value: 0 for s in ResourceStatus} for sid in source_ids
-        }
+        result: dict[UUID, dict[str, int]] = {sid: {s.value: 0 for s in ResourceStatus} for sid in source_ids}
         for source_id, status, count in rows:
             if source_id in result:
                 result[source_id][status.value] = count
@@ -233,9 +229,7 @@ class HealthService:
         rows = self.session.exec(stmt).all()
         return {source_id: count for source_id, count in rows}
 
-    def _batch_recent_errors(
-        self, source_ids: list[UUID], limit: int = 10
-    ) -> dict[UUID, list[ErrorRecord]]:
+    def _batch_recent_errors(self, source_ids: list[UUID], limit: int = 10) -> dict[UUID, list[ErrorRecord]]:
         """Get recent errors for multiple sources.
 
         Uses a subquery with row_number to limit per source.
