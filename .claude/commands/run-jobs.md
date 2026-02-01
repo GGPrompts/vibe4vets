@@ -6,8 +6,9 @@ Run maintenance jobs that are overdue based on `.claude/job-state.json`.
 
 1. Read job state from `.claude/job-state.json`
 2. Check which jobs are overdue (current time > last_run + frequency_hours)
-3. Run overdue jobs using subagents
+3. Run overdue jobs locally
 4. Update timestamps after successful completion
+5. **Sync changes to Railway** (efficient incremental sync, not full restore)
 
 ## Job State Format
 
@@ -17,8 +18,7 @@ Run maintenance jobs that are overdue based on `.claude/job-state.json`.
     "last_run": "2026-01-31T04:00:00Z",  // ISO timestamp or null
     "frequency_hours": 168,               // How often to run (168 = weekly)
     "description": "What this job does",
-    "batch_size": 500,                    // Optional: for parallelized jobs
-    "parallel": 10                        // Optional: subagent count
+    "disabled": false                     // Optional: skip this job
   }
 }
 ```
@@ -27,10 +27,11 @@ Run maintenance jobs that are overdue based on `.claude/job-state.json`.
 
 ### link_checker (Weekly)
 Check all resource URLs for broken links and soft 404s.
-- Fetches each URL and analyzes content
-- Detects: real 404s, soft 404s, parked domains, stale content
-- Updates `link_health_score` and flags for review
-- Uses parallel haiku subagents with WebFetch
+- Uses `scripts/parallel_link_check.py` for fast async checking (~50 concurrent)
+- Detects: real 404s, timeouts, DNS failures, bot-blocked sites
+- Updates `link_health_score`, `link_http_status`, `link_flagged_reason`
+- Rechecks 403s with browser User-Agent to recover false positives
+- Marks resources with broken links as `NEEDS_REVIEW`
 
 ### freshness (Daily)
 Update trust and freshness scores for all resources.
@@ -40,15 +41,15 @@ Update trust and freshness scores for all resources.
 
 ### etl_refresh (Weekly)
 Run the full ETL pipeline for all connectors.
-- Fetches latest data from all sources
+- Fetches latest data from all sources (APIs, files)
 - Normalizes, dedupes, enriches, loads
 - Updates existing resources, creates new ones
+- Note: Some connectors need API keys (VA_API_KEY, etc.)
 
-### embeddings (Weekly)
-Generate vector embeddings for resources missing them.
-- Finds resources without embeddings
-- Generates using Claude
-- Enables semantic search
+### embeddings (Weekly) - DISABLED
+Generate vector embeddings for resources.
+- Currently disabled on Railway (no pgvector)
+- Skip this job
 
 ## Execution
 
@@ -61,24 +62,35 @@ Generate vector embeddings for resources missing them.
 
 # Dry run - show what would run without executing
 /run-jobs --dry-run
+
+# Sync to Railway after running jobs
+/run-jobs --sync
 ```
 
 ## Instructions
 
-1. **Read the job state file**: `.claude/job-state.json`
+1. **Start Docker database** (if not running):
+   ```bash
+   cd /home/marci/projects/vibe4vets && docker-compose up -d db
+   ```
 
-2. **Parse arguments** (if any):
+2. **Read the job state file**: `.claude/job-state.json`
+
+3. **Parse arguments** (if any):
    - No args: run all overdue jobs
    - Job name: run only that job if overdue
    - `--force`: run even if not overdue
    - `--dry-run`: just report, don't execute
+   - `--sync`: sync to Railway after jobs complete
 
-3. **Check each job**:
+4. **Check each job**:
    ```python
-   from datetime import datetime, timedelta
+   from datetime import datetime, timedelta, UTC
 
-   now = datetime.utcnow()
+   now = datetime.now(UTC)
    for job_name, config in jobs.items():
+       if config.get("disabled"):
+           continue
        last_run = config.get("last_run")
        freq = config.get("frequency_hours", 24)
 
@@ -89,17 +101,23 @@ Generate vector embeddings for resources missing them.
            is_due = now > last_dt + timedelta(hours=freq)
    ```
 
-4. **For overdue jobs, run them**:
+5. **For overdue jobs, run them**:
 
-   **link_checker**: Use parallel haiku subagents
+   **link_checker**: Use the fast parallel script
+   ```bash
+   cd backend && source .venv/bin/activate
+   python scripts/parallel_link_check.py
    ```
-   - Query: SELECT id, title, website FROM resources WHERE website IS NOT NULL
-   - Split into batches of 500
-   - Launch N parallel haiku agents, each batch:
-     - For each URL: WebFetch → analyze for 404/soft-404
-     - Return list of {resource_id, status, score, reason}
-   - Aggregate results
-   - Update database: link_health_score, link_checked_at, link_flagged_reason
+
+   Then fix false positives:
+   ```python
+   # Fix HTTP 429 (rate limited = alive)
+   UPDATE resources SET status = 'ACTIVE', link_health_score = 0.8,
+          link_flagged_reason = NULL
+   WHERE link_flagged_reason = 'HTTP 429';
+
+   # Recheck 403s with browser User-Agent
+   python scripts/recheck_403s.py
    ```
 
    **freshness**: Run directly
@@ -132,63 +150,61 @@ Generate vector embeddings for resources missing them.
    "
    ```
 
-   **embeddings**: Run directly
-   ```bash
-   cd backend && source .venv/bin/activate
-   PYTHONPATH=. python -c "
-   from app.database import engine
-   from sqlmodel import Session
-   from jobs import EmbeddingsJob
-
-   with Session(engine) as session:
-       result = EmbeddingsJob().execute(session)
-       print(f'Generated {result}')
-   "
-   ```
-
-5. **Update job state** after successful run:
+6. **Update job state** after successful run:
    ```python
    import json
-   from datetime import datetime
+   from datetime import datetime, UTC
 
    state = json.load(open(".claude/job-state.json"))
-   state[job_name]["last_run"] = datetime.utcnow().isoformat() + "Z"
+   state[job_name]["last_run"] = datetime.now(UTC).isoformat().replace("+00:00", "Z")
    json.dump(state, open(".claude/job-state.json", "w"), indent=2)
    ```
 
-6. **Report results** to user
+7. **Sync to Railway** (if --sync or prompted):
 
-## Link Checker Subagent Prompt
+   **IMPORTANT**: Use incremental sync, NOT pg_dump/pg_restore!
 
-When spawning link checker subagents, use this prompt:
+   pg_restore generates massive WAL files and can fill up Railway storage.
+   Instead, use the efficient sync script:
 
-```
-Check these resource URLs for broken links and soft 404s.
+   ```bash
+   cd backend && source .venv/bin/activate
+   python scripts/sync_to_railway.py
+   ```
 
-Resources to check:
-{batch_json}
+   This syncs only changed fields (link_health, freshness, status) using
+   UPDATE statements, which generates minimal WAL.
 
-For each resource:
-1. Use WebFetch to load the URL
-2. Check if it's a real 404 (status code), soft 404 (page says "not found"),
-   parked domain, or stale/abandoned content
-3. Return a score 0.0-1.0:
-   - 1.0: Healthy, active resource page
-   - 0.7-0.9: Page exists but may be outdated
-   - 0.3-0.6: Questionable - may need review
-   - 0.0-0.2: Broken, 404, parked, or completely wrong content
+8. **Report results** to user
 
-Return JSON array:
-[
-  {"id": "uuid", "score": 0.95, "status": "healthy"},
-  {"id": "uuid", "score": 0.1, "status": "broken", "reason": "404 Not Found"},
-  {"id": "uuid", "score": 0.3, "status": "flagged", "reason": "Page says 'no longer available'"}
-]
-```
+## Scripts Reference
+
+| Script | Purpose |
+|--------|---------|
+| `scripts/parallel_link_check.py` | Fast async link checker (50 concurrent) |
+| `scripts/recheck_403s.py` | Recheck 403s with browser User-Agent |
+| `scripts/sync_to_railway.py` | Efficient incremental sync to Railway |
 
 ## Notes
 
-- Jobs update the LOCAL database - sync to production separately if needed
-- Link checker is the most expensive (network + AI) - runs weekly by default
-- Freshness is cheap - runs daily
-- Use `--force` after deploying new connectors to refresh immediately
+- Jobs update the LOCAL database first
+- Always use `sync_to_railway.py` for production sync (not pg_restore!)
+- Link checker is network-intensive but free (no API calls)
+- Freshness job is fast (~30 seconds for 20k resources)
+- ETL refresh may fail for connectors missing API keys locally
+- Check Railway volume usage after sync: `railway volume list`
+
+## Troubleshooting
+
+**Railway storage full after sync?**
+- Don't use pg_dump/pg_restore - generates huge WAL
+- Use `scripts/sync_to_railway.py` instead
+- If already full: truncate change_logs, run VACUUM FULL, restart service
+
+**Link checker too slow?**
+- Use `scripts/parallel_link_check.py` (async, 50 concurrent)
+- NOT the sequential LinkCheckerJob
+
+**403 errors seem wrong?**
+- Many sites block bots - run `scripts/recheck_403s.py` with browser User-Agent
+- Usually recovers 80%+ of 403s as healthy

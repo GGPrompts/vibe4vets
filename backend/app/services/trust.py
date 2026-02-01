@@ -36,7 +36,12 @@ class TrustService:
         else:
             reference_date = resource.last_verified
 
-        days_old = (datetime.now(UTC) - reference_date).days
+        # Handle both timezone-aware and naive datetimes from DB
+        now = datetime.now(UTC)
+        if reference_date.tzinfo is None:
+            # Assume naive datetime is UTC
+            reference_date = reference_date.replace(tzinfo=UTC)
+        days_old = (now - reference_date).days
 
         # Exponential decay with half-life
         freshness = 0.5 ** (days_old / FRESHNESS_HALF_LIFE)
