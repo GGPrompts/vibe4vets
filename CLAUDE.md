@@ -330,29 +330,119 @@ docker-compose up -d
 
 ### Public Endpoints
 
+#### Resources
+
 | Method | Path | Description |
 |--------|------|-------------|
-| GET | `/api/v1/resources` | List resources with pagination (limit, offset) and filters (categories, states, scope) |
-| GET | `/api/v1/resources/{id}` | Resource detail |
-| GET | `/api/v1/search` | Advanced search with filters |
+| GET | `/api/v1/resources` | List resources with pagination and filters (categories, states, scope, tags) |
+| GET | `/api/v1/resources/{id}` | Resource detail with organization, location, and trust signals |
+| GET | `/api/v1/resources/count` | Get resource count matching filters (lightweight) |
+| GET | `/api/v1/resources/nearby` | Find resources near a ZIP code or coordinates |
+| GET | `/api/v1/resources/zip/{zip_code}` | Get state info for a ZIP code |
+| POST | `/api/v1/resources/suggest` | Suggest a resource (rate limited, no auth) |
+
+#### Search
+
+| Method | Path | Description |
+|--------|------|-------------|
+| GET | `/api/v1/search` | Full-text search with filters and match explanations |
 | GET | `/api/v1/search/eligibility` | Eligibility-filtered search with match reasons |
-| POST | `/api/v1/chat` | AI chat endpoint |
+| POST | `/api/v1/search/semantic` | AI-powered semantic/hybrid search |
+
+#### Chat
+
+| Method | Path | Description |
+|--------|------|-------------|
+| POST | `/api/v1/chat` | AI chat assistant (rate limited 10 req/min) |
+
+#### Feedback
+
+| Method | Path | Description |
+|--------|------|-------------|
+| POST | `/api/v1/feedback` | Submit anonymous feedback about a resource |
+
+#### Email
+
+| Method | Path | Description |
+|--------|------|-------------|
+| POST | `/api/v1/email-resources` | Email a list of resources to an address |
+
+#### Taxonomy
+
+| Method | Path | Description |
+|--------|------|-------------|
+| GET | `/api/v1/taxonomy/tags` | Get full tag taxonomy organized by category |
+| GET | `/api/v1/taxonomy/tags/{category_id}` | Get tags for a specific category |
+| GET | `/api/v1/taxonomy/categories` | Get all resource categories |
+| GET | `/api/v1/taxonomy/subcategories` | Get subcategories (optionally filter by category) |
+
+#### Stats
+
+| Method | Path | Description |
+|--------|------|-------------|
+| GET | `/api/v1/stats/ai` | AI transparency stats for About page |
+
+#### Analytics
+
+| Method | Path | Description |
+|--------|------|-------------|
 | POST | `/api/v1/analytics/events` | Record anonymous analytics event |
 
-### Admin Endpoints
+### Partner API (API key required)
+
+| Method | Path | Description |
+|--------|------|-------------|
+| POST | `/api/v1/partner/resources` | Submit a new resource for review |
+| GET | `/api/v1/partner/resources` | List your submitted resources |
+| GET | `/api/v1/partner/resources/{id}` | Get a submitted resource |
+| PUT | `/api/v1/partner/resources/{id}` | Update a submitted resource |
+
+### Admin Endpoints (auth required)
+
+#### Resource Management
+
+| Method | Path | Description |
+|--------|------|-------------|
+| POST | `/api/v1/resources` | Create a new resource |
+| PATCH | `/api/v1/resources/{id}` | Update an existing resource |
+| DELETE | `/api/v1/resources/{id}` | Soft delete a resource |
+
+#### Review Queue
 
 | Method | Path | Description |
 |--------|------|-------------|
 | GET | `/api/v1/admin/review-queue` | Pending reviews |
-| POST | `/api/v1/admin/review/{id}` | Approve/reject |
-| GET | `/api/v1/admin/sources` | Source health |
-| GET | `/api/v1/admin/dashboard/stats` | Aggregated dashboard stats |
-| GET | `/api/v1/admin/dashboard/sources` | All sources with health |
-| GET | `/api/v1/admin/dashboard/errors` | Recent errors |
+| POST | `/api/v1/admin/review/{id}` | Approve/reject review |
+
+#### Sources
+
+| Method | Path | Description |
+|--------|------|-------------|
+| GET | `/api/v1/admin/sources` | List all sources with health status |
+| GET | `/api/v1/admin/sources/{id}/health` | Detailed source health info |
+
+#### Dashboard
+
+| Method | Path | Description |
+|--------|------|-------------|
+| GET | `/api/v1/admin/dashboard/stats` | Aggregated dashboard statistics |
+| GET | `/api/v1/admin/dashboard/sources` | All sources with detailed health |
+| GET | `/api/v1/admin/dashboard/sources/{id}` | Single source detailed health |
+| GET | `/api/v1/admin/dashboard/errors` | Recent errors across all sources |
+
+#### Jobs
+
+| Method | Path | Description |
+|--------|------|-------------|
 | GET | `/api/v1/admin/jobs` | List scheduled jobs |
 | POST | `/api/v1/admin/jobs/{name}/run` | Trigger job manually |
 | GET | `/api/v1/admin/jobs/history` | Job run history |
-| GET | `/api/v1/admin/jobs/connectors` | Available connectors |
+| GET | `/api/v1/admin/jobs/connectors` | Available data connectors |
+
+#### Analytics Admin
+
+| Method | Path | Description |
+|--------|------|-------------|
 | GET | `/api/v1/analytics/admin/dashboard` | Full analytics dashboard data |
 | GET | `/api/v1/analytics/admin/summary` | Summary statistics |
 | GET | `/api/v1/analytics/admin/popular-searches` | Popular search queries |
@@ -361,6 +451,15 @@ docker-compose up -d
 | GET | `/api/v1/analytics/admin/popular-resources` | Most viewed resources |
 | GET | `/api/v1/analytics/admin/wizard-funnel` | Wizard completion funnel |
 | GET | `/api/v1/analytics/admin/daily-trends` | Daily event trends |
+
+#### Feedback Admin
+
+| Method | Path | Description |
+|--------|------|-------------|
+| GET | `/api/v1/feedback/admin` | List feedback for review |
+| GET | `/api/v1/feedback/admin/{id}` | Get single feedback item |
+| PATCH | `/api/v1/feedback/admin/{id}` | Review/update feedback status |
+| GET | `/api/v1/feedback/admin/stats/summary` | Feedback statistics by status |
 
 ---
 
