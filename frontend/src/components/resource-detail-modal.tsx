@@ -390,9 +390,9 @@ export function ResourceDetailModal({
               bodyBg
             )}
             layoutId={enableLayoutId ? `resource-card-${resource.id}` : undefined}
-            initial={{ opacity: 0, y: isMobile ? '100%' : 0 }}
+            initial={{ opacity: 0, y: isMobile === true ? '100%' : 0 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: isMobile ? '100%' : 0 }}
+            exit={{ opacity: 0, y: isMobile === true ? '100%' : 0 }}
             style={{ zIndex: 100 }}
             transition={{
               layout: {
@@ -403,11 +403,11 @@ export function ResourceDetailModal({
               opacity: { duration: 0.2 },
               y: { type: 'spring', damping: 25, stiffness: 200 },
             }}
-            drag={isMobile ? "y" : false}
-            dragControls={isMobile ? dragControls : undefined}
-            dragConstraints={isMobile ? { top: 0, bottom: 0 } : undefined}
-            dragElastic={isMobile ? { top: 0, bottom: 0.5 } : undefined}
-            onDragEnd={isMobile ? handleDragEnd : undefined}
+            drag={isMobile === true ? "y" : false}
+            dragControls={isMobile === true ? dragControls : undefined}
+            dragConstraints={isMobile === true ? { top: 0, bottom: 0 } : undefined}
+            dragElastic={isMobile === true ? { top: 0, bottom: 0.5 } : undefined}
+            onDragEnd={isMobile === true ? handleDragEnd : undefined}
           >
 
                 {/* Header with gradient background */}

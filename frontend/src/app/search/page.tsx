@@ -220,7 +220,6 @@ function SearchResults() {
   );
 
   const handleFiltersChange = (newFilters: FilterState) => {
-    console.log('[SearchPage] handleFiltersChange called with:', newFilters);
     setFilters(newFilters);
     updateURL(newFilters);
     // Track filter usage analytics
@@ -650,7 +649,7 @@ function SearchResults() {
   // Works for both browse mode and nearby mode (not search mode which uses pagination).
   useEffect(() => {
     if (isSearchMode) return; // Search mode uses pagination buttons
-    if (isMobile) return; // On mobile, use button instead of auto-fetch
+    if (isMobile !== false) return; // On mobile or during SSR, use button instead of auto-fetch
     if (!hasNextPage) return;
     if (isFetchingNextPage) return;
 
@@ -680,7 +679,8 @@ function SearchResults() {
   }, [fetchNextPage, hasNextPage, isFetchingNextPage, isMobile, isSearchMode]);
 
   // Track sidebar expanded state for transform (desktop only)
-  const sidebarExpanded = !sidebarCollapsed && !isMobile;
+  // Treat undefined (SSR) as mobile to avoid layout shift
+  const sidebarExpanded = !sidebarCollapsed && isMobile === false;
 
   return (
     <div className="px-4 sm:px-6 lg:px-8">
@@ -896,7 +896,7 @@ function SearchResults() {
               )}
 
               {/* Load More Button - mobile only for browse/nearby modes (desktop uses auto-fetch) */}
-              {!isSearchMode && hasNextPage && isMobile && (
+              {!isSearchMode && hasNextPage && isMobile === true && (
                 <div className="mt-6 flex justify-center">
                   <Button
                     onClick={handleLoadMore}
@@ -917,7 +917,7 @@ function SearchResults() {
               )}
 
               {/* Loading indicator for desktop auto-fetch (browse and nearby modes) */}
-              {!isSearchMode && isFetchingNextPage && !isMobile && (
+              {!isSearchMode && isFetchingNextPage && isMobile === false && (
                 <div className="mt-6 flex justify-center">
                   <Loader2 className="h-6 w-6 animate-spin text-muted-foreground" />
                 </div>
