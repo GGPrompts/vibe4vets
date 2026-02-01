@@ -42,6 +42,8 @@ npm-debug.log*
 .mcp.json
 .claude/*
 !.claude/skills/
+!.claude/commands/
+!.claude/job-state.json
 
 # Git worktrees
 .worktrees/
@@ -72,3 +74,5 @@ backups/*.sql.gz
 # Census data cache
 backend/.cache/
 backend/.cache/
+.vercel
+.env*.local

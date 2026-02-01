@@ -1,0 +1,24 @@
+{
+  "link_checker": {
+    "last_run": null,
+    "frequency_hours": 168,
+    "description": "Check resource URLs for 404s and soft 404s",
+    "batch_size": 500,
+    "parallel": 10
+  },
+  "freshness": {
+    "last_run": null,
+    "frequency_hours": 24,
+    "description": "Update trust/freshness scores for all resources"
+  },
+  "etl_refresh": {
+    "last_run": null,
+    "frequency_hours": 168,
+    "description": "Run ETL pipeline for all connectors"
+  },
+  "embeddings": {
+    "last_run": null,
+    "frequency_hours": 168,
+    "description": "Generate embeddings for resources missing them"
+  }
+}
