@@ -20,10 +20,11 @@ Exceptions: Technical identifiers (variable names, URL slugs, database fields) m
 | **Type** | Veteran Resource Directory |
 | **Backend** | Python 3.12 + FastAPI + SQLModel |
 | **Frontend** | Next.js 15 + TypeScript + Tailwind + shadcn/ui |
-| **Database** | PostgreSQL (Supabase/Railway) |
+| **Database** | PostgreSQL (Railway - production, Docker - local) |
 | **ORM** | SQLModel (unified SQLAlchemy + Pydantic) |
-| **Search** | Postgres FTS → OpenSearch (Phase 3) |
+| **Search** | Postgres FTS with Haversine location search |
 | **AI** | Claude API (extraction, search, chat) |
+| **Hosting** | Railway (backend) + Vercel (frontend) |
 
 ---
 
@@ -35,11 +36,12 @@ Exceptions: Technical identifiers (variable names, URL slugs, database fields) m
 ┌─────────────────┐      ┌─────────────────┐
 │   Next.js UI    │ ──── │   FastAPI API   │
 │   (Vercel)      │      │   (Railway)     │
+│   vetrd.org     │      │   /api/v1/*     │
 └─────────────────┘      └────────┬────────┘
                                   │
                          ┌────────┴────────┐
                          │   PostgreSQL    │
-                         │   (+ pgvector)  │
+                         │   (Railway)     │
                          └─────────────────┘
 ```
 
@@ -68,6 +70,109 @@ vibe4vets/
 ├── docs/                    # Architecture docs
 └── .beads/                  # Issue tracking
 ```
+
+---
+
+## Production Deployment
+
+### Live URLs
+
+| Service | URL |
+|---------|-----|
+| **Frontend** | https://vetrd.org (Vercel) |
+| **Backend API** | https://vibe4vets-production.up.railway.app (Railway) |
+| **API Health** | https://vibe4vets-production.up.railway.app/health |
+
+### Railway Configuration
+
+| Setting | Value |
+|---------|-------|
+| **Project** | motivated-benevolence |
+| **Environment** | production |
+| **Backend Service** | vibe4vets (Dockerfile) |
+| **Database** | Postgres (Railway template) |
+| **Region** | us-east4 (backend), us-west2 (database) |
+
+### Database Connection
+
+The backend uses Railway's service reference for the database URL:
+```
+DATABASE_URL=${{Postgres.DATABASE_URL}}
+```
+
+**Important**: Never hardcode database credentials. Railway auto-injects the correct URL via service references. If credentials change (e.g., database recreated), the reference automatically updates.
+
+### Current Data (as of 2026-02)
+
+| Entity | Count |
+|--------|-------|
+| Resources | ~21,000 |
+| Organizations | ~5,600 |
+| Sources | 58 |
+
+### Local vs Production
+
+| Environment | Frontend | Backend | Database |
+|-------------|----------|---------|----------|
+| **Local** | localhost:3000 | localhost:8000 | Docker (vibe4vets-db) |
+| **Production** | vetrd.org | Railway | Railway Postgres |
+
+**Local development setup:**
+```bash
+# Terminal 1: Backend
+cd backend && source .venv/bin/activate
+uvicorn app.main:app --reload
+
+# Terminal 2: Frontend (ensure .env.local points to localhost:8000)
+cd frontend && npm run dev
+```
+
+**Frontend .env.local for local dev:**
+```
+NEXT_PUBLIC_API_URL=http://localhost:8000
+```
+
+Note: `vercel env pull` overwrites `.env.local` with production URLs. Reset to localhost:8000 for local development.
+
+### Railway CLI
+
+```bash
+# Check status
+railway status
+
+# View logs
+railway logs --service vibe4vets
+
+# Get variables
+railway variables --service vibe4vets
+
+# Manage volumes
+railway volume list
+railway volume delete -v <volume-id> -y
+```
+
+### Database Operations
+
+**Fast data migration (pg_dump/pg_restore):**
+```bash
+# Dump from local
+pg_dump -Fc $LOCAL_DATABASE_URL > vibe4vets.dump
+
+# Restore to Railway (use public URL)
+pg_restore -d "postgresql://postgres:PASSWORD@trolley.proxy.rlwy.net:PORT/railway" vibe4vets.dump
+```
+
+**Slow path (ETL pipeline):** The ETL loader commits after each resource, making it slow for bulk loads. Use pg_dump/pg_restore for large migrations.
+
+### Known Issues
+
+**Enum case sensitivity:** PostgreSQL stores enum values as-is, but SQLAlchemy expects uppercase. After data migration, fix with:
+```sql
+UPDATE sources SET source_type = UPPER(source_type) WHERE source_type IS NOT NULL;
+UPDATE sources SET health_status = UPPER(health_status) WHERE health_status IS NOT NULL;
+```
+
+**CORS for local development:** Railway CORS_ORIGINS includes localhost:3000 for local frontend → production backend testing.
 
 ---
 
@@ -283,16 +388,19 @@ docker-compose up -d
 - [x] Source health dashboard (`backend/app/services/health.py`)
 
 ### Phase 3: AI + Scale
-- [ ] Claude extraction
-- [ ] pgvector semantic search
+- [ ] pgvector semantic search (extension available, not yet implemented)
 - [ ] AI chatbot
 - [ ] Guided questionnaire
-- [ ] OpenSearch (if needed)
+- [ ] Claude extraction for new sources
+- [ ] OpenSearch (if needed for scale)
 
-### Phase 4: Production
-- [ ] Public API docs
+### Phase 4: Production (IN PROGRESS)
+- [x] Railway deployment (backend + Postgres)
+- [x] Vercel deployment (frontend)
+- [x] Custom domain (vetrd.org)
 - [x] Feedback loop
 - [x] Analytics (privacy-respecting usage tracking)
+- [ ] Public API docs
 - [ ] Partner contributions
 
 ---
@@ -354,9 +462,11 @@ docker-compose up -d
 | File | Purpose |
 |------|---------|
 | `docker-compose.yml` | Local dev environment |
+| `Dockerfile` | Railway backend deployment |
 | `.github/workflows/ci.yml` | CI pipeline |
 | `.github/workflows/link-check.yml` | Scheduled external link checker |
 | `.env.example` | Environment template |
+| `frontend/.env.local` | Frontend env (reset after `vercel env pull`) |
 
 ### Maintenance
 ```bash

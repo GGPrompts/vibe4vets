@@ -4,7 +4,7 @@ import math
 from datetime import UTC, datetime
 from uuid import UUID
 
-from sqlalchemy import String, case, func, or_, text
+from sqlalchemy import String, and_, case, func, or_, text
 from sqlalchemy.orm import selectinload
 from sqlmodel import Session, col, select
 
@@ -88,12 +88,14 @@ class ResourceService:
             category_conditions = [Resource.categories.contains([cat]) for cat in categories]
             query = query.where(or_(*category_conditions))
 
-        # Apply state filter (resources in those states OR national resources)
+        # Apply state filter:
+        # - Truly nationwide resources (national scope with empty states array) show for all states
+        # - Resources with specific states in their array show only for matching states
         if states:
             state_conditions = [Resource.states.contains([s]) for s in states]
             query = query.where(
                 or_(
-                    Resource.scope == ResourceScope.NATIONAL,
+                    and_(Resource.scope == ResourceScope.NATIONAL, Resource.states == []),
                     *state_conditions,
                 )
             )
@@ -147,12 +149,17 @@ class ResourceService:
             category_conditions = [Resource.categories.contains([cat]) for cat in categories]
             query = query.where(or_(*category_conditions))
 
-        # Apply state filter (resources in those states OR national resources)
+        # Apply state filter:
+        # - Truly nationwide resources (national scope with empty states array) show for all states
+        # - Resources with specific states in their array show only for matching states
+        # This prevents e.g. "Feeding America MN" from showing for Texas searches
         if states:
             state_conditions = [Resource.states.contains([s]) for s in states]
             query = query.where(
                 or_(
-                    Resource.scope == ResourceScope.NATIONAL,
+                    # Truly nationwide: national scope AND no specific states listed
+                    and_(Resource.scope == ResourceScope.NATIONAL, Resource.states == []),
+                    # OR has matching state in their states array
                     *state_conditions,
                 )
             )
@@ -194,7 +201,7 @@ class ResourceService:
             state_conditions = [Resource.states.contains([s]) for s in states]
             count_query = count_query.where(
                 or_(
-                    Resource.scope == ResourceScope.NATIONAL,
+                    and_(Resource.scope == ResourceScope.NATIONAL, Resource.states == []),
                     *state_conditions,
                 )
             )
@@ -238,6 +245,12 @@ class ResourceService:
             # Day-seeded random: consistent order within a day, varies day-to-day
             # Uses md5(id::text || current_date::text) for deterministic shuffling
             query = query.order_by(func.md5(func.concat(Resource.id.cast(String), func.current_date().cast(String))))
+        elif sort == "official":
+            # Official First: sort by source tier (reliability_score), Tier 1 first
+            if national_boost is not None:
+                query = query.order_by(national_boost, col(Resource.reliability_score).desc(), col(Resource.id))
+            else:
+                query = query.order_by(col(Resource.reliability_score).desc(), col(Resource.id))
         else:
             # Default: relevance (by reliability score)
             if national_boost is not None:

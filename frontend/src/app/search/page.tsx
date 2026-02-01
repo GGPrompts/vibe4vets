@@ -176,9 +176,9 @@ function SearchResults() {
   const getDefaultSort = (): SortOption => {
     if (query) return 'relevance';
     if (filters.zip || (filters.lat && filters.lng)) return 'distance';
-    return 'newest';
+    return 'official';  // Tier 1 (VA, DOL, HUD) resources first when browsing
   };
-  const sort: SortOption = (sortParam && ['relevance', 'newest', 'alpha', 'shuffle', 'distance'].includes(sortParam))
+  const sort: SortOption = (sortParam && ['official', 'relevance', 'newest', 'alpha', 'shuffle', 'distance'].includes(sortParam))
     ? sortParam
     : getDefaultSort();
 

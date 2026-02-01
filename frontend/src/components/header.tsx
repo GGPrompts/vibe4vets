@@ -46,7 +46,7 @@ export function Header() {
   const getDefaultSort = (): SortOption => {
     if (query) return 'relevance';
     if (zip) return 'distance';
-    return 'newest';
+    return 'official';  // Tier 1 (VA, DOL, HUD) resources first when browsing
   };
   const currentSort = (searchParams.get('sort') as SortOption) || getDefaultSort();
 

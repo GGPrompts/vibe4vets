@@ -5,7 +5,7 @@ from dataclasses import dataclass
 from datetime import UTC, datetime
 from typing import TYPE_CHECKING
 
-from sqlalchemy import Float, case, cast, func, or_, text
+from sqlalchemy import Float, and_, case, cast, func, or_, text
 from sqlmodel import Session, col, select
 
 from app.models import Location, Organization, Resource, Source
@@ -179,9 +179,11 @@ class SearchService:
             category_conditions = [Resource.categories.contains([cat]) for cat in categories]
             stmt = stmt.where(or_(*category_conditions))
 
-        # Apply state filter (OR logic - match ANY state, always includes national resources)
+        # Apply state filter:
+        # - Truly nationwide resources (national scope with empty states array) show for all states
+        # - Resources with specific states in their array show only for matching states
         if states:
-            state_conditions = [Resource.scope == ResourceScope.NATIONAL]
+            state_conditions = [and_(Resource.scope == ResourceScope.NATIONAL, Resource.states == [])]
             for state in states:
                 state_conditions.append(Resource.states.contains([state]))
             stmt = stmt.where(or_(*state_conditions))
@@ -211,7 +213,7 @@ class SearchService:
             category_conditions = [Resource.categories.contains([cat]) for cat in categories]
             count_stmt = count_stmt.where(or_(*category_conditions))
         if states:
-            state_conditions = [Resource.scope == ResourceScope.NATIONAL]
+            state_conditions = [and_(Resource.scope == ResourceScope.NATIONAL, Resource.states == [])]
             for state in states:
                 state_conditions.append(Resource.states.contains([state]))
             count_stmt = count_stmt.where(or_(*state_conditions))
@@ -588,9 +590,9 @@ class SearchService:
 
         # Apply eligibility filters if provided
         if eligibility_filters:
-            # State filter
+            # State filter - truly nationwide (empty states) or matching states
             if eligibility_filters.states:
-                state_conditions = [Resource.scope == ResourceScope.NATIONAL]
+                state_conditions = [and_(Resource.scope == ResourceScope.NATIONAL, Resource.states == [])]
                 for state in eligibility_filters.states:
                     state_conditions.append(Resource.states.contains([state]))
                 stmt = stmt.where(or_(*state_conditions))
@@ -874,7 +876,7 @@ class SearchService:
         if state:
             stmt = stmt.where(
                 or_(
-                    Resource.scope == ResourceScope.NATIONAL,
+                    and_(Resource.scope == ResourceScope.NATIONAL, Resource.states == []),
                     Resource.states.contains([state]),
                 )
             )
@@ -890,7 +892,7 @@ class SearchService:
         if state:
             count_stmt = count_stmt.where(
                 or_(
-                    Resource.scope == ResourceScope.NATIONAL,
+                    and_(Resource.scope == ResourceScope.NATIONAL, Resource.states == []),
                     Resource.states.contains([state]),
                 )
             )
@@ -997,7 +999,7 @@ class SearchService:
         if state:
             stmt = stmt.where(
                 or_(
-                    Resource.scope == ResourceScope.NATIONAL,
+                    and_(Resource.scope == ResourceScope.NATIONAL, Resource.states == []),
                     Resource.states.contains([state]),
                 )
             )

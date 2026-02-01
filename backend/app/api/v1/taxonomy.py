@@ -5,7 +5,7 @@ Provides the tag taxonomy for frontend consumption to power filter UIs.
 
 from fastapi import APIRouter, Depends, HTTPException, Query
 from pydantic import BaseModel, Field
-from sqlalchemy import func, or_
+from sqlalchemy import and_, func, or_
 from sqlmodel import Session, select
 
 from app.core.taxonomy import (
@@ -170,8 +170,8 @@ def get_category_tags(
         if states:
             state_list = [s.strip().upper() for s in states.split(",") if s.strip()]
             if state_list:
-                # Include national resources + state-specific
-                state_conditions = [Resource.scope == ResourceScope.NATIONAL]
+                # Truly nationwide (empty states) or matching states
+                state_conditions = [and_(Resource.scope == ResourceScope.NATIONAL, Resource.states == [])]
                 for s in state_list:
                     state_conditions.append(Resource.states.contains([s]))
                 base_conditions.append(or_(*state_conditions))

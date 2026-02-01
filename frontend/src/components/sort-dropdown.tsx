@@ -10,9 +10,10 @@ import {
 } from '@/components/ui/select';
 import { cn } from '@/lib/utils';
 
-export type SortOption = 'relevance' | 'newest' | 'alpha' | 'shuffle' | 'distance';
+export type SortOption = 'official' | 'relevance' | 'newest' | 'alpha' | 'shuffle' | 'distance';
 
 export const SORT_OPTIONS = [
+  { value: 'official', label: 'Official First' },
   { value: 'relevance', label: 'Relevance' },
   { value: 'distance', label: 'Distance' },
   { value: 'newest', label: 'Newest' },
@@ -33,10 +34,14 @@ export function SortDropdown({
   hasQuery = false,
   className,
 }: SortDropdownProps) {
-  // Filter out relevance option when there's no search query
-  const options = hasQuery
-    ? SORT_OPTIONS
-    : SORT_OPTIONS.filter((opt) => opt.value !== 'relevance');
+  // Filter options based on context:
+  // - 'relevance' only shown when there's a search query
+  // - 'official' always shown (sorts by source tier)
+  // - 'distance' handled by parent component
+  const options = SORT_OPTIONS.filter((opt) => {
+    if (opt.value === 'relevance') return hasQuery;
+    return true;
+  });
 
   return (
     <Select value={value} onValueChange={(v) => onChange(v as SortOption)}>
