@@ -20,13 +20,13 @@ import json
 import sys
 from datetime import UTC, datetime, timedelta
 
-from sqlmodel import Session, select, func, text
-
 # Add parent to path for imports
 sys.path.insert(0, ".")
 
-from app.database import engine
-from app.models.resource import Resource, ResourceStatus
+from sqlmodel import Session, func, select, text  # noqa: E402
+
+from app.database import engine  # noqa: E402
+from app.models.resource import Resource, ResourceStatus  # noqa: E402
 
 
 def export_for_check(limit: int = 1000, days_old: int = 7) -> None:
