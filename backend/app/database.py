@@ -8,17 +8,17 @@ from sqlmodel import Session, SQLModel, create_engine
 
 from app.config import settings
 
-# Configure connection pooling for Railway's memory limits
-# - pool_size: Reduced for low-memory environments
-# - max_overflow: Minimal overflow to prevent OOM
+# Configure connection pooling for production workloads
+# - pool_size: 5 base connections for concurrent requests
+# - max_overflow: 5 additional connections under load (10 total)
 # - pool_pre_ping: Check connection health before use (handles stale connections)
 # - pool_recycle: Recycle connections after 30 minutes (prevents timeouts)
 # - connect_timeout: 10 seconds to fail fast if DB is unreachable
 engine = create_engine(
     settings.database_url,
     echo=settings.debug,
-    pool_size=2,
-    max_overflow=3,
+    pool_size=5,
+    max_overflow=5,
     pool_pre_ping=True,
     pool_recycle=1800,
     connect_args={"connect_timeout": 10},  # Fail fast if DB unreachable
