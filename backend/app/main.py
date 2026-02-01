@@ -4,28 +4,38 @@ import logging
 from collections.abc import AsyncGenerator
 from contextlib import asynccontextmanager
 
-from fastapi import FastAPI, Request
+from fastapi import FastAPI, Request, status
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
+from sqlmodel import Session, select, text
 
 from app.api.v1 import admin, analytics, chat, email, feedback, partner, resources, search, stats, taxonomy
 from app.config import settings
-from app.database import create_db_and_tables
+from app.database import create_db_and_tables, engine
 from jobs import get_scheduler, setup_jobs
 
 logger = logging.getLogger(__name__)
+
+# Flag to track database initialization status
+DB_INIT_FAILED = False
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI) -> AsyncGenerator[None, None]:
     """Application lifespan handler."""
+    global DB_INIT_FAILED
+
     # Startup - create tables if they don't exist
     try:
         create_db_and_tables()
         logger.info("Database tables initialized")
     except Exception as e:
         logger.error("Failed to initialize database: %s", e)
-        # Continue anyway to allow health checks
+        DB_INIT_FAILED = True
+        # Continue anyway to allow health checks to report failure
+
+    # Initialize scheduler variable before try block to ensure it's defined
+    scheduler = None
 
     # Initialize and start the job scheduler
     try:
@@ -42,10 +52,10 @@ async def lifespan(app: FastAPI) -> AsyncGenerator[None, None]:
 
     # Shutdown - stop scheduler gracefully
     try:
-        if scheduler.is_running:
+        if scheduler is not None and scheduler.is_running:
             scheduler.shutdown(wait=True)
-    except Exception:
-        pass  # Scheduler may not have started
+    except Exception as e:
+        logger.warning("Scheduler shutdown error: %s", e, exc_info=True)
 
 
 API_DESCRIPTION = """
@@ -174,9 +184,34 @@ app.include_router(taxonomy.router, prefix="/api/v1/taxonomy", tags=["taxonomy"]
 
 
 @app.get("/health")
-async def health_check() -> dict[str, str]:
-    """Health check endpoint."""
-    return {"status": "healthy"}
+async def health_check() -> JSONResponse:
+    """Health check endpoint.
+
+    Returns 200 OK when database is reachable, 503 Service Unavailable when:
+    - Database initialization failed on startup
+    - Database is currently unreachable
+    """
+    # Check if DB init failed on startup
+    if DB_INIT_FAILED:
+        return JSONResponse(
+            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+            content={"status": "unhealthy", "reason": "Database initialization failed"},
+        )
+
+    # Test actual database connectivity
+    try:
+        with Session(engine) as session:
+            session.exec(select(text("1")))
+        return JSONResponse(
+            status_code=status.HTTP_200_OK,
+            content={"status": "healthy"},
+        )
+    except Exception as e:
+        logger.warning("Health check failed - database unreachable: %s", e)
+        return JSONResponse(
+            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+            content={"status": "unhealthy", "reason": "Database unreachable"},
+        )
 
 
 @app.exception_handler(Exception)
