@@ -331,7 +331,7 @@ def main():
             print(f"\n[DRY RUN] Would update {updated_count} resources")
 
         # Summary
-        print(f"\nSummary:")
+        print("\nSummary:")
         print(f"  Total checked: {len(results)}")
         print(f"  Active: {sum(1 for r in results if r['status'] == 'active')}")
         print(f"  Failed: {sum(1 for r in results if r['status'] != 'active')}")

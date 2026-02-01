@@ -39,7 +39,8 @@ Return a JSON array of resources. For each resource found, include:
 - city: City (if available)
 - state: State abbreviation (if available)
 - zip_code: ZIP code (if available)
-- categories: Array of applicable categories from: employment, training, housing, legal, food, benefits, mentalHealth, supportServices, healthcare, education, financial, family
+- categories: Array from: employment, training, housing, legal, food, benefits,
+  mentalHealth, supportServices, healthcare, education, financial, family
 - eligibility: Who can access this resource (if mentioned)
 - org_name: Organization providing the resource
 
