@@ -32,6 +32,7 @@ def get_railway_url() -> str:
         raise RuntimeError(f"Failed to get Railway URL: {result.stderr}")
 
     import json
+
     vars = json.loads(result.stdout)
     return vars.get("DATABASE_PUBLIC_URL") or vars.get("DATABASE_URL")
 
@@ -154,8 +155,16 @@ def sync_locations(local_url: str, railway_url: str, dry_run: bool = False) -> d
 
     # Get column list (exclude geog which Railway doesn't have)
     columns = [
-        "id", "organization_id", "address", "city", "state", "zip_code",
-        "latitude", "longitude", "service_area", "created_at",
+        "id",
+        "organization_id",
+        "address",
+        "city",
+        "state",
+        "zip_code",
+        "latitude",
+        "longitude",
+        "service_area",
+        "created_at",
     ]
 
     query = f"SELECT {', '.join(columns)} FROM locations"
@@ -226,8 +235,9 @@ def verify_sync(local_url: str, railway_url: str) -> bool:
 def main():
     parser = argparse.ArgumentParser(description="Sync local database to Railway")
     parser.add_argument("--dry-run", action="store_true", help="Show what would sync without executing")
-    parser.add_argument("--table", choices=["resources", "locations", "all"], default="all",
-                        help="Which table to sync (default: all)")
+    parser.add_argument(
+        "--table", choices=["resources", "locations", "all"], default="all", help="Which table to sync (default: all)"
+    )
     parser.add_argument("--skip-verify", action="store_true", help="Skip verification step")
     args = parser.parse_args()
 

@@ -15,8 +15,7 @@ from app.models.resource import Resource, ResourceStatus
 
 # Browser-like User-Agent
 USER_AGENT = (
-    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
-    "(KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
 )
 
 MAX_CONCURRENT = 30
@@ -40,10 +39,7 @@ async def main():
 
     # Get 403 resources
     with Session(engine) as session:
-        stmt = (
-            select(Resource.id, Resource.website)
-            .where(Resource.link_flagged_reason == "HTTP 403")
-        )
+        stmt = select(Resource.id, Resource.website).where(Resource.link_flagged_reason == "HTTP 403")
         resources = [(r.id, r.website) for r in session.exec(stmt).all()]
 
     total = len(resources)
@@ -64,6 +60,7 @@ async def main():
     still_broken = 0
 
     async with httpx.AsyncClient(timeout=TIMEOUT, headers=headers) as client:
+
         async def check_with_semaphore(rid, url):
             async with semaphore:
                 return (rid, await check_url(client, url))
@@ -71,7 +68,7 @@ async def main():
         # Process in batches
         batch_size = 500
         for i in range(0, total, batch_size):
-            batch = resources[i:i + batch_size]
+            batch = resources[i : i + batch_size]
             tasks = [check_with_semaphore(rid, url) for rid, url in batch]
             results = await asyncio.gather(*tasks)
 

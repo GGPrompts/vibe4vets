@@ -56,6 +56,7 @@ async def check_url(client: httpx.AsyncClient, url: str) -> dict:
 async def check_batch(resources: list[tuple[UUID, str]], semaphore: asyncio.Semaphore) -> list[tuple[UUID, dict]]:
     """Check a batch of URLs concurrently."""
     async with httpx.AsyncClient(timeout=TIMEOUT) as client:
+
         async def check_with_semaphore(resource_id: UUID, url: str):
             async with semaphore:
                 result = await check_url(client, url)
@@ -133,7 +134,7 @@ async def main():
     checked = 0
 
     for i in range(0, total, BATCH_COMMIT_SIZE):
-        batch = resources[i:i + BATCH_COMMIT_SIZE]
+        batch = resources[i : i + BATCH_COMMIT_SIZE]
 
         # Check URLs
         results = await check_batch(batch, semaphore)
@@ -151,8 +152,8 @@ async def main():
 
     print("\n=== COMPLETE ===")
     print(f"Total checked: {checked}")
-    print(f"Healthy: {total_healthy} ({total_healthy/checked*100:.1f}%)")
-    print(f"Broken: {total_broken} ({total_broken/checked*100:.1f}%)")
+    print(f"Healthy: {total_healthy} ({total_healthy / checked * 100:.1f}%)")
+    print(f"Broken: {total_broken} ({total_broken / checked * 100:.1f}%)")
 
 
 if __name__ == "__main__":
