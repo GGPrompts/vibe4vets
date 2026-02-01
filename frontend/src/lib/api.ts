@@ -534,26 +534,60 @@ export interface AIStats {
   jobs_completed_today: number;
 }
 
+/**
+ * Transforms admin API paths to go through the Next.js server-side proxy.
+ * This keeps the admin API key secure on the server.
+ *
+ * Examples:
+ *   /api/v1/admin/review-queue -> /api/admin/review-queue
+ *   /api/v1/feedback/admin/123 -> /api/admin/feedback/123
+ *   /api/v1/analytics/admin/dashboard -> /api/admin/analytics/dashboard
+ */
+function getProxiedEndpoint(endpoint: string): { url: string; isProxied: boolean } {
+  // Main admin endpoints: /api/v1/admin/* -> /api/admin/*
+  if (endpoint.startsWith('/api/v1/admin/')) {
+    return {
+      url: endpoint.replace('/api/v1/admin/', '/api/admin/'),
+      isProxied: true,
+    };
+  }
+
+  // Feedback admin endpoints: /api/v1/feedback/admin/* -> /api/admin/feedback/*
+  if (endpoint.includes('/api/v1/feedback/admin')) {
+    return {
+      url: endpoint.replace('/api/v1/feedback/admin', '/api/admin/feedback'),
+      isProxied: true,
+    };
+  }
+
+  // Analytics admin endpoints: /api/v1/analytics/admin/* -> /api/admin/analytics/*
+  if (endpoint.includes('/api/v1/analytics/admin')) {
+    return {
+      url: endpoint.replace('/api/v1/analytics/admin', '/api/admin/analytics'),
+      isProxied: true,
+    };
+  }
+
+  // Non-admin endpoints go directly to backend
+  return { url: endpoint, isProxied: false };
+}
+
 async function fetchAPI<T>(
   endpoint: string,
   options: RequestInit = {}
 ): Promise<T> {
   let response: Response;
 
-  // Add admin key header for admin endpoints
   const headers: Record<string, string> = {
     'Content-Type': 'application/json',
   };
 
-  if (endpoint.includes('/admin')) {
-    const adminKey = process.env.NEXT_PUBLIC_ADMIN_API_KEY;
-    if (adminKey) {
-      headers['X-Admin-Key'] = adminKey;
-    }
-  }
+  // Route admin endpoints through the server-side proxy
+  const { url, isProxied } = getProxiedEndpoint(endpoint);
+  const baseUrl = isProxied ? '' : API_BASE;
 
   try {
-    response = await fetch(`${API_BASE}${endpoint}`, {
+    response = await fetch(`${baseUrl}${url}`, {
       ...options,
       headers: {
         ...headers,
