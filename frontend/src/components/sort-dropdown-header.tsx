@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { cn } from "@/lib/utils";
-import { ArrowUpDown, Clock, ArrowDownAZ, Sparkles, Shuffle, Check, MapPin } from "lucide-react";
+import { ArrowUpDown, Clock, ArrowDownAZ, Sparkles, Shuffle, Check, MapPin, ShieldCheck } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -10,7 +10,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-export type SortOption = 'relevance' | 'newest' | 'alpha' | 'shuffle' | 'distance';
+export type SortOption = 'official' | 'relevance' | 'newest' | 'alpha' | 'shuffle' | 'distance';
 
 interface SortItem {
   value: SortOption;
@@ -20,6 +20,12 @@ interface SortItem {
 }
 
 const SORT_ITEMS: SortItem[] = [
+  {
+    value: 'official',
+    label: 'Official First',
+    description: 'VA, DOL, HUD resources first',
+    icon: <ShieldCheck className="w-4 h-4" />,
+  },
   {
     value: 'relevance',
     label: 'Relevance',

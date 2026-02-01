@@ -17,7 +17,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from '@/components/ui/tooltip';
-import { Filter, X, Briefcase, GraduationCap, Home, Scale, UtensilsCrossed, FileCheck, ChevronDown, PanelLeft, PanelLeftClose, Search, MapPin, Brain, HeartHandshake, HeartPulse, School, Wallet, Users, Check, Tag, ArrowUpDown, Clock, ArrowDownAZ, Sparkles, Shuffle } from 'lucide-react';
+import { Filter, X, Briefcase, GraduationCap, Home, Scale, UtensilsCrossed, FileCheck, ChevronDown, PanelLeft, PanelLeftClose, Search, MapPin, Brain, HeartHandshake, HeartPulse, School, Wallet, Users, Check, Tag, ArrowUpDown, Clock, ArrowDownAZ, Sparkles, Shuffle, ShieldCheck } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { cn } from '@/lib/utils';
 import { ZipCodeInput } from '@/components/ZipCodeInput';
@@ -110,9 +110,10 @@ export interface FilterState {
   lng?: number;
 }
 
-export type SortOption = 'relevance' | 'newest' | 'alpha' | 'shuffle' | 'distance';
+export type SortOption = 'official' | 'relevance' | 'newest' | 'alpha' | 'shuffle' | 'distance';
 
 const SORT_OPTIONS: { value: SortOption; label: string; icon: React.ElementType; description: string }[] = [
+  { value: 'official', label: 'Official First', icon: ShieldCheck, description: 'VA, DOL, HUD resources first' },
   { value: 'relevance', label: 'Relevance', icon: Sparkles, description: 'Best matches first' },
   { value: 'distance', label: 'Distance', icon: MapPin, description: 'Closest to you' },
   { value: 'newest', label: 'Newest', icon: Clock, description: 'Recently added' },
