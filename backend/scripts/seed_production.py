@@ -21,11 +21,7 @@ from connectors.base import BaseConnector
 from etl import ETLPipeline
 from jobs.refresh import CONNECTOR_REGISTRY
 
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s %(levelname)s %(message)s',
-    datefmt='%H:%M:%S'
-)
+logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s", datefmt="%H:%M:%S")
 logger = logging.getLogger(__name__)
 
 
@@ -49,10 +45,7 @@ def run_connector(session: Session, name: str, connector_cls: type[BaseConnector
             for e in result.errors[:3]:  # Show first 3 errors
                 logger.warning(f"  {name} error: {e.message}")
 
-        logger.info(
-            f"Completed: {name} - "
-            f"created={result.stats.created}, updated={result.stats.updated}"
-        )
+        logger.info(f"Completed: {name} - created={result.stats.created}, updated={result.stats.updated}")
         return stats
 
     except Exception as e:
@@ -106,7 +99,7 @@ def main():
     ]
 
     # Add any remaining connectors
-    remaining = [n for n in CONNECTOR_REGISTRY.keys() if n not in priority_connectors]
+    remaining = [n for n in CONNECTOR_REGISTRY if n not in priority_connectors]
     all_connectors = priority_connectors + remaining
 
     results = []
