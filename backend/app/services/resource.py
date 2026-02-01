@@ -312,26 +312,43 @@ class ResourceService:
         nearby_resources = []
         total = 0
 
-        # Helper to build tags SQL condition
-        def build_tags_sql(tags: list[str]) -> str:
+        # Helper to build tags SQL condition with parameterized queries
+        def build_tags_sql(tags: list[str], params: dict) -> str:
             """Build SQL condition for tags filtering (matches eligibility, title, description, tags, subcategories).
 
             Uses AND logic: resources must match ALL provided tags (selecting more tags narrows results).
+            All values are parameterized to prevent SQL injection.
             """
             tag_conditions = []
-            for tag in tags:
-                # Match tag in text fields (case-insensitive) or in array fields
-                search_term = f"%{tag}%"
-                search_term_spaced = f"%{tag.replace('-', ' ')}%"
+            for i, tag in enumerate(tags):
+                # Create unique parameter names for each tag
+                param_like = f"tag_like_{i}"
+                param_like_spaced = f"tag_like_spaced_{i}"
+                param_array = f"tag_array_{i}"
+                # Add parameters to the dict
+                params[param_like] = f"%{tag}%"
+                params[param_like_spaced] = f"%{tag.replace('-', ' ')}%"
+                params[param_array] = tag
+                # Use parameterized placeholders
                 tag_conditions.append(
-                    f"(r.eligibility ILIKE '{search_term}' OR r.eligibility ILIKE '{search_term_spaced}' "
-                    f"OR r.title ILIKE '{search_term}' OR r.title ILIKE '{search_term_spaced}' "
-                    f"OR r.description ILIKE '{search_term}' OR r.description ILIKE '{search_term_spaced}' "
-                    f"OR r.tags @> ARRAY['{tag}']::text[] "
-                    f"OR r.subcategories @> ARRAY['{tag}']::text[])"
+                    f"(r.eligibility ILIKE :{param_like} OR r.eligibility ILIKE :{param_like_spaced} "
+                    f"OR r.title ILIKE :{param_like} OR r.title ILIKE :{param_like_spaced} "
+                    f"OR r.description ILIKE :{param_like} OR r.description ILIKE :{param_like_spaced} "
+                    f"OR r.tags @> ARRAY[:{param_array}]::text[] "
+                    f"OR r.subcategories @> ARRAY[:{param_array}]::text[])"
                 )
             # AND logic: each tag condition must be satisfied
             return " AND ".join(tag_conditions)
+
+        # Helper to build categories SQL condition with parameterized queries
+        def build_categories_sql(categories: list[str], params: dict, prefix: str = "cat") -> str:
+            """Build SQL condition for category filtering with parameterization."""
+            cat_conditions = []
+            for i, cat in enumerate(categories):
+                param_name = f"{prefix}_{i}"
+                params[param_name] = cat
+                cat_conditions.append(f"r.categories @> ARRAY[:{param_name}]::text[]")
+            return " OR ".join(cat_conditions)
 
         # If scope is 'national', only return national resources (no spatial query)
         if scope == "national":
@@ -344,11 +361,11 @@ class ResourceService:
             params: dict = {}
 
             if categories:
-                category_conditions = " OR ".join([f"r.categories @> ARRAY['{cat}']::text[]" for cat in categories])
+                category_conditions = build_categories_sql(categories, params, "nat_cat")
                 national_sql += f" AND ({category_conditions})"
 
             if tags:
-                tags_condition = build_tags_sql(tags)
+                tags_condition = build_tags_sql(tags, params)
                 national_sql += f" AND ({tags_condition})"
 
             count_sql = f"SELECT COUNT(*) FROM ({national_sql}) as subquery"
@@ -422,11 +439,11 @@ class ResourceService:
                 }
 
             if categories:
-                category_conditions = " OR ".join([f"r.categories @> ARRAY['{cat}']::text[]" for cat in categories])
+                category_conditions = build_categories_sql(categories, params, "base_cat")
                 base_sql += f" AND ({category_conditions})"
 
             if tags:
-                tags_condition = build_tags_sql(tags)
+                tags_condition = build_tags_sql(tags, params)
                 base_sql += f" AND ({tags_condition})"
 
             # Get nearby resources count
@@ -436,18 +453,20 @@ class ResourceService:
             # Get national resources count (if not filtering to state-only)
             national_count = 0
             if scope != "state":
+                # Use separate params dict for national count query to avoid collisions
+                nat_count_params: dict = {}
                 national_count_sql = """
                     SELECT COUNT(*) FROM resources r
                     WHERE r.scope::text = 'national'
                     AND r.status::text != 'inactive'
                 """
                 if categories:
-                    category_conditions = " OR ".join([f"r.categories @> ARRAY['{cat}']::text[]" for cat in categories])
+                    category_conditions = build_categories_sql(categories, nat_count_params, "natc_cat")
                     national_count_sql += f" AND ({category_conditions})"
                 if tags:
-                    tags_condition = build_tags_sql(tags)
+                    tags_condition = build_tags_sql(tags, nat_count_params)
                     national_count_sql += f" AND ({tags_condition})"
-                national_count = self.session.execute(text(national_count_sql)).scalar() or 0
+                national_count = self.session.execute(text(national_count_sql), nat_count_params).scalar() or 0
 
             total = nearby_count + national_count
 
@@ -479,6 +498,8 @@ class ResourceService:
 
             # Fetch national resources if we have room and not filtering to state-only
             if remaining_limit > 0 and scope != "state":
+                # Use separate params dict for national fetch query
+                nat_fetch_params: dict = {"limit": remaining_limit, "offset": current_offset}
                 national_sql = """
                     SELECT r.id as resource_id
                     FROM resources r
@@ -486,16 +507,16 @@ class ResourceService:
                     AND r.status::text != 'inactive'
                 """
                 if categories:
-                    category_conditions = " OR ".join([f"r.categories @> ARRAY['{cat}']::text[]" for cat in categories])
+                    category_conditions = build_categories_sql(categories, nat_fetch_params, "natf_cat")
                     national_sql += f" AND ({category_conditions})"
                 if tags:
-                    tags_condition = build_tags_sql(tags)
+                    tags_condition = build_tags_sql(tags, nat_fetch_params)
                     national_sql += f" AND ({tags_condition})"
 
                 national_sql += " ORDER BY r.title ASC LIMIT :limit OFFSET :offset"
 
                 national_results = self.session.execute(
-                    text(national_sql), {"limit": remaining_limit, "offset": current_offset}
+                    text(national_sql), nat_fetch_params
                 ).fetchall()
 
                 for row in national_results:
@@ -580,21 +601,43 @@ class ResourceService:
         nearby_resources = []
         total = 0
 
-        # Helper to build tags SQL condition (same as list_nearby)
-        def build_tags_sql(tags: list[str]) -> str:
-            """Build SQL condition for tags filtering."""
+        # Helper to build tags SQL condition with parameterized queries
+        def build_tags_sql(tags: list[str], params: dict) -> str:
+            """Build SQL condition for tags filtering (matches eligibility, title, description, tags, subcategories).
+
+            Uses AND logic: resources must match ALL provided tags (selecting more tags narrows results).
+            All values are parameterized to prevent SQL injection.
+            """
             tag_conditions = []
-            for tag in tags:
-                search_term = f"%{tag}%"
-                search_term_spaced = f"%{tag.replace('-', ' ')}%"
+            for i, tag in enumerate(tags):
+                # Create unique parameter names for each tag (use coord_ prefix to avoid collisions)
+                param_like = f"coord_tag_like_{i}"
+                param_like_spaced = f"coord_tag_like_spaced_{i}"
+                param_array = f"coord_tag_array_{i}"
+                # Add parameters to the dict
+                params[param_like] = f"%{tag}%"
+                params[param_like_spaced] = f"%{tag.replace('-', ' ')}%"
+                params[param_array] = tag
+                # Use parameterized placeholders
                 tag_conditions.append(
-                    f"(r.eligibility ILIKE '{search_term}' OR r.eligibility ILIKE '{search_term_spaced}' "
-                    f"OR r.title ILIKE '{search_term}' OR r.title ILIKE '{search_term_spaced}' "
-                    f"OR r.description ILIKE '{search_term}' OR r.description ILIKE '{search_term_spaced}' "
-                    f"OR r.tags @> ARRAY['{tag}']::text[] "
-                    f"OR r.subcategories @> ARRAY['{tag}']::text[])"
+                    f"(r.eligibility ILIKE :{param_like} OR r.eligibility ILIKE :{param_like_spaced} "
+                    f"OR r.title ILIKE :{param_like} OR r.title ILIKE :{param_like_spaced} "
+                    f"OR r.description ILIKE :{param_like} OR r.description ILIKE :{param_like_spaced} "
+                    f"OR r.tags @> ARRAY[:{param_array}]::text[] "
+                    f"OR r.subcategories @> ARRAY[:{param_array}]::text[])"
                 )
+            # AND logic: each tag condition must be satisfied
             return " AND ".join(tag_conditions)
+
+        # Helper to build categories SQL condition with parameterized queries
+        def build_categories_sql(categories: list[str], params: dict, prefix: str = "coord_cat") -> str:
+            """Build SQL condition for category filtering with parameterization."""
+            cat_conditions = []
+            for i, cat in enumerate(categories):
+                param_name = f"{prefix}_{i}"
+                params[param_name] = cat
+                cat_conditions.append(f"r.categories @> ARRAY[:{param_name}]::text[]")
+            return " OR ".join(cat_conditions)
 
         # If scope is 'national', only return national resources (no spatial query)
         if scope == "national":
@@ -607,11 +650,11 @@ class ResourceService:
             params: dict = {}
 
             if categories:
-                category_conditions = " OR ".join([f"r.categories @> ARRAY['{cat}']::text[]" for cat in categories])
+                category_conditions = build_categories_sql(categories, params, "coord_nat_cat")
                 national_sql += f" AND ({category_conditions})"
 
             if tags:
-                tags_condition = build_tags_sql(tags)
+                tags_condition = build_tags_sql(tags, params)
                 national_sql += f" AND ({tags_condition})"
 
             count_sql = f"SELECT COUNT(*) FROM ({national_sql}) as subquery"
@@ -685,11 +728,11 @@ class ResourceService:
                 }
 
             if categories:
-                category_conditions = " OR ".join([f"r.categories @> ARRAY['{cat}']::text[]" for cat in categories])
+                category_conditions = build_categories_sql(categories, params, "coord_base_cat")
                 base_sql += f" AND ({category_conditions})"
 
             if tags:
-                tags_condition = build_tags_sql(tags)
+                tags_condition = build_tags_sql(tags, params)
                 base_sql += f" AND ({tags_condition})"
 
             # Get nearby resources count
@@ -699,18 +742,20 @@ class ResourceService:
             # Get national resources count (if not filtering to state-only)
             national_count = 0
             if scope != "state":
+                # Use separate params dict for national count query to avoid collisions
+                coord_nat_count_params: dict = {}
                 national_count_sql = """
                     SELECT COUNT(*) FROM resources r
                     WHERE r.scope::text = 'national'
                     AND r.status::text != 'inactive'
                 """
                 if categories:
-                    category_conditions = " OR ".join([f"r.categories @> ARRAY['{cat}']::text[]" for cat in categories])
+                    category_conditions = build_categories_sql(categories, coord_nat_count_params, "coord_natc_cat")
                     national_count_sql += f" AND ({category_conditions})"
                 if tags:
-                    tags_condition = build_tags_sql(tags)
+                    tags_condition = build_tags_sql(tags, coord_nat_count_params)
                     national_count_sql += f" AND ({tags_condition})"
-                national_count = self.session.execute(text(national_count_sql)).scalar() or 0
+                national_count = self.session.execute(text(national_count_sql), coord_nat_count_params).scalar() or 0
 
             total = nearby_count + national_count
 
@@ -742,6 +787,8 @@ class ResourceService:
 
             # Fetch national resources if we have room and not filtering to state-only
             if remaining_limit > 0 and scope != "state":
+                # Use separate params dict for national fetch query
+                coord_nat_fetch_params: dict = {"limit": remaining_limit, "offset": current_offset}
                 national_sql = """
                     SELECT r.id as resource_id
                     FROM resources r
@@ -749,16 +796,16 @@ class ResourceService:
                     AND r.status::text != 'inactive'
                 """
                 if categories:
-                    category_conditions = " OR ".join([f"r.categories @> ARRAY['{cat}']::text[]" for cat in categories])
+                    category_conditions = build_categories_sql(categories, coord_nat_fetch_params, "coord_natf_cat")
                     national_sql += f" AND ({category_conditions})"
                 if tags:
-                    tags_condition = build_tags_sql(tags)
+                    tags_condition = build_tags_sql(tags, coord_nat_fetch_params)
                     national_sql += f" AND ({tags_condition})"
 
                 national_sql += " ORDER BY r.title ASC LIMIT :limit OFFSET :offset"
 
                 national_results = self.session.execute(
-                    text(national_sql), {"limit": remaining_limit, "offset": current_offset}
+                    text(national_sql), coord_nat_fetch_params
                 ).fetchall()
 
                 for row in national_results:
