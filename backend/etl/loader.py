@@ -9,8 +9,6 @@ import json
 import logging
 from datetime import UTC, datetime
 
-logger = logging.getLogger(__name__)
-
 from sqlalchemy.exc import IntegrityError, OperationalError
 from sqlmodel import Session, select
 
@@ -31,6 +29,8 @@ from app.models import (
 )
 from app.services.trust import TrustService
 from etl.models import ETLError, LoadResult, NormalizedResource
+
+logger = logging.getLogger(__name__)
 
 
 class Loader:
