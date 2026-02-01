@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { usePathname, useSearchParams } from 'next/navigation';
 import { useOptionalMagnifier } from '@/context/magnifier-context';
+import DOMPurify from 'dompurify';
 
 const MAGNIFIER_WIDTH = 600;
 const MAGNIFIER_HEIGHT = 350;
@@ -215,7 +216,7 @@ function MagnifierContent({
         overflow: 'visible',
       }}
       className={document.body.className}
-      dangerouslySetInnerHTML={{ __html: html }}
+      dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(html) }}
     />
   );
 }
