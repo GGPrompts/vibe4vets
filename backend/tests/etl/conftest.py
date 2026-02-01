@@ -166,3 +166,85 @@ def mock_connector(sample_candidate) -> MockConnector:
 def failing_connector() -> FailingConnector:
     """Create a connector that fails."""
     return FailingConnector()
+
+
+class TimeoutConnector:
+    """Connector that raises a timeout exception for testing."""
+
+    @property
+    def metadata(self) -> SourceMetadata:
+        return SourceMetadata(
+            name="Timeout Source",
+            url="https://timeout.example.com",
+            tier=4,
+            frequency="daily",
+        )
+
+    def run(self) -> list[ResourceCandidate]:
+        import httpx
+
+        raise httpx.TimeoutException("Connection timed out")
+
+    def close(self) -> None:
+        pass
+
+    def __enter__(self) -> Self:
+        return self
+
+    def __exit__(
+        self,
+        exc_type: type[BaseException] | None,
+        exc_val: BaseException | None,
+        exc_tb: Any,
+    ) -> None:
+        self.close()
+
+
+class AuthFailureConnector:
+    """Connector that raises an auth failure exception for testing."""
+
+    @property
+    def metadata(self) -> SourceMetadata:
+        return SourceMetadata(
+            name="Auth Failure Source",
+            url="https://auth-fail.example.com",
+            tier=1,
+            frequency="daily",
+        )
+
+    def run(self) -> list[ResourceCandidate]:
+        import httpx
+
+        # Create a mock response object
+        class MockResponse:
+            status_code = 401
+
+        raise httpx.HTTPStatusError(
+            "Unauthorized", request=None, response=MockResponse()
+        )
+
+    def close(self) -> None:
+        pass
+
+    def __enter__(self) -> Self:
+        return self
+
+    def __exit__(
+        self,
+        exc_type: type[BaseException] | None,
+        exc_val: BaseException | None,
+        exc_tb: Any,
+    ) -> None:
+        self.close()
+
+
+@pytest.fixture
+def timeout_connector() -> TimeoutConnector:
+    """Create a connector that times out."""
+    return TimeoutConnector()
+
+
+@pytest.fixture
+def auth_failure_connector() -> AuthFailureConnector:
+    """Create a connector that fails auth."""
+    return AuthFailureConnector()

@@ -4,11 +4,14 @@ Note: Integration tests that use the database require PostgreSQL.
 Tests that don't need the loader can still run with SQLite.
 """
 
+import json
+
+import httpx
 import pytest
 
 from connectors.base import ResourceCandidate
 from etl.models import ETLResult
-from etl.pipeline import ETLPipeline, create_pipeline
+from etl.pipeline import ETLPipeline, _categorize_exception, create_pipeline
 from tests.etl.conftest import MockConnector
 
 # Mark tests that require database as skipped
@@ -297,3 +300,122 @@ class TestCreatePipeline:
         pipeline = create_pipeline(etl_session, geocoder=geocoder)
 
         assert pipeline.enricher.geocoder is geocoder
+
+
+class TestErrorCategorization:
+    """Tests for ETL error categorization."""
+
+    def test_timeout_error_categorized_as_transient(self):
+        """Test that timeout exceptions are categorized as transient."""
+        error = _categorize_exception(
+            httpx.TimeoutException("Request timed out"), "Test Source"
+        )
+        assert error.category == "transient"
+        assert error.stage == "extract"
+        assert "timeout" in error.message.lower()
+
+    def test_connect_error_categorized_as_network(self):
+        """Test that connection errors are categorized as network."""
+        error = _categorize_exception(
+            httpx.ConnectError("Connection refused"), "Test Source"
+        )
+        assert error.category == "network"
+        assert "network error" in error.message.lower()
+
+    def test_auth_401_categorized_as_auth_failure(self):
+        """Test that 401 errors are categorized as auth_failure."""
+
+        class MockResponse:
+            status_code = 401
+
+        error = _categorize_exception(
+            httpx.HTTPStatusError("Unauthorized", request=None, response=MockResponse()),
+            "Test Source",
+        )
+        assert error.category == "auth_failure"
+        assert "auth failed" in error.message.lower()
+        assert "401" in error.message
+
+    def test_auth_403_categorized_as_auth_failure(self):
+        """Test that 403 errors are categorized as auth_failure."""
+
+        class MockResponse:
+            status_code = 403
+
+        error = _categorize_exception(
+            httpx.HTTPStatusError("Forbidden", request=None, response=MockResponse()),
+            "Test Source",
+        )
+        assert error.category == "auth_failure"
+        assert "403" in error.message
+
+    def test_http_500_categorized_as_http_error(self):
+        """Test that 500 errors are categorized as http_error."""
+
+        class MockResponse:
+            status_code = 500
+
+        error = _categorize_exception(
+            httpx.HTTPStatusError("Server Error", request=None, response=MockResponse()),
+            "Test Source",
+        )
+        assert error.category == "http_error"
+        assert "500" in error.message
+
+    def test_json_decode_error_categorized_as_parse(self):
+        """Test that JSON errors are categorized as parse."""
+        error = _categorize_exception(
+            json.JSONDecodeError("Invalid JSON", "doc", 0), "Test Source"
+        )
+        assert error.category == "parse"
+        assert "parse error" in error.message.lower()
+
+    def test_key_error_categorized_as_parse(self):
+        """Test that KeyError is categorized as parse."""
+        error = _categorize_exception(KeyError("missing_key"), "Test Source")
+        assert error.category == "parse"
+
+    def test_unknown_error_categorized_as_unknown(self):
+        """Test that unknown errors are categorized as unknown."""
+        error = _categorize_exception(RuntimeError("Something failed"), "Test Source")
+        assert error.category == "unknown"
+        assert error.exception == "RuntimeError"
+
+    def test_error_includes_source_name(self):
+        """Test that errors include the source name."""
+        error = _categorize_exception(RuntimeError("Failed"), "VA.gov API")
+        assert "VA.gov API" in error.message
+
+    def test_pipeline_categorizes_timeout_connector(
+        self, etl_session, timeout_connector, sample_candidate
+    ):
+        """Test that pipeline correctly categorizes timeout errors."""
+        connectors = [
+            timeout_connector,
+            MockConnector([sample_candidate], name="Working Source"),
+        ]
+
+        pipeline = ETLPipeline(etl_session)
+        result = pipeline.dry_run(connectors)
+
+        # Should have error from timeout connector
+        extract_errors = [e for e in result.errors if e.stage == "extract"]
+        assert len(extract_errors) == 1
+        assert extract_errors[0].category == "transient"
+
+    def test_pipeline_categorizes_auth_failure_connector(
+        self, etl_session, auth_failure_connector, sample_candidate
+    ):
+        """Test that pipeline correctly categorizes auth failures."""
+        connectors = [
+            auth_failure_connector,
+            MockConnector([sample_candidate], name="Working Source"),
+        ]
+
+        pipeline = ETLPipeline(etl_session)
+        result = pipeline.dry_run(connectors)
+
+        # Should have error from auth failure connector
+        extract_errors = [e for e in result.errors if e.stage == "extract"]
+        assert len(extract_errors) == 1
+        assert extract_errors[0].category == "auth_failure"

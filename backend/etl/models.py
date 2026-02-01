@@ -108,11 +108,12 @@ class ETLStats:
 class ETLError:
     """Error during ETL processing."""
 
-    stage: str  # normalize, dedupe, enrich, load
+    stage: str  # extract, normalize, dedupe, enrich, load
     message: str
     resource_title: str | None = None
     source_url: str | None = None
     exception: str | None = None
+    category: str | None = None  # transient, network, auth_failure, http_error, parse, unknown
 
 
 @dataclass
@@ -143,3 +144,4 @@ class LoadResult:
     location_id: uuid.UUID | None = None
     action: str = "skipped"  # created, updated, skipped, failed
     error: str | None = None
+    retriable: bool = False  # True if error is transient and operation can be retried

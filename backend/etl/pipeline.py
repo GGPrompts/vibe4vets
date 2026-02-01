@@ -4,8 +4,10 @@ Chains normalization, deduplication, enrichment, and loading
 into a complete pipeline with error handling and statistics.
 """
 
+import json
 from datetime import UTC, datetime
 
+import httpx
 from sqlmodel import Session
 
 from connectors.base import Connector
@@ -14,6 +16,69 @@ from etl.enrich import Enricher, GeocoderProtocol
 from etl.loader import Loader
 from etl.models import ETLError, ETLResult, ETLStats, NormalizedResource
 from etl.normalize import Normalizer
+
+
+def _categorize_exception(e: Exception, source_name: str) -> ETLError:
+    """Categorize an exception into an ETLError with appropriate category.
+
+    Args:
+        e: The exception that occurred.
+        source_name: Name of the connector/source that failed.
+
+    Returns:
+        ETLError with category set based on exception type.
+    """
+    # Timeout errors (transient - can retry)
+    if isinstance(e, httpx.TimeoutException):
+        return ETLError(
+            stage="extract",
+            message=f"Connector {source_name} timeout: {e}",
+            exception=type(e).__name__,
+            category="transient",
+        )
+
+    # Connection errors (network issues)
+    if isinstance(e, httpx.ConnectError):
+        return ETLError(
+            stage="extract",
+            message=f"Connector {source_name} network error: {e}",
+            exception=type(e).__name__,
+            category="network",
+        )
+
+    # HTTP errors (check status code for auth vs other)
+    if isinstance(e, httpx.HTTPStatusError):
+        status_code = e.response.status_code
+        if status_code in (401, 403):
+            return ETLError(
+                stage="extract",
+                message=f"Connector {source_name} auth failed (HTTP {status_code}): {e}",
+                exception=type(e).__name__,
+                category="auth_failure",
+            )
+        return ETLError(
+            stage="extract",
+            message=f"Connector {source_name} HTTP error ({status_code}): {e}",
+            exception=type(e).__name__,
+            category="http_error",
+        )
+
+    # JSON/parsing errors
+    if isinstance(e, (json.JSONDecodeError, ValueError, KeyError, TypeError)):
+        return ETLError(
+            stage="extract",
+            message=f"Connector {source_name} parse error: {e}",
+            exception=type(e).__name__,
+            category="parse",
+        )
+
+    # Unknown/other errors
+    return ETLError(
+        stage="extract",
+        message=f"Connector {source_name} failed: {e}",
+        exception=type(e).__name__,
+        category="unknown",
+    )
 
 
 class ETLPipeline:
@@ -85,13 +150,7 @@ class ETLPipeline:
                 all_normalized.extend(normalized)
 
             except Exception as e:
-                errors.append(
-                    ETLError(
-                        stage="extract",
-                        message=f"Connector {source_name} failed: {str(e)}",
-                        exception=type(e).__name__,
-                    )
-                )
+                errors.append(_categorize_exception(e, source_name))
 
         if not all_normalized:
             return ETLResult(
@@ -202,13 +261,7 @@ class ETLPipeline:
                 all_normalized.extend(normalized)
 
             except Exception as e:
-                errors.append(
-                    ETLError(
-                        stage="extract",
-                        message=f"Connector {source_name} failed: {str(e)}",
-                        exception=type(e).__name__,
-                    )
-                )
+                errors.append(_categorize_exception(e, source_name))
 
         if all_normalized:
             # Deduplicate
