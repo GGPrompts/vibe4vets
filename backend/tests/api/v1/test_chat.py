@@ -169,3 +169,58 @@ def test_conversation_store_eviction():
     finally:
         chat_module.MAX_CONVERSATIONS = original_max
         chat_module._conversation_store.clear()
+
+
+@patch("app.api.v1.chat.ClaudeClient")
+@patch("app.api.v1.chat.SearchService")
+@patch("app.api.v1.chat.settings")
+def test_chat_search_failure_sets_flag(mock_settings, mock_search_class, mock_claude_class, client: TestClient):
+    """Test that search failures set search_failed flag and log at ERROR level."""
+    mock_settings.anthropic_api_key = "test-key"
+
+    # Mock search to raise an exception
+    mock_search = MagicMock()
+    mock_search.search.side_effect = Exception("Database connection error")
+    mock_search_class.return_value = mock_search
+
+    # Mock Claude response
+    mock_client = MagicMock()
+    mock_response = MagicMock()
+    mock_response.content = "I can still help you."
+    mock_client.complete.return_value = mock_response
+    mock_claude_class.return_value = mock_client
+
+    response = client.post("/api/v1/chat", json={"message": "I need housing help"})
+
+    assert response.status_code == 200
+    data = response.json()
+    assert data["search_failed"] is True
+    assert data["resources"] == []
+    assert data["response"] == "I can still help you."
+
+
+@patch("app.api.v1.chat.ClaudeClient")
+@patch("app.api.v1.chat.SearchService")
+@patch("app.api.v1.chat.settings")
+def test_chat_empty_results_not_flagged_as_failure(mock_settings, mock_search_class, mock_claude_class, client: TestClient):
+    """Test that empty search results (no match) do not set search_failed flag."""
+    mock_settings.anthropic_api_key = "test-key"
+
+    # Mock search to return empty results (successful search, no matches)
+    mock_search = MagicMock()
+    mock_search.search.return_value = ([], 0)  # Empty results, not an error
+    mock_search_class.return_value = mock_search
+
+    # Mock Claude response
+    mock_client = MagicMock()
+    mock_response = MagicMock()
+    mock_response.content = "No resources found."
+    mock_client.complete.return_value = mock_response
+    mock_claude_class.return_value = mock_client
+
+    response = client.post("/api/v1/chat", json={"message": "xyz123 nonexistent query"})
+
+    assert response.status_code == 200
+    data = response.json()
+    # search_failed should be False for empty results (search worked, just no matches)
+    assert data["search_failed"] is False

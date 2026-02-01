@@ -125,6 +125,10 @@ class ChatResponse(BaseModel):
     response: str = Field(..., description="AI assistant's response text")
     resources: list[ResourceReference] = Field(..., description="Resources referenced in the response")
     conversation_id: str = Field(..., description="Conversation ID for follow-up messages")
+    search_failed: bool = Field(
+        False,
+        description="True if resource search failed (distinct from empty results)",
+    )
 
     model_config = {
         "json_schema_extra": {
@@ -140,6 +144,7 @@ class ChatResponse(BaseModel):
                     }
                 ],
                 "conversation_id": "550e8400-e29b-41d4-a716-446655440000",
+                "search_failed": False,
             }
         }
     }
@@ -240,6 +245,7 @@ async def chat(message: ChatMessage, session: SessionDep) -> ChatResponse:
     # Search for relevant resources based on the user's message
     search_service = SearchService(session)
     resources: list[ResourceReference] = []
+    search_failed = False
 
     try:
         # Search resources to ground the response
@@ -260,7 +266,11 @@ async def chat(message: ChatMessage, session: SessionDep) -> ChatResponse:
                 )
             )
     except Exception as e:
-        logger.warning(f"Resource search failed: {e}")
+        logger.error(
+            f"Chat search failed for query '{message.message[:50]}...': {e}",
+            exc_info=True,
+        )
+        search_failed = True
         # Continue without resources - Claude can still help
 
     # Build context for Claude
@@ -313,4 +323,5 @@ async def chat(message: ChatMessage, session: SessionDep) -> ChatResponse:
         response=assistant_response,
         resources=resources,
         conversation_id=conversation_id,
+        search_failed=search_failed,
     )
