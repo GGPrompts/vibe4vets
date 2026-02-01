@@ -14,7 +14,6 @@ import argparse
 import os
 import subprocess
 import sys
-import tempfile
 from datetime import datetime
 
 # Add backend to path
@@ -191,14 +190,14 @@ ON CONFLICT (id) DO UPDATE SET
 SELECT COUNT(*) FROM locations_updates;
 """
 
-    result = subprocess.run(
+    subprocess.run(
         ["docker", "exec", "-i", "vibe4vets-db-1", "psql", railway_url],
         input=sql,
         capture_output=True,
         text=True,
     )
 
-    print(f"  Synced locations to Railway")
+    print("  Synced locations to Railway")
     return {"locations": count, "synced": count}
 
 
@@ -210,8 +209,8 @@ def verify_sync(local_url: str, railway_url: str) -> bool:
     railway_count = run_psql(railway_url, "SELECT COUNT(*) FROM resources WHERE status = 'ACTIVE';")
 
     # Parse counts
-    local_n = int([l for l in local_count.split("\n") if l.strip().isdigit()][0])
-    railway_n = int([l for l in railway_count.split("\n") if l.strip().isdigit()][0])
+    local_n = int([line for line in local_count.split("\n") if line.strip().isdigit()][0])
+    railway_n = int([line for line in railway_count.split("\n") if line.strip().isdigit()][0])
 
     print(f"  Local active resources:   {local_n}")
     print(f"  Railway active resources: {railway_n}")
