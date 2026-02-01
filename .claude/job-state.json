@@ -7,14 +7,18 @@
     "notes": "Uses browser automation to verify resources that failed HTTP checks"
   },
   "crawl4ai_discovery": {
-    "last_run": "2026-02-01T21:45:00Z",
+    "last_run": "2026-02-01T23:11:00Z",
     "frequency_hours": 336,
-    "description": "Discover new veteran resources from configured URLs using Crawl4AI + CLI",
+    "description": "Discover new veteran resources from configured URLs using Crawl4AI + parallel haiku",
     "disabled": false,
-    "notes": "Crawls Tier 3-4 sites, extracts resources with Claude CLI (Max subscription)",
+    "notes": "Crawls Tier 3-4 sites, extracts with parallel haiku subagents (10-20x faster than CLI)",
     "last_run_stats": {
-      "pages": 20,
-      "resources": 288
+      "pages_crawled": 20,
+      "pages_failed": 2,
+      "resources_extracted": 51,
+      "resources_created": 26,
+      "resources_updated": 25,
+      "synced_to_railway": true
     }
   },
   "link_checker": {
