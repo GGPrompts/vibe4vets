@@ -6,8 +6,12 @@ and SourceRecord entities with conflict resolution.
 
 import hashlib
 import json
+import logging
 from datetime import UTC, datetime
 
+logger = logging.getLogger(__name__)
+
+from sqlalchemy.exc import IntegrityError, OperationalError
 from sqlmodel import Session, select
 
 from app.models import (
@@ -92,11 +96,42 @@ class Loader:
             self.session.commit()
             return result
 
+        except IntegrityError as e:
+            self.session.rollback()
+            logger.debug("Duplicate resource (constraint violation): %s", e)
+            return LoadResult(
+                action="skipped",
+                error="Duplicate",
+            )
+        except OperationalError as e:
+            self.session.rollback()
+            error_str = str(e).lower()
+            if "timeout" in error_str or "timed out" in error_str:
+                logger.warning("Database timeout (transient): %s", e)
+                return LoadResult(
+                    action="failed",
+                    error="Timeout (retriable)",
+                    retriable=True,
+                )
+            elif "connection" in error_str or "disconnect" in error_str:
+                logger.warning("Database connection error (transient): %s", e)
+                return LoadResult(
+                    action="failed",
+                    error="Connection error (retriable)",
+                    retriable=True,
+                )
+            else:
+                logger.error("Database operational error: %s", e)
+                return LoadResult(
+                    action="failed",
+                    error=f"Database error: {e}",
+                )
         except Exception as e:
             self.session.rollback()
+            logger.error("Unexpected database error: %s", e, exc_info=True)
             return LoadResult(
                 action="failed",
-                error=f"Database error: {str(e)}",
+                error=f"Unexpected error: {e}",
             )
 
     def load_batch(self, resources: list[NormalizedResource]) -> tuple[list[LoadResult], list[ETLError]]:
