@@ -40,11 +40,11 @@ def upgrade() -> None:
     """)
 
     # Normalize any lowercase status values to uppercase
-    # Cast to text for comparison since status is an enum
+    # Status is stored as varchar (Python enum, not Postgres enum)
     op.execute("""
         UPDATE resources
-        SET status = UPPER(status::text)::resourcestatus
-        WHERE status::text != UPPER(status::text)
+        SET status = UPPER(status)
+        WHERE status != UPPER(status)
     """)
 
     # 1. Add CHECK constraint to limit tags array size
@@ -64,13 +64,13 @@ def upgrade() -> None:
 
     # 2. Create trigger function to normalize status to uppercase
     # This ensures any insert/update (ORM or raw SQL) uses correct case
-    # Cast to text, uppercase, then back to enum
+    # Status is stored as varchar, so just uppercase it directly
     op.execute("""
         CREATE OR REPLACE FUNCTION normalize_resource_status()
         RETURNS TRIGGER AS $$
         BEGIN
             IF NEW.status IS NOT NULL THEN
-                NEW.status := UPPER(NEW.status::text)::resourcestatus;
+                NEW.status := UPPER(NEW.status);
             END IF;
             RETURN NEW;
         END;
