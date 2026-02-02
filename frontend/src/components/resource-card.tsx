@@ -116,13 +116,13 @@ export function getSourceTierBadge(tier: number | null, sourceName: string | nul
   switch (tier) {
     case 1:
       return {
-        text: 'Official',
+        text: 'Government',
         icon: '\u{1F3DB}\uFE0F', // Building emoji
         className: 'bg-blue-100 text-blue-800 border-blue-300 dark:bg-blue-900/50 dark:text-blue-200 dark:border-blue-700',
       };
     case 2:
       return {
-        text: 'Nonprofit',
+        text: 'Verified VSO',
         icon: '\u2713', // Checkmark
         className: 'bg-green-100 text-green-800 border-green-300 dark:bg-green-900/50 dark:text-green-200 dark:border-green-700',
       };
