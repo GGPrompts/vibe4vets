@@ -71,6 +71,9 @@ npm-debug.log*
 # Database backups
 backups/*.sql.gz
 
+# Generated reports (audit/analysis output)
+docs/reports/
+
 # Census data cache
 backend/.cache/
 backend/.cache/

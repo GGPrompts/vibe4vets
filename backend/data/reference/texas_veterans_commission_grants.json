@@ -1,0 +1,137 @@
+[
+  {
+    "name": "Grants for Veteran Services (GVS)",
+    "description": "Awards reimbursement grants to eligible charitable organizations, local government agencies, and Veterans Service Organizations that provide direct services to Texas Veterans and their families.",
+    "url": "https://tvc.texas.gov/grants/grantseekers/",
+    "categories": ["benefits", "supportServices"],
+    "state": "TX",
+    "source": "Texas Veterans Commission",
+    "contact": {
+      "email": "grants@tvc.texas.gov",
+      "phone": "(512) 463-1157"
+    }
+  },
+  {
+    "name": "Fund for Veterans' Assistance (FVA)",
+    "description": "The foundational funding mechanism providing over $359 million in grants since 2009 to support Veteran services. Revenue derives from Texas Lottery veterans tickets and voluntary donations during license/registration processes.",
+    "url": "https://tvc.texas.gov/grants/",
+    "categories": ["benefits", "financial", "supportServices"],
+    "state": "TX",
+    "source": "Texas Veterans Commission",
+    "contact": {
+      "email": "grants@tvc.texas.gov",
+      "phone": "(512) 463-1157"
+    }
+  },
+  {
+    "name": "Texas Veterans + Family Alliance Grant Program",
+    "description": "Grant program supporting Texas Veterans and their family members through charitable organizations and service providers.",
+    "url": "https://tvc.texas.gov/grants/grantees/",
+    "categories": ["family", "supportServices"],
+    "state": "TX",
+    "source": "Texas Veterans Commission",
+    "contact": {
+      "email": "grants@tvc.texas.gov",
+      "phone": "(512) 463-1157"
+    }
+  },
+  {
+    "name": "Claims & Disability Compensation",
+    "description": "Assistance with Veterans' claims and disability compensation services.",
+    "url": "https://tvc.texas.gov/claims/",
+    "categories": ["benefits", "legal"],
+    "state": "TX",
+    "source": "Texas Veterans Commission",
+    "contact": {
+      "email": "grants@tvc.texas.gov",
+      "phone": "(512) 463-1157"
+    }
+  },
+  {
+    "name": "Hazlewood Education Program",
+    "description": "Education benefits and scholarship assistance for eligible Texas Veterans.",
+    "url": "https://tvc.texas.gov/education/",
+    "categories": ["education"],
+    "state": "TX",
+    "source": "Texas Veterans Commission",
+    "contact": {
+      "email": "grants@tvc.texas.gov",
+      "phone": "(512) 463-1157"
+    }
+  },
+  {
+    "name": "Employment Services",
+    "description": "Job placement, career development, and employment support services for Texas Veterans.",
+    "url": "https://tvc.texas.gov/employment/",
+    "categories": ["employment", "training"],
+    "state": "TX",
+    "source": "Texas Veterans Commission",
+    "contact": {
+      "email": "grants@tvc.texas.gov",
+      "phone": "(512) 463-1157"
+    }
+  },
+  {
+    "name": "Mental Health Support Services",
+    "description": "Comprehensive mental health support including peer network, suicide prevention, homeless Veteran services, and justice-involved Veteran support.",
+    "url": "https://tvc.texas.gov/mental-health/",
+    "categories": ["mentalHealth", "supportServices"],
+    "subcategories": ["peer-support", "suicide-prevention", "homeless-services", "justice-involved"],
+    "state": "TX",
+    "source": "Texas Veterans Commission",
+    "contact": {
+      "email": "grants@tvc.texas.gov",
+      "phone": "(512) 463-1157"
+    }
+  },
+  {
+    "name": "Women Veterans Program",
+    "description": "Specialized services and support resources designed for female Veterans in Texas.",
+    "url": "https://tvc.texas.gov/women/",
+    "categories": ["family", "supportServices"],
+    "tags": ["women-veterans"],
+    "state": "TX",
+    "source": "Texas Veterans Commission",
+    "contact": {
+      "email": "grants@tvc.texas.gov",
+      "phone": "(512) 463-1157"
+    }
+  },
+  {
+    "name": "Health Care Advocacy",
+    "description": "Advocacy and support services to help Veterans navigate and access health care benefits and services.",
+    "url": "https://tvc.texas.gov/health-care-advocacy/",
+    "categories": ["healthcare", "benefits"],
+    "state": "TX",
+    "source": "Texas Veterans Commission",
+    "contact": {
+      "email": "grants@tvc.texas.gov",
+      "phone": "(512) 463-1157"
+    }
+  },
+  {
+    "name": "Veteran Entrepreneur Program",
+    "description": "Business development and entrepreneurship support services for Veterans starting or expanding businesses in Texas.",
+    "url": "https://tvc.texas.gov/entrepreneurs/",
+    "categories": ["financial", "training"],
+    "tags": ["small-business"],
+    "state": "TX",
+    "source": "Texas Veterans Commission",
+    "contact": {
+      "email": "grants@tvc.texas.gov",
+      "phone": "(512) 463-1157"
+    }
+  },
+  {
+    "name": "TVC Grant Grantees Directory",
+    "description": "Directory of all organizations and agencies currently receiving grants from the Texas Veterans Commission to serve Veterans.",
+    "url": "https://tvc.texas.gov/grants/grantees/",
+    "categories": ["supportServices"],
+    "state": "TX",
+    "source": "Texas Veterans Commission",
+    "contact": {
+      "email": "grants@tvc.texas.gov",
+      "phone": "(512) 463-1157"
+    }
+  }
+]

@@ -2233,7 +2233,6 @@ dependencies = [
     { name = "pydantic-settings" },
     { name = "python-multipart" },
     { name = "pyyaml" },
-    { name = "sentence-transformers" },
     { name = "sqlmodel" },
     { name = "uvicorn", extra = ["standard"] },
 ]
@@ -2244,6 +2243,9 @@ dev = [
     { name = "pytest" },
     { name = "pytest-asyncio" },
     { name = "ruff" },
+]
+ml = [
+    { name = "sentence-transformers" },
 ]
 pdf = [
     { name = "pdfplumber" },
@@ -2276,11 +2278,11 @@ requires-dist = [
     { name = "python-multipart", specifier = ">=0.0.18" },
     { name = "pyyaml", specifier = ">=6.0.0" },
     { name = "ruff", marker = "extra == 'dev'", specifier = ">=0.8.0" },
-    { name = "sentence-transformers", specifier = ">=3.0.0" },
+    { name = "sentence-transformers", marker = "extra == 'ml'", specifier = ">=3.0.0" },
     { name = "sqlmodel", specifier = ">=0.0.22" },
     { name = "uvicorn", extras = ["standard"], specifier = ">=0.32.0" },
 ]
-provides-extras = ["dev", "scraping", "pdf"]
+provides-extras = ["dev", "scraping", "pdf", "ml"]
 
 [[package]]
 name = "watchfiles"

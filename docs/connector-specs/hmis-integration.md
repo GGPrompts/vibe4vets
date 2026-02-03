@@ -886,4 +886,3 @@ Plan for multi-vendor integration.
 - [California CoCs and HMIS Vendors](https://homelessstrategy.com/california-continuums-of-care-and-homeless-management-information-system-hmis-vendors-who-they-are-and-next-steps/)
 - [National Coalition for Homeless Veterans](https://nchv.org/2024-point-in-time-count/)
 - [Bob Woodruff Foundation - Veteran Homelessness](https://bobwoodrufffoundation.org/success-stories/veteran-homelessness-in-the-u-s-understanding-the-numbers/)
-

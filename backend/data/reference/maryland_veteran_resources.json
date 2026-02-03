@@ -1,0 +1,180 @@
+[
+  {
+    "name": "Maryland Department of Veterans and Military Families - Service and Benefits Program",
+    "description": "VA-accredited specialists provide complimentary assistance to veterans, service members, and their families navigating federal, state, and local benefit programs. Services include disability compensation/pension claim submission, healthcare and cemetery benefit navigation, and claims processing support.",
+    "url": "https://veterans.maryland.gov/Benefits/HowToApplyForBenefits/Pages/default.aspx",
+    "categories": ["benefits", "supportServices"],
+    "state": "MD",
+    "contact": "800-446-4926 ext. 6450"
+  },
+  {
+    "name": "VA Healthcare Enrollment",
+    "description": "Veterans can enroll with the VA health care system to receive healthcare benefits. Benefits vary based on military service period.",
+    "url": "https://veterans.maryland.gov/Benefits/Healthcare/Pages/default.aspx",
+    "categories": ["healthcare"],
+    "state": "MD"
+  },
+  {
+    "name": "Maryland Health Connection",
+    "description": "A one-stop insurance marketplace where individuals and families can shop, compare, and select the right health plan.",
+    "url": "https://marylandhealthconnection.gov",
+    "categories": ["healthcare"],
+    "state": "MD",
+    "contact": "1-855-642-8572"
+  },
+  {
+    "name": "VA Mental Health Services",
+    "description": "Covers PTSD, military sexual trauma effects, depression, anxiety, and grief. Available 24/7 regardless of discharge status or VA enrollment.",
+    "url": "https://veterans.maryland.gov/Benefits/Healthcare/Pages/default.aspx",
+    "categories": ["mentalHealth", "healthcare"],
+    "state": "MD",
+    "contact": "Veterans Crisis Line: Call 988 and press 1"
+  },
+  {
+    "name": "Veterans Crisis Line",
+    "description": "24/7 mental health crisis support for veterans. Available via phone, chat, or text.",
+    "url": "https://www.veteranscrisisline.net",
+    "categories": ["mentalHealth"],
+    "state": "MD",
+    "contact": "Call 988 and press 1, Chat at VeteransCrisisLine.net, Text 838255"
+  },
+  {
+    "name": "NAMI Maryland",
+    "description": "Free peer support and education programs for mental health support.",
+    "url": "https://namimd.org",
+    "categories": ["mentalHealth", "supportServices"],
+    "state": "MD",
+    "contact": "(410) 884-8691"
+  },
+  {
+    "name": "On Our Own of Maryland",
+    "description": "Peer-operated mental health support meetings and services.",
+    "url": "https://onourownmd.org",
+    "categories": ["mentalHealth", "supportServices"],
+    "state": "MD",
+    "contact": "(410) 646-0262"
+  },
+  {
+    "name": "Vet Center - Combat Veteran Counseling",
+    "description": "Readjustment counseling services for veterans and families who served in combat zones including Vietnam, Southwest Asia, OEF, OIF, and other deployments.",
+    "url": "https://www.vetcenter.va.gov",
+    "categories": ["mentalHealth", "healthcare"],
+    "state": "MD"
+  },
+  {
+    "name": "Baltimore Station",
+    "description": "Therapeutic residential program supporting veterans transitioning through poverty, addiction, and homelessness toward self-sufficiency.",
+    "url": "https://veterans.maryland.gov/Benefits/Pages/Housing.aspx",
+    "categories": ["housing", "supportServices"],
+    "state": "MD",
+    "contact": "410-752-4454"
+  },
+  {
+    "name": "Maryland Center for Veterans Education and Training",
+    "description": "Nonprofit providing comprehensive services enabling veterans to rejoin their communities, including housing and education support.",
+    "url": "https://veterans.maryland.gov/Benefits/Pages/Housing.aspx",
+    "categories": ["housing", "education", "supportServices"],
+    "state": "MD",
+    "contact": "410-576-9626"
+  },
+  {
+    "name": "VA Community Resource and Referral Centers",
+    "description": "Centers coordinate with local partners to provide services to homeless veterans and family members, including assistance with housing, employment, health care, benefits, and more. On-site shower, laundry, and meal services available.",
+    "url": "https://veterans.maryland.gov/Benefits/Pages/Housing.aspx",
+    "categories": ["housing", "supportServices", "food"],
+    "state": "MD",
+    "sublocations": ["Franklin Street VA Clinic (Washington, D.C.)", "Baltimore VA Clinic (Baltimore, MD)"]
+  },
+  {
+    "name": "Supportive Services for Veterans and Their Families (SSVF)",
+    "description": "Eligible veteran families receive case management and assistance obtaining benefits, housing counseling, and legal services to prevent eviction and foreclosure.",
+    "url": "https://veterans.maryland.gov/Benefits/Pages/Housing.aspx",
+    "categories": ["housing", "legal", "supportServices", "financial"],
+    "state": "MD"
+  },
+  {
+    "name": "Charlotte Hall Veterans Home",
+    "description": "Provides assisted living and skilled nursing programs to eligible veterans aged 62 and over.",
+    "url": "https://veterans.maryland.gov/Benefits/Pages/Housing.aspx",
+    "categories": ["housing", "healthcare"],
+    "state": "MD"
+  },
+  {
+    "name": "Maryland Housing Search",
+    "description": "Online resource showcasing rental properties filtered by area, cost, bedrooms/bathrooms, and voucher acceptance.",
+    "url": "https://veterans.maryland.gov/Benefits/Pages/Housing.aspx",
+    "categories": ["housing"],
+    "state": "MD"
+  },
+  {
+    "name": "Disability Compensation for Service-Connected Veterans",
+    "description": "Property tax exemptions on primary residence for veterans who are permanently and totally disabled from service-connected causes.",
+    "url": "https://veterans.maryland.gov/Benefits/Pages/Benefits-for-Service-Connected-Veterans.aspx",
+    "categories": ["benefits", "financial"],
+    "state": "MD"
+  },
+  {
+    "name": "Maryland Tax Exemptions for Veterans",
+    "description": "Tax relief programs including property tax exemptions and tax deductions for eligible veterans.",
+    "url": "https://veterans.maryland.gov/Benefits/TaxExemptions/Pages/default.aspx",
+    "categories": ["financial"],
+    "state": "MD"
+  },
+  {
+    "name": "Maryland State Parks - Free Entry for Veterans",
+    "description": "Free entry to all state parks for resident and nonresident veterans.",
+    "url": "https://veterans.maryland.gov/Benefits/Pages/Recreation.aspx",
+    "categories": ["recreation"],
+    "state": "MD"
+  },
+  {
+    "name": "Maryland Veterans Services Specialist Program",
+    "description": "Professional advocacy services staffed by VA-accredited specialists at regional offices throughout Maryland.",
+    "url": "https://veterans.maryland.gov/Benefits/Pages/Veterans-Services-Specialist-Program.aspx",
+    "categories": ["supportServices"],
+    "state": "MD",
+    "contact": "410-260-3838"
+  },
+  {
+    "name": "Veterans Service Animal Program",
+    "description": "Program providing assistance and resources related to service animals for eligible veterans.",
+    "url": "https://veterans.maryland.gov/Benefits/Veterans-Service-Animal-Program/Pages/animal-service-program.aspx",
+    "categories": ["supportServices"],
+    "state": "MD"
+  },
+  {
+    "name": "Restoration of Honor Act",
+    "description": "Specialized veteran support program through the Maryland Department of Veterans and Military Families.",
+    "url": "https://veterans.maryland.gov/Benefits/Pages/Restoration-of-Honor-Act.aspx",
+    "categories": ["benefits", "supportServices"],
+    "state": "MD"
+  },
+  {
+    "name": "Maryland Veterans Cemetery and Memorial Services",
+    "description": "Burial and memorial services for eligible veterans.",
+    "url": "https://veterans.maryland.gov/Benefits/Burial/Pages/default.aspx",
+    "categories": ["benefits"],
+    "state": "MD"
+  },
+  {
+    "name": "Maryland Veterans Education Benefits",
+    "description": "Educational assistance programs for veterans and eligible dependents.",
+    "url": "https://veterans.maryland.gov/Benefits/Pages/Education.aspx",
+    "categories": ["education"],
+    "state": "MD"
+  },
+  {
+    "name": "Maryland Veterans Motor Vehicle Benefits",
+    "description": "Vehicle-related benefits for eligible veterans.",
+    "url": "https://veterans.maryland.gov/Benefits/Pages/Motor-Vehicles.aspx",
+    "categories": ["benefits"],
+    "state": "MD"
+  },
+  {
+    "name": "Maryland Substance Use Disorder Services",
+    "description": "Treatment and care plans for substance use disorder including alcohol, cannabis, opioid, and stimulant disorders provided through Maryland VA service centers.",
+    "url": "https://va.gov/directory",
+    "categories": ["mentalHealth", "healthcare"],
+    "state": "MD"
+  }
+]

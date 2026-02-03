@@ -1,0 +1,216 @@
+{
+  "metadata": {
+    "source": "California Department of Veterans Affairs (CalVet)",
+    "last_updated": "2026-02",
+    "description": "California state-level Veteran services through the VetServices program",
+    "total_programs": 12,
+    "contact": "877-741-8532"
+  },
+  "programs": [
+    {
+      "org_name": "California Department of Veterans Affairs",
+      "program_name": "CSAAVE (California Student Aid and Attendance for Veteran Education)",
+      "website": "https://www.calvet.ca.gov/",
+      "phone": "877-741-8532",
+      "email": null,
+      "scope": "state",
+      "states": ["CA"],
+      "categories": ["education"],
+      "description": "Provides educational financial assistance to Veteran students using GI Bill benefits and other qualified educational funding.",
+      "services": ["educational_assistance", "tuition_support"],
+      "eligibility": {
+        "summary": "California Veterans enrolled in accredited educational institutions",
+        "veteran_status_required": true,
+        "states": ["CA"]
+      }
+    },
+    {
+      "org_name": "California Department of Veterans Affairs",
+      "program_name": "CalTAP (California Transition Assistance Program)",
+      "website": "https://www.calvet.ca.gov/",
+      "phone": "877-741-8532",
+      "email": null,
+      "scope": "state",
+      "states": ["CA"],
+      "categories": ["employment", "training"],
+      "description": "Assists separating military members with transition planning, career development, and employment services to facilitate successful civilian careers.",
+      "services": ["career_counseling", "job_placement", "resume_services", "transition_planning"],
+      "eligibility": {
+        "summary": "Active duty service members and recently separated Veterans",
+        "veteran_status_required": true,
+        "states": ["CA"]
+      }
+    },
+    {
+      "org_name": "California Department of Veterans Affairs",
+      "program_name": "VHHP (Veterans Housing and Homelessness Prevention)",
+      "website": "https://www.calvet.ca.gov/",
+      "phone": "877-741-8532",
+      "email": null,
+      "scope": "state",
+      "states": ["CA"],
+      "categories": ["housing"],
+      "description": "A $600 million state initiative providing housing assistance and homelessness prevention services to California Veterans experiencing housing instability.",
+      "services": ["emergency_housing", "rental_assistance", "homelessness_prevention", "supportive_housing"],
+      "eligibility": {
+        "summary": "California Veterans experiencing homelessness or housing insecurity",
+        "veteran_status_required": true,
+        "states": ["CA"]
+      }
+    },
+    {
+      "org_name": "California Department of Veterans Affairs",
+      "program_name": "DVBE (Disabled Veteran Business Enterprise)",
+      "website": "https://www.calvet.ca.gov/",
+      "phone": "877-741-8532",
+      "email": null,
+      "scope": "state",
+      "states": ["CA"],
+      "categories": ["financial", "employment"],
+      "description": "Certification and support program for service-disabled Veterans starting or expanding businesses in California.",
+      "services": ["business_certification", "business_training", "procurement_opportunities"],
+      "eligibility": {
+        "summary": "Service-disabled California Veterans with business ventures",
+        "veteran_status_required": true,
+        "disability_required": true,
+        "states": ["CA"]
+      }
+    },
+    {
+      "org_name": "California Department of Veterans Affairs",
+      "program_name": "VA Claims Representation",
+      "website": "https://www.calvet.ca.gov/",
+      "phone": "877-741-8532",
+      "email": null,
+      "scope": "state",
+      "states": ["CA"],
+      "categories": ["benefits", "legal"],
+      "description": "Provides representation and assistance with Veterans Affairs disability claims, appeals, and benefits navigation.",
+      "services": ["claims_assistance", "appeals_support", "benefits_counseling"],
+      "eligibility": {
+        "summary": "California Veterans seeking assistance with VA disability claims",
+        "veteran_status_required": true,
+        "states": ["CA"]
+      }
+    },
+    {
+      "org_name": "California Department of Veterans Affairs",
+      "program_name": "Mental Health Program",
+      "website": "https://www.calvet.ca.gov/",
+      "phone": "877-741-8532",
+      "email": null,
+      "scope": "state",
+      "states": ["CA"],
+      "categories": ["mentalHealth", "healthcare"],
+      "description": "Provides mental health services, crisis support, and counseling for Veterans dealing with trauma, PTSD, substance abuse, and other behavioral health needs.",
+      "services": ["mental_health_counseling", "crisis_intervention", "trauma_treatment", "substance_abuse_support"],
+      "eligibility": {
+        "summary": "California Veterans needing mental health and behavioral health services",
+        "veteran_status_required": true,
+        "states": ["CA"]
+      }
+    },
+    {
+      "org_name": "California Department of Veterans Affairs",
+      "program_name": "Incarcerated Veterans Program",
+      "website": "https://www.calvet.ca.gov/",
+      "phone": "877-741-8532",
+      "email": null,
+      "scope": "state",
+      "states": ["CA"],
+      "categories": ["benefits", "supportServices"],
+      "description": "Supports Veterans incarcerated in California prisons with benefits access, reentry planning, and transition services.",
+      "services": ["benefits_advocacy", "reentry_planning", "case_management", "community_reintegration"],
+      "eligibility": {
+        "summary": "Veterans currently incarcerated in California facilities",
+        "veteran_status_required": true,
+        "states": ["CA"]
+      }
+    },
+    {
+      "org_name": "California Department of Veterans Affairs",
+      "program_name": "Veterans Treatment Court",
+      "website": "https://www.calvet.ca.gov/",
+      "phone": "877-741-8532",
+      "email": null,
+      "scope": "state",
+      "states": ["CA"],
+      "categories": ["legal", "mentalHealth"],
+      "description": "Specialized court programs addressing mental health, substance abuse, and trauma for Veteran defendants through treatment-focused interventions.",
+      "services": ["legal_support", "mental_health_services", "substance_abuse_treatment", "case_management"],
+      "eligibility": {
+        "summary": "Veterans involved in the California criminal justice system",
+        "veteran_status_required": true,
+        "states": ["CA"]
+      }
+    },
+    {
+      "org_name": "California Department of Veterans Affairs",
+      "program_name": "County Assistance Programs",
+      "website": "https://www.calvet.ca.gov/",
+      "phone": "877-741-8532",
+      "email": null,
+      "scope": "state",
+      "states": ["CA"],
+      "categories": ["supportServices", "financial"],
+      "description": "County-based Veteran services providing direct financial aid, emergency assistance, and support to eligible California Veterans.",
+      "services": ["emergency_financial_assistance", "county_services", "case_management"],
+      "eligibility": {
+        "summary": "California Veterans meeting county residency and financial need requirements",
+        "veteran_status_required": true,
+        "states": ["CA"]
+      }
+    },
+    {
+      "org_name": "California Department of Veterans Affairs",
+      "program_name": "Veterans Cemeteries",
+      "website": "https://www.calvet.ca.gov/",
+      "phone": "877-741-8532",
+      "email": null,
+      "scope": "state",
+      "states": ["CA"],
+      "categories": ["supportServices"],
+      "description": "Provides burial services and cemetery maintenance for eligible California Veterans and their dependents.",
+      "services": ["burial_services", "cemetery_maintenance", "memorial_services"],
+      "eligibility": {
+        "summary": "California Veterans and their eligible family members",
+        "veteran_status_required": true,
+        "states": ["CA"]
+      }
+    },
+    {
+      "org_name": "California Department of Veterans Affairs",
+      "program_name": "VBE (Veteran Benefits Expansion to Medi-Cal)",
+      "website": "https://www.calvet.ca.gov/",
+      "phone": "877-741-8532",
+      "email": null,
+      "scope": "state",
+      "states": ["CA"],
+      "categories": ["healthcare", "benefits"],
+      "description": "Expands Medi-Cal coverage for Veterans, improving access to healthcare and coordinating with VA services.",
+      "services": ["healthcare_access", "medi_cal_enrollment", "care_coordination"],
+      "eligibility": {
+        "summary": "California Veterans eligible for Medi-Cal coverage",
+        "veteran_status_required": true,
+        "states": ["CA"]
+      }
+    },
+    {
+      "org_name": "California Department of Veterans Affairs",
+      "program_name": "CVHI ($38M Mental Health Grants)",
+      "website": "https://www.calvet.ca.gov/",
+      "phone": "877-741-8532",
+      "email": null,
+      "scope": "state",
+      "states": ["CA"],
+      "categories": ["mentalHealth", "healthcare"],
+      "description": "A $38 million grant program providing mental health funding and services to organizations serving California Veterans.",
+      "services": ["mental_health_grants", "behavioral_health_programs", "veteran_crisis_support"],
+      "eligibility": {
+        "summary": "California Veterans and organizations providing mental health services to Veterans",
+        "veteran_status_required": true,
+        "states": ["CA"]
+      }
+    }
+  ]
+}

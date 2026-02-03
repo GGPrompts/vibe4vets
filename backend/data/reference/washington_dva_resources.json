@@ -1,0 +1,233 @@
+[
+  {
+    "name": "Veterans Apprenticeship Program",
+    "description": "Apprenticeship opportunities for Veterans in Washington state through the Department of Veterans Affairs.",
+    "url": "https://dva.wa.gov/",
+    "categories": ["employment", "training", "education"],
+    "state": "WA"
+  },
+  {
+    "name": "Veterans Education & Training",
+    "description": "Educational and training programs to support Veteran career development and skill advancement.",
+    "url": "https://dva.wa.gov/",
+    "categories": ["education", "training"],
+    "state": "WA"
+  },
+  {
+    "name": "Veterans Employment Resources",
+    "description": "Employment assistance and job placement services for Veterans in Washington state.",
+    "url": "https://dva.wa.gov/",
+    "categories": ["employment"],
+    "state": "WA"
+  },
+  {
+    "name": "Veterans Housing Resources",
+    "description": "Housing assistance and support programs for Veterans including rental assistance and home loans information.",
+    "url": "https://dva.wa.gov/",
+    "categories": ["housing"],
+    "state": "WA"
+  },
+  {
+    "name": "Tax Exemptions & Benefits",
+    "description": "Free or reduced rate passes and tax exemptions available to eligible Veterans.",
+    "url": "https://dva.wa.gov/",
+    "categories": ["benefits", "financial"],
+    "state": "WA"
+  },
+  {
+    "name": "LGBTQ+ Veterans Support",
+    "description": "Specialized support and resources for LGBTQ+ Veterans in Washington state.",
+    "url": "https://dva.wa.gov/",
+    "categories": ["supportServices"],
+    "state": "WA"
+  },
+  {
+    "name": "Veterans Records Management",
+    "description": "Assistance with obtaining and managing military records for Veterans.",
+    "url": "https://dva.wa.gov/",
+    "categories": ["benefits"],
+    "state": "WA"
+  },
+  {
+    "name": "Reentry Program & Veteran Court",
+    "description": "Reentry support and Veterans Court services for Veterans involved in the criminal justice system.",
+    "url": "https://dva.wa.gov/",
+    "categories": ["legal", "supportServices"],
+    "state": "WA"
+  },
+  {
+    "name": "Veterans Estate Management Program",
+    "description": "Estate planning and financial management assistance for Veterans.",
+    "url": "https://dva.wa.gov/",
+    "categories": ["financial"],
+    "state": "WA"
+  },
+  {
+    "name": "Veterans In-State Service Shared Leave Program",
+    "description": "Shared leave program for Veterans employed by the state of Washington.",
+    "url": "https://dva.wa.gov/",
+    "categories": ["employment", "benefits"],
+    "state": "WA"
+  },
+  {
+    "name": "Counselor Locator",
+    "description": "Find mental health counselors and support services in your area.",
+    "url": "https://www.dva.wa.gov/counseling/find-a-counselor",
+    "categories": ["mentalHealth", "supportServices"],
+    "state": "WA"
+  },
+  {
+    "name": "PTSD & War Trauma Program",
+    "description": "Specialized PTSD and war trauma treatment and support services for Veterans.",
+    "url": "https://dva.wa.gov/",
+    "categories": ["mentalHealth"],
+    "state": "WA"
+  },
+  {
+    "name": "Suicide Prevention & Crisis Support",
+    "description": "Suicide prevention services and crisis support including 988 Lifeline access.",
+    "url": "https://dva.wa.gov/",
+    "categories": ["mentalHealth"],
+    "state": "WA"
+  },
+  {
+    "name": "Traumatic Brain Injury (TBI) Services",
+    "description": "Treatment and rehabilitation services for Veterans with traumatic brain injuries.",
+    "url": "https://dva.wa.gov/",
+    "categories": ["healthcare", "mentalHealth"],
+    "state": "WA"
+  },
+  {
+    "name": "Veterans Conservation Corps Program",
+    "description": "Conservation and environmental service opportunities for Veterans combining employment and wellness.",
+    "url": "https://dva.wa.gov/",
+    "categories": ["employment", "supportServices"],
+    "state": "WA"
+  },
+  {
+    "name": "Veteran Farm at Orting",
+    "description": "Agricultural employment and wellness program located in Orting, Washington.",
+    "url": "https://dva.wa.gov/",
+    "categories": ["employment", "supportServices"],
+    "state": "WA"
+  },
+  {
+    "name": "Veterans Training Support Center (VTSC)",
+    "description": "Training and support center providing career development and employment assistance for Veterans.",
+    "url": "https://dva.wa.gov/",
+    "categories": ["training", "employment"],
+    "state": "WA"
+  },
+  {
+    "name": "Service and Companion Animals Program",
+    "description": "Support and resources for Veterans with service animals and companion animals.",
+    "url": "https://dva.wa.gov/",
+    "categories": ["supportServices", "healthcare"],
+    "state": "WA"
+  },
+  {
+    "name": "Veteran Owned Business Search Portal",
+    "description": "Search and support network for Veteran-owned businesses in Washington.",
+    "url": "https://dva.wa.gov/",
+    "categories": ["financial", "employment"],
+    "state": "WA"
+  },
+  {
+    "name": "Veteran Business Linked Deposit Program",
+    "description": "Loan and financing support program for Veteran entrepreneurs and small business owners.",
+    "url": "https://dva.wa.gov/",
+    "categories": ["financial", "employment"],
+    "state": "WA"
+  },
+  {
+    "name": "Veterans Cemetery Services",
+    "description": "Cemetery services and burial options for eligible Veterans and their families.",
+    "url": "https://dva.wa.gov/",
+    "categories": ["benefits"],
+    "state": "WA"
+  },
+  {
+    "name": "Veterans License Plates Program",
+    "description": "Special license plates and vehicle benefits for eligible Veterans.",
+    "url": "https://dva.wa.gov/",
+    "categories": ["benefits"],
+    "state": "WA"
+  },
+  {
+    "name": "Veterans Claims Assistance",
+    "description": "Professional assistance with filing and processing Veterans benefits claims.",
+    "url": "https://dva.wa.gov/",
+    "categories": ["benefits"],
+    "state": "WA"
+  },
+  {
+    "name": "Veterans Financial Assistance",
+    "description": "Emergency and ongoing financial assistance programs for eligible Veterans.",
+    "url": "https://dva.wa.gov/",
+    "categories": ["financial"],
+    "state": "WA"
+  },
+  {
+    "name": "Federal VA Benefits Information",
+    "description": "Information and resources about federal VA benefits available to Veterans.",
+    "url": "https://www.dva.wa.gov/resources/federal-va-benefits",
+    "categories": ["benefits"],
+    "state": "WA"
+  },
+  {
+    "name": "Washington Soldiers Home - Orting",
+    "description": "Long-term care facility for Veterans located in Orting, Washington.",
+    "url": "https://dva.wa.gov/",
+    "categories": ["healthcare"],
+    "state": "WA"
+  },
+  {
+    "name": "Washington Veterans Home - Port Orchard",
+    "description": "Long-term care facility for Veterans located in Port Orchard, Washington.",
+    "url": "https://dva.wa.gov/",
+    "categories": ["healthcare"],
+    "state": "WA"
+  },
+  {
+    "name": "Spokane Veterans Home",
+    "description": "Long-term care facility for Veterans located in Spokane, Washington.",
+    "url": "https://dva.wa.gov/",
+    "categories": ["healthcare"],
+    "state": "WA"
+  },
+  {
+    "name": "Walla Walla Veterans Home",
+    "description": "Long-term care facility for Veterans located in Walla Walla, Washington.",
+    "url": "https://dva.wa.gov/",
+    "categories": ["healthcare"],
+    "state": "WA"
+  },
+  {
+    "name": "Veterans Transitional Housing Program",
+    "description": "Transitional housing assistance for Veterans transitioning to permanent housing.",
+    "url": "https://dva.wa.gov/",
+    "categories": ["housing"],
+    "state": "WA"
+  },
+  {
+    "name": "Women Veterans Support",
+    "description": "Dedicated resources and support programs for Women Veterans in Washington state.",
+    "url": "https://dva.wa.gov/",
+    "categories": ["supportServices"],
+    "state": "WA"
+  },
+  {
+    "name": "Military Spouse Support Programs",
+    "description": "Resources and support services for military spouses and families.",
+    "url": "https://dva.wa.gov/",
+    "categories": ["family", "supportServices"],
+    "state": "WA"
+  },
+  {
+    "name": "Washington Department of Veterans Affairs",
+    "description": "Main office providing comprehensive Veterans benefits and services. Contact: 1-800-562-2308. Mailing address: 1102 Quince St. SE, PO Box 41150, Olympia, WA 98504-1150.",
+    "url": "https://dva.wa.gov/",
+    "categories": ["benefits", "supportServices"],
+    "state": "WA"
+  }
+]

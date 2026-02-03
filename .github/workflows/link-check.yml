@@ -33,4 +33,3 @@ jobs:
 
       - name: Run link check
         run: python backend/scripts/check_links.py
-

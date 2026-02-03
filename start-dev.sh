@@ -40,7 +40,7 @@ log_error() {
 # Function to stop all services
 stop_services() {
     log_info "Stopping Vibe4Vets services..."
-    
+
     if [ -f "$BACKEND_PID_FILE" ]; then
         BACKEND_PID=$(cat "$BACKEND_PID_FILE")
         if kill -0 "$BACKEND_PID" 2>/dev/null; then
@@ -49,7 +49,7 @@ stop_services() {
         fi
         rm -f "$BACKEND_PID_FILE"
     fi
-    
+
     if [ -f "$FRONTEND_PID_FILE" ]; then
         FRONTEND_PID=$(cat "$FRONTEND_PID_FILE")
         if kill -0 "$FRONTEND_PID" 2>/dev/null; then
@@ -58,11 +58,11 @@ stop_services() {
         fi
         rm -f "$FRONTEND_PID_FILE"
     fi
-    
+
     # Also kill any remaining processes on the ports
     fuser -k 8000/tcp 2>/dev/null || true
     fuser -k 3000/tcp 2>/dev/null || true
-    
+
     log_success "All services stopped"
 }
 
@@ -72,7 +72,7 @@ wait_for_port() {
     local name=$2
     local max_wait=60
     local count=0
-    
+
     log_info "Waiting for $name on port $port..."
     while ! nc -z localhost "$port" 2>/dev/null; do
         sleep 1
@@ -149,24 +149,24 @@ start_services() {
         fuser -k 8000/tcp 2>/dev/null || true
         sleep 2
     fi
-    
+
     if nc -z localhost 3000 2>/dev/null; then
         log_warn "Port 3000 already in use. Stopping existing process..."
         fuser -k 3000/tcp 2>/dev/null || true
         sleep 2
     fi
-    
+
     # Start Backend
     log_info "Starting Backend (FastAPI)..."
     cd "$BACKEND_DIR"
-    
+
     # Activate venv and start uvicorn
     # Note: Don't source .env - let pydantic-settings handle it
     source .venv/bin/activate
     nohup uvicorn app.main:app --reload --port 8000 > "$LOG_DIR/backend.log" 2>&1 &
     echo $! > "$BACKEND_PID_FILE"
     log_info "Backend PID: $(cat $BACKEND_PID_FILE)"
-    
+
     # Start Frontend
     log_info "Starting Frontend (Next.js)..."
     cd "$FRONTEND_DIR"
@@ -181,22 +181,22 @@ start_services() {
     nohup npm run dev > "$LOG_DIR/frontend.log" 2>&1 &
     echo $! > "$FRONTEND_PID_FILE"
     log_info "Frontend PID: $(cat $FRONTEND_PID_FILE)"
-    
+
     # Wait for services to be ready
     echo ""
-    wait_for_port 8000 "Backend" || { 
+    wait_for_port 8000 "Backend" || {
         log_error "Check logs at $LOG_DIR/backend.log"
         echo "--- Last 30 lines of backend.log ---"
         tail -30 "$LOG_DIR/backend.log"
         stop_services
         exit 1
     }
-    wait_for_port 3000 "Frontend" || { 
+    wait_for_port 3000 "Frontend" || {
         log_error "Check logs at $LOG_DIR/frontend.log"
         stop_services
         exit 1
     }
-    
+
     echo ""
     log_success "============================================"
     log_success "  Vibe4Vets Development Environment Ready!"
@@ -210,17 +210,17 @@ start_services() {
     echo ""
     log_info "Press Ctrl+C to stop all services"
     echo ""
-    
+
     # Open browser (works on WSL and Linux)
     if command -v wslview &> /dev/null; then
         wslview http://localhost:3000 2>/dev/null &
     elif command -v xdg-open &> /dev/null; then
         xdg-open http://localhost:3000 2>/dev/null &
     fi
-    
+
     # Wait for interrupt
     trap stop_services EXIT INT TERM
-    
+
     # Keep script running - tail both logs
     tail -f "$LOG_DIR/backend.log" "$LOG_DIR/frontend.log"
 }

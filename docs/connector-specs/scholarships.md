@@ -809,4 +809,3 @@ If scraping scholarship pages:
 |---------|------|--------|---------|
 | 0.1 | 2026-01-28 | Claude Code | Initial spec with 10 programs, integration options analysis |
 | TBD | TBD | Team | Updates after API partnership inquiries |
-

@@ -276,4 +276,3 @@ Research reveals that while most U.S. states maintain open data portals, **very 
 - [North Carolina DMVA](https://www.milvets.nc.gov/)
 - [Census Bureau - American Community Survey](https://www.census.gov/)
 - [HAC Veterans Data Central - State Summaries](https://veteransdata.info/)
-
