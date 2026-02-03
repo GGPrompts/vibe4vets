@@ -9,7 +9,7 @@ Provides a simple interface to Claude models with:
 import json
 import re
 from dataclasses import dataclass
-from enum import Enum
+from enum import StrEnum
 from pathlib import Path
 from typing import Any
 
@@ -18,7 +18,7 @@ import anthropic
 from app.config import settings
 
 
-class ClaudeModel(str, Enum):
+class ClaudeModel(StrEnum):
     """Claude model options."""
 
     # Fast and cheap - for high-volume discovery
