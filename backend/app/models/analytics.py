@@ -6,7 +6,7 @@ Data is aggregated to understand usage patterns without tracking individuals.
 
 import uuid
 from datetime import UTC, datetime
-from enum import Enum
+from enum import StrEnum
 
 from sqlmodel import Field, SQLModel
 
@@ -15,7 +15,7 @@ def _utc_now() -> datetime:
     return datetime.now(UTC)
 
 
-class AnalyticsEventType(str, Enum):
+class AnalyticsEventType(StrEnum):
     """Types of analytics events we track."""
 
     # Search events

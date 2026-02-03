@@ -2,7 +2,7 @@
 
 import uuid
 from datetime import UTC, datetime
-from enum import Enum
+from enum import StrEnum
 
 from sqlmodel import Field, SQLModel
 
@@ -11,7 +11,7 @@ def _utc_now() -> datetime:
     return datetime.now(UTC)
 
 
-class FeedbackIssueType(str, Enum):
+class FeedbackIssueType(StrEnum):
     """Type of issue being reported."""
 
     PHONE = "phone"
@@ -23,7 +23,7 @@ class FeedbackIssueType(str, Enum):
     OTHER = "other"
 
 
-class FeedbackStatus(str, Enum):
+class FeedbackStatus(StrEnum):
     """Status of feedback in review workflow."""
 
     PENDING = "pending"

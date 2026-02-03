@@ -10,7 +10,7 @@ Provides common functionality for all scheduled jobs including:
 from abc import ABC, abstractmethod
 from dataclasses import dataclass, field
 from datetime import UTC, datetime
-from enum import Enum
+from enum import StrEnum
 from typing import Any
 from uuid import UUID, uuid4
 
@@ -19,7 +19,7 @@ from sqlmodel import Session
 from app.database import engine
 
 
-class JobStatus(str, Enum):
+class JobStatus(StrEnum):
     """Status of a job run."""
 
     PENDING = "pending"

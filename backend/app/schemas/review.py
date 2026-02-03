@@ -1,13 +1,13 @@
 """Review schemas for admin API validation."""
 
 from datetime import datetime
-from enum import Enum
+from enum import StrEnum
 from uuid import UUID
 
 from pydantic import BaseModel, Field
 
 
-class ReviewActionType(str, Enum):
+class ReviewActionType(StrEnum):
     """Review action types."""
 
     APPROVE = "approve"

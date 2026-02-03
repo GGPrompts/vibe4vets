@@ -2,7 +2,7 @@
 
 import uuid
 from datetime import UTC, datetime
-from enum import Enum
+from enum import StrEnum
 from typing import TYPE_CHECKING, Optional
 
 from sqlalchemy import Column, FetchedValue, Text
@@ -37,7 +37,7 @@ if TYPE_CHECKING:
     from app.models.source import Source
 
 
-class ResourceStatus(str, Enum):
+class ResourceStatus(StrEnum):
     """Resource review status."""
 
     ACTIVE = "active"
@@ -45,7 +45,7 @@ class ResourceStatus(str, Enum):
     INACTIVE = "inactive"
 
 
-class ResourceScope(str, Enum):
+class ResourceScope(StrEnum):
     """Geographic scope of resource."""
 
     NATIONAL = "national"

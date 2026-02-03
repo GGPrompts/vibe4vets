@@ -2,7 +2,7 @@
 
 import uuid
 from datetime import UTC, datetime
-from enum import Enum
+from enum import StrEnum
 from typing import TYPE_CHECKING
 
 from sqlalchemy import Column, Text
@@ -19,7 +19,7 @@ if TYPE_CHECKING:
     from app.models.resource import Resource
 
 
-class IncomeLimitType(str, Enum):
+class IncomeLimitType(StrEnum):
     """Types of income limit specifications."""
 
     AMI_PERCENT = "ami_percent"
@@ -28,7 +28,7 @@ class IncomeLimitType(str, Enum):
     UNKNOWN = "unknown"
 
 
-class HousingStatus(str, Enum):
+class HousingStatus(StrEnum):
     """Housing status for eligibility filtering."""
 
     HOMELESS = "homeless"
@@ -36,7 +36,7 @@ class HousingStatus(str, Enum):
     STABLY_HOUSED = "stably_housed"
 
 
-class VerificationSource(str, Enum):
+class VerificationSource(StrEnum):
     """Source of verification for location data."""
 
     OFFICIAL_DIRECTORY = "official_directory"
@@ -45,7 +45,7 @@ class VerificationSource(str, Enum):
     AUTOMATED = "automated"
 
 
-class WaitlistStatus(str, Enum):
+class WaitlistStatus(StrEnum):
     """Status of waitlist for a program."""
 
     OPEN = "open"
@@ -53,7 +53,7 @@ class WaitlistStatus(str, Enum):
     UNKNOWN = "unknown"
 
 
-class BenefitType(str, Enum):
+class BenefitType(StrEnum):
     """Types of VA benefits supported by a consult location."""
 
     DISABILITY = "disability"
@@ -65,7 +65,7 @@ class BenefitType(str, Enum):
     VRE = "vre"  # Vocational Rehabilitation & Employment
 
 
-class RepresentativeType(str, Enum):
+class RepresentativeType(StrEnum):
     """Types of accredited representatives."""
 
     VSO = "vso"  # Veterans Service Organization

@@ -2,7 +2,7 @@
 
 import uuid
 from datetime import UTC, datetime
-from enum import Enum
+from enum import StrEnum
 from typing import TYPE_CHECKING
 
 from sqlmodel import Field, Relationship, SQLModel
@@ -16,7 +16,7 @@ if TYPE_CHECKING:
     from app.models.resource import Resource
 
 
-class ReviewStatus(str, Enum):
+class ReviewStatus(StrEnum):
     """Review workflow status."""
 
     PENDING = "pending"
@@ -24,7 +24,7 @@ class ReviewStatus(str, Enum):
     REJECTED = "rejected"
 
 
-class ChangeType(str, Enum):
+class ChangeType(StrEnum):
     """Type of change."""
 
     UPDATE = "update"

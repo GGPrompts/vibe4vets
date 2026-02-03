@@ -2,7 +2,7 @@
 
 import uuid
 from datetime import UTC, date, datetime
-from enum import Enum
+from enum import StrEnum
 from typing import TYPE_CHECKING
 
 from sqlalchemy import Column, Text
@@ -19,7 +19,7 @@ if TYPE_CHECKING:
     from app.models.resource import Resource
 
 
-class ProgramType(str, Enum):
+class ProgramType(StrEnum):
     """Type of veteran program/grant."""
 
     SSVF = "ssvf"  # Supportive Services for Veteran Families
@@ -30,7 +30,7 @@ class ProgramType(str, Enum):
     OTHER = "other"
 
 
-class ProgramStatus(str, Enum):
+class ProgramStatus(StrEnum):
     """Status of the program/grant."""
 
     ACTIVE = "active"

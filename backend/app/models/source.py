@@ -2,7 +2,7 @@
 
 import uuid
 from datetime import UTC, datetime
-from enum import Enum
+from enum import StrEnum
 from typing import TYPE_CHECKING, Any
 
 from sqlalchemy import Column
@@ -18,7 +18,7 @@ if TYPE_CHECKING:
     from app.models.resource import Resource
 
 
-class SourceErrorType(str, Enum):
+class SourceErrorType(StrEnum):
     """Type of source error."""
 
     CONNECTION = "connection"  # Network/API errors
@@ -30,7 +30,7 @@ class SourceErrorType(str, Enum):
     UNKNOWN = "unknown"  # Unknown errors
 
 
-class SourceType(str, Enum):
+class SourceType(StrEnum):
     """Type of data source."""
 
     API = "api"
@@ -38,7 +38,7 @@ class SourceType(str, Enum):
     MANUAL = "manual"
 
 
-class HealthStatus(str, Enum):
+class HealthStatus(StrEnum):
     """Source health status."""
 
     HEALTHY = "healthy"
