@@ -36,9 +36,9 @@ export function BookmarkButton({
 
   // Size mappings
   const sizeClasses = {
-    default: 'h-8 w-8',
-    sm: 'h-6 w-6',
-    lg: 'h-10 w-10',
+    default: 'h-11 w-11',
+    sm: 'h-11 w-11',
+    lg: 'h-12 w-12',
   };
 
   const iconSizes = {

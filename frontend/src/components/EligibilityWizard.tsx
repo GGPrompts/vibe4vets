@@ -340,6 +340,8 @@ export function EligibilityWizard({
         <button
           onClick={() => setIsExpanded(!isExpanded)}
           className="flex items-center gap-2 text-left"
+          aria-expanded={isExpanded}
+          aria-controls="eligibility-wizard-content"
         >
           <Filter className="h-5 w-5 text-[hsl(var(--v4v-gold))]" />
           <h3 className="font-semibold">Eligibility Wizard</h3>
@@ -376,7 +378,7 @@ export function EligibilityWizard({
       )}
 
       {isExpanded && (
-        <div className="mt-4 space-y-4">
+        <div id="eligibility-wizard-content" className="mt-4 space-y-4">
           <Separator />
 
           {/* Location Section */}
@@ -384,6 +386,8 @@ export function EligibilityWizard({
             <button
               onClick={() => toggleSection('location')}
               className="flex w-full min-h-[44px] items-center justify-between py-2"
+              aria-expanded={sectionsOpen.location}
+              aria-controls="wizard-section-location"
             >
               <div className="flex items-center gap-2">
                 <MapPin className="h-4 w-4 text-muted-foreground" />
@@ -402,7 +406,7 @@ export function EligibilityWizard({
               />
             </button>
             {sectionsOpen.location && (
-              <div className="mt-2 space-y-2 pl-6">
+              <div id="wizard-section-location" className="mt-2 space-y-2 pl-6">
                 {DMV_STATES.map((state) => (
                   <div key={state.value} className="flex min-h-[44px] items-center space-x-3">
                     <Checkbox
@@ -429,6 +433,8 @@ export function EligibilityWizard({
             <button
               onClick={() => toggleSection('category')}
               className="flex w-full min-h-[44px] items-center justify-between py-2"
+              aria-expanded={sectionsOpen.category}
+              aria-controls="wizard-section-category"
             >
               <div className="flex items-center gap-2">
                 <UtensilsCrossed className="h-4 w-4 text-muted-foreground" />
@@ -447,7 +453,7 @@ export function EligibilityWizard({
               />
             </button>
             {sectionsOpen.category && (
-              <div className="mt-2 pl-6">
+              <div id="wizard-section-category" className="mt-2 pl-6">
                 <RadioGroup
                   value={filters.category || ''}
                   onValueChange={handleCategoryChange}
@@ -475,6 +481,8 @@ export function EligibilityWizard({
             <button
               onClick={() => toggleSection('age')}
               className="flex w-full min-h-[44px] items-center justify-between py-2"
+              aria-expanded={sectionsOpen.age}
+              aria-controls="wizard-section-age"
             >
               <div className="flex items-center gap-2">
                 <Calendar className="h-4 w-4 text-muted-foreground" />
@@ -493,7 +501,7 @@ export function EligibilityWizard({
               />
             </button>
             {sectionsOpen.age && (
-              <div className="mt-2 pl-6">
+              <div id="wizard-section-age" className="mt-2 pl-6">
                 <RadioGroup
                   value={filters.ageBracket || ''}
                   onValueChange={handleAgeBracketChange}
@@ -521,6 +529,8 @@ export function EligibilityWizard({
             <button
               onClick={() => toggleSection('household')}
               className="flex w-full min-h-[44px] items-center justify-between py-2"
+              aria-expanded={sectionsOpen.household}
+              aria-controls="wizard-section-household"
             >
               <div className="flex items-center gap-2">
                 <Users className="h-4 w-4 text-muted-foreground" />
@@ -539,7 +549,7 @@ export function EligibilityWizard({
               />
             </button>
             {sectionsOpen.household && (
-              <div className="mt-2 pl-6">
+              <div id="wizard-section-household" className="mt-2 pl-6">
                 <RadioGroup
                   value={filters.householdSize || ''}
                   onValueChange={handleHouseholdSizeChange}
@@ -567,6 +577,8 @@ export function EligibilityWizard({
             <button
               onClick={() => toggleSection('income')}
               className="flex w-full min-h-[44px] items-center justify-between py-2"
+              aria-expanded={sectionsOpen.income}
+              aria-controls="wizard-section-income"
             >
               <div className="flex items-center gap-2">
                 <DollarSign className="h-4 w-4 text-muted-foreground" />
@@ -585,7 +597,7 @@ export function EligibilityWizard({
               />
             </button>
             {sectionsOpen.income && (
-              <div className="mt-2 pl-6">
+              <div id="wizard-section-income" className="mt-2 pl-6">
                 <RadioGroup
                   value={filters.incomeBracket || ''}
                   onValueChange={handleIncomeBracketChange}
@@ -616,6 +628,8 @@ export function EligibilityWizard({
             <button
               onClick={() => toggleSection('housing')}
               className="flex w-full min-h-[44px] items-center justify-between py-2"
+              aria-expanded={sectionsOpen.housing}
+              aria-controls="wizard-section-housing"
             >
               <div className="flex items-center gap-2">
                 <Home className="h-4 w-4 text-muted-foreground" />
@@ -634,7 +648,7 @@ export function EligibilityWizard({
               />
             </button>
             {sectionsOpen.housing && (
-              <div className="mt-2 pl-6">
+              <div id="wizard-section-housing" className="mt-2 pl-6">
                 <RadioGroup
                   value={filters.housingStatus || ''}
                   onValueChange={handleHousingStatusChange}
@@ -662,6 +676,8 @@ export function EligibilityWizard({
             <button
               onClick={() => toggleSection('dietary')}
               className="flex w-full min-h-[44px] items-center justify-between py-2"
+              aria-expanded={sectionsOpen.dietary}
+              aria-controls="wizard-section-dietary"
             >
               <div className="flex items-center gap-2">
                 <Leaf className="h-4 w-4 text-muted-foreground" />
@@ -680,7 +696,7 @@ export function EligibilityWizard({
               />
             </button>
             {sectionsOpen.dietary && (
-              <div className="mt-2 space-y-2 pl-6">
+              <div id="wizard-section-dietary" className="mt-2 space-y-2 pl-6">
                 <p className="text-xs text-muted-foreground mb-2">
                   Filter for food pantries that offer specific dietary options
                 </p>
@@ -710,6 +726,8 @@ export function EligibilityWizard({
             <button
               onClick={() => toggleSection('benefits')}
               className="flex w-full min-h-[44px] items-center justify-between py-2"
+              aria-expanded={sectionsOpen.benefits}
+              aria-controls="wizard-section-benefits"
             >
               <div className="flex items-center gap-2">
                 <FileCheck className="h-4 w-4 text-muted-foreground" />
@@ -728,7 +746,7 @@ export function EligibilityWizard({
               />
             </button>
             {sectionsOpen.benefits && (
-              <div className="mt-2 space-y-2 pl-6">
+              <div id="wizard-section-benefits" className="mt-2 space-y-2 pl-6">
                 {BENEFIT_TYPES.map((benefitType) => (
                   <div key={benefitType.value} className="flex min-h-[44px] items-center space-x-3">
                     <Checkbox
@@ -755,6 +773,8 @@ export function EligibilityWizard({
             <button
               onClick={() => toggleSection('consultation')}
               className="flex w-full min-h-[44px] items-center justify-between py-2"
+              aria-expanded={sectionsOpen.consultation}
+              aria-controls="wizard-section-consultation"
             >
               <div className="flex items-center gap-2">
                 <Users className="h-4 w-4 text-muted-foreground" />
@@ -773,7 +793,7 @@ export function EligibilityWizard({
               />
             </button>
             {sectionsOpen.consultation && (
-              <div className="mt-2 pl-6">
+              <div id="wizard-section-consultation" className="mt-2 pl-6">
                 <RadioGroup
                   value={filters.consultationPreference || ''}
                   onValueChange={handleConsultationPreferenceChange}

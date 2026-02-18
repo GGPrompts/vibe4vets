@@ -98,7 +98,7 @@ export default function AnalyticsPage() {
           </p>
         </div>
         <Select value={String(days)} onValueChange={(v) => setDays(Number(v))}>
-          <SelectTrigger className="w-40 bg-card border-border/50">
+          <SelectTrigger className="w-40 bg-card border-border/50" aria-label="Select time period">
             <SelectValue placeholder="Time period" />
           </SelectTrigger>
           <SelectContent>

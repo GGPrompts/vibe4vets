@@ -374,13 +374,24 @@ class SearchService:
     def _to_read_schema(self, resource: Resource) -> ResourceRead:
         """Convert Resource model to read schema."""
         organization = self.session.get(Organization, resource.organization_id)
-        if organization is None:
-            raise ValueError(f"Organization not found for resource {resource.id}")
-        org_nested = OrganizationNested(
-            id=organization.id,
-            name=organization.name,
-            website=organization.website,
-        )
+        if not organization:
+            # Orphaned resource - organization was deleted
+            logger.warning(
+                "Resource %s has orphaned organization_id %s",
+                resource.id,
+                resource.organization_id,
+            )
+            org_nested = OrganizationNested(
+                id=resource.organization_id,
+                name="Unknown Organization",
+                website=None,
+            )
+        else:
+            org_nested = OrganizationNested(
+                id=organization.id,
+                name=organization.name,
+                website=organization.website,
+            )
 
         location_nested = None
         if resource.location_id:

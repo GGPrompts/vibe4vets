@@ -36,7 +36,7 @@ export function MagnifierToggle() {
       aria-label={enabled ? 'Disable magnifier' : 'Enable magnifier'}
       title={enabled ? 'Disable magnifier (Alt+M or right-click)' : 'Enable magnifier (Alt+M) · Right-click to close'}
       className={cn(
-        'hidden md:flex items-center justify-center w-9 h-9 rounded-full transition-all duration-200',
+        'hidden md:flex items-center justify-center w-11 h-11 rounded-full transition-all duration-200',
         'focus:outline-none focus:ring-2 focus:ring-[hsl(var(--v4v-gold))] focus:ring-offset-2 focus:ring-offset-[hsl(var(--v4v-navy))]',
         enabled
           ? 'bg-[hsl(var(--v4v-gold))] text-[hsl(var(--v4v-navy))]'

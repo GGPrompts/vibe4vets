@@ -1055,13 +1055,24 @@ class ResourceService:
         else:
             organization = self.session.get(Organization, resource.organization_id)
 
-        if organization is None:
-            raise ValueError(f"Organization not found for resource {resource.id}")
-        org_nested = OrganizationNested(
-            id=organization.id,
-            name=organization.name,
-            website=organization.website,
-        )
+        if not organization:
+            # Orphaned resource - organization was deleted
+            logger.warning(
+                "Resource %s has orphaned organization_id %s",
+                resource.id,
+                resource.organization_id,
+            )
+            org_nested = OrganizationNested(
+                id=resource.organization_id,
+                name="Unknown Organization",
+                website=None,
+            )
+        else:
+            org_nested = OrganizationNested(
+                id=organization.id,
+                name=organization.name,
+                website=organization.website,
+            )
 
         # Get location if exists - use loaded relationship or fetch
         location_nested = None

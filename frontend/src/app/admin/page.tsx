@@ -609,19 +609,22 @@ export default function AdminPage() {
                 {/* Review Form */}
                 <div className="space-y-4">
                   <div>
-                    <label className="text-sm font-medium">
+                    <label htmlFor="reviewer-name" className="text-sm font-medium">
                       Reviewer Name <span className="text-destructive">*</span>
                     </label>
                     <Input
+                      id="reviewer-name"
                       value={reviewer}
                       onChange={(e) => setReviewer(e.target.value)}
                       placeholder="Your name"
                       className="mt-1"
+                      aria-required="true"
                     />
                   </div>
                   <div>
-                    <label className="text-sm font-medium">Notes (optional)</label>
+                    <label htmlFor="review-notes" className="text-sm font-medium">Notes (optional)</label>
                     <Input
+                      id="review-notes"
                       value={notes}
                       onChange={(e) => setNotes(e.target.value)}
                       placeholder="Add any notes..."

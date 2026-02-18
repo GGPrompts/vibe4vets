@@ -469,14 +469,14 @@ export default function JobsPage() {
             <div className="space-y-4 py-4">
               {selectedJob?.name === 'refresh' && connectors.length > 0 && (
                 <div>
-                  <label className="text-sm font-medium">
+                  <label htmlFor="connector-select" className="text-sm font-medium">
                     Connector (optional)
                   </label>
                   <Select
                     value={selectedConnector}
                     onValueChange={setSelectedConnector}
                   >
-                    <SelectTrigger className="mt-1">
+                    <SelectTrigger id="connector-select" className="mt-1" aria-describedby="connector-help">
                       <SelectValue placeholder="All connectors" />
                     </SelectTrigger>
                     <SelectContent>
@@ -488,7 +488,7 @@ export default function JobsPage() {
                       ))}
                     </SelectContent>
                   </Select>
-                  <p className="mt-1 text-xs text-muted-foreground">
+                  <p id="connector-help" className="mt-1 text-xs text-muted-foreground">
                     Run a specific connector or all of them
                   </p>
                 </div>
@@ -510,12 +510,15 @@ export default function JobsPage() {
 
               {runResult && (
                 <div
+                  role="alert"
+                  aria-live="polite"
                   className={`rounded-md p-3 text-sm ${
                     runResult.success
                       ? 'bg-green-50 text-green-800 dark:bg-green-950 dark:text-green-200'
                       : 'bg-red-50 text-red-800 dark:bg-red-950 dark:text-red-200'
                   }`}
                 >
+                  <span className="sr-only">{runResult.success ? 'Success:' : 'Error:'}</span>
                   {runResult.message}
                 </div>
               )}

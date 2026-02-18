@@ -758,7 +758,7 @@ export function FiltersSidebar({
                   <div
                     key={state.value}
                     className={cn(
-                      'flex min-h-[32px] items-center space-x-2 rounded-md border-l-2 px-2 transition-all duration-200',
+                      'flex min-h-[44px] items-center space-x-2 rounded-md border-l-2 px-2 transition-all duration-200',
                       isChecked
                         ? 'border-l-[hsl(var(--v4v-navy))] bg-[hsl(var(--v4v-navy)/0.06)]'
                         : 'border-l-transparent hover:bg-muted/50'
@@ -772,7 +772,7 @@ export function FiltersSidebar({
                     <Label
                       htmlFor={`state-${state.value}`}
                       className={cn(
-                        'flex flex-1 min-h-[32px] cursor-pointer items-center text-sm',
+                        'flex flex-1 min-h-[44px] cursor-pointer items-center text-sm',
                         isChecked && 'font-medium text-[hsl(var(--v4v-navy))]'
                       )}
                     >
