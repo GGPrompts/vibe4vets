@@ -17,6 +17,7 @@ from sqlmodel import Session, select
 
 from app.config import settings
 from app.models.resource import Resource, ResourceStatus
+from app.services.soft_404 import detect_soft_404
 from jobs.base import BaseJob
 
 # HTTP client timeout settings
@@ -220,6 +221,20 @@ class LinkCheckerJob(BaseJob):
             resource.status = ResourceStatus.NEEDS_REVIEW
             session.add(resource)
             return {"status": "broken", "error": http_result["error"]}
+
+        # Phase 1.5: Soft 404 detection (no LLM needed)
+        if http_result.get("content"):
+            soft_404 = detect_soft_404(
+                content=http_result["content"],
+                original_url=url,
+                final_url=http_result.get("final_url"),
+            )
+            if soft_404["is_soft_404"]:
+                resource.link_health_score = soft_404["score"]
+                resource.link_flagged_reason = f"Soft 404: {soft_404['reason']}"
+                resource.status = ResourceStatus.NEEDS_REVIEW
+                session.add(resource)
+                return {"status": "flagged", "reason": soft_404["reason"]}
 
         # Phase 2: AI validation (if enabled and we have content)
         ai_score = 1.0  # Default to healthy

@@ -40,6 +40,7 @@ from sqlmodel import Session, select
 
 from app.database import engine
 from app.models.resource import Resource, ResourceStatus
+from app.services.soft_404 import detect_soft_404
 
 try:
     from crawl4ai import AsyncWebCrawler, BrowserConfig, CrawlerRunConfig
@@ -70,13 +71,35 @@ async def verify_url(crawler: "AsyncWebCrawler", url: str) -> dict:
         result = await crawler.arun(url=url, config=config)
 
         if result.success:
+            title = result.metadata.get("title", "")
+            markdown = result.markdown or ""
+            final_url = getattr(result, "url", url)
+
+            # Check for soft 404
+            soft_404 = detect_soft_404(
+                content=markdown,
+                original_url=url,
+                final_url=final_url,
+                title=title,
+            )
+
+            if soft_404["is_soft_404"]:
+                return {
+                    "url": url,
+                    "status": "soft_404",
+                    "title": title,
+                    "content_length": len(markdown),
+                    "markdown_preview": markdown[:1000],
+                    "soft_404_reason": soft_404["reason"],
+                }
+
             # Extract some basic info for comparison
             return {
                 "url": url,
                 "status": "active",
-                "title": result.metadata.get("title", ""),
-                "content_length": len(result.markdown),
-                "markdown_preview": result.markdown[:1000] if result.markdown else "",
+                "title": title,
+                "content_length": len(markdown),
+                "markdown_preview": markdown[:1000],
                 "links_count": len(result.links.get("internal", [])) + len(result.links.get("external", [])),
             }
         else:
@@ -214,6 +237,16 @@ def update_resource_from_verification(
                 resource.link_checked_at = datetime.now(UTC)
             updated = True
 
+    elif verification["status"] == "soft_404":
+        reason = verification.get("soft_404_reason", "Soft 404 detected")
+        print(f"  ⚠ Soft 404: {resource.title[:50]} - {reason[:60]}")
+        if not dry_run:
+            resource.link_flagged_reason = f"Soft 404: {reason[:200]}"
+            resource.link_health_score = 0.1
+            resource.status = ResourceStatus.NEEDS_REVIEW
+            resource.link_checked_at = datetime.now(UTC)
+        updated = True
+
     elif verification["status"] in ("failed", "error"):
         # Confirm the resource is broken
         error = verification.get("error", "Verification failed")
@@ -331,7 +364,8 @@ def main():
         print("\nSummary:")
         print(f"  Total checked: {len(results)}")
         print(f"  Active: {sum(1 for r in results if r['status'] == 'active')}")
-        print(f"  Failed: {sum(1 for r in results if r['status'] != 'active')}")
+        print(f"  Soft 404: {sum(1 for r in results if r['status'] == 'soft_404')}")
+        print(f"  Failed: {sum(1 for r in results if r['status'] in ('failed', 'error'))}")
         print(f"  Recovered (was flagged, now works): {recovered_count}")
         print(f"  Confirmed broken: {confirmed_broken}")
 
