@@ -85,21 +85,30 @@ Generate vector embeddings for resources.
 
 ## Instructions
 
-1. **Start Docker database** (if not running):
+1. **Backup production database first**:
+   ```bash
+   cd /home/marci/projects/vibe4vets/backend
+   python scripts/backup_production.py --tables
+   ```
+   This creates a timestamped backup in `backend/backups/` before any changes.
+   Auto-rotates to keep last 5. Use `--list` to see existing backups.
+   Skip only if `--dry-run` or if a backup was taken in the last hour.
+
+2. **Start Docker database** (if not running):
    ```bash
    cd /home/marci/projects/vibe4vets && docker-compose up -d db
    ```
 
-2. **Read the job state file**: `.claude/job-state.json`
+3. **Read the job state file**: `.claude/job-state.json`
 
-3. **Parse arguments** (if any):
+4. **Parse arguments** (if any):
    - No args: run all overdue jobs
    - Job name: run only that job if overdue
    - `--force`: run even if not overdue
    - `--dry-run`: just report, don't execute
    - `--sync`: sync to Railway after jobs complete
 
-4. **Check each job**:
+5. **Check each job**:
    ```python
    from datetime import datetime, timedelta, UTC
 
@@ -117,7 +126,7 @@ Generate vector embeddings for resources.
            is_due = now > last_dt + timedelta(hours=freq)
    ```
 
-5. **For overdue jobs, run them**:
+6. **For overdue jobs, run them**:
 
    **link_checker**: Use the fast parallel script
    ```bash
@@ -226,7 +235,7 @@ Generate vector embeddings for resources.
 
    **Configured in:** `data/reference/discovery_urls.json` (17 URLs across State VA, 211, nonprofits)
 
-6. **Update job state** after successful run:
+7. **Update job state** after successful run:
    ```python
    import json
    from datetime import datetime, UTC
@@ -236,7 +245,7 @@ Generate vector embeddings for resources.
    json.dump(state, open(".claude/job-state.json", "w"), indent=2)
    ```
 
-7. **Sync to Railway** (if --sync or prompted):
+8. **Sync to Railway** (if --sync or prompted):
 
    **IMPORTANT**: Use incremental sync, NOT pg_dump/pg_restore!
 
@@ -251,12 +260,13 @@ Generate vector embeddings for resources.
    This syncs only changed fields (link_health, freshness, status) using
    UPDATE statements, which generates minimal WAL.
 
-8. **Report results** to user
+9. **Report results** to user
 
 ## Scripts Reference
 
 | Script | Purpose |
 |--------|---------|
+| `scripts/backup_production.py` | Backup Railway DB before jobs (auto-rotates last 5) |
 | `scripts/parallel_link_check.py` | Fast async link checker (50 concurrent) |
 | `scripts/recheck_403s.py` | Recheck 403s with browser User-Agent |
 | `scripts/sync_to_railway.py` | Efficient incremental sync to Railway |
