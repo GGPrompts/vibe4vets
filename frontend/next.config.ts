@@ -11,12 +11,13 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  // API proxy for development
+  // API proxy — skip /api/admin/* which has its own Next.js route handler
   async rewrites() {
+    const backendUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
     return [
       {
-        source: "/api/:path*",
-        destination: `${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/api/:path*`,
+        source: "/api/v1/:path*",
+        destination: `${backendUrl}/api/v1/:path*`,
       },
     ];
   },
