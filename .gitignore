@@ -69,7 +69,7 @@ npm-debug.log*
 .worktrees/V4V-9evu/
 
 # Database backups
-backups/*.sql.gz
+backups/
 
 # Generated reports (audit/analysis output)
 docs/reports/
